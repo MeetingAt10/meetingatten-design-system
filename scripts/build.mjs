@@ -16,10 +16,8 @@ const decl = (n, t) => `  ${cssName(n)}: ${cssValue(t)};`;
 const THEMES = {
   'accs-light': { aliases: ['accs-light', 'accs-landing', 'accs-admin'], root: true, legacy: true },
   'accs-dark': { aliases: ['accs-dark', 'accs-admin-dark'], legacy: true },
-  meetingatten: { aliases: ['meetingatten'] },
-  'meetingatten-dark': { aliases: ['meetingatten-dark'] },
 };
-const SELECTABLE = ['accs-landing', 'accs-admin', 'accs-admin-dark', 'meetingatten', 'meetingatten-dark'];
+const SELECTABLE = ['accs-landing', 'accs-admin', 'accs-admin-dark'];
 const LEGACY = { // per-repo --accs-* names (accs-landing, accs-system globals.css) -> Figma semantic tokens
   '--accs-canvas': 'canvas', '--accs-surface': 'surface', '--accs-text-primary': 'text-primary', '--accs-text-secondary': 'text-secondary',
   '--accs-border-subtle': 'border-subtle', '--accs-action': 'action-default', '--accs-action-hover': 'action-hover', '--accs-on-action': 'on-action',

@@ -14,7 +14,7 @@ Figma is the source of truth for ACCS. This repo mirrors it; it does not extend 
 
 If a Figma value fails contrast, do not change it: add it to `tokens/figma-known-failures.json` with a note and raise it with the design owner.
 
-## Not-in-Figma additions (motion, z-index, Meeting At 10)
+## Not-in-Figma additions (motion, z-index)
 
 Mark `NOT IN FIGMA` in the token file description and in `docs/figma-parity.md`; keep it minimal; add contrast pairs for new text/background tokens in `tokens/contrast-pairs.json`.
 

@@ -28,8 +28,8 @@ ACCS = Access for College of Computer Studies (spoken "Access"). Tagline: **Your
 
 | | ACCS landing | ACCS admin | Meeting At 10 |
 |---|---|---|---|
-| Theme | `accs-landing` (LIGHT) | `accs-admin` (LIGHT), `accs-admin-dark` (DARK) | `meetingatten`, `meetingatten-dark` |
-| Source | Figma tokens + patterns (no landing frame exists) | Figma tokens + product patterns | No Figma source; sibling structure |
+| Theme | `accs-landing` (LIGHT) | `accs-admin` (LIGHT), `accs-admin-dark` (DARK) | `accs-landing` (team site uses the ACCS themes) |
+| Source | Figma tokens + patterns (no landing frame exists) | Figma tokens + product patterns | Figma tokens; own content and layout |
 | Type focus | Display 36/44, Body large 16/26 | H1 30/38, Body 14/22, Label 14/20 | Same styles, own personality |
 | Density | Spacious, 64-96 rhythm | Dense but calm, 24-32 rhythm | Spacious |
 

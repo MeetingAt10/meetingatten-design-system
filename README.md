@@ -6,7 +6,7 @@ One design system for three surfaces. **ACCS tokens, themes, type, components an
 |---|---|---|---|
 | ACCS landing | `accs-landing` (Next.js, Tailwind 4) | `accs-landing` | Semantic LIGHT |
 | ACCS admin | `accs-system/frontend` (Vite, React, TanStack Router) | `accs-admin`, `accs-admin-dark` | Semantic LIGHT, DARK |
-| Meeting At 10 | `meeting@10-website` (Next.js, Tailwind 4) | `meetingatten`, `meetingatten-dark` | none: sibling built on the same structure |
+| Meeting At 10 team site | `meeting@10-website` (Next.js, Tailwind 4) | `accs-landing` | Semantic LIGHT (shares the ACCS themes) |
 
 `accs-landing` and `accs-admin` have identical tokens; they differ only in usage and density guidance (landing: spacious, Body large; admin: dense, Body 14/22).
 
@@ -14,7 +14,7 @@ One design system for three surfaces. **ACCS tokens, themes, type, components an
 
 | Path | Contents |
 |---|---|
-| `tokens/` | W3C DTCG JSON. `foundations/` (Figma primitives, dimensions, type, plus grid, size, elevation, and clearly marked not-in-Figma motion, z-index, Meeting At 10 colors), `themes/` (semantic, Figma names), `contrast-pairs.json` |
+| `tokens/` | W3C DTCG JSON. `foundations/` (Figma primitives, dimensions, type, plus grid, size, elevation, and clearly marked not-in-Figma motion, z-index), `themes/` (semantic, Figma names), `contrast-pairs.json` |
 | `figma/` | Source export: `variables-styles.json`, `frames-components.json`, `slices/*.png` (frame images, 1400px wide) |
 | `scripts/` | `import-figma.mjs`, `build.mjs`, `check-contrast.mjs`, `parity.mjs` (plain Node ESM, no dependencies) |
 | `dist/` | Committed output: `tokens.css`, `tailwind.css`, `components.css`, `tokens.json`, `tokens.js` |
@@ -22,7 +22,7 @@ One design system for three surfaces. **ACCS tokens, themes, type, components an
 | `components/` | Specs per Figma component (variants, sizes, tokens per state, copy, a11y, markup) |
 | `foundations/`, `themes/`, `docs/` | Guidance synced with the Figma frame text; `docs/figma-parity.md` maps every Figma token, style and component |
 | `assets/` | `logo/*.svg` (official Figma exports), `icons/sprite.svg` + `icons/figma/*.svg` (Figma exports) |
-| `templates/`, `preview/` | Static pages (open directly in a browser): landing, admin shell, report detail, auth, Meeting At 10 home; full catalog with theme switcher |
+| `templates/`, `preview/` | Static pages (open directly in a browser): landing, admin shell, report detail, auth; full catalog with theme switcher |
 
 ## Commands
 
@@ -61,7 +61,7 @@ npm i -D github:MeetingAt10/meetingatten-design-system#v0.2.0
 | Minor `0.x.0` | New tokens/components, or **BREAKING** renames while `< 1.0` | Read CHANGELOG |
 | Major `1.0+` | Breaking changes after 1.0 | Migration notes |
 
-## Consume: Tailwind 4 (Next.js: landing and Meeting At 10)
+## Consume: Tailwind 4 (Next.js: accs-landing and meeting@10-website)
 
 ```css
 @import "tailwindcss";
@@ -69,7 +69,7 @@ npm i -D github:MeetingAt10/meetingatten-design-system#v0.2.0
 @import "@meetingat10/design-system/dist/components.css"; /* optional ds-* classes */
 ```
 ```tsx
-<html lang="en" data-theme="accs-landing">   {/* or "meetingatten" */}
+<html lang="en" data-theme="accs-landing">
 ```
 
 Fonts via `next/font` (tokens read these variables first, then the font names):

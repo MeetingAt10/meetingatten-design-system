@@ -108,7 +108,6 @@ Ignored on purpose: the older "ACCS / ... v0.1" collections and "ACCS / *" text 
 | \`accs-landing\` | Semantic LIGHT | Usage guidance differs (spacious marketing), tokens identical |
 | \`accs-admin\` | Semantic LIGHT | Usage guidance differs (dense product UI, Body 14/22), tokens identical |
 | \`accs-admin-dark\` | Semantic DARK | |
-| \`meetingatten\`, \`meetingatten-dark\` | none (NOT IN FIGMA) | Same semantic names and structure; own paper/sun primitives |
 
 ## Primitive colors
 
@@ -158,7 +157,6 @@ ${T(['Figma component (ACCS 2026 / ...)', 'Variants', 'Size', 'Radius', 'Repo eq
 | \`--ds-font-family-*\` fallback stacks | Figma lists families only |
 | \`--ds-scrim\` look (\`.ds-scrim\`, ink at 82%) | Modal frames show a solid dark backdrop; exact value not specified |
 | Badge neutral fill uses \`disabled/bg\` | Figma light value is neutral/100; no dark Role badge is shown |
-| Meeting At 10 themes, \`sun\` and \`paper\` primitives | No Figma source for the team site |
 | Icon geometry in \`assets/icons/sprite.svg\` | Placeholder until the Figma icon SVGs are exported |
 | Reversed/dark logo | Figma shows white on source blue only; no dark-surface export |
 
