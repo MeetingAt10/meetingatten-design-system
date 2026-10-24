@@ -75,6 +75,13 @@ npm i @meetingat10/design-system@github:MeetingAt10/meetingatten-design-system#v
 
 4. **Check**: `npm run build` and `npm run typecheck`; the page looks the same.
 
+## Known issue: lazy-loaded React Aria code in Next 16 Turbopack builds
+
+Observed on 2026-10-25 with Next.js 16.4.2 (Turbopack, production build) and React Aria Components 1.22.1: when components that use React Aria menu or list state (for example `MenuButton`) are both on a page and inside a `next/dynamic` chunk, the production build can drop an internal react-stately export. The page then fails in the browser with `TypeError: (0, t.f) is not a function` and shows the Next error page; `next build` itself succeeds and `next dev` is unaffected. The same code without the `next/dynamic` boundary works. Until this is fixed upstream:
+
+- Avoid `next/dynamic` boundaries around design system components that use menus, listboxes or selects.
+- Open the production build (`next build` + a static server) in a browser before shipping, not only `next dev`.
+
 ## After the switch
 
 - New screens use the React components (`@meetingat10/design-system/react`) and the card rule.

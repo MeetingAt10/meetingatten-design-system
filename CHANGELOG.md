@@ -19,6 +19,8 @@ Phase 3: ACCS patterns, completing the 55-component catalog. Spec: `context/delt
 - Site: component pages have their own route, so guide and foundation pages no longer load the demo bundle (about 199 KB instead of 343 KB of gzipped JavaScript); the deploy workflow and the CloudFront exemption accept hashed Open Graph image names (`opengraph-image-<hash>`).
 
 ### Added
+- `"sideEffects": ["*.css"]` in `package.json`, so app bundlers can drop components a page does not import.
+- `docs/migrating-apps.md`: per-app steps for moving accs-landing, meeting@10-website and accs-system/frontend onto the package, and a known Next 16 Turbopack issue with `next/dynamic` around React Aria menu code.
 - High contrast support (`forced-colors: active`): visible focus outline, container edges, and fill-only states redrawn with system colors (`src/css/base/forced-colors.css`; no change outside that mode). Checked with Chromium forced-colors emulation: button focus outline 2px, switch on-state and thumb visible, progress fill visible, selected tab underlined, cards edged.
 
 ### Added (for embedding and page headers)
