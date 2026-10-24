@@ -1,0 +1,12 @@
+/* Layout / Section Header: eyebrow, heading, lead and an optional action above a section's content. */
+.ds-section-header {
+  display: grid;
+  gap: var(--ds-space-16);
+  justify-items: start;
+  margin-bottom: var(--ds-space-32);
+  & > :is(h1, h2, h3) {
+    margin: 0;
+    max-width: 22ch;
+  }
+  & > p { margin: 0; }
+}

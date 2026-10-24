@@ -1,0 +1,20 @@
+/* Layout / Hero: page opener with text and an optional preview column from 1024px. */
+.ds-hero {
+  display: grid;
+  gap: var(--ds-space-48);
+  align-items: center;
+  padding-block: var(--ds-space-48) var(--ds-space-64);
+  @media (min-width: 1024px) {
+    grid-template-columns: 7fr 5fr;
+    padding-block: var(--ds-space-80);
+  }
+}
+.ds-hero__title {
+  margin: var(--ds-space-16) 0 var(--ds-space-24);
+  max-width: 20ch;
+}
+.ds-hero__lead {
+  margin: 0;
+  max-width: var(--ds-grid-reading-max);
+}
+.ds-hero__actions { margin-top: var(--ds-space-32); }
