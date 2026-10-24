@@ -1,0 +1,56 @@
+name: deploy-site
+
+# Inert until the accs-system infra change creates the DesignSite stack and these repository variables:
+#   DESIGN_SITE_ROLE_ARN        IAM role GitHub OIDC may assume (S3 put/delete/list on the bucket, invalidation on the distribution)
+#   DESIGN_SITE_BUCKET          site bucket (stack output DesignBucket)
+#   DESIGN_SITE_DISTRIBUTION_ID CloudFront distribution (stack output DesignDistributionId)
+#   DESIGN_SITE_URL             public origin for canonical URLs, e.g. https://design.<domain> (CloudFront URL until then)
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ vars.DESIGN_SITE_ROLE_ARN != '' }}
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: ap-southeast-1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            site/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - name: Build site
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.DESIGN_SITE_URL }}
+        run: |
+          npm --prefix site ci
+          npm --prefix site run build
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.DESIGN_SITE_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Upload
+        env:
+          BUCKET: ${{ vars.DESIGN_SITE_BUCKET }}
+        run: |
+          # Open Graph images are extensionless files; upload them with an explicit content type.
+          aws s3 sync site/out "s3://$BUCKET" --delete --exclude "*opengraph-image"
+          aws s3 cp site/out "s3://$BUCKET" --recursive --exclude "*" --include "*opengraph-image" --content-type image/png
+      - name: Invalidate CDN
+        run: aws cloudfront create-invalidation --distribution-id "${{ vars.DESIGN_SITE_DISTRIBUTION_ID }}" --paths '/*' >/dev/null

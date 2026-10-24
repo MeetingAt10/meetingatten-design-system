@@ -27,7 +27,7 @@ The look (shadows, washes, radius mapping, motion distance) is repo-owned and li
 | Rule | Detail |
 |---|---|
 | Reviewers | At least 1 approval; token or component changes also need the design owner |
-| CI gate | `npm run check` passes and rebuilding `dist/` yields no diff |
+| CI gate | `.github/workflows/ci.yml` on every PR: `npm ci`, `npm run check`, `npm run typecheck`, `npm test`, no diff in `dist/` after the build, and the site builds |
 | No raw color | `npm run check:tokens` passes: no hex, `rgb()`/`hsl()`/`color-mix()`, named colors or primitive `--ds-*` color variables in `src/` or `site/` |
 | Honest copy | No promises of anonymity, security, response time or finality; label synthetic content `DEMO` |
 | Logo | Use `assets/logo/` as exported; no redraws or recolors; it is proposed, not approved |
