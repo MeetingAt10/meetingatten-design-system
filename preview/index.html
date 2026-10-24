@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" data-theme="accs-landing">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design system preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../dist/tokens.css"><link rel="stylesheet" href="../dist/components.css">
+<script src="../dist/tokens.js"></script>
+<style>
+.bar{position:sticky;top:0;z-index:var(--ds-z-sticky);background:var(--ds-surface);border-bottom:1px solid var(--ds-line);padding:var(--ds-space-3) var(--ds-space-6);display:flex;gap:var(--ds-space-4);align-items:center;flex-wrap:wrap}
+.seg{display:flex;gap:var(--ds-space-1);flex-wrap:wrap}
+.seg button[aria-pressed="true"]{background:var(--ds-action);color:var(--ds-on-action);border-color:transparent}
+main{padding-block:var(--ds-space-10);display:grid;gap:var(--ds-space-16)}
+section>h2{margin-bottom:var(--ds-space-4)}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(10.5rem,1fr));gap:var(--ds-space-3)}
+.sw div{border:1px solid var(--ds-line);border-radius:var(--ds-radius-md);overflow:hidden;background:var(--ds-surface);font:var(--ds-text-xs-size)/1.4 var(--ds-font-family-mono)}
+.sw i{display:block;height:3rem;border-bottom:1px solid var(--ds-line)}
+.sw span{display:block;padding:var(--ds-space-1p5) var(--ds-space-2)}
+.sw span:last-child{color:var(--ds-ink-muted)}
+.scale{display:grid;grid-template-columns:repeat(11,1fr);gap:2px;margin-bottom:var(--ds-space-3);font:var(--ds-text-xs-size)/1 var(--ds-font-family-mono)}
+.scale b{display:block;height:2.5rem;border-radius:var(--ds-radius-xs)}.scale small{display:block;text-align:center;margin-top:2px;color:var(--ds-ink-muted)}
+.demo{display:flex;flex-wrap:wrap;gap:var(--ds-space-3);align-items:center}
+.cols{display:grid;gap:var(--ds-space-6);grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));align-items:start}
+.t{display:grid;grid-template-columns:5rem 1fr;gap:var(--ds-space-4);align-items:baseline;border-bottom:1px solid var(--ds-line);padding-block:var(--ds-space-2)}
+.bar-s{height:1rem;background:var(--ds-action);border-radius:2px}
+.box{width:5rem;height:5rem;background:var(--ds-surface);display:grid;place-items:center;font:var(--ds-text-xs-size) var(--ds-font-family-mono)}
+.ds-sidebar{width:100%;border:1px solid var(--ds-line);border-radius:var(--ds-radius-card)}
+.nowrap{white-space:nowrap}
+</style>
+</head>
+<body class="ds-body">
+<div class="bar"><strong class="ds-wordmark" style="font-size:var(--ds-text-base-size)">Design system</strong>
+  <div class="seg" id="themes" role="group" aria-label="Theme"></div>
+  <span class="ds-muted ds-mono" style="font-size:var(--ds-text-xs-size)" id="cur"></span></div>
+<main class="ds-container">
+
+<section><h2 class="ds-h2">Semantic color (current theme)</h2><div class="sw" id="semantic"></div></section>
+<section><h2 class="ds-h2">Primitive scales</h2><div id="prims"></div></section>
+
+<section><h2 class="ds-h2">Typography</h2>
+  <div class="t"><span class="ds-mono ds-muted">display</span><p class="ds-display">Your Access</p></div>
+  <div class="t"><span class="ds-mono ds-muted">h1</span><p class="ds-h1">Support requests</p></div>
+  <div class="t"><span class="ds-mono ds-muted">h2</span><p class="ds-h2">Department updates</p></div>
+  <div class="t"><span class="ds-mono ds-muted">h3</span><p class="ds-h3">Community forum</p></div>
+  <div class="t"><span class="ds-mono ds-muted">lead</span><p class="ds-lead">One place for announcements, support, and the forum.</p></div>
+  <div class="t"><span class="ds-mono ds-muted">body</span><p style="margin:0">Body text in Inter at 16px with a 26px line height. <a class="ds-link" href="#">A link</a> and <span class="ds-muted">muted text</span>.</p></div>
+  <div class="t"><span class="ds-mono ds-muted">mono</span><p class="ds-mono" style="margin:0">const access = await ds.theme("accs-admin");</p></div>
+  <div id="textscale"></div></section>
+
+<section><h2 class="ds-h2">Spacing, radius, elevation</h2><div class="cols"><div id="space"></div><div class="demo" id="radius"></div><div class="demo" id="shadow"></div></div></section>
+<section><h2 class="ds-h2">Motion, z-index, breakpoints</h2><div class="cols"><div id="motion"></div><div id="z"></div><div id="bp"></div></div></section>
+
+<section><h2 class="ds-h2">Buttons and badges</h2>
+  <div class="demo" style="margin-bottom:var(--ds-space-4)"><button class="ds-btn ds-btn--primary">Primary</button><button class="ds-btn ds-btn--secondary">Secondary</button><button class="ds-btn ds-btn--ghost">Ghost</button><button class="ds-btn ds-btn--accent">Accent</button><button class="ds-btn ds-btn--danger">Delete</button><button class="ds-btn ds-btn--primary" disabled>Disabled</button><button class="ds-btn ds-btn--primary ds-btn--sm">Small</button></div>
+  <div class="demo"><span class="ds-badge">Draft</span><span class="ds-badge ds-badge--info">In review</span><span class="ds-badge ds-badge--success">Resolved</span><span class="ds-badge ds-badge--warning">Overdue</span><span class="ds-badge ds-badge--danger">Blocked</span><span class="ds-badge ds-badge--accent">Featured</span><span class="ds-badge ds-badge--role">Admin</span><span class="ds-badge ds-badge--role">Moderator</span></div></section>
+
+<section><h2 class="ds-h2">Form field and select</h2><div class="cols">
+  <div class="ds-field"><label class="ds-label" for="a">Full name</label><input class="ds-input" id="a" placeholder="Juan Dela Cruz"><p class="ds-hint">As shown on your student ID.</p></div>
+  <div class="ds-field"><label class="ds-label" for="b">Email</label><input class="ds-input" id="b" aria-invalid="true" aria-describedby="be" value="juan@"><p class="ds-error" id="be">Enter a complete email address.</p></div>
+  <div class="ds-field"><label class="ds-label" for="c">Program</label><select class="ds-select" id="c"><option>BS Computer Science</option><option>BS Information Technology</option></select></div>
+  <div class="ds-field"><label class="ds-label" for="d">Disabled</label><input class="ds-input" id="d" disabled value="Locked"></div></div></section>
+
+<section><h2 class="ds-h2">Table, tabs, pagination</h2>
+  <div class="ds-tabs" role="tablist" style="margin-bottom:var(--ds-space-4)"><button class="ds-tab" role="tab" aria-selected="true">All</button><button class="ds-tab" role="tab" aria-selected="false">Mine</button><button class="ds-tab" role="tab" aria-selected="false">Overdue</button></div>
+  <div class="ds-table-wrap"><table class="ds-table"><thead><tr><th scope="col">Request</th><th scope="col">Owner</th><th scope="col">Status</th><th scope="col" class="num">Age</th></tr></thead><tbody>
+  <tr><td>Adviser change</td><td>Prof. Lim</td><td><span class="ds-badge ds-badge--info">In review</span></td><td class="num">2 d</td></tr>
+  <tr aria-selected="true"><td>Lab access</td><td>Unassigned</td><td><span class="ds-badge">New</span></td><td class="num">3 h</td></tr>
+  <tr><td>Grade correction</td><td>Dr. Reyes</td><td><span class="ds-badge ds-badge--success">Resolved</span></td><td class="num">1 d</td></tr></tbody></table></div>
+  <nav class="ds-pagination" style="margin-top:var(--ds-space-4)" aria-label="Pagination"><span>1 to 3 of 24</span><ul><li><a class="ds-page" href="#" aria-current="page">1</a></li><li><a class="ds-page" href="#">2</a></li><li><a class="ds-page" href="#">3</a></li></ul></nav></section>
+
+<section><h2 class="ds-h2">Sidebar, modal, toast, empty state</h2><div class="cols">
+  <nav class="ds-sidebar" aria-label="Demo"><div class="ds-nav-group"><span class="ds-nav-label">Workspace</span><a class="ds-nav-item" href="#">Overview</a><a class="ds-nav-item" href="#" aria-current="page">Requests</a><a class="ds-nav-item" href="#">Announcements</a></div></nav>
+  <div class="ds-modal-scrim" style="border-radius:var(--ds-radius-card)"><div class="ds-modal" role="dialog" aria-labelledby="mt"><h3 class="ds-h3" id="mt">Delete this post?</h3><p class="ds-muted" style="margin:0">This removes it for everyone. This cannot be undone.</p><div class="ds-modal__actions"><button class="ds-btn ds-btn--secondary ds-btn--sm">Cancel</button><button class="ds-btn ds-btn--danger ds-btn--sm">Delete</button></div></div></div>
+  <div style="display:grid;gap:var(--ds-space-3)"><div class="ds-toast ds-toast--success" role="status"><div><strong>Request resolved</strong>The student was notified.</div></div><div class="ds-toast ds-toast--danger" role="alert"><div><strong>Could not save</strong>Check your connection and retry.</div></div></div>
+  <div class="ds-empty"><span class="ds-empty__icon"><svg class="ds-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span><h3 class="ds-h3">No requests yet</h3><p>New student requests will show up here.</p><button class="ds-btn ds-btn--primary ds-btn--sm">Create request</button></div></div></section>
+
+<section><h2 class="ds-h2">Patterns: nav, hero, CTA band</h2>
+  <div class="ds-card"><nav class="ds-nav" aria-label="Demo"><a class="ds-wordmark" href="#">Brand</a><ul class="ds-nav__links"><li><a href="#" aria-current="page">Features</a></li><li><a href="#">About</a></li></ul><a class="ds-btn ds-btn--primary ds-btn--sm" href="#">Sign in</a></nav>
+  <p class="ds-eyebrow" style="margin-top:var(--ds-space-8)">Eyebrow</p><h3 class="ds-h1" style="margin-top:var(--ds-space-2)">A headline that says one thing</h3><p class="ds-lead" style="margin-top:var(--ds-space-3)">Supporting sentence in secondary ink.</p></div>
+  <div class="ds-band" style="margin-top:var(--ds-space-6)"><h3 class="ds-h2">Call to action</h3><p style="margin:var(--ds-space-2) 0 0">On action color, white text.</p></div></section>
+
+<section><h2 class="ds-h2">Data visualization</h2><div class="sw" id="viz"></div></section>
+</main>
+<script>
+const T=window.DS_TOKENS,$=id=>document.getElementById(id),el=(h)=>{const d=document.createElement('div');d.innerHTML=h;return d.firstElementChild};
+const root=document.documentElement,cs=()=>getComputedStyle(root);
+const names=Object.keys(T.themes);
+$('themes').append(...names.map(n=>{const b=el(`<button class="ds-btn ds-btn--secondary ds-btn--sm" aria-pressed="false">${n}</button>`);b.onclick=()=>set(n);b.dataset.n=n;return b}));
+const hex=(v)=>{v=v.trim();return v};
+function set(n){root.dataset.theme=n;document.querySelectorAll('#themes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.n===n));$('cur').textContent=T.themes[n];paint()}
+const sw=(label,cssVar)=>`<div><i style="background:var(${cssVar})"></i><span>${label}</span><span class="v" data-v="${cssVar}"></span></div>`;
+const sem=T.semantic.filter(t=>t.type==='color'&&!t.name.includes('viz-'));
+$('semantic').innerHTML=sem.map(t=>sw(t.name.replace('color.',''),t.css)).join('');
+$('viz').innerHTML=T.semantic.filter(t=>t.name.includes('viz-')).map(t=>sw(t.name.replace('color.',''),t.css)).join('');
+const groups={};T.foundations.filter(t=>t.type==='color').forEach(t=>{const [,g,s]=t.name.split('.');if(!s)return;(groups[g]??=[]).push(t)});
+$('prims').innerHTML=Object.entries(groups).map(([g,l])=>`<p class="ds-mono" style="margin:var(--ds-space-3) 0 var(--ds-space-1)">${g}</p><div class="scale" style="grid-template-columns:repeat(${l.length},1fr)">${l.map(t=>`<div><b style="background:var(${t.css})" title="${t.value}"></b><small>${t.name.split('.')[2]}</small></div>`).join('')}</div>`).join('');
+const f=(p)=>T.foundations.filter(t=>t.name.startsWith(p));
+$('textscale').innerHTML=f('text.').filter(t=>t.name.endsWith('.size')).map(t=>{const k=t.name.split('.')[1];return `<div class="t"><span class="ds-mono ds-muted">${k}</span><span style="font-family:var(--ds-font-family-display);font-weight:700;font-size:var(${t.css});letter-spacing:var(--ds-text-${k}-tracking);line-height:1.1">Access ${t.value}</span></div>`}).join('');
+$('space').innerHTML=f('space.').map(t=>`<div class="t" style="padding-block:2px"><span class="ds-mono ds-muted">${t.name.split('.')[1]}</span><span class="bar-s" style="width:var(${t.css})"></span></div>`).join('');
+$('radius').innerHTML=f('radius.').map(t=>`<div class="box" style="border:1px solid var(--ds-line-strong);border-radius:var(${t.css})">${t.name.split('.')[1]}</div>`).join('')+['radius-control','radius-card'].map(n=>`<div class="box" style="border:1px solid var(--ds-line-strong);border-radius:var(--ds-${n})">${n.slice(7)}</div>`).join('');
+$('shadow').innerHTML=f('shadow.').map(t=>`<div class="box" style="box-shadow:var(${t.css});border-radius:var(--ds-radius-md)">${t.name.split('.')[1]}</div>`).join('');
+const row=(t,k)=>`<div class="t"><span class="ds-mono ds-muted nowrap">${k}</span><span class="ds-mono" style="font-size:var(--ds-text-xs-size)">${t.value}</span></div>`;
+$('motion').innerHTML=f('motion.').map(t=>row(t,t.name.replace('motion.',''))).join('');
+$('z').innerHTML=f('z.').map(t=>row(t,t.name.split('.')[1])).join('');
+$('bp').innerHTML=f('breakpoint.').concat(f('grid.')).map(t=>row(t,t.name.replace(/^(breakpoint|grid)\./,'$1 '))).join('');
+function paint(){const s=cs();document.querySelectorAll('.v').forEach(e=>e.textContent=s.getPropertyValue(e.dataset.v).trim().toUpperCase())}
+set('accs-landing');
+</script>
+</body></html>
