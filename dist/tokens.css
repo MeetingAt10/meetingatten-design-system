@@ -165,14 +165,9 @@
   --ds-z-toast: 500;
 }
 
-/* accs-light: Figma "ACCS 2026 / Semantic" mode LIGHT. Used by accs-landing and accs-admin. */
+/* light: Figma "ACCS 2026 / Semantic" mode LIGHT. data-theme="light" (the :root default). */
 :root,
-[data-theme="accs-light"],
-.theme-accs-light,
-[data-theme="accs-landing"],
-.theme-accs-landing,
-[data-theme="accs-admin"],
-.theme-accs-admin {
+[data-theme="light"] {
   color-scheme: light;
   --ds-canvas: #F5F7FB;
   --ds-surface: #FFFFFF;
@@ -219,31 +214,10 @@
   --ds-inverse-hover: #46516A;
   --ds-inverse-pressed: #032E87;
   --ds-inverse-focus: #97B5FF;
-  /* legacy --accs-* aliases */
-  --accs-canvas: var(--ds-canvas);
-  --accs-surface: var(--ds-surface);
-  --accs-text-primary: var(--ds-text-primary);
-  --accs-text-secondary: var(--ds-text-secondary);
-  --accs-border-subtle: var(--ds-border-subtle);
-  --accs-action: var(--ds-action-default);
-  --accs-action-hover: var(--ds-action-hover);
-  --accs-on-action: var(--ds-on-action);
-  --accs-focus: var(--ds-focus);
-  --accs-info-bg: var(--ds-info-bg);
-  --accs-secondary-bg: var(--ds-secondary-bg);
-  --accs-secondary-fg: var(--ds-secondary-fg);
-  --accs-accent-bg: var(--ds-accent-bg);
-  --accs-accent-fg: var(--ds-accent-fg);
-  --accs-radius-card: var(--ds-radius-8);
-  --accs-font-display: var(--ds-font-family-display);
-  --accs-font-body: var(--ds-font-family-body);
 }
 
-/* accs-dark: Figma "ACCS 2026 / Semantic" mode DARK. Used by accs-admin-dark. */
-[data-theme="accs-dark"],
-.theme-accs-dark,
-[data-theme="accs-admin-dark"],
-.theme-accs-admin-dark {
+/* dark: Figma "ACCS 2026 / Semantic" mode DARK. data-theme="dark", or no data-theme when the OS prefers dark. */
+[data-theme="dark"] {
   color-scheme: dark;
   --ds-canvas: #0B1220;
   --ds-surface: #172033;
@@ -290,22 +264,79 @@
   --ds-inverse-hover: #EDF1F7;
   --ds-inverse-pressed: #DCE2EC;
   --ds-inverse-focus: #032E87;
-  /* legacy --accs-* aliases */
-  --accs-canvas: var(--ds-canvas);
-  --accs-surface: var(--ds-surface);
-  --accs-text-primary: var(--ds-text-primary);
-  --accs-text-secondary: var(--ds-text-secondary);
-  --accs-border-subtle: var(--ds-border-subtle);
-  --accs-action: var(--ds-action-default);
-  --accs-action-hover: var(--ds-action-hover);
-  --accs-on-action: var(--ds-on-action);
-  --accs-focus: var(--ds-focus);
-  --accs-info-bg: var(--ds-info-bg);
-  --accs-secondary-bg: var(--ds-secondary-bg);
-  --accs-secondary-fg: var(--ds-secondary-fg);
-  --accs-accent-bg: var(--ds-accent-bg);
-  --accs-accent-fg: var(--ds-accent-fg);
-  --accs-radius-card: var(--ds-radius-8);
-  --accs-font-display: var(--ds-font-family-display);
-  --accs-font-body: var(--ds-font-family-body);
+}
+
+/* No data-theme: follow the OS setting. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --ds-canvas: #0B1220;
+    --ds-surface: #172033;
+    --ds-raised: #22304A;
+    --ds-text-primary: #F5F7FB;
+    --ds-text-secondary: #B8C4D9;
+    --ds-border-default: #7D8DA6;
+    --ds-border-strong: #B8C4D9;
+    --ds-action-default: #97B5FF;
+    --ds-action-hover: #B8CDFF;
+    --ds-action-pressed: #729AFF;
+    --ds-on-action: #0B1220;
+    --ds-focus: #97B5FF;
+    --ds-disabled-bg: #22304A;
+    --ds-disabled-fg: #B8C4D9;
+    --ds-success-fg: #86EFAC;
+    --ds-success-bg: #052E16;
+    --ds-success-on-inverse: #166534;
+    --ds-warning-fg: #FCD34D;
+    --ds-warning-bg: #451A03;
+    --ds-danger-fg: #FDA29B;
+    --ds-danger-bg: #55160C;
+    --ds-danger-action: #FDA29B;
+    --ds-danger-action-hover: #FEE4E2;
+    --ds-danger-action-pressed: #F97066;
+    --ds-danger-on-action: #0B1220;
+    --ds-info-fg: #97B5FF;
+    --ds-info-bg: #011B4F;
+    --ds-secondary-default: #5EEAD4;
+    --ds-secondary-hover: #C8F2E9;
+    --ds-secondary-pressed: #E8FAF7;
+    --ds-secondary-on-solid: #0B1220;
+    --ds-secondary-bg: #042F2E;
+    --ds-secondary-fg: #5EEAD4;
+    --ds-secondary-border: #5EEAD4;
+    --ds-accent-default: #C4B5FD;
+    --ds-accent-hover: #E9DDFF;
+    --ds-accent-pressed: #F4EEFF;
+    --ds-accent-on-solid: #0B1220;
+    --ds-accent-bg: #2E1065;
+    --ds-accent-fg: #C4B5FD;
+    --ds-accent-border: #C4B5FD;
+    --ds-border-subtle: #22304A;
+    --ds-inverse-hover: #EDF1F7;
+    --ds-inverse-pressed: #DCE2EC;
+    --ds-inverse-focus: #032E87;
+  }
+}
+
+/* density: comfortable */
+:root,
+[data-density="comfortable"] {
+  --ds-density-text-font-family: var(--ds-type-body-large-font-family);
+  --ds-density-text-font-weight: var(--ds-type-body-large-font-weight);
+  --ds-density-text-size: var(--ds-type-body-large-size);
+  --ds-density-text-line-height: var(--ds-type-body-large-line-height);
+  --ds-density-text-letter-spacing: var(--ds-type-body-large-letter-spacing);
+  --ds-density-section-space: var(--ds-space-64);
+  --ds-density-section-space-desktop: var(--ds-space-80);
+}
+
+/* density: compact */
+[data-density="compact"] {
+  --ds-density-text-font-family: var(--ds-type-body-font-family);
+  --ds-density-text-font-weight: var(--ds-type-body-font-weight);
+  --ds-density-text-size: var(--ds-type-body-size);
+  --ds-density-text-line-height: var(--ds-type-body-line-height);
+  --ds-density-text-letter-spacing: var(--ds-type-body-letter-spacing);
+  --ds-density-section-space: var(--ds-space-24);
+  --ds-density-section-space-desktop: var(--ds-space-32);
 }

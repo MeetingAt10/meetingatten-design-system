@@ -1,5 +1,5 @@
 {
-  "$description": "Figma \"ACCS 2026 / Semantic\" mode LIGHT. Used by accs-landing and accs-admin.",
+  "$description": "Figma \"ACCS 2026 / Semantic\" mode LIGHT. data-theme=\"light\" (the :root default).",
   "$extensions": {
     "dark": false,
     "figmaMode": "LIGHT"

@@ -8,6 +8,13 @@ Work toward 0.3.0 (see `context/deltas/2026-10-24-v0.3.0-rebuild.md`).
 
 ### BREAKING
 - Removed the Meeting At 10 themes (`meetingatten`, `meetingatten-dark`), the `sun` and `paper` primitives, `themes/meetingatten/` and `templates/meetingatten-home.html`. The team site uses the ACCS themes.
+- Themes are `data-theme="light"` and `data-theme="dark"`; without the attribute the page follows `prefers-color-scheme`. Removed theme names: `accs-landing`, `accs-admin`, `accs-admin-dark`, `accs-light`, `accs-dark`, and the `.theme-*` classes.
+- Removed the legacy `--accs-*` CSS variables; use `--ds-*`.
+- Removed `.ds-body--app`; set `data-density="compact"` instead.
+- `themes/accs-admin/` and `themes/accs-landing/` replaced by `themes/light-dark.md` and `themes/density.md`.
+
+### Added
+- `data-density="comfortable|compact"` with `--ds-density-text-*` and `--ds-density-section-space(-desktop)` (aliases of existing Body large / Body and space tokens).
 
 ## [0.2.0] - 2026-10-24
 

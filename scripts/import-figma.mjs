@@ -23,7 +23,7 @@ write('foundations/color.json', prim);
 
 // Semantic (LIGHT / DARK)
 const sem = col('ACCS 2026 / Semantic');
-for (const [mode, file, desc] of [['LIGHT', 'accs-light', 'Figma "ACCS 2026 / Semantic" mode LIGHT. Used by accs-landing and accs-admin.'], ['DARK', 'accs-dark', 'Figma "ACCS 2026 / Semantic" mode DARK. Used by accs-admin-dark.']]) {
+for (const [mode, file, desc] of [['LIGHT', 'accs-light', 'Figma "ACCS 2026 / Semantic" mode LIGHT. data-theme="light" (the :root default).'], ['DARK', 'accs-dark', 'Figma "ACCS 2026 / Semantic" mode DARK. data-theme="dark", or no data-theme when the OS prefers dark.']]) {
   const t = { $description: desc, $extensions: { dark: mode === 'DARK', figmaMode: mode }, color: { $type: 'color' } };
   for (const v of sem.vars) {
     const raw = v.vals[mode];

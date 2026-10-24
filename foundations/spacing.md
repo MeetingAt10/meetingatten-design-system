@@ -30,4 +30,4 @@ Title + contextual metadata, readable body then supporting guidance, one primary
 
 ## Density (usage, not tokens)
 
-`accs-landing` and `accs-admin` share these tokens. Landing uses the 64-96 rhythm between sections and Body large; admin uses 24-32 between regions and Body 14/22. Neither changes a token.
+Set with `data-density` ([themes/density.md](../themes/density.md)): `comfortable` (landing) uses 64/80 between sections and Body large; `compact` (admin) uses 24/32 between regions and Body 14/22. Neither changes a token.

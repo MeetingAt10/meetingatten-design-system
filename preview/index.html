@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="accs-landing">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ACCS / Brand &amp; product system - preview</title>
@@ -110,7 +110,7 @@
       <div class="src" style="background:var(--ds-brand-source-white);color:var(--ds-brand-source-ink)"><b>White / source</b><code data-src="color.brand.source-white"></code><span>Base surface and reversed identity</span></div>
     </div></div>
   <div><div class="sub"><h3>02.2 / Primitives</h3><small>Named primitives; status is always paired with text or an icon.</small></div><div class="panel" id="prims"></div></div>
-  <div><div class="sub"><h3>02.3 / Semantic contract · LIGHT ↔ DARK</h3><small>Figma modes. accs-landing and accs-admin use LIGHT; accs-admin-dark uses DARK.</small></div><div class="panel" style="padding:0;overflow-x:auto"><table class="sem" id="sem"></table></div></div>
+  <div><div class="sub"><h3>02.3 / Semantic contract · LIGHT ↔ DARK</h3><small>Figma modes: data-theme="light" and data-theme="dark".</small></div><div class="panel" style="padding:0;overflow-x:auto"><table class="sem" id="sem"></table></div></div>
   <div><div class="sub"><h3>02.4 / Typography as infrastructure</h3><small>Plus Jakarta Sans headings · Inter body · JetBrains Mono code.</small></div><div class="panel" id="types"></div></div>
 </section>
 
@@ -207,7 +207,7 @@ function set(n) { root.dataset.theme = n; document.querySelectorAll('#themes but
 const fam = {}; T.foundations.filter((t) => t.type === 'color').forEach((t) => { const [, g, ...s] = t.name.split('.'); (fam[g] ??= []).push([s.join('.'), t]); });
 $('prims').innerHTML = Object.entries(fam).map(([g, l]) => `<p class="ds-type-label" style="margin:8px 0 0">${g}</p><div class="fam">${l.map(([s, t]) => `<div><i style="background:var(${t.css})"></i>${s}<br>${t.value}</div>`).join('')}</div>`).join('');
 /* 02.3 semantic */
-const L = T.values['accs-light'], D = T.values['accs-dark'];
+const L = T.values.light, D = T.values.dark;
 $('sem').innerHTML = `<thead><tr><th>ACCS 2026 / Semantic</th><th>LIGHT</th><th>DARK</th></tr></thead><tbody>${Object.keys(L).map((k) => `<tr><td>color/${k.replace(/\./g, '/')}</td><td><i style="background:${L[k]}"></i>${L[k]}</td><td><i style="background:${D[k]}"></i>${D[k]}</td></tr>`).join('')}</tbody>`;
 /* 02.4 types */
 const samples = { display: 'Your access starts here', h1: 'Community overview', h2: 'Connect with your college', h3: 'Find the right support', h4: 'Consultation details', 'body-large': 'Choose a time that works for you.', body: 'Availability is illustrative, not a live schedule.', 'body-small': 'Secondary reading text; not an essential mobile label.', label: 'Consultation topic', caption: 'DEMO · illustrative content only', code: 'case.id = "DEMO-024"; // no real student data' };
@@ -247,6 +247,6 @@ add('<div class="r">Navigation item · selected</div>' + five.map(([c, a]) => `<
 add('<div class="r">Select option</div>' + five.map(([c, a]) => `<div class="ds-option${c}" role="option"${a}>Course planning</div>`).join(''));
 add('<div class="r">Tab</div>' + five.map(([c, a]) => `<button class="ds-tab${c}" role="tab" aria-selected="false"${a}>Forum</button>`).join(''));
 add('<div class="r">Tab · selected</div>' + five.map(([c, a]) => `<button class="ds-tab${c}" role="tab" aria-selected="true"${a}>Forum</button>`).join(''));
-set('accs-landing');
+set('light');
 </script>
 </body></html>

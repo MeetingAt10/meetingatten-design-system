@@ -10,4 +10,4 @@ Source: Figma "ACCS 2026 / Dimensions" and Foundations 03.2. Controlled softness
 | `radius/8` | 8px | Cards | Announcement/Forum Card, Privacy Notice, Toast, Reports Table container, Report Record, View State |
 | `radius/12` | 12px | Overlays | Modal |
 
-Tailwind: `rounded-chip` (4), `rounded-control` (6), `rounded-card` (8), `rounded-overlay` (12). The repos' old `--accs-radius-card` was 12px; Figma components use 8px for cards, so it now resolves to 8px.
+Tailwind: `rounded-chip` (4), `rounded-control` (6), `rounded-card` (8), `rounded-overlay` (12).

@@ -2,13 +2,13 @@
 
 One design system for three surfaces. **ACCS tokens, themes, type, components and copy come from the team's Figma** (file `HhZBfgDKt4aMudftxOP4Jg`, page "ACCS Design System - 2026"); the repo mirrors it and proves parity on every check ([docs/figma-parity.md](docs/figma-parity.md)). Everything in Figma is marked PROPOSED, not approved.
 
-| Surface | Repo (stack) | Theme | Figma source |
-|---|---|---|---|
-| ACCS landing | `accs-landing` (Next.js, Tailwind 4) | `accs-landing` | Semantic LIGHT |
-| ACCS admin | `accs-system/frontend` (Vite, React, TanStack Router) | `accs-admin`, `accs-admin-dark` | Semantic LIGHT, DARK |
-| Meeting At 10 team site | `meeting@10-website` (Next.js, Tailwind 4) | `accs-landing` | Semantic LIGHT (shares the ACCS themes) |
+| Surface | Repo (stack) | `data-density` |
+|---|---|---|
+| ACCS landing | `accs-landing` (Next.js, Tailwind 4) | `comfortable` (default) |
+| ACCS admin | `accs-system/frontend` (Vite, React, TanStack Router) | `compact` |
+| Meeting At 10 team site | `meeting@10-website` (Next.js, Tailwind 4) | `comfortable` (default) |
 
-`accs-landing` and `accs-admin` have identical tokens; they differ only in usage and density guidance (landing: spacious, Body large; admin: dense, Body 14/22).
+Every surface uses the same two themes from the Figma Semantic modes: `data-theme="light"` or `"dark"`, and no attribute follows the OS setting ([themes/light-dark.md](themes/light-dark.md)). `data-density` only sets body text and section rhythm ([themes/density.md](themes/density.md)).
 
 ## Layout
 
@@ -69,7 +69,7 @@ npm i -D github:MeetingAt10/meetingatten-design-system#v0.2.0
 @import "@meetingat10/design-system/dist/components.css"; /* optional ds-* classes */
 ```
 ```tsx
-<html lang="en" data-theme="accs-landing">
+<html lang="en">   {/* follows the OS; add data-theme="light" or "dark" to force one */}
 ```
 
 Fonts via `next/font` (tokens read these variables first, then the font names):
@@ -88,11 +88,11 @@ Utilities use the Figma names: `bg-canvas bg-surface text-text-primary border-bo
 import "@meetingat10/design-system/dist/tokens.css";
 import "@meetingat10/design-system/dist/components.css"; // optional
 ```
-Set `<html data-theme="accs-admin">` and switch to `accs-admin-dark` per [themes/accs-admin](themes/accs-admin/README.md); add the Google Fonts link (Inter, Plus Jakarta Sans, JetBrains Mono). Use `var(--ds-surface)`, `var(--ds-action-default)`, `class="type-h1"` equivalents `.ds-type-h1`.
+Set `<html data-density="compact">` (plus `data-theme` only for an explicit user choice, see [themes/light-dark.md](themes/light-dark.md)); add the Google Fonts link (Inter, Plus Jakarta Sans, JetBrains Mono). Use `var(--ds-surface)`, `var(--ds-action-default)`, `class="type-h1"` equivalents `.ds-type-h1`.
 
 ## Migrating from the per-repo `--accs-*` blocks
 
-Those blocks were already copied from this Figma collection, so `tokens.css` keeps them as per-theme aliases (`--accs-canvas`, `--accs-action`, `--accs-secondary-bg` (teal), `--accs-accent-bg` (purple), ...). Delete the local `:root` and `@theme inline` blocks and import the package. Differences: `--accs-radius-card` is now 8px (Figma card radius); Tailwind names `secondary-bg/fg`, `accent-bg/fg`, `info-bg`, `canvas`, `surface`, `ink`, `line`, `action`, `action-hover`, `on-action`, `focus` still resolve.
+Delete the local `:root` and `@theme inline` blocks and import the package. The `--accs-*` variables no longer exist; use the `--ds-*` names (`--accs-canvas` -> `--ds-canvas`, `--accs-action` -> `--ds-action-default`, `--accs-secondary-bg` -> `--ds-secondary-bg`, ...). Tailwind names `canvas`, `surface`, `action`, `action-hover`, `on-action`, `focus`, `info-bg`, `secondary-bg/fg`, `accent-bg/fg` resolve unchanged.
 
 ## Rules
 

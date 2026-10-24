@@ -26,9 +26,9 @@ Ignored on purpose: the older "ACCS / ... v0.1" collections and "ACCS / *" text 
 
 | Repo theme | Figma source | Notes |
 |---|---|---|
-| `accs-landing` | Semantic LIGHT | Usage guidance differs (spacious marketing), tokens identical |
-| `accs-admin` | Semantic LIGHT | Usage guidance differs (dense product UI, Body 14/22), tokens identical |
-| `accs-admin-dark` | Semantic DARK | |
+| `data-theme="light"` (`:root` default) | Semantic LIGHT | |
+| `data-theme="dark"`, or no `data-theme` when the OS prefers dark | Semantic DARK | |
+| `data-density="comfortable"` or `"compact"` | none (NOT IN FIGMA) | Points at existing Body large / Body styles and space tokens; no new values |
 
 ## Primitive colors
 
@@ -91,7 +91,7 @@ Ignored on purpose: the older "ACCS / ... v0.1" collections and "ACCS / *" text 
 
 ## Semantic colors
 
-Tailwind utility = CSS variable name without `--ds-` (e.g. `bg-action-default`, `bg-action`). Legacy aliases kept: `ink`, `ink-secondary`, `line`, `--accs-*`.
+Tailwind utility = CSS variable name without `--ds-` (e.g. `bg-action-default`, `bg-action`). Legacy aliases kept: `ink`, `ink-secondary`, `line`.
 
 | Figma variable | LIGHT (alias, value) | DARK (alias, value) | CSS variable | Status |
 |---|---|---|---|---|

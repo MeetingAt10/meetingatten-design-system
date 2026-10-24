@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="accs-admin">
+<html lang="en" data-theme="light" data-density="compact">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Overview - ACCS</title>
@@ -16,7 +16,7 @@
 .foot{border-top:1px solid var(--ds-border-subtle);padding-top:var(--ds-space-16)}
 </style>
 </head>
-<body class="ds-body ds-body--app">
+<body class="ds-body">
 <!--ds:sprite--><svg width="0" height="0" style="position:absolute" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><symbol id="ds-search" viewBox="0 0 24 24"><path d="M16 16L21 21M18 10.5C18 12.4891 17.2098 14.3968 15.8033 15.8033C14.3968 17.2098 12.4891 18 10.5 18C8.51088 18 6.60322 17.2098 5.1967 15.8033C3.79018 14.3968 3 12.4891 3 10.5C3 8.51088 3.79018 6.60322 5.1967 5.1967C6.60322 3.79018 8.51088 3 10.5 3C12.4891 3 14.3968 3.79018 15.8033 5.1967C17.2098 6.60322 18 8.51088 18 10.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></symbol>
 <symbol id="ds-menu" viewBox="0 0 24 24"><path d="M3 5H21M3 12H21M3 19H21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></symbol>
 <symbol id="ds-chevron" viewBox="0 0 24 24"><path d="M8 4L16 12L8 20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></symbol>
@@ -66,6 +66,6 @@
 </main></div></div>
 <script>
 const b=document.getElementById('mode'),h=document.documentElement;
-b.addEventListener('click',()=>{const d=h.dataset.theme==='accs-admin-dark';h.dataset.theme=d?'accs-admin':'accs-admin-dark';b.textContent=d?'Dark mode':'Light mode'});
+b.addEventListener('click',()=>{const d=h.dataset.theme==='dark';h.dataset.theme=d?'light':'dark';b.textContent=d?'Dark mode':'Light mode'});
 </script>
 </body></html>
