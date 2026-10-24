@@ -1,246 +1,105 @@
 {
-  "$description": "Primitive color scales. Anchors: blue-800 #032E87 and ink-900 #172033 are fixed Figma brand swatches. Never use primitives directly in product code; use semantic tokens.",
+  "$description": "Figma \"ACCS 2026 / Primitives\" (mode Base). Names and values exactly as in Figma.",
   "color": {
     "$type": "color",
-    "white": {
-      "$value": "#FFFFFF"
-    },
-    "black": {
-      "$value": "#000000"
-    },
-    "blue": {
-      "50": {
-        "$value": "#EEF4FF"
-      },
-      "100": {
-        "$value": "#DCE8FF"
-      },
-      "200": {
-        "$value": "#BCD2FF"
-      },
-      "300": {
-        "$value": "#8FB1FF"
-      },
-      "400": {
-        "$value": "#5C86F5"
-      },
-      "500": {
-        "$value": "#3A63E0"
-      },
-      "600": {
-        "$value": "#1C46C2"
-      },
-      "700": {
-        "$value": "#0A38A5"
-      },
-      "800": {
+    "brand": {
+      "source-blue": {
         "$value": "#032E87"
       },
-      "900": {
-        "$value": "#0B2468"
+      "source-ink": {
+        "$value": "#172033"
       },
-      "950": {
-        "$value": "#08173F"
+      "source-white": {
+        "$value": "#FFFFFF"
+      },
+      "hover": {
+        "$value": "#022568"
+      },
+      "pressed": {
+        "$value": "#011B4F"
+      },
+      "dark-default": {
+        "$value": "#97B5FF"
+      },
+      "dark-hover": {
+        "$value": "#B8CDFF"
+      },
+      "dark-pressed": {
+        "$value": "#729AFF"
+      },
+      "focus-light": {
+        "$value": "#3157D5"
       }
     },
-    "ink": {
+    "neutral": {
+      "0": {
+        "$value": "#FFFFFF"
+      },
       "50": {
-        "$value": "#F6F8FB"
+        "$value": "#F5F7FB"
       },
       "100": {
-        "$value": "#EDF0F5"
+        "$value": "#EDF1F7"
       },
       "200": {
-        "$value": "#DDE2EB"
-      },
-      "300": {
-        "$value": "#C3CAD7"
-      },
-      "400": {
-        "$value": "#939DB0"
+        "$value": "#DCE2EC"
       },
       "500": {
-        "$value": "#6A7589"
-      },
-      "600": {
-        "$value": "#4F5A6F"
+        "$value": "#65718A"
       },
       "700": {
-        "$value": "#3B455A"
-      },
-      "800": {
-        "$value": "#273148"
+        "$value": "#46516A"
       },
       "900": {
         "$value": "#172033"
       },
       "950": {
-        "$value": "#0C111D"
+        "$value": "#0B1220"
+      },
+      "dark-raised": {
+        "$value": "#22304A"
+      },
+      "dark-secondary": {
+        "$value": "#B8C4D9"
+      },
+      "dark-border": {
+        "$value": "#7D8DA6"
       }
     },
-    "teal": {
+    "success": {
       "50": {
-        "$value": "#E6F8F5"
-      },
-      "100": {
-        "$value": "#C5EFE9"
-      },
-      "200": {
-        "$value": "#94E0D6"
+        "$value": "#F0FDF4"
       },
       "300": {
-        "$value": "#5DCBBE"
-      },
-      "400": {
-        "$value": "#2FB1A3"
-      },
-      "500": {
-        "$value": "#14958A"
-      },
-      "600": {
-        "$value": "#0B7A72"
+        "$value": "#86EFAC"
       },
       "700": {
-        "$value": "#0A615C"
-      },
-      "800": {
-        "$value": "#0A4E4B"
-      },
-      "900": {
-        "$value": "#0A403E"
+        "$value": "#166534"
       },
       "950": {
-        "$value": "#042625"
+        "$value": "#052E16"
       }
     },
-    "sun": {
+    "warning": {
       "50": {
-        "$value": "#FFF6EC"
-      },
-      "100": {
-        "$value": "#FFE9D0"
-      },
-      "200": {
-        "$value": "#FFD0A0"
+        "$value": "#FFFBEB"
       },
       "300": {
-        "$value": "#FFB066"
-      },
-      "400": {
-        "$value": "#FF8E33"
-      },
-      "500": {
-        "$value": "#E8650A"
-      },
-      "600": {
-        "$value": "#CC5509"
+        "$value": "#FCD34D"
       },
       "700": {
-        "$value": "#A24209"
-      },
-      "800": {
-        "$value": "#81350D"
-      },
-      "900": {
-        "$value": "#692E0F"
+        "$value": "#854D0E"
       },
       "950": {
-        "$value": "#3A1506"
+        "$value": "#451A03"
       }
     },
-    "paper": {
-      "50": {
-        "$value": "#FBF8F3"
-      },
-      "100": {
-        "$value": "#F4EFE6"
-      },
-      "200": {
-        "$value": "#E8E0D2"
-      },
-      "300": {
-        "$value": "#D6CBB8"
-      }
-    },
-    "green": {
-      "50": {
-        "$value": "#ECFDF3"
-      },
-      "100": {
-        "$value": "#D1FADF"
-      },
-      "200": {
-        "$value": "#A6F4C5"
-      },
-      "300": {
-        "$value": "#6CE9A6"
-      },
-      "400": {
-        "$value": "#32D583"
-      },
-      "500": {
-        "$value": "#12B76A"
-      },
-      "600": {
-        "$value": "#039855"
-      },
-      "700": {
-        "$value": "#027A48"
-      },
-      "800": {
-        "$value": "#05603A"
-      },
-      "900": {
-        "$value": "#054F31"
-      },
-      "950": {
-        "$value": "#053321"
-      }
-    },
-    "amber": {
-      "50": {
-        "$value": "#FFFAEB"
-      },
-      "100": {
-        "$value": "#FEF0C7"
-      },
-      "200": {
-        "$value": "#FEDF89"
-      },
-      "300": {
-        "$value": "#FEC84B"
-      },
-      "400": {
-        "$value": "#FDB022"
-      },
-      "500": {
-        "$value": "#F79009"
-      },
-      "600": {
-        "$value": "#DC6803"
-      },
-      "700": {
-        "$value": "#B54708"
-      },
-      "800": {
-        "$value": "#93370D"
-      },
-      "900": {
-        "$value": "#7A2E0E"
-      },
-      "950": {
-        "$value": "#4E1D09"
-      }
-    },
-    "red": {
+    "danger": {
       "50": {
         "$value": "#FEF3F2"
       },
       "100": {
         "$value": "#FEE4E2"
-      },
-      "200": {
-        "$value": "#FECDCA"
       },
       "300": {
         "$value": "#FDA29B"
@@ -248,56 +107,77 @@
       "400": {
         "$value": "#F97066"
       },
-      "500": {
-        "$value": "#F04438"
-      },
-      "600": {
-        "$value": "#D92D20"
-      },
       "700": {
         "$value": "#B42318"
       },
       "800": {
-        "$value": "#912018"
+        "$value": "#9C1F16"
       },
       "900": {
-        "$value": "#7A271A"
+        "$value": "#801A13"
       },
       "950": {
         "$value": "#55160C"
       }
     },
-    "rose": {
-      "400": {
-        "$value": "#F06EAA"
+    "info": {
+      "50": {
+        "$value": "#EFF4FF"
       },
-      "600": {
-        "$value": "#C11574"
+      "300": {
+        "$value": "#97B5FF"
       },
       "700": {
-        "$value": "#9E165F"
+        "$value": "#032E87"
+      },
+      "950": {
+        "$value": "#011B4F"
       }
     },
-    "olive": {
-      "400": {
-        "$value": "#A3C93A"
+    "secondary": {
+      "50": {
+        "$value": "#E8FAF7"
+      },
+      "100": {
+        "$value": "#C8F2E9"
+      },
+      "300": {
+        "$value": "#5EEAD4"
       },
       "600": {
-        "$value": "#5B7A12"
+        "$value": "#0D9488"
       },
       "700": {
-        "$value": "#475F0E"
+        "$value": "#08746E"
+      },
+      "800": {
+        "$value": "#075D59"
+      },
+      "950": {
+        "$value": "#042F2E"
       }
     },
-    "sky": {
-      "400": {
-        "$value": "#38BDF8"
+    "accent": {
+      "50": {
+        "$value": "#F4EEFF"
+      },
+      "100": {
+        "$value": "#E9DDFF"
+      },
+      "300": {
+        "$value": "#C4B5FD"
       },
       "600": {
-        "$value": "#0E7CA6"
+        "$value": "#7040C7"
       },
       "700": {
-        "$value": "#0B6285"
+        "$value": "#55309B"
+      },
+      "800": {
+        "$value": "#45257D"
+      },
+      "950": {
+        "$value": "#2E1065"
       }
     }
   }

@@ -1,0 +1,21 @@
+{
+  "$description": "Figma 03.3 grid table and 07 responsive contract. Viewport ranges are min-widths.",
+  "breakpoint": {
+    "$type": "dimension",
+    "mobile": { "$value": "20rem", "$description": "320-599px: 4 col, 16 gutter, 16 margin" },
+    "tablet": { "$value": "37.5rem", "$description": "600-1023px: 8 col, 24 gutter, 24 margin" },
+    "desktop": { "$value": "64rem", "$description": "1024-1439px: 12 col, 24 gutter, 32 margin" },
+    "wide": { "$value": "90rem", "$description": "1440px+: 12 col, 24 gutter, 48 margin" }
+  },
+  "grid": {
+    "$type": "dimension",
+    "gutter-mobile": { "$value": "16px" },
+    "gutter": { "$value": "24px" },
+    "margin-mobile": { "$value": "16px" },
+    "margin-tablet": { "$value": "24px" },
+    "margin-desktop": { "$value": "32px" },
+    "margin-wide": { "$value": "48px" },
+    "content-max": { "$value": "1200px" },
+    "reading-max": { "$value": "680px" }
+  }
+}

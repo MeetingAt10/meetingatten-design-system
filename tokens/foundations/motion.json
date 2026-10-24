@@ -1,57 +1,7 @@
 {
+  "$description": "NOT IN FIGMA. The frames only say: motion is optional, reduced-motion aware, and state must be understandable without animation. Minimal values kept for hover/focus transitions.",
   "motion": {
-    "duration": {
-      "$type": "duration",
-      "instant": {
-        "$value": "75ms"
-      },
-      "fast": {
-        "$value": "120ms"
-      },
-      "base": {
-        "$value": "200ms"
-      },
-      "slow": {
-        "$value": "320ms"
-      },
-      "slower": {
-        "$value": "500ms"
-      }
-    },
-    "ease": {
-      "$type": "cubicBezier",
-      "standard": {
-        "$value": [
-          0.2,
-          0,
-          0,
-          1
-        ]
-      },
-      "enter": {
-        "$value": [
-          0,
-          0,
-          0,
-          1
-        ]
-      },
-      "exit": {
-        "$value": [
-          0.3,
-          0,
-          1,
-          1
-        ]
-      },
-      "emphasized": {
-        "$value": [
-          0.2,
-          0,
-          0,
-          1.15
-        ]
-      }
-    }
+    "duration": { "$type": "duration", "fast": { "$value": "120ms" }, "base": { "$value": "200ms" } },
+    "ease": { "$type": "cubicBezier", "standard": { "$value": [0.2, 0, 0, 1] } }
   }
 }

@@ -1,0 +1,247 @@
+{
+  "$description": "Figma \"ACCS 2026 / *\" text styles. Sizes converted px -> rem (1rem = 16px) so user text scaling is preserved.",
+  "type": {
+    "display": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.display}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 700
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "2.25rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "2.75rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    },
+    "h1": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.display}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 700
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "1.875rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "2.375rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    },
+    "h2": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.display}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "1.5rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "2rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    },
+    "h3": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.display}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "1.25rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "1.75rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    },
+    "h4": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.display}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "1rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "1.5rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    },
+    "body-large": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.body}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "1rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "1.625rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    },
+    "body": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.body}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "0.875rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "1.375rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    },
+    "label": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.body}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "0.875rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "1.25rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    },
+    "caption": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.body}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "0.75rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "1rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    },
+    "code": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.mono}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "0.8125rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "1.25rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    },
+    "body-small": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.body}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "0.8125rem"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "1.25rem"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0em"
+      }
+    }
+  }
+}

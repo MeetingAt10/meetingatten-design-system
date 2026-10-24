@@ -1,7 +1,8 @@
 {
-  "$description": "Meeting At 10 site, light. Warm paper canvas, ink-navy actions, sunrise-orange accent, mono details.",
+  "$description": "Meeting At 10, light. NOT IN FIGMA. Same semantic structure as ACCS LIGHT: warm paper canvas, ink actions (brand/source-ink), sun as secondary, source blue as accent.",
   "$extensions": {
-    "dark": false
+    "dark": false,
+    "sibling": "accs-light"
   },
   "color": {
     "$type": "color",
@@ -9,181 +10,154 @@
       "$value": "{color.paper.50}"
     },
     "surface": {
-      "$value": "{color.white}"
+      "$value": "{color.brand.source-white}"
     },
-    "surface-sunken": {
-      "$value": "{color.paper.100}"
+    "raised": {
+      "$value": "{color.brand.source-white}"
     },
-    "surface-raised": {
-      "$value": "{color.white}"
+    "text-primary": {
+      "$value": "{color.brand.source-ink}"
     },
-    "ink": {
-      "$value": "{color.ink.900}"
+    "text-secondary": {
+      "$value": "{color.neutral.700}"
     },
-    "ink-secondary": {
-      "$value": "{color.ink.700}"
+    "border-default": {
+      "$value": "{color.neutral.500}"
     },
-    "ink-muted": {
-      "$value": "{color.ink.600}"
-    },
-    "line": {
-      "$value": "{color.paper.200}"
-    },
-    "line-strong": {
-      "$value": "{color.ink.500}"
+    "border-strong": {
+      "$value": "{color.neutral.700}"
     },
     "action": {
-      "$value": "{color.ink.900}"
-    },
-    "action-hover": {
-      "$value": "{color.ink.800}"
+      "default": {
+        "$value": "{color.neutral.900}"
+      },
+      "hover": {
+        "$value": "{color.neutral.700}"
+      },
+      "pressed": {
+        "$value": "{color.neutral.950}"
+      }
     },
     "on-action": {
-      "$value": "{color.paper.50}"
-    },
-    "action-subtle": {
-      "$value": "{color.paper.100}"
-    },
-    "action-subtle-fg": {
-      "$value": "{color.ink.900}"
-    },
-    "link": {
-      "$value": "{color.sun.700}"
+      "$value": "{color.brand.source-white}"
     },
     "focus": {
-      "$value": "{color.blue.600}"
+      "$value": "{color.brand.focus-light}"
     },
-    "accent": {
-      "$value": "{color.sun.500}"
-    },
-    "on-accent": {
-      "$value": "{color.ink.950}"
-    },
-    "accent-bg": {
-      "$value": "{color.sun.100}"
-    },
-    "accent-fg": {
-      "$value": "{color.sun.800}"
-    },
-    "inverse": {
-      "$value": "{color.ink.900}"
-    },
-    "inverse-ink": {
-      "$value": "{color.paper.50}"
-    },
-    "inverse-ink-muted": {
-      "$value": "{color.ink.300}"
-    },
-    "overlay": {
-      "$value": "#0C111D99"
-    },
-    "info-bg": {
-      "$value": "{color.blue.50}"
-    },
-    "info-fg": {
-      "$value": "{color.blue.800}"
-    },
-    "success-bg": {
-      "$value": "{color.green.50}"
-    },
-    "success-fg": {
-      "$value": "{color.green.800}"
+    "disabled": {
+      "bg": {
+        "$value": "{color.neutral.100}"
+      },
+      "fg": {
+        "$value": "{color.neutral.700}"
+      }
     },
     "success": {
-      "$value": "{color.green.600}"
-    },
-    "warning-bg": {
-      "$value": "{color.amber.50}"
-    },
-    "warning-fg": {
-      "$value": "{color.amber.800}"
+      "fg": {
+        "$value": "{color.success.700}"
+      },
+      "bg": {
+        "$value": "{color.success.50}"
+      },
+      "on-inverse": {
+        "$value": "{color.success.300}"
+      }
     },
     "warning": {
-      "$value": "{color.amber.600}"
-    },
-    "danger-bg": {
-      "$value": "{color.red.50}"
-    },
-    "danger-fg": {
-      "$value": "{color.red.800}"
+      "fg": {
+        "$value": "{color.warning.700}"
+      },
+      "bg": {
+        "$value": "{color.warning.50}"
+      }
     },
     "danger": {
-      "$value": "{color.red.600}"
+      "fg": {
+        "$value": "{color.danger.700}"
+      },
+      "bg": {
+        "$value": "{color.danger.50}"
+      },
+      "action": {
+        "$value": "{color.danger.700}"
+      },
+      "action-hover": {
+        "$value": "{color.danger.800}"
+      },
+      "action-pressed": {
+        "$value": "{color.danger.900}"
+      },
+      "on-action": {
+        "$value": "{color.brand.source-white}"
+      }
     },
-    "on-danger": {
-      "$value": "{color.white}"
+    "info": {
+      "fg": {
+        "$value": "{color.brand.source-blue}"
+      },
+      "bg": {
+        "$value": "{color.info.50}"
+      }
     },
-    "viz-cat-1": {
-      "$value": "{color.blue.600}"
+    "secondary": {
+      "default": {
+        "$value": "{color.sun.700}"
+      },
+      "hover": {
+        "$value": "{color.sun.800}"
+      },
+      "pressed": {
+        "$value": "{color.sun.950}"
+      },
+      "on-solid": {
+        "$value": "{color.brand.source-white}"
+      },
+      "bg": {
+        "$value": "{color.sun.50}"
+      },
+      "fg": {
+        "$value": "{color.sun.800}"
+      },
+      "border": {
+        "$value": "{color.sun.700}"
+      }
     },
-    "viz-cat-2": {
-      "$value": "{color.teal.600}"
+    "accent": {
+      "default": {
+        "$value": "{color.brand.source-blue}"
+      },
+      "hover": {
+        "$value": "{color.brand.hover}"
+      },
+      "pressed": {
+        "$value": "{color.brand.pressed}"
+      },
+      "on-solid": {
+        "$value": "{color.brand.source-white}"
+      },
+      "bg": {
+        "$value": "{color.info.50}"
+      },
+      "fg": {
+        "$value": "{color.brand.source-blue}"
+      },
+      "border": {
+        "$value": "{color.brand.source-blue}"
+      }
     },
-    "viz-cat-3": {
-      "$value": "{color.sun.700}"
+    "border-subtle": {
+      "$value": "{color.paper.200}"
     },
-    "viz-cat-4": {
-      "$value": "{color.rose.600}"
-    },
-    "viz-cat-5": {
-      "$value": "{color.olive.600}"
-    },
-    "viz-cat-6": {
-      "$value": "{color.sky.600}"
-    },
-    "viz-cat-7": {
-      "$value": "{color.ink.600}"
-    },
-    "viz-seq-1": {
-      "$value": "{color.blue.100}"
-    },
-    "viz-seq-2": {
-      "$value": "{color.blue.300}"
-    },
-    "viz-seq-3": {
-      "$value": "{color.blue.500}"
-    },
-    "viz-seq-4": {
-      "$value": "{color.blue.700}"
-    },
-    "viz-seq-5": {
-      "$value": "{color.blue.900}"
-    },
-    "viz-div-1": {
-      "$value": "{color.blue.700}"
-    },
-    "viz-div-2": {
-      "$value": "{color.blue.300}"
-    },
-    "viz-div-3": {
-      "$value": "{color.ink.100}"
-    },
-    "viz-div-4": {
-      "$value": "{color.sun.300}"
-    },
-    "viz-div-5": {
-      "$value": "{color.sun.700}"
-    }
-  },
-  "size": {
-    "$type": "dimension",
-    "radius-control": {
-      "$value": "6px"
-    },
-    "radius-card": {
-      "$value": "8px"
-    },
-    "control-h": {
-      "$value": "2.75rem"
-    },
-    "row-h": {
-      "$value": "3rem"
-    },
-    "section-y": {
-      "$value": "5rem"
-    },
-    "container": {
-      "$value": "64rem"
+    "inverse": {
+      "hover": {
+        "$value": "{color.neutral.700}"
+      },
+      "pressed": {
+        "$value": "{color.brand.source-blue}"
+      },
+      "focus": {
+        "$value": "{color.brand.dark-default}"
+      }
     }
   }
 }

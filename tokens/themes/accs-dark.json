@@ -1,0 +1,163 @@
+{
+  "$description": "Figma \"ACCS 2026 / Semantic\" mode DARK. Used by accs-admin-dark.",
+  "$extensions": {
+    "dark": true,
+    "figmaMode": "DARK"
+  },
+  "color": {
+    "$type": "color",
+    "canvas": {
+      "$value": "{color.neutral.950}"
+    },
+    "surface": {
+      "$value": "{color.brand.source-ink}"
+    },
+    "raised": {
+      "$value": "{color.neutral.dark-raised}"
+    },
+    "text-primary": {
+      "$value": "{color.neutral.50}"
+    },
+    "text-secondary": {
+      "$value": "{color.neutral.dark-secondary}"
+    },
+    "border-default": {
+      "$value": "{color.neutral.dark-border}"
+    },
+    "border-strong": {
+      "$value": "{color.neutral.dark-secondary}"
+    },
+    "action": {
+      "default": {
+        "$value": "{color.brand.dark-default}"
+      },
+      "hover": {
+        "$value": "{color.brand.dark-hover}"
+      },
+      "pressed": {
+        "$value": "{color.brand.dark-pressed}"
+      }
+    },
+    "on-action": {
+      "$value": "{color.neutral.950}"
+    },
+    "focus": {
+      "$value": "{color.brand.dark-default}"
+    },
+    "disabled": {
+      "bg": {
+        "$value": "{color.neutral.dark-raised}"
+      },
+      "fg": {
+        "$value": "{color.neutral.dark-secondary}"
+      }
+    },
+    "success": {
+      "fg": {
+        "$value": "{color.success.300}"
+      },
+      "bg": {
+        "$value": "{color.success.950}"
+      },
+      "on-inverse": {
+        "$value": "{color.success.700}"
+      }
+    },
+    "warning": {
+      "fg": {
+        "$value": "{color.warning.300}"
+      },
+      "bg": {
+        "$value": "{color.warning.950}"
+      }
+    },
+    "danger": {
+      "fg": {
+        "$value": "{color.danger.300}"
+      },
+      "bg": {
+        "$value": "{color.danger.950}"
+      },
+      "action": {
+        "$value": "{color.danger.300}"
+      },
+      "action-hover": {
+        "$value": "{color.danger.100}"
+      },
+      "action-pressed": {
+        "$value": "{color.danger.400}"
+      },
+      "on-action": {
+        "$value": "{color.neutral.950}"
+      }
+    },
+    "info": {
+      "fg": {
+        "$value": "{color.brand.dark-default}"
+      },
+      "bg": {
+        "$value": "{color.brand.pressed}"
+      }
+    },
+    "secondary": {
+      "default": {
+        "$value": "{color.secondary.300}"
+      },
+      "hover": {
+        "$value": "{color.secondary.100}"
+      },
+      "pressed": {
+        "$value": "{color.secondary.50}"
+      },
+      "on-solid": {
+        "$value": "{color.neutral.950}"
+      },
+      "bg": {
+        "$value": "{color.secondary.950}"
+      },
+      "fg": {
+        "$value": "{color.secondary.300}"
+      },
+      "border": {
+        "$value": "{color.secondary.300}"
+      }
+    },
+    "accent": {
+      "default": {
+        "$value": "{color.accent.300}"
+      },
+      "hover": {
+        "$value": "{color.accent.100}"
+      },
+      "pressed": {
+        "$value": "{color.accent.50}"
+      },
+      "on-solid": {
+        "$value": "{color.neutral.950}"
+      },
+      "bg": {
+        "$value": "{color.accent.950}"
+      },
+      "fg": {
+        "$value": "{color.accent.300}"
+      },
+      "border": {
+        "$value": "{color.accent.300}"
+      }
+    },
+    "border-subtle": {
+      "$value": "{color.neutral.dark-raised}"
+    },
+    "inverse": {
+      "hover": {
+        "$value": "{color.neutral.100}"
+      },
+      "pressed": {
+        "$value": "{color.neutral.200}"
+      },
+      "focus": {
+        "$value": "{color.brand.source-blue}"
+      }
+    }
+  }
+}

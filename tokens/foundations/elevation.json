@@ -1,92 +1,9 @@
 {
+  "$description": "Figma 03.2: elevation/0 none, elevation/1 '0 2 8 #1720330D', elevation/2 '0 12 32 #1720331F'. Dark surfaces use a tone step and border instead.",
   "shadow": {
     "$type": "shadow",
-    "none": {
-      "$value": [
-        {
-          "color": "#0C111D00",
-          "offsetX": "0px",
-          "offsetY": "0px",
-          "blur": "0px",
-          "spread": "0px"
-        }
-      ]
-    },
-    "xs": {
-      "$value": [
-        {
-          "color": "#0C111D0D",
-          "offsetX": "0px",
-          "offsetY": "1px",
-          "blur": "2px",
-          "spread": "0px"
-        }
-      ]
-    },
-    "sm": {
-      "$value": [
-        {
-          "color": "#0C111D14",
-          "offsetX": "0px",
-          "offsetY": "1px",
-          "blur": "3px",
-          "spread": "0px"
-        },
-        {
-          "color": "#0C111D0F",
-          "offsetX": "0px",
-          "offsetY": "1px",
-          "blur": "2px",
-          "spread": "-1px"
-        }
-      ]
-    },
-    "md": {
-      "$value": [
-        {
-          "color": "#0C111D1A",
-          "offsetX": "0px",
-          "offsetY": "4px",
-          "blur": "8px",
-          "spread": "-2px"
-        },
-        {
-          "color": "#0C111D0F",
-          "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "4px",
-          "spread": "-2px"
-        }
-      ]
-    },
-    "lg": {
-      "$value": [
-        {
-          "color": "#0C111D1F",
-          "offsetX": "0px",
-          "offsetY": "12px",
-          "blur": "24px",
-          "spread": "-4px"
-        },
-        {
-          "color": "#0C111D0F",
-          "offsetX": "0px",
-          "offsetY": "4px",
-          "blur": "8px",
-          "spread": "-4px"
-        }
-      ]
-    },
-    "xl": {
-      "$value": [
-        {
-          "color": "#0C111D33",
-          "offsetX": "0px",
-          "offsetY": "24px",
-          "blur": "48px",
-          "spread": "-12px"
-        }
-      ]
-    }
+    "elevation-0": { "$value": [{ "color": "#17203300", "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "0px" }] },
+    "elevation-1": { "$value": [{ "color": "#1720330D", "offsetX": "0px", "offsetY": "2px", "blur": "8px", "spread": "0px" }] },
+    "elevation-2": { "$value": [{ "color": "#1720331F", "offsetX": "0px", "offsetY": "12px", "blur": "32px", "spread": "0px" }] }
   }
 }

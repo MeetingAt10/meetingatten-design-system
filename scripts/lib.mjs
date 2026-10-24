@@ -1,4 +1,4 @@
-// Shared helpers: load W3C DTCG token files, flatten, resolve {aliases}.
+// Shared helpers: load W3C DTCG token files, flatten, resolve {aliases}, WCAG maths.
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -30,7 +30,7 @@ function resolveAll(map, fallback) {
     }
     return t;
   };
-  for (const [name, t] of map) map.set(name, { ...t, value: get(name).value, type: t.type ?? get(name).type });
+  for (const [name, t] of map) map.set(name, { ...t, value: get(name).value, type: t.type ?? get(name).type, alias: typeof t.value === 'string' && /^\{/.test(t.value) ? t.value.slice(1, -1) : undefined });
   return map;
 }
 
@@ -51,8 +51,8 @@ export function loadTokens() {
   return { foundations, themes };
 }
 
-// "color.blue.800" -> "--ds-blue-800"; "size.radius-card" -> "--ds-radius-card"
-export const cssName = (name) => '--ds-' + name.replace(/^(color|size)\./, '').replace(/\./g, '-');
+// "color.action.default" -> "--ds-action-default"; "space.16" -> "--ds-space-16"; "size.button-h" -> "--ds-size-button-h"
+export const cssName = (name) => '--ds-' + name.replace(/^color\./, '').replace(/\./g, '-');
 
 export function cssValue(t) {
   const v = t.value;
@@ -64,7 +64,7 @@ export function cssValue(t) {
   }
 }
 
-// ---- WCAG ----
+// ---- WCAG 2.x ----
 export function hexToRgb(hex) {
   let h = hex.replace('#', '');
   if (h.length === 3) h = [...h].map((c) => c + c).join('');

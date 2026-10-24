@@ -1,32 +1,21 @@
 {
   "radius": {
-    "$type": "dimension",
-    "none": {
+    "0": {
       "$value": "0px"
     },
-    "xs": {
-      "$value": "2px"
-    },
-    "sm": {
+    "4": {
       "$value": "4px"
     },
-    "md": {
+    "6": {
       "$value": "6px"
     },
-    "lg": {
+    "8": {
       "$value": "8px"
     },
-    "xl": {
+    "12": {
       "$value": "12px"
     },
-    "2xl": {
-      "$value": "16px"
-    },
-    "3xl": {
-      "$value": "24px"
-    },
-    "pill": {
-      "$value": "9999px"
-    }
+    "$type": "dimension",
+    "$description": "0 tables, 4 chips, 6 controls, 8 cards, 12 overlays (Figma 03.2)."
   }
 }

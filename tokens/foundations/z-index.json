@@ -1,29 +1,4 @@
 {
-  "z": {
-    "$type": "number",
-    "base": {
-      "$value": 0
-    },
-    "raised": {
-      "$value": 10
-    },
-    "sticky": {
-      "$value": 100
-    },
-    "dropdown": {
-      "$value": 200
-    },
-    "overlay": {
-      "$value": 300
-    },
-    "modal": {
-      "$value": 400
-    },
-    "toast": {
-      "$value": 500
-    },
-    "tooltip": {
-      "$value": 600
-    }
-  }
+  "$description": "NOT IN FIGMA. Minimal stacking scale for sticky chrome, popups, modal and toast.",
+  "z": { "$type": "number", "sticky": { "$value": 100 }, "dropdown": { "$value": 200 }, "modal": { "$value": 400 }, "toast": { "$value": 500 } }
 }

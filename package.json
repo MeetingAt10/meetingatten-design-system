@@ -1,23 +1,26 @@
 {
   "name": "@meetingat10/design-system",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Design tokens, themes and component specs for ACCS (landing + admin) and Meeting At 10.",
   "license": "UNLICENSED",
   "private": true,
   "type": "module",
   "repository": { "type": "git", "url": "git+https://github.com/MeetingAt10/meetingatten-design-system.git" },
-  "files": ["dist", "tokens", "docs", "foundations", "themes", "components", "templates"],
+  "files": ["dist", "assets", "tokens", "docs", "foundations", "themes", "components", "templates", "figma/variables-styles.json", "figma/frames-components.json"],
   "exports": {
     "./tokens.css": "./dist/tokens.css",
     "./tailwind.css": "./dist/tailwind.css",
     "./components.css": "./dist/components.css",
     "./tokens.json": "./dist/tokens.json",
-    "./dist/*": "./dist/*"
+    "./dist/*": "./dist/*",
+    "./assets/*": "./assets/*"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
     "check:contrast": "node scripts/check-contrast.mjs",
-    "check": "node scripts/build.mjs && node scripts/check-contrast.mjs"
+    "check:parity": "node scripts/parity.mjs",
+    "import:figma": "node scripts/import-figma.mjs",
+    "check": "node scripts/build.mjs && node scripts/check-contrast.mjs && node scripts/parity.mjs"
   },
   "engines": { "node": ">=20" }
 }

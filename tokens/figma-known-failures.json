@@ -1,0 +1,1 @@
+{ "$description": "Figma-inherited contrast failures (ACCS themes only). Each entry: {theme, fg, bg, note}. Empty = every declared Figma pair passes.", "failures": [] }

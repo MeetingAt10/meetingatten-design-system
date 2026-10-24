@@ -1,0 +1,55 @@
+{
+  "$description": "Component and interaction dimensions read from the Figma components (frames-components.json) and Foundations 03.5. They are not Figma variables.",
+  "size": {
+    "$type": "dimension",
+    "button-h": {
+      "$value": "48px",
+      "$description": "Buttons, tabs, nav items (Control / Button *, Navigation / Tab, Navigation / Item)"
+    },
+    "control-h": {
+      "$value": "44px",
+      "$description": "Text field, search, select option, link, icon button; mobile minimum target"
+    },
+    "target-min": {
+      "$value": "24px",
+      "$description": "WCAG 2.2 AA minimum; 44px+ recommended on mobile with 8px separation"
+    },
+    "sidebar-w": {
+      "$value": "15rem"
+    },
+    "topbar-h": {
+      "$value": "72px"
+    },
+    "textarea-h": {
+      "$value": "112px"
+    },
+    "focus-ring": {
+      "$value": "3px",
+      "$description": "color/focus ring"
+    },
+    "focus-offset": {
+      "$value": "2px",
+      "$description": "surface-colored gap between control and ring"
+    },
+    "icon-16": {
+      "$value": "16px",
+      "$description": "stroke 1.5px"
+    },
+    "icon-20": {
+      "$value": "20px",
+      "$description": "stroke 1.75px"
+    },
+    "icon-24": {
+      "$value": "24px",
+      "$description": "stroke 2px"
+    },
+    "12": {
+      "$value": "12px",
+      "$description": "Component-internal inset/gap used by Consultation Slot, Navigation Item, Inline Alert, Toast (in Figma components, not in Dimensions)"
+    },
+    "20": {
+      "$value": "20px",
+      "$description": "Report Record padding (in Figma component, not in Dimensions)"
+    }
+  }
+}
