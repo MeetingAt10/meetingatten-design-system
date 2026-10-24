@@ -13,7 +13,7 @@ ACCS = Access for College of Computer Studies (spoken "Access"). Tagline: **Your
 
 | # | Principle | In practice |
 |---|---|---|
-| 1 | Structure before decoration | 8px rhythm, deliberate geometry, predictable responsive behavior, always-visible focus |
+| 1 | Soft layers on a real structure | 8px rhythm, deliberate geometry, predictable responsive behavior, always-visible focus. Depth, tints and washes come only from locked tokens, look the same on every surface (Reports included) and never carry meaning; cards only for collection items and floating panels |
 | 2 | State is part of the contract | Default, Hover, Pressed, Focus, Disabled, Error, Loading where applicable; loading prevents repeat activation |
 | 3 | Persistent labels, useful errors | Placeholder never replaces a label; required fields use text; errors say what happened and keep the user's text |
 | 4 | Permission is not confidentiality | A role badge is not a privacy signal; restricted access does not mean anonymous; backend enforcement is required |

@@ -2,9 +2,9 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](https://semver.org); while `0.x`, breaking changes bump the minor and are marked **BREAKING**.
 
-## [Unreleased]
+## [0.3.0] - 2026-10-24
 
-Work toward 0.3.0 (see `context/deltas/2026-10-24-v0.3.0-rebuild.md`).
+Soft layers on the locked ACCS palette, a repo-owned treatments tier, strict Tailwind, split component CSS in cascade layers, the React layer with 31 Phase 1 components, and the public showcase site. Spec: `context/deltas/archive/2026-10-24-v0.3.0-rebuild.md`.
 
 ### BREAKING
 - Removed the Meeting At 10 themes (`meetingatten`, `meetingatten-dark`), the `sun` and `paper` primitives, `themes/meetingatten/` and `templates/meetingatten-home.html`. The team site uses the ACCS themes.

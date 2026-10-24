@@ -1,18 +1,25 @@
 # Contributing
 
-Figma is the source of truth for ACCS. This repo mirrors it; it does not extend it silently.
+Figma owns color, type and dimensions; this repo mirrors them and never changes them silently. The look (treatments) and the components are owned here and pushed back to Figma after each release.
 
-## Changing ACCS tokens, styles or components
+## Changing color, type or dimensions (Figma first)
 
 | Step | Do |
 |---|---|
-| 1 | Change it in Figma first (variables, text styles, components) and record the owner, date and rationale there |
+| 1 | Change it in Figma first (variables, text styles) and record the owner, date and rationale there |
 | 2 | Re-export into `figma/` (see README "How the Figma export was made") |
 | 3 | `npm run import:figma && node scripts/parity.mjs --write && npm run check`; commit regenerated `tokens/`, `dist/`, `docs/figma-parity.md` with the export |
-| 4 | New or changed component: update or add `src/css/components/<category>/<name>.css` (add new files to `LAYERS` in `scripts/build.mjs`; nest only contiguous rules of one selector, match native, React Aria `[data-*]` and forced `.is-*` states together), its spec in `components/<category>/` (frontmatter `title`, `description`, `react`), a React component with tests, and its demo in `site/app/_site/demos.tsx` (all states; the site shows light and dark) |
-| 5 | Complete the [accessibility checklist](docs/accessibility-checklist.md) in the PR |
 
 If a Figma value fails contrast, do not change it: add it to `tokens/figma-known-failures.json` with a note and raise it with the design owner.
+
+## Changing the look or a component (repo first)
+
+| Step | Do |
+|---|---|
+| 1 | Look: edit `tokens/treatments.json` (see "Look changes" below). New or changed component: update or add `src/css/components/<category>/<name>.css` (add new files to `LAYERS` in `scripts/build.mjs`; nest only contiguous rules of one selector, match native, React Aria `[data-*]` and forced `.is-*` states together), its spec in `components/<category>/` (frontmatter `title`, `description`, `react`), a React component with tests, and its demo in `site/app/_site/demos.tsx` (all states; the site shows light and dark) |
+| 2 | Follow the card rule: cards only for collection items and floating panels, never nested |
+| 3 | Attach light and dark screenshots of the site page and complete the [accessibility checklist](docs/accessibility-checklist.md) in the PR |
+| 4 | After the release, push the change to Figma (treatments collection, component frames) marked PROPOSED |
 
 ## Not-in-Figma additions (motion, z-index)
 

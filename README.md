@@ -1,6 +1,6 @@
 # @meetingat10/design-system
 
-One design system for three surfaces. **ACCS tokens, themes, type, components and copy come from the team's Figma** (file `HhZBfgDKt4aMudftxOP4Jg`, page "ACCS Design System - 2026"); the repo mirrors it and proves parity on every check ([docs/figma-parity.md](docs/figma-parity.md)). Everything in Figma is marked PROPOSED, not approved.
+One design system for three surfaces. **Color, type and dimensions come from the team's Figma** (file `HhZBfgDKt4aMudftxOP4Jg`, page "ACCS Design System - 2026") and are locked: the repo mirrors them and proves parity on every check ([docs/figma-parity.md](docs/figma-parity.md)). **The look and the components are repo-owned**: "soft layers" treatments built only from those locked tokens ([foundations/treatments.md](foundations/treatments.md)), component CSS, and React components on React Aria. Figma is updated after each release. Everything is PROPOSED, not approved.
 
 | Surface | Repo (stack) | `data-density` |
 |---|---|---|
@@ -14,12 +14,13 @@ Every surface uses the same two themes from the Figma Semantic modes: `data-them
 
 | Path | Contents |
 |---|---|
-| `tokens/` | W3C DTCG JSON. `foundations/` (Figma primitives, dimensions, type, plus grid, size, elevation, and clearly marked not-in-Figma motion, z-index), `themes/` (semantic, Figma names), `contrast-pairs.json` |
+| `tokens/` | W3C DTCG JSON. `foundations/` (Figma primitives, dimensions, type, plus grid, size, elevation, and clearly marked not-in-Figma motion, z-index), `themes/` (semantic LIGHT/DARK, Figma names), `treatments.json` (repo-owned look tokens), `contrast-pairs.json` |
 | `figma/` | Source export: `variables-styles.json`, `frames-components.json`, `slices/*.png` (frame images, 1400px wide) |
-| `scripts/` | `import-figma.mjs`, `build.mjs`, `check-contrast.mjs`, `parity.mjs` (plain Node ESM, no dependencies) |
-| `dist/` | Committed output: `tokens.css`, `tailwind.css`, `components.css`, `tokens.json`, `tokens.js` |
+| `scripts/` | `import-figma.mjs`, `build.mjs`, `check-contrast.mjs`, `check-tokens.mjs`, `parity.mjs` (plain Node ESM, no dependencies) |
+| `dist/` | Committed output: `tokens.css`, `tailwind.css`, `components.css`, `tokens.json`, `tokens.js`, `react/**` |
+| `src/react/` | React components (`<category>/<Name>.tsx`, tests next to them), built with `tsc` to `dist/react/` |
 | `src/css/` | Token-only component CSS: `base/` (reset, type, layout, utilities) and `components/<category>/<name>.css`, joined by `build.mjs` into `dist/components.css` inside `@layer ds.base, ds.components, ds.utilities` (your own CSS always wins) |
-| `components/` | Specs per Figma component (variants, sizes, tokens per state, copy, a11y, markup) |
+| `components/` | One spec per component, Figma and repo-owned (frontmatter, variants, tokens per state, usage, a11y, React usage, markup) |
 | `foundations/`, `themes/`, `docs/` | Guidance synced with the Figma frame text; `docs/figma-parity.md` maps every Figma token, style and component |
 | `assets/` | `logo/*.svg` (official Figma exports), `icons/sprite.svg` + `icons/figma/*.svg` (Figma exports) |
 | `site/` | Public showcase (Next.js 16 static export): renders these markdown files with live light/dark demos, generated props tables and example pages. Not part of the package |
@@ -53,14 +54,14 @@ To refresh: re-export, replace the files in `figma/`, run `npm run import:figma 
 Private repo, consumed from git. **Pin to a tag**, never a branch.
 
 ```bash
-npm i -D github:MeetingAt10/meetingatten-design-system#v0.2.0
+npm i -D github:MeetingAt10/meetingatten-design-system#v0.3.0
 ```
 
 `dist/` is committed, so consumers need no build step.
 
 | Bump | When | Consumer action |
 |---|---|---|
-| Patch `0.2.x` | Docs, bug fixes, Figma re-sync with no token change | Safe |
+| Patch `0.3.x` | Docs, bug fixes, Figma re-sync with no token change | Safe |
 | Minor `0.x.0` | New tokens/components, or **BREAKING** renames while `< 1.0` | Read CHANGELOG |
 | Major `1.0+` | Breaking changes after 1.0 | Migration notes |
 
@@ -110,7 +111,8 @@ Delete the local `:root` and `@theme inline` blocks and import the package. The 
 
 ## Rules
 
-1. Product code uses semantic tokens, never primitives or raw hex.
+1. Product code uses semantic and treatment tokens, never primitives or raw hex (`npm run check:tokens` enforces it for this repo; Tailwind cannot generate the others).
 2. ACCS values change only by re-importing from Figma. Do not edit `tokens/foundations/color.json`, `type.json`, `spacing.json`, `radius.json` or `tokens/themes/accs-*.json` by hand.
-3. Anything without a Figma source is marked "NOT IN FIGMA" in its file and listed in `docs/figma-parity.md`.
-4. See [CONTRIBUTING.md](CONTRIBUTING.md).
+3. Anything without a Figma source is marked "NOT IN FIGMA" or "REPO-OWNED" in its file and listed in `docs/figma-parity.md`.
+4. Cards are for collection items and floating panels only; never a card inside a card ([components/content/card.md](components/content/card.md)).
+5. See [CONTRIBUTING.md](CONTRIBUTING.md).
