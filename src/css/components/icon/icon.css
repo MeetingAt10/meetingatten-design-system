@@ -1,0 +1,21 @@
+/* Icon: 16/20/24px, strokes 1.5/1.75/2px (stroke scaled for the 24-unit viewBox). */
+.ds-icon {
+  width: var(--ds-size-icon-20);
+  height: var(--ds-size-icon-20);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+.ds-icon--16 {
+  width: var(--ds-size-icon-16);
+  height: var(--ds-size-icon-16);
+  stroke-width: 2.25;
+}
+.ds-icon--24 {
+  width: var(--ds-size-icon-24);
+  height: var(--ds-size-icon-24);
+  stroke-width: 2;
+}

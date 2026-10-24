@@ -1,0 +1,13 @@
+/* Feedback / Toast. */
+.ds-toast {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-12);
+  padding: var(--ds-space-16);
+  background: var(--ds-text-primary);
+  color: var(--ds-canvas);
+  border-radius: var(--ds-radius-8);
+  box-shadow: var(--ds-shadow-elevation-1);
+  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
+  & .ds-icon { color: var(--ds-success-on-inverse); }
+}

@@ -1,0 +1,27 @@
+/* Base: page, box model, focus ring, reduced motion. */
+.ds-body {
+  margin: 0;
+  background: var(--ds-canvas);
+  color: var(--ds-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+/* Density text: re-applied wherever data-density is set, because font is inherited as a computed value. */
+.ds-body, .ds-body [data-density] {
+  font: var(--ds-density-text-font-weight) var(--ds-density-text-size) / var(--ds-density-text-line-height) var(--ds-density-text-font-family);
+  letter-spacing: var(--ds-density-text-letter-spacing);
+}
+.ds-body *, .ds-body *::before, .ds-body *::after { box-sizing: border-box; }
+
+/* Focus ring (Foundations 03.5): 3px color/focus + 2px gap in the surface color; override the gap with --ring-gap.
+   Declared on every element so the gap and ring color resolve where the ring is drawn. */
+:where(*) {
+  --ds-ring: 0 0 0 var(--ds-size-focus-offset) var(--ring-gap, var(--ds-surface)), 0 0 0 calc(var(--ds-size-focus-offset) + var(--ds-size-focus-ring)) var(--ds-focus);
+}
+.ds-body :focus-visible {
+  outline: none;
+  box-shadow: var(--ds-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-body * { transition-duration: 0.01ms !important; }
+}

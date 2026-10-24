@@ -1,0 +1,28 @@
+/* Navigation / Sidebar (240). Hidden under 1024px. */
+.ds-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: var(--ds-size-sidebar-w);
+  flex: none;
+  padding: var(--ds-space-24);
+  background: var(--ds-surface);
+  border-right: 1px solid var(--ds-border-subtle);
+  @media (max-width: 1023px) { display: none; }
+}
+.ds-sidebar__logo {
+  display: block;
+  height: 32px;
+  width: auto;
+}
+.ds-sidebar__nav { display: grid; gap: var(--ds-space-8); }
+.ds-sidebar__role {
+  display: grid;
+  gap: var(--ds-space-8);
+  justify-items: start;
+}
+.ds-sidebar__note {
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+  color: var(--ds-text-secondary);
+  margin: 0;
+}

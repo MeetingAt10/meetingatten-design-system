@@ -9,7 +9,7 @@ Figma is the source of truth for ACCS. This repo mirrors it; it does not extend 
 | 1 | Change it in Figma first (variables, text styles, components) and record the owner, date and rationale there |
 | 2 | Re-export into `figma/` (see README "How the Figma export was made") |
 | 3 | `npm run import:figma && node scripts/parity.mjs --write && npm run check`; commit regenerated `tokens/`, `dist/`, `docs/figma-parity.md` with the export |
-| 4 | New or changed component: update `src/components.css`, its spec in `components/<category>/`, and `preview/index.html` (all states, all five themes) |
+| 4 | New or changed component: update or add `src/css/components/<category>/<name>.css` (add new files to `LAYERS` in `scripts/build.mjs`; nest only contiguous rules of one selector, match native, React Aria `[data-*]` and forced `.is-*` states together), its spec in `components/<category>/`, and `preview/index.html` (all states, light and dark) |
 | 5 | Complete the [accessibility checklist](docs/accessibility-checklist.md) in the PR |
 
 If a Figma value fails contrast, do not change it: add it to `tokens/figma-known-failures.json` with a note and raise it with the design owner.

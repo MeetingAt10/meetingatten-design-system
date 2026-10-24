@@ -1,0 +1,35 @@
+/* Control / Icon Button (Standard, Inverse) 44x44. */
+.ds-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: var(--ds-size-control-h);
+  height: var(--ds-size-control-h);
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-6);
+  background: var(--ds-surface);
+  color: var(--ds-action-default);
+  cursor: pointer;
+  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-info-bg); }
+  &:is(:active, [data-pressed], .is-pressed) {
+    background: var(--ds-info-bg);
+    border-color: var(--ds-border-strong);
+  }
+  &:is(:focus-visible, [data-focus-visible], .is-focus) { box-shadow: var(--ds-ring); }
+  &:is(:disabled, [aria-disabled="true"], [data-disabled]) {
+    background: var(--ds-disabled-bg);
+    color: var(--ds-disabled-fg);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+.ds-icon-btn--inverse {
+  background: var(--ds-text-primary);
+  color: var(--ds-canvas);
+  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-inverse-hover); }
+  &:is(:active, [data-pressed], .is-pressed) {
+    background: var(--ds-inverse-pressed);
+    border-color: transparent;
+  }
+  &:is(:focus-visible, [data-focus-visible], .is-focus) { box-shadow: 0 0 0 var(--ds-size-focus-offset) var(--ds-text-primary), 0 0 0 calc(var(--ds-size-focus-offset) + var(--ds-size-focus-ring)) var(--ds-inverse-focus); }
+}

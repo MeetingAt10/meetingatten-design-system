@@ -1,0 +1,30 @@
+/* Content / Announcement Card, Forum Card (824 wide, radius 8, padding 24, gap 12). */
+.ds-card {
+  display: grid;
+  gap: var(--ds-size-12);
+  align-content: start;
+  padding: var(--ds-space-24);
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border-subtle);
+  border-radius: var(--ds-radius-8);
+}
+.ds-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--ds-space-16);
+}
+.ds-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-space-8) var(--ds-space-16);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  color: var(--ds-text-secondary);
+}
+.ds-card > .ds-link, .ds-card .ds-card__meta .ds-link { margin-left: calc(-1 * var(--ds-space-8)); }
+.ds-card--raised { box-shadow: var(--ds-shadow-elevation-1); }
+.ds-card--overlay {
+  box-shadow: var(--ds-shadow-elevation-2);
+  border-radius: var(--ds-radius-12);
+}

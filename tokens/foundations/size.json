@@ -50,6 +50,14 @@
     "20": {
       "$value": "20px",
       "$description": "Report Record padding (in Figma component, not in Dimensions)"
+    },
+    "eyebrow": {
+      "$value": "0.6875rem",
+      "$description": "NOT IN FIGMA: mono eyebrow and tag label size (11px)"
+    },
+    "eyebrow-line": {
+      "$value": "1rem",
+      "$description": "NOT IN FIGMA: mono eyebrow and tag line height (16px)"
     }
   }
 }

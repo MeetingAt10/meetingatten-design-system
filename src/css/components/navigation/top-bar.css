@@ -1,0 +1,23 @@
+/* Navigation / Top Bar (72). */
+.ds-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-16);
+  min-height: var(--ds-size-topbar-h);
+  padding: var(--ds-size-12) var(--ds-space-24);
+  background: var(--ds-surface);
+  border-bottom: 1px solid var(--ds-border-subtle);
+}
+.ds-topbar__title {
+  font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
+  margin: 0;
+  @media (max-width: 599px) { display: none; }
+}
+.ds-topbar__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-16);
+  flex: 1;
+  justify-content: flex-end;
+}

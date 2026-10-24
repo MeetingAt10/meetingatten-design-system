@@ -1,0 +1,36 @@
+/* Badge / Role, Status, Severity (radius 4, padding 5/10, gap 6) + chips. */
+.ds-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: var(--ds-radius-4);
+  background: var(--ds-disabled-bg);
+  color: var(--ds-text-primary);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+  white-space: nowrap;
+}
+.ds-badge--info {
+  background: var(--ds-info-bg);
+  color: var(--ds-info-fg);
+}
+.ds-badge--success {
+  background: var(--ds-success-bg);
+  color: var(--ds-success-fg);
+}
+.ds-badge--warning {
+  background: var(--ds-warning-bg);
+  color: var(--ds-warning-fg);
+}
+.ds-badge--danger {
+  background: var(--ds-danger-bg);
+  color: var(--ds-danger-fg);
+}
+.ds-badge--secondary {
+  background: var(--ds-secondary-bg);
+  color: var(--ds-secondary-fg);
+}
+.ds-badge--accent {
+  background: var(--ds-accent-bg);
+  color: var(--ds-accent-fg);
+}

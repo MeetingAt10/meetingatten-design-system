@@ -1,0 +1,16 @@
+/* Spinner (loading state inside buttons and views). */
+.ds-spinner {
+  width: var(--ds-size-icon-16);
+  height: var(--ds-size-icon-16);
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: ds-spin 0.9s linear infinite;
+  flex: none;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    border-top-color: currentColor;
+    border-right-color: transparent;
+  }
+}
+@keyframes ds-spin { to { transform: rotate(360deg); } }

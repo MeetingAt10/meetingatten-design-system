@@ -1,0 +1,6 @@
+/* Visibility helpers: in the utilities layer so they win over component display values. */
+.ds-only-mobile { display: none; }
+@media (max-width: 1023px) {
+  .ds-only-mobile { display: block; }
+  .ds-only-desktop { display: none; }
+}

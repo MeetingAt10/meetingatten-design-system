@@ -1,0 +1,21 @@
+/* App shell: sidebar + main column (admin). */
+.ds-app {
+  display: flex;
+  min-height: 100vh;
+}
+.ds-app__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ds-app__content {
+  padding: var(--ds-space-32) var(--ds-grid-margin-desktop) var(--ds-space-64);
+  display: grid;
+  gap: var(--ds-space-32);
+  align-content: start;
+  width: 100%;
+  max-width: calc(var(--ds-grid-content-max) + 2 * var(--ds-grid-margin-desktop));
+  @media (max-width: 1023px) { padding: var(--ds-space-24) var(--ds-grid-margin-tablet) var(--ds-space-48); }
+  @media (max-width: 599px) { padding: var(--ds-space-24) var(--ds-grid-margin-mobile) var(--ds-space-48); }
+}

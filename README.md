@@ -18,7 +18,7 @@ Every surface uses the same two themes from the Figma Semantic modes: `data-them
 | `figma/` | Source export: `variables-styles.json`, `frames-components.json`, `slices/*.png` (frame images, 1400px wide) |
 | `scripts/` | `import-figma.mjs`, `build.mjs`, `check-contrast.mjs`, `parity.mjs` (plain Node ESM, no dependencies) |
 | `dist/` | Committed output: `tokens.css`, `tailwind.css`, `components.css`, `tokens.json`, `tokens.js` |
-| `src/components.css` | Token-only reference components mirroring the 48 Figma components |
+| `src/css/` | Token-only component CSS: `base/` (reset, type, layout, utilities) and `components/<category>/<name>.css`, joined by `build.mjs` into `dist/components.css` inside `@layer ds.base, ds.components, ds.utilities` (your own CSS always wins) |
 | `components/` | Specs per Figma component (variants, sizes, tokens per state, copy, a11y, markup) |
 | `foundations/`, `themes/`, `docs/` | Guidance synced with the Figma frame text; `docs/figma-parity.md` maps every Figma token, style and component |
 | `assets/` | `logo/*.svg` (official Figma exports), `icons/sprite.svg` + `icons/figma/*.svg` (Figma exports) |

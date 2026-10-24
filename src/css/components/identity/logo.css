@@ -1,0 +1,7 @@
+/* Identity / Logo. */
+.ds-logo {
+  display: block;
+  height: 2rem;
+  width: auto;
+}
+.ds-logo--stacked { height: 7rem; }

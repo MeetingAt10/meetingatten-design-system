@@ -1,4 +1,4 @@
-// Generates dist/{tokens.css,tailwind.css,tokens.json,tokens.js,components.css} from tokens/ and src/,
+// Generates dist/{tokens.css,tailwind.css,tokens.json,tokens.js,components.css} from tokens/ and src/css/,
 // and inlines assets/icons/sprite.svg into templates/ and preview/ (between <!--ds:sprite--> markers).
 import { writeFileSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
@@ -70,8 +70,25 @@ const flat = { foundations: entries(foundations).map(([n, t]) => ({ name: n, typ
   themes: Object.fromEntries(Object.entries(THEMES).map(([k, a]) => [a, { source: k, description: themes[k].description }])) };
 writeFileSync(join(dist, 'tokens.js'), banner + `window.DS_TOKENS = ${JSON.stringify(flat)};\n`);
 
-// ---- components.css ----
-writeFileSync(join(dist, 'components.css'), banner + readFileSync(join(ROOT, 'src/components.css'), 'utf8'));
+// ---- components.css: src/css/** in cascade order, inside layers so app CSS always wins ----
+const LAYERS = {
+  'ds.base': ['base/reset', 'base/type', 'base/layout'],
+  'ds.components': ['icon/icon', 'feedback/spinner', 'control/button', 'control/icon-button', 'control/field', 'control/select', 'control/search',
+    'control/checkbox', 'navigation/link', 'navigation/item', 'navigation/tab', 'navigation/sidebar', 'navigation/top-bar', 'navigation/mobile-header',
+    'navigation/app-shell', 'badge/badge', 'content/card', 'scheduling/consultation-slot', 'data/case-timeline', 'feedback/privacy-notice',
+    'feedback/inline-alert', 'feedback/toast', 'feedback/modal', 'data/reports-table', 'data/report-record', 'data/view-state', 'identity/logo'].map((f) => 'components/' + f),
+  'ds.utilities': ['base/utilities'],
+};
+const listed = new Set(Object.values(LAYERS).flat().map((f) => f + '.css'));
+const onDisk = readdirSync(join(ROOT, 'src/css'), { recursive: true }).filter((f) => f.endsWith('.css'));
+const unlisted = onDisk.filter((f) => !listed.has(f));
+if (unlisted.length) throw new Error('Add to LAYERS in scripts/build.mjs: ' + unlisted.join(', '));
+let comp = banner + `/* Reference components. Token-only. Forced-state classes (.is-hover, .is-pressed, .is-focus, .is-error) exist for static state matrices;
+   React Aria state attributes ([data-hovered], [data-pressed], [data-focus-visible], [data-disabled]) are matched alongside native states. */
+@layer ${Object.keys(LAYERS).join(', ')};\n`;
+for (const [layer, files] of Object.entries(LAYERS))
+  comp += `\n@layer ${layer} {\n` + files.map((f) => `/* src/css/${f}.css */\n` + readFileSync(join(ROOT, 'src/css', f + '.css'), 'utf8').trim()).join('\n\n') + '\n}\n';
+writeFileSync(join(dist, 'components.css'), comp);
 
 // ---- inline icon sprite into static pages ----
 const sprite = readFileSync(join(ROOT, 'assets/icons/sprite.svg'), 'utf8').replace(/<!--[\s\S]*?-->/g, '').replace(/^<svg[^>]*>|<\/svg>\s*$/g, '').trim();

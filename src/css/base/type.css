@@ -1,0 +1,58 @@
+/* Text styles (Figma "ACCS 2026 / *"). */
+.ds-type-display {
+  font: var(--ds-type-display-font-weight) var(--ds-type-display-size) / var(--ds-type-display-line-height) var(--ds-type-display-font-family);
+  letter-spacing: var(--ds-type-display-letter-spacing);
+  margin: 0;
+}
+.ds-type-h1 {
+  font: var(--ds-type-h1-font-weight) var(--ds-type-h1-size) / var(--ds-type-h1-line-height) var(--ds-type-h1-font-family);
+  margin: 0;
+}
+.ds-type-h2 {
+  font: var(--ds-type-h2-font-weight) var(--ds-type-h2-size) / var(--ds-type-h2-line-height) var(--ds-type-h2-font-family);
+  margin: 0;
+}
+.ds-type-h3 {
+  font: var(--ds-type-h3-font-weight) var(--ds-type-h3-size) / var(--ds-type-h3-line-height) var(--ds-type-h3-font-family);
+  margin: 0;
+}
+.ds-type-h4 {
+  font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
+  margin: 0;
+}
+.ds-type-body-large {
+  font: var(--ds-type-body-large-font-weight) var(--ds-type-body-large-size) / var(--ds-type-body-large-line-height) var(--ds-type-body-large-font-family);
+  margin: 0;
+}
+.ds-type-body {
+  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
+  margin: 0;
+}
+.ds-type-body-small {
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  margin: 0;
+}
+.ds-type-label {
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+}
+.ds-type-caption {
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+}
+.ds-type-code {
+  font: var(--ds-type-code-font-weight) var(--ds-type-code-size) / var(--ds-type-code-line-height) var(--ds-type-code-font-family);
+}
+.ds-secondary { color: var(--ds-text-secondary); }
+.ds-reading { max-width: var(--ds-grid-reading-max); }
+.ds-eyebrow {
+  font: 500 var(--ds-size-eyebrow) / var(--ds-size-eyebrow-line) var(--ds-font-family-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ds-action-default);
+  margin: 0;
+}
+.ds-tag-mono {
+  font: var(--ds-type-code-font-weight) var(--ds-size-eyebrow) / var(--ds-size-eyebrow-line) var(--ds-font-family-mono);
+  letter-spacing: 0.04em;
+  color: var(--ds-text-secondary);
+  text-transform: uppercase;
+}

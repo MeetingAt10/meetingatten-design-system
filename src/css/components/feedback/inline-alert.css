@@ -1,0 +1,24 @@
+/* Feedback / Inline Alert (Tone: info, success, warning, error). */
+.ds-alert {
+  --tone-bg: var(--ds-info-bg);
+  --tone-fg: var(--ds-info-fg);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--ds-size-12);
+  align-items: start;
+  padding: var(--ds-space-16);
+  background: var(--tone-bg);
+  border-radius: var(--ds-radius-6);
+  box-shadow: inset 3px 0 0 var(--tone-fg);
+  color: var(--ds-text-primary);
+}
+.ds-alert--success { --tone-bg: var(--ds-success-bg); --tone-fg: var(--ds-success-fg); }
+.ds-alert--warning { --tone-bg: var(--ds-warning-bg); --tone-fg: var(--ds-warning-fg); }
+.ds-alert--error { --tone-bg: var(--ds-danger-bg); --tone-fg: var(--ds-danger-fg); }
+.ds-alert .ds-icon { color: var(--tone-fg); }
+.ds-alert__title {
+  display: block;
+  color: var(--tone-fg);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+}
+.ds-alert__body { font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family); }

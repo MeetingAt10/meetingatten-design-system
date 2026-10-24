@@ -1,0 +1,45 @@
+/* Data / Case Timeline. */
+.ds-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--ds-space-24);
+  position: relative;
+  & li {
+    position: relative;
+    padding-left: var(--ds-space-24);
+    display: grid;
+    gap: var(--ds-space-4);
+  }
+  & li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--ds-action-default);
+    background: var(--ds-surface);
+  }
+  & li:first-child::before { background: var(--ds-action-default); }
+  & li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 18px;
+    bottom: calc(-1 * var(--ds-space-24) + 6px);
+    width: 1px;
+    background: var(--ds-border-default);
+  }
+}
+.ds-timeline__title { font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family); }
+.ds-timeline__actor {
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+  color: var(--ds-text-secondary);
+}
+.ds-timeline__body {
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  margin: 0;
+}
