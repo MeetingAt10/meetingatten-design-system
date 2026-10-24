@@ -70,7 +70,7 @@ const flat = { foundations: entries(foundations).map(([n, t]) => ({ name: n, typ
   themes: Object.fromEntries(Object.entries(THEMES).map(([k, a]) => [a, { source: k, description: themes[k].description }])) };
 writeFileSync(join(dist, 'tokens.js'), banner + `window.DS_TOKENS = ${JSON.stringify(flat)};\n`);
 
-// ---- components.css: src/css/** in cascade order, inside layers so app CSS always wins ----
+// ---- components.css: src/css/** in cascade order, inside ds.* layers (unlayered app CSS wins; Tailwind apps declare `ds` before `components, utilities`) ----
 const LAYERS = {
   'ds.base': ['base/reset', 'base/type', 'base/layout'],
   'ds.components': ['icon/icon', 'feedback/spinner', 'control/button', 'control/icon-button', 'control/field', 'control/select', 'control/search',

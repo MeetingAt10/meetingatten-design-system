@@ -1,7 +1,6 @@
 import { DemoPanel } from "./demos";
-import { Swatches, TypeScale } from "./TokenDemos";
 
-/** The live demo in light and dark, side by side. Token demos render at build time; component demos are client components. */
+/** A component's live demo in light and dark, side by side (client components; component pages only). */
 export function Demo({ name }: { name: string }) {
   return (
     <section aria-labelledby="demo-h">
@@ -10,7 +9,7 @@ export function Demo({ name }: { name: string }) {
         {(["light", "dark"] as const).map((t) => (
           <div key={t} className="ds-body site-demo__panel" data-theme={t}>
             <p className="ds-eyebrow" style={{ margin: 0 }}>{t}</p>
-            {name === "Swatches" ? <Swatches theme={t} /> : name === "TypeScale" ? <TypeScale /> : <DemoPanel name={name} theme={t} />}
+            <DemoPanel name={name} theme={t} />
           </div>
         ))}
       </div>

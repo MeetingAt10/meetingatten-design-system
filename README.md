@@ -19,7 +19,7 @@ Every surface uses the same two themes from the Figma Semantic modes: `data-them
 | `scripts/` | `import-figma.mjs`, `build.mjs`, `check-contrast.mjs`, `check-tokens.mjs`, `parity.mjs` (plain Node ESM, no dependencies) |
 | `dist/` | Committed output: `tokens.css`, `tailwind.css`, `components.css`, `tokens.json`, `tokens.js`, `react/**` |
 | `src/react/` | React components (`<category>/<Name>.tsx`, tests next to them), built with `tsc` to `dist/react/` |
-| `src/css/` | Token-only component CSS: `base/` (reset, type, layout, utilities) and `components/<category>/<name>.css`, joined by `build.mjs` into `dist/components.css` inside `@layer ds.base, ds.components, ds.utilities` (your own CSS always wins) |
+| `src/css/` | Token-only component CSS: `base/` (reset, type, layout, utilities) and `components/<category>/<name>.css`, joined by `build.mjs` into `dist/components.css` inside `@layer ds.base, ds.components, ds.utilities` (unlayered app CSS always wins; Tailwind apps add one layer-order line, see "Consume: Tailwind 4") |
 | `components/` | One spec per component, Figma and repo-owned (frontmatter, variants, tokens per state, usage, a11y, React usage, markup) |
 | `foundations/`, `themes/`, `docs/` | Guidance synced with the Figma frame text; `docs/figma-parity.md` maps every Figma token, style and component |
 | `assets/` | `logo/*.svg` (official Figma exports), `icons/sprite.svg` + `icons/figma/*.svg` (Figma exports) |
@@ -68,6 +68,7 @@ npm i -D github:MeetingAt10/meetingatten-design-system#v0.5.0
 ## Consume: Tailwind 4 (Next.js: accs-landing and meeting@10-website)
 
 ```css
+@layer properties, theme, base, ds, components, utilities;  /* first line: design system below Tailwind utilities */
 @import "tailwindcss";
 @import "@meetingat10/design-system/dist/tailwind.css";   /* also imports tokens.css */
 @import "@meetingat10/design-system/dist/components.css"; /* optional ds-* classes */
@@ -83,6 +84,8 @@ const display = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-plus-j
 const body = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
 ```
+
+The first line puts the design system's layers (`ds.*`) under Tailwind's `components` and `utilities`; without it Tailwind declares its layers first and `ds` comes last, so a class like `p-4` on a `Card` would lose to the card's own padding.
 
 Utilities use the Figma semantic names and the treatment tokens only: `bg-canvas bg-surface bg-card text-text-primary border-border-default bg-action-default bg-action text-on-action bg-info-bg text-secondary-fg bg-accent-bg wash-accent wash-secondary wash-info shadow-card shadow-card-hover shadow-overlay rounded-card rounded-tile rounded-control rounded-chip type-h1 text-body font-display tablet:... desktop:... max-w-content`. Tailwind's default palette is removed and Figma primitives are not exposed, so `bg-red-500` or `bg-neutral-500` generate nothing. Breakpoints are `tablet` 600, `desktop` 1024, `wide` 1440 (Tailwind defaults removed). Spacing keeps Tailwind's multiplier (`p-4` = Figma `space/16`); use `var(--ds-space-16)` for the Figma name.
 

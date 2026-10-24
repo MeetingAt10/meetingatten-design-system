@@ -1,3 +1,5 @@
+/* Layer order: the design system sits below Tailwind components and utilities, so utility classes override it. */
+@layer properties, theme, base, ds, components, utilities;
 @import "tailwindcss";
 @import "@meetingat10/design-system/dist/tailwind.css";
 @import "@meetingat10/design-system/dist/components.css";

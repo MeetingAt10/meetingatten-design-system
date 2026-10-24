@@ -5,7 +5,7 @@ export const size = OG_SIZE;
 export const contentType = "image/png";
 export const alt = "ACCS Design System page";
 export function generateStaticParams() {
-  return allDocs().map((d) => ({ section: d.section, slug: d.slug }));
+  return allDocs().filter((d) => d.section !== "components").map((d) => ({ section: d.section, slug: d.slug }));
 }
 
 export default async function Image({ params }: { params: Promise<{ section: string; slug: string }> }) {

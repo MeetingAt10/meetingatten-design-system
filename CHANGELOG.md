@@ -15,6 +15,9 @@ Phase 3: ACCS patterns, completing the 55-component catalog. Spec: `context/delt
 - `.ds-notice__foot` now gets its caption font (the `.ds-notice p` rule overrode it).
 - Accessibility sweep (axe in a real browser, every site page in light and dark, contrast included: 0 violations): `ForumCard` uses a stretched title link (`.ds-card--link`, `.ds-card__link`) so its link is named by the title alone; `ReportsTable` wraps the table in a focusable region named by its caption, so keyboard users can scroll it.
 
+- With Tailwind, the design system's layers came after Tailwind's `utilities` (Tailwind declares its layers first), so utility classes such as `p-4` on a `Card` lost to the component's own styles. Tailwind apps now start their CSS with `@layer properties, theme, base, ds, components, utilities;` (README, site).
+- Site: component pages have their own route, so guide and foundation pages no longer load the demo bundle (about 199 KB instead of 343 KB of gzipped JavaScript); the deploy workflow and the CloudFront exemption accept hashed Open Graph image names (`opengraph-image-<hash>`).
+
 ### Added (for embedding and page headers)
 - `AppShell` `contentAs="div"` for previews inside a page that already has a `<main>`; `SectionHeader` `level={1}` when it heads the page.
 
