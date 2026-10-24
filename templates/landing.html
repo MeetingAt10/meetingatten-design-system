@@ -3,71 +3,84 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ACCS - Your Access to the College of Computer Studies</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../dist/tokens.css"><link rel="stylesheet" href="../dist/components.css">
 <style>
-.hero{display:grid;gap:var(--ds-space-12);grid-template-columns:1fr;align-items:center;padding-block:var(--ds-space-20)}
-@media(min-width:64rem){.hero{grid-template-columns:1.1fr .9fr}}
-.hero__actions{display:flex;flex-wrap:wrap;gap:var(--ds-space-3);margin-top:var(--ds-space-8)}
-.stack>*+*{margin-top:var(--ds-space-6)}
-.feature{display:grid;gap:var(--ds-space-3);align-content:start}
-.feature .ds-empty__icon{border-radius:var(--ds-radius-control)}
-.steps{counter-reset:s;display:grid;gap:var(--ds-space-8);grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));list-style:none;padding:0;margin:var(--ds-space-10) 0 0}
-.steps li::before{counter-increment:s;content:"0" counter(s);font:var(--ds-font-weight-semibold) var(--ds-text-sm-size)/1 var(--ds-font-family-mono);color:var(--ds-accent-fg);display:block;margin-bottom:var(--ds-space-3)}
-.row{display:flex;justify-content:space-between;gap:var(--ds-space-4);padding-block:var(--ds-space-3);border-bottom:1px solid var(--ds-line);font-size:var(--ds-text-sm-size)}
-.row:last-child{border:0}
-.footer-grid{display:grid;gap:var(--ds-space-10);grid-template-columns:repeat(auto-fit,minmax(10rem,1fr))}
-.footer-grid ul{list-style:none;padding:0;margin:var(--ds-space-3) 0 0;display:grid;gap:var(--ds-space-2);font-size:var(--ds-text-sm-size)}
-.skip{position:absolute;left:-999px}.skip:focus{left:var(--ds-space-4);top:var(--ds-space-4);background:var(--ds-surface);padding:var(--ds-space-2) var(--ds-space-3);z-index:var(--ds-z-tooltip)}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;background:var(--ds-surface);padding:8px 16px;z-index:var(--ds-z-toast);border-radius:var(--ds-radius-6)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:var(--ds-space-24);min-height:72px;border-bottom:1px solid var(--ds-border-subtle)}
+.nav ul{display:none;list-style:none;margin:0;padding:0;gap:var(--ds-space-8)}
+@media(min-width:1024px){.nav ul{display:flex}}
+.hero{display:grid;gap:var(--ds-space-48);padding-block:var(--ds-space-48) var(--ds-space-64);align-items:center}
+@media(min-width:1024px){.hero{grid-template-columns:7fr 5fr;padding-block:var(--ds-space-80)}}
+.hero h1{font:700 clamp(1.875rem,4vw,2.25rem)/1.22 var(--ds-font-family-display);max-width:20ch;margin:var(--ds-space-16) 0 var(--ds-space-24)}
+.band{background:var(--ds-surface);border-block:1px solid var(--ds-border-subtle)}
+.num{font:700 2.5rem/1 var(--ds-font-family-display);color:var(--ds-action-default);margin:0 0 var(--ds-space-16)}
+.footer{background:var(--ds-surface);border-top:3px solid var(--ds-action-default);padding-block:var(--ds-space-48)}
+.footer ul{list-style:none;margin:var(--ds-space-8) 0 0;padding:0;display:grid;gap:var(--ds-space-4)}
+.f-grid{display:grid;gap:var(--ds-space-32);grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))}
+.stats{display:grid;gap:var(--ds-space-16)}
 </style>
 </head>
 <body class="ds-body">
+<!--ds:sprite--><svg width="0" height="0" style="position:absolute" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><symbol id="ds-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+<symbol id="ds-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="ds-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+<symbol id="ds-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+<symbol id="ds-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+<symbol id="ds-forum" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M7 8h10M7 12h6"/></symbol>
+<symbol id="ds-report" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></symbol>
+<symbol id="ds-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="ds-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="ds-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/></symbol>
+<symbol id="ds-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="ds-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+
+<symbol id="ds-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+<symbol id="ds-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="ds-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol></svg><!--/ds:sprite-->
 <a class="skip" href="#main">Skip to content</a>
-<header class="ds-container"><nav class="ds-nav" aria-label="Primary">
-  <a class="ds-wordmark" href="#">ACCS</a>
-  <ul class="ds-nav__links"><li><a href="#features" aria-current="page">Features</a></li><li><a href="#how">How it works</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#">Contact</a></li></ul>
-  <a class="ds-btn ds-btn--primary ds-btn--sm" href="auth.html">Sign in</a>
+<header class="ds-container"><nav class="nav" aria-label="Primary">
+  <a href="#" aria-label="ACCS home"><img class="ds-logo" src="../assets/logo/logo-compact-minimum.svg" alt="ACCS"></a>
+  <ul><li><a class="ds-link" href="#community">Community</a></li><li><a class="ds-link" href="#consultations">Consultations</a></li><li><a class="ds-link" href="#reports">My reports</a></li><li><a class="ds-link" href="#privacy">Privacy</a></li></ul>
+  <a class="ds-btn ds-btn--primary" href="auth.html">Sign in</a>
 </nav></header>
 <main id="main">
-<section class="ds-container hero">
+<section class="ds-container hero" aria-labelledby="h">
   <div>
-    <p class="ds-eyebrow">College of Computer Studies</p>
-    <h1 class="ds-display" style="margin-top:var(--ds-space-4)">Your Access to the College of Computer Studies</h1>
-    <p class="ds-lead" style="margin-top:var(--ds-space-6)">One place for announcements, student support, the community forum, and confidential concerns. Clear, structured, and always one step away.</p>
-    <div class="hero__actions"><a class="ds-btn ds-btn--primary ds-btn--lg" href="auth.html">Get access <svg class="ds-icon ds-icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a class="ds-btn ds-btn--secondary ds-btn--lg" href="#how">See how it works</a></div>
+    <p class="ds-eyebrow">Student · community access</p>
+    <h1 id="h">Your Access to the College of Computer Studies</h1>
+    <p class="ds-type-body-large ds-secondary ds-reading">Find a conversation, catch an update or make space for a question. Community content is public within the proposed college community.</p>
+    <div class="ds-row" style="margin-top:32px"><a class="ds-btn ds-btn--primary" href="admin-shell.html">Browse community</a><a class="ds-btn ds-btn--secondary" href="#consultations">Explore consultation</a></div>
+    <p class="ds-tag-mono" style="margin-top:32px">Proposed interface · Fictional content · No real student data</p>
   </div>
-  <div class="ds-card ds-card--raised" aria-label="Example department updates">
-    <p class="ds-eyebrow">This week</p>
-    <h2 class="ds-h3" style="margin-block:var(--ds-space-2) var(--ds-space-4)">Department updates</h2>
-    <div class="row"><span>Midterm schedule posted</span><span class="ds-badge ds-badge--info">New</span></div>
-    <div class="row"><span>Capstone consultation slots</span><span class="ds-badge ds-badge--success">Open</span></div>
-    <div class="row"><span>Lab 3 maintenance</span><span class="ds-badge ds-badge--warning">Friday</span></div>
-    <div class="row"><span>Scholarship forms</span><span class="ds-badge">Closed</span></div>
-  </div>
+  <div class="ds-stack" aria-label="Community preview"><article class="ds-card"><div class="ds-card__head"><span class="ds-badge ds-badge--info">Announcement</span><span class="ds-tag-mono">Demo</span></div><h3 class="ds-type-h3">Make room for your next idea.</h3><p class="ds-type-body">Explore the proposed peer study circle and share a topic you’d like to learn together.</p><div class="ds-card__meta"><span>Community desk · illustrative</span><a class="ds-link" href="#">Read update <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></div></article><article class="ds-card"><div class="ds-card__head"><span class="ds-badge ds-badge--accent">Study together</span><span class="ds-tag-mono">Demo</span></div><h3 class="ds-type-h3">What helped you understand recursion?</h3><p class="ds-type-body">A sample community question. Share a useful explanation or ask a follow-up—everyone starts somewhere.</p><div class="ds-card__meta"><span>Demo member · 6 sample replies · Open discussion</span></div><a class="ds-link" href="#" style="justify-self:start">Join the conversation <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article></div>
 </section>
-<section id="features" class="ds-section ds-section--sunken"><div class="ds-container">
-  <p class="ds-eyebrow">What you get</p>
-  <h2 class="ds-h1" style="margin-top:var(--ds-space-3);max-width:20ch">Everything the college runs on, in one place</h2>
-  <div class="ds-grid ds-grid--3" style="margin-top:var(--ds-space-12)">
-    <article class="ds-card feature"><span class="ds-empty__icon"><svg class="ds-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><h3 class="ds-h3">Community forum</h3><p class="ds-muted" style="margin:0">Ask, answer, and share with students and faculty. Friendly by default, moderated by people.</p></article>
-    <article class="ds-card feature"><span class="ds-empty__icon"><svg class="ds-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg></span><h3 class="ds-h3">Student support</h3><p class="ds-muted" style="margin:0">Track requests, see who owns them, and know the next step without chasing anyone.</p></article>
-    <article class="ds-card feature"><span class="ds-empty__icon"><svg class="ds-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"/></svg></span><h3 class="ds-h3">Confidential grievances</h3><p class="ds-muted" style="margin:0">A private, secure channel with clear status and no public visibility.</p></article>
-  </div>
+<section class="band" id="community"><div class="ds-container ds-section">
+  <p class="ds-eyebrow">One system. Different responsibilities.</p>
+  <h2 class="ds-type-h1" style="margin:16px 0 48px;max-width:22ch">Community, consultation and reports, each in its own voice.</h2>
+  <div class="ds-cols ds-cols--3">
+    <article class="ds-card"><p class="num">01</p><h3 class="ds-type-h3"><svg class="ds-icon ds-icon--24" aria-hidden="true"><use href="#ds-forum"/></svg> Community</h3><p class="ds-type-body">Casual and encouraging. Share a useful explanation or ask a follow-up—everyone starts somewhere.</p><a class="ds-link" href="#" style="justify-self:start">Join the conversation <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article>
+    <article class="ds-card" id="consultations-card"><p class="num">02</p><h3 class="ds-type-h3"><svg class="ds-icon ds-icon--24" aria-hidden="true"><use href="#ds-calendar"/></svg> Consultations</h3><p class="ds-type-body">Empathetic and clear. Choose a sample time that works for you. You can review it before continuing.</p><a class="ds-link" href="#consultations" style="justify-self:start">Explore consultation <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article>
+    <article class="ds-card" id="reports"><p class="num">03</p><h3 class="ds-type-h3"><svg class="ds-icon ds-icon--24" aria-hidden="true"><use href="#ds-report"/></svg> Reports</h3><p class="ds-type-body">Serious and structured. Submission is unavailable while recipients and access rules are confirmed.</p><a class="ds-link" href="report-detail.html" style="justify-self:start">See a sample record <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article>
+  </div></div></section>
+<section class="ds-container ds-section" id="consultations"><div class="ds-cols ds-cols--main" style="align-items:start">
+  <div class="ds-stack--24 ds-stack"><p class="ds-eyebrow">Illustrative schedule</p><h2 class="ds-type-h1">Let’s find a time to talk.</h2><p class="ds-type-body-large ds-secondary ds-reading">Choose a sample time for a general course-planning consultation. Consultation is support, not an urgent-response channel.</p>
+  <div class="ds-alert" role="note"><svg class="ds-icon" aria-hidden="true"><use href="#ds-info"/></svg><div><b class="ds-alert__title">Illustrative schedule</b><span class="ds-alert__body">These times are examples, not live availability.</span></div></div></div>
+  <div class="ds-card"><h3 class="ds-type-h3">Consultation · October 2026 · DEMO</h3><div class="ds-stack" style="gap:16px"><div class="ds-days" role="group" aria-label="October 2026"><button class="ds-day" aria-pressed="false"><small>M</small>19</button><button class="ds-day" aria-pressed="false"><small>T</small>20</button><button class="ds-day" aria-pressed="true"><small>W</small>21</button><button class="ds-day" aria-pressed="false"><small>T</small>22</button><button class="ds-day" aria-pressed="false"><small>F</small>23</button></div>
+<p class="ds-type-body-small ds-secondary" style="margin:0">Wed 21 Oct · sample local campus time</p>
+<div class="ds-slots" role="radiogroup" aria-label="Wed 21 Oct, sample local campus time" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+<button class="ds-slot" role="radio" aria-checked="false"><span class="ds-slot__time">09:00</span><span class="ds-slot__state">+ Available</span></button>
+<button class="ds-slot" role="radio" aria-checked="true"><span class="ds-slot__time">10:00</span><span class="ds-slot__state">✓ Selected</span></button>
+<button class="ds-slot" role="radio" aria-disabled="true"><span class="ds-slot__time">11:00</span><span class="ds-slot__state">— Booked</span></button>
+<button class="ds-slot" role="radio" aria-disabled="true"><span class="ds-slot__time">14:00</span><span class="ds-slot__state">× Unavailable</span></button></div></div><div class="ds-field"><span class="ds-label" id="topic-l">Topic</span><button class="ds-select" aria-labelledby="topic-l" aria-haspopup="listbox">Course planning <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></button></div><button class="ds-btn ds-btn--primary ds-btn--block">Review sample selection</button><p class="ds-type-body-small ds-secondary" style="margin:0">No booking is created. Dates, time zone and availability need service confirmation. No response deadline is promised.</p></div>
 </div></section>
-<section id="how" class="ds-section"><div class="ds-container">
-  <p class="ds-eyebrow">How it works</p>
-  <h2 class="ds-h1" style="margin-top:var(--ds-space-3);max-width:20ch">Three steps to get started</h2>
-  <ol class="steps"><li><h3 class="ds-h3">Sign in</h3><p class="ds-muted">Use your college account.</p></li><li><h3 class="ds-h3">Pick what you need</h3><p class="ds-muted">Forum, support, or a private concern.</p></li><li><h3 class="ds-h3">Follow the status</h3><p class="ds-muted">Every request shows its owner and next step.</p></li></ol>
-</div></section>
-<section id="privacy" class="ds-container" style="padding-bottom:var(--ds-section-y)">
-  <div class="ds-band"><h2 class="ds-h1" style="max-width:22ch">Ready to get your Access?</h2><p class="ds-lead" style="color:var(--ds-on-action);margin-top:var(--ds-space-3)">Sign in with your college account in under a minute.</p>
-  <a class="ds-btn ds-btn--lg" style="background:var(--ds-surface);color:var(--ds-ink);margin-top:var(--ds-space-6)" href="auth.html">Sign in <svg class="ds-icon ds-icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-</section>
+<section class="ds-container ds-section" id="privacy" style="padding-top:0"><aside class="ds-notice" aria-labelledby="pn"><h2 class="ds-notice__title" id="pn"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-lock"/></svg>Community access does not grant report access</h2><p>Keep posts welcoming, relevant and free of personal or sensitive case details. Never post names, identifiers or restricted report content. Use the report guidance to understand the proposed access rules.</p><p class="ds-notice__foot">Consultation selection is a preview, not a booked appointment. No promises of anonymity, security or response time.</p></aside></section>
 </main>
-<footer class="ds-footer"><div class="ds-container footer-grid">
-  <div><span class="ds-wordmark" style="color:var(--ds-inverse-ink)">ACCS</span><p class="ds-muted" style="font-size:var(--ds-text-sm-size);max-width:32ch">Access for College of Computer Studies.</p></div>
-  <nav aria-label="Product"><strong>Product</strong><ul><li><a href="#features">Features</a></li><li><a href="#how">How it works</a></li></ul></nav>
-  <nav aria-label="Support"><strong>Support</strong><ul><li><a href="#">Help center</a></li><li><a href="#">Contact</a></li></ul></nav>
-  <nav aria-label="Legal"><strong>Legal</strong><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></nav>
+<footer class="footer"><div class="ds-container f-grid">
+  <div class="ds-stack"><img class="ds-logo" style="height:2.25rem" src="../assets/logo/logo-compact-minimum.svg" alt="ACCS"><p class="ds-type-body-small ds-secondary" style="max-width:28ch">Access for College of Computer Studies. Your Access to the College of Computer Studies.</p></div>
+  <nav aria-label="Product"><b class="ds-type-label">Product</b><ul><li><a class="ds-link-inline" href="#community">Community</a></li><li><a class="ds-link-inline" href="#consultations">Consultations</a></li><li><a class="ds-link-inline" href="report-detail.html">Reports</a></li></ul></nav>
+  <nav aria-label="Policy"><b class="ds-type-label">Policy</b><ul><li><a class="ds-link-inline" href="#privacy">Privacy and access</a></li><li><a class="ds-link-inline" href="#">Accessibility</a></li></ul></nav>
+  <p class="ds-tag-mono">ACCS · Proposed, not approved · Synthetic records only</p>
 </div></footer>
 </body></html>
