@@ -25,6 +25,14 @@
   color: var(--ds-text-secondary);
 }
 .ds-card > .ds-link, .ds-card .ds-card__meta .ds-link { margin-left: calc(-1 * var(--ds-space-8)); }
+/* Visual call to action inside a CardLink (the whole card is the link). */
+.ds-card__action {
+  color: var(--ds-action-default);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+}
 .ds-card--overlay { box-shadow: var(--ds-overlay-shadow); }
 /* Interactive card (a, button or [data-interactive]): lifts 2px and steps the shadow; reduced motion keeps only the shadow. */
 .ds-card:is(a, button, [data-interactive]) {

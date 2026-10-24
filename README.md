@@ -54,14 +54,14 @@ To refresh: re-export, replace the files in `figma/`, run `npm run import:figma 
 Private repo, consumed from git. **Pin to a tag**, never a branch.
 
 ```bash
-npm i -D github:MeetingAt10/meetingatten-design-system#v0.4.0
+npm i -D github:MeetingAt10/meetingatten-design-system#v0.5.0
 ```
 
 `dist/` is committed, so consumers need no build step.
 
 | Bump | When | Consumer action |
 |---|---|---|
-| Patch `0.4.x` | Docs, bug fixes, Figma re-sync with no token change | Safe |
+| Patch `0.5.x` | Docs, bug fixes, Figma re-sync with no token change | Safe |
 | Minor `0.x.0` | New tokens/components, or **BREAKING** renames while `< 1.0` | Read CHANGELOG |
 | Major `1.0+` | Breaking changes after 1.0 | Migration notes |
 

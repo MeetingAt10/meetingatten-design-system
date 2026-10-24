@@ -1,3 +1,8 @@
+---
+title: Announcement Card
+description: A department or community update in a collection: tag, title, short body, source and link.
+react: AnnouncementCard
+---
 # Content / Announcement Card
 
 Community announcement, 824 x 200 in the catalog. Casual and encouraging. The static body has no Hover/Pressed state; its action is a native Link instance.
@@ -29,6 +34,14 @@ Title "Make room for your next idea." Body "Explore the proposed peer study circ
 ## Accessibility
 
 - Cards have headings; only the action link receives focus; do not nest ambiguous actions.
+
+## React
+
+```tsx
+<AnnouncementCard title="Make room for your next idea." meta="Community desk · illustrative" href="/updates/1" demo>
+  Explore the proposed peer study circle and share a topic you’d like to learn together.
+</AnnouncementCard>
+```
 
 ## Reference markup
 

@@ -8,6 +8,15 @@
   border-radius: var(--ds-radius-card);
   box-shadow: var(--ds-card-shadow);
 }
+.ds-record__facts {
+  display: grid;
+  gap: var(--ds-space-4);
+  margin: 0;
+  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
+  & > div { display: flex; flex-wrap: wrap; gap: var(--ds-space-4); }
+  & dt::after { content: ":"; }
+  & dd { margin: 0; }
+}
 .ds-record__fact {
   margin: 0;
   font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);

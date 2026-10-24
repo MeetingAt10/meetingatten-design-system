@@ -1,3 +1,8 @@
+---
+title: Consultation Slot
+description: Pick a consultation day and one time slot; booked and unavailable slots say so in text.
+react: ConsultationSlotPicker
+---
 # Scheduling / Consultation Slot
 
 Sixteen variants: Available x Selected x seven states (14), plus Booked and Unavailable (unselected, Disabled). Invalid Booked+Selected or Unavailable+Enabled combinations are not offered. State is written, not color-only. A selected time is not a confirmed booking.
@@ -43,6 +48,19 @@ Variant axes:
 
 - Announce full date, time zone, availability and selected state; a single slot uses a radio-group model.
 - Offer keyboard date entry; arrows move within a documented grid.
+
+## React
+
+```tsx
+<ConsultationSlotPicker
+  days={[{ id: "wed", weekday: "W", day: 21, label: "Wed 21 Oct" }]}
+  selectedDay={day} onDayChange={setDay}
+  slots={[{ id: "s9", time: "09:00–09:30" }, { id: "s11", time: "11:00–11:30", state: "booked" }]}
+  value={slot} onChange={setSlot}
+  timeZoneNote="sample local campus time" />
+```
+
+Days are a single-selection toggle group; slots are one radio group named with the full date and time zone. `isLoading` and `errorMessage` show the Figma messages.
 
 ## Reference markup
 

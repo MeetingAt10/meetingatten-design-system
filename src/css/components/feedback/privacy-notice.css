@@ -20,7 +20,7 @@
   margin: 0;
   font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
 }
-.ds-notice__foot {
+.ds-notice .ds-notice__foot {
   color: var(--ds-warning-fg);
   font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
 }

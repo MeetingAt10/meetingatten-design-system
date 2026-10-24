@@ -1,3 +1,8 @@
+---
+title: Reports Table
+description: Own or assigned reports in a captioned table with the reference as row header and a named action per row.
+react: ReportsTable
+---
 # Data / Reports Table
 
 Desktop table, 1258 x 271. On mobile tables become labeled records ([Report Record](report-record.md)). Never expose sensitive preview text.
@@ -26,6 +31,16 @@ Title "Own reports / demo records". Rows DEMO-024 General concern, DEMO-018 Proc
 ## Accessibility
 
 - Native table navigation; caption, column headers (`<th scope="col">`) and row relationships; sort buttons expose sort state.
+
+## React
+
+```tsx
+<ReportsTable caption="Own reports / demo records" rows={[
+  { id: "24", reference: "DEMO-024", category: "General concern", status: "Draft · policy gate", href: "/reports/24", actionLabel: "View draft" },
+]} />
+```
+
+Action links are named with the reference ("View draft DEMO-024"). On mobile show ReportRecord cards instead (`ds-only-desktop` / `ds-only-mobile`).
 
 ## Reference markup
 

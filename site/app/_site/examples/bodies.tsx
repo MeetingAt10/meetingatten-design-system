@@ -1,22 +1,26 @@
 "use client";
+import { useState } from "react";
 import { CalendarDate } from "@internationalized/date";
 import {
-  Alert, AppShell, Badge, Breadcrumbs, Button, Calendar, Card, CardHeader, CardLink, CardMeta, Checkbox, DatePicker, Divider, EmptyState, Feature, FeatureRow,
-  FileUpload, Footer, Grid, Hero, Icon, IconButton, Link, MenuButton, MenuItem, Navbar, NavItem, Radio, RadioGroup, Search, Section, SectionHeader, Select,
-  SelectOption, Sidebar, SidebarNote, Stack, Tab, TabList, TabPanel, Tabs, TextArea, TextField, Tooltip, TopBar, Wash, toast,
+  Alert, AnnouncementCard, AppShell, Badge, Breadcrumbs, Button, Calendar, Card, CaseTimeline, Checkbox, ConsultationSlotPicker, Divider, EmptyState, Feature, FeatureRow, FileUpload, Footer, ForumCard, Grid, Hero, Icon, IconButton, Link, MenuButton, MenuItem, NavItem, Navbar, PrivacyNotice, Radio, RadioGroup, ReportRecord, ReportsTable, Search, Section, SectionHeader, Select, SelectOption, Sidebar, SidebarNote, Stack, Tab, TabList, TabPanel, Tabs, TextArea, TextField, Tooltip, TopBar, Wash, toast,
 } from "@meetingat10/design-system/react";
 
 const Topics = () => [<SelectOption key="p" id="planning">Course planning</SelectOption>, <SelectOption key="t" id="thesis">Thesis advising</SelectOption>, <SelectOption key="c" id="career">Career guidance</SelectOption>];
 
 const Announcement = () => (
-  <Card><CardHeader><Badge tone="info">Announcement</Badge><span className="ds-tag-mono">Demo</span></CardHeader><h3 className="ds-type-h3">Make room for your next idea.</h3><p className="ds-type-body" style={{ margin: 0 }}>Explore the proposed peer study circle and share a topic you’d like to learn together.</p><CardMeta><span>Community desk · illustrative</span><Link href="#">Read update</Link></CardMeta></Card>
+  <AnnouncementCard title="Make room for your next idea." meta="Community desk · illustrative" href="#" demo>Explore the proposed peer study circle and share a topic you’d like to learn together.</AnnouncementCard>
 );
 const Post = () => (
-  <CardLink href="#"><CardHeader><Badge tone="accent">Study together</Badge><span className="ds-tag-mono">Demo</span></CardHeader><h3 className="ds-type-h3">What helped you understand recursion?</h3><p className="ds-type-body" style={{ margin: 0 }}>A sample community question. Share a useful explanation or ask a follow-up.</p><CardMeta>Demo member · 6 sample replies · Open discussion</CardMeta></CardLink>
+  <ForumCard topic="Study together" title="What helped you understand recursion?" excerpt="A sample community question. Share a useful explanation or ask a follow-up." author="Demo member" replies={6} status="Open discussion" href="#" demo />
 );
-const Notice = ({ title, children, foot }: { title: string; children: React.ReactNode; foot?: string }) => (
-  <aside className="ds-notice" aria-label={title}><p className="ds-notice__title"><Icon name="lock" size={16} />{title}</p><p>{children}</p>{foot && <p className="ds-notice__foot">{foot}</p>}</aside>
-);
+const DAYS = [{ id: "19", weekday: "M", day: 19, label: "Mon 19 Oct" }, { id: "20", weekday: "T", day: 20, label: "Tue 20 Oct" }, { id: "21", weekday: "W", day: 21, label: "Wed 21 Oct" }, { id: "22", weekday: "T", day: 22, label: "Thu 22 Oct" }, { id: "23", weekday: "F", day: 23, label: "Fri 23 Oct" }];
+const SLOTS = [{ id: "s9", time: "09:00–09:30" }, { id: "s10", time: "10:00–10:30" }, { id: "s11", time: "11:00–11:30", state: "booked" as const }, { id: "s14", time: "14:00–14:30", state: "unavailable" as const }];
+function Slots() {
+  const [day, setDay] = useState("21");
+  const [slot, setSlot] = useState<string | null>("s10");
+  return <ConsultationSlotPicker label="Consultation · October 2026 · DEMO" days={DAYS} selectedDay={day} onDayChange={setDay} slots={SLOTS} value={slot} onChange={setSlot} timeZoneNote="sample local campus time" />;
+}
+const ROWS = [{ id: "24", reference: "DEMO-024", category: "General concern", status: "Draft · policy gate", href: "/examples/report-detail/", actionLabel: "View draft" }, { id: "18", reference: "DEMO-018", category: "Process question", status: "Review pending · demo", href: "#" }, { id: "9", reference: "DEMO-009", category: "General question", status: "Resolved · demo", href: "#" }];
 
 export function LandingBody() {
   return (
@@ -45,7 +49,7 @@ export function LandingBody() {
             <Alert role="note" title="Illustrative schedule">These times are examples, not live availability.</Alert>
           </div>
           <Stack gap={24}>
-            <DatePicker label="Preferred date · DEMO" defaultValue={new CalendarDate(2026, 10, 21)} description="Sample local campus time." />
+            <Slots />
             <RadioGroup label="Meeting type" defaultValue="campus"><Radio value="online">Online</Radio><Radio value="campus">On campus</Radio></RadioGroup>
             <Select label="Topic" defaultSelectedKey="planning">{Topics()}</Select>
             <Button block>Review sample selection</Button>
@@ -54,7 +58,7 @@ export function LandingBody() {
         </Grid>
       </Section>
       <section className="ds-container" style={{ paddingBottom: 64 }}>
-        <Notice title="Community access does not grant report access" foot="Consultation selection is a preview, not a booked appointment.">Keep posts welcoming, relevant and free of personal or sensitive case details. Never post names, identifiers or restricted report content.</Notice>
+        <PrivacyNotice title="Community access does not grant report access" foot="Consultation selection is a preview, not a booked appointment. No promises of anonymity, security or response time.">Keep posts welcoming, relevant and free of personal or sensitive case details. Never post names, identifiers or restricted report content.</PrivacyNotice>
       </section>
     </main>
     <Footer brand={<span className="ds-type-h4">ACCS</span>} description="Access for College of Computer Studies. Your Access to the College of Computer Studies." columns={[{ title: "Product", links: [{ label: "Community", href: "#" }, { label: "Consultations", href: "#consultation" }, { label: "Reports", href: "/examples/report-detail/" }] }, { title: "Policy", links: [{ label: "Privacy and access", href: "#" }, { label: "Accessibility", href: "#" }] }]} note="ACCS · Proposed, not approved · Synthetic records only" />
@@ -102,17 +106,8 @@ export function AdminOverviewBody() {
           <p className="ds-type-caption ds-secondary" style={{ margin: 0 }}>Consultation is support, not an urgent-response channel.</p>
         </Stack>
       </Grid>
-      <div className="ds-table-wrap">
-        <table className="ds-table">
-          <caption>Own reports / demo records</caption>
-          <thead><tr><th scope="col">Reference</th><th scope="col">Category</th><th scope="col">Status</th><th scope="col">Action</th></tr></thead>
-          <tbody>
-            {[["DEMO-024", "General concern", "Draft · policy gate"], ["DEMO-018", "Process question", "Review pending · demo"], ["DEMO-009", "General question", "Resolved · demo"]].map(([ref, cat, status]) => (
-              <tr key={ref}><td className="ds-mono">{ref}</td><td>{cat}</td><td>{status}</td><td><Link href="/examples/report-detail/">View</Link></td></tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <ReportsTable caption="Own reports / demo records" rows={ROWS} className="ds-only-desktop" />
+      <div className="ds-only-mobile"><Stack>{ROWS.map((r) => <ReportRecord key={r.id} reference={r.reference} status={r.status} facts={[{ label: "Category", value: r.category }]} href={r.href} actionLabel={r.actionLabel ?? "View"} level={2} />)}</Stack></div>
       <p className="ds-tag-mono">Proposed interface · Fictional content · No real student data</p>
     </Shell>
   );
@@ -152,16 +147,17 @@ export function ReportDetailBody() {
         <div className="ds-row"><Badge>Student · own reports</Badge><Badge tone="warning">Draft · policy gate</Badge><Badge tone="info">DEMO</Badge></div>
         <p className="ds-type-body" style={{ margin: 0 }}>You are viewing your own illustrative draft. No report has been submitted.</p>
       </Stack>
-      <Notice title="Policy confirmation required" foot="Sensitive submission is disabled until scope and policy are confirmed.">Access permission: assigned reviewers only (proposed). Identity visibility: recipients and anonymity behavior are not yet confirmed. Restricted access does not mean anonymous.</Notice>
+      <PrivacyNotice title="Policy confirmation required" foot="Sensitive submission is disabled until scope and policy are confirmed.">Access permission: assigned reviewers only (proposed). Identity visibility: recipients and anonymity behavior are not yet confirmed. These are separate decisions; restricted access does not mean anonymous. Backend enforcement is required.</PrivacyNotice>
       <Grid columns="main">
         <Stack gap={24}>
           <section className="ds-stack"><h2 className="ds-type-h2" style={{ margin: 0 }}>Draft summary</h2><b className="ds-type-label">General process question · DEMO</b><p className="ds-type-body" style={{ margin: 0 }}>This sample asks how a college process is explained. It contains no personal account, real identity or sensitive attachment.</p></section>
           <Divider />
           <section className="ds-stack"><h2 className="ds-type-h2" style={{ margin: 0 }}>Activity / illustrative events</h2>
-            <ol className="ds-timeline">
-              <li><span className="ds-timeline__title">Review scope pending</span><span className="ds-timeline__actor">Assigned reviewer · DEMO</span><p className="ds-timeline__body">Policy gate remains active. No sensitive submission.</p></li>
-              <li><span className="ds-timeline__title">Draft saved · DEMO</span><span className="ds-timeline__actor">Student · own report</span><p className="ds-timeline__body">Illustrative record only; not a submitted case.</p></li>
-            </ol>
+            <CaseTimeline events={[
+              { title: "Review scope pending", actor: "Assigned reviewer · DEMO", body: "Policy gate remains active. No sensitive submission." },
+              { title: "Draft saved · DEMO", actor: "Student · own report", body: "Illustrative record only; not a submitted case." },
+              { title: "Record created · DEMO", actor: "Sample event", body: "DEMO-024 · dates and events are illustrative." },
+            ]} />
           </section>
           <Divider />
           <section className="ds-stack ds-stack--24"><h2 className="ds-type-h2" style={{ margin: 0 }}>Add details · unavailable</h2>

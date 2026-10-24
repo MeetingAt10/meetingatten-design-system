@@ -1,3 +1,8 @@
+---
+title: Privacy Notice
+description: Durable policy text on report pages: permission and identity visibility as separate statements.
+react: PrivacyNotice
+---
 # Feedback / Privacy Notice
 
 Durable policy notice, 799 x 153. Serious, structured; states what is known, what is pending and what is disabled. Shield/lock denotes a privacy topic, not a security or anonymity guarantee.
@@ -27,6 +32,15 @@ Title "Policy confirmation required". Body "Access permission: assigned reviewer
 ## Accessibility
 
 - Policy text stays reachable and is not hidden in tooltips; identity visibility is not inferred from permission labels.
+
+## React
+
+```tsx
+<PrivacyNotice title="Policy confirmation required" foot="Sensitive submission is disabled until scope and policy are confirmed.">
+  Access permission: assigned reviewers only (proposed). Identity visibility: recipients and anonymity behavior are not yet confirmed.
+  Restricted access does not mean anonymous. Backend enforcement is required.
+</PrivacyNotice>
+```
 
 ## Reference markup
 

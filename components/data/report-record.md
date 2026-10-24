@@ -1,3 +1,8 @@
+---
+title: Report Record
+description: One report as a labeled record: reference, status badge, facts and one action; the mobile form of the table.
+react: ReportRecord
+---
 # Data / Report Record
 
 Mobile labeled record, 390 x 246: each table field keeps its label and reading order.
@@ -24,6 +29,14 @@ Variant axes:
 ## Accessibility
 
 - Keep each field label with its value; heading for the record; never expose sensitive preview text.
+
+## React
+
+```tsx
+<ReportRecord reference="DEMO-024" status="Draft · policy gate"
+  facts={[{ label: "Category", value: "General concern" }, { label: "Permission", value: "Student · own reports" }]}
+  href="/reports/24" actionLabel="View draft" />
+```
 
 ## Reference markup
 

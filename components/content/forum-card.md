@@ -1,3 +1,8 @@
+---
+title: Forum Card
+description: A community discussion in a collection; the whole card opens the thread and lifts on hover.
+react: ForumCard
+---
 # Content / Forum Card
 
 Community discussion, 824 x 231. Same anatomy as the Announcement Card with an accent (purple) topic chip. Purple never means permission or confidentiality.
@@ -27,6 +32,15 @@ Title "What helped you understand recursion?" Body "A sample community question.
 ## Accessibility
 
 - Same as Announcement Card. Never place names, identifiers or restricted report content in community posts.
+
+## React
+
+```tsx
+<ForumCard topic="Study together" title="What helped you understand recursion?" excerpt="A sample community question."
+  author="Demo member" replies={6} status="Open discussion" href="/community/42" demo />
+```
+
+The card is one link (CardLink) named by its title; "Join the conversation" is a visual cue only, so there is no link inside the link.
 
 ## Reference markup
 

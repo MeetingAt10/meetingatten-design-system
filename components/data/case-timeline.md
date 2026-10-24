@@ -1,3 +1,8 @@
+---
+title: Case Timeline
+description: Report events as an ordered list with actor roles and dates, newest first.
+react: CaseTimeline
+---
 # Data / Case Timeline
 
 Chronological events with a title, actor role and description. Serious, structured copy; no promised response deadline. Relative times are optional; exact illustrative timestamps belong in the detail view.
@@ -28,6 +33,15 @@ Variant axes:
 
 - Use an ordered list (`<ol>`); explicit actor roles and dates; events read chronologically.
 - Identity visibility is not inferred from permission labels.
+
+## React
+
+```tsx
+<CaseTimeline events={[
+  { title: "Review scope pending", actor: "Assigned reviewer · DEMO", date: "20 Oct 2026", dateTime: "2026-10-20", body: "Policy gate remains active." },
+  { title: "Record created · DEMO", actor: "Sample event" },
+]} />
+```
 
 ## Reference markup
 

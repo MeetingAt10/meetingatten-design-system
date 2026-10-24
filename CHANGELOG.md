@@ -2,6 +2,18 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](https://semver.org); while `0.x`, breaking changes bump the minor and are marked **BREAKING**.
 
+## [0.5.0] - 2026-10-25
+
+Phase 3: ACCS patterns, completing the 55-component catalog. Spec: `context/deltas/2026-10-25-v0.5.0-phase3.md`.
+
+### Added
+- `AnnouncementCard`, `ForumCard` (whole card one link, named by its title), `ConsultationSlotPicker` (day toggle group + one slot radio group, loading and error messages), `CaseTimeline`, `ReportsTable` (caption, column headers, reference as row header, named actions, empty message), `ReportRecord`, `PrivacyNotice`.
+- CSS: React Aria selected state on `.ds-day` and `.ds-slot`, `.ds-card__action`, `.ds-record__facts`, row-header cells in `.ds-table`.
+- Site: demos for all patterns; examples use them (Reports Table on desktop, Report Records on mobile).
+
+### Fixed
+- `.ds-notice__foot` now gets its caption font (the `.ds-notice p` rule overrode it).
+
 ## [0.4.0] - 2026-10-25
 
 Phase 2: navigation and overlays. Spec: `context/deltas/2026-10-25-v0.4.0-phase2.md`.

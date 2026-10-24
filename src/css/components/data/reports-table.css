@@ -29,6 +29,15 @@
     padding: var(--ds-size-12) var(--ds-space-16);
     border-bottom: 1px solid var(--ds-border-subtle);
   }
-  & tbody tr:last-child td { border-bottom: 0; }
+  & tbody th {
+    padding: var(--ds-size-12) var(--ds-space-16);
+    background: transparent;
+    border-block: 0;
+    border-bottom: 1px solid var(--ds-border-subtle);
+    font: inherit;
+    font-family: var(--ds-type-code-font-family);
+    font-weight: 400;
+  }
+  & tbody tr:last-child :is(td, th) { border-bottom: 0; }
 }
 .ds-table .ds-mono, .ds-mono { font-family: var(--ds-type-code-font-family); }

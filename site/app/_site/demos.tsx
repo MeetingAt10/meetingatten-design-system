@@ -5,6 +5,7 @@ import {
   Avatar, Badge, Button, Calendar, Card, CardHeader, CardLink, CardMeta, Checkbox, ComboBox, Container, DatePicker, Divider, Feature, FeatureRow,
   FileUpload, Grid, Hero, Icon, IconButton, Link, Progress, Radio, RadioGroup, Search, Section, SectionHeader, Select, SelectOption, Skeleton,
   Spinner, Stack, Switch, TextArea, TextField, Tile, Wash, type IconName,
+  AnnouncementCard, CaseTimeline, ConsultationSlotPicker, ForumCard, PrivacyNotice, ReportRecord, ReportsTable,
   Alert, DialogTrigger, Drawer, EmptyState, Modal, ModalActions, Popover, Tooltip, toast,
   AppShell, Breadcrumbs, Footer, MenuButton, MenuItem, MobileHeader, Navbar, NavItem, Pagination, Sidebar, SidebarNote, Stepper, Tab, TabList, TabPanel, Tabs, TopBar,
 } from "@meetingat10/design-system/react";
@@ -33,7 +34,23 @@ const SideNav = () => (
   </Sidebar>
 );
 
+const DAYS = [{ id: "19", weekday: "M", day: 19, label: "Mon 19 Oct" }, { id: "20", weekday: "T", day: 20, label: "Tue 20 Oct" }, { id: "21", weekday: "W", day: 21, label: "Wed 21 Oct" }, { id: "22", weekday: "T", day: 22, label: "Thu 22 Oct" }, { id: "23", weekday: "F", day: 23, label: "Fri 23 Oct" }];
+const SLOTS = [{ id: "s9", time: "09:00–09:30" }, { id: "s10", time: "10:00–10:30" }, { id: "s11", time: "11:00–11:30", state: "booked" as const }, { id: "s14", time: "14:00–14:30", state: "unavailable" as const }];
+function SlotDemo() {
+  const [day, setDay] = useState("21");
+  const [slot, setSlot] = useState<string | null>("s10");
+  return <ConsultationSlotPicker label="Demo consultation" days={DAYS} selectedDay={day} onDayChange={setDay} slots={SLOTS} value={slot} onChange={setSlot} timeZoneNote="sample local campus time" />;
+}
+const REPORT_ROWS = [{ id: "24", reference: "DEMO-024", category: "General concern", status: "Draft · policy gate", href: "#", actionLabel: "View draft" }, { id: "18", reference: "DEMO-018", category: "Process question", status: "Review pending · demo", href: "#" }, { id: "9", reference: "DEMO-009", category: "General question", status: "Resolved · demo", href: "#" }];
+
 export const DEMOS: Record<string, () => React.ReactNode> = {
+  AnnouncementCard: () => <AnnouncementCard title="Make room for your next idea." meta="Community desk · illustrative" href="#" demo>Explore the proposed peer study circle and share a topic you’d like to learn together.</AnnouncementCard>,
+  ForumCard: () => <ForumCard topic="Study together" title="What helped you understand recursion?" excerpt="A sample community question. Share a useful explanation or ask a follow-up." author="Demo member" replies={6} status="Open discussion" href="#" demo />,
+  ConsultationSlotPicker: () => <SlotDemo />,
+  CaseTimeline: () => <CaseTimeline label="Demo case activity" events={[{ title: "Review scope pending", actor: "Assigned reviewer · DEMO", body: "Policy gate remains active. No sensitive submission." }, { title: "Draft saved locally · DEMO", actor: "Student · own report", body: "Illustrative record only; not a submitted case." }, { title: "Record created · DEMO", actor: "Sample event", body: "DEMO-024 · dates and events are illustrative." }]} />,
+  ReportsTable: () => <ReportsTable caption="Own reports / demo records" rows={REPORT_ROWS} />,
+  ReportRecord: () => <div style={{ maxWidth: 390 }}><ReportRecord reference="DEMO-024" status="Draft · policy gate" facts={[{ label: "Category", value: "General concern" }, { label: "Permission", value: "Student · own reports" }]} href="#" actionLabel="View draft" /></div>,
+  PrivacyNotice: () => <PrivacyNotice title="Policy confirmation required" level={3} foot="Sensitive submission is disabled until scope and policy are confirmed.">Access permission: assigned reviewers only (proposed). Identity visibility: recipients and anonymity behavior are not yet confirmed. Restricted access does not mean anonymous.</PrivacyNotice>,
   Alert: () => (<Stack>{(["info", "success", "warning", "error"] as const).map((t) => <Alert key={t} tone={t} role="note" title={{ info: "Illustrative schedule", success: "Draft saved", warning: "Policy gate", error: "We couldn’t sign you in" }[t]}>{{ info: "These times are examples, not live availability.", success: "Your draft is kept on this device.", warning: "Submission is disabled until access rules are confirmed.", error: "Check your email and password, then try again." }[t]}</Alert>)}</Stack>),
   ToastRegion: () => (<Row><Button variant="secondary" onPress={() => toast("Display preference updated", { description: "Dark mode is on.", tone: "success" })}>Show a toast</Button><div className="ds-toast" style={{ position: "static" }}><Icon name="check" /><div className="ds-toast__content"><span className="ds-toast__title">Display preference updated</span><span className="ds-toast__body">Static preview</span></div><IconButton icon="close" label="Dismiss preview" inverse /></div></Row>),
   Modal: () => (<DialogTrigger><Button variant="destructive">Discard draft</Button><Modal title="Discard draft?" role="alertdialog">{({ close }) => (<><p className="ds-modal__msg">This removes DEMO-024. It cannot be undone.</p><ModalActions><Button variant="secondary" onPress={close}>Keep draft</Button><Button variant="destructive" onPress={close}>Discard draft</Button></ModalActions></>)}</Modal></DialogTrigger>),
