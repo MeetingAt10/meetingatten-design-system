@@ -1,4 +1,13 @@
-/* Feedback / Modal + scrim. */
+/* Feedback / Modal + scrim. The overlay is fixed over the page; .ds-scrim is the static preview backdrop. */
+.ds-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ds-z-modal);
+  display: grid;
+  place-items: center;
+  padding: var(--ds-space-16);
+  background: var(--ds-scrim);
+}
 .ds-scrim {
   display: grid;
   place-items: center;
@@ -16,6 +25,9 @@
   border: 0;
   border-radius: var(--ds-radius-card);
   box-shadow: var(--ds-overlay-shadow);
+  max-height: calc(100dvh - 2 * var(--ds-space-16));
+  overflow: auto;
+  outline: none;
 }
 .ds-modal__head {
   display: flex;

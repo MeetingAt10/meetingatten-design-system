@@ -76,7 +76,7 @@ const LAYERS = {
   'ds.components': ['icon/icon', 'feedback/spinner', 'control/button', 'control/icon-button', 'control/field', 'control/select', 'control/search',
     'control/checkbox', 'control/switch', 'control/combobox', 'control/date-picker', 'control/file-upload', 'navigation/link', 'navigation/item', 'navigation/tab', 'navigation/sidebar', 'navigation/top-bar', 'navigation/mobile-header',
     'navigation/app-shell', 'navigation/navbar', 'navigation/breadcrumbs', 'navigation/pagination', 'navigation/stepper', 'navigation/footer', 'badge/badge', 'content/card', 'scheduling/consultation-slot', 'data/case-timeline', 'feedback/privacy-notice',
-    'feedback/inline-alert', 'feedback/toast', 'feedback/modal', 'data/reports-table', 'data/report-record', 'data/view-state', 'content/tile', 'content/avatar', 'feedback/progress', 'layout/wash', 'layout/feature-row', 'layout/divider', 'layout/section', 'layout/section-header', 'layout/hero', 'identity/logo'].map((f) => 'components/' + f),
+    'feedback/inline-alert', 'feedback/toast', 'feedback/modal', 'feedback/drawer', 'feedback/tooltip', 'feedback/popover', 'feedback/empty-state', 'data/reports-table', 'data/report-record', 'data/view-state', 'content/tile', 'content/avatar', 'feedback/progress', 'layout/wash', 'layout/feature-row', 'layout/divider', 'layout/section', 'layout/section-header', 'layout/hero', 'identity/logo'].map((f) => 'components/' + f),
   'ds.utilities': ['base/utilities'],
 };
 const listed = new Set(Object.values(LAYERS).flat().map((f) => f + '.css'));

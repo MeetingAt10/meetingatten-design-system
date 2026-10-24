@@ -63,4 +63,20 @@ Styles: `src/css/components/<category>/<name>.css` (built to `dist/components.cs
 | Section, Section Header | `Section`, `SectionHeader` | [layout/section.md](layout/section.md), [layout/section-header.md](layout/section-header.md) |
 | Hero, Feature Row, Wash, Divider | `Hero`, `FeatureRow` + `Feature`, `Wash`, `Divider` | [layout/hero.md](layout/hero.md), [layout/feature-row.md](layout/feature-row.md), [layout/wash.md](layout/wash.md), [layout/divider.md](layout/divider.md) |
 
-React components for the Figma components above: `Button`, `IconButton`, `TextField`, `TextArea`, `Select` + `SelectOption`, `Search`, `Checkbox`, `RadioGroup` + `Radio`, `Link`, `Badge`, `Icon`. Navigation, feedback overlays and the ACCS patterns follow in Phases 2 and 3.
+## Phase 2: navigation and overlays (0.4.0)
+
+| Component | React | Spec |
+|---|---|---|
+| Navbar | `Navbar` | [navigation/navbar.md](navigation/navbar.md) |
+| App Shell | `AppShell` | [navigation/app-shell.md](navigation/app-shell.md) |
+| Breadcrumbs | `Breadcrumbs` | [navigation/breadcrumbs.md](navigation/breadcrumbs.md) |
+| Pagination | `Pagination` | [navigation/pagination.md](navigation/pagination.md) |
+| Stepper | `Stepper` | [navigation/stepper.md](navigation/stepper.md) |
+| Menu | `MenuButton`, `MenuItem` | [navigation/menu.md](navigation/menu.md) |
+| Footer | `Footer` | [navigation/footer.md](navigation/footer.md) |
+| Drawer | `Drawer` | [feedback/drawer.md](feedback/drawer.md) |
+| Tooltip | `Tooltip` | [feedback/tooltip.md](feedback/tooltip.md) |
+| Popover | `Popover` | [feedback/popover.md](feedback/popover.md) |
+| Empty State | `EmptyState` | [feedback/empty-state.md](feedback/empty-state.md) |
+
+React components for the Figma components above: `Button`, `IconButton`, `TextField`, `TextArea`, `Select` + `SelectOption`, `Search`, `Checkbox`, `RadioGroup` + `Radio`, `Link`, `Badge`, `Icon`, `Sidebar` + `NavItem`, `TopBar`, `MobileHeader`, `Tabs`, `Alert` (Inline Alert), `ToastRegion` + `toast()`, `Modal`. The ACCS patterns (Announcement Card, Forum Card, Consultation Slot, Case Timeline, Reports Table, Report Record, Privacy Notice) follow in Phase 3.

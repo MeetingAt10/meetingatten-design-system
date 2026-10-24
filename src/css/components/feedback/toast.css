@@ -1,4 +1,4 @@
-/* Feedback / Toast. */
+/* Feedback / Toast: inverse surface; the region stacks toasts bottom right above all content. */
 .ds-toast {
   display: flex;
   align-items: center;
@@ -9,5 +9,32 @@
   border-radius: var(--ds-radius-tile);
   box-shadow: var(--ds-overlay-shadow);
   font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
-  & .ds-icon { color: var(--ds-success-on-inverse); }
+  outline: none;
+  & > .ds-icon { color: var(--ds-success-on-inverse); }
+  &:is([data-focus-visible], .is-focus) {
+    --ring-gap: var(--ds-canvas);
+    box-shadow: var(--ds-ring), var(--ds-overlay-shadow);
+  }
+}
+.ds-toast__content {
+  display: grid;
+  flex: 1;
+  gap: 2px;
+}
+.ds-toast__title { font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family); }
+.ds-toast__body { font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family); }
+.ds-toast-region {
+  position: fixed;
+  right: var(--ds-space-24);
+  bottom: var(--ds-space-24);
+  z-index: var(--ds-z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-8);
+  width: min(24rem, calc(100vw - 2 * var(--ds-space-16)));
+  outline: none;
+  @media (max-width: 599px) {
+    right: var(--ds-space-16);
+    bottom: var(--ds-space-16);
+  }
 }

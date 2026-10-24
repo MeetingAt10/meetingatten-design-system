@@ -1,0 +1,10 @@
+/* Feedback / Tooltip: short label for an icon control, on the inverse surface. Never essential or interactive content. */
+.ds-tooltip {
+  max-width: 15rem;
+  padding: var(--ds-space-4) var(--ds-space-8);
+  border-radius: var(--ds-radius-chip);
+  background: var(--ds-text-primary);
+  color: var(--ds-canvas);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+  box-shadow: var(--ds-overlay-shadow);
+}

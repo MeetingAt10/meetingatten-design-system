@@ -5,6 +5,7 @@ import {
   Avatar, Badge, Button, Calendar, Card, CardHeader, CardLink, CardMeta, Checkbox, ComboBox, Container, DatePicker, Divider, Feature, FeatureRow,
   FileUpload, Grid, Hero, Icon, IconButton, Link, Progress, Radio, RadioGroup, Search, Section, SectionHeader, Select, SelectOption, Skeleton,
   Spinner, Stack, Switch, TextArea, TextField, Tile, Wash, type IconName,
+  Alert, DialogTrigger, Drawer, EmptyState, Modal, ModalActions, Popover, Tooltip, toast,
   AppShell, Breadcrumbs, Footer, MenuButton, MenuItem, MobileHeader, Navbar, NavItem, Pagination, Sidebar, SidebarNote, Stepper, Tab, TabList, TabPanel, Tabs, TopBar,
 } from "@meetingat10/design-system/react";
 
@@ -33,6 +34,13 @@ const SideNav = () => (
 );
 
 export const DEMOS: Record<string, () => React.ReactNode> = {
+  Alert: () => (<Stack>{(["info", "success", "warning", "error"] as const).map((t) => <Alert key={t} tone={t} role="note" title={{ info: "Illustrative schedule", success: "Draft saved", warning: "Policy gate", error: "We couldn’t sign you in" }[t]}>{{ info: "These times are examples, not live availability.", success: "Your draft is kept on this device.", warning: "Submission is disabled until access rules are confirmed.", error: "Check your email and password, then try again." }[t]}</Alert>)}</Stack>),
+  ToastRegion: () => (<Row><Button variant="secondary" onPress={() => toast("Display preference updated", { description: "Dark mode is on.", tone: "success" })}>Show a toast</Button><div className="ds-toast" style={{ position: "static" }}><Icon name="check" /><div className="ds-toast__content"><span className="ds-toast__title">Display preference updated</span><span className="ds-toast__body">Static preview</span></div><IconButton icon="close" label="Dismiss preview" inverse /></div></Row>),
+  Modal: () => (<DialogTrigger><Button variant="destructive">Discard draft</Button><Modal title="Discard draft?" role="alertdialog">{({ close }) => (<><p className="ds-modal__msg">This removes DEMO-024. It cannot be undone.</p><ModalActions><Button variant="secondary" onPress={close}>Keep draft</Button><Button variant="destructive" onPress={close}>Discard draft</Button></ModalActions></>)}</Modal></DialogTrigger>),
+  Drawer: () => (<DialogTrigger><Button variant="secondary">Filter reports</Button><Drawer title="Filter reports"><Stack><Checkbox defaultSelected>Drafts</Checkbox><Checkbox>Review pending</Checkbox><Checkbox>Resolved</Checkbox></Stack></Drawer></DialogTrigger>),
+  Tooltip: () => (<Row><Tooltip content="Notifications" delay={200}><IconButton icon="bell" label="Notifications" /></Tooltip><Tooltip content="Search the community" delay={200}><IconButton icon="search" label="Search" /></Tooltip><span className="ds-tooltip" style={{ display: "inline-block" }}>Static preview</span></Row>),
+  Popover: () => <Popover trigger={<Button variant="tertiary">What is a policy gate?</Button>} title="Policy gate"><p>Submission stays disabled until recipients and access rules are confirmed.</p></Popover>,
+  EmptyState: () => <EmptyState icon="report" title="No reports yet" level={3} description="Drafts you start appear here." action={<Button>Start a draft</Button>} />,
   Navbar: () => <Navbar label="Demo" brand="ACCS" links={NAV} actions={<Button size="sm">Sign in</Button>} />,
   NavItem: () => <div style={{ display: "grid", gap: 8, maxWidth: 240 }}><NavItem href="#" icon="home" isCurrent>Overview</NavItem><NavItem href="#" icon="forum">Community</NavItem><NavItem href="#" icon="calendar" className="is-hover">Hover</NavItem><NavItem href="#" icon="report" className="is-focus">Focus</NavItem><NavItem href="#" icon="lock" isDisabled>Disabled</NavItem></div>,
   Sidebar: () => <div style={{ display: "flex" }}><SideNav /></div>,

@@ -1,3 +1,8 @@
+---
+title: Inline Alert
+description: Persistent message next to the content it is about, in info, success, warning or error tone.
+react: Alert
+---
 # Feedback / Inline Alert
 
 Persistent, non-dismissible Tone=Info / Success / Warning / Error, 824 x 79. It needs no hover/focus/loading. Alerts persist when action is required; the status glyph and title carry meaning, never color alone.
@@ -37,6 +42,15 @@ Info "Illustrative schedule / These times are examples, not live availability.";
 
 - Polite status for updates (`role="status"`); assertive (`role="alert"`) only for urgent errors; announce once, avoid duplicate live regions.
 - Keep focus unless recovery requires deliberate movement.
+
+## React
+
+```tsx
+<Alert title="Illustrative schedule" role="note">These times are examples, not live availability.</Alert>
+<Alert tone="error" title="We couldn’t sign you in">Check your email and password, then try again. Your email is kept.</Alert>
+```
+
+Role defaults to `alert` for errors and `status` otherwise; use `note` for guidance that is always on the page.
 
 ## Reference markup
 

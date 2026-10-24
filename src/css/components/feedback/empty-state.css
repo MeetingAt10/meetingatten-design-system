@@ -1,0 +1,16 @@
+/* Feedback / Empty State: open, centered message with one next step. Not a card. */
+.ds-empty {
+  display: grid;
+  justify-items: center;
+  gap: var(--ds-space-8);
+  max-width: 28rem;
+  margin-inline: auto;
+  padding-block: var(--ds-space-48);
+  text-align: center;
+  & > :is(h2, h3) { margin: var(--ds-space-8) 0 0; }
+  & > p {
+    margin: 0;
+    color: var(--ds-text-secondary);
+  }
+  & > :last-child:not(p, h2, h3, .ds-tile) { margin-top: var(--ds-space-8); }
+}

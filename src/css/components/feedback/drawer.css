@@ -1,0 +1,23 @@
+/* Feedback / Drawer: side sheet for secondary tasks (filters, details) over the scrim. */
+.ds-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ds-z-modal);
+  display: flex;
+  justify-content: flex-end;
+  background: var(--ds-scrim);
+}
+.ds-drawer-overlay--start { justify-content: flex-start; }
+.ds-drawer {
+  display: grid;
+  align-content: start;
+  gap: var(--ds-size-20);
+  width: min(26rem, 100%);
+  height: 100%;
+  padding: var(--ds-space-32) var(--ds-space-24);
+  overflow: auto;
+  background: var(--ds-card-bg);
+  color: var(--ds-text-primary);
+  box-shadow: var(--ds-overlay-shadow);
+  outline: none;
+}

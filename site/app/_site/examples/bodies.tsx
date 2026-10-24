@@ -1,8 +1,9 @@
 "use client";
 import { CalendarDate } from "@internationalized/date";
 import {
-  Badge, Button, Calendar, Card, CardHeader, CardLink, CardMeta, Checkbox, DatePicker, Divider, Feature, FeatureRow, FileUpload, Grid, Hero, Icon,
-  IconButton, Link, Radio, RadioGroup, Search, Section, SectionHeader, Select, SelectOption, Stack, TextArea, TextField, Wash,
+  Alert, AppShell, Badge, Breadcrumbs, Button, Calendar, Card, CardHeader, CardLink, CardMeta, Checkbox, DatePicker, Divider, EmptyState, Feature, FeatureRow,
+  FileUpload, Footer, Grid, Hero, Icon, IconButton, Link, MenuButton, MenuItem, Navbar, NavItem, Radio, RadioGroup, Search, Section, SectionHeader, Select,
+  SelectOption, Sidebar, SidebarNote, Stack, Tab, TabList, TabPanel, Tabs, TextArea, TextField, Tooltip, TopBar, Wash, toast,
 } from "@meetingat10/design-system/react";
 
 const Topics = () => [<SelectOption key="p" id="planning">Course planning</SelectOption>, <SelectOption key="t" id="thesis">Thesis advising</SelectOption>, <SelectOption key="c" id="career">Career guidance</SelectOption>];
@@ -19,6 +20,8 @@ const Notice = ({ title, children, foot }: { title: string; children: React.Reac
 
 export function LandingBody() {
   return (
+    <>
+    <div className="ds-container"><Navbar label="ACCS demo" brand="ACCS" links={[{ label: "Community", href: "#", current: true }, { label: "Consultations", href: "#consultation" }, { label: "My reports", href: "/examples/report-detail/" }]} actions={<Button size="sm">Sign in</Button>} /></div>
     <main>
       <Hero
         eyebrow="Student · community access"
@@ -39,7 +42,7 @@ export function LandingBody() {
         <Grid columns="main">
           <div>
             <SectionHeader eyebrow="Illustrative schedule" title="Let’s find a time to talk." description="Choose a sample time for a general course-planning consultation. Consultation is support, not an urgent-response channel." />
-            <div className="ds-alert" role="note"><Icon name="info" /><div><b className="ds-alert__title">Illustrative schedule</b><span className="ds-alert__body">These times are examples, not live availability.</span></div></div>
+            <Alert role="note" title="Illustrative schedule">These times are examples, not live availability.</Alert>
           </div>
           <Stack gap={24}>
             <DatePicker label="Preferred date · DEMO" defaultValue={new CalendarDate(2026, 10, 21)} description="Sample local campus time." />
@@ -54,24 +57,26 @@ export function LandingBody() {
         <Notice title="Community access does not grant report access" foot="Consultation selection is a preview, not a booked appointment.">Keep posts welcoming, relevant and free of personal or sensitive case details. Never post names, identifiers or restricted report content.</Notice>
       </section>
     </main>
+    <Footer brand={<span className="ds-type-h4">ACCS</span>} description="Access for College of Computer Studies. Your Access to the College of Computer Studies." columns={[{ title: "Product", links: [{ label: "Community", href: "#" }, { label: "Consultations", href: "#consultation" }, { label: "Reports", href: "/examples/report-detail/" }] }, { title: "Policy", links: [{ label: "Privacy and access", href: "#" }, { label: "Accessibility", href: "#" }] }]} note="ACCS · Proposed, not approved · Synthetic records only" />
+    </>
   );
 }
 
 const Shell = ({ current, title, children }: { current: string; title: string; children: React.ReactNode }) => (
-  <div className="ds-app" data-density="compact">
-    <nav className="ds-sidebar" aria-label="Workspace">
-      <span className="ds-tag-mono">ACCS</span>
-      <div className="ds-sidebar__nav">
-        {[["home", "Overview", "/examples/admin-overview/"], ["forum", "Community", "#"], ["calendar", "Consultations", "#"], ["report", "My reports", "/examples/report-detail/"]].map(([icon, label, href]) => (
-          <a key={label} className="ds-nav-item" href={href} aria-current={label === current ? "page" : undefined}><Icon name={icon as "home"} />{label}</a>
-        ))}
-      </div>
-      <div className="ds-sidebar__role"><Badge>Student</Badge><p className="ds-sidebar__note">Own reports only · proposed permission</p></div>
-    </nav>
-    <div className="ds-app__main">
-      <header className="ds-topbar"><p className="ds-topbar__title">{title}</p><div className="ds-topbar__tools"><Search label="Search community" placeholder="Search community" /><IconButton icon="bell" label="Notifications" /></div></header>
-      <main className="ds-app__content">{children}</main>
-    </div>
+  <div data-density="compact">
+    <AppShell
+      sidebar={
+        <Sidebar label="Workspace" logo={<span className="ds-tag-mono">ACCS</span>} footer={<><Badge>Student</Badge><SidebarNote>Own reports only · proposed permission</SidebarNote></>}>
+          <NavItem href="/examples/admin-overview/" icon="home" isCurrent={current === "Overview"}>Overview</NavItem>
+          <NavItem href="#" icon="forum">Community</NavItem>
+          <NavItem href="#" icon="calendar">Consultations</NavItem>
+          <NavItem href="/examples/report-detail/" icon="report" isCurrent={current === "My reports"}>My reports</NavItem>
+        </Sidebar>
+      }
+      topBar={<TopBar title={title} tools={<><Search label="Search community" placeholder="Search community" /><Tooltip content="Notifications"><IconButton icon="bell" label="Notifications" onPress={() => toast("No new notifications", { description: "Demo workspace." })} /></Tooltip></>} />}
+    >
+      {children}
+    </AppShell>
   </div>
 );
 
@@ -84,11 +89,11 @@ export function AdminOverviewBody() {
         <p className="ds-type-body ds-secondary" style={{ margin: 0 }}>Find a conversation, catch an update or make space for a question.</p>
       </Stack>
       <Grid columns="main">
-        <Stack>
-          <h2 className="ds-type-h3" style={{ margin: 0 }}>Latest in community</h2>
-          <Announcement />
-          <Post />
-        </Stack>
+        <Tabs>
+          <TabList aria-label="Community"><Tab id="latest">Latest</Tab><Tab id="saved">Saved</Tab></TabList>
+          <TabPanel id="latest"><Stack><Announcement /><Post /></Stack></TabPanel>
+          <TabPanel id="saved"><EmptyState icon="forum" tone="secondary" title="Nothing saved yet" description="Save a post to find it here later." action={<Link href="#">Browse community</Link>} /></TabPanel>
+        </Tabs>
         <Stack gap={24}>
           <h2 className="ds-type-h3" style={{ margin: 0 }}>Let’s find a time to talk.</h2>
           <Calendar aria-label="Consultation date · DEMO" defaultValue={new CalendarDate(2026, 10, 21)} isDateUnavailable={(d) => d.day === 23} />
@@ -138,7 +143,10 @@ export function SignInBody() {
 export function ReportDetailBody() {
   return (
     <Shell current="My reports" title="College workspace">
-      <Link href="/examples/admin-overview/">← My reports / DEMO-024</Link>
+      <div className="ds-row" style={{ justifyContent: "space-between" }}>
+        <Breadcrumbs items={[{ label: "My reports", href: "/examples/admin-overview/" }, { label: "DEMO-024" }]} />
+        <MenuButton label="Draft actions" onAction={(id) => toast(id === "discard" ? "Discard is disabled in the demo" : "Summary exported (demo)")}><MenuItem id="export">Export summary</MenuItem><MenuItem id="discard" danger>Discard draft</MenuItem></MenuButton>
+      </div>
       <Stack>
         <h1 className="ds-type-h1">Report DEMO-024</h1>
         <div className="ds-row"><Badge>Student · own reports</Badge><Badge tone="warning">Draft · policy gate</Badge><Badge tone="info">DEMO</Badge></div>

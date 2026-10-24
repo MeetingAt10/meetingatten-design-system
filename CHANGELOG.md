@@ -2,6 +2,19 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](https://semver.org); while `0.x`, breaking changes bump the minor and are marked **BREAKING**.
 
+## [0.4.0] - 2026-10-25
+
+Phase 2: navigation and overlays. Spec: `context/deltas/2026-10-25-v0.4.0-phase2.md`.
+
+### Added
+- Navigation: `Navbar` (mobile menu panel), `Sidebar` + `NavItem` + `SidebarNote`, `AppShell`, `TopBar`, `MobileHeader`, `Tabs` / `TabList` / `Tab` / `TabPanel`, `Breadcrumbs`, `Pagination` (+ `pageList`), `Stepper`, `MenuButton` + `MenuItem`, `Footer`.
+- Feedback: `Alert`, `ToastRegion` + `toast()` (React Aria toast, `UNSTABLE_` in 1.22.1, pinned), `Modal` + `ModalActions` + `DialogTrigger`, `Drawer`, `Tooltip`, `Popover`, `EmptyState`.
+- CSS: `.ds-navbar`, `.ds-breadcrumbs`, `.ds-pagination`, `.ds-stepper`, `.ds-footer`, `.ds-modal-overlay`, `.ds-drawer`, `.ds-tooltip`, `.ds-popover-panel`, `.ds-empty`, `.ds-toast-region`, `.ds-tab-panel`, `.ds-option--danger`, `.ds-visually-hidden`.
+- Site: demos for all Phase 2 components; examples now use the package's AppShell, Sidebar, TopBar, Tabs, Navbar, Breadcrumbs, MenuButton, Alert, EmptyState, Footer and toasts.
+
+### Changed
+- `.ds-toast` icon color applies only to its leading icon (`> .ds-icon`), so the inverse close button keeps its own color.
+
 ## [0.3.0] - 2026-10-24
 
 Soft layers on the locked ACCS palette, a repo-owned treatments tier, strict Tailwind, split component CSS in cascade layers, the React layer with 31 Phase 1 components, and the public showcase site. Spec: `context/deltas/archive/2026-10-24-v0.3.0-rebuild.md`.

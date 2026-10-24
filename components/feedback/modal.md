@@ -1,3 +1,8 @@
+---
+title: Modal
+description: Blocking dialog for a decision, with a named title, close button and action row.
+react: Modal
+---
 # Feedback / Modal
 
 Seven states, 560 x 304, radius 12. Hover / Focus / Pressed apply to the primary action, not the dialog surface. Error preserves the draft; Loading is busy feedback. Static states are not implemented behavior.
@@ -43,6 +48,27 @@ Title "Discard this demo draft?" Body "The unsent sample draft will be removed f
 
 - Use `<dialog>` + `showModal()`; name and describe the dialog; move focus inside, contain Tab/Shift+Tab, close with Escape where appropriate, return focus to the opener.
 - Background is inert; do not trap focus in nonmodal content.
+
+## React
+
+```tsx
+<DialogTrigger>
+  <Button variant="destructive">Discard draft</Button>
+  <Modal title="Discard draft?" role="alertdialog">
+    {({ close }) => (
+      <>
+        <p className="ds-modal__msg">This removes DEMO-024. It cannot be undone.</p>
+        <ModalActions>
+          <Button variant="secondary" onPress={close}>Keep draft</Button>
+          <Button variant="destructive" onPress={discard}>Discard draft</Button>
+        </ModalActions>
+      </>
+    )}
+  </Modal>
+</DialogTrigger>
+```
+
+Focus moves into the dialog and is trapped; Escape and the close button close it; focus returns to the trigger. Controlled use: `isOpen` + `onOpenChange`.
 
 ## Reference markup
 

@@ -1,0 +1,14 @@
+/* Feedback / Popover: small non-modal dialog anchored to its trigger. */
+.ds-popover-panel {
+  display: grid;
+  gap: var(--ds-space-8);
+  max-width: 20rem;
+  padding: var(--ds-space-16);
+  background: var(--ds-card-bg);
+  color: var(--ds-text-primary);
+  border-radius: var(--ds-radius-tile);
+  box-shadow: var(--ds-overlay-shadow);
+  outline: none;
+  & > :is(h2, h3, h4) { margin: 0; }
+  & > p { margin: 0; }
+}

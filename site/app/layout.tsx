@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { ThemeToggle } from "./_site/ThemeToggle";
+import { ToastRegion } from "@meetingat10/design-system/react";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
         <div id="main">{children}</div>
+        <ToastRegion />
         <footer className="site-footer">
           <div className="ds-container ds-type-body-small">ACCS Design System · Proposed, not approved · Synthetic content only · Built from the team&apos;s Figma palette</div>
         </footer>

@@ -1,6 +1,6 @@
 {
   "name": "@meetingat10/design-system",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Design tokens, themes and component specs for ACCS (landing + admin) and Meeting At 10.",
   "license": "UNLICENSED",
   "private": true,

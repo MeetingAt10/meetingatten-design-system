@@ -30,6 +30,13 @@ export { Footer, type FooterProps, type FooterColumn } from './navigation/Footer
 export { Badge, type BadgeProps, type BadgeTone } from './badge/Badge.js';
 export { Spinner, type SpinnerProps } from './feedback/Spinner.js';
 export { Progress, type ProgressProps } from './feedback/Progress.js';
+export { Alert, type AlertProps, type AlertTone } from './feedback/Alert.js';
+export { ToastRegion, toast, toastQueue, ToastQueue, type ToastRegionProps, type ToastData } from './feedback/Toast.js';
+export { Modal, ModalActions, DialogTrigger, type ModalProps } from './feedback/Modal.js';
+export { Drawer, type DrawerProps } from './feedback/Drawer.js';
+export { Tooltip, type TooltipProps } from './feedback/Tooltip.js';
+export { Popover, type PopoverProps } from './feedback/Popover.js';
+export { EmptyState, type EmptyStateProps } from './feedback/EmptyState.js';
 export { Avatar, type AvatarProps } from './content/Avatar.js';
 export { Tile, type TileProps, type TileTone } from './content/Tile.js';
 export { Skeleton, type SkeletonProps } from './data/Skeleton.js';

@@ -1,3 +1,8 @@
+---
+title: Toast
+description: Short confirmation on the inverse surface, stacked bottom right, dismissible.
+react: ToastRegion
+---
 # Feedback / Toast
 
 Noncritical confirmation only, 777 x 76. Alerts persist when action is required.
@@ -27,6 +32,18 @@ Variant axes:
 
 - Announce with a polite live region; do not steal focus; keep essential feedback inline.
 - A timed toast needs an accessible dismissal and adequate reading time.
+
+## React
+
+```tsx
+// once, near the app root
+<ToastRegion />
+
+// anywhere
+toast("Display preference updated", { description: "Dark mode is on.", tone: "success" });
+```
+
+Default timeout 6s, paused while hovered or focused; `timeout: 0` keeps it until dismissed. F6 moves focus to the region. Errors belong in an inline Alert, not a toast. Built on React Aria's toast (marked UNSTABLE_ in 1.22.1, version pinned).
 
 ## Reference markup
 
