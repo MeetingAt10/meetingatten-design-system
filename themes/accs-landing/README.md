@@ -1,37 +1,36 @@
 # Theme: `accs-landing`
 
-ACCS marketing site. Next.js + Tailwind 4. Airy, editorial, trustworthy.
+ACCS marketing site (Next.js + Tailwind 4). **Tokens are the Figma "ACCS 2026" Semantic LIGHT mode**, identical to `accs-admin`. This theme differs only in usage.
 
-| Trait | Decision |
+| Item | Value |
 |---|---|
-| Canvas | White, with `surface-sunken` (`ink-50`) bands to separate sections |
-| Action | `blue-800` `#032E87`, hover `blue-900` |
-| Accent | Teal, used for eyebrows, small highlights, `accent-bg` chips. Never for primary buttons |
-| Shape | Cards 16px, controls 10px, buttons 48px tall |
-| Type | Hero `text-6xl` / 800, section heads `text-4xl` / 700, lead `text-lg` |
-| Whitespace | 96px between sections, max width 72rem |
-| Imagery | Real photos/illustration only; no stock-gradient blobs, no purple |
+| Activate | `<html data-theme="accs-landing">` (also the `:root` default) |
+| Tokens | `accs-light` (Figma LIGHT): canvas `#F5F7FB`, surface `#FFFFFF`, text `#172033`, action `#032E87` |
+| Type | Display 36/44 and H1 30/38 for headlines, Body large 16/26 for body, mono eyebrow labels |
+| Logo | `assets/logo/logo-horizontal.svg` (>= 240px) or compact (>= 130px) in the nav |
+| Accents | Secondary (teal) and accent (purple) as small chips only; blue stays the dominant action; neither means permission or confidentiality |
+| Radius | Controls 6, cards 8, modal 12 |
 
-Activate: `<html data-theme="accs-landing">` (also the `:root` default).
+## Source status
 
-## Patterns
+Figma has **no landing-page frame**. The patterns below are composed from the Figma tokens, components and the product-pattern frames (05) and use their real copy. Anything marketing-specific (section order, footer) is a proposal.
 
-Live markup: `templates/landing.html`. Classes live in `dist/components.css`.
+## Patterns (see `templates/landing.html`)
 
 | Pattern | Spec |
 |---|---|
-| **Nav** | 72px tall, wordmark left, 3-5 text links center, one `ds-btn--primary ds-btn--sm` right. Current page = `aria-current="page"` (ink color). Collapses to menu button under `md` |
-| **Hero** | Eyebrow (mono, accent-fg) + display headline (max 3 lines, balanced) + 1 lead sentence (max 60ch) + 2 CTAs (primary + secondary). Right column on `lg`: one raised card with real content (e.g. department updates), not a decorative image |
-| **Feature section** | `surface-sunken` band, eyebrow + h1, 3-up `ds-card` grid: icon tile, h3, 1-2 line description. Max 3 columns, max 6 features |
-| **Steps** | Mono numerals `01 02 03`, h3, one line. No connecting lines or arrows |
-| **CTA band** | Single `ds-band` (action background, white text), one headline, one sentence, one white button |
-| **Footer** | `inverse` background, wordmark + one-line descriptor, 3 link columns, legal row. No newsletter form unless required |
+| Nav | `ds-container`, compact logo left, text links, one 48px primary "Sign in"; collapses to the 44px menu control under 1024px |
+| Hero | Mono eyebrow, Display headline "Your Access to the College of Computer Studies", Body large lead (max 680px), one primary + one secondary action, product preview (community cards) on the right from 1024px |
+| Pillars | Three `ds-card`s: Community, Consultations, My reports. Figma voice per context (encouraging, empathetic, serious) |
+| Product preview | Announcement Card and Forum Card with Figma copy, `DEMO` labels |
+| Privacy | Durable notice: "Community access does not grant report access." No anonymity or security promises |
+| Footer | `ds-footer`: logo, short descriptor, links; "Proposed, not approved" while the identity is unapproved |
 
-## Dos and don'ts
+## Do / don't
 
 | Do | Don't |
 |---|---|
-| One primary CTA per viewport | Two filled buttons side by side |
-| Plain verbs: "Get access", "Sign in" | "Unlock", "Supercharge", exclamation marks |
-| Show privacy/confidentiality explicitly near grievance content | Use playful color or social-style cards for grievance content |
-| Alternate canvas and sunken bands | Gradients, glass cards, shadows on every card |
+| One primary action per region | Two filled buttons side by side |
+| Honest copy ("sample", "proposed", "illustrative") | "Secure", "anonymous", "reply within 24 hours" |
+| Keep tagline exact: Your Access to the College of Computer Studies | Reword the tagline or imply a seal |
+| Label synthetic content `DEMO` | Real student names or data |

@@ -1,27 +1,40 @@
 # Logo and assets
 
-**Status: the logo is pending team approval.** Figma shows Logo Proposal 1-5; none is approved. Do not invent or redraw one. Until approval use a text wordmark ("ACCS" / "Meeting At 10" in Plus Jakarta Sans 800, tracking -0.02em). Meeting At 10 has no logo proposals yet.
+**The logo is now provided by Figma** (frame 01 Identity). It is the original *linked-C* direction: two open C forms meet through a shared link. Figma labels it **PROPOSED, not approved**: five earlier logo proposals remain unselected, and institutional logo approval is pending. Do not call it final and do not imply an official seal or endorsement.
 
-| Spec | Rule (applies once a mark is approved) |
+| File | Use | Minimum size |
+|---|---|---|
+| `assets/logo/logo-horizontal.svg` | Symbol + ACCS + "Access for College of Computer Studies" | 240px wide |
+| `assets/logo/logo-stacked.svg` | Narrow applications | 160px wide |
+| `assets/logo/logo-compact-minimum.svg` | Symbol + ACCS wordmark: nav, sidebar, mobile header | 130px wide |
+
+Mark-only minimum 24 x 16px (rounded width); use 35 x 24px or larger for primary navigation; test the 16px-high mark at 1x. Omit the tagline below 480px.
+
+## Treatments (Figma 01.1)
+
+| Treatment | Rule |
 |---|---|
-| Source | Export originals from Figma as SVG; never trace a screenshot |
-| Clear space | Height of the mark's "C" (ACCS) / the "1" glyph (Meeting At 10) on all sides |
-| Minimum size | Mark alone 16px; mark + wordmark 96px wide (digital), 20mm (print) |
-| Light backgrounds | Full-color on white, `canvas`, `surface-sunken`; one-color `ink-900` otherwise |
-| Dark backgrounds | One-color white / `paper-50`, or a dedicated reversed file. Never place the blue mark directly on `ink-900` |
-| Don'ts | Stretch, rotate, recolor, add shadows, place on photos without a solid plate |
-| Files | `logo.svg`, `logo-reversed.svg`, `logo-mark.svg`, `logo-mono.svg` |
+| Full color | `#032E87` on white / `canvas` |
+| One color | Ink `#172033` |
+| Reversed | White on source blue `#032E87` |
+| Lockup | Keep symbol, wordmark and expansion as an intentional lockup |
 
-## Favicon and social
+Only the full-color SVGs are exported. One-color and reversed artwork exist in Figma frame 01.1 but were not exported; on dark surfaces place the full-color mark on a light `surface` plate or export the reversed variant from Figma. Do not recolor it ad hoc.
 
-| Asset | Spec |
+## Clear space and misuse
+
+| Rule | Value |
 |---|---|
-| `favicon.svg` | Mark only, works at 16px, uses `currentColor`-safe fills + `prefers-color-scheme` media query for dark |
-| `favicon.ico` | 32x32 fallback |
-| `apple-touch-icon.png` | 180x180, solid background (no transparency), 20% padding |
-| `icon-192.png`, `icon-512.png` | PWA icons, plus maskable 512 with 40% safe zone |
-| OG image | 1200x630 PNG, under 300KB. Left-aligned wordmark, title in Plus Jakarta Sans 800 (max 2 lines, 64-72px), solid `canvas` or `action` background, no gradients. Text at least 4.5:1 |
-| Twitter card | Reuse the OG image (`summary_large_image`) |
-| Alt text | Describe content ("ACCS - Your Access to the College of Computer Studies") |
+| Clear space | 2x minimum on all sides; x = the mark's stem thickness (10px at 88px mark height); no content, rules or imagery |
+| Don't stretch | Keep original proportions |
+| Don't use low contrast | Use tested foreground/background pairs |
+| Don't alter color | No decorative accents |
+| Don't add effects | No shadow, glow, outline or bevel |
 
-Per-site OG backgrounds: ACCS `blue-800` with white text; Meeting At 10 `paper-50` with `ink-900` text and a `sun-500` highlight.
+## Other assets
+
+| Asset | Status |
+|---|---|
+| Favicon, OG image, app icons | Not in Figma. Derive from the compact symbol only after logo approval: favicon from the mark on `brand/source-blue`; OG 1200 x 630 with the horizontal logo, Display style title, `canvas` or `source-blue` background, no gradients, text at least 4.5:1 |
+| Meeting At 10 logo | Not in Figma; text wordmark only until the team provides one. Do not use the ACCS mark |
+| Icons | [iconography](iconography.md) |

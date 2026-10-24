@@ -1,39 +1,36 @@
 # Iconography
 
-Library: [Lucide](https://lucide.dev) (`lucide-react` in React apps; inline SVG in static templates). No emoji as icons. No mixing libraries.
+Source: Figma 03.4 and 03.6. **ACCS uses its own native icon set, not Lucide.** The frames do not name Lucide or any third-party library, so there is no sanctioned Lucide fallback.
 
-| Property | Value |
+| Property | Figma value |
 |---|---|
-| Sizes | 16 (inline with `text-sm`, badges, dense tables), 20 (default, nav, buttons), 24 (empty states, feature tiles) |
-| Stroke | 1.75px at 20px; keep stroke at 1.75 at 16 and 24 (`stroke-width` prop, not scaled) |
-| Color | `currentColor`; inherits text color |
-| Caps/joins | Round (Lucide default) |
-| Hit target | Icon-only buttons at least 36px (admin) / 44px (public) with `aria-label` |
-| Decorative icons | `aria-hidden="true"`; meaningful ones need a text label or `aria-label` |
+| Families | 12: Search, Menu, Chevron, Bell, Calendar, Forum, Report, Shield, Check, Alert, Close, User (+ `Graphic / Navigation Overview`) |
+| Sizes | 16 / 20 / 24px canvases (`Size=16/20/24`) |
+| Strokes | 1.5 / 1.75 / 2px, round caps and joins; optical padding inside the canvas |
+| Touch | Icons are not touch targets: use a 44px+ labeled control on mobile |
+| Meaning | Shield denotes a privacy topic, not a security or anonymity guarantee |
 
-## Usage
+Labels in 03.4: Overview, Forum, Consult, Report, Access, Visibility, Search, Updates, Success, Warning, Menu, Close.
 
-| Do | Don't |
+## Status in this repo
+
+| Item | Status |
 |---|---|
-| Pair icons with labels in navigation | Icon-only nav except for universal actions (close, search) |
-| One icon per concept across the product | Different icons for the same action |
-| Use icon + text for status (check + "Resolved") | Color-only status dots |
-| Put feature icons in a `radius-control` tinted tile (`action-subtle`) | Oversized or multicolor icons |
+| Names, sizes, strokes, CSS (`.ds-icon`, `--16`, `--24`) | Match Figma |
+| Geometry (`assets/icons/sprite.svg`) | **STAND-IN.** The export has no path data. Placeholder paths use Lucide-compatible shapes and must be replaced with the Figma SVG export (ISC-licensed placeholder shapes; no Lucide dependency) |
+| Extra glyphs (`home`, `lock`, `info`) | Drawn inside Figma components (Navigation Overview, Privacy Notice, Inline Alert), not in the 12-family set |
 
-## Recommended set
+## Rules
 
-| Concept | Lucide name |
+| Rule | Detail |
 |---|---|
-| Forum | `message-square` |
-| Support | `life-buoy` |
-| Grievance / confidential | `shield` / `lock` |
-| Announcements | `megaphone` |
-| Users and roles | `users` |
-| Search / filter | `search` / `sliders-horizontal` |
-| Success / warning / error / info | `circle-check` / `triangle-alert` / `circle-x` / `info` |
-| Navigation | `chevron-right`, `arrow-right`, `menu`, `x` |
+| Labels | Pair unfamiliar icons with visible text; icon-only actions need an accessible name; tooltips supplement, not replace |
+| Decorative | Hidden from assistive technology (`aria-hidden="true"`) |
+| Status | Status glyph + label, never color alone |
+| Color | `currentColor` |
+| Sizes | 16 inline/badges/table links; 20 default; 24 view states |
 
-```tsx
-import { MessageSquare } from "lucide-react";
-<MessageSquare size={20} strokeWidth={1.75} aria-hidden />
+```html
+<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-bell"/></svg>
 ```
+In static pages `<use>` needs the sprite inlined in the same document; `npm run build` inlines it between `<!--ds:sprite-->` markers.

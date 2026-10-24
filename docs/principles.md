@@ -1,27 +1,40 @@
 # Principles
 
-Kept from v0.1 (`capstone-drive/05_Design/design-system.md`) and tightened.
+Source: Figma frames 01 Identity, 03 Foundations, 06 Accessibility and content. Everything authored in Figma is **PROPOSED**, not approved.
+
+## The brand should feel
+
+| Professional, not bureaucratic | Trustworthy, not absolute | Modern, not decorative | Accessible, not exclusive | Structured, not rigid |
+|---|---|---|---|---|
+
+ACCS = Access for College of Computer Studies (spoken "Access"). Tagline: **Your Access to the College of Computer Studies**. A service identity, not an institutional seal; use the full expansion on first mention and the exact tagline; never imply an official seal or approved endorsement.
+
+## System principles
 
 | # | Principle | In practice |
 |---|---|---|
-| 1 | Trust before decoration | Ownership, status, privacy, next step beat visual effects |
-| 2 | Friendly in shared spaces | Forum and support copy is human, plain, encouraging |
-| 3 | Restrained for sensitive work | Grievance flows: neutral surfaces, explicit confidentiality cue, no playful color, no social patterns |
-| 4 | Structure reduces effort | Same nav, headings, labels, status patterns on every page |
-| 5 | Color reinforces meaning | Never color alone; always text or icon |
-| 6 | One accent | Teal (ACCS) or sun (Meeting At 10). Purple removed |
-| 7 | Whitespace is a feature | Public pages breathe; admin is dense but never cramped |
-| 8 | Accessible by default | WCAG 2.2 AA is a build check, not a goal |
-| 9 | Tokens, not hex | Components reference semantic tokens only |
-| 10 | Editorial over generic | Strong type hierarchy, real content in mockups, no gradient blobs, glass cards or emoji icons |
+| 1 | Structure before decoration | 8px rhythm, deliberate geometry, predictable responsive behavior, always-visible focus |
+| 2 | State is part of the contract | Default, Hover, Pressed, Focus, Disabled, Error, Loading where applicable; loading prevents repeat activation |
+| 3 | Persistent labels, useful errors | Placeholder never replaces a label; required fields use text; errors say what happened and keep the user's text |
+| 4 | Permission is not confidentiality | A role badge is not a privacy signal; restricted access does not mean anonymous; backend enforcement is required |
+| 5 | Honest claims | No promises of anonymity, security, response time or finality |
+| 6 | One primary action per task region | Reserve destructive intent for real removal; name the object and reversibility |
+| 7 | Color reinforces, never carries | Status uses words or symbols; severity and status are separate families |
+| 8 | Follow the task, not the viewport | Preserve task order when columns stack; safety copy never truncates |
+| 9 | Accessibility is a target, not a claim | WCAG 2.2 AA target, not certification; test keyboard, AT, zoom and reduced motion |
+| 10 | Tokens, not hex | Components use semantic tokens only; the Figma names are the API |
 
-## Surface comparison
+## Surfaces
 
 | | ACCS landing | ACCS admin | Meeting At 10 |
 |---|---|---|---|
-| Goal | Welcome, explain, convert | Get work done | Show who we are |
-| Density | Low | High | Low |
-| Canvas | White + sunken bands | Tinted / ink-950 | Paper / ink-950 |
-| Accent | Teal | Teal | Sun orange |
-| Radius | 10 / 16 | 6 / 8 | 6 / 8 |
-| Modes | Light | Light + dark | Light + dark |
+| Theme | `accs-landing` (LIGHT) | `accs-admin` (LIGHT), `accs-admin-dark` (DARK) | `meetingatten`, `meetingatten-dark` |
+| Source | Figma tokens + patterns (no landing frame exists) | Figma tokens + product patterns | No Figma source; sibling structure |
+| Type focus | Display 36/44, Body large 16/26 | H1 30/38, Body 14/22, Label 14/20 | Same styles, own personality |
+| Density | Spacious, 64-96 rhythm | Dense but calm, 24-32 rhythm | Spacious |
+
+## Governance (06.5)
+
+01 Proposed (current): reviewable reference, record owner, date, evidence, open questions and rationale for every changed token or component. 02 Reviewed (future gate): design, accessibility, engineering and policy owners review together. 03 Approved (future gate): explicit institutional authorization, documented privacy/access rules and implementation testing. A new version never silently changes access policy or anonymity behavior.
+
+Unresolved release gates: logo selection; palette extensions and both semantic themes (contrast tests, institutional review); typography (role scale, small-size readability, multilingual behavior); permissions and privacy (recipients, anonymity, access/retention/redaction); implementation (backend authorization, keyboard/AT tests, policy-gated submission).

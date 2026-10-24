@@ -1,34 +1,23 @@
 # Data visualization
 
-Tokens: `viz-cat-1..7`, `viz-seq-1..5`, `viz-div-1..5` (theme aware). Checks: every categorical color is at least 3:1 against `surface` and `canvas` in all five themes; sequential ramps are monotonic in luminance (`npm run check:contrast`).
+**NOT IN FIGMA.** The frames define no chart palette, and this repo no longer ships `viz-*` tokens. Use existing semantic tokens only; this is guidance, not a new scale.
 
-## Categorical (distinct series, max 7)
-
-| Token | Light (`accs-*`, `meetingatten`) | Dark |
+| Series | Token | Notes |
 |---|---|---|
-| `viz-cat-1` | blue-600 `#1C46C2` | blue-400 `#5C86F5` |
-| `viz-cat-2` | teal-600 `#0B7A72` | teal-400 `#2FB1A3` |
-| `viz-cat-3` | sun-700 `#A24209` | amber-400 `#FDB022` |
-| `viz-cat-4` | rose-600 `#C11574` | rose-400 `#F06EAA` |
-| `viz-cat-5` | olive-600 `#5B7A12` | olive-400 `#A3C93A` |
-| `viz-cat-6` | sky-600 `#0E7CA6` | sky-400 `#38BDF8` |
-| `viz-cat-7` | ink-600 `#4F5A6F` | ink-400 `#939DB0` |
+| 1 | `action/default` | Primary series |
+| 2 | `secondary/default` | Teal |
+| 3 | `accent/default` | Purple |
+| 4 | `text-secondary` | Neutral comparison series |
+| 5 | `warning/fg` | Only when "warning" is not the meaning; prefer fewer series |
 
-## Sequential (magnitude, one hue)
-
-Blue ramp. Light: `blue-100, 300, 500, 700, 900` (light to dark = low to high). Dark: reversed so high values stay brightest against the dark surface.
-
-## Diverging (above/below a midpoint)
-
-`viz-div-1..5`: blue (negative) -> neutral `ink` midpoint -> sun (positive). Midpoint = true zero or target. Blue vs orange is safe for common color-vision deficiencies.
-
-## Rules
+All five pass 4.5:1 on `surface` and `canvas` in the ACCS themes (checked by `npm run check:contrast` as text pairs, stricter than the 3:1 graphics threshold).
 
 | Rule | Detail |
 |---|---|
-| Never color alone | Direct labels, patterns, or distinct marker shapes; legend order matches visual order |
-| Light steps need an edge | Sequential step 1 (light) is below 3:1; give cells a `line-strong` outline or show the value |
-| More than 7 series | Group into "Other" or use small multiples |
-| Status vs series | Never reuse `success`/`warning`/`danger` as series colors |
-| Gridlines | `line`, 1px; axis text `ink-secondary` at `text-xs`; values `ink` |
-| Tables | Always offer a table or text summary for screen readers |
+| Never color alone | Direct labels, markers or patterns; status uses words or symbols (Figma) |
+| Status colors | `success`, `warning`, `danger`, `info` keep their meaning; do not reuse them as arbitrary series colors |
+| Max series | 5; group the rest |
+| Axes and grid | `border-subtle` gridlines, `text-secondary` labels at Caption 12/16 |
+| Alternatives | Always provide a table or text summary |
+| Secondary/accent | Never mean permission or confidentiality |
+| Sequential/diverging | Not defined; propose through Figma first |
