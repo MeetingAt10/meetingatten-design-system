@@ -4,7 +4,7 @@ Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](htt
 
 ## [0.5.0] - 2026-10-25
 
-Phase 3: ACCS patterns, completing the 55-component catalog. Spec: `context/deltas/2026-10-25-v0.5.0-phase3.md`.
+Phase 3: ACCS patterns, completing the 55-component catalog. Spec: `context/deltas/archive/2026-10-25-v0.5.0-phase3.md`.
 
 ### Added
 - `AnnouncementCard`, `ForumCard` (whole card one link, named by its title), `ConsultationSlotPicker` (day toggle group + one slot radio group, loading and error messages), `CaseTimeline`, `ReportsTable` (caption, column headers, reference as row header, named actions, empty message), `ReportRecord`, `PrivacyNotice`.
@@ -16,7 +16,7 @@ Phase 3: ACCS patterns, completing the 55-component catalog. Spec: `context/delt
 
 ## [0.4.0] - 2026-10-25
 
-Phase 2: navigation and overlays. Spec: `context/deltas/2026-10-25-v0.4.0-phase2.md`.
+Phase 2: navigation and overlays. Spec: `context/deltas/archive/2026-10-25-v0.4.0-phase2.md`.
 
 ### Added
 - Navigation: `Navbar` (mobile menu panel), `Sidebar` + `NavItem` + `SidebarNote`, `AppShell`, `TopBar`, `MobileHeader`, `Tabs` / `TabList` / `Tab` / `TabPanel`, `Breadcrumbs`, `Pagination` (+ `pageList`), `Stepper`, `MenuButton` + `MenuItem`, `Footer`.
