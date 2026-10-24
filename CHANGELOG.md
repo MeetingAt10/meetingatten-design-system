@@ -19,6 +19,7 @@ Work toward 0.3.0 (see `context/deltas/2026-10-24-v0.3.0-rebuild.md`).
 - Soft layers: cards, table container, report record and view state are borderless with `card-shadow` and radius 12; modal, toast and listbox use `overlay-shadow`; inline alert and consultation slot radius 8. `.ds-card--raised` removed (cards are raised by default).
 
 ### Added
+- React layer: `@meetingat10/design-system/react` (React Aria Components 1.22.1, compiled with `tsc` to `dist/react/`, `"use client"` kept), starting with `Button` (variants, `size`, `block`, `loading`). `npm test` (Vitest + Testing Library + axe), `npm run typecheck`.
 - Interactive cards (`a.ds-card`, `button.ds-card`, `.ds-card[data-interactive]`) lift 2px on hover; reduced motion keeps only the shadow change.
 - `.ds-wash`, `.ds-tile` (+ `--secondary`, `--accent`, `--neutral`), `.ds-features` / `.ds-feature`, `.ds-divider`.
 - React Aria state attributes (`[data-hovered]`, `[data-pressed]`, `[data-focus-visible]`, `[data-disabled]`) matched alongside native and forced states; `--ds-ring` focus-ring variable; `--ds-size-eyebrow(-line)`.

@@ -32,7 +32,9 @@ npm run check:contrast  # WCAG AA gate over declared pairs and text on every was
 npm run check:tokens    # no hex/rgb/blends/primitive variables in src or site; treatments built only from locked tokens
 npm run check:parity    # every Figma variable, text style, dimension and component compared with the repo
 npm run import:figma    # regenerate Figma-sourced tokens from figma/variables-styles.json
-npm run check           # build + contrast + parity + tokens
+npm test                # React components: Vitest + Testing Library + axe (run through pcore on low-power machines)
+npm run typecheck       # tsc over src/react, tests included
+npm run check           # build (tokens + dist/react) + contrast + parity + tokens
 node scripts/parity.mjs --write   # refresh docs/figma-parity.md
 ```
 
@@ -82,6 +84,17 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mo
 ```
 
 Utilities use the Figma semantic names and the treatment tokens only: `bg-canvas bg-surface bg-card text-text-primary border-border-default bg-action-default bg-action text-on-action bg-info-bg text-secondary-fg bg-accent-bg wash-accent wash-secondary wash-info shadow-card shadow-card-hover shadow-overlay rounded-card rounded-tile rounded-control rounded-chip type-h1 text-body font-display tablet:... desktop:... max-w-content`. Tailwind's default palette is removed and Figma primitives are not exposed, so `bg-red-500` or `bg-neutral-500` generate nothing. Breakpoints are `tablet` 600, `desktop` 1024, `wide` 1440 (Tailwind defaults removed). Spacing keeps Tailwind's multiplier (`p-4` = Figma `space/16`); use `var(--ds-space-16)` for the Figma name.
+
+## Consume: React components (all three apps)
+
+```tsx
+import "@meetingat10/design-system/dist/components.css";   // once, at the app root
+import { Button } from "@meetingat10/design-system/react";
+
+<Button variant="primary" onPress={save}>Save</Button>
+```
+
+Components render the same `ds-*` classes; behavior, keyboard support and ARIA come from React Aria Components. Interactive components start with `"use client"`, so they work in Next.js server components. Peer dependencies: `react` and `react-dom` 19.
 
 ## Consume: Vite + React (admin)
 

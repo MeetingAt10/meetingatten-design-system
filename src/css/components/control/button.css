@@ -57,5 +57,5 @@
   cursor: not-allowed;
 }
 .ds-btn--tertiary:is(:disabled, [aria-disabled="true"], [data-disabled]) { border-color: transparent; }
-.ds-btn[aria-busy="true"] { pointer-events: none; }
+.ds-btn:is([aria-busy="true"], [data-pending]) { pointer-events: none; }
 .ds-btn--sm { min-height: var(--ds-size-control-h); }
