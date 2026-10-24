@@ -1,0 +1,51 @@
+/* Control / ComboBox: text input with a filtered listbox. The wrapper carries the input box styling. */
+.ds-combobox {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  width: 100%;
+  min-height: var(--ds-size-control-h);
+  padding: 0 var(--ds-space-4) 0 10px;
+  background: var(--ds-surface);
+  color: var(--ds-text-primary);
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-control);
+  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
+  &:hover { background: var(--ds-info-bg); }
+  &:is(:focus-within, [data-focus-within]) {
+    background: var(--ds-surface);
+    border-color: var(--ds-focus);
+    box-shadow: var(--ds-ring);
+  }
+  &:is(:has([aria-invalid="true"]), [data-invalid]) { border-color: var(--ds-danger-fg); }
+  &:is(:has(input:disabled), [data-disabled]) {
+    background: var(--ds-disabled-bg);
+    color: var(--ds-disabled-fg);
+    cursor: not-allowed;
+  }
+  & input {
+    all: unset;
+    flex: 1;
+    min-width: 0;
+    font: inherit;
+    color: inherit;
+  }
+  & input::placeholder { color: var(--ds-text-secondary); }
+}
+/* Trailing button inside ComboBox and DatePicker. */
+.ds-field-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ds-radius-control);
+  background: transparent;
+  color: var(--ds-action-default);
+  cursor: pointer;
+  &:is(:hover, [data-hovered]) { background: var(--ds-info-bg); }
+  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
+}
+.ds-combobox .ds-field-button .ds-icon { transform: rotate(90deg); }

@@ -1,3 +1,8 @@
+---
+title: Search
+description: Compact search box with a clear button; Escape clears.
+react: Search
+---
 # Control / Search
 
 Five states. Results use Data / View State for loading, empty and error.
@@ -32,6 +37,14 @@ Variant axes:
 ## Accessibility
 
 - `<input type="search">` with an accessible name (visible label or `aria-label`); results region announced politely.
+
+## React
+
+```tsx
+<Search label="Search community" placeholder="Search community" onSubmit={runSearch} />
+```
+
+`label` is required (the box has no visible label).
 
 ## Reference markup
 

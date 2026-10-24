@@ -37,11 +37,11 @@
     border-color: var(--ds-focus);
   }
 }
-.ds-check input:checked + .ds-check__box, .ds-check.is-checked .ds-check__box {
+.ds-check input:checked + .ds-check__box, .ds-check.is-checked .ds-check__box, .ds-check:is([data-selected], [data-indeterminate]) .ds-check__box {
   background: var(--ds-action-default);
   border-color: var(--ds-action-default);
 }
-.ds-check input:checked + .ds-check__box::after, .ds-check.is-checked .ds-check__box::after {
+.ds-check input:checked + .ds-check__box::after, .ds-check.is-checked .ds-check__box::after, .ds-check[data-selected] .ds-check__box::after {
   content: "";
   width: 5px;
   height: 10px;
@@ -50,11 +50,17 @@
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
-.ds-check--radio input:checked + .ds-check__box, .ds-check--radio.is-checked .ds-check__box {
+.ds-check[data-indeterminate] .ds-check__box::after {
+  content: "";
+  width: 10px;
+  height: 2px;
+  background: var(--ds-on-action);
+}
+.ds-check--radio input:checked + .ds-check__box, .ds-check--radio.is-checked .ds-check__box, .ds-check--radio[data-selected] .ds-check__box {
   background: var(--ds-surface);
   border-color: var(--ds-action-default);
 }
-.ds-check--radio input:checked + .ds-check__box::after, .ds-check--radio.is-checked .ds-check__box::after {
+.ds-check--radio input:checked + .ds-check__box::after, .ds-check--radio.is-checked .ds-check__box::after, .ds-check--radio[data-selected] .ds-check__box::after {
   width: 10px;
   height: 10px;
   margin: 0;
@@ -63,7 +69,7 @@
   background: var(--ds-action-default);
   transform: none;
 }
-.ds-check.is-error .ds-check__box { border-color: var(--ds-danger-fg); }
+.ds-check:is(.is-error, [data-invalid]) .ds-check__box { border-color: var(--ds-danger-fg); }
 .ds-check:has(input:disabled), .ds-check.is-disabled {
   color: var(--ds-disabled-fg);
   cursor: not-allowed;
@@ -72,5 +78,6 @@
   background: var(--ds-disabled-bg);
   border-color: var(--ds-border-subtle);
 }
-.ds-check:has(input:disabled) input:checked + .ds-check__box::after, .ds-check.is-disabled.is-checked .ds-check__box::after { border-color: var(--ds-disabled-fg); }
-.ds-check--radio:has(input:disabled) input:checked + .ds-check__box::after, .ds-check--radio.is-disabled.is-checked .ds-check__box::after { background: var(--ds-disabled-fg); }
+.ds-check:has(input:disabled) input:checked + .ds-check__box::after, .ds-check.is-disabled.is-checked .ds-check__box::after, .ds-check[data-disabled][data-selected] .ds-check__box::after { border-color: var(--ds-disabled-fg); }
+.ds-check--radio:has(input:disabled) input:checked + .ds-check__box::after, .ds-check--radio.is-disabled.is-checked .ds-check__box::after, .ds-check--radio[data-disabled][data-selected] .ds-check__box::after { background: var(--ds-disabled-fg); }
+.ds-choices { display: grid; }

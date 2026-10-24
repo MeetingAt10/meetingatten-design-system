@@ -14,6 +14,7 @@
   color: var(--ds-text-secondary);
 }
 .ds-field.is-error .ds-field__msg { color: var(--ds-danger-fg); }
+.ds-field__msg--error { color: var(--ds-danger-fg); }
 .ds-input, .ds-select, .ds-textarea {
   display: flex;
   align-items: center;

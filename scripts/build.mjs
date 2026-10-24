@@ -74,7 +74,7 @@ writeFileSync(join(dist, 'tokens.js'), banner + `window.DS_TOKENS = ${JSON.strin
 const LAYERS = {
   'ds.base': ['base/reset', 'base/type', 'base/layout'],
   'ds.components': ['icon/icon', 'feedback/spinner', 'control/button', 'control/icon-button', 'control/field', 'control/select', 'control/search',
-    'control/checkbox', 'navigation/link', 'navigation/item', 'navigation/tab', 'navigation/sidebar', 'navigation/top-bar', 'navigation/mobile-header',
+    'control/checkbox', 'control/switch', 'control/combobox', 'control/date-picker', 'control/file-upload', 'navigation/link', 'navigation/item', 'navigation/tab', 'navigation/sidebar', 'navigation/top-bar', 'navigation/mobile-header',
     'navigation/app-shell', 'badge/badge', 'content/card', 'scheduling/consultation-slot', 'data/case-timeline', 'feedback/privacy-notice',
     'feedback/inline-alert', 'feedback/toast', 'feedback/modal', 'data/reports-table', 'data/report-record', 'data/view-state', 'content/tile', 'content/avatar', 'feedback/progress', 'layout/wash', 'layout/feature-row', 'layout/divider', 'identity/logo'].map((f) => 'components/' + f),
   'ds.utilities': ['base/utilities'],

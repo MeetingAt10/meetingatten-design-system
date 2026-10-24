@@ -1,3 +1,8 @@
+---
+title: Select
+description: Pick one option from a short list in a listbox popover.
+react: Select
+---
 # Control / Select
 
 Thirteen valid combinations: Expanded=False x seven states, Expanded=True x six (Disabled excluded; a disabled menu cannot be expanded). Use a native select where possible. The visible label persists. The popup is an intentional absolute overlay, not layout.
@@ -34,6 +39,17 @@ Label "Consultation topic"; options "Course planning", "Learning support", "Gene
 
 - Native select preferred: arrows choose, Enter confirms, Escape closes.
 - Custom combobox: announce expanded state, selected value and active option; do not intercept text editing unexpectedly.
+
+## React
+
+```tsx
+<Select label="Topic" placeholder="Choose a topic" onSelectionChange={setTopic}>
+  <SelectOption id="planning">Course planning</SelectOption>
+  <SelectOption id="thesis">Thesis advising</SelectOption>
+</Select>
+```
+
+React Aria `Select`: arrow keys and type-ahead on the trigger, the listbox opens in a popover sized to the trigger. Use ComboBox when the list is long enough to need filtering.
 
 ## Reference markup
 

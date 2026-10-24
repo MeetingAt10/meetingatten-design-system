@@ -1,3 +1,8 @@
+---
+title: Text Area
+description: Multi-line text input with label, help and error.
+react: TextArea
+---
 # Control / Text Area
 
 Seven states, same state model as Text Field. 112px input plus a reserved message region.
@@ -34,6 +39,12 @@ Label "How can we help?", placeholder "Describe the topic you’d like to discus
 ## Accessibility
 
 - Same label, hint, error and live-region rules as Text Field; preserve normal editing keys.
+
+## React
+
+```tsx
+<TextArea label="Add details" description="Do not include names or identifiers." />
+```
 
 ## Reference markup
 

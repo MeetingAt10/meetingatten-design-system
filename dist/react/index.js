@@ -1,6 +1,19 @@
 // @meetingat10/design-system/react: React components over the ds-* CSS. Import dist/components.css once in the app.
 export { Button } from './control/Button.js';
 export { IconButton } from './control/IconButton.js';
+export { Field } from './control/Field.js';
+export { TextField } from './control/TextField.js';
+export { TextArea } from './control/TextArea.js';
+export { Select } from './control/Select.js';
+export { SelectOption } from './control/SelectOption.js';
+export { ComboBox } from './control/ComboBox.js';
+export { Search } from './control/Search.js';
+export { Checkbox } from './control/Checkbox.js';
+export { RadioGroup, Radio } from './control/Radio.js';
+export { Switch } from './control/Switch.js';
+export { Calendar } from './control/Calendar.js';
+export { DatePicker } from './control/DatePicker.js';
+export { FileUpload } from './control/FileUpload.js';
 export { Icon } from './icon/Icon.js';
 export { Link } from './navigation/Link.js';
 export { Badge } from './badge/Badge.js';

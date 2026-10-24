@@ -1,3 +1,8 @@
+---
+title: Checkbox
+description: Independent on/off choice with checked, indeterminate, error and disabled states.
+react: Checkbox
+---
 # Control / Checkbox
 
 Selected=False/True x seven states = 14 variants. Independent multi-select; Space toggles. Loading represents a pending preference save, never automatic consent. Do not use a disabled checkbox to imply privacy consent.
@@ -37,6 +42,13 @@ Label "Email updates"; notification preference remains optional.
 
 - Native `<input type="checkbox">` inside a `<label>`; group related choices with `<fieldset>` and `<legend>`; expose checked state.
 - The label includes the full choice meaning.
+
+## React
+
+```tsx
+<Checkbox>Keep me signed in</Checkbox>
+<Checkbox isIndeterminate>All topics</Checkbox>
+```
 
 ## Reference markup
 

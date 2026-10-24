@@ -1,3 +1,8 @@
+---
+title: Radio
+description: Choose exactly one option in a labeled group; arrow keys move the selection.
+react: RadioGroup
+---
 # Control / Radio
 
 Selected=False/True x six states = 12 variants (no Loading: loading belongs to the option group, not an individual choice). One option per named group; arrow keys move and select.
@@ -35,6 +40,15 @@ Labels "Online consultation", "In-person consultation".
 
 - Native radios with a shared `name`, in a `<fieldset>`/`<legend>`; arrow keys move and select.
 - A single appointment slot also uses a radio-group model.
+
+## React
+
+```tsx
+<RadioGroup label="Meeting type" isRequired>
+  <Radio value="online">Online</Radio>
+  <Radio value="campus">On campus</Radio>
+</RadioGroup>
+```
 
 ## Reference markup
 

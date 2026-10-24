@@ -1,3 +1,8 @@
+---
+title: Text Field
+description: One-line text input with a persistent label, help text and an error that keeps the typed value.
+react: TextField
+---
 # Control / Text Field
 
 Persistent label and value; seven states. Placeholder text never replaces a label. Required fields use text, not an asterisk alone. Loading means async validation. Pressed is pointer-down before focus.
@@ -41,6 +46,15 @@ Label "Subject", value "Course planning", disabled value "Submission unavailable
 - On a failed submit provide a linked error summary and a deliberate focus destination; retain entered values.
 - Distinguish network failure from validation failure; do not announce every keystroke.
 - Do not expose sensitive details in errors, analytics, URLs or live regions.
+
+## React
+
+```tsx
+<TextField label="College email" type="email" autoComplete="username" isRequired />
+<TextField label="Password" type="password" isInvalid errorMessage="Enter your password to continue." />
+```
+
+React Aria `TextField`: the label, help and error are wired to the input (`aria-describedby`, `aria-invalid`). `isRequired` adds "(required)" as text.
 
 ## Reference markup
 

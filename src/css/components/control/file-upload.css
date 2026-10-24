@@ -1,0 +1,32 @@
+/* Control / FileUpload: drop zone with a file picker button. Dashed boundary meets 3:1. */
+.ds-dropzone {
+  display: grid;
+  justify-items: center;
+  gap: var(--ds-space-8);
+  padding: var(--ds-space-24);
+  text-align: center;
+  background: var(--ds-surface);
+  border: 2px dashed var(--ds-border-default);
+  border-radius: var(--ds-radius-tile);
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  & > .ds-icon { color: var(--ds-action-default); }
+  &[data-drop-target] {
+    background: var(--ds-info-bg);
+    border-style: solid;
+    border-color: var(--ds-action-default);
+  }
+  &[data-focus-visible] { box-shadow: var(--ds-ring); }
+  &[data-disabled] {
+    background: var(--ds-disabled-bg);
+    color: var(--ds-disabled-fg);
+  }
+}
+.ds-file-list {
+  display: grid;
+  gap: var(--ds-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+}

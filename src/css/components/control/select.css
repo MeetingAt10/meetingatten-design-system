@@ -1,4 +1,11 @@
-/* Control / Select listbox + Select Option. */
+/* Control / Select listbox + Select Option, and the shared popover for Select, ComboBox and DatePicker. */
+.ds-popover {
+  min-width: var(--trigger-width);
+  z-index: var(--ds-z-dropdown);
+  outline: none;
+  & > .ds-listbox { margin: 0; }
+}
+.ds-select__value[data-placeholder] { color: var(--ds-text-secondary); }
 .ds-listbox {
   margin: var(--ds-space-4) 0 0;
   padding: var(--ds-space-4);

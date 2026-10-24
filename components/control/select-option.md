@@ -1,3 +1,8 @@
+---
+title: Select Option
+description: One row in a Select or ComboBox list, with a check mark when selected.
+react: SelectOption
+---
 # Control / Select Option
 
 Option row exposed inside expanded Selects. Selected x five states (no Error/Loading: those belong to the popup).
@@ -32,6 +37,14 @@ Variant axes:
 ## Accessibility
 
 - `role="option"` with `aria-selected`; active option exposed via `aria-activedescendant`.
+
+## React
+
+```tsx
+<SelectOption id="planning">Course planning</SelectOption>
+```
+
+Pass `textValue` when the children are not plain text (used for type-ahead and filtering).
 
 ## Reference markup
 

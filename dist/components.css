@@ -306,6 +306,7 @@
   color: var(--ds-text-secondary);
 }
 .ds-field.is-error .ds-field__msg { color: var(--ds-danger-fg); }
+.ds-field__msg--error { color: var(--ds-danger-fg); }
 .ds-input, .ds-select, .ds-textarea {
   display: flex;
   align-items: center;
@@ -360,7 +361,14 @@
 .ds-select[aria-expanded="true"] .ds-icon { transform: rotate(-90deg); }
 
 /* src/css/components/control/select.css */
-/* Control / Select listbox + Select Option. */
+/* Control / Select listbox + Select Option, and the shared popover for Select, ComboBox and DatePicker. */
+.ds-popover {
+  min-width: var(--trigger-width);
+  z-index: var(--ds-z-dropdown);
+  outline: none;
+  & > .ds-listbox { margin: 0; }
+}
+.ds-select__value[data-placeholder] { color: var(--ds-text-secondary); }
 .ds-listbox {
   margin: var(--ds-space-4) 0 0;
   padding: var(--ds-space-4);
@@ -441,6 +449,25 @@
     background: var(--ds-disabled-bg);
     color: var(--ds-disabled-fg);
   }
+  & input::-webkit-search-cancel-button { display: none; }
+  &[data-empty] .ds-search__clear { display: none; }
+}
+.ds-search__clear {
+  display: inline-grid;
+  place-items: center;
+  width: var(--ds-size-target-min);
+  height: var(--ds-size-target-min);
+  padding: 0;
+  border: 0;
+  border-radius: var(--ds-radius-control);
+  background: transparent;
+  color: var(--ds-text-secondary);
+  cursor: pointer;
+  &:is(:hover, [data-hovered]) {
+    background: var(--ds-info-bg);
+    color: var(--ds-text-primary);
+  }
+  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
 }
 
 /* src/css/components/control/checkbox.css */
@@ -483,11 +510,11 @@
     border-color: var(--ds-focus);
   }
 }
-.ds-check input:checked + .ds-check__box, .ds-check.is-checked .ds-check__box {
+.ds-check input:checked + .ds-check__box, .ds-check.is-checked .ds-check__box, .ds-check:is([data-selected], [data-indeterminate]) .ds-check__box {
   background: var(--ds-action-default);
   border-color: var(--ds-action-default);
 }
-.ds-check input:checked + .ds-check__box::after, .ds-check.is-checked .ds-check__box::after {
+.ds-check input:checked + .ds-check__box::after, .ds-check.is-checked .ds-check__box::after, .ds-check[data-selected] .ds-check__box::after {
   content: "";
   width: 5px;
   height: 10px;
@@ -496,11 +523,17 @@
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
-.ds-check--radio input:checked + .ds-check__box, .ds-check--radio.is-checked .ds-check__box {
+.ds-check[data-indeterminate] .ds-check__box::after {
+  content: "";
+  width: 10px;
+  height: 2px;
+  background: var(--ds-on-action);
+}
+.ds-check--radio input:checked + .ds-check__box, .ds-check--radio.is-checked .ds-check__box, .ds-check--radio[data-selected] .ds-check__box {
   background: var(--ds-surface);
   border-color: var(--ds-action-default);
 }
-.ds-check--radio input:checked + .ds-check__box::after, .ds-check--radio.is-checked .ds-check__box::after {
+.ds-check--radio input:checked + .ds-check__box::after, .ds-check--radio.is-checked .ds-check__box::after, .ds-check--radio[data-selected] .ds-check__box::after {
   width: 10px;
   height: 10px;
   margin: 0;
@@ -509,7 +542,7 @@
   background: var(--ds-action-default);
   transform: none;
 }
-.ds-check.is-error .ds-check__box { border-color: var(--ds-danger-fg); }
+.ds-check:is(.is-error, [data-invalid]) .ds-check__box { border-color: var(--ds-danger-fg); }
 .ds-check:has(input:disabled), .ds-check.is-disabled {
   color: var(--ds-disabled-fg);
   cursor: not-allowed;
@@ -518,8 +551,251 @@
   background: var(--ds-disabled-bg);
   border-color: var(--ds-border-subtle);
 }
-.ds-check:has(input:disabled) input:checked + .ds-check__box::after, .ds-check.is-disabled.is-checked .ds-check__box::after { border-color: var(--ds-disabled-fg); }
-.ds-check--radio:has(input:disabled) input:checked + .ds-check__box::after, .ds-check--radio.is-disabled.is-checked .ds-check__box::after { background: var(--ds-disabled-fg); }
+.ds-check:has(input:disabled) input:checked + .ds-check__box::after, .ds-check.is-disabled.is-checked .ds-check__box::after, .ds-check[data-disabled][data-selected] .ds-check__box::after { border-color: var(--ds-disabled-fg); }
+.ds-check--radio:has(input:disabled) input:checked + .ds-check__box::after, .ds-check--radio.is-disabled.is-checked .ds-check__box::after, .ds-check--radio[data-disabled][data-selected] .ds-check__box::after { background: var(--ds-disabled-fg); }
+.ds-choices { display: grid; }
+
+/* src/css/components/control/switch.css */
+/* Control / Switch: on/off setting that applies immediately. Track and thumb boundaries meet 3:1. */
+.ds-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-8);
+  min-height: var(--ds-size-control-h);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  color: var(--ds-text-primary);
+  cursor: pointer;
+}
+.ds-switch__track {
+  position: relative;
+  flex: none;
+  width: 2.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--ds-border-default);
+  border-radius: 999px;
+  background: var(--ds-surface);
+  transition: background-color var(--ds-motion-duration-fast) var(--ds-motion-ease-standard), border-color var(--ds-motion-duration-fast) var(--ds-motion-ease-standard);
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--ds-border-default);
+    transition: transform var(--ds-motion-duration-fast) var(--ds-motion-ease-standard);
+  }
+}
+.ds-switch {
+  &:is(:hover, [data-hovered], .is-hover) .ds-switch__track { background: var(--ds-info-bg); }
+  &:is([data-focus-visible], .is-focus) .ds-switch__track {
+    border-color: var(--ds-focus);
+    box-shadow: var(--ds-ring);
+  }
+  &:is([data-selected], .is-checked) .ds-switch__track {
+    background: var(--ds-action-default);
+    border-color: var(--ds-action-default);
+    &::after {
+      background: var(--ds-on-action);
+      transform: translateX(1rem);
+    }
+  }
+  &:is([data-disabled], .is-disabled) {
+    color: var(--ds-disabled-fg);
+    cursor: not-allowed;
+    & .ds-switch__track {
+      background: var(--ds-disabled-bg);
+      border-color: var(--ds-border-subtle);
+      &::after { background: var(--ds-disabled-fg); }
+    }
+  }
+}
+
+/* src/css/components/control/combobox.css */
+/* Control / ComboBox: text input with a filtered listbox. The wrapper carries the input box styling. */
+.ds-combobox {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  width: 100%;
+  min-height: var(--ds-size-control-h);
+  padding: 0 var(--ds-space-4) 0 10px;
+  background: var(--ds-surface);
+  color: var(--ds-text-primary);
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-control);
+  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
+  &:hover { background: var(--ds-info-bg); }
+  &:is(:focus-within, [data-focus-within]) {
+    background: var(--ds-surface);
+    border-color: var(--ds-focus);
+    box-shadow: var(--ds-ring);
+  }
+  &:is(:has([aria-invalid="true"]), [data-invalid]) { border-color: var(--ds-danger-fg); }
+  &:is(:has(input:disabled), [data-disabled]) {
+    background: var(--ds-disabled-bg);
+    color: var(--ds-disabled-fg);
+    cursor: not-allowed;
+  }
+  & input {
+    all: unset;
+    flex: 1;
+    min-width: 0;
+    font: inherit;
+    color: inherit;
+  }
+  & input::placeholder { color: var(--ds-text-secondary); }
+}
+/* Trailing button inside ComboBox and DatePicker. */
+.ds-field-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ds-radius-control);
+  background: transparent;
+  color: var(--ds-action-default);
+  cursor: pointer;
+  &:is(:hover, [data-hovered]) { background: var(--ds-info-bg); }
+  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
+}
+.ds-combobox .ds-field-button .ds-icon { transform: rotate(90deg); }
+
+/* src/css/components/control/date-picker.css */
+/* Control / DatePicker + Calendar: segmented date input with a calendar popover. */
+.ds-datefield {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  width: 100%;
+  min-height: var(--ds-size-control-h);
+  padding: 0 var(--ds-space-4) 0 10px;
+  background: var(--ds-surface);
+  color: var(--ds-text-primary);
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-control);
+  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
+  &:hover { background: var(--ds-info-bg); }
+  &:is(:focus-within, [data-focus-within]) {
+    background: var(--ds-surface);
+    border-color: var(--ds-focus);
+    box-shadow: var(--ds-ring);
+  }
+  &:is(:has([aria-invalid="true"]), [data-invalid]) { border-color: var(--ds-danger-fg); }
+  &:is(:has(input:disabled), [data-disabled]) {
+    background: var(--ds-disabled-bg);
+    color: var(--ds-disabled-fg);
+    cursor: not-allowed;
+  }
+}
+.ds-date-input {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+.ds-date-segment {
+  padding: 0 1px;
+  border-radius: var(--ds-radius-chip);
+  font-variant-numeric: tabular-nums;
+  outline: none;
+  &[data-placeholder] { color: var(--ds-text-secondary); }
+  &[data-type="literal"] { padding: 0; }
+  &:is(:focus, [data-focused]) {
+    background: var(--ds-action-default);
+    color: var(--ds-on-action);
+  }
+}
+.ds-calendar {
+  display: grid;
+  gap: var(--ds-space-8);
+  width: max-content;
+  padding: var(--ds-space-16);
+  background: var(--ds-card-bg);
+  border-radius: var(--ds-radius-tile);
+  box-shadow: var(--ds-card-shadow);
+  & table { border-collapse: collapse; }
+  & th {
+    padding: 0 0 var(--ds-space-4);
+    font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+    color: var(--ds-text-secondary);
+  }
+}
+.ds-popover .ds-calendar { box-shadow: var(--ds-overlay-shadow); }
+.ds-calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-8);
+}
+.ds-calendar__title {
+  margin: 0;
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+}
+.ds-calendar__prev .ds-icon { transform: rotate(180deg); }
+.ds-calendar__cell {
+  display: grid;
+  place-items: center;
+  width: var(--ds-size-control-h);
+  height: var(--ds-size-control-h);
+  border-radius: var(--ds-radius-control);
+  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
+  cursor: pointer;
+  outline: none;
+  &:is(:hover, [data-hovered]) { background: var(--ds-info-bg); }
+  &[data-pressed] { box-shadow: inset 0 0 0 1px var(--ds-border-default); }
+  &[data-today] { box-shadow: inset 0 0 0 1px var(--ds-action-default); }
+  &[data-selected] {
+    background: var(--ds-action-default);
+    color: var(--ds-on-action);
+  }
+  &:is([data-disabled], [data-unavailable]) {
+    background: transparent;
+    color: var(--ds-disabled-fg);
+    cursor: not-allowed;
+  }
+  &[data-unavailable] { text-decoration: line-through; }
+  &[data-outside-month] { visibility: hidden; }
+  &[data-focus-visible] { box-shadow: var(--ds-ring); }
+}
+.ds-calendar-dialog { outline: none; }
+
+/* src/css/components/control/file-upload.css */
+/* Control / FileUpload: drop zone with a file picker button. Dashed boundary meets 3:1. */
+.ds-dropzone {
+  display: grid;
+  justify-items: center;
+  gap: var(--ds-space-8);
+  padding: var(--ds-space-24);
+  text-align: center;
+  background: var(--ds-surface);
+  border: 2px dashed var(--ds-border-default);
+  border-radius: var(--ds-radius-tile);
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  & > .ds-icon { color: var(--ds-action-default); }
+  &[data-drop-target] {
+    background: var(--ds-info-bg);
+    border-style: solid;
+    border-color: var(--ds-action-default);
+  }
+  &[data-focus-visible] { box-shadow: var(--ds-ring); }
+  &[data-disabled] {
+    background: var(--ds-disabled-bg);
+    color: var(--ds-disabled-fg);
+  }
+}
+.ds-file-list {
+  display: grid;
+  gap: var(--ds-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+}
 
 /* src/css/components/navigation/link.css */
 /* Navigation / Link (240x44) + inline link. */
