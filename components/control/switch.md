@@ -24,5 +24,5 @@ Use for settings that apply at once (notifications, display preferences). Inside
 ## Reference markup
 
 ```html
-<label class="ds-switch is-checked"><input type="checkbox" role="switch" checked class="ds-visually-hidden"><span class="ds-switch__track" aria-hidden="true"></span>Email updates</label>
+<label class="ds-switch is-checked"><input type="checkbox" role="switch" checked><span class="ds-switch__track" aria-hidden="true"></span>Email updates</label>
 ```
