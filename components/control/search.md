@@ -48,7 +48,7 @@ Variant axes:
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <label class="ds-search"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-search"/></svg><input type="search" placeholder="Search community" aria-label="Search community"></label>

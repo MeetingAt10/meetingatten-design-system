@@ -1,0 +1,28 @@
+{
+  "name": "meetingatten-design-system-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "refresh": "node -e \"require('fs').rmSync('node_modules/@meetingat10/design-system',{recursive:true,force:true})\" && npm install --no-audit --no-fund",
+    "gen": "node scripts/gen-props.mjs",
+    "dev": "npm run gen && next dev",
+    "build": "npm run gen && next build"
+  },
+  "dependencies": {
+    "@internationalized/date": "3.12.4",
+    "@mdx-js/mdx": "3.1.1",
+    "@meetingat10/design-system": "file:..",
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remark-gfm": "4.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "4.3.3",
+    "@types/node": "20.19.43",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
+  }
+}

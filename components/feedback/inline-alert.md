@@ -40,7 +40,7 @@ Info "Illustrative schedule / These times are examples, not live availability.";
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <div class="ds-alert ds-alert--error" role="alert"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-alert"/></svg><div><strong class="ds-alert__title">A subject is required</strong><span class="ds-alert__body">Add a brief subject, then try again. Your draft remains on this page.</span></div></div>

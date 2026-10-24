@@ -69,7 +69,7 @@ Inline SVG generated from `assets/icons/sprite.svg` at build time (`src/react/ic
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <svg class="ds-icon" aria-hidden="true"><use href="#ds-search"/></svg>   <!-- 20px / 1.75 -->

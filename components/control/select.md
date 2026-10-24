@@ -53,7 +53,7 @@ React Aria `Select`: arrow keys and type-ahead on the trigger, the listbox opens
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <div class="ds-field">

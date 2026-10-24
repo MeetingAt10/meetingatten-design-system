@@ -22,12 +22,12 @@ Every surface uses the same two themes from the Figma Semantic modes: `data-them
 | `components/` | Specs per Figma component (variants, sizes, tokens per state, copy, a11y, markup) |
 | `foundations/`, `themes/`, `docs/` | Guidance synced with the Figma frame text; `docs/figma-parity.md` maps every Figma token, style and component |
 | `assets/` | `logo/*.svg` (official Figma exports), `icons/sprite.svg` + `icons/figma/*.svg` (Figma exports) |
-| `templates/`, `preview/` | Static pages (open directly in a browser): landing, admin shell, report detail, auth; full catalog with theme switcher |
+| `site/` | Public showcase (Next.js 16 static export): renders these markdown files with live light/dark demos, generated props tables and example pages. Not part of the package |
 
 ## Commands
 
 ```bash
-npm run build           # tokens/ + src/ -> dist/, inlines the icon sprite into templates/preview
+npm run build           # tokens/ + src/css -> dist/, src/react -> dist/react (tsc), icon map for React
 npm run check:contrast  # WCAG AA gate over declared pairs and text on every wash, per theme (exit 1 on a new failure)
 npm run check:tokens    # no hex/rgb/blends/primitive variables in src or site; treatments built only from locked tokens
 npm run check:parity    # every Figma variable, text style, dimension and component compared with the repo

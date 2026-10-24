@@ -27,7 +27,7 @@ Variant axes:
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <article class="ds-record"><h3 class="ds-type-h3">DEMO-024</h3><span class="ds-badge ds-badge--warning">Draft · policy gate</span>

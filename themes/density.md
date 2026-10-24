@@ -26,7 +26,7 @@ Like `data-theme`, it works on any element. `.ds-body` and any element with `dat
 | Roles | Role badge + note in the sidebar ("Own reports only · proposed permission"); not a privacy or status signal |
 | Reports | Restricted-report pages always show the durable Privacy Notice, keep submission disabled until policy is confirmed, and use neutral titles and notifications |
 
-Patterns: `templates/admin-shell.html` (community overview), `templates/report-detail.html` (restricted report).
+Examples on the design system site: Admin overview and Report detail (`site/app/_site/examples/bodies.tsx`).
 
 ## Comfortable (landing) guidance
 
@@ -49,4 +49,4 @@ Figma has **no landing-page frame**. These patterns are composed from the Figma 
 | Keep tagline exact: Your Access to the College of Computer Studies | Reword the tagline or imply a seal |
 | Label synthetic content `DEMO` | Real student names or data |
 
-Pattern: `templates/landing.html`.
+Example on the design system site: Landing page (`site/app/_site/examples/bodies.tsx`).

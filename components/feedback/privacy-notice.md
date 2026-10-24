@@ -30,7 +30,7 @@ Title "Policy confirmation required". Body "Access permission: assigned reviewer
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <aside class="ds-notice" aria-labelledby="pn"><h3 class="ds-notice__title" id="pn"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-lock"/></svg>Policy confirmation required</h3>

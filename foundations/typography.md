@@ -1,3 +1,6 @@
+---
+demo: TypeScale
+---
 # Typography
 
 Source: Figma text styles "ACCS 2026 / *" (11 styles). Plus Jakarta Sans headings, Inter body, JetBrains Mono code. Sizes ship in rem (16px = 1rem) so user text scaling is preserved. Mobile H1 uses the H2 style (no duplicate style).

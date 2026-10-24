@@ -33,7 +33,7 @@ Variant axes:
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <img class="ds-logo" src="assets/logo/logo-compact-minimum.svg" alt="ACCS">

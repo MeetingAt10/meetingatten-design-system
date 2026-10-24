@@ -48,7 +48,7 @@ Label "How can we help?", placeholder "Describe the topic you’d like to discus
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <div class="ds-field">

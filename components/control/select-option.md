@@ -48,7 +48,7 @@ Pass `textValue` when the children are not plain text (used for type-ahead and f
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <li class="ds-option" role="option" aria-selected="true"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-check"/></svg>Course planning</li>

@@ -46,7 +46,7 @@ Title "Discard this demo draft?" Body "The unsent sample draft will be removed f
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <div class="ds-scrim"><div class="ds-modal" role="dialog" aria-modal="true" aria-labelledby="m-t">

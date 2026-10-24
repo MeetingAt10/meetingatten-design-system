@@ -11,6 +11,8 @@ Work toward 0.3.0 (see `context/deltas/2026-10-24-v0.3.0-rebuild.md`).
 - Themes are `data-theme="light"` and `data-theme="dark"`; without the attribute the page follows `prefers-color-scheme`. Removed theme names: `accs-landing`, `accs-admin`, `accs-admin-dark`, `accs-light`, `accs-dark`, and the `.theme-*` classes.
 - Removed the legacy `--accs-*` CSS variables; use `--ds-*`.
 - Removed `.ds-body--app`; set `data-density="compact"` instead.
+- `preview/` and `templates/` removed; the site replaces them. `templates` dropped from the package `files`.
+- `.ds-stack` no longer stretches its children when a sibling grid column is taller (`align-content: start`).
 - `themes/accs-admin/` and `themes/accs-landing/` replaced by `themes/light-dark.md` and `themes/density.md`.
 
 - Tailwind is strict: `--color-*: initial`, Figma primitives no longer exposed (`bg-neutral-500`, `bg-brand-*`), legacy `ink`, `ink-secondary`, `line` removed. `rounded-overlay` and `shadow-raised` (elevation) replaced by `rounded-card` (12px) and `shadow-card` / `shadow-overlay`.
@@ -19,6 +21,7 @@ Work toward 0.3.0 (see `context/deltas/2026-10-24-v0.3.0-rebuild.md`).
 - Soft layers: cards, table container, report record and view state are borderless with `card-shadow` and radius 12; modal, toast and listbox use `overlay-shadow`; inline alert and consultation slot radius 8. `.ds-card--raised` removed (cards are raised by default).
 
 ### Added
+- `site/`: public showcase (Next.js 16 static export). Renders the markdown specs with live light/dark demos (component demos plus color swatches and the type scale), props tables generated from the TypeScript types, four example pages (landing, admin overview, sign-in, report detail), per-page title, description, canonical URL and Open Graph image, `sitemap.xml` and `robots.txt`.
 - React layer: `@meetingat10/design-system/react` (React Aria Components 1.22.1, compiled with `tsc` to `dist/react/`, `"use client"` kept), starting with `Button` (variants, `size`, `block`, `loading`). `npm test` (Vitest + Testing Library + axe), `npm run typecheck`.
 - Interactive cards (`a.ds-card`, `button.ds-card`, `.ds-card[data-interactive]`) lift 2px on hover; reduced motion keeps only the shadow change.
 - `.ds-wash`, `.ds-tile` (+ `--secondary`, `--accent`, `--neutral`), `.ds-features` / `.ds-feature`, `.ds-divider`.

@@ -2,7 +2,7 @@
 
 Specs mirror the 48 Figma components of the page "ACCS Design System - 2026" 1:1: same names (`ACCS 2026 / Category / Family`), variant axes, sizes, radii, paddings, gaps and copy. Figma states: Default, Hover, Pressed, Focus, Disabled, Error, Loading where applicable; Selected, Expanded, Availability and Appearance are separate axes. Focus means keyboard focus-visible; "active" is always named Pressed.
 
-Styles: `src/css/components/<category>/<name>.css` (built to `dist/components.css`). React components: `src/react/<category>/<Name>.tsx` (built to `dist/react/`, imported from `@meetingat10/design-system/react`), on React Aria Components. Proposed, not approved. Complete token/component mapping: [docs/figma-parity.md](../docs/figma-parity.md). Live state matrices: `preview/index.html`.
+Styles: `src/css/components/<category>/<name>.css` (built to `dist/components.css`). React components: `src/react/<category>/<Name>.tsx` (built to `dist/react/`, imported from `@meetingat10/design-system/react`), on React Aria Components. Proposed, not approved. Complete token/component mapping: [docs/figma-parity.md](../docs/figma-parity.md). Live demos in light and dark: the design system site (`site/`).
 
 | Figma component | Spec |
 |---|---|

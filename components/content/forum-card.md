@@ -30,7 +30,7 @@ Title "What helped you understand recursion?" Body "A sample community question.
 
 ## Reference markup
 
-Classes come from `dist/components.css`. Live matrices: `preview/index.html`.
+Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
 
 ```html
 <article class="ds-card">

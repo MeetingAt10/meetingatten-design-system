@@ -1,3 +1,6 @@
+---
+demo: Swatches
+---
 # Color
 
 Source: Figma "ACCS 2026 / Primitives" (54 colors) and "ACCS 2026 / Semantic" (LIGHT / DARK). Full value tables: [docs/figma-parity.md](../docs/figma-parity.md). Use purpose, not hex, in product UI. All choices are **PROPOSED** in Figma; institutional color approval is pending.
