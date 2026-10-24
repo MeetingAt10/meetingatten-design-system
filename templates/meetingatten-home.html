@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-theme="meetingatten">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Meeting At 10 - the team behind ACCS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../dist/tokens.css"><link rel="stylesheet" href="../dist/components.css">
+<style>
+.hero{padding-block:var(--ds-space-24) var(--ds-space-16)}
+.big{font:var(--ds-font-weight-extrabold) clamp(3rem,10vw,7rem)/.95 var(--ds-font-family-display);letter-spacing:-.045em;margin:0}
+.big em{font-style:normal;background:var(--ds-accent);color:var(--ds-on-accent);padding-inline:.12em;border-radius:var(--ds-radius-sm)}
+.meta{font:var(--ds-font-weight-medium) var(--ds-text-sm-size)/1.5 var(--ds-font-family-mono);color:var(--ds-ink-secondary)}
+.rule{border:0;border-top:1px solid var(--ds-ink);margin:0}
+.member{display:grid;grid-template-columns:4rem 1fr auto;gap:var(--ds-space-4);align-items:baseline;padding-block:var(--ds-space-5);border-bottom:1px solid var(--ds-line)}
+.log{background:var(--ds-surface);border:1px solid var(--ds-line);border-radius:var(--ds-radius-card);padding:var(--ds-space-5);font-family:var(--ds-font-family-mono);font-size:var(--ds-text-sm-size);line-height:1.8}
+.log b{color:var(--ds-accent-fg)}
+</style>
+</head>
+<body class="ds-body">
+<header class="ds-container"><nav class="ds-nav" aria-label="Primary"><a class="ds-wordmark" href="#">Meeting At 10</a>
+<ul class="ds-nav__links"><li><a href="#work" aria-current="page">Work</a></li><li><a href="#team">Team</a></li><li><a href="#log">Log</a></li></ul>
+<a class="ds-btn ds-btn--primary ds-btn--sm" href="#contact">Say hello</a></nav></header>
+<main>
+<section class="ds-container hero">
+  <p class="meta">@meetingatten &middot; daily, 10:00</p>
+  <h1 class="big" style="margin-top:var(--ds-space-6)">We meet at <em>10</em>.<br>Then we ship.</h1>
+  <p class="ds-lead" style="margin-top:var(--ds-space-8)">A small student dev team building ACCS, the access portal for the College of Computer Studies. Short meetings, written decisions, working software.</p>
+  <div style="display:flex;gap:var(--ds-space-3);margin-top:var(--ds-space-8);flex-wrap:wrap"><a class="ds-btn ds-btn--primary ds-btn--lg" href="#work">See our work</a><a class="ds-btn ds-btn--secondary ds-btn--lg" href="#log">Read the log</a></div>
+</section>
+<section id="work" class="ds-section ds-section--sunken"><div class="ds-container">
+  <p class="ds-eyebrow" style="color:var(--ds-accent-fg)">Selected work</p>
+  <h2 class="ds-h1" style="margin-top:var(--ds-space-3)">ACCS</h2>
+  <p class="ds-lead" style="margin-top:var(--ds-space-3)">Forum, student support, and confidential grievances for one college.</p>
+  <div class="ds-grid ds-grid--3" style="margin-top:var(--ds-space-10)">
+    <article class="ds-card"><h3 class="ds-h3">Landing</h3><p class="ds-muted">Next.js, Tailwind 4</p><span class="ds-badge ds-badge--accent">In progress</span></article>
+    <article class="ds-card"><h3 class="ds-h3">Admin portal</h3><p class="ds-muted">Vite, React, TanStack Router</p><span class="ds-badge ds-badge--info">Planned</span></article>
+    <article class="ds-card"><h3 class="ds-h3">Design system</h3><p class="ds-muted">Tokens, themes, specs</p><span class="ds-badge ds-badge--success">v0.1</span></article>
+  </div>
+</div></section>
+<section id="team" class="ds-section"><div class="ds-container">
+  <p class="ds-eyebrow">Team</p><h2 class="ds-h1" style="margin:var(--ds-space-3) 0 var(--ds-space-8)">Who is in the room</h2>
+  <hr class="rule">
+  <div class="member"><span class="meta">01</span><strong>Name pending</strong><span class="ds-badge ds-badge--role">Lead</span></div>
+  <div class="member"><span class="meta">02</span><strong>Name pending</strong><span class="ds-badge ds-badge--role">Frontend</span></div>
+  <div class="member"><span class="meta">03</span><strong>Name pending</strong><span class="ds-badge ds-badge--role">Backend</span></div>
+</div></section>
+<section id="log" class="ds-container" style="padding-bottom:var(--ds-section-y)">
+  <p class="ds-eyebrow">Log</p><h2 class="ds-h1" style="margin:var(--ds-space-3) 0 var(--ds-space-6)">Yesterday, 10:00</h2>
+  <div class="log"><div><b>decided</b> use one design system across both repos</div><div><b>blocked</b> final logo approval</div><div><b>next</b> ship landing hero</div></div>
+</section>
+</main>
+<footer class="ds-footer" id="contact"><div class="ds-container" style="display:flex;justify-content:space-between;gap:var(--ds-space-6);flex-wrap:wrap">
+<span class="ds-wordmark" style="color:var(--ds-inverse-ink)">Meeting At 10</span><span class="ds-muted ds-mono" style="font-size:var(--ds-text-sm-size)">@meetingatten</span></div></footer>
+</body></html>

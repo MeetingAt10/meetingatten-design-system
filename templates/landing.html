@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-theme="accs-landing">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ACCS - Your Access to the College of Computer Studies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../dist/tokens.css"><link rel="stylesheet" href="../dist/components.css">
+<style>
+.hero{display:grid;gap:var(--ds-space-12);grid-template-columns:1fr;align-items:center;padding-block:var(--ds-space-20)}
+@media(min-width:64rem){.hero{grid-template-columns:1.1fr .9fr}}
+.hero__actions{display:flex;flex-wrap:wrap;gap:var(--ds-space-3);margin-top:var(--ds-space-8)}
+.stack>*+*{margin-top:var(--ds-space-6)}
+.feature{display:grid;gap:var(--ds-space-3);align-content:start}
+.feature .ds-empty__icon{border-radius:var(--ds-radius-control)}
+.steps{counter-reset:s;display:grid;gap:var(--ds-space-8);grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));list-style:none;padding:0;margin:var(--ds-space-10) 0 0}
+.steps li::before{counter-increment:s;content:"0" counter(s);font:var(--ds-font-weight-semibold) var(--ds-text-sm-size)/1 var(--ds-font-family-mono);color:var(--ds-accent-fg);display:block;margin-bottom:var(--ds-space-3)}
+.row{display:flex;justify-content:space-between;gap:var(--ds-space-4);padding-block:var(--ds-space-3);border-bottom:1px solid var(--ds-line);font-size:var(--ds-text-sm-size)}
+.row:last-child{border:0}
+.footer-grid{display:grid;gap:var(--ds-space-10);grid-template-columns:repeat(auto-fit,minmax(10rem,1fr))}
+.footer-grid ul{list-style:none;padding:0;margin:var(--ds-space-3) 0 0;display:grid;gap:var(--ds-space-2);font-size:var(--ds-text-sm-size)}
+.skip{position:absolute;left:-999px}.skip:focus{left:var(--ds-space-4);top:var(--ds-space-4);background:var(--ds-surface);padding:var(--ds-space-2) var(--ds-space-3);z-index:var(--ds-z-tooltip)}
+</style>
+</head>
+<body class="ds-body">
+<a class="skip" href="#main">Skip to content</a>
+<header class="ds-container"><nav class="ds-nav" aria-label="Primary">
+  <a class="ds-wordmark" href="#">ACCS</a>
+  <ul class="ds-nav__links"><li><a href="#features" aria-current="page">Features</a></li><li><a href="#how">How it works</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#">Contact</a></li></ul>
+  <a class="ds-btn ds-btn--primary ds-btn--sm" href="auth.html">Sign in</a>
+</nav></header>
+<main id="main">
+<section class="ds-container hero">
+  <div>
+    <p class="ds-eyebrow">College of Computer Studies</p>
+    <h1 class="ds-display" style="margin-top:var(--ds-space-4)">Your Access to the College of Computer Studies</h1>
+    <p class="ds-lead" style="margin-top:var(--ds-space-6)">One place for announcements, student support, the community forum, and confidential concerns. Clear, structured, and always one step away.</p>
+    <div class="hero__actions"><a class="ds-btn ds-btn--primary ds-btn--lg" href="auth.html">Get access <svg class="ds-icon ds-icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a class="ds-btn ds-btn--secondary ds-btn--lg" href="#how">See how it works</a></div>
+  </div>
+  <div class="ds-card ds-card--raised" aria-label="Example department updates">
+    <p class="ds-eyebrow">This week</p>
+    <h2 class="ds-h3" style="margin-block:var(--ds-space-2) var(--ds-space-4)">Department updates</h2>
+    <div class="row"><span>Midterm schedule posted</span><span class="ds-badge ds-badge--info">New</span></div>
+    <div class="row"><span>Capstone consultation slots</span><span class="ds-badge ds-badge--success">Open</span></div>
+    <div class="row"><span>Lab 3 maintenance</span><span class="ds-badge ds-badge--warning">Friday</span></div>
+    <div class="row"><span>Scholarship forms</span><span class="ds-badge">Closed</span></div>
+  </div>
+</section>
+<section id="features" class="ds-section ds-section--sunken"><div class="ds-container">
+  <p class="ds-eyebrow">What you get</p>
+  <h2 class="ds-h1" style="margin-top:var(--ds-space-3);max-width:20ch">Everything the college runs on, in one place</h2>
+  <div class="ds-grid ds-grid--3" style="margin-top:var(--ds-space-12)">
+    <article class="ds-card feature"><span class="ds-empty__icon"><svg class="ds-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><h3 class="ds-h3">Community forum</h3><p class="ds-muted" style="margin:0">Ask, answer, and share with students and faculty. Friendly by default, moderated by people.</p></article>
+    <article class="ds-card feature"><span class="ds-empty__icon"><svg class="ds-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg></span><h3 class="ds-h3">Student support</h3><p class="ds-muted" style="margin:0">Track requests, see who owns them, and know the next step without chasing anyone.</p></article>
+    <article class="ds-card feature"><span class="ds-empty__icon"><svg class="ds-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"/></svg></span><h3 class="ds-h3">Confidential grievances</h3><p class="ds-muted" style="margin:0">A private, secure channel with clear status and no public visibility.</p></article>
+  </div>
+</div></section>
+<section id="how" class="ds-section"><div class="ds-container">
+  <p class="ds-eyebrow">How it works</p>
+  <h2 class="ds-h1" style="margin-top:var(--ds-space-3);max-width:20ch">Three steps to get started</h2>
+  <ol class="steps"><li><h3 class="ds-h3">Sign in</h3><p class="ds-muted">Use your college account.</p></li><li><h3 class="ds-h3">Pick what you need</h3><p class="ds-muted">Forum, support, or a private concern.</p></li><li><h3 class="ds-h3">Follow the status</h3><p class="ds-muted">Every request shows its owner and next step.</p></li></ol>
+</div></section>
+<section id="privacy" class="ds-container" style="padding-bottom:var(--ds-section-y)">
+  <div class="ds-band"><h2 class="ds-h1" style="max-width:22ch">Ready to get your Access?</h2><p class="ds-lead" style="color:var(--ds-on-action);margin-top:var(--ds-space-3)">Sign in with your college account in under a minute.</p>
+  <a class="ds-btn ds-btn--lg" style="background:var(--ds-surface);color:var(--ds-ink);margin-top:var(--ds-space-6)" href="auth.html">Sign in <svg class="ds-icon ds-icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+</section>
+</main>
+<footer class="ds-footer"><div class="ds-container footer-grid">
+  <div><span class="ds-wordmark" style="color:var(--ds-inverse-ink)">ACCS</span><p class="ds-muted" style="font-size:var(--ds-text-sm-size);max-width:32ch">Access for College of Computer Studies.</p></div>
+  <nav aria-label="Product"><strong>Product</strong><ul><li><a href="#features">Features</a></li><li><a href="#how">How it works</a></li></ul></nav>
+  <nav aria-label="Support"><strong>Support</strong><ul><li><a href="#">Help center</a></li><li><a href="#">Contact</a></li></ul></nav>
+  <nav aria-label="Legal"><strong>Legal</strong><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></nav>
+</div></footer>
+</body></html>

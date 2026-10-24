@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" data-theme="accs-landing">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign in - ACCS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../dist/tokens.css"><link rel="stylesheet" href="../dist/components.css">
+<style>
+.auth{min-height:100vh;display:grid;grid-template-columns:1fr}
+@media(min-width:64rem){.auth{grid-template-columns:1fr 1fr}}
+.auth__aside{display:none;background:var(--ds-action);color:var(--ds-on-action);padding:var(--ds-space-16);align-content:space-between}
+@media(min-width:64rem){.auth__aside{display:grid}}
+.auth__main{display:grid;place-items:center;padding:var(--ds-space-6)}
+.auth__form{width:min(24rem,100%);display:grid;gap:var(--ds-space-5)}
+.auth__row{display:flex;justify-content:space-between;align-items:center;font-size:var(--ds-text-sm-size)}
+</style>
+</head>
+<body class="ds-body">
+<div class="auth">
+  <aside class="auth__aside"><a class="ds-wordmark" style="color:var(--ds-on-action)" href="landing.html">ACCS</a>
+    <h2 class="ds-h1" style="max-width:14ch">Your Access to the College of Computer Studies</h2>
+    <p style="margin:0;font-size:var(--ds-text-sm-size)">Access for College of Computer Studies</p></aside>
+  <main class="auth__main"><form class="auth__form" novalidate>
+    <div><h1 class="ds-h1">Sign in</h1><p class="ds-muted" style="margin:var(--ds-space-2) 0 0">Use your college account.</p></div>
+    <div class="ds-field"><label class="ds-label" for="email">College email</label><input class="ds-input" id="email" type="email" autocomplete="username" placeholder="name@school.edu"></div>
+    <div class="ds-field"><label class="ds-label" for="pw">Password</label><input class="ds-input" id="pw" type="password" autocomplete="current-password" aria-invalid="true" aria-describedby="pw-err"><p class="ds-error" id="pw-err" role="alert">Password is incorrect. Try again or reset it.</p></div>
+    <div class="auth__row"><label><input type="checkbox"> Keep me signed in</label><a class="ds-link" href="#">Forgot password?</a></div>
+    <button class="ds-btn ds-btn--primary" type="submit">Sign in</button>
+    <p class="ds-muted" style="margin:0;font-size:var(--ds-text-sm-size)">Need access? <a class="ds-link" href="#">Contact your department</a>.</p>
+  </form></main>
+</div>
+</body></html>
