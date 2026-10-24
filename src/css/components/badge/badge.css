@@ -4,7 +4,7 @@
   align-items: center;
   gap: 6px;
   padding: 5px 10px;
-  border-radius: var(--ds-radius-4);
+  border-radius: var(--ds-radius-chip);
   background: var(--ds-disabled-bg);
   color: var(--ds-text-primary);
   font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);

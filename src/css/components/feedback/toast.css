@@ -6,8 +6,8 @@
   padding: var(--ds-space-16);
   background: var(--ds-text-primary);
   color: var(--ds-canvas);
-  border-radius: var(--ds-radius-8);
-  box-shadow: var(--ds-shadow-elevation-1);
+  border-radius: var(--ds-radius-tile);
+  box-shadow: var(--ds-overlay-shadow);
   font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
   & .ds-icon { color: var(--ds-success-on-inverse); }
 }

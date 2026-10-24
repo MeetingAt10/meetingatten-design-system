@@ -15,7 +15,6 @@
 @media(min-width:1024px){.hero{grid-template-columns:7fr 5fr;padding-block:var(--ds-space-80)}}
 .hero h1{font:700 clamp(1.875rem,4vw,2.25rem)/1.22 var(--ds-font-family-display);max-width:20ch;margin:var(--ds-space-16) 0 var(--ds-space-24)}
 .band{background:var(--ds-surface);border-block:1px solid var(--ds-border-subtle)}
-.num{font:700 2.5rem/1 var(--ds-font-family-display);color:var(--ds-action-default);margin:0 0 var(--ds-space-16)}
 .footer{background:var(--ds-surface);border-top:3px solid var(--ds-action-default);padding-block:var(--ds-space-48)}
 .footer ul{list-style:none;margin:var(--ds-space-8) 0 0;padding:0;display:grid;gap:var(--ds-space-4)}
 .f-grid{display:grid;gap:var(--ds-space-32);grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))}
@@ -46,7 +45,7 @@
   <a class="ds-btn ds-btn--primary" href="auth.html">Sign in</a>
 </nav></header>
 <main id="main">
-<section class="ds-container hero" aria-labelledby="h">
+<div class="ds-wash"><section class="ds-container hero" aria-labelledby="h">
   <div>
     <p class="ds-eyebrow">Student · community access</p>
     <h1 id="h">Your Access to the College of Computer Studies</h1>
@@ -55,14 +54,14 @@
     <p class="ds-tag-mono" style="margin-top:32px">Proposed interface · Fictional content · No real student data</p>
   </div>
   <div class="ds-stack" aria-label="Community preview"><article class="ds-card"><div class="ds-card__head"><span class="ds-badge ds-badge--info">Announcement</span><span class="ds-tag-mono">Demo</span></div><h3 class="ds-type-h3">Make room for your next idea.</h3><p class="ds-type-body">Explore the proposed peer study circle and share a topic you’d like to learn together.</p><div class="ds-card__meta"><span>Community desk · illustrative</span><a class="ds-link" href="#">Read update <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></div></article><article class="ds-card"><div class="ds-card__head"><span class="ds-badge ds-badge--accent">Study together</span><span class="ds-tag-mono">Demo</span></div><h3 class="ds-type-h3">What helped you understand recursion?</h3><p class="ds-type-body">A sample community question. Share a useful explanation or ask a follow-up—everyone starts somewhere.</p><div class="ds-card__meta"><span>Demo member · 6 sample replies · Open discussion</span></div><a class="ds-link" href="#" style="justify-self:start">Join the conversation <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article></div>
-</section>
+</section></div>
 <section class="band" id="community"><div class="ds-container ds-section">
   <p class="ds-eyebrow">One system. Different responsibilities.</p>
   <h2 class="ds-type-h1" style="margin:16px 0 48px;max-width:22ch">Community, consultation and reports, each in its own voice.</h2>
-  <div class="ds-cols ds-cols--3">
-    <article class="ds-card"><p class="num">01</p><h3 class="ds-type-h3"><svg class="ds-icon ds-icon--24" aria-hidden="true"><use href="#ds-forum"/></svg> Community</h3><p class="ds-type-body">Casual and encouraging. Share a useful explanation or ask a follow-up—everyone starts somewhere.</p><a class="ds-link" href="#" style="justify-self:start">Join the conversation <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article>
-    <article class="ds-card" id="consultations-card"><p class="num">02</p><h3 class="ds-type-h3"><svg class="ds-icon ds-icon--24" aria-hidden="true"><use href="#ds-calendar"/></svg> Consultations</h3><p class="ds-type-body">Empathetic and clear. Choose a sample time that works for you. You can review it before continuing.</p><a class="ds-link" href="#consultations" style="justify-self:start">Explore consultation <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article>
-    <article class="ds-card" id="reports"><p class="num">03</p><h3 class="ds-type-h3"><svg class="ds-icon ds-icon--24" aria-hidden="true"><use href="#ds-report"/></svg> Reports</h3><p class="ds-type-body">Serious and structured. Submission is unavailable while recipients and access rules are confirmed.</p><a class="ds-link" href="report-detail.html" style="justify-self:start">See a sample record <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article>
+  <div class="ds-features">
+    <article class="ds-feature"><span class="ds-tile ds-tile--secondary"><svg class="ds-icon ds-icon--24" aria-hidden="true"><use href="#ds-forum"/></svg></span><h3 class="ds-type-h3">Community</h3><p class="ds-type-body ds-secondary">Casual and encouraging. Share a useful explanation or ask a follow-up—everyone starts somewhere.</p><a class="ds-link" href="#">Join the conversation <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article>
+    <article class="ds-feature" id="consultations-card"><span class="ds-tile ds-tile--accent"><svg class="ds-icon ds-icon--24" aria-hidden="true"><use href="#ds-calendar"/></svg></span><h3 class="ds-type-h3">Consultations</h3><p class="ds-type-body ds-secondary">Empathetic and clear. Choose a sample time that works for you. You can review it before continuing.</p><a class="ds-link" href="#consultations">Explore consultation <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article>
+    <article class="ds-feature" id="reports"><span class="ds-tile ds-tile--info"><svg class="ds-icon ds-icon--24" aria-hidden="true"><use href="#ds-report"/></svg></span><h3 class="ds-type-h3">Reports</h3><p class="ds-type-body ds-secondary">Serious and structured. Submission is unavailable while recipients and access rules are confirmed.</p><a class="ds-link" href="report-detail.html">See a sample record <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></article>
   </div></div></section>
 <section class="ds-container ds-section" id="consultations"><div class="ds-cols ds-cols--main" style="align-items:start">
   <div class="ds-stack--24 ds-stack"><p class="ds-eyebrow">Illustrative schedule</p><h2 class="ds-type-h1">Let’s find a time to talk.</h2><p class="ds-type-body-large ds-secondary ds-reading">Choose a sample time for a general course-planning consultation. Consultation is support, not an urgent-response channel.</p>

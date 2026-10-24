@@ -3,9 +3,10 @@
   margin: var(--ds-space-4) 0 0;
   padding: var(--ds-space-4);
   list-style: none;
-  background: var(--ds-raised);
-  border: 1px solid var(--ds-border-default);
-  border-radius: var(--ds-radius-0);
+  background: var(--ds-card-bg);
+  border: 0;
+  border-radius: var(--ds-radius-tile);
+  box-shadow: var(--ds-overlay-shadow);
   display: grid;
   gap: 0;
 }
@@ -15,7 +16,7 @@
   gap: var(--ds-space-8);
   min-height: var(--ds-size-control-h);
   padding: 0 var(--ds-space-8);
-  border-radius: var(--ds-radius-6);
+  border-radius: var(--ds-radius-control);
   font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
   color: var(--ds-text-primary);
   cursor: pointer;

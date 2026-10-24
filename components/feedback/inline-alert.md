@@ -15,7 +15,7 @@ Variant axes:
 
 | Part | Spec |
 |---|---|
-| Container | radius 6, padding 16, gap 12, tone background, 3px left bar in tone foreground |
+| Container | `radius-tile` (8), padding 16, gap 12, tone background, 3px left bar in tone foreground |
 | Icon | Info: `Icon / Alert` outline circle glyph; Success: Check; Warning and Error: Alert (triangle), 20px |
 | Title | `Label` in tone fg: "System message" |
 | Body | `Body` in `color/text-primary` |

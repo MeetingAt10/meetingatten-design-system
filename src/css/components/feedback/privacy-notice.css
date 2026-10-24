@@ -6,7 +6,7 @@
   background: var(--ds-warning-bg);
   color: var(--ds-text-primary);
   border: 1px solid var(--ds-warning-fg);
-  border-radius: var(--ds-radius-8);
+  border-radius: var(--ds-radius-tile);
 }
 .ds-notice__title {
   display: flex;

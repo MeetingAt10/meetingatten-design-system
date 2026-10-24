@@ -16,7 +16,7 @@ Variant axes:
 | Part | Spec |
 |---|---|
 | Trigger | height 44, radius 6, value + chevron (`Icon / Chevron` 16, rotated) |
-| Popup | `color/raised` fill, 1px `color/border-default`, square corners, Select Option rows |
+| Popup | `card-bg` fill, `overlay-shadow`, `radius-tile` (8), no border, Select Option rows |
 | Open Error / Loading | popup shows "Choices couldn’t load. Try again." + Retry choices button, or "Loading choices…"; these report option retrieval, not a selected-value failure |
 
 ## States

@@ -9,7 +9,7 @@
   max-width: 280px;
   background: var(--ds-canvas);
   border: 1px solid var(--ds-border-default);
-  border-radius: var(--ds-radius-6);
+  border-radius: var(--ds-radius-control);
   color: var(--ds-text-secondary);
   & input {
     all: unset;

@@ -15,7 +15,7 @@ Variant axes:
 
 | Part | Spec |
 |---|---|
-| Container | radius 8, padding 20, gap 16, 1px `color/border-default` |
+| Container | `radius-card` (12), padding 20, gap 16, `card-bg`, `card-shadow`, no border |
 | Title | `H3`: "DEMO-024" |
 | Badge | Status "Draft · policy gate" |
 | Facts | "Category: General concern", "Permission: Student · own reports" |

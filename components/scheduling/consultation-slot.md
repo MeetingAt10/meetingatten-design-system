@@ -15,7 +15,7 @@ Variant axes:
 
 | Part | Spec |
 |---|---|
-| Container | 388 x 112 master, radius 6, padding 12 / 16, gap 4, 1px `color/border-default` |
+| Container | 388 x 112 master, `radius-tile` (8), padding 12 / 16, gap 4, 1px `color/border-default` |
 | Time | `Label` 14/20 / 600: "09:00–09:30" |
 | State line | `Caption`: "+ Available", "✓ Selected", "— Booked", "× Unavailable" |
 | Message | error "Couldn’t check this slot. Try again."; loading "Checking availability…" |

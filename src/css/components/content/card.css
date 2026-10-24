@@ -1,12 +1,14 @@
-/* Content / Announcement Card, Forum Card (824 wide, radius 8, padding 24, gap 12). */
+/* Content / Card: collection items (Announcement Card, Forum Card) and floating panels only.
+   Soft layers: borderless, card-bg + card-shadow (dark: raised tone + top highlight), radius 12. */
 .ds-card {
   display: grid;
   gap: var(--ds-size-12);
   align-content: start;
   padding: var(--ds-space-24);
-  background: var(--ds-surface);
-  border: 1px solid var(--ds-border-subtle);
-  border-radius: var(--ds-radius-8);
+  background: var(--ds-card-bg);
+  border: 0;
+  border-radius: var(--ds-radius-card);
+  box-shadow: var(--ds-card-shadow);
 }
 .ds-card__head {
   display: flex;
@@ -23,8 +25,21 @@
   color: var(--ds-text-secondary);
 }
 .ds-card > .ds-link, .ds-card .ds-card__meta .ds-link { margin-left: calc(-1 * var(--ds-space-8)); }
-.ds-card--raised { box-shadow: var(--ds-shadow-elevation-1); }
-.ds-card--overlay {
-  box-shadow: var(--ds-shadow-elevation-2);
-  border-radius: var(--ds-radius-12);
+.ds-card--overlay { box-shadow: var(--ds-overlay-shadow); }
+/* Interactive card (a, button or [data-interactive]): lifts 2px and steps the shadow; reduced motion keeps only the shadow. */
+.ds-card:is(a, button, [data-interactive]) {
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow var(--ds-motion-duration-base) var(--ds-motion-ease-standard), transform var(--ds-motion-duration-base) var(--ds-motion-ease-standard);
+  &:is(:hover, [data-hovered], .is-hover) {
+    box-shadow: var(--ds-card-shadow-hover);
+    transform: translateY(var(--ds-lift));
+  }
+  &:is(:focus-visible, [data-focus-visible], .is-focus) { box-shadow: var(--ds-ring), var(--ds-card-shadow-hover); }
+  @media (prefers-reduced-motion: reduce) {
+    &:is(:hover, [data-hovered], .is-hover) { transform: none; }
+  }
 }

@@ -15,7 +15,7 @@ Variant axes:
 
 | Part | Spec |
 |---|---|
-| Container | radius 8, padding 24, gap 12, `color/surface`, 1px `color/border-subtle` |
+| Container | `radius-card` (12), padding 24, gap 12, `card-bg`, `card-shadow`, no border (soft layers); interactive cards lift 2px on hover |
 | Tag chip | "Announcement", `color/info/bg` + `info/fg`, radius 4 |
 | DEMO label | `Code` mono caption, right aligned |
 | Title | `H3` 20/28 |

@@ -76,7 +76,7 @@ const LAYERS = {
   'ds.components': ['icon/icon', 'feedback/spinner', 'control/button', 'control/icon-button', 'control/field', 'control/select', 'control/search',
     'control/checkbox', 'navigation/link', 'navigation/item', 'navigation/tab', 'navigation/sidebar', 'navigation/top-bar', 'navigation/mobile-header',
     'navigation/app-shell', 'badge/badge', 'content/card', 'scheduling/consultation-slot', 'data/case-timeline', 'feedback/privacy-notice',
-    'feedback/inline-alert', 'feedback/toast', 'feedback/modal', 'data/reports-table', 'data/report-record', 'data/view-state', 'identity/logo'].map((f) => 'components/' + f),
+    'feedback/inline-alert', 'feedback/toast', 'feedback/modal', 'data/reports-table', 'data/report-record', 'data/view-state', 'content/tile', 'layout/wash', 'layout/feature-row', 'layout/divider', 'identity/logo'].map((f) => 'components/' + f),
   'ds.utilities': ['base/utilities'],
 };
 const listed = new Set(Object.values(LAYERS).flat().map((f) => f + '.css'));

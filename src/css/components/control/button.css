@@ -7,7 +7,7 @@
   min-height: var(--ds-size-button-h);
   padding: 0 var(--ds-space-16);
   border: 1px solid transparent;
-  border-radius: var(--ds-radius-6);
+  border-radius: var(--ds-radius-control);
   font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
   text-decoration: none;
   cursor: pointer;

@@ -1,0 +1,23 @@
+/* Content / Tile: 48px icon tile on a semantic tint (soft layers). Icon contrast uses the checked bg/fg pairs. */
+.ds-tile {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  flex: none;
+  border-radius: var(--ds-radius-tile);
+  background: var(--ds-info-bg);
+  color: var(--ds-info-fg);
+}
+.ds-tile--secondary {
+  background: var(--ds-secondary-bg);
+  color: var(--ds-secondary-fg);
+}
+.ds-tile--accent {
+  background: var(--ds-accent-bg);
+  color: var(--ds-accent-fg);
+}
+.ds-tile--neutral {
+  background: var(--ds-disabled-bg);
+  color: var(--ds-text-primary);
+}

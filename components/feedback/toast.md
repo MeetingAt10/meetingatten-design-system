@@ -15,7 +15,7 @@ Variant axes:
 
 | Part | Spec |
 |---|---|
-| Container | radius 8, padding 16, gap 12, fill `color/text-primary` (inverse), text `color/canvas` |
+| Container | `radius-tile` (8), `overlay-shadow`, padding 16, gap 12, fill `color/text-primary` (inverse), text `color/canvas` |
 | Glyph | `Icon / Check` in `color/success/on-inverse` (adapts per mode) |
 | Dismiss | Icon Button Inverse when timed |
 

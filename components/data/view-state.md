@@ -15,7 +15,7 @@ Variant axes:
 
 | Part | Spec |
 |---|---|
-| Container | radius 8, padding 24, gap 16, `color/surface` |
+| Container | `radius-card` (12), padding 24, gap 16, `card-bg`, `card-shadow` |
 | Icon | `Icon / Forum` (empty), spinner (loading), `Icon / Alert` (error), 24px |
 | Title | `H3` |
 | Body / skeleton | `Body`; skeleton bars in `color/disabled/bg` |

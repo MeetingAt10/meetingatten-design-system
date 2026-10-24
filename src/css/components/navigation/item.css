@@ -5,7 +5,7 @@
   gap: var(--ds-space-8);
   min-height: var(--ds-size-button-h);
   padding: 0 var(--ds-size-12);
-  border-radius: var(--ds-radius-6);
+  border-radius: var(--ds-radius-control);
   color: var(--ds-text-primary);
   text-decoration: none;
   font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);

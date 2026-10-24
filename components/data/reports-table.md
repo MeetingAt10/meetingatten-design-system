@@ -15,7 +15,7 @@ Variant axes:
 
 | Part | Spec |
 |---|---|
-| Container | radius 8, 1px `color/border-subtle`; cells radius 0 |
+| Container | `radius-card` (12), `card-bg`, `card-shadow`, no border; cells radius 0. Never wrap the table in a Card |
 | Header | `color/info/bg` fill, mono 12/16 labels: Reference, Category, Status, Action |
 | Rows | reference in `Code` mono; status as words ("Draft · policy gate"); action as Link ("View draft →") |
 

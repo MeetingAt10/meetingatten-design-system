@@ -15,7 +15,13 @@ Work toward 0.3.0 (see `context/deltas/2026-10-24-v0.3.0-rebuild.md`).
 
 - Tailwind is strict: `--color-*: initial`, Figma primitives no longer exposed (`bg-neutral-500`, `bg-brand-*`), legacy `ink`, `ink-secondary`, `line` removed. `rounded-overlay` and `shadow-raised` (elevation) replaced by `rounded-card` (12px) and `shadow-card` / `shadow-overlay`.
 
+- Component CSS moved from `src/components.css` to `src/css/**` (one file per component); `dist/components.css` is now wrapped in `@layer ds.base, ds.components, ds.utilities`, so app CSS overrides it without `!important`.
+- Soft layers: cards, table container, report record and view state are borderless with `card-shadow` and radius 12; modal, toast and listbox use `overlay-shadow`; inline alert and consultation slot radius 8. `.ds-card--raised` removed (cards are raised by default).
+
 ### Added
+- Interactive cards (`a.ds-card`, `button.ds-card`, `.ds-card[data-interactive]`) lift 2px on hover; reduced motion keeps only the shadow change.
+- `.ds-wash`, `.ds-tile` (+ `--secondary`, `--accent`, `--neutral`), `.ds-features` / `.ds-feature`, `.ds-divider`.
+- React Aria state attributes (`[data-hovered]`, `[data-pressed]`, `[data-focus-visible]`, `[data-disabled]`) matched alongside native and forced states; `--ds-ring` focus-ring variable; `--ds-size-eyebrow(-line)`.
 - `tokens/treatments.json`: repo-owned look tokens `card-bg`, `card-shadow`, `card-shadow-hover`, `overlay-shadow`, `wash-accent|secondary|info`, `scrim`, `lift`, `radius-card|tile|control|chip`, emitted as `--ds-*` per theme; Tailwind `bg-card`, `wash-*`, `shadow-card(-hover)`, `shadow-overlay`, `rounded-tile`.
 - `npm run check:tokens` (part of `npm run check`); text-on-wash contrast checks.
 - `data-density="comfortable|compact"` with `--ds-density-text-*` and `--ds-density-section-space(-desktop)` (aliases of existing Body large / Body and space tokens).

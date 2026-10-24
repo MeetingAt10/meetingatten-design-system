@@ -15,7 +15,7 @@ Variant axes:
 
 | Part | Spec |
 |---|---|
-| Container | radius 12, padding 32, gap 20, `color/raised`, `elevation/2` |
+| Container | `radius-card` (12), padding 32, gap 20, `card-bg`, `overlay-shadow`, no border |
 | Header | `H2` 24/32 title + Icon Button close |
 | Body | `Body` 14/22; message `Body small` |
 | Actions | two 48px buttons: Secondary "Keep draft", Destructive "Discard draft" |

@@ -26,7 +26,7 @@
   flex: none;
   background: var(--ds-surface);
   border: 2px solid var(--ds-border-default);
-  border-radius: var(--ds-radius-4);
+  border-radius: var(--ds-radius-chip);
 }
 .ds-check--radio .ds-check__box { border-radius: 50%; }
 .ds-check {

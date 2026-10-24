@@ -6,7 +6,7 @@
   height: var(--ds-size-control-h);
   padding: 0;
   border: 1px solid transparent;
-  border-radius: var(--ds-radius-6);
+  border-radius: var(--ds-radius-control);
   background: var(--ds-surface);
   color: var(--ds-action-default);
   cursor: pointer;
