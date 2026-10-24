@@ -71,6 +71,7 @@ writeFileSync(join(dist, 'tokens.json'), JSON.stringify({ name: pkg.name, versio
   themes: Object.fromEntries(Object.entries(themes).map(([n, t]) => [n, { dark: t.dark, description: t.description, aliases: THEMES[n].aliases, tokens: toObj(t.tokens) }])) }, null, 2) + '\n');
 const flat = { foundations: entries(foundations).map(([n, t]) => ({ name: n, type: t.type, css: cssName(n), value: cssValue(t) })),
   semantic: entries(light).map(([n]) => ({ name: n, css: cssName(n) })), selectable: SELECTABLE,
+  values: Object.fromEntries(Object.keys(themes).map((k) => [k, Object.fromEntries(entries(themes[k].tokens).map(([n, t]) => [n.replace(/^color\./, ''), t.value]))])),
   themes: Object.fromEntries(SELECTABLE.map((a) => { const k = Object.keys(THEMES).find((x) => THEMES[x].aliases.includes(a)); return [a, { source: k, description: themes[k].description }]; })) };
 writeFileSync(join(dist, 'tokens.js'), banner + `window.DS_TOKENS = ${JSON.stringify(flat)};\n`);
 
