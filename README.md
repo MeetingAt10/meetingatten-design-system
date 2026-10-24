@@ -21,7 +21,7 @@ One design system for three surfaces. **ACCS tokens, themes, type, components an
 | `src/components.css` | Token-only reference components mirroring the 48 Figma components |
 | `components/` | Specs per Figma component (variants, sizes, tokens per state, copy, a11y, markup) |
 | `foundations/`, `themes/`, `docs/` | Guidance synced with the Figma frame text; `docs/figma-parity.md` maps every Figma token, style and component |
-| `assets/` | `logo/*.svg` (official Figma exports), `icons/sprite.svg` (stand-in geometry) |
+| `assets/` | `logo/*.svg` (official Figma exports), `icons/sprite.svg` + `icons/figma/*.svg` (Figma exports) |
 | `templates/`, `preview/` | Static pages (open directly in a browser): landing, admin shell, report detail, auth, Meeting At 10 home; full catalog with theme switcher |
 
 ## Commands

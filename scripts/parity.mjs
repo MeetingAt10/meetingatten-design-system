@@ -68,7 +68,7 @@ const MAP = {
 };
 for (const c of fc.components) {
   const n = C(c.name);
-  const m = MAP[n] ?? (n.startsWith('Icon / ') ? [`#ds-${n.slice(7).toLowerCase()} in assets/icons/sprite.svg`, 'components/icon/icon.md', 'STAND-IN'] : null);
+  const m = MAP[n] ?? (n.startsWith('Icon / ') ? [`#ds-${n.slice(7).toLowerCase()} in assets/icons/sprite.svg`, 'components/icon/icon.md', 'ASSET'] : null);
   if (!m) { bad++; console.error('UNMAPPED component ' + n); continue; }
   rows.comp.push([n, c.variants.length || '-', `${c.w}x${c.h}`, c.radius, m[0], m[1], m[2] ?? 'IMPLEMENTED']);
 }
@@ -138,7 +138,7 @@ ${T(['Figma style', 'Spec', 'Token', 'Class / Tailwind utility', 'Status'], rows
 |---|---|---|---|
 | 03.2 elevation/0, /1, /2 | none; \`0 2 8 #1720330D\`; \`0 12 32 #1720331F\` | \`--ds-shadow-elevation-0..2\` | MATCH |
 | 03.3 viewports and grid | 320-599: 4/16/16; 600-1023: 8/24/24; 1024-1439: 12/24/32; 1440+: 12/24/48; content 1200; reading 680; sidebar 240 | \`--ds-breakpoint-*\`, \`--ds-grid-*\`, \`--ds-size-sidebar-w\` | MATCH |
-| 03.4 / 03.6 icon geometry | 16/20/24 canvases, 1.5/1.75/2 strokes, round caps | \`.ds-icon\`, \`.ds-icon--16/24\`, \`--ds-size-icon-*\` | MATCH (sizes); geometry STAND-IN |
+| 03.4 / 03.6 icon geometry | 16/20/24 canvases, 1.5/1.75/2 strokes, round caps | \`.ds-icon\`, \`.ds-icon--16/24\`, \`--ds-size-icon-*\` | MATCH (sizes and geometry from Figma export) |
 | 03.5 focus | 3px color/focus, 2px offset in surface color | \`--ds-size-focus-ring\`, \`--ds-size-focus-offset\` | MATCH |
 | 04 catalog sizes | buttons 48, controls 44, min target 24, topbar 72, textarea 112 | \`--ds-size-*\` | MATCH |
 | Component-internal 12px and 20px | slot/item/alert padding and gap; report record padding | \`--ds-size-12\`, \`--ds-size-20\` | in components, not in Dimensions |

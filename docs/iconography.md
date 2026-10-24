@@ -17,7 +17,7 @@ Labels in 03.4: Overview, Forum, Consult, Report, Access, Visibility, Search, Up
 | Item | Status |
 |---|---|
 | Names, sizes, strokes, CSS (`.ds-icon`, `--16`, `--24`) | Match Figma |
-| Geometry (`assets/icons/sprite.svg`) | **STAND-IN.** The export has no path data. Placeholder paths use Lucide-compatible shapes and must be replaced with the Figma SVG export (ISC-licensed placeholder shapes; no Lucide dependency) |
+| Geometry (`assets/icons/sprite.svg`) | **From Figma.** Symbols are the exported Size=24 variants; per-size SVGs (16/20/24) live in `assets/icons/figma/`. Strokes use `currentColor`. `ds-home`, `ds-lock`, `ds-info` remain stand-ins for glyphs drawn inside other components |
 | Extra glyphs (`home`, `lock`, `info`) | Drawn inside Figma components (Navigation Overview, Privacy Notice, Inline Alert), not in the 12-family set |
 
 ## Rules

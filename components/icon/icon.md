@@ -1,6 +1,6 @@
 # Icon (12 families) and Graphic / Navigation Overview
 
-Figma owns the icon set: 12 native families (Search, Menu, Chevron, Bell, Calendar, Forum, Report, Shield, Check, Alert, Close, User), each Size=16 / 20 / 24, strokes 1.5 / 1.75 / 2px, round caps and joins, optical padding inside the canvas. **Status: STAND-IN.** The Figma export has names and sizes but no path data, so `assets/icons/sprite.svg` carries placeholder geometry (Lucide-compatible). Replace it with the Figma SVG export; sizes, strokes and classes already match. See [docs/iconography.md](../../docs/iconography.md).
+Figma owns the icon set: 12 native families (Search, Menu, Chevron, Bell, Calendar, Forum, Report, Shield, Check, Alert, Close, User), each Size=16 / 20 / 24, strokes 1.5 / 1.75 / 2px, round caps and joins, optical padding inside the canvas. **Status: from Figma.** `assets/icons/sprite.svg` symbols are the exported Size=24 variants and `assets/icons/figma/{name}-{16,20,24}.svg` are the per-size exports, with strokes set to `currentColor`. See [docs/iconography.md](../../docs/iconography.md).
 
 ## Figma source
 
