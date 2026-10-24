@@ -3,6 +3,7 @@
 
 /* Literal values: breakpoints cannot use var(); spacing keeps Tailwind's 4px multiplier (p-4 = Figma space/16). */
 @theme {
+  --color-*: initial;
   --spacing: 0.25rem;
   --breakpoint-*: initial;
   --breakpoint-mobile: 20rem;
@@ -15,60 +16,6 @@
 }
 
 @theme inline {
-  --color-brand-source-blue: var(--ds-brand-source-blue);
-  --color-brand-source-ink: var(--ds-brand-source-ink);
-  --color-brand-source-white: var(--ds-brand-source-white);
-  --color-brand-hover: var(--ds-brand-hover);
-  --color-brand-pressed: var(--ds-brand-pressed);
-  --color-brand-dark-default: var(--ds-brand-dark-default);
-  --color-brand-dark-hover: var(--ds-brand-dark-hover);
-  --color-brand-dark-pressed: var(--ds-brand-dark-pressed);
-  --color-brand-focus-light: var(--ds-brand-focus-light);
-  --color-neutral-0: var(--ds-neutral-0);
-  --color-neutral-50: var(--ds-neutral-50);
-  --color-neutral-100: var(--ds-neutral-100);
-  --color-neutral-200: var(--ds-neutral-200);
-  --color-neutral-500: var(--ds-neutral-500);
-  --color-neutral-700: var(--ds-neutral-700);
-  --color-neutral-900: var(--ds-neutral-900);
-  --color-neutral-950: var(--ds-neutral-950);
-  --color-neutral-dark-raised: var(--ds-neutral-dark-raised);
-  --color-neutral-dark-secondary: var(--ds-neutral-dark-secondary);
-  --color-neutral-dark-border: var(--ds-neutral-dark-border);
-  --color-success-50: var(--ds-success-50);
-  --color-success-300: var(--ds-success-300);
-  --color-success-700: var(--ds-success-700);
-  --color-success-950: var(--ds-success-950);
-  --color-warning-50: var(--ds-warning-50);
-  --color-warning-300: var(--ds-warning-300);
-  --color-warning-700: var(--ds-warning-700);
-  --color-warning-950: var(--ds-warning-950);
-  --color-danger-50: var(--ds-danger-50);
-  --color-danger-100: var(--ds-danger-100);
-  --color-danger-300: var(--ds-danger-300);
-  --color-danger-400: var(--ds-danger-400);
-  --color-danger-700: var(--ds-danger-700);
-  --color-danger-800: var(--ds-danger-800);
-  --color-danger-900: var(--ds-danger-900);
-  --color-danger-950: var(--ds-danger-950);
-  --color-info-50: var(--ds-info-50);
-  --color-info-300: var(--ds-info-300);
-  --color-info-700: var(--ds-info-700);
-  --color-info-950: var(--ds-info-950);
-  --color-secondary-50: var(--ds-secondary-50);
-  --color-secondary-100: var(--ds-secondary-100);
-  --color-secondary-300: var(--ds-secondary-300);
-  --color-secondary-600: var(--ds-secondary-600);
-  --color-secondary-700: var(--ds-secondary-700);
-  --color-secondary-800: var(--ds-secondary-800);
-  --color-secondary-950: var(--ds-secondary-950);
-  --color-accent-50: var(--ds-accent-50);
-  --color-accent-100: var(--ds-accent-100);
-  --color-accent-300: var(--ds-accent-300);
-  --color-accent-600: var(--ds-accent-600);
-  --color-accent-700: var(--ds-accent-700);
-  --color-accent-800: var(--ds-accent-800);
-  --color-accent-950: var(--ds-accent-950);
   --color-canvas: var(--ds-canvas);
   --color-surface: var(--ds-surface);
   --color-raised: var(--ds-raised);
@@ -117,9 +64,7 @@
   --color-inverse-hover: var(--ds-inverse-hover);
   --color-inverse-pressed: var(--ds-inverse-pressed);
   --color-inverse-focus: var(--ds-inverse-focus);
-  --color-ink: var(--ds-text-primary);
-  --color-ink-secondary: var(--ds-text-secondary);
-  --color-line: var(--ds-border-subtle);
+  --color-card: var(--ds-card-bg);
   --font-display: var(--ds-font-family-display);
   --font-sans: var(--ds-font-family-body);
   --font-mono: var(--ds-font-family-mono);
@@ -149,12 +94,13 @@
   --text-code--line-height: var(--ds-type-code-line-height);
   --text-body-small: var(--ds-type-body-small-size);
   --text-body-small--line-height: var(--ds-type-body-small-line-height);
-  --radius-chip: var(--ds-radius-4);
-  --radius-control: var(--ds-radius-6);
-  --radius-card: var(--ds-radius-8);
-  --radius-overlay: var(--ds-radius-12);
-  --shadow-raised: var(--ds-shadow-elevation-1);
-  --shadow-overlay: var(--ds-shadow-elevation-2);
+  --radius-card: var(--ds-radius-card);
+  --radius-tile: var(--ds-radius-tile);
+  --radius-control: var(--ds-radius-control);
+  --radius-chip: var(--ds-radius-chip);
+  --shadow-card: var(--ds-card-shadow);
+  --shadow-card-hover: var(--ds-card-shadow-hover);
+  --shadow-overlay: var(--ds-overlay-shadow);
   --ease-standard: var(--ds-motion-ease-standard);
   --default-transition-duration: var(--ds-motion-duration-fast);
   --default-transition-timing-function: var(--ds-motion-ease-standard);
@@ -239,4 +185,13 @@
   letter-spacing: var(--ds-type-body-small-letter-spacing);
 }
 
-/* Strict palette (drops Tailwind's default colors): add "@theme { --color-*: initial; }" before importing this file. */
+/* Decorative washes (treatments): token color fading to transparent. */
+@utility wash-accent {
+  background-image: var(--ds-wash-accent);
+}
+@utility wash-secondary {
+  background-image: var(--ds-wash-secondary);
+}
+@utility wash-info {
+  background-image: var(--ds-wash-info);
+}

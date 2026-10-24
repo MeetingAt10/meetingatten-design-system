@@ -18,13 +18,17 @@ If a Figma value fails contrast, do not change it: add it to `tokens/figma-known
 
 Mark `NOT IN FIGMA` in the token file description and in `docs/figma-parity.md`; keep it minimal; add contrast pairs for new text/background tokens in `tokens/contrast-pairs.json`.
 
+## Look changes (treatments)
+
+The look (shadows, washes, radius mapping, motion distance) is repo-owned and lives in `tokens/treatments.json` ([foundations/treatments.md](foundations/treatments.md)). Every value is a locked Figma token, `transparent`, `none`, a px length for geometry, or the `wash` / `tint` / `highlight` forms; `check:tokens` rejects anything else. A new wash is contrast-checked automatically against `onWashes` in `tokens/contrast-pairs.json`.
+
 ## Review rules
 
 | Rule | Detail |
 |---|---|
 | Reviewers | At least 1 approval; token or component changes also need the design owner |
 | CI gate | `npm run check` passes and rebuilding `dist/` yields no diff |
-| No raw color | No hex in `src/components.css`, `templates/`, `preview/` (`grep -rnE '#[0-9a-fA-F]{3,8}\b' src templates preview`, excluding anchors) |
+| No raw color | `npm run check:tokens` passes: no hex, `rgb()`/`hsl()`/`color-mix()`, named colors or primitive `--ds-*` color variables in `src/` or `site/` |
 | Honest copy | No promises of anonymity, security, response time or finality; label synthetic content `DEMO` |
 | Logo | Use `assets/logo/` as exported; no redraws or recolors; it is proposed, not approved |
 | Commits | Conventional commits: `feat(tokens):`, `fix(components):`, `docs:`, `build:` |

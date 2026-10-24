@@ -1,0 +1,16 @@
+{
+  "$description": "REPO-OWNED look tokens (NOT IN FIGMA). Every color comes from a locked Figma token, blended only with transparent; px literals only for geometry. Grammar: \"{ref}\" | \"transparent\" | \"none\" | \"<n>px\" | {\"wash\": ref} (radial, ref to transparent) | {\"tint\": ref, \"alpha\": 0-100} | {\"highlight\": ref, \"alpha\": 0-100} (inset 1px top line) | [layered shadow parts]. Keys: light + dark, or all. Emitted as --ds-<name> by scripts/build.mjs, validated by scripts/check-tokens.mjs.",
+  "card-bg": { "light": "{color.surface}", "dark": "{color.raised}" },
+  "card-shadow": { "light": "{shadow.elevation-1}", "dark": { "highlight": "{color.neutral.dark-border}", "alpha": 40 } },
+  "card-shadow-hover": { "light": "{shadow.elevation-2}", "dark": { "highlight": "{color.neutral.dark-border}", "alpha": 60 } },
+  "overlay-shadow": { "light": "{shadow.elevation-2}", "dark": ["{shadow.elevation-2}", { "highlight": "{color.neutral.dark-border}", "alpha": 40 }] },
+  "wash-accent": { "light": { "wash": "{color.accent.100}" }, "dark": { "wash": "{color.accent.950}" } },
+  "wash-secondary": { "light": { "wash": "{color.secondary.100}" }, "dark": { "wash": "{color.secondary.950}" } },
+  "wash-info": { "light": { "wash": "{color.info.50}" }, "dark": { "wash": "{color.info.950}" } },
+  "scrim": { "all": { "tint": "{color.brand.source-ink}", "alpha": 94 } },
+  "lift": { "all": "-2px" },
+  "radius-card": { "all": "{radius.12}" },
+  "radius-tile": { "all": "{radius.8}" },
+  "radius-control": { "all": "{radius.6}" },
+  "radius-chip": { "all": "{radius.4}" }
+}

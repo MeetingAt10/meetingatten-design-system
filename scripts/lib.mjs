@@ -64,6 +64,23 @@ export function cssValue(t) {
   }
 }
 
+// ---- treatments: repo-owned look tokens (tokens/treatments.json) ----
+export function loadTreatments() {
+  const j = readJson(join(ROOT, 'tokens/treatments.json'));
+  return Object.fromEntries(Object.entries(j).filter(([k]) => !k.startsWith('$'))
+    .map(([k, v]) => [k, 'all' in v ? { all: v.all, light: v.all, dark: v.all } : v]));
+}
+const refVar = (r) => `var(${cssName(r.slice(1, -1))})`;
+const mix = (r, a) => `color-mix(in srgb, ${refVar(r)} ${a}%, transparent)`;
+export function treatmentCss(v) {
+  if (Array.isArray(v)) return v.map(treatmentCss).join(', ');
+  if (typeof v === 'string') return v.startsWith('{') ? refVar(v) : v;
+  if (v.wash) return `radial-gradient(closest-side, ${refVar(v.wash)}, transparent)`;
+  if (v.tint) return mix(v.tint, v.alpha);
+  if (v.highlight) return `inset 0 1px 0 ${mix(v.highlight, v.alpha)}`;
+  throw new Error('Unknown treatment value ' + JSON.stringify(v));
+}
+
 // ---- WCAG 2.x ----
 export function hexToRgb(hex) {
   let h = hex.replace('#', '');

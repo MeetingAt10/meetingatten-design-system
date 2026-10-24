@@ -2,9 +2,10 @@
 // and inlines assets/icons/sprite.svg into templates/ and preview/ (between <!--ds:sprite--> markers).
 import { writeFileSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { ROOT, loadTokens, cssName, cssValue } from './lib.mjs';
+import { ROOT, loadTokens, loadTreatments, treatmentCss, cssName, cssValue } from './lib.mjs';
 
 const { foundations, themes } = loadTokens();
+const TR = Object.entries(loadTreatments());
 const dist = join(ROOT, 'dist');
 mkdirSync(dist, { recursive: true });
 const pkg = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8'));
@@ -20,8 +21,10 @@ const DENSITY = { comfortable: ['body-large', 64, 80], compact: ['body', 24, 32]
 
 // ---- tokens.css ----
 let css = banner + `/* Primitives and foundations (theme independent). Use semantic tokens below in product code. */\n:root {\n`;
-css += entries(foundations).map(([n, t]) => decl(n, t)).join('\n') + '\n}\n';
-const themeBody = (th, pad) => `${pad}color-scheme: ${th.dark ? 'dark' : 'light'};\n` + entries(th.tokens).map(([n, t]) => pad + decl(n, t).trim()).join('\n') + '\n';
+css += entries(foundations).map(([n, t]) => decl(n, t)).join('\n') + '\n';
+css += '  /* treatments (repo-owned look tokens, same in every theme) */\n' + TR.filter(([, v]) => v.all).map(([k, v]) => `  --ds-${k}: ${treatmentCss(v.all)};`).join('\n') + '\n}\n';
+const themeBody = (th, pad) => `${pad}color-scheme: ${th.dark ? 'dark' : 'light'};\n` + entries(th.tokens).map(([n, t]) => pad + decl(n, t).trim()).join('\n') + '\n'
+  + `${pad}/* treatments */\n` + TR.filter(([, v]) => !v.all).map(([k, v]) => `${pad}--ds-${k}: ${treatmentCss(th.dark ? v.dark : v.light)};`).join('\n') + '\n';
 for (const [file, name] of Object.entries(THEMES)) {
   const th = themes[file];
   css += `\n/* ${name}: ${th.description} */\n${name === 'light' ? ':root,\n' : ''}[data-theme="${name}"] {\n${themeBody(th, '  ')}}\n`;
@@ -37,29 +40,29 @@ writeFileSync(join(dist, 'tokens.css'), css);
 // ---- tailwind.css (Tailwind 4) ----
 const v = (n) => `var(${cssName(n)})`;
 const light = themes['accs-light'].tokens;
-let tw = banner + `@import "./tokens.css";\n\n/* Literal values: breakpoints cannot use var(); spacing keeps Tailwind's 4px multiplier (p-4 = Figma space/16). */\n@theme {\n  --spacing: 0.25rem;\n  --breakpoint-*: initial;\n`;
+let tw = banner + `@import "./tokens.css";\n\n/* Literal values: breakpoints cannot use var(); spacing keeps Tailwind's 4px multiplier (p-4 = Figma space/16). */\n@theme {\n  --color-*: initial;\n  --spacing: 0.25rem;\n  --breakpoint-*: initial;\n`;
 tw += entries(foundations).filter(([n]) => n.startsWith('breakpoint.')).map(([n, t]) => `  --breakpoint-${n.split('.')[1]}: ${t.value};`).join('\n');
 tw += `\n  --container-content: 75rem;\n  --container-reading: 42.5rem;\n  --container-sidebar: 15rem;\n}\n\n@theme inline {\n`;
 const L = [];
 const color = (n) => { const p = n.split('.').slice(1); L.push(`--color-${p.join('-')}: ${v(n)};`); if (p.at(-1) === 'default') L.push(`--color-${p.slice(0, -1).join('-')}: ${v(n)};`); };
-for (const [n] of foundations) if (n.startsWith('color.')) color(n);
-for (const [n] of light) color(n);
-L.push(`--color-ink: var(--ds-text-primary);`, `--color-ink-secondary: var(--ds-text-secondary);`, `--color-line: var(--ds-border-subtle);`);
+for (const [n] of light) color(n); // semantic only: primitives stay internal to the design system
+L.push(`--color-card: var(--ds-card-bg);`);
 L.push(`--font-display: var(--ds-font-family-display);`, `--font-sans: var(--ds-font-family-body);`, `--font-mono: var(--ds-font-family-mono);`);
 L.push(`--font-weight-regular: 400;`, `--font-weight-medium: 500;`, `--font-weight-semibold: 600;`, `--font-weight-bold: 700;`);
 const types = [...new Set(entries(foundations).filter(([n]) => n.startsWith('type.')).map(([n]) => n.split('.')[1]))];
 for (const k of types) L.push(`--text-${k}: var(--ds-type-${k}-size);`, `--text-${k}--line-height: var(--ds-type-${k}-line-height);`);
-L.push(`--radius-chip: var(--ds-radius-4);`, `--radius-control: var(--ds-radius-6);`, `--radius-card: var(--ds-radius-8);`, `--radius-overlay: var(--ds-radius-12);`);
-L.push(`--shadow-raised: var(--ds-shadow-elevation-1);`, `--shadow-overlay: var(--ds-shadow-elevation-2);`);
+for (const k of ['card', 'tile', 'control', 'chip']) L.push(`--radius-${k}: var(--ds-radius-${k});`);
+L.push(`--shadow-card: var(--ds-card-shadow);`, `--shadow-card-hover: var(--ds-card-shadow-hover);`, `--shadow-overlay: var(--ds-overlay-shadow);`);
 L.push(`--ease-standard: var(--ds-motion-ease-standard);`, `--default-transition-duration: var(--ds-motion-duration-fast);`, `--default-transition-timing-function: var(--ds-motion-ease-standard);`);
 tw += L.map((l) => '  ' + l).join('\n') + '\n}\n\n/* Full Figma text styles: class="type-h1" sets family, weight, size, line-height and tracking together. */\n';
 for (const k of types) tw += `@utility type-${k} {\n  font-family: var(--ds-type-${k}-font-family);\n  font-weight: var(--ds-type-${k}-font-weight);\n  font-size: var(--ds-type-${k}-size);\n  line-height: var(--ds-type-${k}-line-height);\n  letter-spacing: var(--ds-type-${k}-letter-spacing);\n}\n`;
-tw += `\n/* Strict palette (drops Tailwind's default colors): add "@theme { --color-*: initial; }" before importing this file. */\n`;
+tw += '\n/* Decorative washes (treatments): token color fading to transparent. */\n';
+for (const [k] of TR) if (k.startsWith('wash-')) tw += `@utility ${k} {\n  background-image: var(--ds-${k});\n}\n`;
 writeFileSync(join(dist, 'tailwind.css'), tw);
 
 // ---- tokens.json / tokens.js ----
 const toObj = (m) => Object.fromEntries(entries(m).map(([n, t]) => [n, { $type: t.type, $value: t.value, ...(t.alias ? { $alias: `{${t.alias}}` } : {}), cssVar: cssName(n) }]));
-writeFileSync(join(dist, 'tokens.json'), JSON.stringify({ name: pkg.name, version: pkg.version, foundations: toObj(foundations),
+writeFileSync(join(dist, 'tokens.json'), JSON.stringify({ name: pkg.name, version: pkg.version, foundations: toObj(foundations), treatments: Object.fromEntries(TR),
   themes: Object.fromEntries(Object.entries(themes).map(([n, t]) => [THEMES[n], { dark: t.dark, description: t.description, source: n, tokens: toObj(t.tokens) }])) }, null, 2) + '\n');
 const flat = { foundations: entries(foundations).map(([n, t]) => ({ name: n, type: t.type, css: cssName(n), value: cssValue(t) })),
   semantic: entries(light).map(([n]) => ({ name: n, css: cssName(n) })), selectable: SELECTABLE,

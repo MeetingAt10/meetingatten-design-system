@@ -13,7 +13,11 @@ Work toward 0.3.0 (see `context/deltas/2026-10-24-v0.3.0-rebuild.md`).
 - Removed `.ds-body--app`; set `data-density="compact"` instead.
 - `themes/accs-admin/` and `themes/accs-landing/` replaced by `themes/light-dark.md` and `themes/density.md`.
 
+- Tailwind is strict: `--color-*: initial`, Figma primitives no longer exposed (`bg-neutral-500`, `bg-brand-*`), legacy `ink`, `ink-secondary`, `line` removed. `rounded-overlay` and `shadow-raised` (elevation) replaced by `rounded-card` (12px) and `shadow-card` / `shadow-overlay`.
+
 ### Added
+- `tokens/treatments.json`: repo-owned look tokens `card-bg`, `card-shadow`, `card-shadow-hover`, `overlay-shadow`, `wash-accent|secondary|info`, `scrim`, `lift`, `radius-card|tile|control|chip`, emitted as `--ds-*` per theme; Tailwind `bg-card`, `wash-*`, `shadow-card(-hover)`, `shadow-overlay`, `rounded-tile`.
+- `npm run check:tokens` (part of `npm run check`); text-on-wash contrast checks.
 - `data-density="comfortable|compact"` with `--ds-density-text-*` and `--ds-density-section-space(-desktop)` (aliases of existing Body large / Body and space tokens).
 
 ## [0.2.0] - 2026-10-24

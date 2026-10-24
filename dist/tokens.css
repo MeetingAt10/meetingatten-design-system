@@ -163,6 +163,13 @@
   --ds-z-dropdown: 200;
   --ds-z-modal: 400;
   --ds-z-toast: 500;
+  /* treatments (repo-owned look tokens, same in every theme) */
+  --ds-scrim: color-mix(in srgb, var(--ds-brand-source-ink) 94%, transparent);
+  --ds-lift: -2px;
+  --ds-radius-card: var(--ds-radius-12);
+  --ds-radius-tile: var(--ds-radius-8);
+  --ds-radius-control: var(--ds-radius-6);
+  --ds-radius-chip: var(--ds-radius-4);
 }
 
 /* light: Figma "ACCS 2026 / Semantic" mode LIGHT. data-theme="light" (the :root default). */
@@ -214,6 +221,14 @@
   --ds-inverse-hover: #46516A;
   --ds-inverse-pressed: #032E87;
   --ds-inverse-focus: #97B5FF;
+  /* treatments */
+  --ds-card-bg: var(--ds-surface);
+  --ds-card-shadow: var(--ds-shadow-elevation-1);
+  --ds-card-shadow-hover: var(--ds-shadow-elevation-2);
+  --ds-overlay-shadow: var(--ds-shadow-elevation-2);
+  --ds-wash-accent: radial-gradient(closest-side, var(--ds-accent-100), transparent);
+  --ds-wash-secondary: radial-gradient(closest-side, var(--ds-secondary-100), transparent);
+  --ds-wash-info: radial-gradient(closest-side, var(--ds-info-50), transparent);
 }
 
 /* dark: Figma "ACCS 2026 / Semantic" mode DARK. data-theme="dark", or no data-theme when the OS prefers dark. */
@@ -264,6 +279,14 @@
   --ds-inverse-hover: #EDF1F7;
   --ds-inverse-pressed: #DCE2EC;
   --ds-inverse-focus: #032E87;
+  /* treatments */
+  --ds-card-bg: var(--ds-raised);
+  --ds-card-shadow: inset 0 1px 0 color-mix(in srgb, var(--ds-neutral-dark-border) 40%, transparent);
+  --ds-card-shadow-hover: inset 0 1px 0 color-mix(in srgb, var(--ds-neutral-dark-border) 60%, transparent);
+  --ds-overlay-shadow: var(--ds-shadow-elevation-2), inset 0 1px 0 color-mix(in srgb, var(--ds-neutral-dark-border) 40%, transparent);
+  --ds-wash-accent: radial-gradient(closest-side, var(--ds-accent-950), transparent);
+  --ds-wash-secondary: radial-gradient(closest-side, var(--ds-secondary-950), transparent);
+  --ds-wash-info: radial-gradient(closest-side, var(--ds-info-950), transparent);
 }
 
 /* No data-theme: follow the OS setting. */
@@ -315,6 +338,14 @@
     --ds-inverse-hover: #EDF1F7;
     --ds-inverse-pressed: #DCE2EC;
     --ds-inverse-focus: #032E87;
+    /* treatments */
+    --ds-card-bg: var(--ds-raised);
+    --ds-card-shadow: inset 0 1px 0 color-mix(in srgb, var(--ds-neutral-dark-border) 40%, transparent);
+    --ds-card-shadow-hover: inset 0 1px 0 color-mix(in srgb, var(--ds-neutral-dark-border) 60%, transparent);
+    --ds-overlay-shadow: var(--ds-shadow-elevation-2), inset 0 1px 0 color-mix(in srgb, var(--ds-neutral-dark-border) 40%, transparent);
+    --ds-wash-accent: radial-gradient(closest-side, var(--ds-accent-950), transparent);
+    --ds-wash-secondary: radial-gradient(closest-side, var(--ds-secondary-950), transparent);
+    --ds-wash-info: radial-gradient(closest-side, var(--ds-info-950), transparent);
   }
 }
 

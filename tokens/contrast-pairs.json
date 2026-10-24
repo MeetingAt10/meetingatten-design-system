@@ -1,5 +1,7 @@
 {
  "$description": "[foreground, background, minimum ratio, note]. Semantic color tokens from the Figma ACCS 2026 semantic collection, checked in every theme. 4.5 = text (AA), 3 = non-text UI/graphics (AA 1.4.11).",
+ "onWashes": ["text-primary", "text-secondary", "action-default"],
+ "$onWashes": "Text checked (4.5) against the strongest stop of every wash-* treatment, per theme.",
  "pairs": [
   ["text-primary", "canvas", 4.5],
   ["text-secondary", "canvas", 4.5],

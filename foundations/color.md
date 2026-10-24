@@ -49,4 +49,6 @@ Names are Figma's (`color/action/default` -> `--ds-action-default`, Tailwind `bg
 | Roles | A role badge is neither a privacy nor a status signal; never style roles as severity |
 | Validation | Spot checks are not certification; test all implemented states and adjacent surfaces |
 
-Contrast gate: `npm run check:contrast` (50 pairs per theme). Figma spot checks (frame 02): white on `#032E87` 12.04:1, secondary `#46516A` on white 7.94:1, boundary `#65718A` on white 4.90:1; dark `#0B1220` on `#97B5FF` 9.25:1, boundary `#7D8DA6` on `#172033` 4.83:1; light focus 6.08:1.
+Decorative washes, card and overlay shadows and the scrim are treatments built from these colors: see [treatments.md](treatments.md).
+
+Contrast gate: `npm run check:contrast` (50 pairs plus 9 text-on-wash checks per theme). Figma spot checks (frame 02): white on `#032E87` 12.04:1, secondary `#46516A` on white 7.94:1, boundary `#65718A` on white 4.90:1; dark `#0B1220` on `#97B5FF` 9.25:1, boundary `#7D8DA6` on `#172033` 4.83:1; light focus 6.08:1.

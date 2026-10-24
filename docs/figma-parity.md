@@ -91,7 +91,7 @@ Ignored on purpose: the older "ACCS / ... v0.1" collections and "ACCS / *" text 
 
 ## Semantic colors
 
-Tailwind utility = CSS variable name without `--ds-` (e.g. `bg-action-default`, `bg-action`). Legacy aliases kept: `ink`, `ink-secondary`, `line`.
+Tailwind utility = CSS variable name without `--ds-` (e.g. `bg-action-default`, `bg-action`). Semantic and treatment tokens only; primitives are not exposed to Tailwind.
 
 | Figma variable | LIGHT (alias, value) | DARK (alias, value) | CSS variable | Status |
 |---|---|---|---|---|
@@ -254,7 +254,8 @@ Variants = number of variant nodes in the Figma component set. Size is the Figma
 | `--ds-motion-*` (120ms, 200ms, standard ease) | Hover/focus transitions. Figma only says motion is optional and reduced-motion aware |
 | `--ds-z-*` | Stacking for sticky chrome, popups, modal, toast |
 | `--ds-font-family-*` fallback stacks | Figma lists families only |
-| `--ds-scrim` look (`.ds-scrim`, ink at 82%) | Modal frames show a solid dark backdrop; exact value not specified |
+| Treatments (`tokens/treatments.json`): `card-bg`, `card-shadow(-hover)`, `overlay-shadow`, `wash-*`, `scrim`, `lift`, `radius-card/tile/control/chip` | REPO-OWNED look tokens: built only from locked Figma tokens (blends only with transparent), checked by `check:tokens` |
+| `--ds-scrim` (ink at 94%) | Modal frames show a solid dark backdrop; exact value not specified |
 | Badge neutral fill uses `disabled/bg` | Figma light value is neutral/100; no dark Role badge is shown |
 | Icon geometry in `assets/icons/sprite.svg` | Placeholder until the Figma icon SVGs are exported |
 | Reversed/dark logo | Figma shows white on source blue only; no dark-surface export |

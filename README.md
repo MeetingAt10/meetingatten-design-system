@@ -28,10 +28,11 @@ Every surface uses the same two themes from the Figma Semantic modes: `data-them
 
 ```bash
 npm run build           # tokens/ + src/ -> dist/, inlines the icon sprite into templates/preview
-npm run check:contrast  # WCAG AA gate over declared pairs per theme (exit 1 on a new failure)
+npm run check:contrast  # WCAG AA gate over declared pairs and text on every wash, per theme (exit 1 on a new failure)
+npm run check:tokens    # no hex/rgb/blends/primitive variables in src or site; treatments built only from locked tokens
 npm run check:parity    # every Figma variable, text style, dimension and component compared with the repo
 npm run import:figma    # regenerate Figma-sourced tokens from figma/variables-styles.json
-npm run check           # build + contrast + parity
+npm run check           # build + contrast + parity + tokens
 node scripts/parity.mjs --write   # refresh docs/figma-parity.md
 ```
 
@@ -80,7 +81,7 @@ const body = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
 ```
 
-Utilities use the Figma names: `bg-canvas bg-surface text-text-primary border-border-default bg-action-default bg-action text-on-action bg-info-bg text-secondary-fg bg-accent-bg rounded-control rounded-card shadow-overlay type-h1 text-body font-display tablet:... desktop:... max-w-content`. Legacy aliases kept: `ink`, `ink-secondary`, `line`. Breakpoints are `tablet` 600, `desktop` 1024, `wide` 1440 (Tailwind defaults removed). Spacing keeps Tailwind's multiplier (`p-4` = Figma `space/16`); use `var(--ds-space-16)` for the Figma name. For a strict palette add `@theme { --color-*: initial; }` before the import.
+Utilities use the Figma semantic names and the treatment tokens only: `bg-canvas bg-surface bg-card text-text-primary border-border-default bg-action-default bg-action text-on-action bg-info-bg text-secondary-fg bg-accent-bg wash-accent wash-secondary wash-info shadow-card shadow-card-hover shadow-overlay rounded-card rounded-tile rounded-control rounded-chip type-h1 text-body font-display tablet:... desktop:... max-w-content`. Tailwind's default palette is removed and Figma primitives are not exposed, so `bg-red-500` or `bg-neutral-500` generate nothing. Breakpoints are `tablet` 600, `desktop` 1024, `wide` 1440 (Tailwind defaults removed). Spacing keeps Tailwind's multiplier (`p-4` = Figma `space/16`); use `var(--ds-space-16)` for the Figma name.
 
 ## Consume: Vite + React (admin)
 
