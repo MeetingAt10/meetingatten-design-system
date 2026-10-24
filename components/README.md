@@ -2,7 +2,7 @@
 
 Specs mirror the 48 Figma components of the page "ACCS Design System - 2026" 1:1: same names (`ACCS 2026 / Category / Family`), variant axes, sizes, radii, paddings, gaps and copy. Figma states: Default, Hover, Pressed, Focus, Disabled, Error, Loading where applicable; Selected, Expanded, Availability and Appearance are separate axes. Focus means keyboard focus-visible; "active" is always named Pressed.
 
-Reference styles: `src/components.css` (built to `dist/components.css`), static reference only: not production behavior and not approved. Complete token/component mapping: [docs/figma-parity.md](../docs/figma-parity.md). Live state matrices: `preview/index.html`.
+Styles: `src/css/components/<category>/<name>.css` (built to `dist/components.css`). React components: `src/react/<category>/<Name>.tsx` (built to `dist/react/`, imported from `@meetingat10/design-system/react`), on React Aria Components. Proposed, not approved. Complete token/component mapping: [docs/figma-parity.md](../docs/figma-parity.md). Live state matrices: `preview/index.html`.
 
 | Figma component | Spec |
 |---|---|
@@ -43,3 +43,24 @@ Reference styles: `src/components.css` (built to `dist/components.css`), static 
 - Announcement/Forum Card, Reports Table, Report Record, Sidebar, Top Bar, Mobile Header and Toast keep their master IDs; their action controls are native exposed instances and the static body has no Hover/Pressed state.
 - Error on buttons is N/A: persistent adjacent alerts carry errors. Loading for links, navigation, tabs, search results and radio groups belongs to the destination or data region.
 - Disabled menus cannot be expanded. No Booked+Selected or Unavailable+Enabled slot combinations.
+
+## Repo-owned components (NOT IN FIGMA, Phase 1)
+
+| Component | React | Spec |
+|---|---|---|
+| Field | `Field` | [control/field.md](control/field.md) |
+| ComboBox | `ComboBox` | [control/combobox.md](control/combobox.md) |
+| Switch | `Switch` | [control/switch.md](control/switch.md) |
+| DatePicker, Calendar | `DatePicker`, `Calendar` | [control/date-picker.md](control/date-picker.md) |
+| FileUpload | `FileUpload` | [control/file-upload.md](control/file-upload.md) |
+| Spinner | `Spinner` | [feedback/spinner.md](feedback/spinner.md) |
+| Progress | `Progress` | [feedback/progress.md](feedback/progress.md) |
+| Avatar | `Avatar` | [content/avatar.md](content/avatar.md) |
+| Tile | `Tile` | [content/tile.md](content/tile.md) |
+| Card, CardLink | `Card`, `CardHeader`, `CardMeta`, `CardLink` | [content/card.md](content/card.md) |
+| Skeleton | `Skeleton` | [data/skeleton.md](data/skeleton.md) |
+| Container, Stack, Grid | `Container`, `Stack`, `Grid` | [layout/container.md](layout/container.md), [layout/stack.md](layout/stack.md), [layout/grid.md](layout/grid.md) |
+| Section, Section Header | `Section`, `SectionHeader` | [layout/section.md](layout/section.md), [layout/section-header.md](layout/section-header.md) |
+| Hero, Feature Row, Wash, Divider | `Hero`, `FeatureRow` + `Feature`, `Wash`, `Divider` | [layout/hero.md](layout/hero.md), [layout/feature-row.md](layout/feature-row.md), [layout/wash.md](layout/wash.md), [layout/divider.md](layout/divider.md) |
+
+React components for the Figma components above: `Button`, `IconButton`, `TextField`, `TextArea`, `Select` + `SelectOption`, `Search`, `Checkbox`, `RadioGroup` + `Radio`, `Link`, `Badge`, `Icon`. Navigation, feedback overlays and the ACCS patterns follow in Phases 2 and 3.
