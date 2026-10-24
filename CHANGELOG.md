@@ -18,6 +18,9 @@ Phase 3: ACCS patterns, completing the 55-component catalog. Spec: `context/delt
 - With Tailwind, the design system's layers came after Tailwind's `utilities` (Tailwind declares its layers first), so utility classes such as `p-4` on a `Card` lost to the component's own styles. Tailwind apps now start their CSS with `@layer properties, theme, base, ds, components, utilities;` (README, site).
 - Site: component pages have their own route, so guide and foundation pages no longer load the demo bundle (about 199 KB instead of 343 KB of gzipped JavaScript); the deploy workflow and the CloudFront exemption accept hashed Open Graph image names (`opengraph-image-<hash>`).
 
+### Added
+- High contrast support (`forced-colors: active`): visible focus outline, container edges, and fill-only states redrawn with system colors (`src/css/base/forced-colors.css`; no change outside that mode). Checked with Chromium forced-colors emulation: button focus outline 2px, switch on-state and thumb visible, progress fill visible, selected tab underlined, cards edged.
+
 ### Added (for embedding and page headers)
 - `AppShell` `contentAs="div"` for previews inside a page that already has a `<main>`; `SectionHeader` `level={1}` when it heads the page.
 

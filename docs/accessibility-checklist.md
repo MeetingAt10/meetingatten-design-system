@@ -34,6 +34,14 @@ Source: Figma 06.1-06.2. Target: **WCAG 2.2 AA, not certification.** Validate in
 
 Explain what went wrong and how to fix it next to the field; retain entered values. On a failed submit provide a linked error summary and a deliberate focus destination. Distinguish network failure from validation failure. Do not announce every keystroke or skeleton update. Do not expose sensitive details in errors, analytics, URLs or live-region messages.
 
+## High contrast (forced colors)
+
+| Check | Pass |
+|---|---|
+| With Windows High Contrast (or DevTools: Rendering > Emulate forced-colors: active), keyboard focus is visible on every control | [ ] |
+| Cards, dialogs, menus, toasts and tables keep a visible edge | [ ] |
+| On/off, selected and current states stay distinguishable (switch, radio, selected day or page, current tab and nav item, progress) | [ ] |
+
 ## Restricted-report flows
 
 | Check | Pass |

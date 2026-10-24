@@ -1,0 +1,73 @@
+/* Windows High Contrast (forced colors). The browser drops box-shadows and replaces backgrounds with system colors,
+   so the focus ring, soft container edges and fill-only states would vanish. Restore them with system colors only
+   (Highlight, HighlightText, CanvasText, Canvas, GrayText); nothing here applies outside forced-colors mode. */
+@media (forced-colors: active) {
+  /* Focus: the box-shadow ring is dropped; draw an outline. */
+  :focus-visible,
+  [data-focus-visible],
+  .ds-check:has(input:focus-visible),
+  .ds-switch:has(input:focus-visible),
+  .ds-card--link:has(.ds-card__link:focus-visible) {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  /* Soft containers (shadow only): give them an edge. */
+  .ds-card,
+  .ds-modal,
+  .ds-drawer,
+  .ds-listbox,
+  .ds-popover-panel,
+  .ds-toast,
+  .ds-tooltip,
+  .ds-calendar,
+  .ds-table-wrap,
+  .ds-record,
+  .ds-view-state,
+  .ds-badge,
+  .ds-progress__track {
+    border: 1px solid CanvasText;
+  }
+
+  /* Indicators drawn with inset shadows. */
+  .ds-tab[aria-selected="true"] { border-bottom: 3px solid Highlight; }
+  .ds-nav-item:is([aria-current="page"], [aria-selected="true"]) { border-left: 3px solid Highlight; }
+  .ds-alert { border-left: 4px solid CanvasText; }
+  .ds-slot:is([aria-checked="true"], [aria-pressed="true"], [data-selected]) { border: 3px solid Highlight; }
+  .ds-step[data-state="current"] .ds-step__marker { border-width: 3px; }
+
+  /* Fill-only states: opt out of forced colors and use system colors. */
+  .ds-switch__track {
+    forced-color-adjust: none;
+    background: Canvas;
+    border-color: CanvasText;
+    &::after { background: CanvasText; }
+  }
+  .ds-switch:is([data-selected], .is-checked) .ds-switch__track {
+    background: Highlight;
+    border-color: Highlight;
+    &::after { background: HighlightText; }
+  }
+  .ds-switch:is([data-disabled], .is-disabled) .ds-switch__track {
+    border-color: GrayText;
+    &::after { background: GrayText; }
+  }
+  .ds-check--radio:is(.is-checked, [data-selected]) .ds-check__box::after,
+  .ds-check--radio input:checked + .ds-check__box::after,
+  .ds-check[data-indeterminate] .ds-check__box::after {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+  .ds-progress__fill {
+    forced-color-adjust: none;
+    background: Highlight;
+  }
+  .ds-day:is([aria-pressed="true"], [data-selected]),
+  .ds-calendar__cell[data-selected],
+  .ds-pagination__page[aria-current="page"],
+  .ds-date-segment:is(:focus, [data-focused]) {
+    forced-color-adjust: none;
+    background: Highlight;
+    color: HighlightText;
+  }
+}

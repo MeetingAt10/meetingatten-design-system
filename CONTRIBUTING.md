@@ -35,7 +35,7 @@ The look (shadows, washes, radius mapping, motion distance) is repo-owned and li
 |---|---|
 | Reviewers | At least 1 approval; token or component changes also need the design owner |
 | CI gate | `.github/workflows/ci.yml` on every PR: `npm ci`, `npm run check`, `npm run typecheck`, `npm test`, no diff in `dist/` after the build, and the site builds |
-| No raw color | `npm run check:tokens` passes: no hex, `rgb()`/`hsl()`/`color-mix()`, named colors or primitive `--ds-*` color variables in `src/` or `site/` |
+| No raw color | `npm run check:tokens` passes: no hex, `rgb()`/`hsl()`/`color-mix()`, named colors or primitive `--ds-*` color variables in `src/` or `site/`; system colors (`CanvasText`, `Highlight`, ...) only inside `@media (forced-colors: active)` in `src/css/base/forced-colors.css` |
 | Honest copy | No promises of anonymity, security, response time or finality; label synthetic content `DEMO` |
 | Logo | Use `assets/logo/` as exported; no redraws or recolors; it is proposed, not approved |
 | Commits | Conventional commits: `feat(tokens):`, `fix(components):`, `docs:`, `build:` |
