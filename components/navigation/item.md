@@ -1,3 +1,8 @@
+---
+title: Nav Item
+description: One sidebar destination, 48px, with icon, current-page bar and tint.
+react: NavItem
+---
 # Navigation / Item
 
 Sidebar item. Selected=False/True x five states, 192 x 48. The sidebar exposes four instances.
@@ -32,6 +37,15 @@ Variant axes:
 ## Accessibility
 
 - `aria-current="page"` on the current link; selected state includes a bar and weight/color change, not color alone.
+
+## React
+
+```tsx
+<NavItem href="/overview" icon="home" isCurrent>Overview</NavItem>
+<NavItem href="/reports" icon="report">My reports</NavItem>
+```
+
+`isCurrent` sets `aria-current="page"` (the left bar and tint follow from it).
 
 ## Reference markup
 

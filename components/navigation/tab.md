@@ -1,3 +1,8 @@
+---
+title: Tabs
+description: Switch between views of one page; the selected tab has an underline and stronger weight.
+react: Tabs
+---
 # Navigation / Tab
 
 Selected=False/True x five states, 128 x 48. Route loading and errors belong to the tab panel.
@@ -30,6 +35,21 @@ Overview, Forum, Consultations.
 
 - Label the tablist, tab and panel relations; expose the selected tab (`aria-selected`).
 - Arrow keys move within the tablist; Tab enters the active panel.
+
+## React
+
+```tsx
+<Tabs>
+  <TabList aria-label="Community">
+    <Tab id="overview">Overview</Tab>
+    <Tab id="forum">Forum</Tab>
+  </TabList>
+  <TabPanel id="overview">…</TabPanel>
+  <TabPanel id="forum">…</TabPanel>
+</Tabs>
+```
+
+React Aria `Tabs`: arrow keys move between tabs, Tab enters the panel, `isDisabled` on a Tab skips it.
 
 ## Reference markup
 

@@ -1,0 +1,37 @@
+/* Navigation / Pagination: previous, numbered pages with gaps, next. The current page is marked in text, not only by fill. */
+.ds-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-space-8);
+  & ul {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+.ds-pagination__page {
+  min-width: var(--ds-size-control-h);
+  height: var(--ds-size-control-h);
+  padding: 0 var(--ds-space-8);
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-control);
+  background: transparent;
+  color: var(--ds-action-default);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  cursor: pointer;
+  &:is(:hover, [data-hovered]) { background: var(--ds-info-bg); }
+  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
+  &[aria-current="page"] {
+    background: var(--ds-action-default);
+    color: var(--ds-on-action);
+  }
+}
+.ds-pagination__gap {
+  padding: 0 var(--ds-space-4);
+  color: var(--ds-text-secondary);
+}
+.ds-pagination__prev .ds-icon { transform: rotate(180deg); }

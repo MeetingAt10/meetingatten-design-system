@@ -1,0 +1,18 @@
+/* Navigation / Footer: brand, link columns and the proposed-status note. */
+.ds-footer {
+  padding-block: var(--ds-space-48);
+  background: var(--ds-surface);
+  border-top: 3px solid var(--ds-action-default);
+}
+.ds-footer__grid {
+  display: grid;
+  gap: var(--ds-space-32);
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+.ds-footer__links {
+  display: grid;
+  gap: var(--ds-space-4);
+  margin: var(--ds-space-8) 0 0;
+  padding: 0;
+  list-style: none;
+}

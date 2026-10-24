@@ -13,3 +13,8 @@
     width: auto;
   }
 }
+.ds-mobile-header__brand {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+}

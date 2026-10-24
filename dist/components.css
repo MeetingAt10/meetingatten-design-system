@@ -373,6 +373,7 @@
   & > .ds-listbox { margin: 0; }
 }
 .ds-select__value[data-placeholder] { color: var(--ds-text-secondary); }
+.ds-menu__chevron { transform: rotate(90deg); }
 .ds-listbox {
   margin: var(--ds-space-4) 0 0;
   padding: var(--ds-space-4);
@@ -416,6 +417,7 @@
     cursor: not-allowed;
   }
 }
+.ds-option--danger { color: var(--ds-danger-fg); }
 
 /* src/css/components/control/search.css */
 /* Control / Search. */
@@ -876,7 +878,13 @@
 }
 
 /* src/css/components/navigation/tab.css */
-/* Navigation / Tab (128x48). */
+/* Navigation / Tab (128x48) + tab panel. */
+.ds-tabs-root { display: grid; }
+.ds-tab-panel {
+  padding-top: var(--ds-space-24);
+  outline: none;
+  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
+}
 .ds-tabs {
   display: flex;
   gap: 0;
@@ -985,6 +993,11 @@
     width: auto;
   }
 }
+.ds-mobile-header__brand {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+}
 
 /* src/css/components/navigation/app-shell.css */
 /* App shell: sidebar + main column (admin). */
@@ -1007,6 +1020,202 @@
   max-width: calc(var(--ds-grid-content-max) + 2 * var(--ds-grid-margin-desktop));
   @media (max-width: 1023px) { padding: var(--ds-space-24) var(--ds-grid-margin-tablet) var(--ds-space-48); }
   @media (max-width: 599px) { padding: var(--ds-space-24) var(--ds-grid-margin-mobile) var(--ds-space-48); }
+}
+
+/* src/css/components/navigation/navbar.css */
+/* Navigation / Navbar: landing top navigation; links move into a menu panel under 1024px. */
+.ds-navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-8) var(--ds-space-24);
+  min-height: var(--ds-size-topbar-h);
+  border-bottom: 1px solid var(--ds-border-subtle);
+  & .ds-link[aria-current="page"] { background: var(--ds-info-bg); }
+}
+.ds-navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-8);
+  color: var(--ds-text-primary);
+  font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
+  text-decoration: none;
+  border-radius: var(--ds-radius-control);
+  &:focus-visible { box-shadow: var(--ds-ring); }
+}
+.ds-navbar__links {
+  display: none;
+  gap: var(--ds-space-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  @media (min-width: 1024px) { display: flex; }
+}
+.ds-navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-8);
+}
+.ds-navbar__toggle {
+  @media (min-width: 1024px) { display: none; }
+}
+.ds-navbar__panel {
+  display: grid;
+  flex-basis: 100%;
+  gap: var(--ds-space-4);
+  margin: 0;
+  padding: 0 0 var(--ds-space-16);
+  list-style: none;
+  @media (min-width: 1024px) { display: none; }
+}
+
+/* src/css/components/navigation/breadcrumbs.css */
+/* Navigation / Breadcrumbs: path to the current page; the last item is the current page, not a link. */
+.ds-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+}
+.ds-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  color: var(--ds-text-secondary);
+}
+.ds-breadcrumb__link {
+  padding: 2px var(--ds-space-4);
+  border-radius: var(--ds-radius-chip);
+  color: var(--ds-action-default);
+  text-decoration: none;
+  &:is(:hover, [data-hovered]) { text-decoration: underline; }
+  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
+  &:is([aria-current="page"], [data-current]) {
+    color: var(--ds-text-primary);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: default;
+  }
+}
+
+/* src/css/components/navigation/pagination.css */
+/* Navigation / Pagination: previous, numbered pages with gaps, next. The current page is marked in text, not only by fill. */
+.ds-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-space-8);
+  & ul {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+.ds-pagination__page {
+  min-width: var(--ds-size-control-h);
+  height: var(--ds-size-control-h);
+  padding: 0 var(--ds-space-8);
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-control);
+  background: transparent;
+  color: var(--ds-action-default);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  cursor: pointer;
+  &:is(:hover, [data-hovered]) { background: var(--ds-info-bg); }
+  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
+  &[aria-current="page"] {
+    background: var(--ds-action-default);
+    color: var(--ds-on-action);
+  }
+}
+.ds-pagination__gap {
+  padding: 0 var(--ds-space-4);
+  color: var(--ds-text-secondary);
+}
+.ds-pagination__prev .ds-icon { transform: rotate(180deg); }
+
+/* src/css/components/navigation/stepper.css */
+/* Navigation / Stepper: progress through a multi-step task. State is in text (aria-current, hidden "completed"), never color alone. */
+.ds-stepper {
+  display: flex;
+  gap: var(--ds-space-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ds-step {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--ds-space-8);
+  min-width: 0;
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  color: var(--ds-text-secondary);
+  &:not(:last-child)::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    min-width: var(--ds-space-16);
+    background: var(--ds-border-subtle);
+  }
+  &[data-state="current"] {
+    color: var(--ds-text-primary);
+    & .ds-step__marker {
+      border-color: var(--ds-action-default);
+      color: var(--ds-action-default);
+    }
+  }
+  &[data-state="complete"] {
+    color: var(--ds-text-primary);
+    &::after { background: var(--ds-action-default); }
+    & .ds-step__marker {
+      background: var(--ds-action-default);
+      border-color: var(--ds-action-default);
+      color: var(--ds-on-action);
+    }
+  }
+  @media (max-width: 599px) {
+    &:not([data-state="current"]) .ds-step__label { display: none; }
+  }
+}
+.ds-step__marker {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border: 2px solid var(--ds-border-default);
+  border-radius: 50%;
+  background: var(--ds-surface);
+  color: var(--ds-text-secondary);
+}
+
+/* src/css/components/navigation/footer.css */
+/* Navigation / Footer: brand, link columns and the proposed-status note. */
+.ds-footer {
+  padding-block: var(--ds-space-48);
+  background: var(--ds-surface);
+  border-top: 3px solid var(--ds-action-default);
+}
+.ds-footer__grid {
+  display: grid;
+  gap: var(--ds-space-32);
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+.ds-footer__links {
+  display: grid;
+  gap: var(--ds-space-4);
+  margin: var(--ds-space-8) 0 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* src/css/components/badge/badge.css */
@@ -1584,6 +1793,14 @@
 @layer ds.utilities {
 /* src/css/base/utilities.css */
 /* Visibility helpers: in the utilities layer so they win over component display values. */
+.ds-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .ds-only-mobile { display: none; }
 @media (max-width: 1023px) {
   .ds-only-mobile { display: block; }

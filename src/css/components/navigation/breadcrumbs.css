@@ -1,0 +1,31 @@
+/* Navigation / Breadcrumbs: path to the current page; the last item is the current page, not a link. */
+.ds-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+}
+.ds-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  color: var(--ds-text-secondary);
+}
+.ds-breadcrumb__link {
+  padding: 2px var(--ds-space-4);
+  border-radius: var(--ds-radius-chip);
+  color: var(--ds-action-default);
+  text-decoration: none;
+  &:is(:hover, [data-hovered]) { text-decoration: underline; }
+  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
+  &:is([aria-current="page"], [data-current]) {
+    color: var(--ds-text-primary);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: default;
+  }
+}

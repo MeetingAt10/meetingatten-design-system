@@ -1,4 +1,10 @@
-/* Navigation / Tab (128x48). */
+/* Navigation / Tab (128x48) + tab panel. */
+.ds-tabs-root { display: grid; }
+.ds-tab-panel {
+  padding-top: var(--ds-space-24);
+  outline: none;
+  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
+}
 .ds-tabs {
   display: flex;
   gap: 0;

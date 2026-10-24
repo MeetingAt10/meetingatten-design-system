@@ -6,6 +6,7 @@
   & > .ds-listbox { margin: 0; }
 }
 .ds-select__value[data-placeholder] { color: var(--ds-text-secondary); }
+.ds-menu__chevron { transform: rotate(90deg); }
 .ds-listbox {
   margin: var(--ds-space-4) 0 0;
   padding: var(--ds-space-4);
@@ -49,3 +50,4 @@
     cursor: not-allowed;
   }
 }
+.ds-option--danger { color: var(--ds-danger-fg); }

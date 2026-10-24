@@ -1,4 +1,12 @@
 /* Visibility helpers: in the utilities layer so they win over component display values. */
+.ds-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .ds-only-mobile { display: none; }
 @media (max-width: 1023px) {
   .ds-only-mobile { display: block; }

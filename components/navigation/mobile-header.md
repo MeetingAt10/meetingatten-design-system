@@ -1,3 +1,8 @@
+---
+title: Mobile Header
+description: 72px small-screen header: menu control, centered logo, optional action.
+react: MobileHeader
+---
 # Navigation / Mobile Header
 
 Compact header for 390 and 360 widths: 44px menu and notification controls, logo centered.
@@ -23,6 +28,14 @@ Variant axes:
 ## Accessibility
 
 - The menu button exposes `aria-expanded`; the drawer traps focus only when modal; Escape closes and restores focus to the trigger.
+
+## React
+
+```tsx
+<MobileHeader start={<IconButton icon="menu" label="Open menu" />} end={<IconButton icon="bell" label="Notifications" />}>
+  <img src={logo} alt="ACCS" height={32} />
+</MobileHeader>
+```
 
 ## Reference markup
 

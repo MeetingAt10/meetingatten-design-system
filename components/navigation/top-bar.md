@@ -1,3 +1,8 @@
+---
+title: Top Bar
+description: 72px admin header with the workspace title and tools such as search and notifications.
+react: TopBar
+---
 # Navigation / Top Bar
 
 Desktop and tablet header, 72px high. At 768 the sidebar becomes top navigation.
@@ -24,6 +29,14 @@ Variant axes:
 
 - `<header>` landmark; search labelled; bell button exposes a name and, when there are updates, a text count.
 - Notifications never expose record content (see Privacy rules in `docs/voice-and-tone.md`).
+
+## React
+
+```tsx
+<TopBar title="College workspace" tools={<><Search label="Search community" /><IconButton icon="bell" label="Notifications" /></>} />
+```
+
+The title is the workspace name, not the page heading; keep the page's h1 in the content.
 
 ## Reference markup
 

@@ -1,3 +1,8 @@
+---
+title: Sidebar
+description: 240px admin navigation from 1024px with nav items and a role note.
+react: Sidebar
+---
 # Navigation / Sidebar
 
 App sidebar, 240px, separate from the content grid. Persistent from 1024px; under 1024px navigation moves to the top.
@@ -24,6 +29,18 @@ Variant axes:
 
 - `<nav aria-label>`; links, not buttons; current page `aria-current="page"` (the selected item also has a left bar and color change, never color alone).
 - A role badge describes permission context; it is not enforcement.
+
+## React
+
+```tsx
+<Sidebar label="Workspace" logo={<img className="ds-sidebar__logo" src={logo} alt="ACCS" />}
+  footer={<><Badge>Student</Badge><SidebarNote>Own reports only · proposed permission</SidebarNote></>}>
+  <NavItem href="/overview" icon="home" isCurrent>Overview</NavItem>
+  <NavItem href="/reports" icon="report">My reports</NavItem>
+</Sidebar>
+```
+
+Combine with TopBar in an `AppShell`; under 1024px show a MobileHeader instead (`ds-only-mobile` / `ds-only-desktop`) so only one banner is visible.
 
 ## Reference markup
 
