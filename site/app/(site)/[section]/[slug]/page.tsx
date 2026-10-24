@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { allDocs, docBody, findDoc, routeOf, SECTIONS } from "@/lib/content";
 import { Markdown } from "@/lib/markdown";
-import { Sidebar } from "../../_site/Sidebar";
-import { Demo } from "../../_site/Demo";
-import { PropsTable } from "../../_site/PropsTable";
+import { Sidebar } from "@/app/_site/Sidebar";
+import { Demo } from "@/app/_site/Demo";
+import { PropsTable } from "@/app/_site/PropsTable";
 
 type Params = { params: Promise<{ section: string; slug: string }> };
 export const dynamicParams = false;
@@ -30,13 +30,15 @@ export default async function DocPage({ params }: Params) {
   return (
     <div className="ds-container site-docs">
       <Sidebar current={d} />
-      <article className="min-w-0">
+      <main className="min-w-0">
+        <article>
         <p className="ds-eyebrow">{SECTIONS[d.section].title}{d.category ? ` · ${d.category}` : ""}</p>
         <Markdown source={intro} file={d.file} />
         {d.demo && <Demo name={d.demo} />}
         {d.react && <PropsTable component={d.react} />}
         {rest && <Markdown source={rest} file={d.file} />}
-      </article>
+        </article>
+      </main>
     </div>
   );
 }

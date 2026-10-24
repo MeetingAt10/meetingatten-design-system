@@ -7,11 +7,11 @@ import {
 
 const Topics = () => [<SelectOption key="p" id="planning">Course planning</SelectOption>, <SelectOption key="t" id="thesis">Thesis advising</SelectOption>, <SelectOption key="c" id="career">Career guidance</SelectOption>];
 
-const Announcement = () => (
-  <AnnouncementCard title="Make room for your next idea." meta="Community desk · illustrative" href="#" demo>Explore the proposed peer study circle and share a topic you’d like to learn together.</AnnouncementCard>
+const Announcement = ({ level = 2 }: { level?: 2 | 3 }) => (
+  <AnnouncementCard level={level} title="Make room for your next idea." meta="Community desk · illustrative" href="#" demo>Explore the proposed peer study circle and share a topic you’d like to learn together.</AnnouncementCard>
 );
-const Post = () => (
-  <ForumCard topic="Study together" title="What helped you understand recursion?" excerpt="A sample community question. Share a useful explanation or ask a follow-up." author="Demo member" replies={6} status="Open discussion" href="#" demo />
+const Post = ({ level = 2 }: { level?: 2 | 3 }) => (
+  <ForumCard level={level} topic="Study together" title="What helped you understand recursion?" excerpt="A sample community question. Share a useful explanation or ask a follow-up." author="Demo member" replies={6} status="Open discussion" href="#" demo />
 );
 const DAYS = [{ id: "19", weekday: "M", day: 19, label: "Mon 19 Oct" }, { id: "20", weekday: "T", day: 20, label: "Tue 20 Oct" }, { id: "21", weekday: "W", day: 21, label: "Wed 21 Oct" }, { id: "22", weekday: "T", day: 22, label: "Thu 22 Oct" }, { id: "23", weekday: "F", day: 23, label: "Fri 23 Oct" }];
 const SLOTS = [{ id: "s9", time: "09:00–09:30" }, { id: "s10", time: "10:00–10:30" }, { id: "s11", time: "11:00–11:30", state: "booked" as const }, { id: "s14", time: "14:00–14:30", state: "unavailable" as const }];

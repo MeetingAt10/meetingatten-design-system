@@ -1284,7 +1284,31 @@
   color: var(--ds-text-secondary);
 }
 .ds-card > .ds-link, .ds-card .ds-card__meta .ds-link { margin-left: calc(-1 * var(--ds-space-8)); }
-/* Visual call to action inside a CardLink (the whole card is the link). */
+/* Stretched link: the title link covers the card, so the link is named by the title alone. */
+.ds-card--link {
+  position: relative;
+  transition: box-shadow var(--ds-motion-duration-base) var(--ds-motion-ease-standard), transform var(--ds-motion-duration-base) var(--ds-motion-ease-standard);
+  &:has(.ds-card__link:is(:hover, [data-hovered])), &.is-hover {
+    box-shadow: var(--ds-card-shadow-hover);
+    transform: translateY(var(--ds-lift));
+  }
+  &:has(.ds-card__link:is(:focus-visible, [data-focus-visible])), &.is-focus { box-shadow: var(--ds-ring), var(--ds-card-shadow-hover); }
+  @media (prefers-reduced-motion: reduce) {
+    &:has(.ds-card__link:is(:hover, [data-hovered])), &.is-hover { transform: none; }
+  }
+}
+.ds-card__link {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+}
+/* Visual call to action inside a linked card. */
 .ds-card__action {
   color: var(--ds-action-default);
   font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
@@ -1655,6 +1679,7 @@
   border-radius: var(--ds-radius-card);
   box-shadow: var(--ds-card-shadow);
   overflow-x: auto;
+  &:focus-visible { box-shadow: var(--ds-ring), var(--ds-card-shadow); outline: none; }
   & > .ds-type-h4 { padding: var(--ds-space-16); }
 }
 .ds-table {

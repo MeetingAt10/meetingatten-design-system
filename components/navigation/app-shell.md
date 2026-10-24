@@ -5,7 +5,7 @@ react: AppShell
 ---
 # Navigation / App Shell
 
-Sidebar (240px, from 1024px) and a column holding the TopBar and `<main>` (content max 1200px with the grid margins). Use with `data-density="compact"`.
+Sidebar (240px, from 1024px) and a column holding the TopBar and `<main>` (content max 1200px with the grid margins). Use with `data-density="compact"`. When the shell is embedded in a page that already has a `<main>` (docs, previews), pass `contentAs="div"` so there is only one main landmark.
 
 ## React
 

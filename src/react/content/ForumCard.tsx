@@ -1,9 +1,9 @@
 "use client";
-import { useId } from 'react';
-import { CardHeader, CardMeta } from './Card.js';
-import { CardLink } from './CardLink.js';
+import { Link as AriaLink } from 'react-aria-components';
+import { Card, CardHeader, CardMeta } from './Card.js';
 import { Badge } from '../badge/Badge.js';
 import { Icon } from '../icon/Icon.js';
+import { cx } from '../lib/cx.js';
 
 export interface ForumCardProps {
   /** Topic chip (accent). A topic, never a permission or confidentiality signal. */
@@ -24,21 +24,20 @@ export interface ForumCardProps {
   className?: string;
 }
 
-/** Content / Forum Card: a community discussion; the whole card opens the thread and is named by its title. */
+/** Content / Forum Card: a community discussion. The title is the link and its hit area covers the card, which lifts on hover. */
 export function ForumCard({ topic, title, level = 3, excerpt, author, replies, status, href, actionLabel = 'Join the conversation', demo, className }: ForumCardProps) {
-  const titleId = useId();
   const H = `h${level}` as 'h2' | 'h3' | 'h4';
   const meta = [author, replies !== undefined ? `${replies} ${replies === 1 ? 'reply' : 'replies'}` : undefined, status].filter(Boolean).join(' · ');
   return (
-    <CardLink href={href} aria-labelledby={titleId} className={className}>
+    <Card className={cx('ds-card--link', className)}>
       <CardHeader>
         <Badge tone="accent">{topic}</Badge>
         {demo && <span className="ds-tag-mono">Demo</span>}
       </CardHeader>
-      <H id={titleId} className="ds-type-h3">{title}</H>
+      <H className="ds-type-h3"><AriaLink href={href} className="ds-card__link">{title}</AriaLink></H>
       {excerpt && <p className="ds-type-body" style={{ margin: 0 }}>{excerpt}</p>}
       {meta && <CardMeta>{meta}</CardMeta>}
       <span className="ds-card__action" aria-hidden="true">{actionLabel}<Icon name="chevron" size={16} /></span>
-    </CardLink>
+    </Card>
   );
 }

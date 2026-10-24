@@ -17,12 +17,14 @@ describe('AnnouncementCard', () => {
 });
 
 describe('ForumCard', () => {
-  it('is one link named by its title, with topic and meta', () => {
+  it('has one link, named by its title, covering the card', () => {
     render(<ForumCard topic="Study together" title="What helped you understand recursion?" excerpt="A sample community question." author="Demo member" replies={6} status="Open discussion" href="#post" demo />);
     const link = screen.getByRole('link', { name: 'What helped you understand recursion?' });
-    expect(link.className).toBe('ds-card');
-    expect(within(link).getByText('Study together').className).toBe('ds-badge ds-badge--accent');
-    expect(within(link).getByText('Demo member · 6 replies · Open discussion')).toBeTruthy();
+    expect(link.className).toBe('ds-card__link');
+    const card = screen.getByRole('article');
+    expect(card.className).toBe('ds-card ds-card--link');
+    expect(within(card).getByText('Study together').className).toBe('ds-badge ds-badge--accent');
+    expect(within(card).getByText('Demo member · 6 replies · Open discussion')).toBeTruthy();
     expect(screen.getAllByRole('link')).toHaveLength(1);
   });
   it('cards have no axe violations', async () => {

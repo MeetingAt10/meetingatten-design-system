@@ -26,7 +26,7 @@ ACCS = Access for College of Computer Studies (spoken "Access"). Tagline: **Your
 
 ## Surfaces
 
-| | ACCS landing | ACCS admin | Meeting At 10 |
+| Aspect | ACCS landing | ACCS admin | Meeting At 10 |
 |---|---|---|---|
 | Theme / density | `light`/`dark`, `comfortable` | `light`/`dark`, `compact` | `light`/`dark`, `comfortable` |
 | Source | Figma tokens + patterns (no landing frame exists) | Figma tokens + product patterns | Figma tokens; own content and layout |

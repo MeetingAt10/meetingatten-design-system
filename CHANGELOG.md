@@ -13,6 +13,10 @@ Phase 3: ACCS patterns, completing the 55-component catalog. Spec: `context/delt
 
 ### Fixed
 - `.ds-notice__foot` now gets its caption font (the `.ds-notice p` rule overrode it).
+- Accessibility sweep (axe in a real browser, every site page in light and dark, contrast included: 0 violations): `ForumCard` uses a stretched title link (`.ds-card--link`, `.ds-card__link`) so its link is named by the title alone; `ReportsTable` wraps the table in a focusable region named by its caption, so keyboard users can scroll it.
+
+### Added (for embedding and page headers)
+- `AppShell` `contentAs="div"` for previews inside a page that already has a `<main>`; `SectionHeader` `level={1}` when it heads the page.
 
 ## [0.4.0] - 2026-10-25
 

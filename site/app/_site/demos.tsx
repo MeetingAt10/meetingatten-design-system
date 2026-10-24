@@ -20,13 +20,13 @@ const Box = ({ children }: { children: React.ReactNode }) => <div className="bg-
 const select = () => (<Stack><Select label="Topic" placeholder="Choose a topic">{Topics()}</Select><Select label="Topic" defaultSelectedKey="thesis" description="One topic per consultation.">{Topics()}</Select><Select label="Topic" isDisabled placeholder="Unavailable">{Topics()}</Select></Stack>);
 const badge = () => <Row>{(["neutral", "info", "success", "warning", "danger", "secondary", "accent"] as const).map((t) => <Badge key={t} tone={t}>{t === "neutral" ? "Student" : t}</Badge>)}</Row>;
 
-function PaginationDemo() {
+function PaginationDemo({ label }: { label: string }) {
   const [page, setPage] = useState(5);
-  return <Pagination page={page} pageCount={12} onPageChange={setPage} />;
+  return <Pagination label={label} page={page} pageCount={12} onPageChange={setPage} />;
 }
 const NAV = [{ label: "Community", href: "#", current: true }, { label: "Consultations", href: "#" }, { label: "My reports", href: "#" }];
-const SideNav = () => (
-  <Sidebar label="Workspace demo" footer={<><Badge>Student</Badge><SidebarNote>Own reports only · proposed permission</SidebarNote></>}>
+const SideNav = ({ label }: { label: string }) => (
+  <Sidebar label={label} footer={<><Badge>Student</Badge><SidebarNote>Own reports only · proposed permission</SidebarNote></>}>
     <NavItem href="#" icon="home" isCurrent>Overview</NavItem>
     <NavItem href="#" icon="forum">Community</NavItem>
     <NavItem href="#" icon="calendar" className="is-hover">Consultations</NavItem>
@@ -43,14 +43,18 @@ function SlotDemo() {
 }
 const REPORT_ROWS = [{ id: "24", reference: "DEMO-024", category: "General concern", status: "Draft · policy gate", href: "#", actionLabel: "View draft" }, { id: "18", reference: "DEMO-018", category: "Process question", status: "Review pending · demo", href: "#" }, { id: "9", reference: "DEMO-009", category: "General question", status: "Resolved · demo", href: "#" }];
 
-export const DEMOS: Record<string, () => React.ReactNode> = {
+type Theme = "light" | "dark";
+/** Landmark names get the panel's theme so the light and dark copies stay unique on the page. */
+const sfx = (t: Theme) => (t === "dark" ? " (dark)" : "");
+
+export const DEMOS: Record<string, (p: { theme: Theme }) => React.ReactNode> = {
   AnnouncementCard: () => <AnnouncementCard title="Make room for your next idea." meta="Community desk · illustrative" href="#" demo>Explore the proposed peer study circle and share a topic you’d like to learn together.</AnnouncementCard>,
   ForumCard: () => <ForumCard topic="Study together" title="What helped you understand recursion?" excerpt="A sample community question. Share a useful explanation or ask a follow-up." author="Demo member" replies={6} status="Open discussion" href="#" demo />,
   ConsultationSlotPicker: () => <SlotDemo />,
   CaseTimeline: () => <CaseTimeline label="Demo case activity" events={[{ title: "Review scope pending", actor: "Assigned reviewer · DEMO", body: "Policy gate remains active. No sensitive submission." }, { title: "Draft saved locally · DEMO", actor: "Student · own report", body: "Illustrative record only; not a submitted case." }, { title: "Record created · DEMO", actor: "Sample event", body: "DEMO-024 · dates and events are illustrative." }]} />,
-  ReportsTable: () => <ReportsTable caption="Own reports / demo records" rows={REPORT_ROWS} />,
+  ReportsTable: ({ theme }) => <ReportsTable caption={`Own reports / demo records${sfx(theme)}`} rows={REPORT_ROWS} />,
   ReportRecord: () => <div style={{ maxWidth: 390 }}><ReportRecord reference="DEMO-024" status="Draft · policy gate" facts={[{ label: "Category", value: "General concern" }, { label: "Permission", value: "Student · own reports" }]} href="#" actionLabel="View draft" /></div>,
-  PrivacyNotice: () => <PrivacyNotice title="Policy confirmation required" level={3} foot="Sensitive submission is disabled until scope and policy are confirmed.">Access permission: assigned reviewers only (proposed). Identity visibility: recipients and anonymity behavior are not yet confirmed. Restricted access does not mean anonymous.</PrivacyNotice>,
+  PrivacyNotice: ({ theme }) => <PrivacyNotice title={`Policy confirmation required${sfx(theme)}`} level={3} foot="Sensitive submission is disabled until scope and policy are confirmed.">Access permission: assigned reviewers only (proposed). Identity visibility: recipients and anonymity behavior are not yet confirmed. Restricted access does not mean anonymous.</PrivacyNotice>,
   Alert: () => (<Stack>{(["info", "success", "warning", "error"] as const).map((t) => <Alert key={t} tone={t} role="note" title={{ info: "Illustrative schedule", success: "Draft saved", warning: "Policy gate", error: "We couldn’t sign you in" }[t]}>{{ info: "These times are examples, not live availability.", success: "Your draft is kept on this device.", warning: "Submission is disabled until access rules are confirmed.", error: "Check your email and password, then try again." }[t]}</Alert>)}</Stack>),
   ToastRegion: () => (<Row><Button variant="secondary" onPress={() => toast("Display preference updated", { description: "Dark mode is on.", tone: "success" })}>Show a toast</Button><div className="ds-toast" style={{ position: "static" }}><Icon name="check" /><div className="ds-toast__content"><span className="ds-toast__title">Display preference updated</span><span className="ds-toast__body">Static preview</span></div><IconButton icon="close" label="Dismiss preview" inverse /></div></Row>),
   Modal: () => (<DialogTrigger><Button variant="destructive">Discard draft</Button><Modal title="Discard draft?" role="alertdialog">{({ close }) => (<><p className="ds-modal__msg">This removes DEMO-024. It cannot be undone.</p><ModalActions><Button variant="secondary" onPress={close}>Keep draft</Button><Button variant="destructive" onPress={close}>Discard draft</Button></ModalActions></>)}</Modal></DialogTrigger>),
@@ -58,18 +62,18 @@ export const DEMOS: Record<string, () => React.ReactNode> = {
   Tooltip: () => (<Row><Tooltip content="Notifications" delay={200}><IconButton icon="bell" label="Notifications" /></Tooltip><Tooltip content="Search the community" delay={200}><IconButton icon="search" label="Search" /></Tooltip><span className="ds-tooltip" style={{ display: "inline-block" }}>Static preview</span></Row>),
   Popover: () => <Popover trigger={<Button variant="tertiary">What is a policy gate?</Button>} title="Policy gate"><p>Submission stays disabled until recipients and access rules are confirmed.</p></Popover>,
   EmptyState: () => <EmptyState icon="report" title="No reports yet" level={3} description="Drafts you start appear here." action={<Button>Start a draft</Button>} />,
-  Navbar: () => <Navbar label="Demo" brand="ACCS" links={NAV} actions={<Button size="sm">Sign in</Button>} />,
+  Navbar: ({ theme }) => <Navbar label={`Navbar demo${sfx(theme)}`} brand="ACCS" links={NAV} actions={<Button size="sm">Sign in</Button>} />,
   NavItem: () => <div style={{ display: "grid", gap: 8, maxWidth: 240 }}><NavItem href="#" icon="home" isCurrent>Overview</NavItem><NavItem href="#" icon="forum">Community</NavItem><NavItem href="#" icon="calendar" className="is-hover">Hover</NavItem><NavItem href="#" icon="report" className="is-focus">Focus</NavItem><NavItem href="#" icon="lock" isDisabled>Disabled</NavItem></div>,
-  Sidebar: () => <div style={{ display: "flex" }}><SideNav /></div>,
+  Sidebar: ({ theme }) => <div style={{ display: "flex" }}><SideNav label={`Workspace demo${sfx(theme)}`} /></div>,
   TopBar: () => <TopBar title="College workspace" tools={<><Search label="Search community" placeholder="Search community" /><IconButton icon="bell" label="Notifications" /></>} />,
   MobileHeader: () => <MobileHeader start={<IconButton icon="menu" label="Open menu" />} end={<IconButton icon="bell" label="Notifications" />}><span className="ds-type-h4">ACCS</span></MobileHeader>,
-  AppShell: () => <div style={{ height: 420, overflow: "hidden", border: "1px solid var(--ds-border-subtle)", borderRadius: 12 }} data-density="compact"><AppShell sidebar={<SideNav />} topBar={<TopBar title="College workspace" tools={<IconButton icon="bell" label="Notifications" />} />}><h3 className="ds-type-h1" style={{ margin: 0 }}>Your college, connected.</h3><p className="ds-secondary" style={{ margin: 0 }}>Content column with the grid margins.</p></AppShell></div>,
+  AppShell: ({ theme }) => <div style={{ height: 420, overflow: "hidden", border: "1px solid var(--ds-border-subtle)", borderRadius: 12 }} data-density="compact"><AppShell contentAs="div" sidebar={<SideNav label={`App shell sidebar${sfx(theme)}`} />} topBar={<TopBar title="College workspace" tools={<IconButton icon="bell" label="Notifications" />} />}><h3 className="ds-type-h1" style={{ margin: 0 }}>Your college, connected.</h3><p className="ds-secondary" style={{ margin: 0 }}>Content column with the grid margins.</p></AppShell></div>,
   Tabs: () => (<Tabs><TabList aria-label="Community demo"><Tab id="o">Overview</Tab><Tab id="f">Forum</Tab><Tab id="c">Consultations</Tab><Tab id="a" isDisabled>Archive</Tab></TabList><TabPanel id="o">Overview panel</TabPanel><TabPanel id="f">Forum panel</TabPanel><TabPanel id="c">Consultations panel</TabPanel><TabPanel id="a">Archive</TabPanel></Tabs>),
-  Breadcrumbs: () => <Breadcrumbs label="Breadcrumbs demo" items={[{ label: "Workspace", href: "#" }, { label: "My reports", href: "#" }, { label: "DEMO-024" }]} />,
-  Pagination: () => <PaginationDemo />,
-  Stepper: () => (<Stack><Stepper label="Booking progress" steps={["Topic", "Time", "Review", "Done"]} current={0} /><Stepper label="Booking progress, step 3" steps={["Topic", "Time", "Review", "Done"]} current={2} /></Stack>),
+  Breadcrumbs: ({ theme }) => <Breadcrumbs label={`Breadcrumbs demo${sfx(theme)}`} items={[{ label: "Workspace", href: "#" }, { label: "My reports", href: "#" }, { label: "DEMO-024" }]} />,
+  Pagination: ({ theme }) => <PaginationDemo label={`Pagination demo${sfx(theme)}`} />,
+  Stepper: ({ theme }) => (<Stack><Stepper label={`Booking progress${sfx(theme)}`} steps={["Topic", "Time", "Review", "Done"]} current={0} /><Stepper label={`Booking progress, step 3${sfx(theme)}`} steps={["Topic", "Time", "Review", "Done"]} current={2} /></Stack>),
   MenuButton: () => (<Row><MenuButton label="Draft actions"><MenuItem id="keep">Keep draft</MenuItem><MenuItem id="export">Export summary</MenuItem><MenuItem id="discard" danger>Discard draft</MenuItem></MenuButton><MenuButton label="More actions" iconOnly><MenuItem id="a">Copy link</MenuItem></MenuButton></Row>),
-  Footer: () => <Footer brand={<span className="ds-type-h4">ACCS</span>} description="Your Access to the College of Computer Studies." columns={[{ title: "Product", links: [{ label: "Community", href: "#" }, { label: "Consultations", href: "#" }] }, { title: "Policy", links: [{ label: "Privacy and access", href: "#" }] }]} note="ACCS · Proposed, not approved" />,
+  Footer: ({ theme }) => <Footer brand={<span className="ds-type-h4">ACCS</span>} description="Your Access to the College of Computer Studies." columns={[{ title: `Product${sfx(theme)}`, links: [{ label: "Community", href: "#" }, { label: "Consultations", href: "#" }] }, { title: `Policy${sfx(theme)}`, links: [{ label: "Privacy and access", href: "#" }] }]} note="ACCS · Proposed, not approved" />,
   Button: () => (<>
     <Label>Intent</Label>
     <Row><Button>Continue</Button><Button variant="secondary">Cancel</Button><Button variant="tertiary">Learn more</Button><Button variant="destructive">Remove draft</Button></Row>
@@ -111,7 +115,7 @@ export const DEMOS: Record<string, () => React.ReactNode> = {
   Container: () => <Container><Box>Container: centered 1200px column with breakpoint margins</Box></Container>,
   Stack: () => <Stack gap={24}><Box>Stack gap 24</Box><Box>Item</Box><Box>Item</Box></Stack>,
   Grid: () => (<Stack><Grid><Box>2 columns</Box><Box>2 columns</Box></Grid><Grid columns="main"><Box>main (2fr)</Box><Box>side (1fr)</Box></Grid></Stack>),
-  Section: () => <Section band aria-label="Demo band"><Box>Section with band: surface, density rhythm, container</Box></Section>,
+  Section: ({ theme }) => <Section band aria-label={`Demo band${sfx(theme)}`}><Box>Section with band: surface, density rhythm, container</Box></Section>,
   SectionHeader: () => <SectionHeader eyebrow="One system. Different responsibilities." title="Community, consultation and reports." description="Each in its own voice." action={<Link href="#">See all</Link>} />,
   Hero: () => <Hero eyebrow="Student · community access" title="Your Access to the College of Computer Studies" lead="Find a conversation, catch an update or make space for a question." actions={<><Button>Browse community</Button><Button variant="secondary">Explore consultation</Button></>} />,
   FeatureRow: () => (<FeatureRow>
@@ -128,7 +132,7 @@ export const DEMOS: Record<string, () => React.ReactNode> = {
   </Stack>),
 };
 
-export function DemoPanel({ name }: { name: string }) {
+export function DemoPanel({ name, theme }: { name: string; theme: Theme }) {
   const D = DEMOS[name];
-  return D ? <D /> : null;
+  return D ? <D theme={theme} /> : null;
 }

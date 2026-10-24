@@ -16,7 +16,9 @@ export async function Markdown({ source, file }: { source: string; file: string 
             if (!to) return <span>{children}</span>;
             return to.startsWith("/") ? <Link className="ds-link-inline" href={to}>{children}</Link> : <a className="ds-link-inline" href={to}>{children}</a>;
           },
-          table: (p: React.ComponentProps<"table">) => <div className="prose-table"><table {...p} /></div>,
+          // Scroll containers are focusable so keyboard users can scroll them.
+          table: (p: React.ComponentProps<"table">) => <div className="prose-table" tabIndex={0}><table {...p} /></div>,
+          pre: (p: React.ComponentProps<"pre">) => <pre {...p} tabIndex={0} />,
         }}
       />
     </div>

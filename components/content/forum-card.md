@@ -40,7 +40,7 @@ Title "What helped you understand recursion?" Body "A sample community question.
   author="Demo member" replies={6} status="Open discussion" href="/community/42" demo />
 ```
 
-The card is one link (CardLink) named by its title; "Join the conversation" is a visual cue only, so there is no link inside the link.
+The title is the only link; its hit area stretches over the whole card (the card lifts on hover and shows the focus ring), so the link is named by the title alone. "Join the conversation" is a visual cue only.
 
 ## Reference markup
 

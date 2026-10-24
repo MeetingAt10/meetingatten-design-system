@@ -4,8 +4,8 @@ export interface SectionHeaderProps {
   /** Short mono label above the heading. */
   eyebrow?: React.ReactNode;
   title: React.ReactNode;
-  /** Heading level; default 2. The visual size stays H1 so sections read clearly. */
-  level?: 2 | 3;
+  /** Heading level; default 2 (use 1 when it heads the page). The visual size stays H1. */
+  level?: 1 | 2 | 3;
   description?: React.ReactNode;
   /** Optional action, for example a Link or secondary Button. */
   action?: React.ReactNode;
@@ -14,7 +14,7 @@ export interface SectionHeaderProps {
 
 /** Section Header: eyebrow, heading, lead and optional action above a section. */
 export function SectionHeader({ eyebrow, title, level = 2, description, action, className }: SectionHeaderProps) {
-  const H = level === 3 ? 'h3' : 'h2';
+  const H = (`h${level}`) as 'h1' | 'h2' | 'h3';
   return (
     <header className={cx('ds-section-header', className)}>
       {eyebrow && <p className="ds-eyebrow">{eyebrow}</p>}

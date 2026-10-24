@@ -36,6 +36,15 @@
   left: -999px;
   &:focus { left: var(--ds-space-16); top: var(--ds-space-16); z-index: var(--ds-z-toast); background: var(--ds-surface); padding: var(--ds-space-8) var(--ds-space-16); border-radius: var(--ds-radius-control); }
 }
+.site-example-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-8);
+  padding-block: var(--ds-space-8);
+  border-bottom: 1px solid var(--ds-border-subtle);
+}
 .site-docs {
   display: grid;
   gap: var(--ds-space-48);
@@ -99,6 +108,7 @@
   & li + li { margin-top: var(--ds-space-4); }
   & code { padding: 1px 4px; border-radius: var(--ds-radius-chip); background: var(--ds-disabled-bg); font: var(--ds-type-code-font-weight) 0.875em / inherit var(--ds-type-code-font-family); }
   & pre { margin: 0 0 var(--ds-space-24); padding: var(--ds-space-16); overflow-x: auto; border-radius: var(--ds-radius-tile); background: var(--ds-surface); border: 1px solid var(--ds-border-subtle); }
+  & pre:focus-visible { box-shadow: var(--ds-ring); outline: none; }
   & pre code { padding: 0; background: none; font-size: var(--ds-type-code-size); line-height: var(--ds-type-code-line-height); }
   & blockquote { margin: 0 0 var(--ds-space-16); padding-left: var(--ds-space-16); border-left: 3px solid var(--ds-border-default); color: var(--ds-text-secondary); }
   & hr { border: 0; border-top: 1px solid var(--ds-border-subtle); margin: var(--ds-space-32) 0; }
@@ -106,6 +116,7 @@
 .prose-table {
   margin: 0 0 var(--ds-space-24);
   overflow-x: auto;
+  &:focus-visible { box-shadow: var(--ds-ring); outline: none; }
   & table { width: 100%; border-collapse: collapse; font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family); }
   & th { text-align: left; padding: var(--ds-space-8) var(--ds-size-12); background: var(--ds-info-bg); border-block: 1px solid var(--ds-border-subtle); }
   & td { padding: var(--ds-space-8) var(--ds-size-12); border-bottom: 1px solid var(--ds-border-subtle); vertical-align: top; }

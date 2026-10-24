@@ -1,3 +1,5 @@
+"use client";
+import { useId } from 'react';
 import { Link } from '../navigation/Link.js';
 
 export interface ReportRow {
@@ -21,10 +23,12 @@ export interface ReportsTableProps {
 
 /** Data / Reports Table: own or assigned reports. On mobile, show ReportRecord cards instead. */
 export function ReportsTable({ caption, rows, emptyMessage = 'No reports yet.', className }: ReportsTableProps) {
+  const captionId = useId();
+  // Focusable, named region so keyboard users can scroll the table when it overflows on small screens.
   return (
-    <div className={['ds-table-wrap', className].filter(Boolean).join(' ')}>
+    <div className={['ds-table-wrap', className].filter(Boolean).join(' ')} role="region" aria-labelledby={captionId} tabIndex={0}>
       <table className="ds-table">
-        <caption>{caption}</caption>
+        <caption id={captionId}>{caption}</caption>
         <thead>
           <tr><th scope="col">Reference</th><th scope="col">Category</th><th scope="col">Status</th><th scope="col">Action</th></tr>
         </thead>

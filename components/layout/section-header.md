@@ -5,7 +5,7 @@ react: SectionHeader
 ---
 # Layout / Section Header
 
-Mono eyebrow (`action-default`), heading at H1 size (h2 by default), Body large lead in `text-secondary` capped at 680px, then an optional action. 32px before the section content.
+Mono eyebrow (`action-default`), heading at H1 size (h2 by default; `level={1}` when it heads the page), Body large lead in `text-secondary` capped at 680px, then an optional action. 32px before the section content.
 
 ## React
 

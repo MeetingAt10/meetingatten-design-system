@@ -22,7 +22,7 @@ export default async function SectionPage({ params }: Params) {
   for (const d of docsIn(section)) groups.set(d.category ?? "pages", [...(groups.get(d.category ?? "pages") ?? []), d]);
   return (
     <main className="ds-container ds-section">
-      <SectionHeader eyebrow="ACCS Design System" title={SECTIONS[section].title} description={SECTIONS[section].description} />
+      <SectionHeader level={1} eyebrow="ACCS Design System" title={SECTIONS[section].title} description={SECTIONS[section].description} />
       <div className="site-index">
         {[...groups].map(([cat, docs]) => (
           <section key={cat} aria-label={cat}>

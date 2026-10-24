@@ -16,5 +16,5 @@ export interface ForumCardProps {
     demo?: boolean;
     className?: string;
 }
-/** Content / Forum Card: a community discussion; the whole card opens the thread and is named by its title. */
+/** Content / Forum Card: a community discussion. The title is the link and its hit area covers the card, which lifts on hover. */
 export declare function ForumCard({ topic, title, level, excerpt, author, replies, status, href, actionLabel, demo, className }: ForumCardProps): import("react").JSX.Element;

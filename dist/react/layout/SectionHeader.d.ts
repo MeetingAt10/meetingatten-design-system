@@ -2,8 +2,8 @@ export interface SectionHeaderProps {
     /** Short mono label above the heading. */
     eyebrow?: React.ReactNode;
     title: React.ReactNode;
-    /** Heading level; default 2. The visual size stays H1 so sections read clearly. */
-    level?: 2 | 3;
+    /** Heading level; default 2 (use 1 when it heads the page). The visual size stays H1. */
+    level?: 1 | 2 | 3;
     description?: React.ReactNode;
     /** Optional action, for example a Link or secondary Button. */
     action?: React.ReactNode;

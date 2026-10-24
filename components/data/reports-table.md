@@ -40,7 +40,7 @@ Title "Own reports / demo records". Rows DEMO-024 General concern, DEMO-018 Proc
 ]} />
 ```
 
-Action links are named with the reference ("View draft DEMO-024"). On mobile show ReportRecord cards instead (`ds-only-desktop` / `ds-only-mobile`).
+Action links are named with the reference ("View draft DEMO-024"). The scrolling wrapper is a focusable region named by the caption, so keyboard users can scroll a wide table. On mobile show ReportRecord cards instead (`ds-only-desktop` / `ds-only-mobile`).
 
 ## Reference markup
 

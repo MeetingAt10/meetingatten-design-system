@@ -2,7 +2,7 @@
 
 `data-density` sets the default body text and the section rhythm. It points at existing Figma text styles and space tokens; it adds no values. Colors come from the theme ([light-dark.md](light-dark.md)).
 
-| | `comfortable` (default, `:root`) | `compact` |
+| Setting | `comfortable` (default, `:root`) | `compact` |
 |---|---|---|
 | Use | ACCS landing, Meeting At 10 team site, sign-in | ACCS admin / product UI |
 | Body text (`--ds-density-text-*`) | Body large 16/26 | Body 14/22 |

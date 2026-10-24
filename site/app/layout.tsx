@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
-import { ThemeToggle } from "./_site/ThemeToggle";
 import { ToastRegion } from "@meetingat10/design-system/react";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -17,7 +15,6 @@ export const metadata: Metadata = {
   openGraph: { siteName: "ACCS Design System", type: "website" },
 };
 
-const NAV = [["Foundations", "/foundations/"], ["Components", "/components/"], ["Guides", "/guides/"], ["Examples", "/examples/landing/"]] as const;
 // Applies a stored theme before first paint; no stored choice keeps following the OS.
 const THEME_BOOT = "try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}";
 
@@ -26,21 +23,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${body.variable} ${display.variable} ${mono.variable}`} suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} /></head>
       <body className="ds-body">
-        <a className="site-skip" href="#main">Skip to content</a>
-        <header className="site-header">
-          <div className="ds-container site-header__inner">
-            <Link className="site-brand" href="/">ACCS <span>Design System</span></Link>
-            <nav className="site-nav" aria-label="Main">
-              {NAV.map(([label, href]) => <Link key={href} className="ds-link" href={href}>{label}</Link>)}
-              <ThemeToggle />
-            </nav>
-          </div>
-        </header>
-        <div id="main">{children}</div>
+        {children}
         <ToastRegion />
-        <footer className="site-footer">
-          <div className="ds-container ds-type-body-small">ACCS Design System · Proposed, not approved · Synthetic content only · Built from the team&apos;s Figma palette</div>
-        </footer>
       </body>
     </html>
   );
