@@ -1,0 +1,30 @@
+{
+  "breakpoint": {
+    "$type": "dimension",
+    "$description": "Same values as Tailwind defaults. min-width, mobile first.",
+    "sm": {
+      "$value": "40rem"
+    },
+    "md": {
+      "$value": "48rem"
+    },
+    "lg": {
+      "$value": "64rem"
+    },
+    "xl": {
+      "$value": "80rem"
+    },
+    "2xl": {
+      "$value": "96rem"
+    }
+  },
+  "grid": {
+    "$type": "dimension",
+    "gutter": {
+      "$value": "1.5rem"
+    },
+    "gutter-sm": {
+      "$value": "1rem"
+    }
+  }
+}

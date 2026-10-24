@@ -1,0 +1,189 @@
+{
+  "$description": "ACCS admin portal, light. Dense but calm: tinted canvas, white surfaces, 36px controls.",
+  "$extensions": {
+    "dark": false
+  },
+  "color": {
+    "$type": "color",
+    "canvas": {
+      "$value": "{color.ink.50}"
+    },
+    "surface": {
+      "$value": "{color.white}"
+    },
+    "surface-sunken": {
+      "$value": "{color.ink.100}"
+    },
+    "surface-raised": {
+      "$value": "{color.white}"
+    },
+    "ink": {
+      "$value": "{color.ink.900}"
+    },
+    "ink-secondary": {
+      "$value": "{color.ink.600}"
+    },
+    "ink-muted": {
+      "$value": "{color.ink.600}"
+    },
+    "line": {
+      "$value": "{color.ink.200}"
+    },
+    "line-strong": {
+      "$value": "{color.ink.500}"
+    },
+    "action": {
+      "$value": "{color.blue.800}"
+    },
+    "action-hover": {
+      "$value": "{color.blue.900}"
+    },
+    "on-action": {
+      "$value": "{color.white}"
+    },
+    "action-subtle": {
+      "$value": "{color.blue.50}"
+    },
+    "action-subtle-fg": {
+      "$value": "{color.blue.800}"
+    },
+    "link": {
+      "$value": "{color.blue.700}"
+    },
+    "focus": {
+      "$value": "{color.blue.500}"
+    },
+    "accent": {
+      "$value": "{color.teal.600}"
+    },
+    "on-accent": {
+      "$value": "{color.white}"
+    },
+    "accent-bg": {
+      "$value": "{color.teal.50}"
+    },
+    "accent-fg": {
+      "$value": "{color.teal.800}"
+    },
+    "inverse": {
+      "$value": "{color.ink.900}"
+    },
+    "inverse-ink": {
+      "$value": "{color.white}"
+    },
+    "inverse-ink-muted": {
+      "$value": "{color.ink.300}"
+    },
+    "overlay": {
+      "$value": "#0C111D99"
+    },
+    "info-bg": {
+      "$value": "{color.blue.50}"
+    },
+    "info-fg": {
+      "$value": "{color.blue.800}"
+    },
+    "success-bg": {
+      "$value": "{color.green.50}"
+    },
+    "success-fg": {
+      "$value": "{color.green.800}"
+    },
+    "success": {
+      "$value": "{color.green.600}"
+    },
+    "warning-bg": {
+      "$value": "{color.amber.50}"
+    },
+    "warning-fg": {
+      "$value": "{color.amber.800}"
+    },
+    "warning": {
+      "$value": "{color.amber.600}"
+    },
+    "danger-bg": {
+      "$value": "{color.red.50}"
+    },
+    "danger-fg": {
+      "$value": "{color.red.800}"
+    },
+    "danger": {
+      "$value": "{color.red.600}"
+    },
+    "on-danger": {
+      "$value": "{color.white}"
+    },
+    "viz-cat-1": {
+      "$value": "{color.blue.600}"
+    },
+    "viz-cat-2": {
+      "$value": "{color.teal.600}"
+    },
+    "viz-cat-3": {
+      "$value": "{color.sun.700}"
+    },
+    "viz-cat-4": {
+      "$value": "{color.rose.600}"
+    },
+    "viz-cat-5": {
+      "$value": "{color.olive.600}"
+    },
+    "viz-cat-6": {
+      "$value": "{color.sky.600}"
+    },
+    "viz-cat-7": {
+      "$value": "{color.ink.600}"
+    },
+    "viz-seq-1": {
+      "$value": "{color.blue.100}"
+    },
+    "viz-seq-2": {
+      "$value": "{color.blue.300}"
+    },
+    "viz-seq-3": {
+      "$value": "{color.blue.500}"
+    },
+    "viz-seq-4": {
+      "$value": "{color.blue.700}"
+    },
+    "viz-seq-5": {
+      "$value": "{color.blue.900}"
+    },
+    "viz-div-1": {
+      "$value": "{color.blue.700}"
+    },
+    "viz-div-2": {
+      "$value": "{color.blue.300}"
+    },
+    "viz-div-3": {
+      "$value": "{color.ink.100}"
+    },
+    "viz-div-4": {
+      "$value": "{color.sun.300}"
+    },
+    "viz-div-5": {
+      "$value": "{color.sun.700}"
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "radius-control": {
+      "$value": "6px"
+    },
+    "radius-card": {
+      "$value": "8px"
+    },
+    "control-h": {
+      "$value": "2.25rem"
+    },
+    "row-h": {
+      "$value": "2.5rem"
+    },
+    "section-y": {
+      "$value": "1.5rem"
+    },
+    "container": {
+      "$value": "90rem"
+    }
+  }
+}

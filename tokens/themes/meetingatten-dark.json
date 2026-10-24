@@ -1,0 +1,189 @@
+{
+  "$description": "Meeting At 10 site, dark. Ink canvas, paper-colored actions, sunrise accent.",
+  "$extensions": {
+    "dark": true
+  },
+  "color": {
+    "$type": "color",
+    "canvas": {
+      "$value": "{color.ink.950}"
+    },
+    "surface": {
+      "$value": "{color.ink.900}"
+    },
+    "surface-sunken": {
+      "$value": "{color.black}"
+    },
+    "surface-raised": {
+      "$value": "{color.ink.800}"
+    },
+    "ink": {
+      "$value": "{color.paper.50}"
+    },
+    "ink-secondary": {
+      "$value": "{color.ink.300}"
+    },
+    "ink-muted": {
+      "$value": "{color.ink.400}"
+    },
+    "line": {
+      "$value": "{color.ink.800}"
+    },
+    "line-strong": {
+      "$value": "{color.ink.500}"
+    },
+    "action": {
+      "$value": "{color.paper.50}"
+    },
+    "action-hover": {
+      "$value": "{color.paper.200}"
+    },
+    "on-action": {
+      "$value": "{color.ink.900}"
+    },
+    "action-subtle": {
+      "$value": "{color.ink.800}"
+    },
+    "action-subtle-fg": {
+      "$value": "{color.paper.50}"
+    },
+    "link": {
+      "$value": "{color.sun.300}"
+    },
+    "focus": {
+      "$value": "{color.blue.300}"
+    },
+    "accent": {
+      "$value": "{color.sun.400}"
+    },
+    "on-accent": {
+      "$value": "{color.ink.950}"
+    },
+    "accent-bg": {
+      "$value": "{color.sun.950}"
+    },
+    "accent-fg": {
+      "$value": "{color.sun.300}"
+    },
+    "inverse": {
+      "$value": "{color.paper.50}"
+    },
+    "inverse-ink": {
+      "$value": "{color.ink.900}"
+    },
+    "inverse-ink-muted": {
+      "$value": "{color.ink.600}"
+    },
+    "overlay": {
+      "$value": "#00000099"
+    },
+    "info-bg": {
+      "$value": "{color.blue.950}"
+    },
+    "info-fg": {
+      "$value": "{color.blue.200}"
+    },
+    "success-bg": {
+      "$value": "{color.green.950}"
+    },
+    "success-fg": {
+      "$value": "{color.green.300}"
+    },
+    "success": {
+      "$value": "{color.green.400}"
+    },
+    "warning-bg": {
+      "$value": "{color.amber.950}"
+    },
+    "warning-fg": {
+      "$value": "{color.amber.300}"
+    },
+    "warning": {
+      "$value": "{color.amber.400}"
+    },
+    "danger-bg": {
+      "$value": "{color.red.950}"
+    },
+    "danger-fg": {
+      "$value": "{color.red.300}"
+    },
+    "danger": {
+      "$value": "{color.red.400}"
+    },
+    "on-danger": {
+      "$value": "{color.ink.950}"
+    },
+    "viz-cat-1": {
+      "$value": "{color.blue.400}"
+    },
+    "viz-cat-2": {
+      "$value": "{color.teal.400}"
+    },
+    "viz-cat-3": {
+      "$value": "{color.amber.400}"
+    },
+    "viz-cat-4": {
+      "$value": "{color.rose.400}"
+    },
+    "viz-cat-5": {
+      "$value": "{color.olive.400}"
+    },
+    "viz-cat-6": {
+      "$value": "{color.sky.400}"
+    },
+    "viz-cat-7": {
+      "$value": "{color.ink.400}"
+    },
+    "viz-seq-1": {
+      "$value": "{color.blue.900}"
+    },
+    "viz-seq-2": {
+      "$value": "{color.blue.700}"
+    },
+    "viz-seq-3": {
+      "$value": "{color.blue.500}"
+    },
+    "viz-seq-4": {
+      "$value": "{color.blue.300}"
+    },
+    "viz-seq-5": {
+      "$value": "{color.blue.100}"
+    },
+    "viz-div-1": {
+      "$value": "{color.blue.400}"
+    },
+    "viz-div-2": {
+      "$value": "{color.blue.700}"
+    },
+    "viz-div-3": {
+      "$value": "{color.ink.700}"
+    },
+    "viz-div-4": {
+      "$value": "{color.sun.700}"
+    },
+    "viz-div-5": {
+      "$value": "{color.sun.400}"
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "radius-control": {
+      "$value": "6px"
+    },
+    "radius-card": {
+      "$value": "8px"
+    },
+    "control-h": {
+      "$value": "2.75rem"
+    },
+    "row-h": {
+      "$value": "3rem"
+    },
+    "section-y": {
+      "$value": "5rem"
+    },
+    "container": {
+      "$value": "64rem"
+    }
+  }
+}
