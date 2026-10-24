@@ -1,3 +1,8 @@
+---
+title: Link
+description: Standalone 44px navigation link and the underlined inline link for running text.
+react: Link
+---
 # Navigation / Link
 
 Five states, 240 x 44. Card and table links expose this family ("Read update →", "View draft →"). Route errors and loading belong to the destination. Bare action links and breadcrumbs use 44px minimum-height wrappers.
@@ -28,6 +33,16 @@ Variant axes:
 ## Accessibility
 
 - Native `<a href>`; the accessible name describes the destination; links navigate, buttons act.
+
+## React
+
+```tsx
+<Link href="/community">Join the conversation</Link>
+<p>Read the <Link href="/privacy" inline>privacy and access</Link> notes.</p>
+<Link href="/reports" isDisabled>Reports</Link>
+```
+
+React Aria `Link`: works with client routers through its `RouterProvider`; disabled links get `aria-disabled` and are not activated.
 
 ## Reference markup
 

@@ -1,3 +1,8 @@
+---
+title: Badge: Status
+description: Status badge in words (Draft, Review pending, Resolved) with a status tone.
+react: Badge
+---
 # Badge / Status
 
 Case/record status family, separate from Severity. Radius 4, padding 5 / 10.
@@ -32,6 +37,14 @@ Variant axes:
 
 - Badges are text, never color alone; status includes words or symbols.
 - Not interactive. Only actual actions receive focus.
+
+## React
+
+```tsx
+<Badge tone="warning">Draft · policy gate</Badge>
+<Badge tone="success">Resolved</Badge>
+<Badge tone="info">DEMO</Badge>
+```
 
 ## Reference markup
 

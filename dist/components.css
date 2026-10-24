@@ -1134,6 +1134,73 @@
   color: var(--ds-text-primary);
 }
 
+/* src/css/components/content/avatar.css */
+/* Content / Avatar: initials or photo in a circle. Initials use the checked info bg/fg pair. */
+.ds-avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--ds-info-bg);
+  color: var(--ds-info-fg);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / 1 var(--ds-type-label-font-family);
+  object-fit: cover;
+}
+.ds-avatar--sm {
+  width: 1.5rem;
+  height: 1.5rem;
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / 1 var(--ds-type-caption-font-family);
+}
+.ds-avatar--lg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* src/css/components/feedback/progress.css */
+/* Feedback / Progress: labeled determinate or indeterminate bar (no aria-valuenow = indeterminate, as in ARIA). Fill vs track is contrast-checked (3:1). */
+.ds-progress {
+  display: grid;
+  gap: var(--ds-space-8);
+}
+.ds-progress__head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--ds-space-16);
+}
+.ds-progress__value {
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  color: var(--ds-text-secondary);
+}
+.ds-progress__track {
+  display: block;
+  height: var(--ds-space-8);
+  overflow: hidden;
+  border-radius: var(--ds-radius-chip);
+  background: var(--ds-disabled-bg);
+}
+.ds-progress__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ds-action-default);
+  transition: width var(--ds-motion-duration-base) var(--ds-motion-ease-standard);
+}
+.ds-progress:not([aria-valuenow]) .ds-progress__fill {
+  width: 40%;
+  animation: ds-progress 1.2s var(--ds-motion-ease-standard) infinite;
+  @media (prefers-reduced-motion: reduce) {
+    width: 100%;
+    animation: none;
+  }
+}
+@keyframes ds-progress {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(250%); }
+}
+
 /* src/css/components/layout/wash.css */
 /* Layout / Wash: decorative token washes behind a region. Each wash fades a locked color to transparent. */
 .ds-wash {

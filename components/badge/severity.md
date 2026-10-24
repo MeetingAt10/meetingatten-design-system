@@ -1,3 +1,8 @@
+---
+title: Badge: Severity
+description: Severity badge, a separate family from status; the text carries the meaning.
+react: Badge
+---
 # Badge / Severity
 
 Proposed classification, separate from Status. Severity is not an emergency assessment. Radius 4, padding 5 / 10.
@@ -31,6 +36,14 @@ Variant axes:
 
 - Badges are text, never color alone; status includes words or symbols.
 - Not interactive. Only actual actions receive focus.
+
+## React
+
+```tsx
+<Badge tone="danger">High</Badge>
+```
+
+Tones: `neutral` (default), `info`, `success`, `warning`, `danger`, `secondary`, `accent`. Never rely on the tone alone.
 
 ## Reference markup
 

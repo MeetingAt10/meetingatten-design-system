@@ -1,0 +1,40 @@
+/* Feedback / Progress: labeled determinate or indeterminate bar (no aria-valuenow = indeterminate, as in ARIA). Fill vs track is contrast-checked (3:1). */
+.ds-progress {
+  display: grid;
+  gap: var(--ds-space-8);
+}
+.ds-progress__head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--ds-space-16);
+}
+.ds-progress__value {
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  color: var(--ds-text-secondary);
+}
+.ds-progress__track {
+  display: block;
+  height: var(--ds-space-8);
+  overflow: hidden;
+  border-radius: var(--ds-radius-chip);
+  background: var(--ds-disabled-bg);
+}
+.ds-progress__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ds-action-default);
+  transition: width var(--ds-motion-duration-base) var(--ds-motion-ease-standard);
+}
+.ds-progress:not([aria-valuenow]) .ds-progress__fill {
+  width: 40%;
+  animation: ds-progress 1.2s var(--ds-motion-ease-standard) infinite;
+  @media (prefers-reduced-motion: reduce) {
+    width: 100%;
+    animation: none;
+  }
+}
+@keyframes ds-progress {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(250%); }
+}

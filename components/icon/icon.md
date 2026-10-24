@@ -1,3 +1,8 @@
+---
+title: Icon
+description: The Figma icon set at 16, 20 and 24px, stroked in currentColor.
+react: Icon
+---
 # Icon (12 families) and Graphic / Navigation Overview
 
 Figma owns the icon set: 12 native families (Search, Menu, Chevron, Bell, Calendar, Forum, Report, Shield, Check, Alert, Close, User), each Size=16 / 20 / 24, strokes 1.5 / 1.75 / 2px, round caps and joins, optical padding inside the canvas. **Status: from Figma.** `assets/icons/sprite.svg` symbols are the exported Size=24 variants and `assets/icons/figma/{name}-{16,20,24}.svg` are the per-size exports, with strokes set to `currentColor`. See [docs/iconography.md](../../docs/iconography.md).
@@ -52,6 +57,15 @@ Variant axes:
 ## Accessibility
 
 - `aria-hidden="true"` unless the icon is the only content, then give the control an accessible name.
+
+## React
+
+```tsx
+<Icon name="forum" />                      {/* decorative, next to visible text */}
+<Icon name="alert" size={16} label="Warning" />  {/* meaningful on its own */}
+```
+
+Inline SVG generated from `assets/icons/sprite.svg` at build time (`src/react/icon/icons.ts`), so React apps need no sprite in the page. Names: search, menu, chevron, bell, calendar, forum, report, shield, check, alert, close, user, home, lock, info.
 
 ## Reference markup
 

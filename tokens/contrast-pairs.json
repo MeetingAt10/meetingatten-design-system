@@ -52,6 +52,8 @@
   ["danger-on-action", "danger-action-pressed", 4.5],
   ["danger-fg", "canvas", 4.5, "error message on canvas"],
   ["canvas", "text-primary", 4.5, "toast text on inverse"],
-  ["success-on-inverse", "text-primary", 4.5, "toast glyph on inverse"]
+  ["success-on-inverse", "text-primary", 4.5, "toast glyph on inverse"],
+  ["action-default", "disabled-bg", 3, "progress fill on track (non-text)"],
+  ["text-primary", "disabled-bg", 4.5, "neutral badge, neutral tile icon"]
  ]
 }

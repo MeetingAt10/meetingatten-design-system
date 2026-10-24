@@ -1,2 +1,12 @@
 // @meetingat10/design-system/react: React components over the ds-* CSS. Import dist/components.css once in the app.
 export { Button, type ButtonProps, type ButtonVariant } from './control/Button.js';
+export { IconButton, type IconButtonProps } from './control/IconButton.js';
+export { Icon, type IconProps, type IconName } from './icon/Icon.js';
+export { Link, type LinkProps } from './navigation/Link.js';
+export { Badge, type BadgeProps, type BadgeTone } from './badge/Badge.js';
+export { Spinner, type SpinnerProps } from './feedback/Spinner.js';
+export { Progress, type ProgressProps } from './feedback/Progress.js';
+export { Avatar, type AvatarProps } from './content/Avatar.js';
+export { Tile, type TileProps, type TileTone } from './content/Tile.js';
+export { Skeleton, type SkeletonProps } from './data/Skeleton.js';
+export { Divider } from './layout/Divider.js';

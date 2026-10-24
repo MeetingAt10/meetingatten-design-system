@@ -1,3 +1,8 @@
+---
+title: Badge: Role
+description: Neutral role badge (Student, Adviser, Reviewer); never a privacy or status signal.
+react: Badge
+---
 # Badge / Role
 
 Permission-context label, radius 4, padding 5 / 10, gap 6, `Caption` 12/16 / 500. A role badge describes permission context; it is not a privacy or status signal. Do not style roles as severity.
@@ -32,6 +37,14 @@ Variant axes:
 
 - Badges are text, never color alone; status includes words or symbols.
 - Not interactive. Only actual actions receive focus.
+
+## React
+
+```tsx
+<Badge>Student</Badge>
+```
+
+Role badges keep the default neutral tone.
 
 ## Reference markup
 

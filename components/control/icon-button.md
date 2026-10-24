@@ -1,3 +1,8 @@
+---
+title: Icon Button
+description: 44x44 button with an icon and a required accessible name; standard and inverse appearances.
+react: IconButton
+---
 # Control / Icon Button
 
 Standard and Inverse x five states, 44 x 44. Used by headers, modal close and toast. Icons are not touch targets; the wrapper provides the 44px target.
@@ -26,6 +31,15 @@ Variant axes:
 
 - Icon-only actions need an accessible name (`aria-label`); tooltips supplement, never replace it.
 - Decorative glyph is `aria-hidden`.
+
+## React
+
+```tsx
+<IconButton icon="bell" label="Notifications" onPress={open} />
+<IconButton icon="close" label="Dismiss" inverse />
+```
+
+`label` is required and becomes the accessible name.
 
 ## Reference markup
 

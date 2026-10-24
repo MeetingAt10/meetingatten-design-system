@@ -1,0 +1,18 @@
+export declare const ICONS: {
+    readonly search: "<path d=\"M16 16L21 21M18 10.5C18 12.4891 17.2098 14.3968 15.8033 15.8033C14.3968 17.2098 12.4891 18 10.5 18C8.51088 18 6.60322 17.2098 5.1967 15.8033C3.79018 14.3968 3 12.4891 3 10.5C3 8.51088 3.79018 6.60322 5.1967 5.1967C6.60322 3.79018 8.51088 3 10.5 3C12.4891 3 14.3968 3.79018 15.8033 5.1967C17.2098 6.60322 18 8.51088 18 10.5Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly menu: "<path d=\"M3 5H21M3 12H21M3 19H21\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly chevron: "<path d=\"M8 4L16 12L8 20\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly bell: "<path d=\"M9 21H15M4 17H20L18 14V8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8V14L4 17Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly calendar: "<path d=\"M8 5H4V10M8 5H16M8 5V3M8 5V7M16 5H20V10M16 5V3M16 5V7M20 10V21H4V10M20 10H4M8 14H10M14 14H16M8 17H10\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly forum: "<path d=\"M7 8H17M7 12H14M3 4H21V17H9L3 21V4Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly report: "<path d=\"M20 9L14 3H5V21H20V9ZM14 3V9H20M9 13H16M9 17H16\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly shield: "<path d=\"M8 12L11 15L16 9M12 3L21 7V12C21 17 17 20 12 22C7 20 3 17 3 12V7L12 3Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly check: "<path d=\"M4 12L9 17L20 6\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly alert: "<path d=\"M12 9V14M12 17V17.2M12 3L22 21H2L12 3Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly close: "<path d=\"M5 5L12 12M12 12L19 19M12 12L19 5M12 12L5 19\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly user: "<path d=\"M4 21V19C4 14 20 14 20 19V21M16 7C16 8.06087 15.5786 9.07828 14.8284 9.82843C14.0783 10.5786 13.0609 11 12 11C10.9391 11 9.92172 10.5786 9.17157 9.82843C8.42143 9.07828 8 8.06087 8 7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"currentColor\"/>";
+    readonly home: "<path d=\"M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z\"/>";
+    readonly lock: "<rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\"/><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"/>";
+    readonly info: "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 16v-4M12 8h.01\"/>";
+};
+export type IconName = keyof typeof ICONS;

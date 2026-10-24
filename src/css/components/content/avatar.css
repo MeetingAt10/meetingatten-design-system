@@ -1,0 +1,23 @@
+/* Content / Avatar: initials or photo in a circle. Initials use the checked info bg/fg pair. */
+.ds-avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--ds-info-bg);
+  color: var(--ds-info-fg);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / 1 var(--ds-type-label-font-family);
+  object-fit: cover;
+}
+.ds-avatar--sm {
+  width: 1.5rem;
+  height: 1.5rem;
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / 1 var(--ds-type-caption-font-family);
+}
+.ds-avatar--lg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
