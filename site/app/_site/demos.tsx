@@ -14,9 +14,9 @@ import {
 import { REPORT_ROWS, SLOT_DAYS, SLOTS, WEEK, WEEK_EVENTS } from "./examples/data";
 
 type Theme = "light" | "dark";
-type DemoProps = { theme: Theme };
-/** Landmark and id suffix, so the light and dark panels never share a name. */
-const sfx = (t: Theme) => (t === "light" ? " (light)" : " (dark)");
+type DemoProps = { theme?: Theme };
+/** Landmark and id suffix, so the light and dark panels never share a name (none in the one-theme gallery). */
+const sfx = (t?: Theme) => (t === "light" ? " (light)" : t === "dark" ? " (dark)" : "");
 
 const Matrix = ({ children }: { children: React.ReactNode }) => <div className="site-matrix">{children}</div>;
 const Caption = ({ children }: { children: React.ReactNode }) => <p className="site-caption">{children}</p>;
@@ -515,7 +515,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
 };
 
 /** One demo by name; unknown names render a short note instead of failing the page. */
-export function DemoPanel({ name, theme }: { name: string; theme: Theme }) {
+export function DemoPanel({ name, theme }: { name: string; theme?: Theme }) {
   const demo = DEMOS[name];
   return <>{demo ? demo({ theme }) : <p className="ds-type-body-small ds-secondary">No live demo for {name}.</p>}</>;
 }
