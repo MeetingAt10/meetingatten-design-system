@@ -1,49 +1,64 @@
 ---
 title: Top Bar
-description: 72px admin header with the workspace title and tools such as search and notifications.
+description: The workspace title strip on desktop, with the page title on the left and search and quick tools on the right.
 react: TopBar
 ---
-# Navigation / Top Bar
+# Top Bar
 
-Desktop and tablet header, 72px high. At 768 the sidebar becomes top navigation.
+The top bar is the sticky 64px strip above the content in the workspace: the page title on the left, search and quick tools on the right. It shows from 1024px; below that, [AppShell](app-shell.md) shows the [MobileHeader](mobile-header.md).
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Navigation / Top Bar` | 1408 x 72 | 0 | 12 / 24 / 12 / 24 | 0 | `#FFFFFF` |
-
-Variant axes:
-- None (single component)
+- Use it in [AppShell](app-shell.md) for portal and admin pages.
+- Use `titleAs="h1"` only when the strip is the page heading; otherwise the page keeps its own h1 and the strip title is a `p`.
+- Don't put primary page actions here; they belong with the page content.
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Container | min-height 72, padding 12 / 24, `color/surface`, bottom border `color/border-subtle` |
-| Title | `H4` 16/24 / 600: "College workspace" |
-| Search | [Control / Search](../control/search.md) 280 x 44 |
-| Notifications | [Icon Button](../control/icon-button.md) with `Icon / Bell` |
+| Part | Class | Notes |
+|---|---|---|
+| Strip | `.ds-topbar` | Sticky, 64px min height, canvas ground, hairline below, `--ds-z-sticky` |
+| Title area | `.ds-topbar__title` | Grows to fill |
+| Title | `.ds-topbar__heading` | Plus Jakarta Sans 700 18/24, one line with ellipsis |
+| Search | `.ds-topbar__search` | Sizes a [Search](../control/search.md) field to 22rem (40vw at most) |
+| Tools | `.ds-topbar__actions` | Icon buttons and menus, 4px apart |
 
-## Accessibility
+## States
 
-- `<header>` landmark; search labelled; bell button exposes a name and, when there are updates, a text count.
-- Notifications never expose record content (see Privacy rules in `docs/voice-and-tone.md`).
+| State | Looks | Set by |
+|---|---|---|
+| Default | Title and tools | none |
+| Scrolled | Stays pinned at the top of the content column | `position: sticky` |
+| Below 1024px | Hidden inside AppShell | `.ds-shell .ds-topbar` |
+
+## Behavior and accessibility
+
+- A `<header>` landmark inside the content column.
+- One h1 per page: use `titleAs="h1"` or a page-level heading, not both.
+- Icon tools need names: [IconButton](../control/icon-button.md) requires `label`; put unread counts in the label ("Notifications, 2 unread").
+- Keep focused content from sliding under the sticky strip (`scroll-padding-top` on the scroller).
 
 ## React
 
 ```tsx
-<TopBar title="College workspace" tools={<><Search label="Search community" /><IconButton icon="bell" label="Notifications" /></>} />
+import { TopBar, Search, IconButton } from '@meetingat10/design-system/react';
+
+<TopBar
+  title="Overview"
+  tools={<>
+    <Search label="Search ACCS" size="sm" placeholder="Search" className="ds-topbar__search" />
+    <IconButton icon="bell" label="Notifications, 2 unread" dot />
+  </>}
+/>
 ```
 
-The title is the workspace name, not the page heading; keep the page's h1 in the content.
-
-## Reference markup
-
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<header class="ds-topbar"><h2 class="ds-topbar__title">College workspace</h2>
-  <div class="ds-topbar__tools"><label class="ds-search"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-search"/></svg><input type="search" placeholder="Search community" aria-label="Search community"></label>
-  <button class="ds-icon-btn" aria-label="Notifications"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-bell"/></svg></button></div></header>
+<header class="ds-topbar">
+  <div class="ds-topbar__title"><h1 class="ds-topbar__heading">Overview</h1></div>
+  <div class="ds-topbar__actions">
+    <button class="ds-icon-btn" type="button" aria-label="Notifications, 2 unread"><svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-bell"/></svg><span class="ds-icon-btn__dot" aria-hidden="true"></span></button>
+  </div>
+</header>
 ```

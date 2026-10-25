@@ -1,52 +1,78 @@
 # Accessibility checklist
 
-Source: Figma 06.1-06.2. Target: **WCAG 2.2 AA, not certification.** Validate in context with real keyboard, assistive technology and browser zoom testing. Copy into the PR description; mark pass / fail / n/a.
+A pass/fail list for every pull request: WCAG 2.2 AA as a target, not a certification claim. Copy it into the PR description and mark pass, fail or n/a.
 
-## Release criteria (06.1)
+Automated checks catch part of it: `npm test` runs axe on every component (0 violations expected), and the site is checked with axe in a real browser in light and dark. Keyboard, screen reader, zoom, reduced-motion and forced-colors checks stay manual.
+
+## Release criteria
 
 | Criterion | Requirement | Pass |
 |---|---|---|
-| Contrast | 4.5:1 normal text; 3:1 large text (>= 24px regular or >= 18.66px bold), UI boundaries and meaningful graphics; all themes and states. `npm run check:contrast` passes | [ ] |
-| Targets | 24px minimum (with WCAG exceptions); 44px+ recommended on mobile with 8px separation; the visible label is clickable | [ ] |
-| Reflow | 320 CSS px viewport and 200% text enlargement without clipped labels or lost actions; no two-dimensional page scrolling | [ ] |
-| Keyboard | Logical DOM order, skip link, visible and unobscured focus, no keyboard traps; reduced motion removes nonessential movement, never the state signal | [ ] |
-| Settings | Layout copes with user text spacing, high contrast and forced-colors modes; tested at 200-400% zoom | [ ] |
-| Color | No color-only status (words or symbols) | [ ] |
+| Contrast | 4.5:1 text; 3:1 large text, control boundaries, focus ring, now-line and meaningful graphics, in both themes and every state. `npm run check:contrast` passes | [ ] |
+| Targets | 24px minimum; 44px on coarse pointers; 8px between touch targets; visible labels are clickable | [ ] |
+| Reflow | 320px wide and 200% text without clipped labels or lost actions; only tables and the timetable scroll sideways, inside their own region | [ ] |
+| Keyboard | Logical order, skip link, visible and unobscured 2px focus ring, no traps | [ ] |
+| Line forms | Every solid, dashed, hatched or struck state has a visible word or icon next to it | [ ] |
+| Color | No color-only status, severity, availability or lane meaning | [ ] |
+| Reduced motion | With `prefers-reduced-motion: reduce`, nothing travels or loops and every state still reads | [ ] |
+| Forced colors | With forced colors on, focus, edges, current and selected states and indicators stay visible | [ ] |
 
-## Control-category expectations (06.2)
+## By component
 
-| Control category | Keyboard and focus | Screen reader and content | Pass |
+| Component | Keyboard and focus | Screen reader and content | Pass |
 |---|---|---|---|
-| Buttons and links | Tab reaches each action; Enter activates; Space activates buttons | Native semantics, action-oriented name, disabled/busy state; links navigate, buttons act | [ ] |
-| Inputs and textarea | Tab in logical order; preserve normal editing keys | Persistent label, hint and error associated; announce required/invalid; error summary links to fields | [ ] |
-| Select / combobox | Native select preferred; arrows choose; Enter confirms; Escape closes | Announce expanded state, selected value and active option; do not intercept text editing | [ ] |
-| Checkbox and radio | Space toggles checkbox; arrows move/select radio | `fieldset`/`legend` for groups; expose checked state; label includes the full choice meaning | [ ] |
-| Tabs and navigation | Arrows within tabs; Tab enters panel; current link stays in sequence | Label tablist, tab and panel relations; expose selected tab and current page; drawer trigger exposes expanded state | [ ] |
-| Calendar and slots | Keyboard date entry; arrows move within a documented grid | Announce full date, time zone, availability and selected state; a single slot uses a radio-group model | [ ] |
-| Cards, chips and badges | Only actual actions receive focus; no ambiguous nested actions | Cards have headings; badges are text; status includes words or symbols | [ ] |
-| Alerts, errors and toast | Keep focus unless recovery needs deliberate movement | Polite status for updates; assertive only for urgent errors; announce once, avoid duplicate live regions | [ ] |
-| Modal and popover | Move focus inside modal; contain Tab; Escape closes when allowed | Dialog has name/description; background inert; return focus to trigger; do not trap focus in nonmodal content | [ ] |
-| Tables and mobile records | Native table navigation; sort buttons expose sort state | Caption, column headers and row relationships; mobile records retain each field label and reading order | [ ] |
-| Empty, loading and error | Keep retry reachable; do not reset the user's place | Mark busy region; skeletons decorative; meaningful empty state and nontechnical recovery action | [ ] |
-| Timeline and privacy notice | Events read chronologically; policy text stays reachable | Ordered structure, explicit actor roles and dates; identity visibility not inferred from permission labels | [ ] |
+| Buttons and links | Tab reaches each; Enter activates; Space activates buttons | Links navigate, buttons act; verb-and-object names; pending and disabled are exposed | [ ] |
+| Text fields, selects, combobox, date picker | Normal editing keys work; arrows choose; Escape closes lists | Persistent label, description and error are associated; required and invalid announced; entered text kept | [ ] |
+| Checkbox, radio, switch | Space toggles; arrows move within a radio group | Groups have a label; the label states the full choice | [ ] |
+| Segmented control, tag group | Arrows move between options or tags; Delete removes a removable tag | Group named; selected option and removals announced | [ ] |
+| Tabs, navigation, breadcrumbs, pagination | Arrows within tabs; Tab enters the panel; current link stays in order | Selected tab, current page (`aria-current`) and landmarks named | [ ] |
+| Menu and command palette | Arrows move, Enter chooses, Escape closes and returns focus; Ctrl or Cmd+K opens the palette | Items named; destructive items say so; every palette item also exists in visible navigation | [ ] |
+| Calendar and consultation slots | Arrows move by day; slots form one radio group; day strip arrows move and Space chooses | Full date, time zone, availability and selected state announced; booked and unavailable slots say so in words | [ ] |
+| Timetable and time blocks | Interactive blocks reachable by Tab; taken and disabled blocks are not | Day columns named with the full date; blocks named with time, title and state; hour rules and the now-line are decoration, and the current time appears in text where it matters | [ ] |
+| Cards, badges, tiles | Only real actions take focus; a linked card has one link (its title) | Cards have headings; badges are text with a marker; decorative tiles hidden | [ ] |
+| Alerts, toasts, view states | Focus stays put unless recovery needs it; F6 reaches the toast region | Polite status for updates, alert only for urgent errors; errors never live only in a toast | [ ] |
+| Modal, drawer, popover, tooltip | Focus moves in and is contained in modals; Escape closes; focus returns to the trigger | Dialog named by its title; tooltips repeat a visible or accessible name and hold nothing interactive; a swipeable sheet also has a close button | [ ] |
+| Disclosure and accordion | Enter or Space toggles; the trigger is inside a heading | Expanded state exposed | [ ] |
+| Tables and report records | Wide tables are focusable regions; sort buttons work by keyboard | Caption, column headers and row headers; sort state announced; selection also stated in words; records keep each field label | [ ] |
+| Progress, meter, spinner, skeleton | Not focusable | Progress and meter named and valued ("5 of 8"); loading regions `aria-busy`; skeletons hidden; loading announced once in text | [ ] |
+| Case timeline and privacy notice | Events read in order; policy text reachable | Actor roles and dates explicit; identity visibility never inferred from permission labels | [ ] |
 
-## Errors and live regions
+## Reduced motion
 
-Explain what went wrong and how to fix it next to the field; retain entered values. On a failed submit provide a linked error summary and a deliberate focus destination. Distinguish network failure from validation failure. Do not announce every keystroke or skeleton update. Do not expose sensitive details in errors, analytics, URLs or live-region messages.
-
-## High contrast (forced colors)
+Emulate it (DevTools, Rendering, "prefers-reduced-motion: reduce") and check:
 
 | Check | Pass |
 |---|---|
-| With Windows High Contrast (or DevTools: Rendering > Emulate forced-colors: active), keyboard focus is visible on every control | [ ] |
-| Cards, dialogs, menus, toasts and tables keep a visible edge | [ ] |
-| On/off, selected and current states stay distinguishable (switch, radio, selected day or page, current tab and nav item, progress) | [ ] |
+| Blocks do not drop or glide; the timetable layout does not animate | [ ] |
+| The now-line jumps instead of gliding; highlights and slot fills appear at once | [ ] |
+| The spinner hand rests and the pending line, skeleton pulse and toast timer do not loop; the words still say "Saving", "Loading" | [ ] |
+| Toasts and the bottom sheet close with their buttons (no swipe needed) | [ ] |
+| Progress and meter values change without rolling digits | [ ] |
+
+## Forced colors
+
+Emulate it (DevTools, Rendering, "forced-colors: active") or use Windows High Contrast:
+
+| Check | Pass |
+|---|---|
+| A 2px `Highlight` focus outline on every control | [ ] |
+| Cards, sheets, the timetable, tables, dialogs, popovers, toasts, blocks, slots and badges keep a visible edge | [ ] |
+| Pending blocks and the drop zone show dashed edges; taken, booked and restricted ones dotted edges | [ ] |
+| Current nav item, current page, selected day, slot, block, option and table row take `Highlight` | [ ] |
+| Tab, segment and day indicators, progress and meter fills, the now-line and the toast timer stay visible | [ ] |
+| Switch, checkbox and radio states read; disabled controls use `GrayText` | [ ] |
+| States drawn only with fills or background images (highlights, hatching, severity bars) also carry words | [ ] |
+
+## Errors and live regions
+
+Say what went wrong and how to fix it next to the field, and keep the entered values. On a failed submit, give a linked error summary and a deliberate focus target. Tell network failures apart from validation failures. Do not announce every keystroke or skeleton update. Never put sensitive details in errors, analytics, URLs or live-region messages.
 
 ## Restricted-report flows
 
 | Check | Pass |
 |---|---|
-| Policy notice is durable and visible, not in a tooltip | [ ] |
-| Submission stays disabled until scope and policy are confirmed (backend-enforced) | [ ] |
+| The privacy notice is on the page, not in a tooltip | [ ] |
+| Submission stays disabled until scope and policy are confirmed (enforced on the backend) | [ ] |
 | No promise of anonymity, security, response time or finality | [ ] |
-| Neutral notifications; no record content in subject lines, previews or titles | [ ] |
+| Neutral notifications; no record content in subject lines, previews, titles or search | [ ] |
+| The restricted lane is hatched and labeled in words, never signaled by color | [ ] |

@@ -1,13 +1,53 @@
 # Elevation
 
-Source: Figma 03.2 (`elevation/0-2`). Subtle elevation signals hierarchy, never security or trust. Components use the treatments below, not the raw elevation steps ([treatments.md](treatments.md)).
+Sheets rest flat with a hairline rule; shadows are only for blocks that lift and overlays that float.
 
-| Figma token | Value | Used by treatment |
+Elevation is declared once: a rule border or a shadow, never both.
+
+## Levels
+
+| Level | Look | Used by |
 |---|---|---|
-| `elevation/0` | none | (not used by components) |
-| `elevation/1` | `0 2 8 #1720330D` | `card-shadow` (light): cards, table container, record, view state at rest |
-| `elevation/2` | `0 12 32 #1720331F` | `card-shadow-hover` (light): interactive card hover; `overlay-shadow`: modal, toast, listbox, floating cards |
+| Flat | `surface` with a 1px `border-subtle` rule, no shadow | Sheets, cards at rest, timetable, tables, inputs |
+| Lift | Ink-tinted offset shadow, `--ds-block-shadow` | Hovered or dragged blocks, linked cards on hover, hovered primary buttons, the segmented chip, switch thumb |
+| Overlay | Deeper offset shadow, `--ds-overlay-shadow` | Menus, listboxes, popovers, dialogs, drawers, toasts, overlay cards |
 
-Cards are raised by default and borderless (soft layers). **Dark mode layers by tone, not shadow:** cards sit on `raised` with a 1px top highlight (`neutral/dark-border` at 40%, 60% on hover), per Figma 02.3 "raised is distinguished by border and surface tone before shadow". Avoid luminous shadows.
+A linked card trades its rule for the lift shadow on hover (`border-color: transparent`), so it never shows both. Overlays have no rule at all.
 
-Tailwind: `shadow-card`, `shadow-card-hover`, `shadow-overlay`.
+## Shadows
+
+| Token | Light | Dark |
+|---|---|---|
+| `--ds-shadow-lift` | `0 1px 2px` ink at 8% + `0 6px 16px` ink at 10% | (light only) |
+| `--ds-shadow-overlay` | `0 2px 6px` ink at 8% + `0 18px 40px` ink at 16% | (light only) |
+| `--ds-shadow-lift-dark` | (dark only) | `0 1px 2px` black at 40% + `0 8px 20px` black at 35% |
+| `--ds-shadow-overlay-dark` | (dark only) | `0 2px 8px` black at 50% + `0 24px 48px` black at 50% |
+
+Components read the treatments, which pick the right shadow per theme:
+
+| Treatment | Light | Dark |
+|---|---|---|
+| `--ds-block-shadow` | `shadow.lift` | `shadow.lift-dark` |
+| `--ds-overlay-shadow` | `shadow.overlay` | `shadow.overlay-dark` plus a 1px top highlight (dark border at 35%) |
+| `--ds-overlay-bg` | `surface` | `raised` |
+| `--ds-plate-shadow` | none | 1px top highlight (dark hover blue at 60%) |
+| `--ds-btn-highlight` | 1px top highlight, white at 14% | white at 35% |
+
+Shadows are ink-tinted (`#172033`) in light and plain black in dark, with an offset and a soft blur. No glow, no colored shadow, no glass.
+
+## Dark theme
+
+In dark, overlays sit on `raised` and carry a 1px top highlight, because a shadow alone barely reads on a dark canvas. Solid blocks and plates get the same thin highlight along their top edge.
+
+## Rules
+
+| Rule | Detail |
+|---|---|
+| Declared once | Rule border or shadow, never both on the same element |
+| Earned by motion | A block gets the lift shadow only while it is hovered, dragged or picked up |
+| Never a trust signal | Elevation shows hierarchy and interaction, not importance, security or privacy |
+| No nesting | A card never sits inside a card; detail pages use sections, rules and headings |
+
+## Tailwind
+
+`shadow-block` and `shadow-overlay`.

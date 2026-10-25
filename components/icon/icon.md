@@ -1,78 +1,77 @@
 ---
 title: Icon
-description: The Figma icon set at 16, 20 and 24px, stroked in currentColor.
+description: Phosphor icons in currentColor, named from a curated vocabulary, with weights that carry meaning.
 react: Icon
 ---
-# Icon (12 families) and Graphic / Navigation Overview
+# Icon
 
-Figma owns the icon set: 12 native families (Search, Menu, Chevron, Bell, Calendar, Forum, Report, Shield, Check, Alert, Close, User), each Size=16 / 20 / 24, strokes 1.5 / 1.75 / 2px, round caps and joins, optical padding inside the canvas. **Status: from Figma.** `assets/icons/sprite.svg` symbols are the exported Size=24 variants and `assets/icons/figma/{name}-{16,20,24}.svg` are the per-size exports, with strokes set to `currentColor`. See [docs/iconography.md](../../docs/iconography.md).
+Icons come from Phosphor (MIT). `<Icon name>` draws a glyph from the curated vocabulary of 80 names in `assets/icons/icons.json`; the plain-CSS layer uses the sprite built from the same list. Weight carries meaning: regular for UI, fill for the selected or current item, duotone for lane and category icons. Icons support words; they never carry status alone.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Icon / Search` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / Menu` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / Chevron` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / Bell` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / Calendar` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / Forum` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / Report` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / Shield` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / Check` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / Alert` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / Close` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Icon / User` | 16 x 16 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-| `ACCS 2026 / Graphic / Navigation Overview` | 20 x 20 | 0 | 0 / 0 / 0 / 0 | 0 | - |
+- Use an icon beside a word to speed up scanning: navigation items, buttons, empty states.
+- Use regular weight by default, fill for the selected or current item, and duotone for lane and category icons ([Tile](../content/tile.md), [TimeBlock](../scheduling/time-block.md)).
+- Use a name from the vocabulary. For a glyph outside it, import the Phosphor component from `@meetingat10/design-system/icons` (or propose adding it to `icons.json`).
+- Don't use an icon alone for an action; use [IconButton](../control/icon-button.md), which has a name and a tooltip.
+- Don't use emoji or Unicode glyphs (arrows, check marks, crosses) as icons, and don't let an icon be the only sign of a status.
 
-Variant axes:
-- **Icon / Search** Size: 16 / 20 / 24 (3 variants)
-- **Icon / Menu** Size: 16 / 20 / 24 (3 variants)
-- **Icon / Chevron** Size: 16 / 20 / 24 (3 variants)
-- **Icon / Bell** Size: 16 / 20 / 24 (3 variants)
-- **Icon / Calendar** Size: 16 / 20 / 24 (3 variants)
-- **Icon / Forum** Size: 16 / 20 / 24 (3 variants)
-- **Icon / Report** Size: 16 / 20 / 24 (3 variants)
-- **Icon / Shield** Size: 16 / 20 / 24 (3 variants)
-- **Icon / Check** Size: 16 / 20 / 24 (3 variants)
-- **Icon / Alert** Size: 16 / 20 / 24 (3 variants)
-- **Icon / Close** Size: 16 / 20 / 24 (3 variants)
-- **Icon / User** Size: 16 / 20 / 24 (3 variants)
+## Anatomy
 
-## Sizes
+| Part | Class | Notes |
+|---|---|---|
+| Glyph | `.ds-icon` | 20px, `fill: currentColor`, aligned to the text baseline |
+| Sizes | `.ds-icon--16`, `--24`, `--32` | 16 in badges, small buttons and table cells; 20 default; 24 and 32 in large tiles and view states |
+| Regular | `#ds-NAME`, `weight="regular"` | The UI default |
+| Fill | `#ds-NAME-fill`, `weight="fill"` | The selected or current item; glyphs on solid blocks (alert, toast, privacy lock) |
+| Duotone | `#ds-NAME-duotone`, `weight="duotone"` | Lane and category icons; the 20% layer reads as a highlighter |
+| Vocabulary | `assets/icons/icons.json` | 80 ACCS names mapped to Phosphor files; builds `assets/icons/sprite.svg` (240 symbols) and the `ICONS` map |
 
-| State | Treatment (tokens) |
-|---|---|
-| 16 px | stroke 1.5px; inline, badges, table links (`.ds-icon--16`) |
-| 20 px | stroke 1.75px; default, nav items, buttons (`.ds-icon`) |
-| 24 px | stroke 2px; view states, feature tiles (`.ds-icon--24`) |
+Some vocabulary names differ from the Phosphor file they map to: `search` is `magnifying-glass`, `calendar` is `calendar-blank`, `users` is `users-three`. The live demo above shows every name in each weight; the [iconography guide](../../docs/iconography.md) lists them by group.
 
-## Usage (from the Figma frames)
+## States
 
-- Pair unfamiliar icons with visible text. Icon-only actions need an accessible name; tooltips supplement, not replace it.
-- Decorative icons are hidden from assistive technology. Use status glyph + label, never color alone.
-- Icons are not touch targets: use a 44px+ labeled control on mobile. Shield denotes a privacy topic, not a security or anonymity guarantee.
-- 03.4 labels: Overview, Forum, Consult, Report, Access, Visibility, Search, Updates, Success, Warning, Menu, Close.
+| State | Looks | Set by |
+|---|---|---|
+| Regular | Outline glyph | `weight="regular"` (default), `#ds-NAME` |
+| Fill | Solid glyph | `weight="fill"`, `#ds-NAME-fill` |
+| Duotone | Outline plus a 20% layer | `weight="duotone"`, `#ds-NAME-duotone` |
+| Bold | Heavier strokes; used only for check marks (selected option, done step, chosen slot) | `weight="bold"` (React only; the sprite has no bold symbols) |
+| Decorative | Hidden from assistive tech | no `label`: `aria-hidden="true"` |
+| Meaningful | Read as an image with a name | `label="..."`: `role="img"` and `aria-label` |
 
-## Accessibility
+## Behavior and accessibility
 
-- `aria-hidden="true"` unless the icon is the only content, then give the control an accessible name.
+- Icons are decorative by default (`aria-hidden="true"`, `focusable="false"`). Pass `label` only when the icon stands alone and means something; prefer visible text.
+- Icons are not touch targets. Put actions in a control that is at least 24px, and 44px on touch screens.
+- Color is `currentColor`, so an icon takes the color of its text. Status always has a word. The lock means "this is about privacy", not a security guarantee.
+- `<Icon>` renders through Phosphor's server-safe entry, so it also works in React Server Components. Components from `@meetingat10/design-system/icons` use Phosphor's React context; render them in client components.
+- No motion: icons do not animate on their own.
+- Forced colors: glyphs follow the system text color.
 
 ## React
 
 ```tsx
-<Icon name="forum" />                      {/* decorative, next to visible text */}
-<Icon name="alert" size={16} label="Warning" />  {/* meaningful on its own */}
+import { Icon, ICONS, type IconName } from '@meetingat10/design-system/react';
+import { RocketLaunchIcon } from '@meetingat10/design-system/icons';
+
+<Icon name="calendar" />
+<Icon name="house" weight="fill" />
+<Icon name="chats" weight="duotone" size={24} />
+<Icon name="lock" size={16} label="Restricted record" />
+<Icon icon={RocketLaunchIcon} />
+
+const vocabulary = Object.keys(ICONS) as IconName[];
 ```
 
-Inline SVG generated from `assets/icons/sprite.svg` at build time (`src/react/icon/icons.ts`), so React apps need no sprite in the page. Names: search, menu, chevron, bell, calendar, forum, report, shield, check, alert, close, user, home, lock, info.
+`size` is 16, 20 (default), 24 or 32. `name` takes a vocabulary name; `icon` takes any Phosphor icon component and wins over `name`.
 
-## Reference markup
-
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<svg class="ds-icon" aria-hidden="true"><use href="#ds-search"/></svg>   <!-- 20px / 1.75 -->
-<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-bell"/></svg>
-<svg class="ds-icon ds-icon--24" aria-hidden="true"><use href="#ds-shield"/></svg>
+<svg class="ds-icon" aria-hidden="true" focusable="false"><use href="sprite.svg#ds-calendar"/></svg>
+<svg class="ds-icon" aria-hidden="true" focusable="false"><use href="sprite.svg#ds-house-fill"/></svg>
+<svg class="ds-icon ds-icon--24" aria-hidden="true" focusable="false"><use href="sprite.svg#ds-chats-duotone"/></svg>
+<svg class="ds-icon ds-icon--16" role="img" aria-label="Restricted record"><use href="sprite.svg#ds-lock"/></svg>
 ```
+
+Copy `assets/icons/sprite.svg` from the package to your public folder (an external `<use>` file must come from the same origin), or inline the sprite once in the page and use `href="#ds-NAME"`.

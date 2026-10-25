@@ -1,59 +1,70 @@
 ---
 title: Text Area
-description: Multi-line text input with label, help and error.
+description: Several lines of text that grow with the content, with a label, help, an error and an optional count.
 react: TextArea
 ---
-# Control / Text Area
+# Text Area
 
-Seven states, same state model as Text Field. 112px input plus a reserved message region.
+A text area takes several lines: what happened, a question for a consultation, a post. It is the text field's paper slot, 128px tall to start, growing with its content up to a limit. A live count can show how much of the limit is used.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Control / Text Area` | 493 x 192 | 0 | 0 / 0 / 0 / 0 | 8 | - |
-
-Variant axes:
-- State: Default / Hover / Pressed / Focus / Disabled / Error / Loading (7 variants)
+- Use it for free text longer than one line.
+- Use `showCount` with `maxLength` when there is a real limit.
+- In report forms, use the description to say what to leave out ("Leave out names you do not need to share.").
+- Don't use it for one-line answers; use [TextField](text-field.md).
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Input | min-height 112, padding 10, radius 6, 1px `color/border-default`, `Body` 14/22, vertical resize |
-| Message | `Body small`; "General context only; omit personal details." |
+| Part | Class | Notes |
+|---|---|---|
+| Field | `.ds-field` | Label, description, control and error ([Field](field.md)) |
+| Area | `.ds-input.ds-textarea` | 128px minimum (`--ds-size-textarea-h`), 12px vertical padding, line height 1.5, grows with content up to 24rem, resizes vertically |
+| Count | `.ds-field__count` | "120 / 500" in Inter 500 12px with tabular figures, at the end of the row |
+| Foot | `.ds-field__foot` | Plain markup row holding the error and the count |
 
 ## States
 
-| State | Treatment (tokens) |
-|---|---|
-| Default / Hover / Pressed / Focus | as [Text Field](text-field.md) |
-| Disabled | message "This field is unavailable." |
-| Error | `color/danger/fg` border + "Couldn’t validate this text. Try again; your text is kept." |
-| Loading | message "Checking text…" |
+| State | Looks | Set by |
+|---|---|---|
+| Default | Paper slot with a solid `border-default` rule | none |
+| Hover | Rule darkens to `border-strong` | `:hover`, `[data-hovered]`, `.is-hover` |
+| Focus | Rule in the focus color plus a 2px ring | `:focus`, `[data-focused]`, `.is-focus` |
+| Invalid | Rule in danger ink; error line; text kept | `isInvalid`, `[aria-invalid="true"]`, `[data-invalid]`, `.is-error` |
+| Disabled | Dashed rule on the disabled ground | `isDisabled`, `:disabled`, `[data-disabled]` |
+| Read-only | Hairline rule, no fill | `isReadOnly`, `:read-only` |
 
-## Figma copy
+## Behavior and accessibility
 
-Label "How can we help?", placeholder "Describe the topic you’d like to discuss. Do not include sensitive details here."
-
-## Accessibility
-
-- Same label, hint, error and live-region rules as Text Field; preserve normal editing keys.
+- React Aria `TextField` with a `textarea`: label, description and error are wired to it.
+- The area grows with its content where the browser supports `field-sizing: content`; elsewhere people resize it by dragging the corner.
+- `maxLength` stops input at the limit. The count updates as people type and is a polite live region.
+- Keep the user's text on every error, including network failures.
+- Reduced motion: rule and ring changes land at once.
+- Forced colors: focus is a 2px `Highlight` outline.
 
 ## React
 
 ```tsx
-<TextArea label="Add details" description="Do not include names or identifiers." />
+import { TextArea } from '@meetingat10/design-system/react';
+
+<TextArea
+  label="What happened"
+  description="Leave out names you do not need to share."
+  showCount
+  maxLength={500}
+/>
 ```
 
-## Reference markup
+Other React Aria `TextField` props (`value`, `onChange`, `isRequired`, `isInvalid`, `errorMessage`, `placeholder`) pass through.
 
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
 <div class="ds-field">
-  <label class="ds-label" for="help">How can we help?</label>
-  <textarea class="ds-textarea" id="help" placeholder="Describe the topic you’d like to discuss. Do not include sensitive details here."></textarea>
-  <p class="ds-field__msg">General context only; omit personal details.</p>
+  <label class="ds-field__label" for="what">What happened</label>
+  <p class="ds-field__description" id="what-desc">Leave out names you do not need to share.</p>
+  <textarea class="ds-input ds-textarea" id="what" maxlength="500" aria-describedby="what-desc"></textarea>
+  <div class="ds-field__foot"><span class="ds-field__count">0 / 500</span></div>
 </div>
 ```

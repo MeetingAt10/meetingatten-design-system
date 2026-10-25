@@ -1,121 +1,133 @@
-# @meetingat10/design-system
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/logo/meeting-at-10-dark.svg">
+  <img src="assets/logo/meeting-at-10.svg" width="72" height="72" alt="Meeting At 10">
+</picture>
 
-One design system for three surfaces. **Color, type and dimensions come from the team's Figma** (file `HhZBfgDKt4aMudftxOP4Jg`, page "ACCS Design System - 2026") and are locked: the repo mirrors them and proves parity on every check ([docs/figma-parity.md](docs/figma-parity.md)). **The look and the components are repo-owned**: "soft layers" treatments built only from those locked tokens ([foundations/treatments.md](foundations/treatments.md)), component CSS, and React components on React Aria. Figma is updated after each release. Everything is PROPOSED, not approved.
+# Meeting At 10 Design System
+
+`@meetingat10/design-system` is one design system for three surfaces: the ACCS landing, the ACCS portal and admin, and the Meeting At 10 site. It ships tokens, a plain-CSS component layer and React components on React Aria, in one package installed from a git tag.
+
+The visual world is **Office Hours**: the weekly consultation timetable on a CCS faculty door. Paper sheets on a cool canvas, hairline rules that are real time grids, blocks whose lane color owns the fill, highlighter washes, hatching for taken or restricted time, the door plate as the ACCS wordmark, and a now-line that marks the present ([principles](docs/principles.md)). The palette and the fonts are pinned. Everything is proposed, not approved.
 
 | Surface | Repo (stack) | `data-density` |
 |---|---|---|
-| ACCS landing | `accs-landing` (Next.js, Tailwind 4) | `comfortable` (default) |
-| ACCS admin | `accs-system/frontend` (Vite, React, TanStack Router) | `compact` |
-| Meeting At 10 team site | `meeting@10-website` (Next.js, Tailwind 4) | `comfortable` (default) |
+| ACCS landing | `accs-landing` (Next.js 16, Tailwind 4) | `comfortable` (default) |
+| ACCS portal and admin | `accs-system/frontend` (Vite, React) | `compact` |
+| Meeting At 10 | `meeting@10-website` (Next.js 16, Tailwind 4) | `comfortable` (default) |
 
-Every surface uses the same two themes from the Figma Semantic modes: `data-theme="light"` or `"dark"`, and no attribute follows the OS setting ([themes/light-dark.md](themes/light-dark.md)). `data-density` only sets body text and section rhythm ([themes/density.md](themes/density.md)).
+Themes: `data-theme="light"` or `"dark"`; no attribute follows the OS ([light and dark](themes/light-dark.md), [density](themes/density.md)).
 
-## Layout
+## Install
 
-| Path | Contents |
+Private repo, consumed from git. Pin a tag, never a branch.
+
+```bash
+npm i @meetingat10/design-system@github:MeetingAt10/meetingatten-design-system#v1.0.0
+```
+
+`dist/` is committed, so there is no build step. Peer dependencies: `react` and `react-dom` 19. Moving from 0.5.x: [migrating apps](docs/migrating-apps.md).
+
+## What to import
+
+| Import | Contents |
 |---|---|
-| `tokens/` | W3C DTCG JSON. `foundations/` (Figma primitives, dimensions, type, plus grid, size, elevation, and clearly marked not-in-Figma motion, z-index), `themes/` (semantic LIGHT/DARK, Figma names), `treatments.json` (repo-owned look tokens), `contrast-pairs.json` |
-| `figma/` | Source export: `variables-styles.json`, `frames-components.json`, `slices/*.png` (frame images, 1400px wide) |
-| `scripts/` | `import-figma.mjs`, `build.mjs`, `check-contrast.mjs`, `check-tokens.mjs`, `parity.mjs` (plain Node ESM, no dependencies) |
-| `dist/` | Committed output: `tokens.css`, `tailwind.css`, `components.css`, `tokens.json`, `tokens.js`, `react/**` |
-| `src/react/` | React components (`<category>/<Name>.tsx`, tests next to them), built with `tsc` to `dist/react/` |
-| `src/css/` | Token-only component CSS: `base/` (reset, type, layout, utilities) and `components/<category>/<name>.css`, joined by `build.mjs` into `dist/components.css` inside `@layer ds.base, ds.components, ds.utilities` (unlayered app CSS always wins; Tailwind apps add one layer-order line, see "Consume: Tailwind 4") |
-| `components/` | One spec per component, Figma and repo-owned (frontmatter, variants, tokens per state, usage, a11y, React usage, markup) |
-| `foundations/`, `themes/`, `docs/` | Guidance synced with the Figma frame text; `docs/figma-parity.md` maps every Figma token, style and component |
-| `assets/` | `logo/*.svg` (official Figma exports), `icons/sprite.svg` + `icons/figma/*.svg` (Figma exports) |
-| `site/` | Public showcase (Next.js 16 static export): renders these markdown files with live light/dark demos, generated props tables and example pages. Not part of the package |
+| `@meetingat10/design-system/tokens.css` | Every token as `--ds-*`, both themes and both densities |
+| `@meetingat10/design-system/tailwind.css` | Tailwind 4 theme on the tokens (imports `tokens.css`) |
+| `@meetingat10/design-system/components.css` | The `ds-*` component classes, in `@layer ds.base, ds.components, ds.utilities` |
+| `@meetingat10/design-system/fonts.css` | Optional: self-hosted variable Inter, Plus Jakarta Sans and JetBrains Mono |
+| `@meetingat10/design-system/react` | React components, the provider and motion tokens |
+| `@meetingat10/design-system/icons` | The full Phosphor icon set |
+| `@meetingat10/design-system/tokens.json` | Tokens as data |
+| `@meetingat10/design-system/assets/*` | `icons/sprite.svg`, `icons/icons.json`, the Meeting At 10 logo `logo/meeting-at-10*.svg`, the proposed ACCS `logo/logo-*.svg` |
+
+Put `class="ds-body"` on `<body>`: the canvas, text, density text, focus ring and reduced-motion rules are scoped to it.
+
+### Tailwind 4 (Next.js)
+
+```css
+@layer properties, theme, base, ds, components, utilities;
+@import "tailwindcss";
+@import "@meetingat10/design-system/tailwind.css";
+@import "@meetingat10/design-system/components.css";
+```
+
+The layer line comes first, before `@import "tailwindcss"`, so Tailwind utilities override the design system. Utilities use the semantic names only (`bg-surface`, `text-text-primary`, `bg-action`, `bg-highlight-consult`, `rounded-sheet`, `shadow-block`, `type-h1`, `hatch`, `plate`); Tailwind's palette is removed and primitives are not exposed. Breakpoints: `tablet:` 600px, `desktop:` 1024px, `wide:` 1440px.
+
+With `next/font`, put the font variables in front of the token stacks ([typography](foundations/typography.md)).
+
+### Plain CSS (Vite)
+
+```ts
+import '@meetingat10/design-system/tokens.css';
+import '@meetingat10/design-system/components.css';
+import '@meetingat10/design-system/fonts.css';
+```
+
+## React
+
+Wrap the app once in `DesignSystemProvider`. It sets Motion's `MotionConfig reducedMotion="user"`, client routing for every link (`navigate`, `useHref`) and the locale.
+
+```tsx
+'use client';
+import { useRouter } from 'next/navigation';
+import { DesignSystemProvider, ToastRegion, Button, toast } from '@meetingat10/design-system/react';
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  return (
+    <DesignSystemProvider navigate={router.push} locale="en-PH">
+      {children}
+      <ToastRegion />
+    </DesignSystemProvider>
+  );
+}
+
+<Button onPress={() => toast('Draft saved', { tone: 'success' })}>Save draft</Button>
+```
+
+Interactive components start with `"use client"`. Behavior, keyboard support and ARIA come from React Aria Components 1.22.1; Motion drives the toast swipe and stack, the drawer swipe and the timetable block drop; `@number-flow/react` rolls the Progress and Meter digits. Specs for every component: [components/](components/README.md).
+
+## Icons
+
+```tsx
+import { Icon } from '@meetingat10/design-system/react';
+import { RocketLaunchIcon } from '@meetingat10/design-system/icons';
+
+<Icon name="calendar" />            {/* curated vocabulary */}
+<Icon name="house" weight="fill" /> {/* current item */}
+<Icon icon={RocketLaunchIcon} />    {/* any Phosphor icon */}
+```
+
+Plain CSS: `<svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-calendar"/></svg>` (`#ds-NAME-fill`, `#ds-NAME-duotone`). See [iconography](docs/iconography.md).
 
 ## Commands
 
 ```bash
-npm run build           # tokens/ + src/css -> dist/, src/react -> dist/react (tsc), icon map for React
-npm run check:contrast  # WCAG AA gate over declared pairs and text on every wash, per theme (exit 1 on a new failure)
-npm run check:tokens    # no hex/rgb/blends/primitive variables in src or site; treatments built only from locked tokens
-npm run check:parity    # every Figma variable, text style, dimension and component compared with the repo
-npm run import:figma    # regenerate Figma-sourced tokens from figma/variables-styles.json
-npm test                # React components: Vitest + Testing Library + axe (run through pcore on low-power machines)
-npm run typecheck       # tsc over src/react, tests included
-npm run check           # build (tokens + dist/react) + contrast + parity + tokens
-node scripts/parity.mjs --write   # refresh docs/figma-parity.md
+npm run build      # tokens + src/css -> dist/, the icon sprite and React icon map, motion tokens, dist/react (tsc)
+npm run check      # build, then contrast (check-contrast.mjs) and token rules (check-tokens.mjs)
+npm run typecheck  # tsc over src/react, tests included
+npm test           # Vitest + Testing Library + axe on every component
 ```
 
-## How the Figma export was made
+`npm run check:contrast` and `npm run check:tokens` run the two checks alone. On low-power machines, run the heavy commands one at a time.
 
-Run in the browser through the Figma Plugin API (Playwright-driven session on file `HhZBfgDKt4aMudftxOP4Jg`, page "ACCS Design System - 2026"):
+## Repo layout
 
-1. `figma.variables.getLocalVariableCollectionsAsync()` and `getVariableByIdAsync()` for every collection (modes, values, aliases written as `->name`); `figma.getLocalTextStylesAsync()` for the text styles. Output: `figma/variables-styles.json` (a JSON string; parse twice). Only the "ACCS 2026 / *" collections are used; the old "ACCS / ... v0.1" ones are ignored.
-2. Walk the eight frames and every component set/component: names, variant names, sizes, radius, fills, padding, gap, and each frame's text. Output: `figma/frames-components.json`.
-3. `exportAsync` of each frame at 1x, cut into 1400px-wide slices (`figma/slices/*.png`), and SVG export of the three logos (`assets/logo/`). Full frame PNGs are intentionally not committed.
-
-To refresh: re-export, replace the files in `figma/`, run `npm run import:figma && npm run check`, review the diff.
-
-## Install and version pinning
-
-Private repo, consumed from git. **Pin to a tag**, never a branch.
-
-```bash
-npm i -D github:MeetingAt10/meetingatten-design-system#v0.5.0
-```
-
-`dist/` is committed, so consumers need no build step.
-
-| Bump | When | Consumer action |
-|---|---|---|
-| Patch `0.5.x` | Docs, bug fixes, Figma re-sync with no token change | Safe |
-| Minor `0.x.0` | New tokens/components, or **BREAKING** renames while `< 1.0` | Read CHANGELOG |
-| Major `1.0+` | Breaking changes after 1.0 | Migration notes |
-
-## Consume: Tailwind 4 (Next.js: accs-landing and meeting@10-website)
-
-```css
-@layer properties, theme, base, ds, components, utilities;  /* first line: design system below Tailwind utilities */
-@import "tailwindcss";
-@import "@meetingat10/design-system/dist/tailwind.css";   /* also imports tokens.css */
-@import "@meetingat10/design-system/dist/components.css"; /* optional ds-* classes */
-```
-```tsx
-<html lang="en">   {/* follows the OS; add data-theme="light" or "dark" to force one */}
-```
-
-Fonts via `next/font` (tokens read these variables first, then the font names):
-
-```tsx
-const display = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-plus-jakarta-sans", weight: ["600","700","800"] });
-const body = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
-```
-
-The first line puts the design system's layers (`ds.*`) under Tailwind's `components` and `utilities`; without it Tailwind declares its layers first and `ds` comes last, so a class like `p-4` on a `Card` would lose to the card's own padding.
-
-Utilities use the Figma semantic names and the treatment tokens only: `bg-canvas bg-surface bg-card text-text-primary border-border-default bg-action-default bg-action text-on-action bg-info-bg text-secondary-fg bg-accent-bg wash-accent wash-secondary wash-info shadow-card shadow-card-hover shadow-overlay rounded-card rounded-tile rounded-control rounded-chip type-h1 text-body font-display tablet:... desktop:... max-w-content`. Tailwind's default palette is removed and Figma primitives are not exposed, so `bg-red-500` or `bg-neutral-500` generate nothing. Breakpoints are `tablet` 600, `desktop` 1024, `wide` 1440 (Tailwind defaults removed). Spacing keeps Tailwind's multiplier (`p-4` = Figma `space/16`); use `var(--ds-space-16)` for the Figma name.
-
-## Consume: React components (all three apps)
-
-```tsx
-import "@meetingat10/design-system/dist/components.css";   // once, at the app root
-import { Button } from "@meetingat10/design-system/react";
-
-<Button variant="primary" onPress={save}>Save</Button>
-```
-
-Components render the same `ds-*` classes; behavior, keyboard support and ARIA come from React Aria Components. Interactive components start with `"use client"`, so they work in Next.js server components. Peer dependencies: `react` and `react-dom` 19.
-
-## Consume: Vite + React (admin)
-
-```ts
-import "@meetingat10/design-system/dist/tokens.css";
-import "@meetingat10/design-system/dist/components.css"; // optional
-```
-Set `<html data-density="compact">` (plus `data-theme` only for an explicit user choice, see [themes/light-dark.md](themes/light-dark.md)); add the Google Fonts link (Inter, Plus Jakarta Sans, JetBrains Mono). Use `var(--ds-surface)`, `var(--ds-action-default)`, `class="type-h1"` equivalents `.ds-type-h1`.
-
-## Migrating from the per-repo `--accs-*` blocks
-
-Delete the local `:root` and `@theme inline` blocks and import the package. The `--accs-*` variables no longer exist; use the `--ds-*` names (`--accs-canvas` -> `--ds-canvas`, `--accs-action` -> `--ds-action-default`, `--accs-secondary-bg` -> `--ds-secondary-bg`, ...). Tailwind names `canvas`, `surface`, `action`, `action-hover`, `on-action`, `focus`, `info-bg`, `secondary-bg/fg`, `accent-bg/fg` resolve unchanged.
+| Path | Contents |
+|---|---|
+| `tokens/` | The source: `foundations/` (color, identity, type, spacing, radius, size, grid, elevation, motion, z-index), `themes/` (light and dark mapping), `treatments.json` (materials), `contrast-pairs.json` |
+| `src/css/` | Token-only CSS: `base/` (reset, type, layout, motion, utilities, forced colors) and `components/<category>/<name>.css` |
+| `src/react/` | React components (`<category>/<Name>.tsx`), tests per category, the provider, motion tokens and icon map |
+| `scripts/` | `build.mjs`, `check-contrast.mjs`, `check-tokens.mjs`, `lib.mjs` (plain Node, no dependencies) |
+| `dist/` | Committed output: `tokens.css`, `tailwind.css`, `components.css`, `fonts.css`, `tokens.json`, `tokens.js`, `react/` |
+| `assets/` | `icons/icons.json` (curated vocabulary), `icons/sprite.svg` (generated), `logo/meeting-at-10*.svg` (the Meeting At 10 logo), `logo/logo-*.svg` (proposed ACCS marks) |
+| `components/`, `foundations/`, `themes/`, `docs/` | Component specs and guides; the site renders them |
+| `context/deltas/` | Change specs (deltas); `archive/` holds past ones |
+| `site/` | The public showcase (Next.js 16 static export) with live light and dark demos; not part of the package |
 
 ## Rules
 
-1. Product code uses semantic and treatment tokens, never primitives or raw hex (`npm run check:tokens` enforces it for this repo; Tailwind cannot generate the others).
-2. ACCS values change only by re-importing from Figma. Do not edit `tokens/foundations/color.json`, `type.json`, `spacing.json`, `radius.json` or `tokens/themes/accs-*.json` by hand.
-3. Anything without a Figma source is marked "NOT IN FIGMA" or "REPO-OWNED" in its file and listed in `docs/figma-parity.md`.
-4. Cards are for collection items and floating panels only; never a card inside a card ([components/content/card.md](components/content/card.md)).
-5. See [CONTRIBUTING.md](CONTRIBUTING.md).
+1. Product code uses semantic and treatment tokens, never primitives or hex (`npm run check:tokens`).
+2. The palette (54 primitives and the light and dark mapping) and the fonts are pinned; change them only by an explicit decision.
+3. Follow the craft rules: no eyebrows, no side stripes, Agenda rows instead of icon-card columns, mono only for times and codes, one elevation per element, no nested cards, no emoji, honest claims ([principles](docs/principles.md)).
+4. See [CONTRIBUTING.md](CONTRIBUTING.md).

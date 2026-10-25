@@ -1,60 +1,77 @@
 ---
 title: Sidebar
-description: 240px admin navigation from 1024px with nav items and a role note.
+description: The workspace rail from 1024px, with the brand on top, grouped navigation, and the signed-in person and role at the bottom.
 react: Sidebar
 ---
-# Navigation / Sidebar
+# Sidebar
 
-App sidebar, 240px, separate from the content grid. Persistent from 1024px; under 1024px navigation moves to the top.
+The sidebar is the workspace rail on desktop: the brand on top (the door plate on ACCS surfaces, the [Logo](../identity/logo.md) on Meeting At 10 surfaces), grouped [nav items](item.md), and the signed-in person with their role at the bottom. Below 1024px, [AppShell](app-shell.md) moves the same navigation into a drawer.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Navigation / Sidebar` | 240 x 421 | 0 | 24 / 24 / 24 / 24 | 28 | `#FFFFFF` |
-
-Variant axes:
-- None (single component)
+- Use it for the portal and admin workspace, inside [AppShell](app-shell.md).
+- Use `SidebarSection` to group destinations under a short label ("Workspace", "Staff").
+- Use `SidebarNote` for honest scope notes ("Own reports only (proposed permission)").
+- Don't use it on the landing or Meeting At 10 site; use [Navbar](navbar.md).
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Container | 240 wide, padding 24, gap 28, `color/surface`, right border `color/border-subtle` |
-| Logo | `ACCS 2026 / Identity / Logo Compact Minimum` |
-| Items | four [Navigation / Item](item.md): Overview, Community, Consultations, My reports |
-| Role block | [Role badge](../badge/role.md) + caption "Own reports only · proposed permission" |
+| Part | Class | Notes |
+|---|---|---|
+| Rail | `.ds-sidebar` | `<aside>` named "{label} sidebar", 16rem wide, full height, sticky, paper with a hairline on the end edge |
+| Brand | `.ds-sidebar__brand` | A [DoorPlate](../identity/door-plate.md) on ACCS surfaces, the [Logo](../identity/logo.md) on Meeting At 10 surfaces |
+| Navigation | `.ds-sidebar__nav` | `<nav>` named by `label` (default "Main") |
+| Group label | `.ds-sidebar__label` | Caption 600; a group name, not a heading kicker |
+| Footer | `.ds-sidebar__foot` | Ruled area pinned to the bottom |
+| Person | `.ds-sidebar__person`, `.ds-sidebar__name` | Avatar, name and a [RoleBadge](../badge/role.md) |
+| Note | `.ds-sidebar__note` | Caption, secondary text |
 
-## Accessibility
+## States
 
-- `<nav aria-label>`; links, not buttons; current page `aria-current="page"` (the selected item also has a left bar and color change, never color alone).
-- A role badge describes permission context; it is not enforcement.
+| State | Looks | Set by |
+|---|---|---|
+| Current destination | Solid navy block with a fill-weight icon | `NavItem isCurrent` |
+| Overflow | The rail scrolls on its own; the page keeps its place | content taller than the viewport |
+| Below 1024px | Hidden by AppShell; the navigation moves to the drawer | `.ds-shell > .ds-sidebar` |
+
+## Behavior and accessibility
+
+- Two landmarks: the complementary `<aside>` ("Main sidebar") and the navigation inside it ("Main"). Give a different `label` when a page has more than one navigation.
+- A role badge says who is signed in; it is not a permission or privacy signal. Scope notes say "proposed" until access rules are confirmed.
+- Forced colors: the current item takes `Highlight`.
 
 ## React
 
 ```tsx
-<Sidebar label="Workspace" logo={<img className="ds-sidebar__logo" src={logo} alt="ACCS" />}
-  footer={<><Badge>Student</Badge><SidebarNote>Own reports only · proposed permission</SidebarNote></>}>
-  <NavItem href="/overview" icon="home" isCurrent>Overview</NavItem>
-  <NavItem href="/reports" icon="report">My reports</NavItem>
+import { Sidebar, SidebarSection, SidebarNote, NavItem, DoorPlate, Avatar, RoleBadge } from '@meetingat10/design-system/react';
+
+<Sidebar
+  brand={<DoorPlate code="CCS" />}
+  footer={<>
+    <div className="ds-sidebar__person">
+      <Avatar name="Demo student" decorative />
+      <div><p className="ds-sidebar__name">Demo student</p><RoleBadge>Student</RoleBadge></div>
+    </div>
+    <SidebarNote>Own reports only (proposed permission)</SidebarNote>
+  </>}
+>
+  <SidebarSection label="Workspace">
+    <NavItem href="/" icon="house" isCurrent>Overview</NavItem>
+    <NavItem href="/community" icon="chats" count={3}>Community</NavItem>
+    <NavItem href="/reports" icon="file">My reports</NavItem>
+  </SidebarSection>
 </Sidebar>
 ```
 
-Combine with TopBar in an `AppShell`; under 1024px show a MobileHeader instead (`ds-only-mobile` / `ds-only-desktop`) so only one banner is visible.
-
-## Reference markup
-
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<nav class="ds-sidebar" aria-label="Main">
-  <img class="ds-sidebar__logo" src="assets/logo/logo-compact-minimum.svg" alt="ACCS">
-  <div class="ds-sidebar__nav">
-    <a class="ds-nav-item" href="#" aria-current="page"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-home"/></svg>Overview</a>
-    <a class="ds-nav-item" href="#"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-forum"/></svg>Community</a>
-    <a class="ds-nav-item" href="#"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-calendar"/></svg>Consultations</a>
-    <a class="ds-nav-item" href="#"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-report"/></svg>My reports</a>
-  </div>
-  <div class="ds-sidebar__role"><span class="ds-badge">Student</span><p class="ds-sidebar__note">Own reports only · proposed permission</p></div>
-</nav>
+<aside class="ds-sidebar" aria-label="Main sidebar">
+  <div class="ds-sidebar__brand"><span class="ds-plate"><span class="ds-plate__name">ACCS</span><span class="ds-plate__code">CCS</span></span></div>
+  <nav class="ds-sidebar__nav" aria-label="Main">
+    <p class="ds-sidebar__label">Workspace</p>
+    <a class="ds-nav-item" href="/" aria-current="page"><svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-house-fill"/></svg><span class="ds-nav-item__label">Overview</span></a>
+  </nav>
+  <div class="ds-sidebar__foot"><p class="ds-sidebar__note">Own reports only (proposed permission)</p></div>
+</aside>
 ```

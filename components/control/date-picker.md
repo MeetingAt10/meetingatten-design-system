@@ -1,43 +1,75 @@
 ---
-title: DatePicker
-description: Segmented date input with a calendar popover; also a standalone Calendar.
+title: Date Picker
+description: Type a date segment by segment in an input-shaped group, or pick it from a calendar popover.
 react: DatePicker
 ---
-# Control / DatePicker and Calendar
+# Date Picker
 
-**NOT IN FIGMA** (repo-owned). The consultation flow needs dates beyond the five-day strip.
+A date picker takes a date two ways: typed segment by segment in an input-shaped group, or picked from a [Calendar](calendar.md) in a popover. The focused segment becomes a solid navy block, so it is always clear which part is being typed.
+
+## When to use
+
+- Use it when people may know the date already and want to type it, with the calendar as a helper.
+- Use `minValue`, `maxValue` and `isDateUnavailable` to keep choices inside the bookable range; they also apply to the calendar.
+- Use the description to state the rule in words ("Weekdays only.").
+- Don't use it when the month view is the point; show a [Calendar](calendar.md) on the page.
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Field | Text Field box with typed segments (month / day / year, locale order); focused segment `action-default` fill, `on-action` text |
-| Button | trailing calendar icon (`Icon / Calendar` 16) |
-| Calendar | `card-bg`, `radius-tile`, `card-shadow` (popover: `overlay-shadow`), padding 16; header with previous / next icon buttons and the month heading |
-| Day cell | 44px, `radius-control`; hover `info-bg`; today 1px `action-default` inset; selected `action-default` fill; unavailable struck through in `disabled-fg`; focus ring |
+| Part | Class | Notes |
+|---|---|---|
+| Field | `.ds-field.ds-date-picker` | Label, description, group and error ([Field](field.md)) |
+| Group | `.ds-date-field` | Input-shaped: 48px, radius 8, `border-default` rule on paper |
+| Segments | `.ds-date-field__input` | Body text with tabular numerals |
+| Segment | `.ds-date-segment` | One part of the date; separators (`[data-type="literal"]`) and placeholders in secondary ink |
+| Calendar button | `.ds-icon-btn` | 20px `calendar` icon, named "Open calendar" |
+| Popover | `.ds-popover`, `.ds-date-picker__popover` | Overlay sheet with 16px padding, holding the calendar |
 
-## Usage
+## States
 
-- Mark dates that cannot be booked as unavailable instead of hiding them.
-- Show the time zone in text next to times ("sample local campus time").
+| State | Looks | Set by |
+|---|---|---|
+| Empty | Placeholder segments in secondary ink | `[data-placeholder]` on segments |
+| Hover | Rule darkens to `border-strong` | `:hover`, `[data-hovered]` |
+| Focus within | Rule in the focus color plus a 2px ring | `:focus-within`, `[data-focus-within]` |
+| Focused segment | Solid navy block with white numerals | `[data-focused]`, `:focus` on the segment |
+| Open | Calendar popover under the group | the calendar button pressed |
+| Invalid | Rule in danger ink, error line below | `isInvalid`, failed validation, `[data-invalid]` |
+| Disabled | Dashed rule on the disabled ground | `isDisabled`, `[data-disabled]` |
 
-## Accessibility
+## Behavior and accessibility
 
-Each segment is a spin button (type digits or use arrows). The calendar is a grid: arrows move by day, Page Up/Down by month, Enter selects.
+- React Aria `DatePicker`: each segment is a spin button. Type digits to fill it; Up and Down change it; Left and Right move between segments; Backspace clears.
+- The calendar button opens the popover and moves focus into the calendar; choosing a day closes it and returns focus.
+- Segment order and separators follow the locale from [DesignSystemProvider](../../README.md).
+- Errors say what is wrong and keep the typed date ("Choose a weekday; Saturday 24 October has no consultation hours.").
+- Forced colors: the focused segment takes `Highlight`; disabled groups use `GrayText`.
 
 ## React
 
-Values are `@internationalized/date` objects (install it in the app):
-
 ```tsx
-import { parseDate } from "@internationalized/date";
+import { DatePicker } from '@meetingat10/design-system/react';
+import { CalendarDate, isWeekend } from '@internationalized/date';
 
-<DatePicker label="Preferred date" defaultValue={parseDate("2026-10-21")} isDateUnavailable={isBooked} />
-<Calendar aria-label="Consultation date" onChange={setDate} />
+<DatePicker
+  label="Preferred date"
+  description="Weekdays only."
+  defaultValue={new CalendarDate(2026, 10, 21)}
+  isDateUnavailable={(date) => isWeekend(date, 'en-PH')}
+  onChange={setDate}
+/>
 ```
 
-## Reference markup
+Other React Aria `DatePicker` props (`value`, `minValue`, `maxValue`, `granularity`, `isRequired`, `isInvalid`, `errorMessage`) pass through. Values are `@internationalized/date` objects.
+
+## Plain CSS
 
 ```html
-<div class="ds-calendar">…<button class="ds-calendar__cell" data-selected>21</button>…</div>
+<div class="ds-field">
+  <label class="ds-field__label" for="date">Preferred date</label>
+  <p class="ds-field__description" id="date-desc">Weekdays only.</p>
+  <input class="ds-input" id="date" type="date" aria-describedby="date-desc">
+</div>
 ```
+
+The segmented group (`.ds-date-field`, `.ds-date-segment`) is rendered by React Aria. In plain pages use the native date input above.

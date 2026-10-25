@@ -1,20 +1,58 @@
-# Grid, breakpoints and responsive layouts
+# Grid and breakpoints
 
-Source: Figma 03.3 and 07 (twelve exact-width surfaces at 1440 / 768 / 390 / 360). Content grows naturally; do not force desktop columns onto mobile.
+Four breakpoints, a 4, 8 or 12 column page grid, a 1280px content column and a 680px reading column.
 
-| Viewport | Token (min-width) | Grid and margins | Navigation | Content behavior |
-|---|---|---|---|---|
-| 320-599px | `mobile` 20rem | 4 col, 16 gutter, 16 margin | 44px menu + compact header | Single column; tables become labeled records |
-| 600-1023px | `tablet` 37.5rem | 8 col, 24 gutter, 24 margin | Collapsible navigation (top navigation at 768) | Two columns only if each remains >= 280px |
-| 1024-1439px | `desktop` 64rem | 12 col, 24 gutter, 32 margin | 240px sidebar | Main + supporting column; reading max 680px |
-| 1440px+ | `wide` 90rem | 12 col, 24 gutter, 48 margin | Persistent sidebar | Content max 1200px; do not stretch paragraphs |
+Content grows naturally. Columns stack in task order on small screens, and safety copy never truncates.
 
-Tailwind 4 breakpoints are replaced by these names (`tablet:`, `desktop:`, `wide:`; defaults removed). Tokens: `--ds-breakpoint-*`, `--ds-grid-*`. Max widths: `max-w-content` (1200), `max-w-reading` (680), `w-sidebar` (240).
+## Breakpoints and grid
 
-## Responsive contract (07)
+| Range | Token (min-width) | Columns | Gutter | Margin | Navigation |
+|---|---|---|---|---|---|
+| 320-599px | `--ds-breakpoint-mobile` 20rem | 4 | 16px | 16px | Mobile header, drawer navigation |
+| 600-1023px | `--ds-breakpoint-tablet` 37.5rem | 8 | 24px | 24px | Mobile header; the landing navbar shows its links from 768px |
+| 1024-1439px | `--ds-breakpoint-desktop` 64rem | 12 | 24px | 32px | Sidebar (16rem) and top bar |
+| 1440px and up | `--ds-breakpoint-wide` 90rem | 12 | 24px | 48px | Sidebar and top bar |
 
-- 1440: 12 columns / 24 gutter / 48 margin; separate 240px sidebar. 768: 8 / 24 / 24; top navigation. 390 and 360: 4 / 16 / 16; compact 44px+ menu controls.
-- Screens use fixed widths with natural (HUG) heights; task bodies FILL width, text wraps, **safety copy never truncates**.
-- Preserve task order when columns stack. The consultation rail moves below the feed on mobile; all labels, dates and unavailable states stay visible.
-- Support 320px reflow and 200% text enlargement without two-dimensional page scrolling. Truncate only optional metadata, never labels, errors or safety guidance.
-- Browser reflow and zoom tests remain required; Figma verification is of native grids only.
+| Width | Value | Token |
+|---|---|---|
+| Content column | 1280px | `--ds-grid-content-max` |
+| Reading column | 680px | `--ds-grid-reading-max` |
+| Sidebar | 16rem | `--ds-size-sidebar-w` |
+| Time column (timetable) | 3.5rem | `--ds-size-time-col` |
+
+Source: `tokens/foundations/grid.json`. Media queries cannot read CSS variables, so the CSS uses the literal values 600px, 1024px and 1440px (and 768px for the navbar links and agenda rows).
+
+## Layout classes
+
+| Class | Behavior |
+|---|---|
+| `.ds-container` | Centered column: 1280px plus the margin for the current breakpoint. `--reading` (680px), `--wide` (1440px) |
+| `.ds-cols` | One column on phones; two from 600px. From 1024px: `--3`, `--4`, `--main` (2fr + 1fr), `--split` (5fr + 7fr, the hero split) |
+| `.ds-section` | Vertical density rhythm (see [density.md](../themes/density.md)) |
+| `.ds-only-mobile`, `.ds-only-desktop` | Hide below or from 1024px |
+
+React: [Container](../components/layout/container.md), [Grid](../components/layout/grid.md), [Section](../components/layout/section.md), [AppShell](../components/navigation/app-shell.md).
+
+## Responsive behavior
+
+| Pattern | Phones | From 1024px |
+|---|---|---|
+| App shell | Mobile header, navigation in a drawer | Sidebar beside the top bar and content |
+| Timetable | Scrolls sideways with the time column pinned; opens on today | The whole week fits |
+| Reports | [ReportRecord](../components/data/report-record.md) rows | [ReportsTable](../components/data/reports-table.md) |
+| Hero | Copy, then the timetable below | Copy on 5 columns, timetable on 7 |
+| Modal | Bottom sheet | Centered dialog |
+| Stepper | Vertical list | Horizontal timeline from 600px |
+
+## Rules
+
+| Rule | Detail |
+|---|---|
+| Task order | When columns stack, the task order and safety copy stay intact |
+| Reflow | Works at 320px wide and 200% text without two-dimensional page scrolling (wide tables and the timetable scroll inside their own region) |
+| Truncation | Truncate only optional metadata, never labels, errors, states or safety guidance |
+| Measure | Prose stops at 680px even on wide screens |
+
+## Tailwind
+
+Breakpoints are `tablet:` (600px), `desktop:` (1024px) and `wide:` (1440px); Tailwind's defaults are removed. Containers: `max-w-content` (currently 75rem in `dist/tailwind.css`, not yet 1280px), `max-w-reading` (680px), `w-sidebar` (16rem).

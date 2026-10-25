@@ -1,69 +1,83 @@
 ---
 title: Text Field
-description: One-line text input with a persistent label, help text and an error that keeps the typed value.
+description: One line of text with a persistent label, help text and an error that keeps what was typed.
 react: TextField
 ---
-# Control / Text Field
+# Text Field
 
-Persistent label and value; seven states. Placeholder text never replaces a label. Required fields use text, not an asterisk alone. Loading means async validation. Pressed is pointer-down before focus.
+A text field takes one line of text: a subject, a course code, a room, an email. It is a paper slot with a solid rule under a visible label. Focus draws the focus color on the rule plus a ring; an error turns the rule danger and keeps the text.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Control / Text Field` | 352 x 128 | 0 | 0 / 0 / 0 / 0 | 8 | - |
-
-Variant axes:
-- State: Default / Hover / Pressed / Focus / Disabled / Error / Loading (7 variants)
+- Use it for short free text and codes ("Subject", "Course code", "CCS 304").
+- Use `icon` for a start icon that helps recognition (`map-pin` for a room).
+- Use `type`, `autoComplete` and `inputMode` so phones show the right keyboard.
+- Don't use it for several lines; use [TextArea](text-area.md). Don't use it for search; use [Search](search.md).
+- Don't use the placeholder as the label; keep it for a format hint.
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Label | `Label` 14/20 / 600, always visible |
-| Input | height 44, padding 0 / 10, radius 6, 1px `color/border-default`, `Body` 14/22 |
-| Message | `Body small` 13/20; hint in `text-secondary`, error in `color/danger/fg` |
+| Part | Class | Notes |
+|---|---|---|
+| Field | `.ds-field` | Label, description, control and error ([Field](field.md)) |
+| Input | `.ds-input` | 48px tall, 16px side padding, radius 8, `border-default` rule on paper, body text |
+| Small | `.ds-input--sm` | 40px (44px on coarse pointers) |
+| Icon group | `.ds-input-group` | Wraps the input when there is a start icon |
+| Start icon | `.ds-input-group__icon` | 20px, secondary ink, 16px from the start edge |
 
 ## States
 
-| State | Treatment (tokens) |
-|---|---|
-| Default | `color/surface` fill, 1px `color/border-default` |
-| Hover | `color/info/bg` fill |
-| Pressed | `color/border-strong` 2px edge (pointer-down before focus) |
-| Focus | 3px `color/focus` ring + 2px gap |
-| Disabled | `color/disabled/bg` fill, `color/disabled/fg` text; reason in message ("Policy scope is not confirmed.") |
-| Error | 1px `color/danger/fg` border + message "Couldn’t validate this subject. Try again; your text is kept." |
-| Loading | message "Checking subject…"; `aria-busy` |
+| State | Looks | Set by |
+|---|---|---|
+| Default | Paper slot with a solid `border-default` rule | none |
+| Hover | Rule darkens to `border-strong` | `:hover`, `[data-hovered]`, `.is-hover` |
+| Focus | Rule in the focus color plus a 2px ring | `:focus`, `[data-focused]`, `.is-focus` |
+| Invalid | Rule in danger ink (the ring too when focused); error line below; text kept | `isInvalid`, `[aria-invalid="true"]`, `[data-invalid]`, `.is-error` |
+| Disabled | Dashed rule on the disabled ground, disabled ink | `isDisabled`, `:disabled`, `[data-disabled]` |
+| Read-only | Hairline rule, no fill | `isReadOnly`, `:read-only` |
+| Compact | 40px tall with body-small text on fine pointers | `data-density="compact"` on an ancestor |
 
-## Figma copy
+## Behavior and accessibility
 
-Label "Subject", value "Course planning", disabled value "Submission unavailable".
-
-## Accessibility
-
-- Persistent `<label for>`; hint and error linked with `aria-describedby`; announce required/invalid (`aria-invalid="true"`).
-- On a failed submit provide a linked error summary and a deliberate focus destination; retain entered values.
-- Distinguish network failure from validation failure; do not announce every keystroke.
-- Do not expose sensitive details in errors, analytics, URLs or live regions.
+- React Aria `TextField`: the label, description and error are wired to the input; required and invalid states are exposed.
+- Text is 16px on touch screens, so phones never zoom into the field.
+- Validation comes from `isRequired`, `validate` or native constraints; for server errors pass `isInvalid` and `errorMessage`. The typed text always stays.
+- Disabled fields keep a readable value; say why nearby when the reason is not obvious.
+- Reduced motion: rule and ring changes land at once.
+- Forced colors: focus is a 2px `Highlight` outline; disabled inputs use a `GrayText` edge.
 
 ## React
 
 ```tsx
-<TextField label="College email" type="email" autoComplete="username" isRequired />
-<TextField label="Password" type="password" isInvalid errorMessage="Enter your password to continue." />
+import { TextField } from '@meetingat10/design-system/react';
+
+<TextField label="Subject" description="Shown to the faculty member you book." isRequired />
+<TextField label="Course code" defaultValue="CCS 10" isInvalid
+  errorMessage="Couldn't find CCS 10. Check the code; your text is kept." />
+<TextField label="Room" icon="map-pin" placeholder="CCS 304" />
+<TextField label="Section" defaultValue="BSCS 3-A" isDisabled />
+<TextField label="School email" type="email" autoComplete="email" size="sm" />
 ```
 
-React Aria `TextField`: the label, help and error are wired to the input (`aria-describedby`, `aria-invalid`). `isRequired` adds "(required)" as text.
+`size` is `md` (48px, default) or `sm` (40px). Other React Aria `TextField` props (`value`, `onChange`, `name`, `maxLength`, `validate`, `isReadOnly`) pass through.
 
-## Reference markup
-
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<div class="ds-field is-error">
-  <label class="ds-label" for="subject">Subject</label>
-  <input class="ds-input" id="subject" value="Course planning" aria-invalid="true" aria-describedby="subject-msg">
-  <p class="ds-field__msg" id="subject-msg">Couldn’t validate this subject. Try again; your text is kept.</p>
+<div class="ds-field">
+  <label class="ds-field__label" for="room">Room</label>
+  <div class="ds-input-group">
+    <svg class="ds-icon ds-input-group__icon" aria-hidden="true"><use href="sprite.svg#ds-map-pin"/></svg>
+    <input class="ds-input" id="room" placeholder="CCS 304">
+  </div>
+</div>
+
+<div class="ds-field">
+  <label class="ds-field__label" for="code">Course code</label>
+  <input class="ds-input" id="code" value="CCS 10" aria-invalid="true" aria-describedby="code-err">
+  <p class="ds-field__error" id="code-err">
+    <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-warning-circle-fill"/></svg>
+    Couldn't find CCS 10. Check the code; your text is kept.
+  </p>
 </div>
 ```

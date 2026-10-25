@@ -1,52 +1,54 @@
-# Density: `comfortable` and `compact`
+# Density
 
-`data-density` sets the default body text and the section rhythm. It points at existing Figma text styles and space tokens; it adds no values. Colors come from the theme ([light-dark.md](light-dark.md)).
+`data-density` sets the running text, the section rhythm and the timetable hour rows. It adds no new values; it points at existing type, space and size tokens.
 
 | Setting | `comfortable` (default, `:root`) | `compact` |
 |---|---|---|
-| Use | ACCS landing, Meeting At 10 team site, sign-in | ACCS admin / product UI |
-| Body text (`--ds-density-text-*`) | Body large 16/26 | Body 14/22 |
-| Section rhythm (`--ds-density-section-space`, `-desktop`) | 64, 80 from 1024px | 24, 32 from 1024px |
-| Headlines | Display 36/44, H1 30/38 | H1 30/38 |
+| Use | ACCS landing, Meeting At 10, sign-in, reading pages | Portal and admin screens (`accs-system/frontend`) |
+| Running text (`--ds-density-text-*`) | Body 16/26 | Body small 14/22 |
+| Section rhythm (`--ds-density-section-space`, `-desktop`) | 64px, 96px from 1024px | 24px, 32px from 1024px |
+| Hour rows (`--ds-density-hour-row`) | 48px | 40px |
+| Text fields, selects (fine pointers) | 48px | 40px with 14px text |
+| Table cells | 12px vertical padding | 8px |
+| Timetable day heads | 12px / 8px padding | 8px / 4px |
+
+Colors come from the theme ([light-dark.md](light-dark.md)). Coarse pointers keep their 44px minimum in both settings.
+
+## Setting it
 
 ```html
-<html data-density="compact">   <!-- admin -->
+<html data-density="compact">
 ```
 
-Like `data-theme`, it works on any element. `.ds-body` and any element with `data-density` inside it pick up the density text; `.ds-section` uses the section rhythm.
+It works on any element. `.ds-body` and every element with `data-density` inside it re-apply the density text (font is inherited as a computed value, so it has to be set again where density changes). `.ds-section` uses the section rhythm and the timetable reads the hour row. [AppShell](../components/navigation/app-shell.md) takes `density="compact"` and sets the attribute on the shell.
 
-## Compact (admin) guidance
+## Compact guidance
 
 | Topic | Guidance |
 |---|---|
-| Body | Body 14/22 with persistent 14px Label |
-| Controls | Same 48px buttons and 44px controls (no compact control size exists in Figma); density comes from 16/24/32 spacing between regions, tables over card walls on desktop, labeled records on mobile |
-| Reading | Max 680px for prose; content max 1200px |
-| Navigation | 240px sidebar from 1024px (`ds-sidebar`), 72px top bar; top navigation at 768; 44px menu control on mobile |
-| Roles | Role badge + note in the sidebar ("Own reports only · proposed permission"); not a privacy or status signal |
-| Reports | Restricted-report pages always show the durable Privacy Notice, keep submission disabled until policy is confirmed, and use neutral titles and notifications |
+| Controls | Same components; fields and selects drop to 40px on fine pointers, buttons keep their sizes |
+| Data | Tables over walls of cards on desktop; [ReportRecord](../components/data/report-record.md) rows on phones |
+| Navigation | Sidebar (16rem) and 64px top bar from 1024px; mobile header and drawer below |
+| Roles | Role badge and a note in the sidebar ("Own reports only (proposed permission)"); a role is not a privacy or status signal |
+| Reports | Restricted-report pages keep the [PrivacyNotice](../components/feedback/privacy-notice.md) on the page, keep submission disabled until policy is confirmed, and use neutral titles and notifications |
+| Schedule | 40px hour rows draw an 08:00 to 17:00 day in 360px instead of 432px |
 
-Examples on the design system site: Admin overview and Report detail (`site/app/_site/examples/bodies.tsx`).
+## Comfortable guidance
 
-## Comfortable (landing) guidance
-
-Figma has **no landing-page frame**. These patterns are composed from the Figma tokens, components and the product-pattern frames (05) and use their real copy. Anything marketing-specific (section order, footer) is a proposal.
-
-| Pattern | Spec |
+| Pattern | Guidance |
 |---|---|
-| Nav | `ds-container`, compact logo left, text links, one 48px primary "Sign in"; collapses to the 44px menu control under 1024px |
-| Hero | Mono eyebrow, Display headline "Your Access to the College of Computer Studies", Body large lead (max 680px), one primary + one secondary action, product preview on the right from 1024px |
-| Pillars | Community, Consultations, My reports. Figma voice per context (encouraging, empathetic, serious) |
-| Product preview | Announcement Card and Forum Card with Figma copy, `DEMO` labels |
-| Privacy | Durable notice: "Community access does not grant report access." No anonymity or security promises |
-| Footer | Logo, short descriptor, links; "Proposed, not approved" while the identity is unapproved |
-| Logo | `assets/logo/logo-horizontal.svg` (>= 240px) or compact (>= 130px) in the nav |
+| First viewport | Door plate, a display headline, one supporting line, the primary "Sign in" beside "Browse the community"; the week's timetable on the right with the hatched reports band and the now-line ([Hero](../components/layout/hero.md)) |
+| Lanes | Community, consultations and reports as [Agenda](../components/layout/agenda.md) rows, never three same-size icon cards |
+| Headings | No eyebrow or kicker above any heading |
+| Proof | The interface at work with synthetic, labeled content (`DEMO`, "sample") |
+| Privacy | State the boundary on the page: "Community access does not grant report access." |
+| Footer | Door plate, a short description, link columns and "Proposed, not approved" while the identity is unapproved |
 
 | Do | Don't |
 |---|---|
-| One primary action per region | Two filled buttons side by side |
+| One primary action per region | Two solid primary buttons side by side |
 | Honest copy ("sample", "proposed", "illustrative") | "Secure", "anonymous", "reply within 24 hours" |
-| Keep tagline exact: Your Access to the College of Computer Studies | Reword the tagline or imply a seal |
+| Keep the tagline exact: Your Access to the College of Computer Studies | Reword the tagline or imply an official seal |
 | Label synthetic content `DEMO` | Real student names or data |
 
-Example on the design system site: Landing page (`site/app/_site/examples/bodies.tsx`).
+Examples on the design system site: ACCS landing, admin overview, report detail, sign-in and Meeting At 10 (`site/app/_site/examples/`).

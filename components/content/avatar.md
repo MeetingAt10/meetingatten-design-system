@@ -1,33 +1,75 @@
 ---
 title: Avatar
-description: Person's initials or photo in a 24, 32 or 40px circle.
+description: A person's photo or initials in a circle on a lane wash, alone or as an overlapping group with a count.
 react: Avatar
 ---
-# Content / Avatar
+# Avatar
 
-**NOT IN FIGMA** (repo-owned). Identifies the author of a post or the person in a consultation. Never a role, permission or privacy signal.
+An avatar shows a person's photo, or their initials on a highlighter wash, in a circle. It repeats a name for recognition; the name itself always appears in text nearby. A group overlaps a few avatars with a cutout ring and ends with a "+N" count.
+
+## When to use
+
+- Use it beside an author or participant name (posts, sidebars, record history).
+- Use `AvatarGroup` for a short list of participants named once as a group.
+- Use `decorative` when the name is printed right next to the avatar.
+- Don't use it as a role, status or permission signal; use [Role Badge](../badge/role.md) for roles.
+- Don't use photos or names of real students in demos; use names marked "(sample)".
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Container | circle; `sm` 24px (Caption), `md` 32px (Label), `lg` 40px |
-| Initials | first letters of the first two words, `info-fg` on `info-bg` (contrast-checked) |
-| Photo | `object-fit: cover` |
+| Part | Class | Notes |
+|---|---|---|
+| Circle | `.ds-avatar` | 36px; schedule wash with navy initials in Plus Jakarta Sans 700 |
+| Sizes | `.ds-avatar--24`, `--32`, `--48`, `--64` | 36px has no modifier |
+| Lane washes | `.ds-avatar--community`, `--consult`, `--neutral` | Community and consult washes with lane ink; neutral wash with primary text |
+| Photo | `img` | Covers the circle; `alt=""` because the avatar itself carries the name |
+| Group | `.ds-avatar-group` | Avatars overlap by 8px with a 2px ring in `--ring-gap` (default `--ds-surface`) |
+| Count | `.ds-avatar--more` | "+N" on the neutral wash, Inter 600 |
 
-## Accessibility
+## States
 
-The name is the accessible name (`alt` on photos, `role="img"` + `aria-label` on initials). Use synthetic names in demos.
+| State | Looks | Set by |
+|---|---|---|
+| Initials | Up to two initials on the lane wash; text in parentheses, such as "(sample)", is skipped | no `src` |
+| Photo | The image fills the circle | `src` |
+| Named | Announced as an image with the person's name | default (`role="img"`, `aria-label`) |
+| Decorative | Hidden from assistive tech | `decorative` |
+
+## Behavior and accessibility
+
+- An avatar has no keyboard behavior.
+- A group is one image named once, for example "Ana Santos, Ben Cruz, Cara Lim and 2 others"; its avatars and the count are hidden from assistive tech.
+- The lane wash is decoration; it never means permission.
+- Set `--ring-gap` on a parent to the ground color when a group sits on the canvas or another fill, so the cutout ring matches.
+- Forced colors: the wash drops out; the initials stay as text.
 
 ## React
 
 ```tsx
-<Avatar name="Demo Learner" />
-<Avatar name="Demo Adviser" src="/demo/adviser.jpg" size="lg" />
+import { Avatar, AvatarGroup, initials } from '@meetingat10/design-system/react';
+
+<Avatar name="Ana Santos (sample)" size={24} />
+<Avatar name="Ben Cruz (sample)" size={32} lane="community" />
+<Avatar name="Cara Lim (sample)" lane="consult" />
+<Avatar name="Demo student" decorative />
+{/* Sample names */}
+<AvatarGroup names={['Ana Santos', 'Ben Cruz', 'Cara Lim', 'Dan Reyes', 'Eve Tan']} max={3} />
+
+initials('Ana Santos (sample)'); // "AS"
 ```
 
-## Reference markup
+`size` defaults to 36 and `lane` to `schedule`. `AvatarGroup` takes `names`, `max` (default 3), `size` (default 32) and `lane`.
+
+## Plain CSS
 
 ```html
-<span class="ds-avatar" role="img" aria-label="Demo Learner">DL</span>
+<span class="ds-avatar" role="img" aria-label="Ana Santos (sample)">AS</span>
+<span class="ds-avatar ds-avatar--48 ds-avatar--consult" role="img" aria-label="Cara Lim (sample)">CL</span>
+
+<span class="ds-avatar-group" role="img" aria-label="Ana Santos, Ben Cruz, Cara Lim and 2 others">
+  <span class="ds-avatar ds-avatar--32" aria-hidden="true">AS</span>
+  <span class="ds-avatar ds-avatar--32" aria-hidden="true">BC</span>
+  <span class="ds-avatar ds-avatar--32" aria-hidden="true">CL</span>
+  <span class="ds-avatar ds-avatar--32 ds-avatar--more" aria-hidden="true">+2</span>
+</span>
 ```

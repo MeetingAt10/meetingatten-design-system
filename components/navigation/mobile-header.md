@@ -1,50 +1,58 @@
 ---
 title: Mobile Header
-description: 72px small-screen header: menu control, centered logo, optional action.
+description: The sticky 56px bar below 1024px with the menu control, the wordmark and one or two actions.
 react: MobileHeader
 ---
-# Navigation / Mobile Header
+# Mobile Header
 
-Compact header for 390 and 360 widths: 44px menu and notification controls, logo centered.
+The mobile header is the sticky 56px bar on phones and tablets: the menu control, the brand (the door plate on ACCS surfaces, the [Logo](../identity/logo.md) on Meeting At 10 surfaces) and one or two actions. [AppShell](app-shell.md) renders it below 1024px and hides it on desktop.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Navigation / Mobile Header` | 390 x 72 | 0 | 12 / 16 / 12 / 16 | 0 | `#FFFFFF` |
-
-Variant axes:
-- None (single component)
+- Use it through AppShell (`mobileBrand`, `mobileNav`, `mobileActions`), or on its own in a small-screen layout.
+- Keep the end slot to one or two icon actions (notifications, search).
+- Don't put the page title here; the page heading stays in the content.
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Container | min-height 72, padding 12 / 16, `color/surface` |
-| Menu | Icon Button + `Icon / Menu`, 44 x 44 |
-| Logo | `Logo Compact Minimum`, centered |
-| Notifications | Icon Button + `Icon / Bell` |
+| Part | Class | Notes |
+|---|---|---|
+| Bar | `.ds-mobile-header` | Sticky, 56px, paper with a hairline below, `--ds-z-sticky` |
+| Start | slot | Usually the menu [IconButton](../control/icon-button.md) (`list`) |
+| Brand | `.ds-mobile-header__brand` | A small [DoorPlate](../identity/door-plate.md) on ACCS surfaces, `Logo size="sm"` on Meeting At 10 surfaces; grows to fill |
+| Actions | `.ds-mobile-header__actions` | Icon buttons |
 
-## Accessibility
+## States
 
-- The menu button exposes `aria-expanded`; the drawer traps focus only when modal; Escape closes and restores focus to the trigger.
+| State | Looks | Set by |
+|---|---|---|
+| Default | Menu, brand, actions | none |
+| From 1024px | Hidden inside AppShell | `.ds-shell .ds-mobile-header` |
+
+## Behavior and accessibility
+
+- A `<header>` landmark. Icon buttons are 44px on coarse pointers and always named.
+- The menu button opens the navigation drawer; React Aria returns focus to it when the drawer closes.
 
 ## React
 
 ```tsx
-<MobileHeader start={<IconButton icon="menu" label="Open menu" />} end={<IconButton icon="bell" label="Notifications" />}>
-  <img src={logo} alt="ACCS" height={32} />
+import { MobileHeader, IconButton, DoorPlate } from '@meetingat10/design-system/react';
+
+<MobileHeader
+  start={<IconButton icon="list" label="Open navigation" tooltip={false} onPress={openNav} />}
+  end={<IconButton icon="bell" label="Notifications" tooltip={false} />}
+>
+  <DoorPlate size="sm" />
 </MobileHeader>
 ```
 
-## Reference markup
-
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
 <header class="ds-mobile-header">
-  <button class="ds-icon-btn" aria-label="Menu" aria-expanded="false"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-menu"/></svg></button>
-  <img src="assets/logo/logo-compact-minimum.svg" alt="ACCS">
-  <button class="ds-icon-btn" aria-label="Notifications"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-bell"/></svg></button>
+  <button class="ds-icon-btn" type="button" aria-label="Open navigation"><svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-list"/></svg></button>
+  <span class="ds-mobile-header__brand"><span class="ds-plate ds-plate--sm"><span class="ds-plate__name">ACCS</span></span></span>
+  <span class="ds-mobile-header__actions"><button class="ds-icon-btn" type="button" aria-label="Notifications"><svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-bell"/></svg></button></span>
 </header>
 ```

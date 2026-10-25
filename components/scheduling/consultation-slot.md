@@ -1,76 +1,131 @@
 ---
-title: Consultation Slot
-description: Pick a consultation day and one time slot; booked and unavailable slots say so in text.
+title: Consultation Slot Picker
+description: Pick a consultation day from a sliding day strip, then one slot from blocks in line-form states that always say their state in words.
 react: ConsultationSlotPicker
 ---
-# Scheduling / Consultation Slot
+# Consultation Slot Picker
 
-Sixteen variants: Available x Selected x seven states (14), plus Booked and Unavailable (unselected, Disabled). Invalid Booked+Selected or Unavailable+Enabled combinations are not offered. State is written, not color-only. A selected time is not a confirmed booking.
+The consultation slot picker books office hours in two steps: a day strip where the chosen day becomes a solid navy block that slides between days, and one radio group of slot blocks below it. Slots use the line forms with a word and an icon: open is a solid teal outline, chosen fills with teal swiped in from the left, booked is hatched, unavailable is struck. The date and time zone note always show above the slots.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Scheduling / Consultation Slot` | 388 x 112 | 6 | 12 / 16 / 12 / 16 | 4 | `#FFFFFF` |
-
-Variant axes:
-- Availability: Available / Booked / Unavailable; Selected: False / True; State: Default / Hover / Pressed / Focus / Disabled / Error / Loading (16 variants)
+- Use it to choose one consultation time from published slots.
+- Use `timeZoneNote` every time, for example "sample local campus time".
+- Say near the picker that a chosen time is a request, not a confirmed booking ("Nothing is booked until faculty confirm.").
+- Don't use it for free-form dates; use [Date Picker](../control/date-picker.md) or [Calendar](../control/calendar.md).
+- Don't promise a reply time or a confirmation deadline.
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Container | 388 x 112 master, `radius-tile` (8), padding 12 / 16, gap 4, 1px `color/border-default` |
-| Time | `Label` 14/20 / 600: "09:00–09:30" |
-| State line | `Caption`: "+ Available", "✓ Selected", "— Booked", "× Unavailable" |
-| Message | error "Couldn’t check this slot. Try again."; loading "Checking availability…" |
+| Part | Class | Notes |
+|---|---|---|
+| Picker | `.ds-slots` | Day strip, slot group, legend and messages, 16px apart |
+| Day strip | `.ds-days` | One-choice group of days; scrolls sideways on narrow screens |
+| Day | `.ds-day` | Weekday (`.ds-day__dow`, caption 600), date (`.ds-day__date`, Plus Jakarta Sans 700 20/28), open count (`.ds-day__count`, Inter 500 12px with tabular figures) |
+| Day indicator | `.ds-day__indicator` | The navy block under the chosen day; slides between days on the smooth spring |
+| Today | `.ds-day.is-today` | A now-color dot under the date |
+| Summary | `.ds-slots__message` | The group's label: the chosen date and the time zone note |
+| Slot list | `.ds-slot-list` | Grid of slot blocks, at least 9.5rem each |
+| Slot | `.ds-slot` | Block with a teal outline (radius 6); time (`.ds-slot__time`, mono 600 13/20) and state (`.ds-slot__state`, icon and word) |
+| Legend | `.ds-slots__legend` | Names each line form in words, with swatches (`.ds-slots__swatch`) |
+| Error | `.ds-field__error` | Message with a filled `warning-circle` icon |
 
 ## States
 
-| State | Treatment (tokens) |
-|---|---|
-| Available, Default | `color/surface` |
-| Hover | `color/info/bg` |
-| Pressed | `color/border-strong` 2px edge |
-| Focus | 3px focus ring |
-| Disabled | `color/disabled/bg`, `color/disabled/fg` |
-| Error | `color/danger/fg` border + message |
-| Loading | message "Checking availability…" |
-| Selected=True | `color/info/bg` fill, 2px `color/action/default` border, "✓ Selected"; all states above apply on top |
-| Booked / Unavailable | Disabled tokens; "— Booked", "× Unavailable" |
+| State | Looks | Set by |
+|---|---|---|
+| Day: default | Paper with a hairline rule | none |
+| Day: hover | Stronger rule | `:hover`, `[data-hovered]` |
+| Day: chosen | The navy block slides under it; on-action text | `selectedDay`, `[aria-checked="true"]`, `[data-selected]` |
+| Day: disabled | Secondary text, date struck | `isDisabled` on a day, `:disabled`, `[data-disabled]` |
+| Slot: open | Paper, solid teal outline, teal text; "Open" with a plus icon | `state="open"` (default) |
+| Slot: hover | Lifts 2px with the lift shadow (open slots only) | `:hover`, `[data-hovered]` |
+| Slot: chosen | Teal fill swipes in from the left; white text; "Chosen" with a check | `value`, `[data-selected]`, `[aria-checked="true"]`, `:has(input:checked)` |
+| Slot: booked | Hatched paper, subtle rule, secondary text on small paper labels; "Booked" with a lock; cannot be chosen | `state="booked"`, `.ds-slot--booked` |
+| Slot: unavailable | Subtle rule, time struck through; "Unavailable" with a prohibit icon; cannot be chosen | `state="unavailable"`, `.ds-slot--unavailable` |
+| Slot: focus | 2px focus ring with a 2px gap | `[data-focus-visible]`, `:has(input:focus-visible)` |
+| Loading | Slots disabled; "Checking availability" with the clock spinner | `isLoading` |
+| Error | Danger message under the slots; the choice is kept | `errorMessage` |
 
-## Usage (from the Figma frames)
+## Behavior and accessibility
 
-- Use a radio-group selection model for a single appointment.
-- Dates, time zone and availability need service confirmation; no response deadline is promised.
-
-## Accessibility
-
-- Announce full date, time zone, availability and selected state; a single slot uses a radio-group model.
-- Offer keyboard date entry; arrows move within a documented grid.
+- The day strip is a single-choice group (`role="radiogroup"`) named "Consultation time: day". Arrow keys move between days; Space or Enter chooses one. Each day is named in full: "Wed 21 Oct, today, 3 open".
+- The slots are one radio group labeled by the summary ("Wed 21 Oct · sample local campus time"). Arrow keys move and choose; booked and unavailable slots are disabled and say so in words.
+- Loading is announced as a status; an error is announced at once and the chosen slot stays chosen.
+- Every state has a word and an icon, and the legend names the line forms, so color is never the only signal.
+- Reduced motion: no slide, no swipe and no lift; the chosen state lands at once.
+- Forced colors: days and slots keep a `CanvasText` edge (dotted when booked); the chosen day and slot take `Highlight`, and the day indicator paints itself.
 
 ## React
 
 ```tsx
+import { ConsultationSlotPicker } from '@meetingat10/design-system/react';
+
+const [day, setDay] = useState('wed');
+const [slot, setSlot] = useState<string | null>(null);
+
 <ConsultationSlotPicker
-  days={[{ id: "wed", weekday: "W", day: 21, label: "Wed 21 Oct" }]}
-  selectedDay={day} onDayChange={setDay}
-  slots={[{ id: "s9", time: "09:00–09:30" }, { id: "s11", time: "11:00–11:30", state: "booked" }]}
-  value={slot} onChange={setSlot}
-  timeZoneNote="sample local campus time" />
+  days={[
+    { id: 'tue', weekday: 'Tue', day: 20, label: 'Tue 20 Oct', openCount: 2 },
+    { id: 'wed', weekday: 'Wed', day: 21, label: 'Wed 21 Oct', openCount: 3, isToday: true },
+    { id: 'thu', weekday: 'Thu', day: 22, label: 'Thu 22 Oct', openCount: 0, isDisabled: true },
+  ]}
+  selectedDay={day}
+  onDayChange={setDay}
+  slots={[
+    { id: 's0900', time: '09:00-09:30' },
+    { id: 's0930', time: '09:30-10:00', state: 'booked' },
+    { id: 's1000', time: '10:00-10:30' },
+    { id: 's1400', time: '14:00-14:30', state: 'unavailable' },
+  ]}
+  value={slot}
+  onChange={setSlot}
+  timeZoneNote="sample local campus time"
+/>
 ```
 
-Days are a single-selection toggle group; slots are one radio group named with the full date and time zone. `isLoading` and `errorMessage` show the Figma messages.
+`label` defaults to "Consultation time". `showLegend` defaults to true. `errorMessage` takes words such as "Couldn't check this slot. Try again."
 
-## Reference markup
-
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<div class="ds-slots" role="radiogroup" aria-label="Wed 21 Oct, sample local campus time">
-  <button class="ds-slot" role="radio" aria-checked="false"><span class="ds-slot__time">09:00–09:30</span><span class="ds-slot__state">+ Available</span></button>
-  <button class="ds-slot" role="radio" aria-checked="true"><span class="ds-slot__time">10:00–10:30</span><span class="ds-slot__state">✓ Selected</span></button>
-  <button class="ds-slot" role="radio" aria-disabled="true"><span class="ds-slot__time">11:00–11:30</span><span class="ds-slot__state">— Booked</span></button>
-  <button class="ds-slot" role="radio" aria-disabled="true"><span class="ds-slot__time">14:00–14:30</span><span class="ds-slot__state">× Unavailable</span></button>
+<div class="ds-slots">
+  <div class="ds-days" role="radiogroup" aria-label="Consultation time: day">
+    <button class="ds-day" type="button" role="radio" aria-checked="false" aria-label="Tue 20 Oct, 2 open">
+      <span class="ds-day__dow">Tue</span><span class="ds-day__date">20</span><span class="ds-day__count">2 open</span>
+    </button>
+    <button class="ds-day is-today" type="button" role="radio" aria-checked="true" aria-label="Wed 21 Oct, today, 3 open">
+      <span class="ds-day__indicator"></span>
+      <span class="ds-day__dow">Wed</span><span class="ds-day__date">21</span><span class="ds-day__count">3 open</span>
+    </button>
+  </div>
+  <div class="ds-stack ds-stack--12" role="radiogroup" aria-labelledby="slots-summary">
+    <p class="ds-slots__message" id="slots-summary">Wed 21 Oct · sample local campus time</p>
+    <div class="ds-slot-list">
+      <label class="ds-slot">
+        <input class="ds-check__input" type="radio" name="slot" value="s0900">
+        <span class="ds-slot__time">09:00-09:30</span>
+        <span class="ds-slot__state"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-plus"/></svg>Open</span>
+      </label>
+      <label class="ds-slot ds-slot--booked">
+        <input class="ds-check__input" type="radio" name="slot" value="s0930" disabled>
+        <span class="ds-slot__time">09:30-10:00</span>
+        <span class="ds-slot__state"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-lock"/></svg>Booked</span>
+      </label>
+      <label class="ds-slot ds-slot--unavailable">
+        <input class="ds-check__input" type="radio" name="slot" value="s1400" disabled>
+        <span class="ds-slot__time">14:00-14:30</span>
+        <span class="ds-slot__state"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-prohibit"/></svg>Unavailable</span>
+      </label>
+    </div>
+  </div>
+  <ul class="ds-slots__legend" aria-label="Slot states">
+    <li><span class="ds-slots__swatch" aria-hidden="true"></span>Open: solid outline</li>
+    <li><span class="ds-slots__swatch ds-slots__swatch--chosen" aria-hidden="true"></span>Chosen: filled</li>
+    <li><span class="ds-slots__swatch ds-slots__swatch--booked" aria-hidden="true"></span>Booked: hatched</li>
+    <li><span class="ds-slots__swatch ds-slots__swatch--unavailable" aria-hidden="true"></span>Unavailable: struck</li>
+  </ul>
 </div>
 ```
+
+In plain markup the day strip needs a script for arrow keys and `aria-checked`, and the state word should change to "Chosen" when a slot is checked. Native radios handle the rest; the chosen fill follows `:checked`.

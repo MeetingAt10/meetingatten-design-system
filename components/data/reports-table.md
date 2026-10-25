@@ -1,55 +1,88 @@
 ---
 title: Reports Table
-description: Own or assigned reports in a captioned table with the reference as row header and a named action per row.
+description: Own or assigned reports in a captioned, ruled table with the reference as row header, the status in line form and words, and a named action per row.
 react: ReportsTable
 ---
-# Data / Reports Table
+# Reports Table
 
-Desktop table, 1258 x 271. On mobile tables become labeled records ([Report Record](report-record.md)). Never expose sensitive preview text.
+The reports table lists a person's own or assigned reports on a ruled sheet: the reference is the row header in tabular mono, the status is a [Badge](../badge/status.md) whose marker line form carries the state with a word, and each row has one named action. Reports copy stays serious and neutral.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Data / Reports Table` | 1258 x 271 | 8 | 0 / 0 / 0 / 0 | 0 | - |
-
-Variant axes:
-- None (single component)
+- Use it on desktop for a person's own drafts and records, or a reviewer's assigned records.
+- On phones, show [Report Record](report-record.md) rows instead.
+- Use [Table](table.md) when people need sorting or selection.
+- Don't put sensitive preview text, names or narrative in any column; categories stay neutral ("General concern").
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Container | `radius-card` (12), `card-bg`, `card-shadow`, no border; cells radius 0. Never wrap the table in a Card |
-| Header | `color/info/bg` fill, mono 12/16 labels: Reference, Category, Status, Action |
-| Rows | reference in `Code` mono; status as words ("Draft · policy gate"); action as Link ("View draft →") |
+| Part | Class | Notes |
+|---|---|---|
+| Sheet | `.ds-table-wrap` | Focusable region named by the caption, paper with a hairline rule |
+| Table | `.ds-table` | Columns: Reference, Category, Status, Updated (only when a row has it), Action |
+| Caption | `caption` | Names the table, H4 style |
+| Reference | `th[scope="row"]` > `.ds-table__ref` | Row header in tabular mono |
+| Status | `.ds-badge` | Words plus the line-form marker |
+| Action | `.ds-table__actions` > `.ds-link--standalone` | `actionLabel` (default "View"), named with the reference |
+| Empty | `.ds-table__empty` | `emptyMessage` (default "No reports yet.") across all columns |
 
-## Figma copy
+## States
 
-Title "Own reports / demo records". Rows DEMO-024 General concern, DEMO-018 Process question, DEMO-009 General question.
+| State | Looks | Set by |
+|---|---|---|
+| Row hover | Schedule highlighter wash | `:hover` |
+| Status: open or active | Solid marker and a word ("Resolved", "Submitted") | `statusForm="solid"` (default) |
+| Status: pending or draft | Dashed marker ("Draft", "Review pending") | `statusForm="pending"` |
+| Status: restricted | Hatched marker ("Restricted review") | `statusForm="restricted"` |
+| Status: closed | Struck marker ("Withdrawn") | `statusForm="closed"` |
+| Empty | One row with the empty message | `rows={[]}` |
+| Focus | 2px focus ring on the sheet or the action link | `:focus-visible` |
 
-## Accessibility
+## Behavior and accessibility
 
-- Native table navigation; caption, column headers (`<th scope="col">`) and row relationships; sort buttons expose sort state.
+- A native table: caption, column headers and the reference as row header, so screen readers read each cell with its headers.
+- The wrapper is a focusable region named by the caption, so keyboard users can scroll it when it overflows.
+- Each action link is named with the reference ("View DEMO-018"), so links differ out of context.
+- Status tone only reinforces; the word and the marker form carry the state.
+- Never put report subjects or identities in page titles, notifications or search previews.
+- Forced colors: the sheet keeps a `CanvasText` edge; badge markers are redrawn in `CanvasText`.
 
 ## React
 
 ```tsx
-<ReportsTable caption="Own reports / demo records" rows={[
-  { id: "24", reference: "DEMO-024", category: "General concern", status: "Draft · policy gate", href: "/reports/24", actionLabel: "View draft" },
-]} />
+import { ReportsTable } from '@meetingat10/design-system/react';
+
+<ReportsTable
+  caption="Own reports, demo records"
+  rows={[
+    { id: '24', reference: 'DEMO-024', category: 'General concern', status: 'Draft', statusTone: 'warning', statusForm: 'pending', updated: '21 Oct', href: '/reports/demo-024', actionLabel: 'Open draft' },
+    { id: '18', reference: 'DEMO-018', category: 'Process question', status: 'Restricted review', statusForm: 'restricted', updated: '17 Oct', href: '/reports/demo-018' },
+    { id: '9', reference: 'DEMO-009', category: 'General question', status: 'Resolved', statusTone: 'success', updated: '2 Oct', href: '/reports/demo-009' },
+    { id: '4', reference: 'DEMO-004', category: 'General concern', status: 'Withdrawn', statusForm: 'closed', updated: '28 Sep', href: '/reports/demo-004' },
+  ]}
+/>
 ```
 
-Action links are named with the reference ("View draft DEMO-024"). The scrolling wrapper is a focusable region named by the caption, so keyboard users can scroll a wide table. On mobile show ReportRecord cards instead (`ds-only-desktop` / `ds-only-mobile`).
+`caption` and `rows` are required. A row without `href` has an empty action cell.
 
-## Reference markup
-
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<div class="ds-table-wrap"><table class="ds-table">
-  <caption>Own reports / demo records</caption>
-  <thead><tr><th scope="col">Reference</th><th scope="col">Category</th><th scope="col">Status</th><th scope="col">Action</th></tr></thead>
-  <tbody><tr><td class="ds-mono">DEMO-024</td><td>General concern</td><td>Draft · policy gate</td><td><a class="ds-link" href="#">View draft <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-chevron"/></svg></a></td></tr></tbody>
-</table></div>
+<div class="ds-table-wrap" role="region" aria-labelledby="own-cap" tabindex="0">
+  <table class="ds-table">
+    <caption id="own-cap">Own reports, demo records</caption>
+    <thead>
+      <tr><th scope="col">Reference</th><th scope="col">Category</th><th scope="col">Status</th><th scope="col">Updated</th><th scope="col" class="ds-table__actions">Action</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"><span class="ds-table__ref">DEMO-024</span></th>
+        <td>General concern</td>
+        <td><span class="ds-badge ds-badge--warning ds-badge--pending"><span class="ds-badge__mark" aria-hidden="true"></span>Draft</span></td>
+        <td>21 Oct</td>
+        <td class="ds-table__actions"><a class="ds-link ds-link--standalone" href="/reports/demo-024" aria-label="Open draft DEMO-024">Open draft<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-arrow-right"/></svg></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 ```

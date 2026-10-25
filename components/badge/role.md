@@ -1,55 +1,57 @@
 ---
-title: Badge: Role
-description: Neutral role badge (Student, Adviser, Reviewer); never a privacy or status signal.
-react: Badge
+title: Role Badge
+description: An outlined plate naming a person's role, such as Student or Faculty; never a permission, privacy or status signal.
+react: RoleBadge
 ---
-# Badge / Role
+# Role Badge
 
-Permission-context label, radius 4, padding 5 / 10, gap 6, `Caption` 12/16 / 500. A role badge describes permission context; it is not a privacy or status signal. Do not style roles as severity.
+A role badge names what someone is in the college: "Student", "Faculty", "Department staff". It is the door plate drawn as a rule: no fill, a 1px plate-colored ring and navy text. A role is not a permission or privacy signal.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Badge / Role` | 146 x 25 | 4 | 5 / 10 / 5 / 10 | 6 | `#EDF1F7` |
+- Use it beside a person's name: the sidebar footer, a post author, the role on a record's activity.
+- Keep the word short and factual.
+- Don't use it to imply access ("Reviewer" does not mean someone can open a record), confidentiality or status.
+- Don't style roles as status or severity, and don't add a marker.
 
-Variant axes:
-- Role: Student / Assigned reviewer / Community moderator (3 variants)
+## Anatomy
 
-## Variants
+| Part | Class | Notes |
+|---|---|---|
+| Plate | `.ds-badge.ds-badge--role` | 24px tall, radius 4, 8px padding, no fill, 1px inset ring in `plate-bg`, `action-default` text, caption size at weight 600 |
 
-| State | Treatment (tokens) |
-|---|---|
-| Role=Student | "Student · own reports" |
-| Role=Assigned reviewer | "Assigned reviewer" |
-| Role=Community moderator | "Community moderator" |
-| Fill | `color/disabled/bg` (neutral/100 in LIGHT), text `color/text-primary` |
+## States
 
-## Figma copy
+| State | Looks | Set by |
+|---|---|---|
+| Default | Outlined plate with navy text | none |
+| Dark theme | The ring and text switch to the pale-blue plate and action colors | `data-theme="dark"` |
 
-"Assigned cases only ≠ identity hidden."
+There is no hover, focus or selected state: a role badge is not interactive.
 
-## Usage (from the Figma frames)
+## Behavior and accessibility
 
-
-
-## Accessibility
-
-- Badges are text, never color alone; status includes words or symbols.
-- Not interactive. Only actual actions receive focus.
+- Plain text in a `span`: no role and no focus. Screen readers read the word.
+- Put it next to the person's name; it describes the person, not what they can open.
+- Write permission in words elsewhere, for example a sidebar note: "Own reports only (proposed permission)".
+- No motion.
+- Forced colors: the plate keeps a `CanvasText` edge.
 
 ## React
 
 ```tsx
-<Badge>Student</Badge>
+import { RoleBadge } from '@meetingat10/design-system/react';
+
+<RoleBadge>Student</RoleBadge>
+<RoleBadge>Faculty</RoleBadge>
+<RoleBadge>Department staff</RoleBadge>
 ```
 
-Role badges keep the default neutral tone.
+`RoleBadge` takes only `children` and `className`.
 
-## Reference markup
-
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<span class="ds-badge">Assigned reviewer</span>
+<span class="ds-badge ds-badge--role">Student</span>
+<span class="ds-badge ds-badge--role">Faculty</span>
 ```

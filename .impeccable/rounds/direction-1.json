@@ -1,0 +1,160 @@
+{
+  "title": "Choose the visual world for the ACCS design system",
+  "question": "The roll assigned Office Hours. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Office Hours",
+      "kicker": "THE ROLL",
+      "lineage": "the weekly consultation timetable taped to a CCS faculty door",
+      "thesis": "Every screen is a ruled week sheet: content arrives as timetable blocks, and the restricted lane is drawn into the grid, not hidden.",
+      "palette": ["#FFFFFF", "#F5F7FB", "#DCE2EC", "#032E87", "#0D9488", "#7040C7", "#172033"],
+      "materials": ["ruled paper sheet", "solid timetable blocks", "highlighter washes", "hatched restricted lane"],
+      "viewport": "Door plate and headline on the left; this week's ruled grid on the right with community, consultation and a hatched reports lane, a live now-line crossing today.",
+      "risk": "Reads as a calendar clone if every component turns into a block, and as bureaucratic if the highlighter warmth goes missing.",
+      "raised": [
+        { "from": "challenger-emission-rail", "raise": "Status lives in line form (solid open, dashed pending, hatched taken, struck disabled), always with a word, never hue alone." },
+        { "from": "challenger-event-display", "raise": "Choosing a block isolates it: its neighbours dim one step, so one item is held at a time." },
+        { "from": "challenger-tensegrity", "raise": "Docs anatomy pins every label to its part on leader lines." },
+        { "from": "challenger-brick-book", "raise": "Everything snaps to one row module; new blocks arrive bright while settled ones recede." },
+        { "from": "challenger-lowbrow-panel", "raise": "Color owns whole blocks at full strength instead of being sprinkled as accents." }
+      ],
+      "wireframe": { "cols": 12, "rows": 10, "regions": [
+        { "label": "door plate + nav", "x": 0, "y": 0, "w": 12, "h": 1 },
+        { "label": "headline + sign-in", "x": 0, "y": 1, "w": 4, "h": 6, "accent": true },
+        { "label": "time column", "x": 4, "y": 1, "w": 1, "h": 8 },
+        { "label": "week grid: community, consultation blocks", "x": 5, "y": 1, "w": 7, "h": 6 },
+        { "label": "hatched reports lane (restricted)", "x": 5, "y": 7, "w": 7, "h": 2 },
+        { "label": "privacy boundary note", "x": 0, "y": 7, "w": 4, "h": 2 }
+      ] },
+      "comp": ".impeccable/mocks/decision/assigned.webp"
+    },
+    {
+      "id": "model-pick",
+      "label": "Campus Wayfinding",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "the CCS building's sign system: enamel room plates, floor directories, zone colors",
+      "thesis": "The interface is the building's directory: plates, room codes and arrows route people to community, consultations and the restricted reports office.",
+      "palette": ["#032E87", "#FFFFFF", "#08746E", "#55309B", "#EDF1F7", "#172033"],
+      "materials": ["enamel plates", "floor directory board", "pictograms", "restricted-area signage"],
+      "viewport": "A floor directory board fills the first screen: ACCS plate, three routed destinations with room codes, the reports office marked restricted.",
+      "risk": "Familiar: Swiss-style wayfinding is where many runs in this category land, and oversized plates can turn institutional.",
+      "wireframe": { "cols": 12, "rows": 10, "regions": [
+        { "label": "ACCS plate", "x": 0, "y": 0, "w": 4, "h": 2, "accent": true },
+        { "label": "directory: community 2F", "x": 0, "y": 3, "w": 12, "h": 2 },
+        { "label": "directory: consultations 3F", "x": 0, "y": 5, "w": 12, "h": 2 },
+        { "label": "directory: reports (restricted)", "x": 0, "y": 7, "w": 12, "h": 2 }
+      ] },
+      "comp": ".impeccable/mocks/decision/model-pick.webp"
+    },
+    {
+      "id": "challenger-rietveld",
+      "label": "Sliding Rooms",
+      "verdict": "competitive",
+      "lineage": "the Rietveld Schröder house, fused with ACCS",
+      "thesis": "One college workspace partitioned by sliding planes; the reports plane only slides open with permission.",
+      "palette": ["#FFFFFF", "#DCE2EC", "#172033", "#032E87", "#0D9488", "#7040C7"],
+      "materials": ["flat painted planes", "black frame lines", "color on moving edges"],
+      "viewport": "Three planes compose the landing; sliding one reveals the next space, and the restricted plane shows its locked edge.",
+      "case": "Carries the community-versus-reports boundary best, but CS students do not recognize De Stijl, so it loses on audience identification.",
+      "risk": "Reads as an art-school homage if the planes do no real navigation work, and slide-heavy navigation can slow tasks.",
+      "wireframe": { "cols": 12, "rows": 10, "regions": [
+        { "label": "community plane", "x": 0, "y": 0, "w": 6, "h": 10, "accent": true },
+        { "label": "consultation plane", "x": 6, "y": 0, "w": 4, "h": 10 },
+        { "label": "reports plane (locked edge)", "x": 10, "y": 0, "w": 2, "h": 10 }
+      ] },
+      "hero": "https://impeccable.style/worlds/cards/design-canon-rietveld-sliding-house-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/design-canon-rietveld-sliding-house.webp",
+      "comp": ".impeccable/mocks/decision/challenger-rietveld.webp"
+    },
+    {
+      "id": "challenger-emission-rail",
+      "label": "Emission Rail",
+      "verdict": "declined",
+      "lineage": "spectrogram plates on a viewing box",
+      "thesis": "Every element registers to one rail; state is line height, dash and doubling.",
+      "palette": ["#0B1220", "#97B5FF", "#5EEAD4", "#C4B5FD"],
+      "materials": ["charcoal continuum", "hairline emission lines"],
+      "viewport": "A dark plate with destinations as ticks on one off-centre rail.",
+      "case": "Students do not identify with spectrograms, and the rail hides community content.",
+      "kept": "State carried by line form, not hue.",
+      "risk": "Too dark and cold for a welcoming college space.",
+      "hero": "https://impeccable.style/worlds/cards/operate-c-emission-line-rail-hero.webp"
+    },
+    {
+      "id": "challenger-event-display",
+      "label": "Event Display",
+      "verdict": "declined",
+      "lineage": "collider event displays",
+      "thesis": "One event held at a time; selecting a track dims the rest.",
+      "palette": ["#0B1220", "#97B5FF", "#5EEAD4", "#F97066"],
+      "materials": ["detector rings", "particle tracks"],
+      "viewport": "A ring section with tracks curling out from one collision.",
+      "case": "A physics lab, not a college portal; WebGL tracks add nothing to posting or booking.",
+      "kept": "Isolate on select: neighbours dim one step.",
+      "risk": "Spectacle that slows simple tasks.",
+      "hero": "https://impeccable.style/worlds/cards/scientific-notation-particle-detector-event-display-hero.webp"
+    },
+    {
+      "id": "challenger-tensegrity",
+      "label": "Tensegrity Column",
+      "verdict": "declined",
+      "lineage": "kinetic tensegrity sculpture",
+      "thesis": "Layout follows a force network; labels pin to nodes on leader lines.",
+      "palette": ["#F5F7FB", "#172033", "#7040C7", "#65718A"],
+      "materials": ["carbon rods", "tension cord"],
+      "viewport": "A force diagram of the college's spaces.",
+      "case": "Engineering metaphor with no daily meaning for students or staff.",
+      "kept": "Leader-line annotation for component anatomy.",
+      "risk": "Abstract and hard to scan.",
+      "hero": "https://impeccable.style/worlds/cards/kinetic-sculpture-automata-tensegrity-breathing-column-hero.webp"
+    },
+    {
+      "id": "challenger-brick-book",
+      "label": "Build Instructions",
+      "verdict": "declined",
+      "lineage": "brick build-instruction booklets",
+      "thesis": "Numbered steps on a stud grid; new pieces arrive bright, prior ones ghost.",
+      "palette": ["#EFF4FF", "#172033", "#7040C7", "#FCD34D"],
+      "materials": ["stud grid", "keyline ink", "1:1 call-outs"],
+      "viewport": "Step 1, 2, 3 spreads teaching how to use ACCS.",
+      "case": "Recognizable but toy-like, which the brief rules out next to confidential reports.",
+      "kept": "One row module; new arrives bright, settled recedes.",
+      "risk": "Playful.",
+      "hero": "https://impeccable.style/worlds/cards/games-toys-physics-play-brick-build-instructions-hero.webp"
+    },
+    {
+      "id": "challenger-lowbrow-panel",
+      "label": "Lowbrow Panel",
+      "verdict": "declined",
+      "lineage": "airbrushed lowbrow gallery panels",
+      "thesis": "A packed, black-outlined tableau lacquered to a show finish.",
+      "palette": ["#7040C7", "#0D9488", "#FCD34D", "#172033"],
+      "materials": ["candy lacquer", "black outlines"],
+      "viewport": "A crowded tableau of outlined figures with a hand-lettered title.",
+      "case": "Loud and playful, the opposite of a trustworthy college workspace.",
+      "kept": "Color owns whole areas at full strength.",
+      "risk": "Gamified and chaotic.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-lowbrow-gallery-panel-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code", "toggle": true },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A clean edu-SaaS portal executed impeccably.",
+    "palette": ["#FFFFFF", "#172033", "#032E87"],
+    "materials": ["clean grid", "product screenshots", "feature columns"],
+    "viewport": "Headline, two buttons and a product card stack; three feature columns below.",
+    "risk": "Indistinguishable from every other portal by design.",
+    "wireframe": { "cols": 12, "rows": 10, "regions": [
+      { "label": "nav", "x": 0, "y": 0, "w": 12, "h": 1 },
+      { "label": "headline + buttons", "x": 0, "y": 2, "w": 6, "h": 4, "accent": true },
+      { "label": "product cards", "x": 7, "y": 1, "w": 5, "h": 5 },
+      { "label": "three feature columns", "x": 0, "y": 7, "w": 12, "h": 3 }
+    ] },
+    "comp": ".impeccable/mocks/decision/canon.webp"
+  },
+  "steer": true
+}

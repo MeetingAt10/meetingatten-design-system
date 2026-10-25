@@ -1,55 +1,93 @@
 ---
 title: Case Timeline
-description: Report events as an ordered list with actor roles and dates, newest first.
+description: A record's history on a vertical time rule, solid through what happened and dashed into what is pending, with the current state on the now-dot.
 react: CaseTimeline
 ---
-# Data / Case Timeline
+# Case Timeline
 
-Chronological events with a title, actor role and description. Serious, structured copy; no promised response deadline. Relative times are optional; exact illustrative timestamps belong in the detail view.
+A case timeline shows the history of a record on a vertical time rule. Time codes sit on the left; the rail is solid through what happened and dashed into what is pending; the current state carries the now-dot. Markers use the line forms: solid = done, dashed = pending, hatched = a restricted step. Events are listed oldest first.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Data / Case Timeline` | 801 x 264 | 0 | 0 / 0 / 0 / 0 | 0 | - |
-
-Variant axes:
-- None (single component)
+- Use it on a report or request detail page to show what happened and what comes next.
+- Name actors by role ("Department office", "Assigned reviewer"), never by an inferred identity.
+- Don't use it for progress through a short form; use [Stepper](../navigation/stepper.md).
+- Don't promise when a pending step will happen; say what it waits on.
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Marker | 10px circle; newest filled `color/action/default`, earlier hollow with 2px border; 1px connector `color/border-default` |
-| Title | `Label` 14/20 / 600 (+ "· DEMO") |
-| Actor | `Caption` `color/text-secondary`: "Assigned reviewer · DEMO" |
-| Description | `Body small` 13/20 |
+| Part | Class | Notes |
+|---|---|---|
+| List | `.ds-timeline` | Ordered list, oldest first |
+| Event | `.ds-timeline__event` | Three columns: time, marker, content; 24px below each event |
+| Rail | `::before` on the event | 2px rule from this marker to the next; solid by default, dashed after the current and pending events |
+| Time | `.ds-timeline__time` | `time` style, tabular mono, end-aligned; column width from `--tl-time` (default 4.5rem) |
+| Marker | `.ds-timeline__marker` | 14px square block, radius 3 |
+| Title | `.ds-timeline__title` | Label style |
+| Body | `.ds-timeline__body` | Body small, secondary text |
+| Actor | `.ds-timeline__actor` | Caption, secondary text; a role, not a person |
 
-## Figma copy
+## States
 
-"Review scope pending / Assigned reviewer · DEMO / Policy gate remains active. No sensitive submission.", "Draft saved locally · DEMO / Student · own report / Illustrative record only; not a submitted case.", "Record created · DEMO / Sample event / DEMO-024 · dates and events are illustrative."
+| State | Looks | Set by |
+|---|---|---|
+| Done | Solid navy marker on a solid rail | `state="done"` (default), `.ds-timeline__event--done` |
+| Current | Round marker: a now-color ring with a now-color dot; the rail below turns dashed | `state="current"`, `.ds-timeline__event--current`, `aria-current="step"` |
+| Pending | Paper marker with a dashed outline; dashed rail | `state="pending"`, `.ds-timeline__event--pending` |
+| Restricted | Paper marker with an ink rule and strong hatching | `state="restricted"`, `.ds-timeline__event--restricted` |
 
-## Accessibility
+## Behavior and accessibility
 
-- Use an ordered list (`<ol>`); explicit actor roles and dates; events read chronologically.
-- Identity visibility is not inferred from permission labels.
+- An ordered list named by `label` (default "Case activity"); the current event has `aria-current="step"`.
+- Each title ends with the state in words for screen readers ("(Done)", "(Current)", "(Pending)", "(Restricted step)"). These words are visually hidden; write titles that say the state too ("Recipients being confirmed", "Submitted to assigned reviewers").
+- Dates use `<time>` with a machine-readable `dateTime`.
+- Restricted steps say who can see them, without implying anonymity.
+- Forced colors: the rails and outlined markers stay visible.
 
 ## React
 
 ```tsx
-<CaseTimeline events={[
-  { title: "Review scope pending", actor: "Assigned reviewer · DEMO", date: "20 Oct 2026", dateTime: "2026-10-20", body: "Policy gate remains active." },
-  { title: "Record created · DEMO", actor: "Sample event" },
-]} />
+import { CaseTimeline } from '@meetingat10/design-system/react';
+
+<CaseTimeline
+  label="Case activity, DEMO-024"
+  events={[
+    { title: 'Draft created', date: '21 Oct 09:12', dateTime: '2026-10-21T09:12', actor: 'You' },
+    { title: 'Recipients being confirmed', state: 'current', body: 'The department office is confirming who receives this category.', actor: 'Department office' },
+    { title: 'Submitted to assigned reviewers', state: 'pending' },
+    { title: 'Review', state: 'restricted', body: 'Visible only to assigned reviewers and you.' },
+  ]}
+/>
 ```
 
-## Reference markup
+`events` is required, oldest first. Each event takes `title`, and optionally `actor`, `body`, `date`, `dateTime` and `state`.
 
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<ol class="ds-timeline">
-  <li><span class="ds-timeline__title">Review scope pending</span><span class="ds-timeline__actor">Assigned reviewer · DEMO</span><p class="ds-timeline__body">Policy gate remains active. No sensitive submission.</p></li>
-  <li><span class="ds-timeline__title">Draft saved locally · DEMO</span><span class="ds-timeline__actor">Student · own report</span><p class="ds-timeline__body">Illustrative record only; not a submitted case.</p></li>
+<ol class="ds-timeline" aria-label="Case activity, DEMO-024">
+  <li class="ds-timeline__event ds-timeline__event--done">
+    <span class="ds-timeline__time"><time datetime="2026-10-21T09:12">21 Oct 09:12</time></span>
+    <span class="ds-timeline__marker" aria-hidden="true"></span>
+    <div class="ds-timeline__content">
+      <p class="ds-timeline__title">Draft created<span class="ds-visually-hidden"> (Done)</span></p>
+      <p class="ds-timeline__actor">You</p>
+    </div>
+  </li>
+  <li class="ds-timeline__event ds-timeline__event--current" aria-current="step">
+    <span class="ds-timeline__time"></span>
+    <span class="ds-timeline__marker" aria-hidden="true"></span>
+    <div class="ds-timeline__content">
+      <p class="ds-timeline__title">Recipients being confirmed<span class="ds-visually-hidden"> (Current)</span></p>
+      <p class="ds-timeline__body">The department office is confirming who receives this category.</p>
+    </div>
+  </li>
+  <li class="ds-timeline__event ds-timeline__event--pending">
+    <span class="ds-timeline__time"></span>
+    <span class="ds-timeline__marker" aria-hidden="true"></span>
+    <div class="ds-timeline__content">
+      <p class="ds-timeline__title">Submitted to assigned reviewers<span class="ds-visually-hidden"> (Pending)</span></p>
+    </div>
+  </li>
 </ol>
 ```

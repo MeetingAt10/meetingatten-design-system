@@ -1,62 +1,85 @@
 ---
 title: Radio
-description: Choose exactly one option in a labeled group; arrow keys move the selection.
+description: Choose exactly one option in a labeled group; the center dot springs in, and card radios make block-shaped choices.
 react: RadioGroup
+demo: Radio
 ---
-# Control / Radio
+# Radio
 
-Selected=False/True x six states = 12 variants (no Loading: loading belongs to the option group, not an individual choice). One option per named group; arrow keys move and select.
+A radio group asks for exactly one choice. Each radio is a ring whose center dot springs in when chosen. A card radio turns the choice into a ruled block with a description, for choices that need a sentence each (meeting type, delivery).
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Control / Radio` | 352 x 96 | 6 | 0 / 0 / 0 / 0 | 8 | - |
-
-Variant axes:
-- Selected: False / True; State: Default / Hover / Pressed / Focus / Disabled / Error (12 variants)
+- Use it for two to five options people should see at once ("Online", "On campus").
+- Use `row` for short labels that fit on one line.
+- Use `card` when each option needs a description.
+- Don't use it for long lists; use a [Select](select.md) or [ComboBox](combobox.md).
+- Don't use it to switch views; use a [SegmentedControl](segmented-control.md).
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Control | 20px circle, 2px `color/border-default`; selected: `color/action/default` ring + dot |
-| Label | `Label` 14/20 / 600 |
-| Message | disabled "This option is unavailable."; error "Choose an option to continue." / "Couldn’t save this choice. Try again." |
+| Part | Class | Notes |
+|---|---|---|
+| Group | `.ds-radio-group` | 12px between options; `--row` lays them out in a wrapping row |
+| Radio | `.ds-radio` | Label row, 12px gap, at least 24px tall |
+| Native input | `.ds-check__input` | Plain markup only, visually hidden |
+| Ring | `.ds-radio__ring` | 20px, 1.5px `border-default` rule, paper |
+| Dot | `.ds-radio__ring::after` | Navy center dot that springs in |
+| Text | `.ds-check__text`, `.ds-check__description` | Label with a body-small second line |
+| Card | `.ds-radio--card` | Full-width block, 16px padding, `border-default` rule, radius 8 |
 
 ## States
 
-| State | Treatment (tokens) |
-|---|---|
-| Default / Hover / Pressed / Focus | as [Checkbox](checkbox.md) |
-| Disabled | disabled tokens |
-| Error | `color/danger/fg` |
+| State | Looks | Set by |
+|---|---|---|
+| Unselected | Empty ring | none |
+| Hover | Ring darkens to `border-strong`; a card takes the schedule wash | `:hover`, `[data-hovered]`, `.is-hover` |
+| Selected | Navy ring and dot; a card gets a 2px navy edge on the schedule wash | `[data-selected]`, `:checked` |
+| Focus | 2px focus ring around the ring (around the card for card radios) | `[data-focus-visible]`, `:focus-visible` on the input |
+| Invalid | Danger ring and dot | `isInvalid` on the group, `[data-invalid]`, `.is-error` |
+| Disabled | Dashed ring on the disabled ground, disabled ink | `isDisabled`, `[data-disabled]`, `:disabled` |
 
-## Figma copy
+## Behavior and accessibility
 
-Labels "Online consultation", "In-person consultation".
-
-## Accessibility
-
-- Native radios with a shared `name`, in a `<fieldset>`/`<legend>`; arrow keys move and select.
-- A single appointment slot also uses a radio-group model.
+- React Aria `RadioGroup`: role `radiogroup` named by the group label. Tab enters the group at the selected option; arrow keys move and select.
+- The group label, description and error come from [Field](field.md); required groups say so in words.
+- Option labels say the full meaning ("Phone (unavailable)", not just "Phone").
+- Reduced motion: the dot appears at once.
+- Forced colors: rings keep a `CanvasText` edge; the selected dot is `Highlight`; focus is a 2px `Highlight` outline.
 
 ## React
 
 ```tsx
-<RadioGroup label="Meeting type" isRequired>
+import { RadioGroup, Radio } from '@meetingat10/design-system/react';
+
+<RadioGroup label="Meeting type" defaultValue="campus" row>
   <Radio value="online">Online</Radio>
   <Radio value="campus">On campus</Radio>
+  <Radio value="phone" isDisabled>Phone (unavailable)</Radio>
+</RadioGroup>
+
+<RadioGroup label="Meeting type" value={type} onChange={setType}>
+  <Radio value="online" card description="A link is sent after the faculty member confirms.">Online</Radio>
+  <Radio value="campus" card description="At the faculty office shown on the slot.">On campus</Radio>
 </RadioGroup>
 ```
 
-## Reference markup
+`RadioGroup` takes `label`, `description`, `errorMessage`, `row` and React Aria group props (`value`, `onChange`, `isRequired`, `isDisabled`, `name`). `Radio` takes `value`, `description`, `card` and `isDisabled`.
 
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<fieldset class="ds-stack"><legend class="ds-label">Consultation format</legend>
-  <label class="ds-check ds-check--radio"><input type="radio" name="fmt" checked><span class="ds-check__box"></span>Online consultation</label>
-  <label class="ds-check ds-check--radio"><input type="radio" name="fmt"><span class="ds-check__box"></span>In-person consultation</label>
+<fieldset class="ds-fieldset">
+  <legend>Meeting type</legend>
+  <div class="ds-radio-group ds-radio-group--row">
+    <label class="ds-radio"><input type="radio" class="ds-check__input" name="type" value="online"><span class="ds-radio__ring" aria-hidden="true"></span>Online</label>
+    <label class="ds-radio"><input type="radio" class="ds-check__input" name="type" value="campus" checked><span class="ds-radio__ring" aria-hidden="true"></span>On campus</label>
+  </div>
 </fieldset>
+
+<label class="ds-radio ds-radio--card">
+  <input type="radio" class="ds-check__input" name="delivery" value="online">
+  <span class="ds-radio__ring" aria-hidden="true"></span>
+  <span class="ds-check__text"><span>Online</span><span class="ds-check__description">A link is sent after the faculty member confirms.</span></span>
+</label>
 ```

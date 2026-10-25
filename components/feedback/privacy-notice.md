@@ -1,53 +1,79 @@
 ---
 title: Privacy Notice
-description: Durable policy text on report pages: permission and identity visibility as separate statements.
+description: The access boundary stated on the page, in a hatched band with a lock and neutral ink, never a promise of anonymity or security.
 react: PrivacyNotice
 ---
-# Feedback / Privacy Notice
+# Privacy Notice
 
-Durable policy notice, 799 x 153. Serious, structured; states what is known, what is pending and what is disabled. Shield/lock denotes a privacy topic, not a security or anonymity guarantee.
+A privacy notice states the boundary on the page, where people decide what to write: who can open a record, what is still being confirmed, what is disabled. It is a ruled sheet with a hatched band, a lock on an ink block, and the restriction named in words. It uses neutral ink and no hue, because color never signals confidentiality.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Feedback / Privacy Notice` | 799 x 153 | 8 | 16 / 16 / 16 / 16 | 8 | `#FFFBEB` |
-
-Variant axes:
-- None (single component)
+- Use it on report pages and wherever restricted content is drafted, opened or listed.
+- Keep permission and identity visibility as separate statements. Restricted access does not mean anonymous.
+- Say what is known, what is pending and what is disabled; put the disabled reason in the foot.
+- Don't promise anonymity, security, response times or outcomes.
+- Don't hide it in a tooltip, popover, toast or closed panel, and don't tint it with a status or lane color.
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Container | radius 8, padding 16, gap 8, `color/warning/bg`, 1px `color/warning/fg` |
-| Title | lock icon + `Label` in `color/warning/fg` |
-| Body | `Body small` |
-| Footnote | `Caption` in `color/warning/fg` |
+| Part | Class | Notes |
+|---|---|---|
+| Sheet | `.ds-privacy` | Paper surface, 1px `border-default` rule, radius 12, no shadow; a region named by its title |
+| Band | `.ds-privacy__band` | Hatched header strip (`--ds-hatch` over the surface), ruled below |
+| Lock | `.ds-privacy__lock` | 32px ink block (radius 6) holding a fill-weight lock; decorative |
+| Title | `.ds-privacy__title` | Label style on a small paper chip, so the hatch never crosses the words; `h2` by default |
+| Body | `.ds-privacy__body` | Body small; short paragraphs or a list |
+| Foot | `.ds-privacy__foot` | Caption in secondary text, ruled above: what is disabled and why |
 
-## Figma copy
+## States
 
-Title "Policy confirmation required". Body "Access permission: assigned reviewers only (proposed). Identity visibility: recipients and anonymity behavior are not yet confirmed. These are separate decisions; restricted access does not mean anonymous. Backend enforcement is required." Foot "Sensitive submission is disabled until scope and policy are confirmed."
+| State | Looks | Set by |
+|---|---|---|
+| Default | Hatched band with the lock and title, then the body | `title`, `children` |
+| With foot | A ruled caption line at the bottom | `foot`, `.ds-privacy__foot` |
+| Nested heading | The title renders as `h3` | `level={3}` |
+| Dark theme | The hatch and the lock block redraw from `hatch-ink` and ink; still no hue | `data-theme="dark"` |
 
-## Accessibility
+## Behavior and accessibility
 
-- Policy text stays reachable and is not hidden in tooltips; identity visibility is not inferred from permission labels.
+- Renders a `section` labelled by its heading, so it is a named region landmark.
+- The lock is decorative; the title words carry the restriction ("Restricted record", "Policy confirmation required").
+- Reports copy is serious, structured and neutral. State permission and identity visibility separately, and say where backend enforcement is still required.
+- It stays on the page, close to the action it governs.
+- Elevation is declared once: a rule, no shadow.
+- No motion.
+- Forced colors: the sheet keeps a `CanvasText` edge; the title carries the restriction in words.
 
 ## React
 
 ```tsx
-<PrivacyNotice title="Policy confirmation required" foot="Sensitive submission is disabled until scope and policy are confirmed.">
-  Access permission: assigned reviewers only (proposed). Identity visibility: recipients and anonymity behavior are not yet confirmed.
-  Restricted access does not mean anonymous. Backend enforcement is required.
+import { PrivacyNotice } from '@meetingat10/design-system/react';
+
+<PrivacyNotice
+  title="Policy confirmation required"
+  foot="Sensitive submission is disabled until scope and policy are confirmed."
+>
+  <p>Access permission: assigned reviewers only (proposed).</p>
+  <p>Identity visibility: recipients and anonymity behavior are not yet confirmed.</p>
+  <p>These are separate decisions. Restricted access does not mean anonymous. Backend enforcement is required.</p>
 </PrivacyNotice>
 ```
 
-## Reference markup
+`title` is a string. String `children` are wrapped in a paragraph.
 
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<aside class="ds-notice" aria-labelledby="pn"><h3 class="ds-notice__title" id="pn"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-lock"/></svg>Policy confirmation required</h3>
-  <p>Access permission: assigned reviewers only (proposed). Identity visibility: recipients and anonymity behavior are not yet confirmed. These are separate decisions; restricted access does not mean anonymous. Backend enforcement is required.</p>
-  <p class="ds-notice__foot">Sensitive submission is disabled until scope and policy are confirmed.</p></aside>
+<section class="ds-privacy" aria-labelledby="privacy-title">
+  <header class="ds-privacy__band">
+    <span class="ds-privacy__lock" aria-hidden="true"><svg class="ds-icon ds-icon--16"><use href="sprite.svg#ds-lock-fill"/></svg></span>
+    <h2 class="ds-privacy__title" id="privacy-title">Restricted record</h2>
+  </header>
+  <div class="ds-privacy__body">
+    <p>Access permission: assigned reviewers only (proposed).</p>
+    <p>Identity visibility: recipients and anonymity behavior are not yet confirmed. Restricted access does not mean anonymous.</p>
+  </div>
+  <p class="ds-privacy__foot">Submission is disabled until recipients and access rules are confirmed.</p>
+</section>
 ```

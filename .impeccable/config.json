@@ -1,0 +1,84 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-10-25T07:47:48.838Z",
+        "reason": "User confirmed 2026-10-25: Inter, Plus Jakarta Sans and JetBrains Mono are pinned (PRODUCT.md brand commitments)"
+      },
+      {
+        "rule": "overused-font",
+        "value": "plus jakarta sans",
+        "createdAt": "2026-10-25T07:47:48.857Z",
+        "reason": "User confirmed 2026-10-25: fonts pinned (PRODUCT.md brand commitments)"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "*",
+        "files": [
+          "src/css/components/feedback/drawer.css"
+        ],
+        "createdAt": "2026-10-25T07:47:48.866Z",
+        "reason": "Agent: generated spring curves (scripts/lib.mjs springCurve), critically damped or overdamped, no overshoot"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "*",
+        "files": [
+          "src/css/components/feedback/modal.css"
+        ],
+        "createdAt": "2026-10-25T07:47:48.874Z",
+        "reason": "Agent: generated spring curves (scripts/lib.mjs springCurve), critically damped or overdamped, no overshoot"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "*",
+        "files": [
+          "src/css/components/scheduling/time-block.css"
+        ],
+        "createdAt": "2026-10-25T07:47:48.883Z",
+        "reason": "Agent: generated spring curves (scripts/lib.mjs springCurve), critically damped or overdamped, no overshoot"
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "src/css/components/navigation/tabs.css"
+        ],
+        "createdAt": "2026-10-25T07:49:20.260Z",
+        "reason": "Agent: React Aria SelectionIndicator animates the properties in transition-property; width is needed for unequal tab widths; the indicator is absolutely positioned, so siblings never reflow"
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "src/css/components/control/segmented.css"
+        ],
+        "createdAt": "2026-10-25T07:49:20.267Z",
+        "reason": "Agent: React Aria SelectionIndicator animates the properties in transition-property; width is needed for unequal tab widths; the indicator is absolutely positioned, so siblings never reflow"
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "src/css/components/scheduling/slot-picker.css"
+        ],
+        "createdAt": "2026-10-25T07:49:20.287Z",
+        "reason": "Agent: React Aria SelectionIndicator animates the properties in transition-property; width is needed for unequal tab widths; the indicator is absolutely positioned, so siblings never reflow"
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "src/css/components/feedback/disclosure.css"
+        ],
+        "createdAt": "2026-10-25T07:49:20.297Z",
+        "reason": "Agent: React Aria animates disclosure panels through --disclosure-panel-height (its documented technique)"
+      }
+    ]
+  }
+}

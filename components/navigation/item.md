@@ -1,56 +1,63 @@
 ---
 title: Nav Item
-description: One sidebar destination, 48px, with icon, current-page bar and tint.
+description: One sidebar or mobile-menu destination; the current page becomes a solid navy block with its icon in the fill weight.
 react: NavItem
 ---
-# Navigation / Item
+# Nav Item
 
-Sidebar item. Selected=False/True x five states, 192 x 48. The sidebar exposes four instances.
+A nav item is one destination in the [Sidebar](sidebar.md), the mobile navigation drawer or the navbar's menu sheet. The current page is a solid navy block with its icon in the fill weight; hovering takes the neutral highlighter wash.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Navigation / Item` | 192 x 48 | 6 | 0 / 12 / 0 / 12 | 12 | `#FFFFFF` |
-
-Variant axes:
-- Selected: False / True; State: Default / Hover / Pressed / Focus / Disabled (10 variants)
+- Use it inside a `<nav>` for workspace destinations (Overview, Community, Consultations, My reports).
+- Use `count` for unread or open items, and repeat the number in words on the page where it matters.
+- Don't use it for actions; use [Button](../control/button.md) or [MenuButton](menu.md).
+- Don't use it in running text; use [Link](link.md).
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Row | height 48, padding 0 / 12, gap 12, radius 6, `Label` 14/20 / 600 |
-| Icon | 20px: Overview (Navigation Overview graphic), Forum, Calendar, Report |
+| Part | Class | Notes |
+|---|---|---|
+| Item | `.ds-nav-item` | 40px tall (44px on coarse pointers), radius 8, label 600 14px |
+| Icon | `.ds-icon` | 20px; regular weight, fill weight when current |
+| Label | `.ds-nav-item__label` | One line, ellipsis when too long |
+| Count | `.ds-nav-item__count` | Inter 500 12px chip with tabular figures on the neutral wash; reversed on the current item |
 
 ## States
 
-| State | Treatment (tokens) |
-|---|---|
-| Default | `color/text-primary` text |
-| Hover | `color/info/bg` |
-| Pressed | `color/info/bg` + 1px `color/border-default` |
-| Focus | 3px focus ring |
-| Disabled | `color/disabled/bg`, `color/disabled/fg` |
-| Selected=True | `color/info/bg` fill, `color/action/default` text, 3px left bar in `color/action/default` |
+| State | Looks | Set by |
+|---|---|---|
+| Default | Secondary text, no fill | none |
+| Hover | Neutral highlighter wash, primary text | `:hover`, `[data-hovered]`, `.is-hover` |
+| Current | Solid navy block, white text, fill-weight icon, 1px top highlight | `isCurrent`, `[aria-current="page"]`, `[aria-current="true"]`, `.is-current` |
+| Focus | 2px focus ring with a 2px gap | `:focus-visible` |
+| Disabled | Disabled text, no fill | `isDisabled`, `[aria-disabled="true"]`, `[data-disabled]` |
 
-## Accessibility
+## Behavior and accessibility
 
-- `aria-current="page"` on the current link; selected state includes a bar and weight/color change, not color alone.
+- A React Aria `Link`; `isCurrent` sets `aria-current="page"`, so screen readers announce the current page.
+- The weight change (regular to fill) and the solid block mark the current item together; color is not the only signal.
+- Client routing comes from [DesignSystemProvider](../../README.md).
+- Forced colors: the current item takes `Highlight` and `HighlightText`; disabled items use `GrayText`.
 
 ## React
 
 ```tsx
-<NavItem href="/overview" icon="home" isCurrent>Overview</NavItem>
-<NavItem href="/reports" icon="report">My reports</NavItem>
+import { NavItem } from '@meetingat10/design-system/react';
+
+<nav aria-label="Main">
+  <NavItem href="/" icon="house" isCurrent>Overview</NavItem>
+  <NavItem href="/community" icon="chats" count={3}>Community</NavItem>
+  <NavItem href="/consultations" icon="chalkboard">Consultations</NavItem>
+  <NavItem href="/reports" icon="file">My reports</NavItem>
+</nav>
 ```
 
-`isCurrent` sets `aria-current="page"` (the left bar and tint follow from it).
-
-## Reference markup
-
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<a class="ds-nav-item" href="#" aria-current="page"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-home"/></svg>Overview</a>
+<nav aria-label="Main">
+  <a class="ds-nav-item" href="/" aria-current="page"><svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-house-fill"/></svg><span class="ds-nav-item__label">Overview</span></a>
+  <a class="ds-nav-item" href="/community"><svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-chats"/></svg><span class="ds-nav-item__label">Community</span><span class="ds-nav-item__count">3</span></a>
+</nav>
 ```

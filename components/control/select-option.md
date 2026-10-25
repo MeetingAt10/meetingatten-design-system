@@ -1,55 +1,85 @@
 ---
 title: Select Option
-description: One row in a Select or ComboBox list, with a check mark when selected.
+description: One row in a Select or ComboBox list, on the shared listbox sheet, with a check when selected.
 react: SelectOption
 ---
-# Control / Select Option
+# Select Option
 
-Option row exposed inside expanded Selects. Selected x five states (no Error/Loading: those belong to the popup).
+A select option is one row in the list of a [Select](select.md) or [ComboBox](combobox.md). Rows sit 2px apart on the floating sheet; the focused row takes the schedule highlighter wash and the selected row gets weight and a check. The same listbox rows also carry [Menu](../navigation/menu.md) items and [CommandPalette](../navigation/command-palette.md) results.
 
-## Figma source
+## When to use
 
-| Component | Size (w x h) | Radius | Padding (t r b l) | Gap | Master fill |
-|---|---|---|---|---|---|
-| `ACCS 2026 / Control / Select Option` | 328 x 44 | 6 | 0 / 12 / 0 / 12 | 12 | `#FFFFFF` |
-
-Variant axes:
-- Selected: False / True; State: Default / Hover / Pressed / Focus / Disabled (10 variants)
+- Use it as the child of a Select or ComboBox, one per choice.
+- Use `description` for a short second line that helps people choose ("Proposal, chapters or defense").
+- Use `icon` when the options are easier to scan with a picture of the topic.
+- Don't put actions in a listbox; actions belong in a [MenuButton](../navigation/menu.md).
 
 ## Anatomy
 
-| Part | Spec |
-|---|---|
-| Row | height 44, padding 0 / 12, gap 12, radius 6, label 14/20 / 600 |
-| Check | `Icon / Check` 16 when selected |
+| Part | Class | Notes |
+|---|---|---|
+| List | `.ds-listbox` | 4px padding, 2px between rows, at least the trigger's width (12rem minimum), scrolls past 22rem |
+| Row | `.ds-option` | 40px minimum (44px on coarse pointers), 8px 12px padding, radius 6, body small |
+| Icon | `.ds-icon` | 16px, first in the row, secondary ink |
+| Text | `.ds-option__text` | The label, and the description under it |
+| Description | `.ds-option__description` | Caption, secondary ink |
+| Check | `.ds-option__check` | 16px navy check at the end (bold weight), shown only when selected |
+| Keys | `.ds-option__keys` | Shortcut keycaps at the end (menus) |
+| Danger | `.ds-option--danger` | Danger ink for destructive menu items |
+| Section | `.ds-listbox__section`, `.ds-listbox__header` | Groups with a caption header; a rule separates groups |
+| Separator | `.ds-listbox__separator` | 1px rule between groups |
+| Empty | `.ds-listbox__empty` | Centered body-small message when nothing matches |
 
 ## States
 
-| State | Treatment (tokens) |
-|---|---|
-| Default | transparent |
-| Hover | `color/info/bg` |
-| Pressed | `color/info/bg` + 1px `color/border-default` |
-| Focus | 3px focus ring |
-| Disabled | `color/disabled/bg`, `color/disabled/fg` |
-| Selected=True | `color/info/bg` fill + check |
+| State | Looks | Set by |
+|---|---|---|
+| Default | Row on the sheet | none |
+| Hover or focused | Schedule highlighter wash | `:hover`, `[data-hovered]`, `[data-focused]`, `.is-hover` |
+| Keyboard focus | The wash plus a 2px focus outline inside the row | `[data-focus-visible]` |
+| Selected | Weight 600 and the check | `[aria-selected="true"]`, `[data-selected]` |
+| Disabled | Disabled ink, no wash, `not-allowed` cursor | `isDisabled`, `[aria-disabled="true"]`, `[data-disabled]` |
+| Danger | Danger ink; danger ground on hover | `.ds-option--danger` |
+| Match | Matched text on the yellow highlighter | `<mark>` inside the row |
 
-## Accessibility
+## Behavior and accessibility
 
-- `role="option"` with `aria-selected`; active option exposed via `aria-activedescendant`.
+- React Aria `ListBoxItem`: role `option` with `aria-selected`. Arrow keys move, Enter or a click chooses, typing jumps to a match; disabled rows are skipped.
+- When the label is not plain text, pass `textValue` so typing and screen readers get the words.
+- The selected row is marked by weight and the check, never by color alone.
+- Forced colors: focused and selected rows take `Highlight` with `HighlightText`; disabled rows use `GrayText`.
 
 ## React
 
 ```tsx
-<SelectOption id="planning">Course planning</SelectOption>
+import { Select, SelectOption } from '@meetingat10/design-system/react';
+
+<Select label="Topic" placeholder="Choose a topic">
+  <SelectOption id="planning" icon="graduation-cap">Course planning</SelectOption>
+  <SelectOption id="thesis" icon="notepad" description="Proposal, chapters or defense">Thesis advising</SelectOption>
+  <SelectOption id="career" icon="rocket" isDisabled>Career guidance (no hours this week, sample)</SelectOption>
+</Select>
 ```
 
-Pass `textValue` when the children are not plain text (used for type-ahead and filtering).
+Other React Aria `ListBoxItem` props (`id`, `textValue`, `isDisabled`) pass through.
 
-## Reference markup
-
-Classes come from `dist/components.css`. Live light and dark demos: this component's page on the design system site (`site/`).
+## Plain CSS
 
 ```html
-<li class="ds-option" role="option" aria-selected="true"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-check"/></svg>Course planning</li>
+<div class="ds-popover">
+  <div class="ds-listbox" role="listbox" aria-label="Topic">
+    <div class="ds-option" role="option" aria-selected="true">
+      <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-graduation-cap"/></svg>
+      <span class="ds-option__text">Course planning</span>
+      <svg class="ds-icon ds-icon--16 ds-option__check" aria-hidden="true"><use href="sprite.svg#ds-check"/></svg>
+    </div>
+    <div class="ds-option" role="option" aria-selected="false">
+      <span class="ds-option__text">Thesis advising<span class="ds-option__description">Proposal, chapters or defense</span></span>
+      <svg class="ds-icon ds-icon--16 ds-option__check" aria-hidden="true"><use href="sprite.svg#ds-check"/></svg>
+    </div>
+    <div class="ds-option" role="option" aria-selected="false" aria-disabled="true">Career guidance</div>
+  </div>
+</div>
 ```
+
+Listbox markup needs a script for keyboard behavior; in plain pages prefer a native `<select class="ds-select-trigger">`.
