@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "refresh": "node -e \"require('fs').rmSync('node_modules/@meetingat10/design-system',{recursive:true,force:true})\" && npm install --no-audit --no-fund",
+    "refresh": "node -e \"require('fs').rmSync('node_modules/@meetingat10/design-system',{recursive:true,force:true})\" && npm install --no-audit --no-fund @meetingat10/design-system@file:..",
     "gen": "node scripts/gen-props.mjs",
     "dev": "npm run gen && next dev",
     "build": "npm run gen && next build"

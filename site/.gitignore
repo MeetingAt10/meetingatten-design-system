@@ -3,3 +3,4 @@ node_modules/
 out/
 .generated/
 next-env.d.ts
+public/logo/

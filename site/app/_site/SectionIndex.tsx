@@ -8,21 +8,21 @@ export function sectionMetadata(section: Section): Metadata {
   return { title: s.title, description: s.description, alternates: { canonical: `/${section}/` } };
 }
 
-/** Section landing page: every page of the section, grouped by category, with its description. */
+/** Section landing page: every page of the section as ruled rows, grouped by category. */
 export function SectionIndex({ section }: { section: Section }) {
   const groups = new Map<string, Doc[]>();
   for (const d of docsIn(section)) groups.set(d.category ?? "pages", [...(groups.get(d.category ?? "pages") ?? []), d]);
   return (
     <main className="ds-container ds-section">
-      <SectionHeader level={1} eyebrow="ACCS Design System" title={SECTIONS[section].title} description={SECTIONS[section].description} />
+      <SectionHeader level={1} title={SECTIONS[section].title} description={SECTIONS[section].description} />
       <div className="site-index">
         {[...groups].map(([cat, docs]) => (
-          <section key={cat} aria-label={cat}>
-            <h2>{cat}</h2>
-            <ul>
+          <section key={cat} aria-labelledby={`cat-${cat}`} className="site-index__group">
+            <h2 id={`cat-${cat}`} className="site-index__title"><span className="ds-agenda__chip">{cat}</span><span className="ds-time">{docs.length}</span></h2>
+            <ul className="site-index__list">
               {docs.map((d) => (
                 <li key={d.slug}>
-                  <Link className="ds-link-inline" href={routeOf(d)}>{d.title}</Link>
+                  <Link className="site-index__link" href={routeOf(d)}>{d.title}</Link>
                   <p>{d.description}</p>
                 </li>
               ))}

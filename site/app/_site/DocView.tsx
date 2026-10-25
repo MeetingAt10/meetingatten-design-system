@@ -9,7 +9,7 @@ export function docMetadata(d: Doc | undefined): Metadata {
   return { title: d.title, description: d.description, alternates: { canonical: routeOf(d) }, openGraph: { title: d.title, description: d.description, url: routeOf(d) } };
 }
 
-/** A documentation page: sidebar, the markdown intro, the demo (if any), props (if a React component), then the rest. */
+/** A documentation page: the section rail, the markdown intro, the demo or specimen, the props, then the rest. */
 export function DocView({ doc, demo }: { doc: Doc; demo?: React.ReactNode }) {
   const body = docBody(doc);
   const split = body.indexOf("\n## ");
@@ -18,9 +18,11 @@ export function DocView({ doc, demo }: { doc: Doc; demo?: React.ReactNode }) {
   return (
     <div className="ds-container site-docs">
       <Sidebar current={doc} />
-      <main className="min-w-0">
+      <main className="site-docs__main">
         <article>
-          <p className="ds-eyebrow">{SECTIONS[doc.section].title}{doc.category ? ` · ${doc.category}` : ""}</p>
+          <p className="site-docs__trail">
+            <span className="ds-plate ds-plate--sm site-docs__section"><span className="ds-plate__name">{SECTIONS[doc.section].title}</span>{doc.category && <span className="ds-plate__code">{doc.category}</span>}</span>
+          </p>
           <Markdown source={intro} file={doc.file} />
           {demo}
           {doc.react && <PropsTable component={doc.react} />}

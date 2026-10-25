@@ -3,7 +3,7 @@ import { ogImage, OG_SIZE } from "@/lib/og";
 
 export const size = OG_SIZE;
 export const contentType = "image/png";
-export const alt = "ACCS Design System page";
+export const alt = "Meeting At 10 Design System page";
 export function generateStaticParams() {
   return allDocs().filter((d) => d.section !== "components").map((d) => ({ section: d.section, slug: d.slug }));
 }

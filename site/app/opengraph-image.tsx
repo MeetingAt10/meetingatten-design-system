@@ -2,9 +2,9 @@ import { ogImage, OG_SIZE } from "@/lib/og";
 
 export const size = OG_SIZE;
 export const contentType = "image/png";
-export const alt = "ACCS Design System";
+export const alt = "Meeting At 10 Design System";
 export const dynamic = "force-static";
 
 export default function Image() {
-  return ogImage("Your Access to the College of Computer Studies", "ACCS Design System", "Tokens, themes and React components on the ACCS Figma palette.");
+  return ogImage("Design system 1.0", "The faculty door, rebuilt as an interface.", "Tokens, themes and React components for the ACCS landing, portal and admin, and the Meeting At 10 site.");
 }

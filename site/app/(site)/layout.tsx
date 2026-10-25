@@ -1,26 +1,45 @@
 import Link from "next/link";
+import { Footer, Logo } from "@meetingat10/design-system/react";
+import { allDocs, routeOf, SECTIONS } from "@/lib/content";
+import { EXAMPLES } from "@/app/_site/examples/list";
 import { ThemeToggle } from "@/app/_site/ThemeToggle";
+import { SiteSearch } from "@/app/_site/SiteSearch";
+import { SiteNav } from "@/app/_site/SiteNav";
 
-const NAV = [["Foundations", "/foundations/"], ["Components", "/components/"], ["Guides", "/guides/"], ["Examples", "/examples/landing/"]] as const;
-
-/** Site chrome for the documentation pages (examples render full pages of their own). */
+/** Site chrome for the documentation pages (examples render whole pages of their own). */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
+  const items = [
+    ...allDocs().map((d) => ({ id: `${d.section}/${d.slug}`, label: d.title, section: SECTIONS[d.section].title, description: d.category, href: routeOf(d), icon: d.section === "components" ? ("code" as const) : d.section === "foundations" ? ("highlighter" as const) : ("books" as const) })),
+    ...EXAMPLES.map((e) => ({ id: `examples/${e.slug}`, label: e.title, section: "Patterns", description: e.description, href: `/examples/${e.slug}/`, icon: "door" as const })),
+  ];
   return (
     <>
-      <a className="site-skip" href="#main">Skip to content</a>
+      <a className="ds-skip-link" href="#main">Skip to content</a>
       <header className="site-header">
         <div className="ds-container site-header__inner">
-          <Link className="site-brand" href="/">ACCS <span>Design System</span></Link>
-          <nav className="site-nav" aria-label="Main">
-            {NAV.map(([label, href]) => <Link key={href} className="ds-link" href={href}>{label}</Link>)}
+          <Link className="site-brand" href="/">
+            <Logo />{" "}
+            <span className="site-brand__name">Design system</span>
+          </Link>
+          <SiteNav />
+          <div className="site-header__tools">
+            <SiteSearch items={items} />
             <ThemeToggle />
-          </nav>
+          </div>
         </div>
       </header>
-      <div id="main">{children}</div>
-      <footer className="site-footer">
-        <div className="ds-container ds-type-body-small">ACCS Design System · Proposed, not approved · Synthetic content only · Built from the team&apos;s Figma palette</div>
-      </footer>
+      <div id="main" tabIndex={-1}>{children}</div>
+      <Footer
+        brand={<Logo />}
+        description="Tokens, components and patterns from Meeting At 10 for the ACCS landing page, portal and admin, and the Meeting At 10 site."
+        columns={[
+          { title: "System", links: [{ label: "Foundations", href: "/foundations/" }, { label: "Components", href: "/components/" }, { label: "Patterns", href: "/examples/landing/" }] },
+          { title: "Guides", links: [{ label: "Getting started", href: "/guides/getting-started/" }, { label: "Migrating apps", href: "/guides/migrating-apps/" }, { label: "Changelog", href: "/guides/changelog/" }] },
+          { title: "Patterns", links: EXAMPLES.slice(0, 4).map((e) => ({ label: e.title, href: `/examples/${e.slug}/` })) },
+        ]}
+        note="Proposed, not approved. All names, records and schedules on this site are synthetic."
+        meta="v1.0.0 · Office Hours"
+      />
     </>
   );
 }

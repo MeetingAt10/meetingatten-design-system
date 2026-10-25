@@ -20,9 +20,9 @@ export interface Doc {
 }
 
 export const SECTIONS: Record<Section, { title: string; description: string }> = {
-  foundations: { title: "Foundations", description: "Color, type, spacing, radius, elevation, motion, treatments, themes and density." },
-  components: { title: "Components", description: "Every component with live light and dark demos, React props and usage rules." },
-  guides: { title: "Guides", description: "Getting started, principles, voice, accessibility, icons, assets and Figma parity." },
+  foundations: { title: "Foundations", description: "The pinned ACCS palette, type, spacing, radius, elevation, motion, materials, themes and density." },
+  components: { title: "Components", description: "Every component on a light and a dark sheet, with React props, states and accessibility notes." },
+  guides: { title: "Guides", description: "Getting started, principles, voice, accessibility, icons, logo and assets, migrating apps, and the changelog." },
 };
 
 function parse(file: string) {
@@ -38,12 +38,12 @@ function parse(file: string) {
 
 const plain = (s: string) => s.replace(/!\[[^\]]*\]\([^)]*\)/g, "").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/[`*_]/g, "").replace(/\s+/g, " ").trim();
 
-function toDoc(section: Section, file: string, slug: string): Doc {
+function toDoc(section: Section, file: string, slug: string, title?: string): Doc {
   const { meta, body } = parse(file);
   const h1 = body.match(/^# (.+)$/m)?.[1] ?? slug;
   const firstPara = body.split(/\n\n+/).find((p) => p.trim() && !/^(#|\||```|-|\d+\.|<)/.test(p.trim())) ?? "";
   const description = meta.description ?? plain(firstPara).slice(0, 180);
-  return { section, slug, file, title: meta.title ?? plain(h1), description, react: meta.react, demo: meta.demo ?? meta.react, category: file.split("/").length > 2 ? file.split("/")[1] : undefined };
+  return { section, slug, file, title: title ?? meta.title ?? plain(h1), description, react: meta.react, demo: meta.demo ?? meta.react, category: file.split("/").length > 2 ? file.split("/")[1] : undefined };
 }
 
 const md = (dir: string) => readdirSync(join(REPO, dir), { recursive: true }).map(String).filter((f) => f.endsWith(".md") && !f.endsWith("README.md")).sort();
@@ -53,7 +53,7 @@ let cache: Doc[] | undefined;
 export function allDocs(): Doc[] {
   if (cache) return cache;
   const docs: Doc[] = [
-    toDoc("guides", "README.md", "getting-started"),
+    toDoc("guides", "README.md", "getting-started", "Getting started"), // the README's H1 is the system name
     ...md("docs").map((f) => toDoc("guides", `docs/${f}`, slugOf(f))),
     toDoc("guides", "CONTRIBUTING.md", "contributing"),
     toDoc("guides", "CHANGELOG.md", "changelog"),

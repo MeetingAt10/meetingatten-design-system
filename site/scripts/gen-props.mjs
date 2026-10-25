@@ -1,6 +1,6 @@
 // Props tables for the site: reads exported interfaces, type aliases and component docs from ../src/react with the TypeScript compiler API.
 import ts from 'typescript';
-import { readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync, mkdirSync, copyFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const SRC = join(process.cwd(), '..', 'src', 'react');
@@ -28,3 +28,7 @@ for (const f of files) {
 mkdirSync('.generated', { recursive: true });
 writeFileSync('.generated/props.json', JSON.stringify(out, null, 2));
 console.log(`gen-props: ${Object.keys(out.components).length} components, ${Object.keys(out.interfaces).length} interfaces`);
+
+// The logo files (Meeting At 10 and the proposed ACCS marks), served for the favicon and the Logo demo.
+mkdirSync('public/logo', { recursive: true });
+for (const f of readdirSync(join(process.cwd(), '..', 'assets', 'logo'))) copyFileSync(join(process.cwd(), '..', 'assets', 'logo', f), join('public/logo', f));

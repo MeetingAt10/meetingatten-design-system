@@ -1,7 +1,8 @@
 export const EXAMPLES = [
-  { slug: "landing", title: "Landing page", description: "ACCS landing built from Hero, Feature Row, Section Header and form controls on soft layers." },
-  { slug: "admin-overview", title: "Admin overview", description: "Compact admin overview: collection cards, search, consultation picker and a reports table." },
-  { slug: "sign-in", title: "Sign in", description: "Sign-in panel floating on a wash: text fields, an inline error, a checkbox and one primary action." },
-  { slug: "report-detail", title: "Report detail", description: "Report detail as headed sections with dividers, no cards: summary, activity, gated submission." },
+  { slug: "landing", title: "ACCS landing", description: "The first viewport is a ruled week: community, consultations and a hatched reports lane, with the now-line on today." },
+  { slug: "admin-overview", title: "Portal overview", description: "A student's week in the portal: timetable, community feed, next consultation and own reports, in compact density." },
+  { slug: "report-detail", title: "Report detail", description: "A restricted record as open sections: privacy notice, progress, details, activity timeline and gated submission." },
+  { slug: "sign-in", title: "Sign in", description: "A floating sheet with labeled fields, an honest inline error and one primary action." },
+  { slug: "meeting-at-10", title: "Meeting At 10", description: "The team site: a day sheet anchored on the 10:00 rule. We meet at 10. Then we ship." },
 ] as const;
 export type ExampleSlug = (typeof EXAMPLES)[number]["slug"];

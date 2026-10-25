@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { Logo } from "@meetingat10/design-system/react";
 import { ExampleLinks } from "../_site/examples/ExampleNav";
 
-/** Examples are whole pages: no site header or footer, only a slim navigation bar back to the docs. */
+/** Patterns are whole pages: no site header or footer, only a slim bar back to the docs. */
 export default function ExamplesLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <nav aria-label="Examples" className="ds-container site-example-bar">
-        <Link className="ds-link" href="/">← ACCS Design System</Link>
+      <nav aria-label="Patterns" className="site-example-bar">
+        <Link className="site-example-bar__home" href="/"><Logo size="sm" code="DS 1.0" inverse /><span>Back to the design system</span></Link>
         <ExampleLinks />
       </nav>
       {children}

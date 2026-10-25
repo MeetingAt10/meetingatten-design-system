@@ -19,5 +19,5 @@ export default async function DocPage({ params }: Params) {
   const { section, slug } = await params;
   const d = findDoc(section, slug);
   if (!d) notFound();
-  return <DocView doc={d} demo={d.demo ? <TokenDemo name={d.demo} /> : undefined} />;
+  return <DocView doc={d} demo={<TokenDemo slug={d.slug} />} />;
 }
