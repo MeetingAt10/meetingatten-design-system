@@ -2,6 +2,16 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](https://semver.org); while `0.x`, breaking changes bump the minor and are marked **BREAKING**.
 
+## [1.0.1] - 2026-10-25
+
+Site only; the package is unchanged from 1.0.0.
+
+### Changed
+- The components index is a gallery of every component's default demo, grouped by category; each tile opens the component's page.
+
+### Fixed
+- The apple touch icon is served at `/apple-icon.png`; the CDN rewrote the extensionless `/apple-icon` to a page.
+
 ## [1.0.0] - 2026-10-25
 
 **BREAKING.** The "Office Hours" redesign: every component and style rewritten around the weekly consultation timetable on a CCS faculty door. Spec: `context/deltas/2026-10-25-v1.0.0-office-hours.md`. Migration: `docs/migrating-apps.md`.

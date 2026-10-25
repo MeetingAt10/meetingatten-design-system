@@ -38,7 +38,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
           { title: "Patterns", links: EXAMPLES.slice(0, 4).map((e) => ({ label: e.title, href: `/examples/${e.slug}/` })) },
         ]}
         note="Proposed, not approved. All names, records and schedules on this site are synthetic."
-        meta="v1.0.0 · Office Hours"
+        meta="v1.0.1 · Office Hours"
       />
     </>
   );

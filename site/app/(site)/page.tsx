@@ -41,7 +41,7 @@ export default function Home() {
       <Section tone="plate" aria-labelledby="install-h">
         <div className="site-cta">
           <h2 id="install-h" className="ds-type-h1">Install by tag.</h2>
-          <pre className="site-install"><code>npm install github:MeetingAt10/meetingatten-design-system#v1.0.0</code></pre>
+          <pre className="site-install"><code>npm install github:MeetingAt10/meetingatten-design-system#v1.0.1</code></pre>
           <div className="ds-row"><Button size="lg" variant="plate" href="/guides/getting-started/" iconEnd="arrow-right">Read the getting started guide</Button></div>
         </div>
       </Section>

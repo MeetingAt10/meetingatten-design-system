@@ -22,7 +22,7 @@ Themes: `data-theme="light"` or `"dark"`; no attribute follows the OS ([light an
 Private repo, consumed from git. Pin a tag, never a branch.
 
 ```bash
-npm i @meetingat10/design-system@github:MeetingAt10/meetingatten-design-system#v1.0.0
+npm i @meetingat10/design-system@github:MeetingAt10/meetingatten-design-system#v1.0.1
 ```
 
 `dist/` is committed, so there is no build step. Peer dependencies: `react` and `react-dom` 19. Moving from 0.5.x: [migrating apps](docs/migrating-apps.md).

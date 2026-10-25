@@ -6,10 +6,10 @@ Check each app's files again before applying; each app is its own small change.
 
 ## 1. Install by tag
 
-The apps install from git, pinned to a tag. The `v1.0.0` tag has to exist on GitHub first (tagging needs the maintainer's approval).
+The apps install from git, pinned to a tag: use the latest 1.0.x tag (`v1.0.1` at the time of writing).
 
 ```bash
-npm i @meetingat10/design-system@github:MeetingAt10/meetingatten-design-system#v1.0.0
+npm i @meetingat10/design-system@github:MeetingAt10/meetingatten-design-system#v1.0.1
 ```
 
 `dist/` is committed, so there is no build step. Peer dependencies: `react` and `react-dom` 19. The package brings `react-aria-components` 1.22.1, `motion`, `@phosphor-icons/react`, `@number-flow/react` and the fontsource variable fonts.
