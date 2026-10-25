@@ -1,11 +1,18 @@
-export type AlertTone = 'info' | 'success' | 'warning' | 'error';
+import { type IconName } from '../icon/Icon.js';
+export type AlertTone = 'info' | 'success' | 'warning' | 'danger' | 'neutral';
 export interface AlertProps {
     tone?: AlertTone;
     title: React.ReactNode;
     children?: React.ReactNode;
-    /** Default: `alert` for errors (announced at once), `status` otherwise. Use `note` for static guidance that is always on the page. */
+    /** Icon on the tone block (defaults by tone). */
+    icon?: IconName;
+    /** Buttons or links under the text ("Try again"). */
+    actions?: React.ReactNode;
+    /** A close control, for dismissible notes. */
+    onDismiss?: () => void;
+    /** Default: `alert` for danger (announced at once), `status` otherwise. Use `note` for static guidance that is always on the page. */
     role?: 'alert' | 'status' | 'note';
     className?: string;
 }
-/** Feedback / Inline Alert: persistent message next to the content it is about, with a tone bar, icon and title. */
-export declare function Alert({ tone, title, children, role, className }: AlertProps): import("react").JSX.Element;
+/** Inline alert: a persistent message next to the content it is about, its icon on a solid block in the tone color. */
+export declare function Alert({ tone, title, children, icon, actions, onDismiss, role, className }: AlertProps): import("react").JSX.Element;

@@ -1,83 +1,78 @@
-/* Control / Checkbox + Radio (Selected x State). */
+/* Checkbox: a 20px box whose check is drawn in (stroke) when it fills navy. Indeterminate shows a dash.
+   React Aria: <label class="ds-check" data-selected>…</label>. Plain markup:
+   <label class="ds-check"><input type="checkbox" class="ds-check__input"><span class="ds-check__box" aria-hidden="true">
+     <svg viewBox="0 0 18 18"><polyline points="3.5 9.5 7.5 13 14.5 5" pathLength="1"/></svg></span>Email me updates</label> */
 .ds-check {
+  position: relative;
   display: inline-flex;
-  align-items: center;
-  gap: var(--ds-space-8);
-  min-height: var(--ds-size-control-h);
-  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  align-items: flex-start;
+  gap: var(--ds-space-12);
+  min-height: var(--ds-size-target-min);
   color: var(--ds-text-primary);
   cursor: pointer;
-  position: relative;
-  & input {
-    position: absolute;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    cursor: inherit;
-  }
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.ds-check__input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  pointer-events: none;
 }
 .ds-check__box {
-  position: relative;
   display: grid;
   place-items: center;
-  width: var(--ds-size-icon-20);
-  height: var(--ds-size-icon-20);
   flex: none;
-  background: var(--ds-surface);
-  border: 2px solid var(--ds-border-default);
+  width: var(--ds-size-check);
+  height: var(--ds-size-check);
+  margin-top: calc((1lh - var(--ds-size-check)) / 2);
+  border: 1.5px solid var(--ds-border-default);
   border-radius: var(--ds-radius-chip);
-}
-.ds-check--radio .ds-check__box { border-radius: 50%; }
-.ds-check {
-  &:is(:hover, [data-hovered], .is-hover) .ds-check__box { background: var(--ds-info-bg); }
-  &:is(:active, [data-pressed], .is-pressed) .ds-check__box { border-color: var(--ds-border-strong); }
-  &:is(:focus-within, [data-focus-visible], .is-focus) .ds-check__box {
-    box-shadow: var(--ds-ring);
-    border-color: var(--ds-focus);
+  background: var(--ds-surface);
+  color: var(--ds-on-action);
+  transition:
+    background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  & > svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy);
   }
 }
-.ds-check input:checked + .ds-check__box, .ds-check.is-checked .ds-check__box, .ds-check:is([data-selected], [data-indeterminate]) .ds-check__box {
+.ds-check__dash { display: none; width: 10px; height: 2px; border-radius: 1px; background: currentColor; }
+.ds-check:is(:hover, [data-hovered], .is-hover) .ds-check__box { border-color: var(--ds-border-strong); }
+.ds-check:is([data-selected], [data-indeterminate], :has(.ds-check__input:checked), :has(.ds-check__input:indeterminate)) .ds-check__box {
   background: var(--ds-action-default);
   border-color: var(--ds-action-default);
 }
-.ds-check input:checked + .ds-check__box::after, .ds-check.is-checked .ds-check__box::after, .ds-check[data-selected] .ds-check__box::after {
-  content: "";
-  width: 5px;
-  height: 10px;
-  margin-top: -2px;
-  border: solid var(--ds-on-action);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+.ds-check:is([data-selected], :has(.ds-check__input:checked)) .ds-check__box > svg { stroke-dashoffset: 0; }
+.ds-check:is([data-indeterminate], :has(.ds-check__input:indeterminate)) .ds-check__box {
+  & > svg { display: none; }
+  & > .ds-check__dash { display: block; }
 }
-.ds-check[data-indeterminate] .ds-check__box::after {
-  content: "";
-  width: 10px;
-  height: 2px;
-  background: var(--ds-on-action);
+.ds-check:is([data-focus-visible], :has(.ds-check__input:focus-visible)) .ds-check__box {
+  outline: var(--ds-size-focus-ring) solid var(--ds-focus);
+  outline-offset: var(--ds-size-focus-offset);
 }
-.ds-check--radio input:checked + .ds-check__box, .ds-check--radio.is-checked .ds-check__box, .ds-check--radio[data-selected] .ds-check__box {
-  background: var(--ds-surface);
-  border-color: var(--ds-action-default);
-}
-.ds-check--radio input:checked + .ds-check__box::after, .ds-check--radio.is-checked .ds-check__box::after, .ds-check--radio[data-selected] .ds-check__box::after {
-  width: 10px;
-  height: 10px;
-  margin: 0;
-  border: 0;
-  border-radius: 50%;
-  background: var(--ds-action-default);
-  transform: none;
-}
-.ds-check:is(.is-error, [data-invalid]) .ds-check__box { border-color: var(--ds-danger-fg); }
-.ds-check:has(input:disabled), .ds-check.is-disabled {
+.ds-check:is([data-invalid], .is-error) .ds-check__box { border-color: var(--ds-danger-fg); }
+.ds-check:is([data-invalid], .is-error):is([data-selected], :has(.ds-check__input:checked)) .ds-check__box { background: var(--ds-danger-action); border-color: var(--ds-danger-action); color: var(--ds-danger-on-action); }
+.ds-check:is([data-disabled], :has(.ds-check__input:disabled)) {
   color: var(--ds-disabled-fg);
   cursor: not-allowed;
+  & .ds-check__box { border-style: dashed; border-color: var(--ds-border-default); background: var(--ds-disabled-bg); color: var(--ds-disabled-fg); }
 }
-.ds-check:has(input:disabled) .ds-check__box, .ds-check.is-disabled .ds-check__box {
-  background: var(--ds-disabled-bg);
-  border-color: var(--ds-border-subtle);
+.ds-check__text { display: grid; gap: 2px; }
+.ds-check__description {
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
 }
-.ds-check:has(input:disabled) input:checked + .ds-check__box::after, .ds-check.is-disabled.is-checked .ds-check__box::after, .ds-check[data-disabled][data-selected] .ds-check__box::after { border-color: var(--ds-disabled-fg); }
-.ds-check--radio:has(input:disabled) input:checked + .ds-check__box::after, .ds-check--radio.is-disabled.is-checked .ds-check__box::after, .ds-check--radio[data-disabled][data-selected] .ds-check__box::after { background: var(--ds-disabled-fg); }
-.ds-choices { display: grid; }
+.ds-check-group { display: grid; gap: var(--ds-space-12); }

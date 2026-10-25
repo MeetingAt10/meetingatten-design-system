@@ -1,0 +1,38 @@
+/* Motion grammar for the CSS layer. Color and hover changes are quick; overlays rise with an exponential
+   ease-out; spatial moves use the spring curves (--ds-motion-spring-*, linear() with a settle duration).
+   Content is visible by default: entrances move from a visible state, they never wait to appear. */
+@keyframes ds-fade-in { from { opacity: 0; } }
+@keyframes ds-fade-out { to { opacity: 0; } }
+@keyframes ds-rise-in {
+  from { opacity: 0; translate: 0 var(--ds-rise); }
+}
+@keyframes ds-sink-out {
+  to { opacity: 0; translate: 0 calc(var(--ds-rise) / 2); }
+}
+@keyframes ds-drop-in {
+  from { translate: 0 var(--ds-drop); }
+}
+@keyframes ds-slide-in-end { from { translate: 100% 0; } }
+@keyframes ds-slide-out-end { to { translate: 100% 0; } }
+@keyframes ds-slide-in-up { from { translate: 0 100%; } }
+@keyframes ds-slide-out-down { to { translate: 0 100%; } }
+/* The highlighter stroke draws from the left. */
+@keyframes ds-swipe { from { scale: 0 1; } }
+/* A line sweeping across a block: pending work. */
+@keyframes ds-sweep {
+  from { translate: -100% 0; }
+  to { translate: 100% 0; }
+}
+/* The clock hand of the spinner. */
+@keyframes ds-tick { to { rotate: 1turn; } }
+@keyframes ds-pulse { 50% { opacity: 0.55; } }
+
+/* Reduced motion: no travel, no loops; state changes land at once. */
+@media (prefers-reduced-motion: reduce) {
+  .ds-body *, .ds-body *::before, .ds-body *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

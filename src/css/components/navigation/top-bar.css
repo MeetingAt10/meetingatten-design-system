@@ -1,23 +1,26 @@
-/* Navigation / Top Bar (72). */
+/* Top bar: the page's title strip in the workspace, with search and quick actions on the right.
+   <header class="ds-topbar"><div class="ds-topbar__title">
+   <h1 class="ds-topbar__heading">Overview</h1></div><div class="ds-topbar__actions">..</div></header> */
 .ds-topbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--ds-z-sticky);
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--ds-space-16);
   min-height: var(--ds-size-topbar-h);
-  padding: var(--ds-size-12) var(--ds-space-24);
-  background: var(--ds-surface);
-  border-bottom: 1px solid var(--ds-border-subtle);
+  padding: var(--ds-space-8) var(--ds-space-24);
+  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+  background: var(--ds-canvas);
 }
-.ds-topbar__title {
-  font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
+.ds-topbar__title { display: grid; min-width: 0; flex: 1; }
+.ds-topbar__heading {
   margin: 0;
-  @media (max-width: 599px) { display: none; }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: 700 1.125rem / 1.5rem var(--ds-font-family-display);
+  letter-spacing: -0.015em;
 }
-.ds-topbar__tools {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-space-16);
-  flex: 1;
-  justify-content: flex-end;
-}
+.ds-topbar__search { width: min(22rem, 40vw); }
+.ds-topbar__actions { display: flex; align-items: center; gap: var(--ds-space-4); }

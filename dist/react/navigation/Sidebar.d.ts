@@ -1,17 +1,22 @@
 export interface SidebarProps {
     /** Accessible name of the navigation landmark. */
     label?: string;
-    /** Logo at the top. */
-    logo?: React.ReactNode;
-    /** Bottom area, for example the role badge and its note. */
+    /** Wordmark at the top: a DoorPlate on ACCS surfaces, the Logo on Meeting At 10. */
+    brand?: React.ReactNode;
+    /** Bottom area: the signed-in person, their role and a note. */
     footer?: React.ReactNode;
-    /** NavItem elements. */
+    /** NavItem elements, optionally grouped with SidebarSection. */
     children: React.ReactNode;
     className?: string;
 }
-/** Navigation / Sidebar: 240px admin navigation from 1024px; hidden below (use MobileHeader there). */
-export declare function Sidebar({ label, logo, footer, children, className }: SidebarProps): import("react").JSX.Element;
-/** Small note under the role badge, for example "Own reports only · proposed permission". */
+/** Sidebar: the workspace rail from 1024px (AppShell moves it into a drawer below). */
+export declare function Sidebar({ label, brand, footer, children, className }: SidebarProps): import("react").JSX.Element;
+/** A labeled group of NavItems inside the Sidebar. */
+export declare function SidebarSection({ label, children }: {
+    label: string;
+    children: React.ReactNode;
+}): import("react").JSX.Element;
+/** Small note in the sidebar footer, for example "Own reports only (proposed permission)". */
 export declare function SidebarNote({ children }: {
     children: React.ReactNode;
 }): import("react").JSX.Element;

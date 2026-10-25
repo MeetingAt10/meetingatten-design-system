@@ -1,23 +1,23 @@
-/* Content / Tile: 48px icon tile on a semantic tint (soft layers). Icon contrast uses the checked bg/fg pairs. */
+/* Tile: a small solid block holding a lane icon (duotone weight in React; the 20% layer reads as a
+   highlighter). Decorative unless it carries a label.
+   <span class="ds-tile ds-tile--community" aria-hidden="true"><svg class="ds-icon">..</svg></span> */
 .ds-tile {
   display: inline-grid;
   place-items: center;
-  width: 3rem;
-  height: 3rem;
   flex: none;
-  border-radius: var(--ds-radius-tile);
-  background: var(--ds-info-bg);
-  color: var(--ds-info-fg);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--ds-radius-control);
+  background: var(--ds-action-default);
+  color: var(--ds-on-action);
+  & > .ds-icon { width: var(--ds-size-icon-20); height: var(--ds-size-icon-20); }
 }
-.ds-tile--secondary {
-  background: var(--ds-secondary-bg);
-  color: var(--ds-secondary-fg);
-}
-.ds-tile--accent {
-  background: var(--ds-accent-bg);
-  color: var(--ds-accent-fg);
-}
-.ds-tile--neutral {
-  background: var(--ds-disabled-bg);
-  color: var(--ds-text-primary);
-}
+.ds-tile--sm { width: 32px; height: 32px; border-radius: var(--ds-radius-block); & > .ds-icon { width: var(--ds-size-icon-16); height: var(--ds-size-icon-16); } }
+.ds-tile--lg { width: 56px; height: 56px; border-radius: var(--ds-radius-sheet); & > .ds-icon { width: var(--ds-size-icon-32); height: var(--ds-size-icon-32); } }
+.ds-tile--community { background: var(--ds-accent-default); color: var(--ds-accent-on-solid); }
+.ds-tile--consult { background: var(--ds-secondary-default); color: var(--ds-secondary-on-solid); }
+.ds-tile--neutral { background: var(--ds-highlight-neutral); color: var(--ds-text-primary); }
+.ds-tile--restricted { background: var(--ds-surface); background-image: var(--ds-hatch); color: var(--ds-text-primary); box-shadow: inset 0 0 0 1px var(--ds-border-default); }
+.ds-tile--success { background: var(--ds-success-fg); color: var(--ds-success-bg); }
+.ds-tile--warning { background: var(--ds-warning-fg); color: var(--ds-warning-bg); }
+.ds-tile--danger { background: var(--ds-danger-fg); color: var(--ds-danger-bg); }

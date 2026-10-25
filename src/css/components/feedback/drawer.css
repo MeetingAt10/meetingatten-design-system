@@ -1,23 +1,70 @@
-/* Feedback / Drawer: side sheet for secondary tasks (filters, details) over the scrim. */
+/* Drawer: a sheet that slides in from the end edge (or start, or bottom on phones) over a scrim, for
+   secondary work that keeps the page in view: filters, record details, mobile navigation. */
 .ds-drawer-overlay {
   position: fixed;
   inset: 0;
-  z-index: var(--ds-z-modal);
-  display: flex;
-  justify-content: flex-end;
+  z-index: var(--ds-z-drawer);
   background: var(--ds-scrim);
+  &[data-entering] { animation: ds-fade-in var(--ds-motion-duration-base) var(--ds-motion-ease-out); }
+  &[data-exiting] { animation: ds-fade-out var(--ds-motion-duration-base) var(--ds-motion-ease-exit); }
 }
-.ds-drawer-overlay--start { justify-content: flex-start; }
 .ds-drawer {
-  display: grid;
-  align-content: start;
-  gap: var(--ds-size-20);
-  width: min(26rem, 100%);
-  height: 100%;
-  padding: var(--ds-space-32) var(--ds-space-24);
-  overflow: auto;
-  background: var(--ds-card-bg);
-  color: var(--ds-text-primary);
+  position: fixed;
+  inset-block: 0;
+  inset-inline-end: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(28rem, calc(100vw - var(--ds-space-48)));
+  background: var(--ds-overlay-bg);
   box-shadow: var(--ds-overlay-shadow);
+  color: var(--ds-text-primary);
   outline: none;
+  &[data-entering] { animation: ds-slide-in-end var(--ds-motion-spring-gentle-duration) var(--ds-motion-spring-gentle); }
+  &[data-exiting] { animation: ds-slide-out-end var(--ds-motion-duration-base) var(--ds-motion-ease-exit); }
+}
+.ds-drawer--start {
+  inset-inline: 0 auto;
+  &[data-entering] { animation-name: ds-slide-in-start; }
+  &[data-exiting] { animation-name: ds-slide-out-start; }
+}
+@keyframes ds-slide-in-start { from { translate: -100% 0; } }
+@keyframes ds-slide-out-start { to { translate: -100% 0; } }
+.ds-drawer--bottom {
+  inset: auto 0 0;
+  width: 100%;
+  max-height: 88dvh;
+  border-radius: var(--ds-radius-overlay) var(--ds-radius-overlay) 0 0;
+  &[data-entering] { animation-name: ds-slide-in-up; }
+  &[data-exiting] { animation-name: ds-slide-out-down; }
+}
+.ds-drawer__handle {
+  width: 36px;
+  height: 4px;
+  margin: var(--ds-space-8) auto 0;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-border-default);
+}
+.ds-drawer__dialog { display: contents; outline: none; }
+.ds-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-12);
+  min-height: var(--ds-size-topbar-h);
+  padding: var(--ds-space-12) var(--ds-space-16) var(--ds-space-12) var(--ds-space-24);
+  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+}
+.ds-drawer__title {
+  margin: 0;
+  font: var(--ds-type-h4-font-weight) 1.125rem / 1.5rem var(--ds-type-h4-font-family);
+  letter-spacing: var(--ds-type-h4-letter-spacing);
+}
+.ds-drawer__body { flex: 1; display: grid; align-content: start; gap: var(--ds-space-16); padding: var(--ds-space-24); overflow-y: auto; }
+.ds-drawer__foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--ds-space-12);
+  padding: var(--ds-space-16) var(--ds-space-24);
+  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
 }

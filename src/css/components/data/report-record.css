@@ -1,23 +1,31 @@
-/* Data / Report Record (390 mobile card). */
+/* Report record: one restricted record as a ruled list row (phones, side panels). Reference in mono,
+   status in line form, facts as a definition list. Reports copy stays serious and neutral.
+   <article class="ds-record"><header class="ds-record__head"><span class="ds-record__ref">DEMO-024</span>..badge</header>
+   <h3 class="ds-record__title">General concern</h3><dl class="ds-record__facts"><div><dt>Updated</dt><dd>21 Oct</dd></div></dl></article> */
+.ds-record-list { display: grid; margin: 0; padding: 0; list-style: none; border-top: var(--ds-size-rule) solid var(--ds-border-subtle); }
 .ds-record {
+  position: relative;
   display: grid;
-  gap: var(--ds-space-16);
-  padding: var(--ds-size-20);
-  background: var(--ds-card-bg);
-  border: 0;
-  border-radius: var(--ds-radius-card);
-  box-shadow: var(--ds-card-shadow);
+  gap: var(--ds-space-8);
+  padding: var(--ds-space-16) 0;
+  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+}
+.ds-record__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--ds-space-8); }
+.ds-record__ref {
+  font: 500 0.8125rem / 1.25rem var(--ds-font-family-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+.ds-record__title {
+  margin: 0;
+  font: var(--ds-type-label-font-weight) 1rem / 1.5rem var(--ds-type-label-font-family);
 }
 .ds-record__facts {
   display: grid;
-  gap: var(--ds-space-4);
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: var(--ds-space-8) var(--ds-space-16);
   margin: 0;
-  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
-  & > div { display: flex; flex-wrap: wrap; gap: var(--ds-space-4); }
-  & dt::after { content: ":"; }
-  & dd { margin: 0; }
+  & > div { display: grid; gap: 2px; }
+  & dt { color: var(--ds-text-secondary); font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family); }
+  & dd { margin: 0; font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family); }
 }
-.ds-record__fact {
-  margin: 0;
-  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
-}
+.ds-record__action { justify-self: start; }

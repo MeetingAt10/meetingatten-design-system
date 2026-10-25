@@ -1,4 +1,9 @@
-/* Feedback / Modal + scrim. The overlay is fixed over the page; .ds-scrim is the static preview backdrop. */
+/* Modal dialog: a sheet that rises from below its resting place over a scrim; on phones it becomes a
+   bottom sheet. Use for tasks that need protected focus (confirmations, short forms), not for reading.
+   <div class="ds-modal-overlay"><section class="ds-modal" role="dialog" aria-labelledby="t">
+     <header class="ds-modal__head"><h2 class="ds-modal__title" id="t">Discard draft?</h2></header>
+     <div class="ds-modal__body">...</div><footer class="ds-modal__actions">...</footer>
+   </section></div> */
 .ds-modal-overlay {
   position: fixed;
   inset: 0;
@@ -7,43 +12,65 @@
   place-items: center;
   padding: var(--ds-space-16);
   background: var(--ds-scrim);
-}
-.ds-scrim {
-  display: grid;
-  place-items: center;
-  padding: var(--ds-space-32);
-  background: var(--ds-scrim);
-  border-radius: var(--ds-radius-card);
+  overflow-y: auto;
+  &[data-entering] { animation: ds-fade-in var(--ds-motion-duration-base) var(--ds-motion-ease-out); }
+  &[data-exiting] { animation: ds-fade-out var(--ds-motion-duration-quick) var(--ds-motion-ease-exit); }
 }
 .ds-modal {
-  display: grid;
-  gap: var(--ds-size-20);
-  width: min(560px, 100%);
-  padding: var(--ds-space-32);
-  background: var(--ds-card-bg);
-  color: var(--ds-text-primary);
-  border: 0;
-  border-radius: var(--ds-radius-card);
-  box-shadow: var(--ds-overlay-shadow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 32rem);
   max-height: calc(100dvh - 2 * var(--ds-space-16));
-  overflow: auto;
+  border-radius: var(--ds-radius-overlay);
+  background: var(--ds-overlay-bg);
+  box-shadow: var(--ds-overlay-shadow);
+  color: var(--ds-text-primary);
   outline: none;
+  overflow: hidden;
+  &[data-entering] { animation: ds-rise-in var(--ds-motion-duration-slow) var(--ds-motion-ease-out); }
+  &[data-exiting] { animation: ds-sink-out var(--ds-motion-duration-quick) var(--ds-motion-ease-exit); }
 }
+.ds-modal--lg { width: min(100%, 44rem); }
+.ds-modal__dialog { display: contents; outline: none; }
 .ds-modal__head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--ds-space-16);
+  padding: var(--ds-space-24) var(--ds-space-24) 0;
+}
+.ds-modal__title {
+  margin: 0;
+  font: var(--ds-type-h3-font-weight) var(--ds-type-h3-size) / var(--ds-type-h3-line-height) var(--ds-type-h3-font-family);
+  letter-spacing: var(--ds-type-h3-letter-spacing);
+  text-wrap: balance;
+}
+.ds-modal__close { margin: -8px -8px 0 0; }
+.ds-modal__body {
+  display: grid;
+  gap: var(--ds-space-16);
+  padding: var(--ds-space-12) var(--ds-space-24) var(--ds-space-24);
+  overflow-y: auto;
+  color: var(--ds-text-secondary);
+  & > p { margin: 0; }
 }
 .ds-modal__actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--ds-space-16);
-  margin-top: var(--ds-space-16);
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-end;
+  gap: var(--ds-space-12);
+  padding: var(--ds-space-16) var(--ds-space-24);
+  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
 }
-.ds-modal__msg {
-  margin: 0;
-  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
-  color: var(--ds-text-secondary);
+@media (max-width: 599.98px) {
+  .ds-modal-overlay { place-items: end stretch; padding: 0; }
+  .ds-modal {
+    width: 100%;
+    max-height: 92dvh;
+    border-radius: var(--ds-radius-overlay) var(--ds-radius-overlay) 0 0;
+    &[data-entering] { animation: ds-slide-in-up var(--ds-motion-spring-gentle-duration) var(--ds-motion-spring-gentle); }
+    &[data-exiting] { animation: ds-slide-out-down var(--ds-motion-duration-base) var(--ds-motion-ease-exit); }
+  }
+  .ds-modal__actions { flex-direction: column-reverse; & > * { width: 100%; } }
 }
-.ds-modal.is-error .ds-modal__msg { color: var(--ds-danger-fg); }

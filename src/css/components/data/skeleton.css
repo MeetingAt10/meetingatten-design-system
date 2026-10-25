@@ -1,0 +1,22 @@
+/* Skeleton: placeholders while content loads, in the shape of what is coming. Text lines pulse on the
+   neutral wash; block placeholders are dashed outlines (pending). Announce loading in text elsewhere.
+   <span class="ds-skeleton" style="--w: 60%"></span> <span class="ds-skeleton ds-skeleton--block"></span> */
+.ds-skeleton {
+  display: block;
+  width: var(--w, 100%);
+  height: 0.875em;
+  margin-block: 0.3em;
+  border-radius: var(--ds-radius-chip);
+  background: var(--ds-highlight-neutral);
+  animation: ds-pulse 1.6s var(--ds-motion-ease-in-out) infinite;
+}
+.ds-skeleton--title { height: 1.25em; width: var(--w, 45%); }
+.ds-skeleton--block {
+  height: var(--h, 4rem);
+  margin: 0;
+  border: 1.5px dashed var(--ds-border-subtle);
+  border-radius: var(--ds-radius-block);
+  background: transparent;
+}
+.ds-skeleton--circle { width: var(--w, 36px); height: var(--w, 36px); border-radius: var(--ds-radius-full); }
+.ds-skeleton-group { display: grid; gap: var(--ds-space-8); }

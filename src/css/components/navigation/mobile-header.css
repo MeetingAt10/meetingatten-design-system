@@ -1,20 +1,15 @@
-/* Navigation / Mobile Header (72). */
+/* Mobile header: menu, wordmark, one or two actions. Sticky, 56px. Shown below 1024px by AppShell. */
 .ds-mobile-header {
-  display: grid;
-  grid-template-columns: var(--ds-size-control-h) 1fr var(--ds-size-control-h);
+  position: sticky;
+  top: 0;
+  z-index: var(--ds-z-sticky);
+  display: flex;
   align-items: center;
-  min-height: var(--ds-size-topbar-h);
-  padding: var(--ds-size-12) var(--ds-space-16);
+  gap: var(--ds-space-8);
+  min-height: 56px;
+  padding: var(--ds-space-8) var(--ds-space-12);
+  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
   background: var(--ds-surface);
-  border-bottom: 1px solid var(--ds-border-subtle);
-  & img {
-    justify-self: center;
-    height: 32px;
-    width: auto;
-  }
 }
-.ds-mobile-header__brand {
-  justify-self: center;
-  display: inline-flex;
-  align-items: center;
-}
+.ds-mobile-header__brand { display: flex; align-items: center; gap: var(--ds-space-8); flex: 1; min-width: 0; }
+.ds-mobile-header__actions { display: flex; align-items: center; gap: var(--ds-space-4); }

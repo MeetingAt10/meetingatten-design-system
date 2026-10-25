@@ -1,0 +1,73 @@
+/* Radio: a ring whose center dot springs in when chosen. Group them under a legend (.ds-fieldset).
+   React Aria: <label class="ds-radio" data-selected>. Plain markup:
+   <label class="ds-radio"><input type="radio" class="ds-check__input" name="type"><span class="ds-radio__ring" aria-hidden="true"></span>Online</label>
+   --card turns a radio into a block choice (meeting type, plan) with a description. */
+.ds-radio {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--ds-space-12);
+  min-height: var(--ds-size-target-min);
+  color: var(--ds-text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+.ds-radio__ring {
+  position: relative;
+  flex: none;
+  width: var(--ds-size-check);
+  height: var(--ds-size-check);
+  margin-top: calc((1lh - var(--ds-size-check)) / 2);
+  border: 1.5px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-surface);
+  transition: border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 3.5px;
+    border-radius: var(--ds-radius-full);
+    background: var(--ds-action-default);
+    scale: 0;
+    transition: scale var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy);
+  }
+}
+.ds-radio:is(:hover, [data-hovered], .is-hover) .ds-radio__ring { border-color: var(--ds-border-strong); }
+.ds-radio:is([data-selected], :has(.ds-check__input:checked)) .ds-radio__ring {
+  border-color: var(--ds-action-default);
+  &::after { scale: 1; }
+}
+.ds-radio:is([data-focus-visible], :has(.ds-check__input:focus-visible)) .ds-radio__ring {
+  outline: var(--ds-size-focus-ring) solid var(--ds-focus);
+  outline-offset: var(--ds-size-focus-offset);
+}
+.ds-radio:is([data-invalid], .is-error) .ds-radio__ring { border-color: var(--ds-danger-fg); &::after { background: var(--ds-danger-fg); } }
+.ds-radio:is([data-disabled], :has(.ds-check__input:disabled)) {
+  color: var(--ds-disabled-fg);
+  cursor: not-allowed;
+  & .ds-radio__ring { border-style: dashed; background: var(--ds-disabled-bg); &::after { background: var(--ds-disabled-fg); } }
+}
+.ds-radio-group { display: grid; gap: var(--ds-space-12); }
+.ds-radio-group--row { display: flex; flex-wrap: wrap; gap: var(--ds-space-12) var(--ds-space-24); }
+
+/* Block choice */
+.ds-radio--card {
+  display: flex;
+  width: 100%;
+  padding: var(--ds-space-16);
+  border: var(--ds-size-rule) solid var(--ds-border-default);
+  border-radius: var(--ds-radius-control);
+  background: var(--ds-surface);
+  transition: border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out), background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  &:is(:hover, [data-hovered]) { background: var(--ds-highlight-schedule); }
+  &:is([data-selected], :has(.ds-check__input:checked)) {
+    border-color: var(--ds-action-default);
+    background: var(--ds-highlight-schedule);
+    box-shadow: inset 0 0 0 1px var(--ds-action-default);
+  }
+  &:is([data-focus-visible], :has(.ds-check__input:focus-visible)) {
+    outline: var(--ds-size-focus-ring) solid var(--ds-focus);
+    outline-offset: var(--ds-size-focus-offset);
+    & .ds-radio__ring { outline: none; }
+  }
+}

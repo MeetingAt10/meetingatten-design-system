@@ -1,5 +1,5 @@
 "use client";
-import { DialogTrigger, Popover as AriaPopover, Dialog, Heading, type PopoverProps as AriaPopoverProps } from 'react-aria-components';
+import { DialogTrigger, Popover as AriaPopover, Dialog, Heading, OverlayArrow, type PopoverProps as AriaPopoverProps } from 'react-aria-components';
 
 export interface PopoverProps {
   /** A React Aria trigger, usually a Button or IconButton. */
@@ -9,16 +9,23 @@ export interface PopoverProps {
   label?: string;
   children: React.ReactNode;
   placement?: AriaPopoverProps['placement'];
+  /** Show the pointer toward the trigger. */
+  arrow?: boolean;
 }
 
-/** Feedback / Popover: small non-modal dialog next to its trigger for extra detail or a quick setting. Escape or a click outside closes it. */
-export function Popover({ trigger, title, label, children, placement = 'bottom start' }: PopoverProps) {
+/** Popover: a small non-modal dialog beside its trigger for extra detail or a quick setting. Escape or a click outside closes it. */
+export function Popover({ trigger, title, label, children, placement = 'bottom start', arrow }: PopoverProps) {
   return (
     <DialogTrigger>
       {trigger}
-      <AriaPopover placement={placement} offset={8} className="ds-popover">
-        <Dialog className="ds-popover-panel" aria-label={title ? undefined : label}>
-          {title && <Heading slot="title" className="ds-type-h4">{title}</Heading>}
+      <AriaPopover placement={placement} offset={arrow ? 12 : 8} className="ds-popover">
+        {arrow && (
+          <OverlayArrow>
+            <svg width={14} height={8} viewBox="0 0 14 8" className="ds-popover__arrow" aria-hidden="true"><path d="M0 0 L7 8 L14 0" /></svg>
+          </OverlayArrow>
+        )}
+        <Dialog className="ds-popover__dialog" aria-label={title ? undefined : label}>
+          {title && <Heading slot="title" className="ds-popover__title">{title}</Heading>}
           {children}
         </Dialog>
       </AriaPopover>

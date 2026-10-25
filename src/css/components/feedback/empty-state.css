@@ -1,16 +1,32 @@
-/* Feedback / Empty State: open, centered message with one next step. Not a card. */
+/* Empty state: an empty ruled sheet (drawn geometry, not an illustration), a title that says what is
+   missing, one line on why, and the next step. */
 .ds-empty {
   display: grid;
   justify-items: center;
   gap: var(--ds-space-8);
-  max-width: 28rem;
-  margin-inline: auto;
-  padding-block: var(--ds-space-48);
+  padding: var(--ds-space-48) var(--ds-space-24);
   text-align: center;
-  & > :is(h2, h3) { margin: var(--ds-space-8) 0 0; }
-  & > p {
-    margin: 0;
-    color: var(--ds-text-secondary);
-  }
-  & > :last-child:not(p, h2, h3, .ds-tile) { margin-top: var(--ds-space-8); }
 }
+.ds-empty__art {
+  width: 132px;
+  height: 92px;
+  margin-bottom: var(--ds-space-12);
+  color: var(--ds-border-default);
+  & .ds-empty__sheet { fill: var(--ds-surface); stroke: var(--ds-border-subtle); }
+  & .ds-empty__rule { stroke: var(--ds-border-subtle); }
+  & .ds-empty__slot { fill: none; stroke: var(--ds-border-default); stroke-dasharray: 3 3; }
+  & .ds-empty__block { fill: var(--ds-highlight-schedule); stroke: var(--ds-action-default); }
+}
+.ds-empty__title {
+  margin: 0;
+  font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
+  letter-spacing: var(--ds-type-h4-letter-spacing);
+}
+.ds-empty__body {
+  max-width: 26rem;
+  margin: 0;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  text-wrap: pretty;
+}
+.ds-empty__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--ds-space-8); margin-top: var(--ds-space-8); }

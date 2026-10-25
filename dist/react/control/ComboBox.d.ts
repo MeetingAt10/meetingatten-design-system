@@ -5,7 +5,9 @@ export interface ComboBoxProps<T extends object> extends Omit<AriaComboBoxProps<
     /** `SelectOption` elements, or a function rendering one per item. */
     children: React.ReactNode | ((item: T) => React.ReactNode);
     placeholder?: string;
+    /** Shown in the list when nothing matches. */
+    emptyMessage?: string;
     className?: string;
 }
 /** ComboBox: type to filter a longer list, then pick one option. */
-export declare function ComboBox<T extends object>({ label, description, errorMessage, items, children, placeholder, className, ...rest }: ComboBoxProps<T>): import("react").JSX.Element;
+export declare function ComboBox<T extends object>({ label, description, errorMessage, items, children, placeholder, emptyMessage, className, ...rest }: ComboBoxProps<T>): import("react").JSX.Element;

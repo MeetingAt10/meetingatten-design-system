@@ -1,7 +1,26 @@
-/* Layout / Divider: thin rule between sections of a detail page. */
+/* Divider: a hairline rule. Labeled dividers name what follows ("Today", "Earlier"); vertical ones
+   separate toolbar groups. <hr class="ds-divider"> · <div class="ds-divider ds-divider--label">Today</div> */
 .ds-divider {
   width: 100%;
   margin: 0;
   border: 0;
-  border-top: 1px solid var(--ds-border-subtle);
+  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
+}
+.ds-divider--strong { border-top-color: var(--ds-border-default); }
+.ds-divider--label {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-12);
+  border: 0;
+  color: var(--ds-text-secondary);
+  font: 600 var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+  &::before, &::after { content: ""; flex: 1; border-top: var(--ds-size-rule) solid var(--ds-border-subtle); }
+  &::before { flex: 0 0 var(--ds-space-16); }
+}
+.ds-divider--vertical {
+  width: 0;
+  height: auto;
+  align-self: stretch;
+  border-top: 0;
+  border-inline-start: var(--ds-size-rule) solid var(--ds-border-subtle);
 }

@@ -1,0 +1,201 @@
+/* Timetable: a ruled week (or day) sheet. The rules are a real, labeled time grid; blocks sit at their
+   start and length; today is tinted and carries the now-line; a restricted band is hatched and labeled.
+   Semantics: every day is a group named by its heading, holding an ordered list of its blocks;
+   the hour labels and rules are decoration (aria-hidden).
+   <div class="ds-timetable ds-isolate" style="--tt-hours: 9">
+     <div class="ds-timetable__scroller"><div class="ds-timetable__grid" style="--tt-days: 5">
+       <div class="ds-timetable__corner"></div>
+       <h3 class="ds-timetable__day-head" id="d1"><span class="ds-timetable__dow">Mon</span> <span class="ds-timetable__date">19</span></h3> ...
+       <div class="ds-timetable__hours" aria-hidden="true"><span style="--h: 0">08:00</span>...</div>
+       <div class="ds-timetable__day" role="group" aria-labelledby="d1"><ol class="ds-timetable__events">
+         <li class="ds-timetable__event" style="--start: 1; --span: 1.5"><article class="ds-block">...</article></li>
+       </ol></div> ...
+     </div></div>
+     <div class="ds-timetable__band">...</div>
+   </div> */
+.ds-timetable {
+  --tt-hours: 9;
+  --tt-row: var(--ds-density-hour-row);
+  --tt-pad: var(--ds-space-8);
+  position: relative;
+  min-width: 0;
+  background: var(--ds-sheet-bg);
+  border: var(--ds-size-rule) solid var(--ds-sheet-rule);
+  border-radius: var(--ds-radius-sheet);
+}
+.ds-timetable__scroller {
+  border-radius: inherit;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline-start: var(--ds-size-time-col);
+}
+.ds-timetable__grid {
+  --tt-days: 5;
+  display: grid;
+  grid-template-columns: var(--ds-size-time-col) repeat(var(--tt-days), minmax(var(--tt-day-min, 8rem), 1fr));
+  grid-template-rows: auto calc(var(--tt-hours) * var(--tt-row) + 2 * var(--tt-pad));
+  min-width: min-content;
+}
+.ds-timetable__corner,
+.ds-timetable__hours {
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 4;
+  background: var(--ds-sheet-bg);
+}
+.ds-timetable__corner { border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle); }
+
+.ds-timetable__day-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ds-space-8);
+  margin: 0;
+  padding: var(--ds-space-12) var(--ds-space-12) var(--ds-space-8);
+  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-inline-start: var(--ds-size-rule) solid var(--ds-border-subtle);
+  scroll-snap-align: start;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+}
+.ds-timetable__date {
+  color: var(--ds-text-primary);
+  font: 700 1.25rem / 1.75rem var(--ds-font-family-display);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+/* Today: the date sits on a plate (current = solid block). */
+.ds-timetable__day-head.is-today {
+  color: var(--ds-text-primary);
+  & .ds-timetable__date {
+    display: inline-grid;
+    place-items: center;
+    min-width: 2.25rem;
+    padding-inline: var(--ds-space-4);
+    border-radius: var(--ds-radius-plate);
+    background: var(--ds-plate-bg);
+    color: var(--ds-plate-fg);
+  }
+}
+
+.ds-timetable__hours {
+  position: sticky;
+  margin: 0;
+  padding: 0;
+  & > span:not(.ds-timetable__now-time) {
+    position: absolute;
+    inset-inline-end: var(--ds-space-8);
+    top: calc(var(--tt-pad) + var(--h) * var(--tt-row));
+    translate: 0 -50%;
+    color: var(--ds-text-secondary);
+    font: var(--ds-type-time-font-weight) var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-type-time-font-family);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* A day column: hour rules (solid) and half-hour rules (lighter) are drawn on the column itself. */
+.ds-timetable__day {
+  position: relative;
+  min-width: 0;
+  border-inline-start: var(--ds-size-rule) solid var(--ds-border-subtle);
+  background-image:
+    linear-gradient(to bottom, var(--ds-border-subtle) var(--ds-size-rule), transparent var(--ds-size-rule)),
+    linear-gradient(to bottom, var(--ds-rule-minor) var(--ds-size-rule), transparent var(--ds-size-rule));
+  background-size: 100% var(--tt-row), 100% var(--tt-row);
+  background-position: 0 var(--tt-pad), 0 calc(var(--tt-pad) + var(--tt-row) / 2);
+  background-repeat: repeat-y;
+  background-clip: content-box;
+  padding-block: var(--tt-pad);
+  &.is-today { background-color: var(--ds-today-bg); }
+}
+.ds-timetable__events {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* An event sits at --start hours from the first hour for --span hours; concurrent events share the width (--col of --cols). */
+.ds-timetable__event {
+  --col: 0;
+  --cols: 1;
+  position: absolute;
+  top: calc(var(--start) * var(--tt-row) + 2px);
+  height: calc(var(--span) * var(--tt-row) - 4px);
+  inset-inline-start: calc(var(--col) / var(--cols) * 100% + 4px);
+  width: calc(100% / var(--cols) - 8px);
+  display: grid;
+  container: tt-event / size;
+  & > .ds-block { height: 100%; }
+}
+/* Short events keep the title first: drop the meta, then allow one title line, then put time and title on one line. */
+@container tt-event (max-height: 84px) {
+  .ds-block__meta { display: none; }
+  .ds-block__title { -webkit-line-clamp: 2; }
+}
+@container tt-event (max-height: 60px) {
+  .ds-block { padding-block: 3px; align-content: center; gap: 0; }
+  .ds-block__title { -webkit-line-clamp: 1; }
+}
+@container tt-event (max-height: 34px) {
+  .ds-block { grid-auto-flow: column; justify-content: start; align-items: center; gap: var(--ds-space-8); padding-block: 0; }
+}
+/* Today's now-line counts from the first hour rule, like the events and the gutter time. */
+.ds-timetable__day > .ds-now { top: var(--tt-pad); }
+/* The current time, in the hour gutter beside the now-line (the hour labels it would cover are hidden). */
+.ds-timetable__now-time {
+  position: absolute;
+  inset-inline-end: var(--ds-space-4);
+  top: calc(var(--tt-pad) + var(--now) * var(--tt-row));
+  translate: 0 -50%;
+  padding: 1px var(--ds-space-4);
+  border-radius: var(--ds-radius-chip);
+  background: var(--ds-now);
+  color: var(--ds-danger-on-action);
+  font: 600 var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-type-time-font-family);
+  font-variant-numeric: tabular-nums;
+  transition: top 1s linear;
+}
+
+/* Restricted band under the grid: hatched, labeled, never hidden. */
+.ds-timetable__band {
+  border-radius: 0 0 var(--ds-radius-sheet) var(--ds-radius-sheet);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-space-8) var(--ds-space-12);
+  padding: var(--ds-space-12) var(--ds-space-16);
+  border-top: var(--ds-size-rule) solid var(--ds-border-default);
+  background-color: var(--ds-surface);
+  background-image: var(--ds-hatch);
+  color: var(--ds-text-primary);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  & strong { font-weight: 600; }
+  & > .ds-icon { flex: none; }
+}
+/* The band's words sit on one paper label taped over the hatching. */
+.ds-timetable__band-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-space-4) var(--ds-space-12);
+  padding: var(--ds-space-4) var(--ds-space-12);
+  border-radius: var(--ds-radius-block);
+  background: var(--ds-surface);
+  box-shadow: inset 0 0 0 1px var(--ds-border-default);
+}
+.ds-timetable__band-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-8);
+  padding: 2px var(--ds-space-8);
+  border-radius: var(--ds-radius-chip);
+  background: var(--ds-text-primary);
+  color: var(--ds-surface);
+}
+
+/* Compact density and phones: tighter heads. */
+[data-density="compact"] .ds-timetable__day-head { padding-block: var(--ds-space-8) var(--ds-space-4); }
+@media (max-width: 599.98px) {
+  .ds-timetable__grid { --tt-day-min: 7.25rem; }
+}

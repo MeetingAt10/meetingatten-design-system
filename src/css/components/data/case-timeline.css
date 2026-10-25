@@ -1,45 +1,64 @@
-/* Data / Case Timeline. */
-.ds-timeline {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--ds-space-24);
+/* Case timeline: the history of a record on a vertical time rule. Time codes on the left; the rail is
+   solid through what happened and dashed into what is pending; the current state carries the now-dot.
+   Markers use the line forms: solid = done, dashed = pending, hatched = restricted step.
+   <ol class="ds-timeline"><li class="ds-timeline__event ds-timeline__event--done"><time class="ds-timeline__time">21 Oct 09:12</time>
+   <span class="ds-timeline__marker"></span><div class="ds-timeline__content"><p class="ds-timeline__title">Draft saved</p>..</div></li></ol> */
+.ds-timeline { display: grid; margin: 0; padding: 0; list-style: none; }
+.ds-timeline__event {
   position: relative;
-  & li {
-    position: relative;
-    padding-left: var(--ds-space-24);
-    display: grid;
-    gap: var(--ds-space-4);
-  }
-  & li::before {
+  display: grid;
+  grid-template-columns: var(--tl-time, 6.5rem) 14px minmax(0, 1fr);
+  gap: 0 var(--ds-space-12);
+  padding-bottom: var(--ds-space-24);
+  /* The rail from this marker down to the next one. */
+  &:not(:last-child)::before {
     content: "";
     position: absolute;
-    left: 0;
-    top: 4px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid var(--ds-action-default);
-    background: var(--ds-surface);
-  }
-  & li:first-child::before { background: var(--ds-action-default); }
-  & li:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    left: 5px;
     top: 18px;
-    bottom: calc(-1 * var(--ds-space-24) + 6px);
-    width: 1px;
-    background: var(--ds-border-default);
+    bottom: 2px;
+    inset-inline-start: calc(var(--tl-time, 6.5rem) + var(--ds-space-12) + 6px);
+    border-inline-start: 2px solid var(--ds-border-default);
   }
 }
-.ds-timeline__title { font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family); }
-.ds-timeline__actor {
-  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+.ds-timeline__event--pending:not(:last-child)::before,
+.ds-timeline__event--current:not(:last-child)::before { border-inline-start-style: dashed; }
+.ds-timeline__time {
+  padding-top: 1px;
+  white-space: nowrap;
   color: var(--ds-text-secondary);
+  font: var(--ds-type-time-font-weight) var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-type-time-font-family);
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+.ds-timeline__marker {
+  position: relative;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  border-radius: 3px;
+  background: var(--ds-action-default);
+}
+.ds-timeline__event--pending .ds-timeline__marker { background: var(--ds-surface); border: 1.5px dashed var(--ds-border-default); }
+.ds-timeline__event--restricted .ds-timeline__marker { background: var(--ds-surface); border: 1px solid var(--ds-border-default); background-image: var(--ds-hatch-strong); }
+.ds-timeline__event--current .ds-timeline__marker {
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-surface);
+  border: 2px solid var(--ds-now);
+  &::after { content: ""; position: absolute; inset: 2px; border-radius: inherit; background: var(--ds-now); }
+}
+.ds-timeline__content { display: grid; gap: 2px; min-width: 0; }
+.ds-timeline__title {
+  margin: 0;
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
 }
 .ds-timeline__body {
-  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
   margin: 0;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+}
+.ds-timeline__actor {
+  margin: 0;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
 }

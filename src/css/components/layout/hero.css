@@ -1,20 +1,36 @@
-/* Layout / Hero: page opener with text and an optional preview column from 1024px. */
+/* Hero (landing, Meeting At 10): the first viewport is a thesis. Copy on the left (plate, display
+   headline, one line, actions); the artifact on the right (a live timetable), at the scale it has in use.
+   <section class="ds-hero"><div class="ds-hero__copy">..</div><div class="ds-hero__art">..</div></section> */
 .ds-hero {
   display: grid;
-  gap: var(--ds-space-48);
+  gap: var(--ds-space-40);
   align-items: center;
-  padding-block: var(--ds-space-48) var(--ds-space-64);
+  padding-block: var(--ds-space-40) var(--ds-space-64);
   @media (min-width: 1024px) {
-    grid-template-columns: 7fr 5fr;
-    padding-block: var(--ds-space-80);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--ds-space-48);
+    min-height: calc(100dvh - 68px);
+    padding-block: var(--ds-space-48);
   }
 }
+.ds-hero__copy { display: grid; gap: var(--ds-space-24); align-content: center; justify-items: start; min-width: 0; }
 .ds-hero__title {
-  margin: var(--ds-space-16) 0 var(--ds-space-24);
-  max-width: 20ch;
+  margin: 0;
+  font: var(--ds-type-display-font-weight) var(--ds-type-display-size) / var(--ds-type-display-line-height) var(--ds-type-display-font-family);
+  letter-spacing: var(--ds-type-display-letter-spacing);
+  text-wrap: balance;
 }
 .ds-hero__lead {
   margin: 0;
-  max-width: var(--ds-grid-reading-max);
+  max-width: 34rem;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-body-large-font-weight) var(--ds-type-body-large-size) / var(--ds-type-body-large-line-height) var(--ds-type-body-large-font-family);
+  text-wrap: pretty;
 }
-.ds-hero__actions { margin-top: var(--ds-space-32); }
+.ds-hero__actions { display: flex; flex-wrap: wrap; gap: var(--ds-space-12); }
+.ds-hero__note {
+  margin: 0;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+}
+.ds-hero__art { min-width: 0; }

@@ -1,27 +1,60 @@
-/* Base: page, box model, focus ring, reduced motion. */
+/* Base: page, box model, density text, and the browser surfaces every page ships
+   (selection, caret, scrollbars, focus ring, link underline, numerals). Scope: .ds-body. */
+:where(html):has(> .ds-body) {
+  background: var(--ds-canvas);
+  scrollbar-color: var(--ds-border-default) var(--ds-canvas);
+  scrollbar-gutter: stable;
+}
 .ds-body {
   margin: 0;
+  min-height: 100dvh;
   background: var(--ds-canvas);
   color: var(--ds-text-primary);
+  accent-color: var(--ds-action-default);
+  caret-color: var(--ds-action-default);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis-weight: none;
+  -webkit-tap-highlight-color: transparent;
 }
-/* Density text: re-applied wherever data-density is set, because font is inherited as a computed value. */
+/* Density text is re-applied wherever data-density is set, because font is inherited as a computed value. */
 .ds-body, .ds-body [data-density] {
   font: var(--ds-density-text-font-weight) var(--ds-density-text-size) / var(--ds-density-text-line-height) var(--ds-density-text-font-family);
   letter-spacing: var(--ds-density-text-letter-spacing);
 }
 .ds-body *, .ds-body *::before, .ds-body *::after { box-sizing: border-box; }
 
-/* Focus ring (Foundations 03.5): 3px color/focus + 2px gap in the surface color; override the gap with --ring-gap.
-   Declared on every element so the gap and ring color resolve where the ring is drawn. */
+/* Selecting text is a highlighter stroke. */
+.ds-body ::selection {
+  background: var(--ds-highlight-mark);
+  color: var(--ds-text-primary);
+}
+.ds-body * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ds-border-default) transparent;
+}
+
+/* Focus: a 2px ring with a 2px gap, drawn as an outline so it never fights a component's own shadow.
+   --ds-ring is the box-shadow form for the rare element whose outline would be clipped. */
 :where(*) {
   --ds-ring: 0 0 0 var(--ds-size-focus-offset) var(--ring-gap, var(--ds-surface)), 0 0 0 calc(var(--ds-size-focus-offset) + var(--ds-size-focus-ring)) var(--ds-focus);
 }
 .ds-body :focus-visible {
-  outline: none;
-  box-shadow: var(--ds-ring);
+  outline: var(--ds-size-focus-ring) solid var(--ds-focus);
+  outline-offset: var(--ds-size-focus-offset);
 }
+.ds-body :focus:not(:focus-visible) { outline: none; }
 
-@media (prefers-reduced-motion: reduce) {
-  .ds-body * { transition-duration: 0.01ms !important; }
+.ds-body :where(a:not([class])) {
+  color: var(--ds-action-default);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  &:hover { text-decoration-thickness: 2px; }
 }
+.ds-body :where(button, input, select, textarea) { font: inherit; color: inherit; letter-spacing: inherit; }
+.ds-body :where(code, kbd, samp, pre) { font-family: var(--ds-font-family-mono); font-size: 0.875em; }
+.ds-body :where(table, time, data) { font-variant-numeric: tabular-nums; }
+.ds-body :where(img, video) { max-width: 100%; height: auto; }
+.ds-body :where(hr) { border: 0; border-top: var(--ds-size-rule) solid var(--ds-border-subtle); margin: 0; }

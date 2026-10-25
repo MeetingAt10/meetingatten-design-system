@@ -1,61 +1,131 @@
-/* Control / Button (Primary, Secondary, Tertiary, Destructive) x State: Default, Hover, Pressed, Focus, Disabled, Loading. */
+/* Button: a block you press. Primary = solid navy block (one per task region), secondary = paper block with
+   a solid rule, tertiary = text that takes a highlighter wash, destructive = solid danger block for real removal.
+   Pending keeps the fill, shows the clock spinner and sweeps a line along the bottom edge.
+   <button class="ds-btn ds-btn--primary"><svg class="ds-icon">...</svg>Continue</button>
+   Sizes: default 48px, --sm 40px (44px on touch), --lg 56px. --block = full width. */
 .ds-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--ds-space-8);
-  min-height: var(--ds-size-button-h);
-  padding: 0 var(--ds-space-16);
-  border: 1px solid transparent;
+  min-height: var(--ds-size-control-md);
+  padding: 0 var(--ds-space-20);
+  border: var(--ds-size-rule) solid transparent;
   border-radius: var(--ds-radius-control);
-  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  font: 600 0.9375rem / 1.25rem var(--ds-font-family-body);
+  letter-spacing: -0.005em;
   text-decoration: none;
-  cursor: pointer;
   white-space: nowrap;
-  transition: background-color var(--ds-motion-duration-fast) var(--ds-motion-ease-standard), border-color var(--ds-motion-duration-fast) var(--ds-motion-ease-standard);
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition:
+    background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    box-shadow var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    translate var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy);
+  & > .ds-icon { width: var(--ds-size-icon-20); height: var(--ds-size-icon-20); vertical-align: 0; }
+  &:is(:active, [data-pressed], .is-pressed) { translate: 0 1px; }
+  &:is(:disabled, [data-disabled], [aria-disabled="true"]):not([data-pending], [aria-busy="true"]) {
+    background: var(--ds-disabled-bg);
+    border-color: var(--ds-disabled-bg);
+    color: var(--ds-disabled-fg);
+    box-shadow: none;
+    translate: none;
+    cursor: not-allowed;
+  }
+  /* Pending: a line sweeps along the bottom edge while the work runs. */
+  &:is([data-pending], [aria-busy="true"]) {
+    cursor: progress;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 2px;
+      background: currentColor;
+      opacity: 0.55;
+      animation: ds-sweep 1.2s var(--ds-motion-ease-in-out) infinite;
+    }
+  }
 }
-.ds-btn--block { width: 100%; }
+
 .ds-btn--primary {
   background: var(--ds-action-default);
   color: var(--ds-on-action);
-  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-action-hover); }
-  &:is(:active, [data-pressed], .is-pressed) { background: var(--ds-action-pressed); }
-}
-.ds-btn--secondary {
-  background: var(--ds-surface);
-  color: var(--ds-action-default);
-  border-color: var(--ds-border-default);
-  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-info-bg); }
-  &:is(:active, [data-pressed], .is-pressed) {
-    background: var(--ds-info-bg);
-    border-color: var(--ds-border-strong);
-    box-shadow: inset 0 0 0 1px var(--ds-border-strong);
+  box-shadow: var(--ds-btn-highlight);
+  &:is(:hover, [data-hovered], .is-hover):not(:disabled, [data-disabled], [data-pending]) {
+    background: var(--ds-action-hover);
+    box-shadow: var(--ds-btn-highlight), var(--ds-block-shadow);
+    translate: 0 var(--ds-lift);
+  }
+  &:is(:active, [data-pressed], .is-pressed):not(:disabled, [data-disabled]) {
+    background: var(--ds-action-pressed);
+    box-shadow: var(--ds-btn-highlight);
+    translate: 0 1px;
   }
 }
+
+.ds-btn--secondary {
+  background: var(--ds-surface);
+  border-color: var(--ds-border-default);
+  color: var(--ds-text-primary);
+  &:is(:hover, [data-hovered], .is-hover):not(:disabled, [data-disabled], [data-pending]) {
+    background: var(--ds-highlight-schedule);
+    border-color: var(--ds-border-strong);
+  }
+  &:is(:active, [data-pressed], .is-pressed):not(:disabled, [data-disabled]) {
+    background: var(--ds-info-bg);
+    border-color: var(--ds-action-default);
+  }
+  &:is(:disabled, [data-disabled]) { border-style: dashed; border-color: var(--ds-border-default); background: transparent; }
+}
+
 .ds-btn--tertiary {
   background: transparent;
   color: var(--ds-action-default);
-  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-info-bg); }
-  &:is(:active, [data-pressed], .is-pressed) {
-    background: var(--ds-info-bg);
-    box-shadow: inset 0 0 0 1px var(--ds-border-default);
-  }
+  padding-inline: var(--ds-space-12);
+  &:is(:hover, [data-hovered], .is-hover):not(:disabled, [data-disabled], [data-pending]) { background: var(--ds-highlight-schedule); }
+  &:is(:active, [data-pressed], .is-pressed):not(:disabled, [data-disabled]) { background: var(--ds-info-bg); }
+  &:is(:disabled, [data-disabled]) { background: transparent; border-color: transparent; }
 }
+
 .ds-btn--destructive {
   background: var(--ds-danger-action);
   color: var(--ds-danger-on-action);
-  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-danger-action-hover); }
-  &:is(:active, [data-pressed], .is-pressed) { background: var(--ds-danger-action-pressed); }
+  box-shadow: var(--ds-btn-highlight);
+  &:is(:hover, [data-hovered], .is-hover):not(:disabled, [data-disabled], [data-pending]) {
+    background: var(--ds-danger-action-hover);
+    box-shadow: var(--ds-btn-highlight), var(--ds-block-shadow);
+    translate: 0 var(--ds-lift);
+  }
+  &:is(:active, [data-pressed], .is-pressed):not(:disabled, [data-disabled]) {
+    background: var(--ds-danger-action-pressed);
+    box-shadow: var(--ds-btn-highlight);
+    translate: 0 1px;
+  }
 }
-.ds-btn:is(:focus-visible, [data-focus-visible], .is-focus) { box-shadow: var(--ds-ring); }
-.ds-btn--secondary.is-focus, .ds-btn--tertiary.is-focus { box-shadow: var(--ds-ring); }
-.ds-btn:is(:disabled, [aria-disabled="true"], [data-disabled]) {
-  background: var(--ds-disabled-bg);
-  color: var(--ds-disabled-fg);
-  border-color: var(--ds-border-subtle);
-  box-shadow: none;
-  cursor: not-allowed;
+
+/* On the door plate or an inverse surface. */
+.ds-btn--plate {
+  background: var(--ds-plate-fg);
+  color: var(--ds-plate-bg);
+  &:is(:hover, [data-hovered], .is-hover):not(:disabled, [data-disabled]) { translate: 0 var(--ds-lift); box-shadow: var(--ds-block-shadow); }
 }
-.ds-btn--tertiary:is(:disabled, [aria-disabled="true"], [data-disabled]) { border-color: transparent; }
-.ds-btn:is([aria-busy="true"], [data-pending]) { pointer-events: none; }
-.ds-btn--sm { min-height: var(--ds-size-control-h); }
+
+.ds-btn--sm {
+  min-height: var(--ds-size-control-sm);
+  padding-inline: var(--ds-space-16);
+  font-size: 0.875rem;
+  & > .ds-icon { width: var(--ds-size-icon-16); height: var(--ds-size-icon-16); }
+  @media (pointer: coarse) { min-height: var(--ds-size-touch-min); }
+}
+.ds-btn--lg {
+  min-height: var(--ds-size-control-lg);
+  padding-inline: var(--ds-space-24);
+  font-size: 1rem;
+}
+.ds-btn--block { display: flex; width: 100%; }

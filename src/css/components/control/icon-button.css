@@ -1,35 +1,47 @@
-/* Control / Icon Button (Standard, Inverse) 44x44. */
+/* Icon button: a square block holding one icon; always has an accessible name (aria-label) and,
+   in React, a tooltip with the same words. Quiet by default; --solid for the one primary icon action.
+   <button class="ds-icon-btn" aria-label="Notifications"><svg class="ds-icon">...</svg></button> */
 .ds-icon-btn {
+  position: relative;
   display: inline-grid;
   place-items: center;
-  width: var(--ds-size-control-h);
-  height: var(--ds-size-control-h);
+  flex: none;
+  width: var(--ds-size-control-sm);
+  height: var(--ds-size-control-sm);
   padding: 0;
-  border: 1px solid transparent;
+  border: var(--ds-size-rule) solid transparent;
   border-radius: var(--ds-radius-control);
-  background: var(--ds-surface);
-  color: var(--ds-action-default);
+  background: transparent;
+  color: var(--ds-text-secondary);
   cursor: pointer;
-  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-info-bg); }
-  &:is(:active, [data-pressed], .is-pressed) {
-    background: var(--ds-info-bg);
-    border-color: var(--ds-border-strong);
-  }
-  &:is(:focus-visible, [data-focus-visible], .is-focus) { box-shadow: var(--ds-ring); }
-  &:is(:disabled, [aria-disabled="true"], [data-disabled]) {
-    background: var(--ds-disabled-bg);
-    color: var(--ds-disabled-fg);
-    box-shadow: none;
-    cursor: not-allowed;
-  }
+  touch-action: manipulation;
+  transition:
+    background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    translate var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy);
+  @media (pointer: coarse) { width: var(--ds-size-touch-min); height: var(--ds-size-touch-min); }
+  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-highlight-neutral); color: var(--ds-text-primary); }
+  &:is(:active, [data-pressed], .is-pressed) { background: var(--ds-disabled-bg); translate: 0 1px; }
+  &:is([aria-pressed="true"], [aria-expanded="true"], [data-selected]) { background: var(--ds-info-bg); color: var(--ds-action-default); }
+  &:is(:disabled, [data-disabled]) { color: var(--ds-disabled-fg); background: transparent; cursor: not-allowed; translate: none; }
 }
-.ds-icon-btn--inverse {
-  background: var(--ds-text-primary);
-  color: var(--ds-canvas);
-  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-inverse-hover); }
-  &:is(:active, [data-pressed], .is-pressed) {
-    background: var(--ds-inverse-pressed);
-    border-color: transparent;
-  }
-  &:is(:focus-visible, [data-focus-visible], .is-focus) { box-shadow: 0 0 0 var(--ds-size-focus-offset) var(--ds-text-primary), 0 0 0 calc(var(--ds-size-focus-offset) + var(--ds-size-focus-ring)) var(--ds-inverse-focus); }
+.ds-icon-btn--md { width: var(--ds-size-control-md); height: var(--ds-size-control-md); }
+.ds-icon-btn--outline { border-color: var(--ds-border-default); background: var(--ds-surface); color: var(--ds-text-primary); }
+.ds-icon-btn--solid {
+  background: var(--ds-action-default);
+  color: var(--ds-on-action);
+  box-shadow: var(--ds-btn-highlight);
+  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-action-hover); color: var(--ds-on-action); }
+  &:is(:active, [data-pressed], .is-pressed) { background: var(--ds-action-pressed); }
+}
+/* Unread or attention marker: a dot plus visually hidden text in the label. */
+.ds-icon-btn__dot {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-now);
+  box-shadow: 0 0 0 2px var(--ds-surface);
 }

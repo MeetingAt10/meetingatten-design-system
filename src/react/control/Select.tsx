@@ -12,17 +12,19 @@ export interface SelectProps<T extends object> extends Omit<AriaSelectProps<T>, 
   className?: string;
 }
 
-/** Control / Select: pick one option from a short list. */
+/** Select: pick one option from a short list. The trigger matches the text input; the list floats on a sheet. */
 export function Select<T extends object>({ label, description, errorMessage, items, children, className, ...rest }: SelectProps<T>) {
   return (
-    <AriaSelect {...rest} className={cx('ds-field', className)}>
+    <AriaSelect {...rest} className={cx('ds-field', 'ds-select', className)}>
       <Field label={label} description={description} errorMessage={errorMessage} isRequired={rest.isRequired}>
-        <Button className="ds-select">
-          <SelectValue className="ds-select__value" />
-          <Icon name="chevron" size={16} />
+        <Button className="ds-select-trigger">
+          <SelectValue className="ds-select-trigger__value">
+            {({ isPlaceholder, selectedText, defaultChildren }) => (isPlaceholder || !selectedText ? defaultChildren : selectedText)}
+          </SelectValue>
+          <Icon name="caret-down" size={16} className="ds-select-trigger__caret" />
         </Button>
       </Field>
-      <Popover className="ds-popover">
+      <Popover className="ds-popover" offset={6}>
         <ListBox className="ds-listbox" items={items}>{children}</ListBox>
       </Popover>
     </AriaSelect>

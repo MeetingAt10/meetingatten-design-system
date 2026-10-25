@@ -1,0 +1,40 @@
+/* Command palette (Ctrl/Cmd+K): a modal sheet with one large search field and grouped results; keys
+   for each result on the right and a hint line at the bottom. Uses .ds-modal-overlay, .ds-listbox, .ds-option. */
+.ds-command {
+  width: min(100%, 40rem);
+  align-self: start;
+  margin-top: 12vh;
+  @media (max-width: 599.98px) { margin-top: 0; align-self: end; }
+}
+.ds-command__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-12);
+  padding: 0 var(--ds-space-20);
+  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+  & > .ds-icon { color: var(--ds-text-secondary); }
+}
+.ds-command__input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--ds-size-control-lg);
+  border: 0;
+  background: transparent;
+  color: var(--ds-text-primary);
+  font: 500 var(--ds-type-body-large-size) / var(--ds-type-body-large-line-height) var(--ds-type-body-font-family);
+  outline: none;
+  &::placeholder { color: var(--ds-text-secondary); }
+  &::-webkit-search-cancel-button { appearance: none; }
+}
+.ds-command__results { max-height: min(26rem, 60dvh); }
+.ds-command__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-8) var(--ds-space-16);
+  padding: var(--ds-space-12) var(--ds-space-20);
+  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+  & > span { display: inline-flex; align-items: center; gap: var(--ds-space-4); }
+}

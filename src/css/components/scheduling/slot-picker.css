@@ -1,0 +1,163 @@
+/* Consultation slot picker: a day strip (the chosen day is a solid navy block that slides) above slot
+   blocks in line-form states: open = solid teal outline, chosen = the teal fill swiped in from the left
+   with a check, booked = hatched, unavailable = struck. Every state also has a word.
+   <div class="ds-slots"><div class="ds-days" role="radiogroup">..<button class="ds-day" aria-checked="true">..</button></div>
+   <div class="ds-slot-list" role="radiogroup"><label class="ds-slot">..</label></div></div> */
+.ds-slots { display: grid; gap: var(--ds-space-16); min-width: 0; }
+.ds-days {
+  display: flex;
+  gap: var(--ds-space-8);
+  overflow-x: auto;
+  padding: 2px;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+.ds-day {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  flex: none;
+  min-width: 4rem;
+  margin: 0;
+  padding: var(--ds-space-8) var(--ds-space-12) var(--ds-space-12);
+  border: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-radius: var(--ds-radius-control);
+  background: var(--ds-surface);
+  color: var(--ds-text-primary);
+  cursor: pointer;
+  transition: color var(--ds-motion-duration-quick) var(--ds-motion-ease-out), border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  &:is(:hover, [data-hovered]) { border-color: var(--ds-border-strong); }
+  &:is([aria-checked="true"], [aria-pressed="true"], [data-selected]) { border-color: transparent; color: var(--ds-on-action); }
+  &:is(:disabled, [data-disabled]) { color: var(--ds-text-secondary); cursor: not-allowed; & .ds-day__date { text-decoration: line-through; } }
+}
+.ds-day__dow {
+  color: inherit;
+  opacity: 0.9;
+  font: 600 var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+}
+.ds-day__date {
+  font: 700 1.25rem / 1.75rem var(--ds-font-family-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.ds-day__count {
+  font: 500 var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-font-family-body);
+  font-variant-numeric: tabular-nums;
+}
+.ds-day.is-today .ds-day__date::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  margin: 1px auto 0;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-now);
+}
+.ds-day__indicator {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  width: calc(100% + 2px);
+  border-radius: var(--ds-radius-control);
+  background: var(--ds-action-default);
+  box-shadow: var(--ds-btn-highlight);
+  transition-property: translate, width;
+  transition-duration: var(--ds-motion-spring-smooth-duration);
+  transition-timing-function: var(--ds-motion-spring-smooth);
+}
+.ds-day:not([aria-checked="true"], [aria-pressed="true"], [data-selected]) > .ds-day__indicator { display: none; }
+
+.ds-slot-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: var(--ds-space-8);
+}
+.ds-slot {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 2px;
+  min-height: 60px;
+  padding: var(--ds-space-8) var(--ds-space-12);
+  border: var(--ds-size-rule) solid var(--ds-secondary-border);
+  border-radius: var(--ds-radius-block);
+  background: var(--ds-surface);
+  color: var(--ds-secondary-fg);
+  text-align: start;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    translate var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy),
+    box-shadow var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  /* The teal fill that swipes in when the slot is chosen. */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--ds-secondary-default);
+    transform-origin: 0 50%;
+    scale: 0 1;
+    transition: scale var(--ds-motion-duration-slow) var(--ds-motion-ease-out);
+  }
+  &:is(:hover, [data-hovered]):not([data-disabled], [aria-disabled="true"]) { translate: 0 var(--ds-lift); box-shadow: var(--ds-block-shadow); }
+  &:is([data-focus-visible], :has(input:focus-visible)) { outline: var(--ds-size-focus-ring) solid var(--ds-focus); outline-offset: var(--ds-size-focus-offset); }
+  &:is([data-selected], [aria-checked="true"], :has(input:checked)) {
+    border-color: transparent;
+    color: var(--ds-secondary-on-solid);
+    &::before { scale: 1 1; }
+    & .ds-slot__state-icon--check { display: inline-block; }
+  }
+}
+.ds-slot__time {
+  font: 600 0.8125rem / 1.25rem var(--ds-font-family-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+.ds-slot__state {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+}
+.ds-slot__state-icon--check { display: none; }
+.ds-slot--booked {
+  border-color: var(--ds-border-subtle);
+  background-image: var(--ds-hatch);
+  color: var(--ds-text-secondary);
+  cursor: not-allowed;
+  & :is(.ds-slot__time, .ds-slot__state) { justify-self: start; padding: 0 3px; margin-inline-start: -3px; border-radius: 2px; background: var(--ds-surface); }
+}
+.ds-slot--unavailable {
+  border-color: var(--ds-border-subtle);
+  color: var(--ds-text-secondary);
+  cursor: not-allowed;
+  & .ds-slot__time { text-decoration: line-through; }
+}
+.ds-slots__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-8) var(--ds-space-16);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+  & > li { display: inline-flex; align-items: center; gap: var(--ds-space-8); }
+}
+.ds-slots__swatch {
+  width: 14px;
+  height: 10px;
+  border-radius: 2px;
+  border: var(--ds-size-rule) solid var(--ds-secondary-border);
+}
+.ds-slots__swatch--chosen { background: var(--ds-secondary-default); border-color: var(--ds-secondary-default); }
+.ds-slots__swatch--booked { border-color: var(--ds-border-default); background-image: var(--ds-hatch-strong); }
+.ds-slots__swatch--unavailable { border-color: var(--ds-border-default); background: linear-gradient(to bottom, transparent calc(50% - 0.5px), var(--ds-text-secondary) calc(50% - 0.5px), var(--ds-text-secondary) calc(50% + 0.5px), transparent calc(50% + 0.5px)); }
+.ds-slots__message {
+  margin: 0;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+}

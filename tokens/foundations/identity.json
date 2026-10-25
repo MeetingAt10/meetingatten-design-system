@@ -1,0 +1,24 @@
+{
+  "$description": "Meeting At 10 logo artwork: the calendar mark, the design system's main logo (user decision 2026-10-25). Used only through the logo-* treatments, never as interface color. Separate from the 54-primitive ACCS palette.",
+  "color": {
+    "$type": "color",
+    "identity": {
+      "m10-navy": {
+        "$value": "#031B38",
+        "$description": "Calendar frame and binding tabs on light grounds; the page on dark grounds"
+      },
+      "m10-paper": {
+        "$value": "#F7F8FA",
+        "$description": "Calendar page on light grounds"
+      },
+      "m10-blue": {
+        "$value": "#0075FF",
+        "$description": "Appointment block"
+      },
+      "m10-frost": {
+        "$value": "#E8EEF7",
+        "$description": "Calendar frame and binding tabs on dark grounds"
+      }
+    }
+  }
+}

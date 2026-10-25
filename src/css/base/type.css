@@ -1,39 +1,43 @@
-/* Text styles (Figma "ACCS 2026 / *"). */
+/* Text styles. Plus Jakarta Sans for display and headings, Inter for reading, JetBrains Mono only for
+   times, codes, references and code. Headings balance their lines; paragraphs avoid orphans. */
+.ds-type-display, .ds-type-h1, .ds-type-h2, .ds-type-h3, .ds-type-h4 {
+  margin: 0;
+  text-wrap: balance;
+  font-kerning: normal;
+}
 .ds-type-display {
   font: var(--ds-type-display-font-weight) var(--ds-type-display-size) / var(--ds-type-display-line-height) var(--ds-type-display-font-family);
   letter-spacing: var(--ds-type-display-letter-spacing);
-  margin: 0;
 }
 .ds-type-h1 {
   font: var(--ds-type-h1-font-weight) var(--ds-type-h1-size) / var(--ds-type-h1-line-height) var(--ds-type-h1-font-family);
-  margin: 0;
+  letter-spacing: var(--ds-type-h1-letter-spacing);
 }
 .ds-type-h2 {
   font: var(--ds-type-h2-font-weight) var(--ds-type-h2-size) / var(--ds-type-h2-line-height) var(--ds-type-h2-font-family);
-  margin: 0;
+  letter-spacing: var(--ds-type-h2-letter-spacing);
 }
 .ds-type-h3 {
   font: var(--ds-type-h3-font-weight) var(--ds-type-h3-size) / var(--ds-type-h3-line-height) var(--ds-type-h3-font-family);
-  margin: 0;
+  letter-spacing: var(--ds-type-h3-letter-spacing);
 }
 .ds-type-h4 {
   font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
-  margin: 0;
+  letter-spacing: var(--ds-type-h4-letter-spacing);
 }
+.ds-type-body-large, .ds-type-body, .ds-type-body-small { margin: 0; text-wrap: pretty; }
 .ds-type-body-large {
   font: var(--ds-type-body-large-font-weight) var(--ds-type-body-large-size) / var(--ds-type-body-large-line-height) var(--ds-type-body-large-font-family);
-  margin: 0;
 }
 .ds-type-body {
   font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
-  margin: 0;
 }
 .ds-type-body-small {
   font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
-  margin: 0;
 }
 .ds-type-label {
   font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  letter-spacing: var(--ds-type-label-letter-spacing);
 }
 .ds-type-caption {
   font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
@@ -41,18 +45,51 @@
 .ds-type-code {
   font: var(--ds-type-code-font-weight) var(--ds-type-code-size) / var(--ds-type-code-line-height) var(--ds-type-code-font-family);
 }
+/* Time codes, room codes and references: tabular mono. */
+.ds-time {
+  font: var(--ds-type-time-font-weight) var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-type-time-font-family);
+  letter-spacing: var(--ds-type-time-letter-spacing);
+  font-variant-numeric: tabular-nums slashed-zero;
+}
 .ds-secondary { color: var(--ds-text-secondary); }
 .ds-reading { max-width: var(--ds-grid-reading-max); }
-.ds-eyebrow {
-  font: 500 var(--ds-size-eyebrow) / var(--ds-size-eyebrow-line) var(--ds-font-family-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ds-action-default);
-  margin: 0;
-}
-.ds-tag-mono {
-  font: var(--ds-type-code-font-weight) var(--ds-size-eyebrow) / var(--ds-size-eyebrow-line) var(--ds-font-family-mono);
-  letter-spacing: 0.04em;
+.ds-lead {
+  font: var(--ds-type-body-large-font-weight) var(--ds-type-body-large-size) / var(--ds-type-body-large-line-height) var(--ds-type-body-large-font-family);
   color: var(--ds-text-secondary);
-  text-transform: uppercase;
+  max-width: 38rem;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Long-form text (docs, policy pages). */
+.ds-prose {
+  max-width: var(--ds-grid-reading-max);
+  & :where(h2) { font: var(--ds-type-h2-font-weight) var(--ds-type-h2-size) / var(--ds-type-h2-line-height) var(--ds-type-h2-font-family); letter-spacing: var(--ds-type-h2-letter-spacing); margin: var(--ds-space-48) 0 var(--ds-space-12); text-wrap: balance; }
+  & :where(h3) { font: var(--ds-type-h3-font-weight) var(--ds-type-h3-size) / var(--ds-type-h3-line-height) var(--ds-type-h3-font-family); letter-spacing: var(--ds-type-h3-letter-spacing); margin: var(--ds-space-32) 0 var(--ds-space-8); }
+  & :where(p, ul, ol, table, pre, blockquote) { margin: 0 0 var(--ds-space-16); }
+  & :where(ul, ol) { padding-inline-start: var(--ds-space-24); }
+  & :where(li) { margin-block: var(--ds-space-4); }
+  & :where(li)::marker { color: var(--ds-text-secondary); }
+  & :where(:not(pre) > code) {
+    padding: 0.1em 0.35em;
+    border-radius: var(--ds-radius-chip);
+    background: var(--ds-highlight-neutral);
+    font-size: 0.85em;
+  }
+  & :where(pre) {
+    padding: var(--ds-space-16) var(--ds-space-20);
+    border-radius: var(--ds-radius-control);
+    background: var(--ds-inverse-bg);
+    color: var(--ds-inverse-fg);
+    overflow-x: auto;
+    font: var(--ds-type-code-font-weight) var(--ds-type-code-size) / var(--ds-type-code-line-height) var(--ds-type-code-font-family);
+  }
+  & :where(blockquote) {
+    padding: var(--ds-space-12) var(--ds-space-16);
+    border-radius: var(--ds-radius-control);
+    background: var(--ds-highlight-neutral);
+  }
+  & :where(table) { width: 100%; border-collapse: collapse; font-size: var(--ds-type-body-small-size); }
+  & :where(th, td) { padding: var(--ds-space-8) var(--ds-space-12); border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle); text-align: start; vertical-align: top; }
+  & :where(th) { font-weight: 600; }
 }

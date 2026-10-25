@@ -1,69 +1,67 @@
-/* Control / Text Field, Text Area, Select trigger: label, message and the shared input box. */
+/* Field: persistent label above, optional description, the control, then the error. Required fields say so
+   in words. Errors name the problem and the fix, and the entered text stays.
+   <div class="ds-field">
+     <label class="ds-field__label" for="subject">Subject <span class="ds-field__hint">(required)</span></label>
+     <p class="ds-field__description" id="subject-desc">...</p>
+     <input class="ds-input" id="subject" aria-describedby="subject-desc subject-err" aria-invalid="true">
+     <p class="ds-field__error" id="subject-err"><svg class="ds-icon ds-icon--16">...</svg>...</p>
+   </div> */
 .ds-field {
   display: grid;
   gap: var(--ds-space-8);
+  min-width: 0;
   align-content: start;
 }
-.ds-label {
+.ds-field__label {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--ds-space-4) var(--ds-space-8);
+  color: var(--ds-text-primary);
   font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
-  color: var(--ds-text-primary);
+  letter-spacing: var(--ds-type-label-letter-spacing);
 }
-.ds-field__msg {
-  margin: 0;
+.ds-field__hint {
+  color: var(--ds-text-secondary);
+  font-weight: 500;
+}
+.ds-field__description {
+  margin: calc(-1 * var(--ds-space-4)) 0 0;
+  color: var(--ds-text-secondary);
   font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
-  color: var(--ds-text-secondary);
 }
-.ds-field.is-error .ds-field__msg { color: var(--ds-danger-fg); }
-.ds-field__msg--error { color: var(--ds-danger-fg); }
-.ds-input, .ds-select, .ds-textarea {
+.ds-field__error {
   display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: var(--ds-size-control-h);
-  padding: 0 var(--ds-space-8) 0 var(--ds-space-8);
-  background: var(--ds-surface);
-  color: var(--ds-text-primary);
-  border: 1px solid var(--ds-border-default);
-  border-radius: var(--ds-radius-control);
-  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
-}
-.ds-input, .ds-select { padding-inline: 10px; }
-.ds-textarea {
-  min-height: var(--ds-size-textarea-h);
-  padding: 10px;
   align-items: flex-start;
-  resize: vertical;
-}
-.ds-input::placeholder, .ds-textarea::placeholder {
-  color: var(--ds-text-secondary);
-  opacity: 1;
-}
-:is(.ds-input, .ds-select, .ds-textarea):is(:hover, [data-hovered], .is-hover) { background: var(--ds-info-bg); }
-:is(.ds-input, .ds-select, .ds-textarea):is(:active, [data-pressed], .is-pressed) {
-  border-color: var(--ds-border-strong);
-  box-shadow: inset 0 0 0 1px var(--ds-border-strong);
-}
-:is(.ds-input, .ds-select, .ds-textarea):is(:focus-visible, :focus, [data-focused], .is-focus) {
-  outline: none;
-  background: var(--ds-surface);
-  border-color: var(--ds-focus);
-  box-shadow: var(--ds-ring);
-}
-:is(.ds-input, .ds-select, .ds-textarea):is(:disabled, [aria-disabled="true"], [data-disabled]) {
-  background: var(--ds-disabled-bg);
-  color: var(--ds-disabled-fg);
-  box-shadow: none;
-  cursor: not-allowed;
-}
-:is(.ds-input, .ds-select, .ds-textarea):is([aria-invalid="true"], [data-invalid], .is-error) { border-color: var(--ds-danger-fg); }
-.ds-select {
-  justify-content: space-between;
   gap: var(--ds-space-8);
-  cursor: pointer;
-  appearance: none;
+  margin: 0;
+  color: var(--ds-danger-fg);
+  font: 500 var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  & > .ds-icon { margin-top: 3px; }
 }
-.ds-select .ds-icon {
-  color: var(--ds-action-default);
-  transform: rotate(90deg);
+.ds-field__foot {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--ds-space-12);
 }
-.ds-select[aria-expanded="true"] .ds-icon { transform: rotate(-90deg); }
+.ds-field__count {
+  margin-inline-start: auto;
+  color: var(--ds-text-secondary);
+  font: 500 var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-font-family-body);
+  font-variant-numeric: tabular-nums;
+}
+/* A group of fields under one legend (radios, checkboxes). */
+.ds-fieldset {
+  display: grid;
+  gap: var(--ds-space-12);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  & > legend {
+    padding: 0;
+    margin-bottom: var(--ds-space-12);
+    color: var(--ds-text-primary);
+    font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  }
+}

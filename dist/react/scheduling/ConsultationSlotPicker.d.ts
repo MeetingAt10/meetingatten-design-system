@@ -1,17 +1,21 @@
 export interface ConsultationDay {
     id: string;
-    /** Short weekday shown above the number, for example "W". */
+    /** Short weekday shown above the number ("Wed"). */
     weekday: string;
-    /** Day of the month, for example 21. */
+    /** Day of the month (21). */
     day: number | string;
-    /** Full date for screen readers and the summary line, for example "Wed 21 Oct". */
+    /** Full date for screen readers and the summary line ("Wed 21 Oct"). */
     label: string;
+    /** Open slots that day, shown under the date ("3 open"). */
+    openCount?: number;
+    isToday?: boolean;
+    isDisabled?: boolean;
 }
 export interface ConsultationSlot {
     id: string;
-    /** For example "09:00–09:30". */
+    /** "09:00-09:30". */
     time: string;
-    state?: 'available' | 'booked' | 'unavailable';
+    state?: 'open' | 'booked' | 'unavailable';
 }
 export interface ConsultationSlotPickerProps {
     days: ConsultationDay[];
@@ -22,11 +26,14 @@ export interface ConsultationSlotPickerProps {
     onChange?: (slotId: string) => void;
     /** Always shown with the date, for example "sample local campus time". */
     timeZoneNote: string;
-    /** Group name, default "Consultation". */
+    /** Group name, default "Consultation time". */
     label?: string;
     isLoading?: boolean;
-    /** For example "Couldn’t check this slot. Try again." */
+    /** "Couldn't check this slot. Try again." */
     errorMessage?: string;
+    /** Show the line-form legend under the slots (default true). */
+    showLegend?: boolean;
+    className?: string;
 }
-/** Scheduling / Consultation Slot picker: a day strip and one radio group of slots. Booked and unavailable slots are disabled and say so in text. */
-export declare function ConsultationSlotPicker({ days, selectedDay, onDayChange, slots, value, onChange, timeZoneNote, label, isLoading, errorMessage }: ConsultationSlotPickerProps): import("react").JSX.Element;
+/** Consultation slot picker: a day strip (the chosen day is a solid block that slides) and one radio group of slot blocks. Booked and unavailable slots are disabled and say so in words. */
+export declare function ConsultationSlotPicker({ days, selectedDay, onDayChange, slots, value, onChange, timeZoneNote, label, isLoading, errorMessage, showLegend, className }: ConsultationSlotPickerProps): import("react").JSX.Element;

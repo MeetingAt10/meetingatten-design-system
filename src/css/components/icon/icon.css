@@ -1,21 +1,14 @@
-/* Icon: 16/20/24px, strokes 1.5/1.75/2px (stroke scaled for the 24-unit viewBox). */
+/* Icon: Phosphor glyphs, filled with currentColor. React: <Icon name="calendar" />.
+   Plain CSS: <svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-calendar" /></svg>
+   (#ds-NAME-fill for selected or current, #ds-NAME-duotone for lane icons). */
 .ds-icon {
+  display: inline-block;
+  flex: none;
   width: var(--ds-size-icon-20);
   height: var(--ds-size-icon-20);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex: none;
+  fill: currentColor;
+  vertical-align: -0.2em;
 }
-.ds-icon--16 {
-  width: var(--ds-size-icon-16);
-  height: var(--ds-size-icon-16);
-  stroke-width: 2.25;
-}
-.ds-icon--24 {
-  width: var(--ds-size-icon-24);
-  height: var(--ds-size-icon-24);
-  stroke-width: 2;
-}
+.ds-icon--16 { width: var(--ds-size-icon-16); height: var(--ds-size-icon-16); vertical-align: -0.15em; }
+.ds-icon--24 { width: var(--ds-size-icon-24); height: var(--ds-size-icon-24); }
+.ds-icon--32 { width: var(--ds-size-icon-32); height: var(--ds-size-icon-32); }

@@ -1,32 +1,101 @@
-/* Control / FileUpload: drop zone with a file picker button. Dashed boundary meets 3:1. */
+/* File upload: a dashed drop sheet (pending, waiting for files) that turns solid when files hover over it;
+   each file becomes a ruled row with its size, a progress line and a remove action.
+   <div class="ds-dropzone"><span class="ds-dropzone__icon"><svg class="ds-icon">..</svg></span>
+     <p class="ds-dropzone__title">Drop files or <button class="ds-dropzone__browse">browse</button></p><p class="ds-dropzone__hint">PDF or PNG, up to 10 MB</p></div>
+   <ul class="ds-file-list"><li class="ds-file">...</li></ul> */
 .ds-dropzone {
   display: grid;
   justify-items: center;
   gap: var(--ds-space-8);
-  padding: var(--ds-space-24);
-  text-align: center;
+  padding: var(--ds-space-32) var(--ds-space-24);
+  border: 1.5px dashed var(--ds-border-default);
+  border-radius: var(--ds-radius-sheet);
   background: var(--ds-surface);
-  border: 2px dashed var(--ds-border-default);
-  border-radius: var(--ds-radius-tile);
   color: var(--ds-text-secondary);
-  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
-  & > .ds-icon { color: var(--ds-action-default); }
+  text-align: center;
+  transition: border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out), background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  &:is([data-hovered], :hover) { border-color: var(--ds-border-strong); }
+  &[data-focus-visible] { outline: var(--ds-size-focus-ring) solid var(--ds-focus); outline-offset: var(--ds-size-focus-offset); }
   &[data-drop-target] {
-    background: var(--ds-info-bg);
     border-style: solid;
     border-color: var(--ds-action-default);
+    background: var(--ds-highlight-schedule);
+    & .ds-dropzone__icon { translate: 0 var(--ds-lift); box-shadow: var(--ds-block-shadow); }
   }
-  &[data-focus-visible] { box-shadow: var(--ds-ring); }
-  &[data-disabled] {
-    background: var(--ds-disabled-bg);
-    color: var(--ds-disabled-fg);
-  }
+  &[data-disabled] { background: var(--ds-disabled-bg); color: var(--ds-disabled-fg); }
 }
-.ds-file-list {
+.ds-dropzone__icon {
   display: grid;
-  gap: var(--ds-space-4);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--ds-radius-block);
+  background: var(--ds-action-default);
+  color: var(--ds-on-action);
+  transition: translate var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy), box-shadow var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
 }
+.ds-dropzone__title {
+  margin: 0;
+  color: var(--ds-text-primary);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+}
+.ds-dropzone__browse {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ds-action-default);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  cursor: pointer;
+}
+.ds-dropzone__hint {
+  margin: 0;
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+}
+.ds-file-list { display: grid; gap: var(--ds-space-8); margin: 0; padding: 0; list-style: none; }
+.ds-file {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--ds-space-12);
+  padding: var(--ds-space-12) var(--ds-space-12) var(--ds-space-12) var(--ds-space-16);
+  border: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-radius: var(--ds-radius-control);
+  background: var(--ds-surface);
+  overflow: hidden;
+}
+.ds-file__icon { color: var(--ds-text-secondary); }
+.ds-file__name {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+}
+.ds-file__meta {
+  margin: 0;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-time-font-weight) var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-type-time-font-family);
+  font-variant-numeric: tabular-nums;
+}
+.ds-file__progress {
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: var(--ds-border-subtle);
+  & > span {
+    display: block;
+    height: 100%;
+    background: var(--ds-action-default);
+    transform-origin: 0 50%;
+    scale: calc(var(--value, 0) / 100) 1;
+    transition: scale var(--ds-motion-spring-smooth-duration) var(--ds-motion-spring-smooth);
+  }
+}
+.ds-file--error {
+  border-color: var(--ds-danger-fg);
+  & .ds-file__meta { color: var(--ds-danger-fg); }
+}
+.ds-file--done .ds-file__icon { color: var(--ds-success-fg); }

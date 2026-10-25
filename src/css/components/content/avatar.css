@@ -1,23 +1,33 @@
-/* Content / Avatar: initials or photo in a circle. Initials use the checked info bg/fg pair. */
+/* Avatar: a photo or initials on the lane wash. Names always appear in text nearby (the avatar repeats
+   them for recognition). Group: overlapping avatars with a cutout ring and a "+3" count.
+   <span class="ds-avatar" role="img" aria-label="Ana Santos (sample)">AS</span> */
 .ds-avatar {
+  position: relative;
   display: inline-grid;
   place-items: center;
-  width: 2rem;
-  height: 2rem;
   flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-highlight-schedule);
+  color: var(--ds-action-default);
+  font: 700 0.8125rem / 1 var(--ds-font-family-display);
+  letter-spacing: 0.01em;
   overflow: hidden;
-  border-radius: 50%;
-  background: var(--ds-info-bg);
-  color: var(--ds-info-fg);
-  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / 1 var(--ds-type-label-font-family);
-  object-fit: cover;
+  user-select: none;
+  & > img { width: 100%; height: 100%; object-fit: cover; }
 }
-.ds-avatar--sm {
-  width: 1.5rem;
-  height: 1.5rem;
-  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / 1 var(--ds-type-caption-font-family);
+.ds-avatar--24 { width: 24px; height: 24px; font-size: 0.6875rem; letter-spacing: 0; }
+.ds-avatar--32 { width: 32px; height: 32px; font-size: 0.75rem; }
+.ds-avatar--48 { width: 48px; height: 48px; font-size: 1rem; }
+.ds-avatar--64 { width: 64px; height: 64px; font-size: 1.25rem; }
+.ds-avatar--community { background: var(--ds-highlight-community); color: var(--ds-accent-fg); }
+.ds-avatar--consult { background: var(--ds-highlight-consult); color: var(--ds-secondary-fg); }
+.ds-avatar--neutral { background: var(--ds-highlight-neutral); color: var(--ds-text-primary); }
+.ds-avatar-group {
+  display: inline-flex;
+  align-items: center;
+  & > .ds-avatar { box-shadow: 0 0 0 2px var(--ring-gap, var(--ds-surface)); }
+  & > .ds-avatar + .ds-avatar { margin-inline-start: -8px; }
 }
-.ds-avatar--lg {
-  width: 2.5rem;
-  height: 2.5rem;
-}
+.ds-avatar--more { background: var(--ds-highlight-neutral); color: var(--ds-text-secondary); font-family: var(--ds-font-family-body); font-weight: 600; }

@@ -1,7 +1,97 @@
 {
-  "$description": "NOT IN FIGMA. The frames only say: motion is optional, reduced-motion aware, and state must be understandable without animation. Minimal values kept for hover/focus transitions.",
+  "$description": "Motion grammar: color and hover changes are quick; overlays rise with an exponential ease-out; spatial moves use springs. Springs are emitted as CSS linear() curves with their settle duration (scripts/lib.mjs springCurve) and as Motion configs (src/react/lib/motion.ts). prefers-reduced-motion removes transforms.",
   "motion": {
-    "duration": { "$type": "duration", "fast": { "$value": "120ms" }, "base": { "$value": "200ms" } },
-    "ease": { "$type": "cubicBezier", "standard": { "$value": [0.2, 0, 0, 1] } }
+    "duration": {
+      "$type": "duration",
+      "instant": {
+        "$value": "0ms"
+      },
+      "quick": {
+        "$value": "120ms"
+      },
+      "base": {
+        "$value": "200ms"
+      },
+      "slow": {
+        "$value": "320ms"
+      },
+      "deliberate": {
+        "$value": "480ms"
+      }
+    },
+    "ease": {
+      "$type": "cubicBezier",
+      "out": {
+        "$value": [
+          0.16,
+          1,
+          0.3,
+          1
+        ]
+      },
+      "in-out": {
+        "$value": [
+          0.65,
+          0,
+          0.35,
+          1
+        ]
+      },
+      "exit": {
+        "$value": [
+          0.4,
+          0,
+          1,
+          1
+        ]
+      },
+      "standard": {
+        "$value": [
+          0.2,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    "spring": {
+      "$type": "spring",
+      "snappy": {
+        "$value": {
+          "stiffness": 600,
+          "damping": 49,
+          "mass": 1
+        },
+        "$description": "toggles, checks, block drop"
+      },
+      "smooth": {
+        "$value": {
+          "stiffness": 420,
+          "damping": 40,
+          "mass": 1
+        },
+        "$description": "indicators, layout"
+      },
+      "gentle": {
+        "$value": {
+          "stiffness": 260,
+          "damping": 32,
+          "mass": 1
+        },
+        "$description": "drawers, sheets"
+      }
+    },
+    "distance": {
+      "$type": "dimension",
+      "lift": {
+        "$value": "2px"
+      },
+      "drop": {
+        "$value": "6px"
+      },
+      "rise": {
+        "$value": "8px"
+      }
+    }
   }
 }

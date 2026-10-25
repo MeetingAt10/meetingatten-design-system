@@ -1,16 +1,159 @@
 {
-  "$description": "REPO-OWNED look tokens (NOT IN FIGMA). Every color comes from a locked Figma token, blended only with transparent; px literals only for geometry. Grammar: \"{ref}\" | \"transparent\" | \"none\" | \"<n>px\" | {\"wash\": ref} (radial, ref to transparent) | {\"tint\": ref, \"alpha\": 0-100} | {\"highlight\": ref, \"alpha\": 0-100} (inset 1px top line) | [layered shadow parts]. Keys: light + dark, or all. Emitted as --ds-<name> by scripts/build.mjs, validated by scripts/check-tokens.mjs.",
-  "card-bg": { "light": "{color.surface}", "dark": "{color.raised}" },
-  "card-shadow": { "light": "{shadow.elevation-1}", "dark": { "highlight": "{color.neutral.dark-border}", "alpha": 40 } },
-  "card-shadow-hover": { "light": "{shadow.elevation-2}", "dark": { "highlight": "{color.neutral.dark-border}", "alpha": 60 } },
-  "overlay-shadow": { "light": "{shadow.elevation-2}", "dark": ["{shadow.elevation-2}", { "highlight": "{color.neutral.dark-border}", "alpha": 40 }] },
-  "wash-accent": { "light": { "wash": "{color.accent.100}" }, "dark": { "wash": "{color.accent.950}" } },
-  "wash-secondary": { "light": { "wash": "{color.secondary.100}" }, "dark": { "wash": "{color.secondary.950}" } },
-  "wash-info": { "light": { "wash": "{color.info.50}" }, "dark": { "wash": "{color.info.950}" } },
-  "scrim": { "all": { "tint": "{color.brand.source-ink}", "alpha": 94 } },
-  "lift": { "all": "-2px" },
-  "radius-card": { "all": "{radius.12}" },
-  "radius-tile": { "all": "{radius.8}" },
-  "radius-control": { "all": "{radius.6}" },
-  "radius-chip": { "all": "{radius.4}" }
+  "$description": "Office Hours look tokens (repo-owned). Every color is a palette or theme token; blends only with transparent. Grammar: \"{ref}\" | \"transparent\" | \"none\" | \"<n>px\" | {\"tint\": ref, \"alpha\": 0-100} (flat translucent color) | {\"highlight\": ref, \"alpha\": 0-100} (1px inset top line) | {\"hatch\": ref, \"alpha\": 0-100} (diagonal hairlines for taken or restricted areas) | [layered parts]. Keys: light + dark, or all. Emitted as --ds-<name> by scripts/build.mjs, validated by scripts/check-tokens.mjs.",
+  "sheet-bg": {
+    "all": "{color.surface}"
+  },
+  "sheet-rule": {
+    "all": "{color.border-subtle}"
+  },
+  "block-shadow": {
+    "light": "{shadow.lift}",
+    "dark": "{shadow.lift-dark}"
+  },
+  "overlay-bg": {
+    "light": "{color.surface}",
+    "dark": "{color.raised}"
+  },
+  "overlay-shadow": {
+    "light": "{shadow.overlay}",
+    "dark": [
+      "{shadow.overlay-dark}",
+      {
+        "highlight": "{color.neutral.dark-border}",
+        "alpha": 35
+      }
+    ]
+  },
+  "plate-shadow": {
+    "light": "none",
+    "dark": {
+      "highlight": "{color.brand.dark-hover}",
+      "alpha": 60
+    }
+  },
+  "btn-highlight": {
+    "light": {
+      "highlight": "{color.brand.source-white}",
+      "alpha": 14
+    },
+    "dark": {
+      "highlight": "{color.brand.source-white}",
+      "alpha": 35
+    }
+  },
+  "rule-minor": {
+    "all": {
+      "tint": "{color.border-subtle}",
+      "alpha": 60
+    }
+  },
+  "highlight-community": {
+    "light": "{color.accent.100}",
+    "dark": "{color.accent.950}"
+  },
+  "highlight-consult": {
+    "light": "{color.secondary.100}",
+    "dark": "{color.secondary.950}"
+  },
+  "highlight-schedule": {
+    "light": "{color.info.50}",
+    "dark": "{color.info.950}"
+  },
+  "highlight-neutral": {
+    "light": "{color.neutral.100}",
+    "dark": "{color.neutral.dark-raised}"
+  },
+  "highlight-mark": {
+    "light": "{color.warning.300}",
+    "dark": "{color.warning.950}"
+  },
+  "today-bg": {
+    "light": "{color.info.50}",
+    "dark": "{color.neutral.dark-raised}"
+  },
+  "hatch": {
+    "light": {
+      "hatch": "{color.hatch-ink}",
+      "alpha": 45
+    },
+    "dark": {
+      "hatch": "{color.hatch-ink}",
+      "alpha": 55
+    }
+  },
+  "hatch-strong": {
+    "light": {
+      "hatch": "{color.hatch-ink}",
+      "alpha": 80
+    },
+    "dark": {
+      "hatch": "{color.hatch-ink}",
+      "alpha": 90
+    }
+  },
+  "scrim": {
+    "light": {
+      "tint": "{color.brand.source-ink}",
+      "alpha": 48
+    },
+    "dark": {
+      "tint": "{color.neutral.950}",
+      "alpha": 72
+    }
+  },
+  "dim": {
+    "all": {
+      "tint": "{color.surface}",
+      "alpha": 45
+    }
+  },
+  "lift": {
+    "all": "-2px"
+  },
+  "drop": {
+    "all": "-6px"
+  },
+  "rise": {
+    "all": "8px"
+  },
+  "radius-sheet": {
+    "all": "{radius.12}"
+  },
+  "radius-block": {
+    "all": "{radius.6}"
+  },
+  "radius-control": {
+    "all": "{radius.8}"
+  },
+  "radius-chip": {
+    "all": "{radius.4}"
+  },
+  "radius-overlay": {
+    "all": "{radius.16}"
+  },
+  "radius-plate": {
+    "all": "{radius.6}"
+  },
+  "logo-frame": {
+    "light": "{color.identity.m10-navy}",
+    "dark": "{color.identity.m10-frost}"
+  },
+  "logo-page": {
+    "light": "{color.identity.m10-paper}",
+    "dark": "{color.identity.m10-navy}"
+  },
+  "logo-frame-inverse": {
+    "light": "{color.identity.m10-frost}",
+    "dark": "{color.identity.m10-navy}"
+  },
+  "logo-page-inverse": {
+    "light": "{color.identity.m10-navy}",
+    "dark": "{color.identity.m10-paper}"
+  },
+  "logo-block": {
+    "all": "{color.identity.m10-blue}"
+  },
+  "logo-numeral": {
+    "all": "{color.brand.source-white}"
+  }
 }

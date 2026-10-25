@@ -9,20 +9,20 @@ export interface DatePickerProps<T extends DateValue> extends Omit<AriaDatePicke
   className?: string;
 }
 
-/** DatePicker: type a date segment by segment, or pick it from the calendar popover. */
+/** Date picker: type the date segment by segment, or pick it from the calendar popover. */
 export function DatePicker<T extends DateValue>({ label, description, errorMessage, className, ...rest }: DatePickerProps<T>) {
   return (
-    <AriaDatePicker {...rest} className={cx('ds-field', className)}>
+    <AriaDatePicker {...rest} className={cx('ds-field', 'ds-date-picker', className)}>
       <Field label={label} description={description} errorMessage={errorMessage} isRequired={rest.isRequired}>
-        <Group className="ds-datefield">
-          <DateInput className="ds-date-input">{(segment) => <DateSegment segment={segment} className="ds-date-segment" />}</DateInput>
-          <Button className="ds-field-button">
-            <Icon name="calendar" size={16} />
+        <Group className="ds-date-field">
+          <DateInput className="ds-date-field__input">{(segment) => <DateSegment segment={segment} className="ds-date-segment" />}</DateInput>
+          <Button className="ds-icon-btn" aria-label="Open calendar">
+            <Icon name="calendar" size={20} />
           </Button>
         </Group>
       </Field>
-      <Popover className="ds-popover">
-        <Dialog className="ds-calendar-dialog">
+      <Popover className="ds-popover" offset={6}>
+        <Dialog className="ds-popover__dialog ds-date-picker__popover" aria-label="Calendar">
           <Calendar />
         </Dialog>
       </Popover>

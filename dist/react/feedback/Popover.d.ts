@@ -7,6 +7,8 @@ export interface PopoverProps {
     label?: string;
     children: React.ReactNode;
     placement?: AriaPopoverProps['placement'];
+    /** Show the pointer toward the trigger. */
+    arrow?: boolean;
 }
-/** Feedback / Popover: small non-modal dialog next to its trigger for extra detail or a quick setting. Escape or a click outside closes it. */
-export declare function Popover({ trigger, title, label, children, placement }: PopoverProps): import("react").JSX.Element;
+/** Popover: a small non-modal dialog beside its trigger for extra detail or a quick setting. Escape or a click outside closes it. */
+export declare function Popover({ trigger, title, label, children, placement, arrow }: PopoverProps): import("react").JSX.Element;

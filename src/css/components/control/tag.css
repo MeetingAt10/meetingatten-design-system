@@ -1,0 +1,46 @@
+/* Tags: topics and active filters. Selectable tags fill with the schedule wash; removable tags carry a
+   small remove button. <div class="ds-tag-group"><div class="ds-tag-list" role="grid">
+   <div class="ds-tag" role="row">Algorithms<button class="ds-tag__remove" aria-label="Remove Algorithms">..</button></div></div></div> */
+.ds-tag-group { display: grid; gap: var(--ds-space-8); min-width: 0; }
+.ds-tag-list { display: flex; flex-wrap: wrap; gap: var(--ds-space-8); outline: none; }
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  min-height: 30px;
+  padding: 0 var(--ds-space-12);
+  border: var(--ds-size-rule) solid var(--ds-border-default);
+  border-radius: var(--ds-radius-block);
+  background: var(--ds-surface);
+  color: var(--ds-text-primary);
+  font: 500 var(--ds-type-body-small-size) / 1.25rem var(--ds-type-body-small-font-family);
+  white-space: nowrap;
+  cursor: default;
+  outline: none;
+  transition: background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out), border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  &[data-focus-visible] { outline: var(--ds-size-focus-ring) solid var(--ds-focus); outline-offset: var(--ds-size-focus-offset); }
+  &:is([data-hovered], :hover):not([data-disabled]) { border-color: var(--ds-border-strong); }
+  &:is([aria-selected="true"], [data-selected]) {
+    border-color: var(--ds-action-default);
+    background: var(--ds-highlight-schedule);
+    color: var(--ds-action-default);
+  }
+  &:is([aria-disabled="true"], [data-disabled]) { border-style: dashed; color: var(--ds-disabled-fg); }
+  &[data-allows-removing] { padding-inline-end: var(--ds-space-4); }
+}
+.ds-tag--community { border-color: var(--ds-accent-border); color: var(--ds-accent-fg); }
+.ds-tag--consult { border-color: var(--ds-secondary-border); color: var(--ds-secondary-fg); }
+.ds-tag__remove {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ds-radius-chip);
+  background: transparent;
+  color: var(--ds-text-secondary);
+  cursor: pointer;
+  &:is(:hover, [data-hovered]) { background: var(--ds-highlight-neutral); color: var(--ds-text-primary); }
+}

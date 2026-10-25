@@ -1,40 +1,85 @@
-/* Feedback / Toast: inverse surface; the region stacks toasts bottom right above all content. */
-.ds-toast {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-size-12);
-  padding: var(--ds-space-16);
-  background: var(--ds-text-primary);
-  color: var(--ds-canvas);
-  border-radius: var(--ds-radius-tile);
-  box-shadow: var(--ds-overlay-shadow);
-  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
-  outline: none;
-  & > .ds-icon { color: var(--ds-success-on-inverse); }
-  &:is([data-focus-visible], .is-focus) {
-    --ring-gap: var(--ds-canvas);
-    box-shadow: var(--ds-ring), var(--ds-overlay-shadow);
-  }
-}
-.ds-toast__content {
-  display: grid;
-  flex: 1;
-  gap: 2px;
-}
-.ds-toast__title { font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family); }
-.ds-toast__body { font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family); }
+/* Toast: a short-lived note on the inverse ink sheet, rising from the bottom edge. A line along its
+   bottom shows the time left (paused while hovered or focused). Never the only place an error lives.
+   <div class="ds-toast-region" role="region" aria-label="Notifications"><div class="ds-toast" role="alertdialog">
+   <span class="ds-toast__icon">..</span><div class="ds-toast__content"><p class="ds-toast__title">Draft saved</p></div>
+   <button class="ds-toast__close">..</button><span class="ds-toast__timer" style="--toast-duration: 5s"></span></div></div> */
 .ds-toast-region {
   position: fixed;
-  right: var(--ds-space-24);
-  bottom: var(--ds-space-24);
+  inset-inline-end: var(--ds-space-16);
+  bottom: var(--ds-space-16);
   z-index: var(--ds-z-toast);
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: var(--ds-space-8);
   width: min(24rem, calc(100vw - 2 * var(--ds-space-16)));
   outline: none;
-  @media (max-width: 599px) {
-    right: var(--ds-space-16);
-    bottom: var(--ds-space-16);
-  }
+  @media (max-width: 599.98px) { inset-inline: var(--ds-space-12); bottom: var(--ds-space-12); width: auto; }
 }
+.ds-toast {
+  --toast-tone: var(--ds-inverse-fg);
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--ds-space-12);
+  padding: var(--ds-space-12) var(--ds-space-8) var(--ds-space-16) var(--ds-space-16);
+  border-radius: var(--ds-radius-sheet);
+  background: var(--ds-inverse-bg);
+  color: var(--ds-inverse-fg);
+  box-shadow: var(--ds-overlay-shadow);
+  overflow: hidden;
+  outline: none;
+  animation: ds-rise-in var(--ds-motion-duration-slow) var(--ds-motion-ease-out);
+  &:focus-visible { outline: var(--ds-size-focus-ring) solid var(--ds-inverse-focus); outline-offset: var(--ds-size-focus-offset); }
+  &[data-exiting] { animation: ds-sink-out var(--ds-motion-duration-base) var(--ds-motion-ease-exit) forwards; }
+}
+.ds-toast--success { --toast-tone: var(--ds-success-on-inverse); }
+.ds-toast__icon { padding-top: 2px; color: var(--toast-tone); }
+.ds-toast__content { display: grid; gap: 2px; min-width: 0; padding-top: 2px; }
+.ds-toast__title {
+  margin: 0;
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+}
+.ds-toast__body {
+  margin: 0;
+  color: var(--ds-inverse-muted);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+}
+.ds-toast__actions { display: flex; gap: var(--ds-space-8); margin-top: var(--ds-space-8); }
+.ds-toast__action {
+  padding: var(--ds-space-4) var(--ds-space-8);
+  margin-inline-start: calc(-1 * var(--ds-space-8));
+  border: 0;
+  border-radius: var(--ds-radius-block);
+  background: transparent;
+  color: var(--ds-inverse-fg);
+  font: 600 var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  cursor: pointer;
+  &:hover { text-decoration-thickness: 2px; }
+}
+.ds-toast__close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: var(--ds-radius-block);
+  background: transparent;
+  color: var(--ds-inverse-muted);
+  cursor: pointer;
+  &:is(:hover, [data-hovered]) { color: var(--ds-inverse-fg); background: var(--ds-inverse-hover); }
+}
+.ds-toast__timer {
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: var(--toast-tone);
+  transform-origin: 0 50%;
+  animation: ds-timer var(--toast-duration, 5s) linear forwards;
+  .ds-toast:is(:hover, :focus-within) > & { animation-play-state: paused; }
+}
+@keyframes ds-timer { to { scale: 0 1; } }
+/* Reduced motion: no shrinking line; the toast still closes after its timeout. */
+@media (prefers-reduced-motion: reduce) { .ds-toast__timer { display: none; } }

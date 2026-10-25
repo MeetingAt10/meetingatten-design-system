@@ -1,19 +1,22 @@
+export type CaseEventState = 'done' | 'current' | 'pending' | 'restricted';
 export interface CaseEvent {
     title: React.ReactNode;
     /** Who acted, as a role ("Assigned reviewer"), never an inferred identity. */
-    actor: React.ReactNode;
+    actor?: React.ReactNode;
     body?: React.ReactNode;
-    /** Displayed date. */
+    /** Displayed time code ("21 Oct 09:12"). */
     date?: string;
     /** Machine-readable date for `<time>`. */
     dateTime?: string;
+    /** Marker line form; defaults to done. The current state carries the now-dot. */
+    state?: CaseEventState;
 }
 export interface CaseTimelineProps {
-    /** Newest first; the newest event gets the filled marker. */
+    /** In order (oldest first). */
     events: CaseEvent[];
     /** Accessible name of the list. */
     label?: string;
     className?: string;
 }
-/** Data / Case Timeline: report events as an ordered list with actor roles and dates. */
+/** Case timeline: a record's history on a vertical time rule; solid through what happened, dashed into what is pending. */
 export declare function CaseTimeline({ events, label, className }: CaseTimelineProps): import("react").JSX.Element;

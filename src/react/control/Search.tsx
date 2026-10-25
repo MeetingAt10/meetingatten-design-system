@@ -1,24 +1,30 @@
 "use client";
-import { SearchField, Input, Button, type SearchFieldProps } from 'react-aria-components';
+import { SearchField, Input, Button as AriaButton, Label, type SearchFieldProps } from 'react-aria-components';
 import { Icon } from '../icon/Icon.js';
 import { cx } from '../lib/cx.js';
 
-export interface SearchProps extends Omit<SearchFieldProps, 'className' | 'children' | 'aria-label'> {
-  /** Accessible name (the search box has no visible label). */
+export interface SearchProps extends Omit<SearchFieldProps, 'className' | 'children'> {
+  /** Accessible name. Visible when `showLabel` is set; otherwise it names the field for assistive tech only. */
   label: string;
+  showLabel?: boolean;
   placeholder?: string;
+  /** 40px instead of 48px. */
+  size?: 'sm' | 'md';
   className?: string;
 }
 
-/** Control / Search: compact search box with a clear button. Escape clears. */
-export function Search({ label, placeholder, className, ...rest }: SearchProps) {
+/** Search: a text field with a magnifier and a clear button; Escape clears, Enter submits (`onSubmit`). */
+export function Search({ label, showLabel, placeholder, size = 'md', className, ...rest }: SearchProps) {
   return (
-    <SearchField {...rest} aria-label={label} className={cx('ds-search', className)}>
-      <Icon name="search" size={16} />
-      <Input placeholder={placeholder} />
-      <Button className="ds-search__clear">
-        <Icon name="close" size={16} />
-      </Button>
+    <SearchField {...rest} className={cx('ds-field', className)}>
+      <Label className={showLabel ? 'ds-field__label' : 'ds-visually-hidden'}>{label}</Label>
+      <div className="ds-input-group">
+        <Icon name="search" className="ds-input-group__icon" />
+        <Input className={cx('ds-input', size === 'sm' && 'ds-input--sm')} placeholder={placeholder} />
+        <AriaButton className="ds-icon-btn ds-input-group__action" aria-label="Clear search">
+          <Icon name="x" size={16} />
+        </AriaButton>
+      </div>
     </SearchField>
   );
 }

@@ -1,0 +1,45 @@
+/* Now-line: the present moment on a time grid, a 2px line with a dot and the time on a small plate.
+   It glides when the minute changes. Position it with --now (hours since the grid's first hour).
+   <div class="ds-now" style="--now: 2.7"><span class="ds-now__label">10:42</span></div>
+   Horizontal tracks (progress, stepper) reuse .ds-now__dot. */
+.ds-now {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 3;
+  height: 0;
+  border-top: var(--ds-size-now-line) solid var(--ds-now);
+  translate: 0 calc(var(--now, 0) * var(--ds-density-hour-row) - var(--ds-size-now-line) / 2);
+  pointer-events: none;
+  transition: translate 1s linear;
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: calc(-1 * var(--ds-size-now-dot) / 2);
+    top: calc(-1 * var(--ds-size-now-dot) / 2 - var(--ds-size-now-line) / 2);
+    width: var(--ds-size-now-dot);
+    height: var(--ds-size-now-dot);
+    border-radius: var(--ds-radius-full);
+    background: var(--ds-now);
+  }
+}
+.ds-now__label {
+  position: absolute;
+  inset-inline-start: var(--ds-space-8);
+  top: 0;
+  translate: 0 calc(-50% - var(--ds-size-now-line) / 2);
+  padding: 1px var(--ds-space-4);
+  border-radius: var(--ds-radius-chip);
+  background: var(--ds-now);
+  color: var(--ds-danger-on-action);
+  font: 600 var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-type-time-font-family);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ds-now__dot {
+  display: inline-block;
+  width: var(--ds-size-now-dot);
+  height: var(--ds-size-now-dot);
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-now);
+}

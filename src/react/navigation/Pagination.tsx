@@ -1,6 +1,5 @@
 "use client";
 import { Button as AriaButton } from 'react-aria-components';
-import { Button } from '../control/Button.js';
 import { Icon } from '../icon/Icon.js';
 import { cx } from '../lib/cx.js';
 
@@ -9,6 +8,8 @@ export interface PaginationProps {
   page: number;
   pageCount: number;
   onPageChange: (page: number) => void;
+  /** Text on the left, for example "Showing 11-20 of 42 records". */
+  summary?: React.ReactNode;
   /** Accessible name of the navigation landmark. */
   label?: string;
   className?: string;
@@ -20,29 +21,26 @@ export function pageList(page: number, pageCount: number): Array<number | 'gap'>
   return keep.flatMap((p, i) => (i > 0 && p - keep[i - 1] > 1 ? ['gap' as const, p] : [p]));
 }
 
-/** Navigation / Pagination: previous, numbered pages and next. */
-export function Pagination({ page, pageCount, onPageChange, label = 'Pagination', className }: PaginationProps) {
+/** Pagination: previous, page blocks (the current one solid) and next. */
+export function Pagination({ page, pageCount, onPageChange, summary, label = 'Pages', className }: PaginationProps) {
   return (
     <nav aria-label={label} className={cx('ds-pagination', className)}>
-      <Button variant="tertiary" size="sm" className="ds-pagination__prev" isDisabled={page <= 1} onPress={() => onPageChange(page - 1)}>
-        <Icon name="chevron" size={16} />Previous
-      </Button>
-      <ul>
-        {pageList(page, pageCount).map((p, i) =>
-          p === 'gap' ? (
-            <li key={`gap-${i}`} className="ds-pagination__gap" aria-hidden="true">…</li>
-          ) : (
-            <li key={p}>
-              <AriaButton className="ds-pagination__page" aria-label={`Page ${p}`} aria-current={p === page ? 'page' : undefined} onPress={() => onPageChange(p)}>
-                {p}
-              </AriaButton>
-            </li>
-          ),
-        )}
-      </ul>
-      <Button variant="tertiary" size="sm" isDisabled={page >= pageCount} onPress={() => onPageChange(page + 1)}>
-        Next<Icon name="chevron" size={16} />
-      </Button>
+      {summary && <p className="ds-pagination__summary">{summary}</p>}
+      <AriaButton className="ds-page ds-page--step" isDisabled={page <= 1} onPress={() => onPageChange(page - 1)}>
+        <Icon name="caret-left" size={16} />Previous
+      </AriaButton>
+      {pageList(page, pageCount).map((p, i) =>
+        p === 'gap' ? (
+          <span key={`gap-${i}`} className="ds-page ds-page--gap" aria-hidden="true">…</span>
+        ) : (
+          <AriaButton key={p} className="ds-page" aria-label={`Page ${p}`} aria-current={p === page ? 'page' : undefined} onPress={() => onPageChange(p)}>
+            {p}
+          </AriaButton>
+        ),
+      )}
+      <AriaButton className="ds-page ds-page--step" isDisabled={page >= pageCount} onPress={() => onPageChange(page + 1)}>
+        Next<Icon name="caret-right" size={16} />
+      </AriaButton>
     </nav>
   );
 }

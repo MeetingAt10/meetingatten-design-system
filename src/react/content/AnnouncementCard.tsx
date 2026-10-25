@@ -1,40 +1,46 @@
-import { Card, CardHeader, CardMeta } from './Card.js';
-import { Badge } from '../badge/Badge.js';
+import { Card, CardHeader, CardLane, CardWhen, CardTitle, CardBody, CardMeta } from './Card.js';
 import { Link } from '../navigation/Link.js';
-import { Icon } from '../icon/Icon.js';
+import type { Lane } from '../lib/lanes.js';
 
 export interface AnnouncementCardProps {
-  /** Tag chip text. */
+  /** Lane chip text (default "Announcement"). */
   tag?: string;
+  /** Lane of the chip; department notices default to `schedule`. */
+  lane?: Lane;
+  /** Posted time, in words or a time code ("Mon 19 Oct · 09:00"). */
+  when?: string;
+  dateTime?: string;
   title: React.ReactNode;
   /** Heading level; default 3. */
   level?: 2 | 3 | 4;
   /** Short body text. */
   children?: React.ReactNode;
-  /** Source line, for example "Community desk · illustrative". */
+  /** Source line, for example "Community desk". */
   meta?: React.ReactNode;
   href?: string;
   linkLabel?: string;
-  /** Labels synthetic content with a "Demo" tag. */
+  /** Labels synthetic content. */
   demo?: boolean;
   className?: string;
 }
 
-/** Content / Announcement Card: a department or community update in a collection. */
-export function AnnouncementCard({ tag = 'Announcement', title, level = 3, children, meta, href, linkLabel = 'Read update', demo, className }: AnnouncementCardProps) {
-  const H = `h${level}` as 'h2' | 'h3' | 'h4';
+/** Announcement card: a department or community update in a collection. */
+export function AnnouncementCard({ tag = 'Announcement', lane = 'schedule', when, dateTime, title, level = 3, children, meta, href, linkLabel = 'Read update', demo, className }: AnnouncementCardProps) {
   return (
     <Card className={className}>
       <CardHeader>
-        <Badge tone="info">{tag}</Badge>
-        {demo && <span className="ds-tag-mono">Demo</span>}
+        <span className="ds-card__lead">
+          <CardLane lane={lane}>{tag}</CardLane>
+          {when && <CardWhen dateTime={dateTime}>{when}</CardWhen>}
+        </span>
+        {demo && <span className="ds-badge ds-badge--outline">Demo</span>}
       </CardHeader>
-      <H className="ds-type-h3">{title}</H>
-      {children && <p className="ds-type-body" style={{ margin: 0 }}>{children}</p>}
+      <CardTitle level={level}>{title}</CardTitle>
+      {children && <CardBody>{children}</CardBody>}
       {(meta || href) && (
         <CardMeta>
           {meta && <span>{meta}</span>}
-          {href && <Link href={href}>{linkLabel} <Icon name="chevron" size={16} /></Link>}
+          {href && <Link href={href} variant="standalone" className="ds-card__action">{linkLabel}<span className="ds-visually-hidden">: {title}</span></Link>}
         </CardMeta>
       )}
     </Card>

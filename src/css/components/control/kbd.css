@@ -1,0 +1,15 @@
+/* Keyboard key: a small keycap for shortcuts. <kbd class="ds-kbd">Ctrl</kbd> <kbd class="ds-kbd">K</kbd> */
+.ds-kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 var(--ds-space-4);
+  border-radius: var(--ds-radius-chip);
+  background: var(--ds-surface);
+  box-shadow: inset 0 0 0 1px var(--ds-border-subtle), inset 0 -2px 0 var(--ds-border-subtle);
+  color: var(--ds-text-secondary);
+  font: 500 0.75rem / 1 var(--ds-font-family-mono);
+  white-space: nowrap;
+}
+.ds-kbd-combo { display: inline-flex; align-items: center; gap: 2px; }

@@ -1,7 +1,12 @@
 {
+  "$description": "Radius scale; components use the treatments mapping (sheet 12, block 6, control 8, chip 4, overlay 16, plate 6).",
   "radius": {
+    "$type": "dimension",
     "0": {
       "$value": "0px"
+    },
+    "2": {
+      "$value": "2px"
     },
     "4": {
       "$value": "4px"
@@ -15,7 +20,11 @@
     "12": {
       "$value": "12px"
     },
-    "$type": "dimension",
-    "$description": "0 tables, 4 chips, 6 controls, 8 cards, 12 overlays (Figma 03.2)."
+    "16": {
+      "$value": "16px"
+    },
+    "full": {
+      "$value": "9999px"
+    }
   }
 }

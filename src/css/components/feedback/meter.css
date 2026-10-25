@@ -1,0 +1,30 @@
+/* Meter: a known quantity within a range (slots taken, storage used), on a ruled scale with tick marks.
+   Words carry the reading ("5 of 8 slots taken"); the fill tone only reinforces.
+   <div class="ds-meter" role="meter" aria-valuenow="5" aria-valuemax="8" style="--value: 62.5">..</div> */
+.ds-meter { display: grid; gap: var(--ds-space-8); min-width: 0; }
+.ds-meter__head { display: flex; justify-content: space-between; gap: var(--ds-space-12); }
+.ds-meter__track, .ds-meter__fill { display: block; }
+.ds-meter__label { font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family); }
+.ds-meter__value {
+  color: var(--ds-text-secondary);
+  font: 500 0.8125rem / var(--ds-type-label-line-height) var(--ds-font-family-body);
+  font-variant-numeric: tabular-nums;
+}
+.ds-meter__track {
+  position: relative;
+  height: 10px;
+  border-radius: var(--ds-radius-chip);
+  background-color: var(--ds-highlight-neutral);
+  /* Ticks every 10%: a ruled scale. */
+  background-image: linear-gradient(to right, var(--ds-border-subtle) 1px, transparent 1px);
+  background-size: 10% 100%;
+  overflow: hidden;
+}
+.ds-meter__fill {
+  height: 100%;
+  background: var(--ds-secondary-default);
+  clip-path: inset(0 calc(100% - var(--value, 0) * 1%) 0 0);
+  transition: clip-path var(--ds-motion-spring-smooth-duration) var(--ds-motion-spring-smooth);
+}
+.ds-meter--high .ds-meter__fill { background: var(--ds-warning-fg); }
+.ds-meter--full .ds-meter__fill { background: var(--ds-danger-fg); }

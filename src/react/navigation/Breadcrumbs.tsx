@@ -1,7 +1,5 @@
 "use client";
 import { Breadcrumbs as AriaBreadcrumbs, Breadcrumb, Link as AriaLink } from 'react-aria-components';
-import { Icon } from '../icon/Icon.js';
-import { cx } from '../lib/cx.js';
 
 export interface BreadcrumbItem {
   label: string;
@@ -16,15 +14,14 @@ export interface BreadcrumbsProps {
   className?: string;
 }
 
-/** Navigation / Breadcrumbs: where this page sits; the last item is the current page and is not a link. */
+/** Breadcrumbs: where this page sits. The last item is the current page and is not a link. */
 export function Breadcrumbs({ items, label = 'Breadcrumbs', className }: BreadcrumbsProps) {
   return (
     <nav aria-label={label} className={className}>
       <AriaBreadcrumbs className="ds-breadcrumbs">
         {items.map((item, i) => (
-          <Breadcrumb key={`${i}-${item.label}`} id={i} className={cx('ds-breadcrumb')}>
-            <AriaLink href={item.href} className="ds-breadcrumb__link">{item.label}</AriaLink>
-            {i < items.length - 1 && <Icon name="chevron" size={16} />}
+          <Breadcrumb key={`${i}-${item.label}`} id={i} className="ds-breadcrumbs__item">
+            {item.href ? <AriaLink href={item.href} className="ds-breadcrumbs__link">{item.label}</AriaLink> : <span aria-current="page">{item.label}</span>}
           </Breadcrumb>
         ))}
       </AriaBreadcrumbs>

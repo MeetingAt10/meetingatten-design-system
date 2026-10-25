@@ -9,5 +9,5 @@ export interface BreadcrumbsProps {
     label?: string;
     className?: string;
 }
-/** Navigation / Breadcrumbs: where this page sits; the last item is the current page and is not a link. */
+/** Breadcrumbs: where this page sits. The last item is the current page and is not a link. */
 export declare function Breadcrumbs({ items, label, className }: BreadcrumbsProps): import("react").JSX.Element;

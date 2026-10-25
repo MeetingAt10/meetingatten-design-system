@@ -1,5 +1,5 @@
 // Enforces "keep the colors": components and the site use only semantic, treatment and dimension tokens,
-// and treatments are built only from locked Figma tokens. Exits 1 on any violation.
+// and treatments are built only from palette and theme tokens. Exits 1 on any violation.
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { ROOT, loadTokens } from './lib.mjs';
@@ -16,7 +16,7 @@ const files = ['src', 'site'].map((d) => join(ROOT, d)).filter(existsSync).flatM
 const PRIMITIVE = /--ds-(brand-[a-z-]+|neutral-[a-z0-9-]+|(?:success|warning|danger|info|secondary|accent)-\d+)\b/g;
 const FUNC = /\b(rgba?|hsla?|hwb|lab|lch|oklab|oklch|color-mix|color)\(/g;
 const HEX = /#[0-9a-fA-F]{3,8}\b/g;
-// ponytail: common named colors only; extend the list if one slips through review.
+// Common named colors; extend the list if one slips through review.
 const NAMED = new Set('white black red green blue gray grey silver yellow orange purple pink navy teal aqua fuchsia lime maroon olive'.split(' '));
 const DECL = /(?:^|[;{\s])([a-z-]+)\s*:\s*([^;{}]+)(?=[;}])/g;
 
@@ -30,7 +30,7 @@ for (const f of files) {
     for (const w of value.toLowerCase().match(/[a-z]+/g) ?? []) if (NAMED.has(w)) report(rel, `named color "${w}" in "${value.trim()}"`);
 }
 
-// 3. Treatments: locked refs, transparent/none, px geometry, or the wash/tint/highlight forms.
+// 3. Treatments: token refs, transparent/none, px geometry, or the tint/highlight/hatch forms.
 const { foundations, themes } = loadTokens();
 const light = Object.values(themes).find((t) => !t.dark).tokens;
 const isRef = (r, kinds = 'color|shadow|radius|motion') => typeof r === 'string' && new RegExp(`^\\{(${kinds})\\.[^}]+\\}$`).test(r)
@@ -40,12 +40,11 @@ function check(v, where) {
   if (Array.isArray(v)) return v.forEach((x, i) => check(x, `${where}[${i}]`));
   if (typeof v === 'string') {
     if (isRef(v) || v === 'transparent' || v === 'none' || /^-?\d+(\.\d+)?px$/.test(v)) return;
-    return report(where, `"${v}" is not a locked token ref, transparent, none or a px length`);
+    return report(where, `"${v}" is not a token ref, transparent, none or a px length`);
   }
   if (v && typeof v === 'object') {
     const keys = Object.keys(v).sort().join(',');
-    if (keys === 'wash' && isRef(v.wash, 'color')) return;
-    if ((keys === 'alpha,tint' || keys === 'alpha,highlight') && isRef(v.tint ?? v.highlight, 'color') && alphaOk(v.alpha)) return;
+    if (['alpha,tint', 'alpha,highlight', 'alpha,hatch'].includes(keys) && isRef(v.tint ?? v.highlight ?? v.hatch, 'color') && alphaOk(v.alpha)) return;
   }
   report(where, `invalid treatment value ${JSON.stringify(v)}`);
 }

@@ -1,7 +1,7 @@
 {
   "name": "@meetingat10/design-system",
-  "version": "0.5.0",
-  "description": "Design tokens, themes and component specs for ACCS (landing + admin) and Meeting At 10.",
+  "version": "1.0.0",
+  "description": "Meeting At 10 Design System: tokens, themes, CSS and React components for the ACCS landing, the ACCS portal and admin, and the Meeting At 10 site.",
   "license": "UNLICENSED",
   "private": true,
   "type": "module",
@@ -16,9 +16,7 @@
     "docs",
     "foundations",
     "themes",
-    "components",
-    "figma/variables-styles.json",
-    "figma/frames-components.json"
+    "components"
   ],
   "exports": {
     "./tokens.css": "./dist/tokens.css",
@@ -34,7 +32,12 @@
     "./react/*": {
       "types": "./dist/react/*.d.ts",
       "import": "./dist/react/*.js"
-    }
+    },
+    "./icons": {
+      "types": "./dist/react/icons.d.ts",
+      "import": "./dist/react/icons.js"
+    },
+    "./fonts.css": "./dist/fonts.css"
   },
   "sideEffects": [
     "*.css"
@@ -45,10 +48,8 @@
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
     "check:contrast": "node scripts/check-contrast.mjs",
-    "check:parity": "node scripts/parity.mjs",
     "check:tokens": "node scripts/check-tokens.mjs",
-    "import:figma": "node scripts/import-figma.mjs",
-    "check": "npm run build && node scripts/check-contrast.mjs && node scripts/parity.mjs && node scripts/check-tokens.mjs"
+    "check": "npm run build && node scripts/check-contrast.mjs && node scripts/check-tokens.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -58,10 +59,17 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "5.3.0",
+    "@fontsource-variable/jetbrains-mono": "5.3.0",
+    "@fontsource-variable/plus-jakarta-sans": "5.3.0",
+    "@number-flow/react": "0.6.2",
+    "@phosphor-icons/react": "2.1.10",
+    "motion": "14.6.0",
     "react-aria-components": "1.22.1"
   },
   "devDependencies": {
     "@internationalized/date": "3.12.4",
+    "@phosphor-icons/core": "2.1.1",
     "@testing-library/dom": "10.4.2",
     "@testing-library/react": "16.3.3",
     "@testing-library/user-event": "14.6.8",

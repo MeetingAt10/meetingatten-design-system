@@ -1,7 +1,66 @@
-/* Identity / Logo. */
+/* Logo: the Meeting At 10 calendar mark, the design system's main logo, with the name in Plus Jakarta Sans 800
+   beside it. The mark is the artwork of assets/logo/meeting-at-10.svg drawn inline; its frame and page come from
+   the logo-* treatments, so in dark the frame goes light and the page navy, and the calendar keeps its shape.
+   <span class="ds-logo"><svg class="ds-logo__mark" viewBox="0 0 512 512" aria-hidden="true"><rect class="ds-logo__frame" ../>
+   <rect class="ds-logo__page" ../>..<rect class="ds-logo__block" ../><path class="ds-logo__numeral" ../></svg>
+   <span class="ds-logo__name">Meeting At 10</span><span class="ds-logo__code">DS 1.0</span></span> */
 .ds-logo {
-  display: block;
-  height: 2rem;
-  width: auto;
+  --logo-mark: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-8);
+  text-decoration: none;
+  white-space: nowrap;
 }
-.ds-logo--stacked { height: 7rem; }
+.ds-logo__mark { flex: none; width: var(--logo-mark); height: var(--logo-mark); }
+.ds-logo__frame { fill: var(--ds-logo-frame); }
+.ds-logo__page { fill: var(--ds-logo-page); }
+.ds-logo__block { fill: var(--ds-logo-block); }
+.ds-logo__numeral { fill: var(--ds-logo-numeral); }
+/* Inverse grounds (a dark bar in the light theme, a light one in dark): the frame and page swap. */
+.ds-logo--inverse {
+  & .ds-logo__frame { fill: var(--ds-logo-frame-inverse); }
+  & .ds-logo__page { fill: var(--ds-logo-page-inverse); }
+}
+.ds-logo__name {
+  font: 800 1.0625rem / 1 var(--ds-font-family-display);
+  letter-spacing: -0.01em;
+}
+.ds-logo__code {
+  position: relative;
+  padding-inline-start: var(--ds-space-8);
+  font: 500 var(--ds-type-time-size) / 1 var(--ds-font-family-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    top: -2px;
+    bottom: -2px;
+    border-inline-start: 1px solid currentColor;
+    opacity: 0.5;
+  }
+}
+.ds-logo--sm { --logo-mark: 24px; & .ds-logo__name { font-size: 0.9375rem; } }
+.ds-logo--lg {
+  --logo-mark: 48px;
+  gap: var(--ds-space-12);
+  & .ds-logo__name { font-size: 1.5rem; letter-spacing: -0.015em; }
+  & .ds-logo__code { font-size: 0.8125rem; }
+}
+.ds-logo--xl {
+  --logo-mark: 64px;
+  gap: var(--ds-space-16);
+  & .ds-logo__name { font-size: 2rem; letter-spacing: -0.02em; }
+  & .ds-logo__code { font-size: 0.875rem; }
+}
+
+/* The proposed ACCS marks (files in assets/logo, not approved), shown as exported, never redrawn or recolored.
+   They do not adapt to dark: put them on a light surface there. <img class="ds-logo-file" src="logo-horizontal.svg" alt="..."> */
+.ds-logo-file {
+  display: block;
+  height: var(--logo-h, 32px);
+  width: auto;
+  flex: none;
+}
+.ds-logo-file--compact { --logo-h: 28px; }

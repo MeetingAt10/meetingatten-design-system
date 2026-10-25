@@ -1,40 +1,42 @@
-/* Feedback / Progress: labeled determinate or indeterminate bar (no aria-valuenow = indeterminate, as in ARIA). Fill vs track is contrast-checked (3:1). */
-.ds-progress {
-  display: grid;
-  gap: var(--ds-space-8);
-}
-.ds-progress__head {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--ds-space-16);
+/* Progress: a ruled track with a navy fill that springs to its value; the value is printed beside the
+   label. Indeterminate progress sweeps a block along the track.
+   <div class="ds-progress" role="progressbar" aria-valuenow="40" style="--value: 40"><div class="ds-progress__head">
+   <span class="ds-progress__label">Uploading</span><span class="ds-progress__value">40%</span></div>
+   <div class="ds-progress__track"><div class="ds-progress__fill"></div></div></div> */
+.ds-progress { display: grid; gap: var(--ds-space-8); min-width: 0; }
+.ds-progress__head { display: flex; justify-content: space-between; gap: var(--ds-space-12); }
+.ds-progress__track, .ds-progress__fill, .ds-progress__hint { display: block; }
+.ds-progress__label {
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
 }
 .ds-progress__value {
-  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
   color: var(--ds-text-secondary);
+  font: 500 0.8125rem / var(--ds-type-label-line-height) var(--ds-font-family-body);
+  font-variant-numeric: tabular-nums;
 }
 .ds-progress__track {
-  display: block;
-  height: var(--ds-space-8);
-  overflow: hidden;
-  border-radius: var(--ds-radius-chip);
+  position: relative;
+  height: 6px;
+  border-radius: var(--ds-radius-full);
   background: var(--ds-disabled-bg);
+  overflow: hidden;
 }
 .ds-progress__fill {
-  display: block;
   height: 100%;
   border-radius: inherit;
   background: var(--ds-action-default);
-  transition: width var(--ds-motion-duration-base) var(--ds-motion-ease-standard);
+  clip-path: inset(0 calc(100% - var(--value, 0) * 1%) 0 0 round var(--ds-radius-full));
+  transition: clip-path var(--ds-motion-spring-smooth-duration) var(--ds-motion-spring-smooth);
 }
 .ds-progress:not([aria-valuenow]) .ds-progress__fill {
-  width: 40%;
-  animation: ds-progress 1.2s var(--ds-motion-ease-standard) infinite;
-  @media (prefers-reduced-motion: reduce) {
-    width: 100%;
-    animation: none;
-  }
+  width: 35%;
+  clip-path: none;
+  animation: ds-sweep 1.4s var(--ds-motion-ease-in-out) infinite;
 }
-@keyframes ds-progress {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(250%); }
+.ds-progress__hint {
+  margin: 0;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
 }
+.ds-progress--success .ds-progress__fill { background: var(--ds-success-fg); }
+.ds-progress--danger .ds-progress__fill { background: var(--ds-danger-fg); }

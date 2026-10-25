@@ -1,26 +1,52 @@
-/* Feedback / Privacy Notice. */
-.ds-notice {
+/* Privacy notice: the boundary, stated plainly. A hatched band with a lock names the restriction; the
+   body says what is known and what is not promised. Neutral ink, no hue: color never signals confidentiality.
+   <section class="ds-privacy" aria-labelledby="p"><header class="ds-privacy__band"><span class="ds-privacy__lock">..</span>
+   <h2 class="ds-privacy__title" id="p">Restricted record</h2></header><div class="ds-privacy__body">..</div>
+   <p class="ds-privacy__foot">..</p></section> */
+.ds-privacy {
+  display: grid;
+  border: var(--ds-size-rule) solid var(--ds-border-default);
+  border-radius: var(--ds-radius-sheet);
+  background: var(--ds-surface);
+  overflow: hidden;
+}
+.ds-privacy__band {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-12);
+  padding: var(--ds-space-12) var(--ds-space-16);
+  border-bottom: var(--ds-size-rule) solid var(--ds-border-default);
+  background-color: var(--ds-surface);
+  background-image: var(--ds-hatch);
+}
+.ds-privacy__lock {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--ds-radius-block);
+  background: var(--ds-text-primary);
+  color: var(--ds-surface);
+}
+.ds-privacy__title {
+  margin: 0;
+  padding: 2px var(--ds-space-8);
+  border-radius: var(--ds-radius-chip);
+  background: var(--ds-surface);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+}
+.ds-privacy__body {
   display: grid;
   gap: var(--ds-space-8);
   padding: var(--ds-space-16);
-  background: var(--ds-warning-bg);
-  color: var(--ds-text-primary);
-  border: 1px solid var(--ds-warning-fg);
-  border-radius: var(--ds-radius-tile);
-}
-.ds-notice__title {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-space-8);
-  color: var(--ds-warning-fg);
-  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
-  margin: 0;
-}
-.ds-notice p {
-  margin: 0;
   font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  & > p { margin: 0; }
+  & ul { margin: 0; padding-inline-start: var(--ds-space-20); display: grid; gap: var(--ds-space-4); }
 }
-.ds-notice .ds-notice__foot {
-  color: var(--ds-warning-fg);
+.ds-privacy__foot {
+  margin: 0;
+  padding: var(--ds-space-12) var(--ds-space-16);
+  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
+  color: var(--ds-text-secondary);
   font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
 }

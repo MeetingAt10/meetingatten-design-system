@@ -1,16 +1,35 @@
-/* Spinner (loading state inside buttons and views). */
+/* Spinner: a clock face whose hand sweeps, in currentColor. Pair it with visible or announced text
+   ("Loading reports"); under reduced motion the hand rests and the text carries the state.
+   <span class="ds-spinner" aria-hidden="true"></span> */
 .ds-spinner {
+  position: relative;
+  display: inline-block;
+  flex: none;
   width: var(--ds-size-icon-16);
   height: var(--ds-size-icon-16);
-  border: 2px solid currentColor;
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: ds-spin 0.9s linear infinite;
-  flex: none;
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-    border-top-color: currentColor;
-    border-right-color: transparent;
+  color: inherit;
+  vertical-align: -0.15em;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid currentColor;
+    border-radius: var(--ds-radius-full);
+    opacity: 0.4;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 0.75px);
+    bottom: 50%;
+    width: 1.5px;
+    height: 38%;
+    border-radius: 1px;
+    background: currentColor;
+    transform-origin: 50% 100%;
+    animation: ds-tick 1.1s linear infinite;
   }
 }
-@keyframes ds-spin { to { transform: rotate(360deg); } }
+.ds-spinner--20 { width: var(--ds-size-icon-20); height: var(--ds-size-icon-20); }
+.ds-spinner--24 { width: var(--ds-size-icon-24); height: var(--ds-size-icon-24); &::before { border-width: 2px; } &::after { width: 2px; left: calc(50% - 1px); } }
+.ds-spinner--32 { width: var(--ds-size-icon-32); height: var(--ds-size-icon-32); &::before { border-width: 2px; } &::after { width: 2px; left: calc(50% - 1px); } }

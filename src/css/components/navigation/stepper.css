@@ -1,54 +1,81 @@
-/* Navigation / Stepper: progress through a multi-step task. State is in text (aria-current, hidden "completed"), never color alone. */
+/* Stepper: progress through a short flow, drawn as a timeline. Done steps sit on a solid line with a
+   check; the current step carries the now-dot and aria-current="step"; upcoming steps sit on a dashed line.
+   Stacks vertically below 600px. Labels always show (state is never color alone).
+   <ol class="ds-stepper"><li class="ds-step ds-step--done"><span class="ds-step__marker">..</span>
+   <span class="ds-step__text"><span class="ds-step__label">Choose a time</span><span class="ds-step__state">Done</span></span></li>..</ol> */
 .ds-stepper {
-  display: flex;
-  gap: var(--ds-space-8);
+  display: grid;
+  gap: var(--ds-space-16);
   margin: 0;
   padding: 0;
   list-style: none;
+  counter-reset: step;
+  @media (min-width: 600px) {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 0;
+  }
 }
 .ds-step {
+  position: relative;
   display: flex;
-  flex: 1;
-  align-items: center;
-  gap: var(--ds-space-8);
-  min-width: 0;
-  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
-  color: var(--ds-text-secondary);
-  &:not(:last-child)::after {
-    content: "";
-    flex: 1;
-    height: 2px;
-    min-width: var(--ds-space-16);
-    background: var(--ds-border-subtle);
-  }
-  &[data-state="current"] {
-    color: var(--ds-text-primary);
-    & .ds-step__marker {
-      border-color: var(--ds-action-default);
-      color: var(--ds-action-default);
+  align-items: flex-start;
+  gap: var(--ds-space-12);
+  counter-increment: step;
+  @media (min-width: 600px) {
+    flex-direction: column;
+    gap: var(--ds-space-8);
+    padding-inline-end: var(--ds-space-16);
+    /* The track: from this marker to the next. */
+    &:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      top: 13px;
+      inset-inline: 30px 0;
+      border-top: 2px dashed var(--ds-border-default);
     }
-  }
-  &[data-state="complete"] {
-    color: var(--ds-text-primary);
-    &::after { background: var(--ds-action-default); }
-    & .ds-step__marker {
-      background: var(--ds-action-default);
-      border-color: var(--ds-action-default);
-      color: var(--ds-on-action);
-    }
-  }
-  @media (max-width: 599px) {
-    &:not([data-state="current"]) .ds-step__label { display: none; }
+    &.ds-step--done:not(:last-child)::before { border-top: 2px solid var(--ds-action-default); }
   }
 }
 .ds-step__marker {
-  display: inline-grid;
+  position: relative;
+  z-index: 1;
+  display: grid;
   place-items: center;
-  width: 2rem;
-  height: 2rem;
   flex: none;
-  border: 2px solid var(--ds-border-default);
-  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ds-radius-full);
+  border: 1.5px solid var(--ds-border-default);
   background: var(--ds-surface);
   color: var(--ds-text-secondary);
+  font: 600 var(--ds-type-time-size) / 1 var(--ds-font-family-body);
+  font-variant-numeric: tabular-nums;
+  &:empty::before { content: counter(step); }
+}
+.ds-step--done .ds-step__marker {
+  border-color: var(--ds-action-default);
+  background: var(--ds-action-default);
+  color: var(--ds-on-action);
+}
+.ds-step--current .ds-step__marker {
+  border: 2px solid var(--ds-action-default);
+  color: transparent;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border-radius: var(--ds-radius-full);
+    background: var(--ds-action-default);
+  }
+}
+.ds-step__text { display: grid; gap: 2px; min-width: 0; padding-top: 3px; @media (min-width: 600px) { padding-top: 0; } }
+.ds-step__label {
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  .ds-step--current & , .ds-step--done & { color: var(--ds-text-primary); }
+}
+.ds-step__state {
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
 }

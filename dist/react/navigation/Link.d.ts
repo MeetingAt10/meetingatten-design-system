@@ -1,9 +1,14 @@
 import { type LinkProps as AriaLinkProps } from 'react-aria-components';
+import { type IconName } from '../icon/Icon.js';
 export interface LinkProps extends Omit<AriaLinkProps, 'className' | 'children'> {
-    /** Inline link inside running text (underlined) instead of the 44px standalone link. */
-    inline?: boolean;
+    /** `inline` inside running text (default), `standalone` with an arrow that steps forward on hover, `quiet` for dense lists. */
+    variant?: 'inline' | 'standalone' | 'quiet';
+    /** Trailing icon for standalone links (default `arrow-right`; external links get `arrow-up-right`). */
+    icon?: IconName;
+    /** Opens in a new tab and says so to assistive tech. */
+    external?: boolean;
     className?: string;
     children?: React.ReactNode;
 }
-/** Navigation / Link. Links navigate; use Button for actions. */
-export declare function Link({ inline, className, children, ...rest }: LinkProps): import("react").JSX.Element;
+/** Link: links navigate, buttons act. External links say they open a new tab. */
+export declare function Link({ variant, icon, external, className, children, ...rest }: LinkProps): import("react").JSX.Element;

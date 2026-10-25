@@ -1,37 +1,42 @@
-/* Navigation / Pagination: previous, numbered pages with gaps, next. The current page is marked in text, not only by fill. */
+/* Pagination: page blocks; the current page is the solid navy block. Previous / Next keep their words.
+   <nav class="ds-pagination" aria-label="Pages"><a class="ds-page ds-page--step">..Previous</a>
+   <a class="ds-page" aria-current="page">2</a>..</nav> */
 .ds-pagination {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--ds-space-8);
-  & ul {
-    display: flex;
-    align-items: center;
-    gap: var(--ds-space-4);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+  gap: var(--ds-space-4);
 }
-.ds-pagination__page {
-  min-width: var(--ds-size-control-h);
-  height: var(--ds-size-control-h);
+.ds-page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-4);
+  min-width: var(--ds-size-control-sm);
+  height: var(--ds-size-control-sm);
   padding: 0 var(--ds-space-8);
-  border: 1px solid transparent;
+  border: 0;
   border-radius: var(--ds-radius-control);
   background: transparent;
-  color: var(--ds-action-default);
-  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  color: var(--ds-text-primary);
+  font: 600 var(--ds-type-body-small-size) / 1 var(--ds-type-body-small-font-family);
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
   cursor: pointer;
-  &:is(:hover, [data-hovered]) { background: var(--ds-info-bg); }
-  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
-  &[aria-current="page"] {
+  transition: background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  @media (pointer: coarse) { min-width: var(--ds-size-touch-min); height: var(--ds-size-touch-min); }
+  &:is(:hover, [data-hovered]) { background: var(--ds-highlight-neutral); }
+  &:is([aria-current="page"], [aria-current="true"]) {
     background: var(--ds-action-default);
     color: var(--ds-on-action);
+    box-shadow: var(--ds-btn-highlight);
   }
+  &:is([aria-disabled="true"], :disabled, [data-disabled]) { color: var(--ds-disabled-fg); background: transparent; cursor: not-allowed; }
 }
-.ds-pagination__gap {
-  padding: 0 var(--ds-space-4);
+.ds-page--step { padding-inline: var(--ds-space-12); color: var(--ds-action-default); }
+.ds-page--gap { min-width: 1.5rem; color: var(--ds-text-secondary); cursor: default; &:hover { background: transparent; } }
+.ds-pagination__summary {
+  margin-inline-end: auto;
   color: var(--ds-text-secondary);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
 }
-.ds-pagination__prev .ds-icon { transform: rotate(180deg); }

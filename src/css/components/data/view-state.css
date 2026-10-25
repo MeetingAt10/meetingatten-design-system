@@ -1,26 +1,24 @@
-/* Data / View State (loading, empty, error) + skeleton. */
+/* View state: what a data region shows when it is loading, empty, failed or restricted. The tile tone and
+   the words carry the state together; there is always a next step or an honest "nothing to do".
+   <div class="ds-view-state" role="status"><span class="ds-tile ds-tile--neutral">..</span>
+   <p class="ds-view-state__title">No reports yet</p><p class="ds-view-state__body">..</p><div class="ds-view-state__actions">..</div></div> */
 .ds-view-state {
   display: grid;
-  gap: var(--ds-space-16);
-  justify-items: start;
-  align-content: start;
-  padding: var(--ds-space-24);
-  background: var(--ds-card-bg);
-  border: 0;
-  border-radius: var(--ds-radius-card);
-  box-shadow: var(--ds-card-shadow);
-  & p {
-    margin: 0;
-    font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
-  }
+  justify-items: center;
+  gap: var(--ds-space-8);
+  padding: var(--ds-space-40) var(--ds-space-24);
+  text-align: center;
 }
-.ds-view-state--error .ds-icon { color: var(--ds-danger-fg); }
-.ds-view-state--empty .ds-icon { color: var(--ds-action-default); }
-.ds-skeleton {
-  display: block;
-  width: 100%;
-  height: 12px;
-  border-radius: var(--ds-radius-chip);
-  background: var(--ds-disabled-bg);
+.ds-view-state__title {
+  margin: var(--ds-space-8) 0 0;
+  font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
+  letter-spacing: var(--ds-type-h4-letter-spacing);
 }
-.ds-skeleton--short { width: 30%; }
+.ds-view-state__body {
+  max-width: 28rem;
+  margin: 0;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  text-wrap: pretty;
+}
+.ds-view-state__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--ds-space-8); margin-top: var(--ds-space-8); }

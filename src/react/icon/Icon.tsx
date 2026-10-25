@@ -1,27 +1,34 @@
-import { cx } from '../lib/cx.js';
+import type { Icon as PhosphorIcon, IconWeight } from '@phosphor-icons/react';
 import { ICONS, type IconName } from './icons.js';
+import { cx } from '../lib/cx.js';
 
-export type { IconName };
+export type { IconName, IconWeight, PhosphorIcon };
 
 export interface IconProps {
-  name: IconName;
-  /** 16, 20 (default) or 24px. */
-  size?: 16 | 20 | 24;
+  /** A name from the curated vocabulary (assets/icons/icons.json). */
+  name?: IconName;
+  /** Any Phosphor icon component, for glyphs outside the vocabulary: `icon={RocketLaunchIcon}`. */
+  icon?: PhosphorIcon;
+  /** 16, 20 (default), 24 or 32px. */
+  size?: 16 | 20 | 24 | 32;
+  /** `regular` for UI, `fill` for selected or current, `duotone` for lane and category icons. */
+  weight?: IconWeight;
   /** Accessible name. Omit for decorative icons next to visible text (then hidden from assistive tech). */
   label?: string;
   className?: string;
 }
 
-/** Icon from the Figma set. Inline SVG: no sprite needed in the page. Strokes follow `currentColor`. */
-export function Icon({ name, size = 20, label, className }: IconProps) {
-  const a11y = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true };
+/** Icon: Phosphor glyphs in currentColor. Weight carries emphasis: fill marks the current item. */
+export function Icon({ name, icon, size = 20, weight = 'regular', label, className }: IconProps) {
+  const Glyph = icon ?? (name ? ICONS[name] : undefined);
+  if (!Glyph) return null;
   return (
-    <svg
+    <Glyph
+      size={size}
+      weight={weight}
       className={cx('ds-icon', size !== 20 && `ds-icon--${size}`, className)}
-      viewBox="0 0 24 24"
       focusable="false"
-      {...a11y}
-      dangerouslySetInnerHTML={{ __html: ICONS[name] }}
+      {...(label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true })}
     />
   );
 }

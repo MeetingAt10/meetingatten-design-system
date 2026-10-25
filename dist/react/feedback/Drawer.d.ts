@@ -4,9 +4,11 @@ export interface DrawerProps extends Omit<ModalOverlayProps, 'className' | 'chil
     children: React.ReactNode | ((options: {
         close: () => void;
     }) => React.ReactNode);
-    /** Side the sheet opens from. */
-    placement?: 'end' | 'start';
+    /** Edge it slides from: `end` (default), `start`, or `bottom` (a bottom sheet you can swipe down to close). */
+    side?: 'end' | 'start' | 'bottom';
+    /** Ruled action row at the bottom. */
+    footer?: React.ReactNode;
     className?: string;
 }
-/** Feedback / Drawer: side sheet for secondary work (filters, details). Behaves like Modal: focus trapped, Escape closes. Open it with DialogTrigger or `isOpen`. */
-export declare function Drawer({ title, children, placement, className, ...rest }: DrawerProps): import("react").JSX.Element;
+/** Drawer: a sheet for secondary work that keeps the page in view (filters, record details, mobile navigation). Focus is trapped; Escape and the scrim close it. */
+export declare function Drawer({ title, children, side, footer, className, ...rest }: DrawerProps): import("react").JSX.Element;

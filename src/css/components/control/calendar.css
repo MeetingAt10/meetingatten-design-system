@@ -1,0 +1,72 @@
+/* Calendar: a ruled month. Today carries the now-dot; the chosen day becomes a solid block; unavailable
+   days are struck through; days outside the month stay quiet. Built on React Aria Calendar. */
+.ds-calendar {
+  display: grid;
+  gap: var(--ds-space-12);
+  width: fit-content;
+  max-width: 100%;
+}
+.ds-calendar__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-8);
+}
+.ds-calendar__title {
+  margin: 0;
+  font: 700 1rem / 1.5rem var(--ds-font-family-display);
+  letter-spacing: -0.01em;
+}
+.ds-calendar__grid {
+  border-collapse: separate;
+  border-spacing: 2px;
+  & th {
+    padding-bottom: var(--ds-space-4);
+    color: var(--ds-text-secondary);
+    font: 500 var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+    text-align: center;
+  }
+  & td { padding: 0; }
+}
+.ds-calendar__cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--ds-radius-block);
+  color: var(--ds-text-primary);
+  font: 500 var(--ds-type-body-small-size) / 1 var(--ds-type-body-small-font-family);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  outline: none;
+  transition: background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  @media (pointer: coarse) { width: var(--ds-size-touch-min); height: var(--ds-size-touch-min); }
+  &:is(:hover, [data-hovered]) { background: var(--ds-highlight-schedule); }
+  &[data-focus-visible] { outline: var(--ds-size-focus-ring) solid var(--ds-focus); outline-offset: 1px; }
+  &[data-today]::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: calc(50% - 2px);
+    width: 4px;
+    height: 4px;
+    border-radius: var(--ds-radius-full);
+    background: var(--ds-now);
+  }
+  &[data-selected] {
+    background: var(--ds-action-default);
+    color: var(--ds-on-action);
+    font-weight: 700;
+    &::after { background: var(--ds-on-action); }
+  }
+  &[data-unavailable] {
+    color: var(--ds-text-secondary);
+    text-decoration: line-through;
+    cursor: not-allowed;
+    &:hover { background: transparent; }
+  }
+  &[data-disabled] { color: var(--ds-disabled-fg); cursor: not-allowed; &:hover { background: transparent; } }
+  &[data-outside-month] { visibility: hidden; }
+  &[data-invalid][data-selected] { background: var(--ds-danger-action); color: var(--ds-danger-on-action); }
+}

@@ -1,31 +1,30 @@
-/* Navigation / Breadcrumbs: path to the current page; the last item is the current page, not a link. */
+/* Breadcrumbs: where this page sits. The current page is plain text (aria-current), never a link.
+   <nav aria-label="Breadcrumbs"><ol class="ds-breadcrumbs"><li class="ds-breadcrumbs__item"><a class="ds-breadcrumbs__link">Reports</a></li>
+   <li class="ds-breadcrumbs__item"><span aria-current="page">DEMO-024</span></li></ol></nav> */
 .ds-breadcrumbs {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--ds-space-4);
+  gap: var(--ds-space-4) 0;
   margin: 0;
   padding: 0;
   list-style: none;
   font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
 }
-.ds-breadcrumb {
+.ds-breadcrumbs__item {
   display: inline-flex;
   align-items: center;
-  gap: var(--ds-space-4);
   color: var(--ds-text-secondary);
-}
-.ds-breadcrumb__link {
-  padding: 2px var(--ds-space-4);
-  border-radius: var(--ds-radius-chip);
-  color: var(--ds-action-default);
-  text-decoration: none;
-  &:is(:hover, [data-hovered]) { text-decoration: underline; }
-  &:is(:focus-visible, [data-focus-visible]) { box-shadow: var(--ds-ring); }
-  &:is([aria-current="page"], [data-current]) {
-    color: var(--ds-text-primary);
-    font-weight: 600;
-    text-decoration: none;
-    cursor: default;
+  &:not(:last-child)::after {
+    content: "/";
+    margin-inline: var(--ds-space-8);
+    color: var(--ds-border-default);
   }
+  & [aria-current] { color: var(--ds-text-primary); font-weight: 600; }
+}
+.ds-breadcrumbs__link {
+  color: var(--ds-text-secondary);
+  text-decoration: none;
+  border-radius: 2px;
+  &:is(:hover, [data-hovered]) { color: var(--ds-text-primary); text-decoration: underline; text-underline-offset: 0.22em; }
 }

@@ -1,0 +1,89 @@
+/* Table: a ruled sheet. The caption names it, column headers stay pinned while the body scrolls, the
+   reference cell is the row header (tabular mono), hovering a row takes the schedule wash.
+   The wrapper is a focusable region named by the caption so keyboard users can scroll it.
+   <div class="ds-table-wrap" role="region" aria-labelledby="cap" tabindex="0"><table class="ds-table">
+   <caption id="cap">Own reports</caption><thead><tr><th scope="col">Reference</th>..</tr></thead><tbody>..</tbody></table></div> */
+.ds-table-wrap {
+  max-width: 100%;
+  overflow: auto;
+  border: var(--ds-size-rule) solid var(--ds-sheet-rule);
+  border-radius: var(--ds-radius-sheet);
+  background: var(--ds-sheet-bg);
+  &:focus-visible { outline: var(--ds-size-focus-ring) solid var(--ds-focus); outline-offset: var(--ds-size-focus-offset); }
+}
+.ds-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--ds-text-primary);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  font-variant-numeric: tabular-nums;
+  & caption {
+    padding: var(--ds-space-16) var(--ds-space-20) var(--ds-space-12);
+    caption-side: top;
+    text-align: start;
+    font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
+    letter-spacing: var(--ds-type-h4-letter-spacing);
+  }
+  & :is(thead th, [role="columnheader"]) {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: var(--ds-space-8) var(--ds-space-16);
+    border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+    background: var(--ds-sheet-bg);
+    color: var(--ds-text-secondary);
+    font: 600 var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+    text-align: start;
+    white-space: nowrap;
+    outline-offset: -2px;
+  }
+  & :is(tbody td, tbody th, [role="rowheader"], [role="gridcell"]) {
+    padding: var(--ds-space-12) var(--ds-space-16);
+    border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+    text-align: start;
+    vertical-align: middle;
+    font-weight: 400;
+    outline-offset: -2px;
+  }
+  & tbody tr:last-child > * { border-bottom: 0; }
+  & tbody tr { transition: background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out); outline-offset: -2px; }
+  & tbody tr:is(:hover, [data-hovered]) { background: var(--ds-highlight-schedule); }
+  & tbody tr:is([aria-selected="true"], [data-selected]) { background: var(--ds-info-bg); }
+}
+[data-density="compact"] .ds-table :is(tbody td, tbody th, [role="rowheader"], [role="gridcell"]) { padding-block: var(--ds-space-8); }
+.ds-table__ref {
+  font: 500 0.8125rem / 1.25rem var(--ds-font-family-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  white-space: nowrap;
+}
+.ds-table :is(th, td).ds-table__num { text-align: end; }
+/* Dates and times never break inside a value ("2026-10-21" stays on one line). */
+.ds-table time { white-space: nowrap; }
+/* Selection: a check leads each row (and "Select all" heads the column), so selection shows in the box as well as the tint. */
+.ds-table :is(th, td, [role="columnheader"], [role="gridcell"]).ds-table__check {
+  width: 52px;
+  padding-block: 0;
+  padding-inline: var(--ds-space-16) 0;
+  & .ds-check { min-height: 24px; min-width: 24px; align-items: center; }
+  & .ds-check__box { margin-top: 0; }
+}
+.ds-table :is(th, td).ds-table__actions { text-align: end; white-space: nowrap; }
+.ds-table__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  & > .ds-icon { opacity: 0.5; }
+  [aria-sort="ascending"] > & > .ds-icon, [aria-sort="descending"] > & > .ds-icon { opacity: 1; color: var(--ds-action-default); }
+}
+.ds-table :is(td, th).ds-table__empty {
+  padding: var(--ds-space-40) var(--ds-space-16);
+  color: var(--ds-text-secondary);
+  text-align: center;
+}

@@ -1,0 +1,28 @@
+/* Highlight: a highlighter stroke behind words that matter (search hits, the phrase a heading turns on).
+   It swipes in from the left once visible. Tones: mark (yellow, default), community, consult, schedule.
+   <mark class="ds-highlight">your own records</mark> */
+.ds-highlight {
+  --hl: var(--ds-highlight-mark);
+  padding: 0 0.12em;
+  margin: 0 -0.04em;
+  border-radius: 2px;
+  background-color: transparent;
+  background-image: linear-gradient(var(--hl), var(--hl));
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: inherit;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size var(--ds-motion-duration-deliberate) var(--ds-motion-ease-out);
+  @starting-style { background-size: 0% 100%; }
+}
+.ds-highlight--community { --hl: var(--ds-highlight-community); }
+.ds-highlight--consult { --hl: var(--ds-highlight-consult); }
+.ds-highlight--schedule { --hl: var(--ds-highlight-schedule); }
+/* Under the lower half of the line only: for display headlines. */
+.ds-highlight--under {
+  padding: 0 0.06em;
+  background-size: 100% 0.42em;
+  background-position: 0 88%;
+  @starting-style { background-size: 0% 0.42em; }
+}

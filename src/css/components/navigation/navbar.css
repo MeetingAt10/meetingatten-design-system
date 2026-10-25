@@ -1,46 +1,55 @@
-/* Navigation / Navbar: landing top navigation; links move into a menu panel under 1024px. */
+/* Navbar (landing, Meeting At 10): wordmark, a few links, the primary action. The current link carries
+   a 2px rule like a selected tab. Below 768px the links move into a menu sheet.
+   <header class="ds-navbar"><div class="ds-navbar__inner ds-container"><a class="ds-navbar__brand">..</a>
+   <nav class="ds-navbar__links" aria-label="Main"><a class="ds-navbar__link" aria-current="page">Community</a>..</nav>
+   <div class="ds-navbar__actions">..</div></div></header> */
 .ds-navbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--ds-z-sticky);
+  background: var(--ds-canvas);
+  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+}
+.ds-navbar--transparent { background: transparent; border-bottom-color: transparent; position: relative; }
+.ds-navbar__inner {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--ds-space-8) var(--ds-space-24);
-  min-height: var(--ds-size-topbar-h);
-  border-bottom: 1px solid var(--ds-border-subtle);
-  & .ds-link[aria-current="page"] { background: var(--ds-info-bg); }
+  gap: var(--ds-space-16) var(--ds-space-32);
+  min-height: 68px;
 }
-.ds-navbar__brand {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ds-space-8);
-  color: var(--ds-text-primary);
-  font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
-  text-decoration: none;
-  border-radius: var(--ds-radius-control);
-  &:focus-visible { box-shadow: var(--ds-ring); }
-}
+.ds-navbar__brand { display: inline-flex; align-items: center; gap: var(--ds-space-12); text-decoration: none; color: inherit; flex: none; }
 .ds-navbar__links {
   display: none;
-  gap: var(--ds-space-8);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  @media (min-width: 1024px) { display: flex; }
-}
-.ds-navbar__actions {
-  display: flex;
   align-items: center;
-  gap: var(--ds-space-8);
-}
-.ds-navbar__toggle {
-  @media (min-width: 1024px) { display: none; }
-}
-.ds-navbar__panel {
-  display: grid;
-  flex-basis: 100%;
   gap: var(--ds-space-4);
-  margin: 0;
-  padding: 0 0 var(--ds-space-16);
-  list-style: none;
-  @media (min-width: 1024px) { display: none; }
+  margin-inline: auto;
+  @media (min-width: 768px) { display: flex; }
 }
+.ds-navbar__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 var(--ds-space-12);
+  border-radius: var(--ds-radius-control);
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  text-decoration: none;
+  transition: color var(--ds-motion-duration-quick) var(--ds-motion-ease-out), background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  &:is(:hover, [data-hovered]) { color: var(--ds-text-primary); background: var(--ds-highlight-neutral); }
+  &:is([aria-current="page"], [aria-current="true"]) {
+    color: var(--ds-text-primary);
+    &::after {
+      content: "";
+      position: absolute;
+      inset-inline: var(--ds-space-12);
+      bottom: -14px;
+      height: 2px;
+      border-radius: 2px 2px 0 0;
+      background: var(--ds-action-default);
+    }
+  }
+}
+.ds-navbar__actions { display: flex; align-items: center; gap: var(--ds-space-8); margin-inline-start: auto; @media (min-width: 768px) { margin-inline-start: 0; } }
+.ds-navbar__menu { @media (min-width: 768px) { display: none; } }
+.ds-navbar__sheet { display: grid; gap: 2px; padding: var(--ds-space-8); }

@@ -1,32 +1,32 @@
 import { cx } from '../lib/cx.js';
 
 export interface HeroProps {
-  eyebrow?: React.ReactNode;
-  /** The page's h1. */
+  /** Brand or room plate above the headline: a DoorPlate on ACCS surfaces, the Logo on Meeting At 10. */
+  plate?: React.ReactNode;
+  /** The page's h1, at display size. */
   title: React.ReactNode;
   lead?: React.ReactNode;
   /** One primary and at most one secondary action. */
   actions?: React.ReactNode;
-  /** Preview column from 1024px (for example a short stack of collection cards). */
-  aside?: React.ReactNode;
-  /** Decorative washes behind the hero. Default true. */
-  wash?: boolean;
+  /** Small print under the actions ("Sample schedule; not live availability"). */
+  note?: React.ReactNode;
+  /** The artifact column from 1024px: the product at work (usually a Timetable), at the scale it has in use. */
+  art?: React.ReactNode;
   className?: string;
 }
 
-/** Hero: page opener with eyebrow, h1, lead, actions and an optional preview. */
-export function Hero({ eyebrow, title, lead, actions, aside, wash = true, className }: HeroProps) {
+/** Hero: the first viewport as a thesis. Copy on the left; the product doing its job on the right. */
+export function Hero({ plate, title, lead, actions, note, art, className }: HeroProps) {
   return (
-    <div className={cx(wash && 'ds-wash', className) || undefined}>
-      <section className="ds-container ds-hero">
-        <div>
-          {eyebrow && <p className="ds-eyebrow">{eyebrow}</p>}
-          <h1 className="ds-type-display ds-hero__title">{title}</h1>
-          {lead && <p className="ds-type-body-large ds-secondary ds-hero__lead">{lead}</p>}
-          {actions && <div className="ds-row ds-hero__actions">{actions}</div>}
-        </div>
-        {aside && <div className="ds-stack">{aside}</div>}
-      </section>
-    </div>
+    <section className={cx('ds-container ds-hero', className)}>
+      <div className="ds-hero__copy">
+        {plate}
+        <h1 className="ds-hero__title">{title}</h1>
+        {lead && <p className="ds-hero__lead">{lead}</p>}
+        {actions && <div className="ds-hero__actions">{actions}</div>}
+        {note && <p className="ds-hero__note">{note}</p>}
+      </div>
+      {art && <div className="ds-hero__art">{art}</div>}
+    </section>
   );
 }

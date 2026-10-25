@@ -1,0 +1,138 @@
+/* Time block: the unit of the Office Hours world. Its lane color owns the whole block at full strength;
+   the time code sits on top in tabular mono, the title below, meta last.
+   Lanes: --schedule (navy, default), --community (violet), --consult (teal), --restricted (hatched paper, no hue).
+   Line forms for availability: --open (solid outline), --pending (dashed outline), --taken (hatched, with a word),
+   --disabled (struck). Interactive blocks (a, button) lift on hover; choosing one isolates it (see .ds-isolate).
+   <article class="ds-block ds-block--consult">
+     <time class="ds-block__time">10:00-10:30</time><p class="ds-block__title">Course planning</p><p class="ds-block__meta">CCS 304</p>
+   </article> */
+.ds-block {
+  --block-fill: var(--ds-action-default);
+  --block-ink: var(--ds-on-action);
+  --block-line: var(--ds-action-default);
+  --block-wash: var(--ds-highlight-schedule);
+  --block-text: var(--ds-action-default);
+  position: relative;
+  display: grid;
+  grid-auto-rows: max-content;
+  align-content: start;
+  gap: 2px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: var(--ds-space-8) var(--ds-space-12);
+  border: var(--ds-size-rule) solid transparent;
+  border-radius: var(--ds-radius-block);
+  background: var(--block-fill);
+  color: var(--block-ink);
+  font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
+  text-align: start;
+  text-decoration: none;
+  overflow: hidden;
+  transition:
+    translate var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy),
+    box-shadow var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    opacity var(--ds-motion-duration-base) var(--ds-motion-ease-out),
+    background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  & > * { margin: 0; min-width: 0; }
+}
+.ds-block__time {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-4);
+  font: var(--ds-type-time-font-weight) var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-type-time-font-family);
+  letter-spacing: var(--ds-type-time-letter-spacing);
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+.ds-block__title {
+  font: 600 var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  letter-spacing: var(--ds-type-label-letter-spacing);
+  overflow-wrap: normal;
+  word-break: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.ds-block__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px var(--ds-space-8);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+}
+.ds-block__icon { position: absolute; top: var(--ds-space-8); inset-inline-end: var(--ds-space-8); }
+
+/* Lanes */
+.ds-block--community {
+  --block-fill: var(--ds-accent-default); --block-ink: var(--ds-accent-on-solid);
+  --block-line: var(--ds-accent-border); --block-wash: var(--ds-highlight-community); --block-text: var(--ds-accent-fg);
+}
+.ds-block--consult {
+  --block-fill: var(--ds-secondary-default); --block-ink: var(--ds-secondary-on-solid);
+  --block-line: var(--ds-secondary-border); --block-wash: var(--ds-highlight-consult); --block-text: var(--ds-secondary-fg);
+}
+.ds-block--restricted {
+  --block-fill: var(--ds-surface); --block-ink: var(--ds-text-primary);
+  --block-line: var(--ds-border-default); --block-wash: var(--ds-highlight-neutral); --block-text: var(--ds-text-primary);
+  border-color: var(--ds-border-default);
+  background-image: var(--ds-hatch);
+}
+
+/* Line forms */
+.ds-block--open {
+  background: var(--ds-surface);
+  border-color: var(--block-line);
+  color: var(--block-text);
+}
+.ds-block--pending {
+  background: var(--ds-surface);
+  border: var(--ds-size-rule) dashed var(--block-line);
+  color: var(--block-text);
+}
+.ds-block--taken {
+  background: var(--ds-surface);
+  background-image: var(--ds-hatch);
+  border-color: var(--ds-border-subtle);
+  color: var(--ds-text-secondary);
+}
+/* On hatching, text sits on small paper labels so the lines never cross it. */
+:is(.ds-block--taken, .ds-block--restricted) > :is(.ds-block__time, .ds-block__title, .ds-block__meta) {
+  justify-self: start;
+  max-width: 100%;
+  padding: 0 3px;
+  margin-inline-start: -3px;
+  border-radius: 2px;
+  background: var(--ds-surface);
+}
+.ds-block--disabled {
+  background: var(--ds-surface);
+  border-color: var(--ds-border-subtle);
+  color: var(--ds-text-secondary);
+  & .ds-block__title { text-decoration: line-through; text-decoration-thickness: 1px; }
+}
+
+/* Interactive blocks lift off the sheet; selection fills the lane and shows a check. */
+:is(a, button, [role="button"], [role="radio"], [role="option"]).ds-block {
+  cursor: pointer;
+  &:is(:hover, [data-hovered], .is-hover):not([aria-disabled="true"], [data-disabled]) {
+    translate: 0 var(--ds-lift);
+    box-shadow: var(--ds-block-shadow);
+  }
+  &:is(:active, [data-pressed], .is-pressed) { translate: 0 0; box-shadow: none; }
+  &:is([aria-disabled="true"], [data-disabled]) { cursor: not-allowed; }
+}
+.ds-block:is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"], [data-selected], .is-selected) {
+  background: var(--block-fill);
+  background-image: none;
+  border-color: transparent;
+  color: var(--block-ink);
+}
+
+/* Isolate on select: inside a .ds-isolate group, hovering or choosing a block dims its neighbours one step. */
+.ds-isolate:has(.ds-block:is(:hover, [data-hovered], [data-selected], [aria-checked="true"], :focus-visible)) .ds-block:not(:hover, [data-hovered], [data-selected], [aria-checked="true"], :focus-visible) {
+  opacity: 0.55;
+}
+
+/* Blocks drop into their cells once, from a visible state (transform only). */
+.ds-block--enter { animation: ds-drop-in var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy) backwards; }

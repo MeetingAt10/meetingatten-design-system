@@ -1,63 +1,77 @@
 {
-  "$description": "Component and interaction dimensions read from the Figma components (frames-components.json) and Foundations 03.5. They are not Figma variables.",
+  "$description": "Component dimensions. Controls sit on the 8px row module (40/48/56); coarse pointers get at least 44px.",
   "size": {
     "$type": "dimension",
-    "button-h": {
-      "$value": "48px",
-      "$description": "Buttons, tabs, nav items (Control / Button *, Navigation / Tab, Navigation / Item)"
+    "control-sm": {
+      "$value": "40px"
     },
-    "control-h": {
-      "$value": "44px",
-      "$description": "Text field, search, select option, link, icon button; mobile minimum target"
+    "control-md": {
+      "$value": "48px"
+    },
+    "control-lg": {
+      "$value": "56px"
     },
     "target-min": {
       "$value": "24px",
-      "$description": "WCAG 2.2 AA minimum; 44px+ recommended on mobile with 8px separation"
+      "$description": "WCAG 2.5.8 minimum"
     },
-    "sidebar-w": {
-      "$value": "15rem"
-    },
-    "topbar-h": {
-      "$value": "72px"
+    "touch-min": {
+      "$value": "44px",
+      "$description": "minimum on coarse pointers"
     },
     "textarea-h": {
-      "$value": "112px"
+      "$value": "128px"
+    },
+    "sidebar-w": {
+      "$value": "16rem"
+    },
+    "topbar-h": {
+      "$value": "64px"
     },
     "focus-ring": {
-      "$value": "3px",
-      "$description": "color/focus ring"
+      "$value": "2px"
     },
     "focus-offset": {
-      "$value": "2px",
-      "$description": "surface-colored gap between control and ring"
+      "$value": "2px"
     },
     "icon-16": {
-      "$value": "16px",
-      "$description": "stroke 1.5px"
+      "$value": "16px"
     },
     "icon-20": {
-      "$value": "20px",
-      "$description": "stroke 1.75px"
+      "$value": "20px"
     },
     "icon-24": {
-      "$value": "24px",
-      "$description": "stroke 2px"
+      "$value": "24px"
     },
-    "12": {
-      "$value": "12px",
-      "$description": "Component-internal inset/gap used by Consultation Slot, Navigation Item, Inline Alert, Toast (in Figma components, not in Dimensions)"
+    "icon-32": {
+      "$value": "32px"
     },
-    "20": {
-      "$value": "20px",
-      "$description": "Report Record padding (in Figma component, not in Dimensions)"
+    "check": {
+      "$value": "20px"
     },
-    "eyebrow": {
-      "$value": "0.6875rem",
-      "$description": "NOT IN FIGMA: mono eyebrow and tag label size (11px)"
+    "switch-w": {
+      "$value": "44px"
     },
-    "eyebrow-line": {
-      "$value": "1rem",
-      "$description": "NOT IN FIGMA: mono eyebrow and tag line height (16px)"
+    "switch-h": {
+      "$value": "24px"
+    },
+    "hour-row": {
+      "$value": "48px"
+    },
+    "hour-row-compact": {
+      "$value": "40px"
+    },
+    "time-col": {
+      "$value": "3.5rem"
+    },
+    "now-line": {
+      "$value": "2px"
+    },
+    "now-dot": {
+      "$value": "8px"
+    },
+    "rule": {
+      "$value": "1px"
     }
   }
 }

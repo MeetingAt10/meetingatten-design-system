@@ -7,5 +7,5 @@ export interface SelectProps<T extends object> extends Omit<AriaSelectProps<T>, 
     children: React.ReactNode | ((item: T) => React.ReactNode);
     className?: string;
 }
-/** Control / Select: pick one option from a short list. */
+/** Select: pick one option from a short list. The trigger matches the text input; the list floats on a sheet. */
 export declare function Select<T extends object>({ label, description, errorMessage, items, children, className, ...rest }: SelectProps<T>): import("react").JSX.Element;

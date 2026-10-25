@@ -1,0 +1,63 @@
+/* Agenda: features or steps as ruled rows of a schedule (never a row of same-size icon cards). Each row
+   leads with a lane chip (a small solid block with a time or lane name), then the title, the text and a link.
+   <ol class="ds-agenda"><li class="ds-agenda__item"><span class="ds-agenda__chip ds-agenda__chip--community">Community</span>
+   <div class="ds-agenda__text"><h3 class="ds-agenda__title">..</h3><p class="ds-agenda__body">..</p></div>
+   <a class="ds-link ds-link--standalone ds-agenda__action">..</a></li></ol> */
+.ds-agenda {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
+}
+.ds-agenda__item {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  align-items: start;
+  & > .ds-agenda__action { grid-column: 2; }
+  gap: var(--ds-space-12) var(--ds-space-32);
+  padding-block: var(--ds-space-24);
+  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+  @media (min-width: 768px) {
+    grid-template-columns: 9rem minmax(0, 1fr) auto;
+    & > .ds-agenda__action { grid-column: auto; }
+    align-items: start;
+    padding-block: var(--ds-space-32);
+  }
+}
+.ds-agenda__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-8);
+  justify-self: start;
+  min-height: 28px;
+  padding: 0 var(--ds-space-8);
+  border-radius: var(--ds-radius-block);
+  background: var(--ds-action-default);
+  color: var(--ds-on-action);
+  font: 600 var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ds-agenda__chip--community { background: var(--ds-accent-default); color: var(--ds-accent-on-solid); }
+.ds-agenda__chip--consult { background: var(--ds-secondary-default); color: var(--ds-secondary-on-solid); }
+.ds-agenda__chip--restricted {
+  background: var(--ds-surface);
+  color: var(--ds-text-primary);
+  box-shadow: inset 0 0 0 1px var(--ds-border-default);
+  &::before { content: ""; width: 10px; height: 10px; border-radius: 2px; box-shadow: inset 0 0 0 1px var(--ds-text-primary); background-image: var(--ds-hatch-strong); }
+}
+.ds-agenda__text { display: grid; gap: var(--ds-space-8); min-width: 0; max-width: 40rem; }
+.ds-agenda__title {
+  margin: 0;
+  font: var(--ds-type-h3-font-weight) var(--ds-type-h3-size) / var(--ds-type-h3-line-height) var(--ds-type-h3-font-family);
+  letter-spacing: var(--ds-type-h3-letter-spacing);
+  text-wrap: balance;
+}
+.ds-agenda__body {
+  margin: 0;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
+  text-wrap: pretty;
+}
+.ds-agenda__action { justify-self: start; @media (min-width: 768px) { padding-top: var(--ds-space-4); } }

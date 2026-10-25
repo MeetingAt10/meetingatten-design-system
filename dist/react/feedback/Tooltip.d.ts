@@ -1,12 +1,12 @@
-import { type TooltipProps as AriaTooltipProps } from 'react-aria-components';
-export interface TooltipProps {
+import { TooltipTrigger, type TooltipProps as AriaTooltipProps } from 'react-aria-components';
+export { TooltipTrigger };
+export interface TooltipProps extends Omit<AriaTooltipProps, 'className' | 'children'> {
     /** Short text. Never the only place for essential information, and never interactive. */
-    content: React.ReactNode;
-    /** A focusable React Aria trigger, usually an IconButton. */
-    children: React.ReactElement;
-    /** Hover delay in ms (keyboard focus shows it at once). */
-    delay?: number;
-    placement?: AriaTooltipProps['placement'];
+    children: React.ReactNode;
+    className?: string;
 }
-/** Feedback / Tooltip: label for an icon control, on the inverse surface. Shows on hover and keyboard focus; Escape hides it. */
-export declare function Tooltip({ content, children, delay, placement }: TooltipProps): import("react").JSX.Element;
+/**
+ * Tooltip: the ink plate naming an icon control. Put it inside a TooltipTrigger after a focusable React Aria trigger:
+ * `<TooltipTrigger><IconButton .../><Tooltip>Notifications</Tooltip></TooltipTrigger>` (IconButton does this for you).
+ */
+export declare function Tooltip({ children, placement, offset, className, ...rest }: TooltipProps): import("react").JSX.Element;

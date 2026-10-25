@@ -1,14 +1,31 @@
-/* Feedback / Popover: small non-modal dialog anchored to its trigger. */
-.ds-popover-panel {
-  display: grid;
-  gap: var(--ds-space-8);
-  max-width: 20rem;
-  padding: var(--ds-space-16);
-  background: var(--ds-card-bg);
-  color: var(--ds-text-primary);
-  border-radius: var(--ds-radius-tile);
+/* Popover: a floating sheet anchored to its trigger. It emerges from the trigger's side (placement-aware)
+   and holds listboxes, menus, calendars or a short dialog. */
+.ds-popover {
+  --pop-from: 0 -6px;
+  max-width: calc(100vw - 2 * var(--ds-space-16));
+  max-height: var(--visual-viewport-height, 80vh);
+  border-radius: var(--ds-radius-sheet);
+  background: var(--ds-overlay-bg);
   box-shadow: var(--ds-overlay-shadow);
+  color: var(--ds-text-primary);
   outline: none;
-  & > :is(h2, h3, h4) { margin: 0; }
-  & > p { margin: 0; }
+  overflow: auto;
+  &[data-placement="top"] { --pop-from: 0 6px; }
+  &[data-placement="left"] { --pop-from: 6px 0; }
+  &[data-placement="right"] { --pop-from: -6px 0; }
+  &[data-entering] { animation: ds-pop-in var(--ds-motion-duration-base) var(--ds-motion-ease-out); }
+  &[data-exiting] { animation: ds-fade-out var(--ds-motion-duration-quick) var(--ds-motion-ease-exit); }
+}
+@keyframes ds-pop-in { from { opacity: 0; translate: var(--pop-from); } }
+.ds-popover__dialog { padding: var(--ds-space-16); outline: none; display: grid; gap: var(--ds-space-12); }
+.ds-popover__title {
+  margin: 0;
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+}
+.ds-popover__arrow {
+  display: block;
+  fill: var(--ds-overlay-bg);
+  [data-placement="bottom"] & { rotate: 180deg; }
+  [data-placement="left"] & { rotate: -90deg; }
+  [data-placement="right"] & { rotate: 90deg; }
 }

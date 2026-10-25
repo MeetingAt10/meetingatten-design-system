@@ -1,11 +1,36 @@
 {
-  "$description": "Families from the Figma text styles; the fallback stacks are added here (not in Figma).",
+  "$description": "Pinned families (user decision 2026-10-25): Plus Jakarta Sans for display, Inter for body, JetBrains Mono for times, codes and code. The fontsource variable names come first (dist/fonts.css self-hosts them); next/font apps map their own variables in front.",
   "font": {
     "family": {
       "$type": "fontFamily",
-      "display": { "$value": ["Plus Jakarta Sans", "ui-sans-serif", "system-ui", "sans-serif"] },
-      "body": { "$value": ["Inter", "ui-sans-serif", "system-ui", "sans-serif"] },
-      "mono": { "$value": ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"] }
+      "display": {
+        "$value": [
+          "Plus Jakarta Sans Variable",
+          "Plus Jakarta Sans",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif"
+        ]
+      },
+      "body": {
+        "$value": [
+          "Inter Variable",
+          "Inter",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif"
+        ]
+      },
+      "mono": {
+        "$value": [
+          "JetBrains Mono Variable",
+          "JetBrains Mono",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "monospace"
+        ]
+      }
     }
   }
 }

@@ -1,22 +1,26 @@
 "use client";
-import { TooltipTrigger, Tooltip as AriaTooltip, type TooltipProps as AriaTooltipProps } from 'react-aria-components';
+import { Tooltip as AriaTooltip, OverlayArrow, TooltipTrigger, type TooltipProps as AriaTooltipProps } from 'react-aria-components';
+import { cx } from '../lib/cx.js';
 
-export interface TooltipProps {
+export { TooltipTrigger };
+
+export interface TooltipProps extends Omit<AriaTooltipProps, 'className' | 'children'> {
   /** Short text. Never the only place for essential information, and never interactive. */
-  content: React.ReactNode;
-  /** A focusable React Aria trigger, usually an IconButton. */
-  children: React.ReactElement;
-  /** Hover delay in ms (keyboard focus shows it at once). */
-  delay?: number;
-  placement?: AriaTooltipProps['placement'];
+  children: React.ReactNode;
+  className?: string;
 }
 
-/** Feedback / Tooltip: label for an icon control, on the inverse surface. Shows on hover and keyboard focus; Escape hides it. */
-export function Tooltip({ content, children, delay = 600, placement = 'top' }: TooltipProps) {
+/**
+ * Tooltip: the ink plate naming an icon control. Put it inside a TooltipTrigger after a focusable React Aria trigger:
+ * `<TooltipTrigger><IconButton .../><Tooltip>Notifications</Tooltip></TooltipTrigger>` (IconButton does this for you).
+ */
+export function Tooltip({ children, placement = 'top', offset = 8, className, ...rest }: TooltipProps) {
   return (
-    <TooltipTrigger delay={delay}>
+    <AriaTooltip {...rest} placement={placement} offset={offset} className={cx('ds-tooltip', className)}>
+      <OverlayArrow>
+        <svg width={10} height={6} viewBox="0 0 10 6" className="ds-tooltip__arrow" aria-hidden="true"><path d="M0 0 L5 6 L10 0" /></svg>
+      </OverlayArrow>
       {children}
-      <AriaTooltip placement={placement} offset={6} className="ds-tooltip">{content}</AriaTooltip>
-    </TooltipTrigger>
+    </AriaTooltip>
   );
 }

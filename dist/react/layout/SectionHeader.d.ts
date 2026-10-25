@@ -1,13 +1,14 @@
 export interface SectionHeaderProps {
-    /** Short mono label above the heading. */
-    eyebrow?: React.ReactNode;
     title: React.ReactNode;
-    /** Heading level; default 2 (use 1 when it heads the page). The visual size stays H1. */
+    /** Heading level; default 2 (1 when it heads the page, which also sets the page-title size). */
     level?: 1 | 2 | 3;
     description?: React.ReactNode;
-    /** Optional action, for example a Link or secondary Button. */
-    action?: React.ReactNode;
+    /** Buttons or links; on the right from 768px when `split`. */
+    actions?: React.ReactNode;
+    split?: boolean;
+    /** id of the heading, to name the section (`aria-labelledby`). */
+    id?: string;
     className?: string;
 }
-/** Section Header: eyebrow, heading, lead and optional action above a section. */
-export declare function SectionHeader({ eyebrow, title, level, description, action, className }: SectionHeaderProps): import("react").JSX.Element;
+/** Section header: the heading carries its own weight (no label above it), an optional description and actions. */
+export declare function SectionHeader({ title, level, description, actions, split, id, className }: SectionHeaderProps): import("react").JSX.Element;

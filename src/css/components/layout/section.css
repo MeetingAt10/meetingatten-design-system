@@ -1,5 +1,13 @@
-/* Layout / Section band: full-width surface band between canvas sections. */
-.ds-band {
+/* Section variants (spacing follows density, see base layout): a full-width paper band, or a door-plate
+   band where color owns the whole region (one per page, usually the closing call to action). */
+.ds-section--sheet {
   background: var(--ds-surface);
-  border-block: 1px solid var(--ds-border-subtle);
+  border-block: var(--ds-size-rule) solid var(--ds-border-subtle);
 }
+.ds-section--plate {
+  background: var(--ds-plate-bg);
+  color: var(--ds-plate-fg);
+  & :where(.ds-lead, .ds-secondary, .ds-section-header__description) { color: var(--ds-plate-fg); }
+  & .ds-btn--secondary { background: transparent; color: var(--ds-plate-fg); border-color: var(--ds-plate-fg); }
+}
+.ds-section--tight { padding-block: var(--ds-space-32); @media (min-width: 1024px) { padding-block: var(--ds-space-48); } }

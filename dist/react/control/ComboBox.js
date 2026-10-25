@@ -5,6 +5,6 @@ import { Field } from './Field.js';
 import { Icon } from '../icon/Icon.js';
 import { cx } from '../lib/cx.js';
 /** ComboBox: type to filter a longer list, then pick one option. */
-export function ComboBox({ label, description, errorMessage, items, children, placeholder, className, ...rest }) {
-    return (_jsxs(AriaComboBox, { ...rest, className: cx('ds-field', className), children: [_jsx(Field, { label: label, description: description, errorMessage: errorMessage, isRequired: rest.isRequired, children: _jsxs("div", { className: "ds-combobox", children: [_jsx(Input, { placeholder: placeholder }), _jsx(Button, { className: "ds-field-button", children: _jsx(Icon, { name: "chevron", size: 16 }) })] }) }), _jsx(Popover, { className: "ds-popover", children: _jsx(ListBox, { className: "ds-listbox", items: items, children: children }) })] }));
+export function ComboBox({ label, description, errorMessage, items, children, placeholder, emptyMessage = 'No matches', className, ...rest }) {
+    return (_jsxs(AriaComboBox, { allowsEmptyCollection: true, ...rest, className: cx('ds-field', className), children: [_jsx(Field, { label: label, description: description, errorMessage: errorMessage, isRequired: rest.isRequired, children: _jsxs("div", { className: "ds-combobox", children: [_jsx(Input, { className: "ds-input", placeholder: placeholder }), _jsx(Button, { className: "ds-icon-btn ds-combobox__button", children: _jsx(Icon, { name: "caret-down", size: 16 }) })] }) }), _jsx(Popover, { className: "ds-popover", offset: 6, children: _jsx(ListBox, { className: "ds-listbox", items: items, renderEmptyState: () => _jsx("p", { className: "ds-listbox__empty", children: emptyMessage }), children: children }) })] }));
 }

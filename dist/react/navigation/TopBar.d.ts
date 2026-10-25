@@ -1,9 +1,11 @@
 export interface TopBarProps {
-    /** Workspace title (hidden under 600px). Not the page heading: keep the h1 in the content. */
+    /** Page title shown in the strip. */
     title?: React.ReactNode;
+    /** Element for the title: `p` (default, the page keeps its own h1) or `h1` when the strip is the page heading. */
+    titleAs?: 'p' | 'h1';
     /** Search, notifications and other tools, right-aligned. */
     tools?: React.ReactNode;
     className?: string;
 }
-/** Navigation / Top Bar: 72px admin header above the content. */
-export declare function TopBar({ title, tools, className }: TopBarProps): import("react").JSX.Element;
+/** Top bar: the workspace title strip with tools on the right. */
+export declare function TopBar({ title, titleAs: Title, tools, className }: TopBarProps): import("react").JSX.Element;

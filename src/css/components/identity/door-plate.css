@@ -1,0 +1,49 @@
+/* Door plate: the name plate on a faculty door, used as the ACCS wordmark (until a logo is approved), page
+   title plates and room labels. Navy plate with white display type in light; pale-blue plate in dark.
+   <span class="ds-plate"><span class="ds-plate__name">ACCS</span><span class="ds-plate__code">CCS 304</span></span> */
+.ds-plate {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-8);
+  min-height: 32px;
+  padding: 0 var(--ds-space-12);
+  border-radius: var(--ds-radius-plate);
+  background: var(--ds-plate-bg);
+  color: var(--ds-plate-fg);
+  box-shadow: var(--ds-plate-shadow);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ds-plate__name {
+  font: 800 1.0625rem / 1 var(--ds-font-family-display);
+  letter-spacing: -0.01em;
+}
+.ds-plate__code {
+  position: relative;
+  padding-inline-start: var(--ds-space-8);
+  font: 500 var(--ds-type-time-size) / 1 var(--ds-font-family-mono);
+  font-variant-numeric: tabular-nums;
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    top: -2px;
+    bottom: -2px;
+    border-inline-start: 1px solid currentColor;
+    opacity: 0.5;
+  }
+}
+.ds-plate__tagline {
+  font: 500 var(--ds-type-caption-size) / 1.2 var(--ds-font-family-body);
+  max-width: 13rem;
+  white-space: normal;
+}
+.ds-plate--sm { min-height: 26px; padding-inline: var(--ds-space-8); & .ds-plate__name { font-size: 0.9375rem; } }
+.ds-plate--lg {
+  min-height: 48px;
+  gap: var(--ds-space-12);
+  padding-inline: var(--ds-space-16);
+  & .ds-plate__name { font-size: 1.5rem; }
+  & .ds-plate__code { font-size: 0.8125rem; }
+}
+.ds-plate--outline { background: transparent; color: var(--ds-action-default); box-shadow: inset 0 0 0 1.5px var(--ds-plate-bg); }

@@ -5,18 +5,21 @@ import { cx } from '../lib/cx.js';
 
 export interface NavItemProps extends Omit<AriaLinkProps, 'className' | 'children'> {
   icon?: IconName;
-  /** The page this item points to is open (`aria-current="page"`, left bar and tint). */
+  /** This item's page is open: a solid navy block, the icon in its fill weight, `aria-current="page"`. */
   isCurrent?: boolean;
+  /** Count shown on the right (unread posts, open drafts). Repeat it in words where it matters. */
+  count?: number;
   children: React.ReactNode;
   className?: string;
 }
 
-/** Navigation / Item: one sidebar destination, 48px high. */
-export function NavItem({ icon, isCurrent, children, className, ...rest }: NavItemProps) {
+/** Navigation item: one sidebar or mobile-menu destination. */
+export function NavItem({ icon, isCurrent, count, children, className, ...rest }: NavItemProps) {
   return (
     <AriaLink {...rest} aria-current={isCurrent ? 'page' : undefined} className={cx('ds-nav-item', className)}>
-      {icon && <Icon name={icon} />}
-      {children}
+      {icon && <Icon name={icon} weight={isCurrent ? 'fill' : 'regular'} />}
+      <span className="ds-nav-item__label">{children}</span>
+      {count !== undefined && <span className="ds-nav-item__count">{count}</span>}
     </AriaLink>
   );
 }

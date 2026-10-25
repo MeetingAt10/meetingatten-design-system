@@ -1,5 +1,5 @@
 {
-  "$description": "Figma \"ACCS 2026 / Primitives\" (mode Base). Names and values exactly as in Figma.",
+  "$description": "ACCS palette: 54 primitives, pinned (user decision 2026-10-25). Product code uses the semantic theme tokens, never these.",
   "color": {
     "$type": "color",
     "brand": {

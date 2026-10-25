@@ -1,10 +1,26 @@
-/* Feedback / Tooltip: short label for an icon control, on the inverse surface. Never essential or interactive content. */
+/* Tooltip: a small ink plate naming an icon-only control (the same words as its aria-label), shown on
+   hover and keyboard focus. Never holds essential or interactive content. */
 .ds-tooltip {
-  max-width: 15rem;
+  max-width: 18rem;
   padding: var(--ds-space-4) var(--ds-space-8);
-  border-radius: var(--ds-radius-chip);
-  background: var(--ds-text-primary);
-  color: var(--ds-canvas);
-  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
-  box-shadow: var(--ds-overlay-shadow);
+  border-radius: var(--ds-radius-block);
+  background: var(--ds-inverse-bg);
+  color: var(--ds-inverse-fg);
+  font: 500 0.8125rem / 1.125rem var(--ds-font-family-body);
+  box-shadow: var(--ds-block-shadow);
+  &[data-entering] { animation: ds-tooltip-in var(--ds-motion-duration-quick) var(--ds-motion-ease-out); }
+  &[data-exiting] { animation: ds-fade-out var(--ds-motion-duration-quick) var(--ds-motion-ease-exit); }
+  & .ds-kbd { margin-inline-start: var(--ds-space-8); background: transparent; color: var(--ds-inverse-muted); box-shadow: inset 0 0 0 1px var(--ds-inverse-muted); }
+}
+@keyframes ds-tooltip-in { from { opacity: 0; translate: var(--tt-from, 0 4px); } }
+.ds-tooltip[data-placement="top"] { --tt-from: 0 4px; }
+.ds-tooltip[data-placement="bottom"] { --tt-from: 0 -4px; }
+.ds-tooltip[data-placement="left"] { --tt-from: 4px 0; }
+.ds-tooltip[data-placement="right"] { --tt-from: -4px 0; }
+.ds-tooltip__arrow {
+  display: block;
+  fill: var(--ds-inverse-bg);
+  [data-placement="bottom"] & { rotate: 180deg; }
+  [data-placement="left"] & { rotate: -90deg; }
+  [data-placement="right"] & { rotate: 90deg; }
 }

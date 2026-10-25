@@ -1,0 +1,43 @@
+/* Disclosure and accordion: ruled rows that open in place (FAQ, filters, record sections). The caret
+   turns and the panel height springs open (React Aria sets --disclosure-panel-height while it moves).
+   <div class="ds-disclosure-group"><div class="ds-disclosure" data-expanded><h3 class="ds-disclosure__heading">
+   <button class="ds-disclosure__trigger" aria-expanded="true">..<svg class="ds-icon ds-disclosure__caret">..</svg></button></h3>
+   <div class="ds-disclosure__panel" role="group">..</div></div></div> */
+.ds-disclosure-group { border-top: var(--ds-size-rule) solid var(--ds-border-subtle); }
+.ds-disclosure { border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle); }
+.ds-disclosure__heading { margin: 0; }
+.ds-disclosure__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-16);
+  width: 100%;
+  min-height: 56px;
+  margin: 0;
+  padding: var(--ds-space-12) var(--ds-space-4);
+  border: 0;
+  background: transparent;
+  color: var(--ds-text-primary);
+  font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
+  letter-spacing: var(--ds-type-h4-letter-spacing);
+  text-align: start;
+  cursor: pointer;
+  border-radius: var(--ds-radius-control);
+  transition: background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  &:is(:hover, [data-hovered]) { background: var(--ds-highlight-neutral); }
+  &:is(:disabled, [data-disabled]) { color: var(--ds-disabled-fg); cursor: not-allowed; }
+}
+.ds-disclosure__caret {
+  flex: none;
+  color: var(--ds-text-secondary);
+  transition: rotate var(--ds-motion-spring-smooth-duration) var(--ds-motion-spring-smooth);
+  [aria-expanded="true"] > & { rotate: 180deg; }
+}
+.ds-disclosure__panel {
+  height: var(--disclosure-panel-height, auto);
+  overflow: hidden;
+  transition: height var(--ds-motion-spring-smooth-duration) var(--ds-motion-spring-smooth);
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-body-font-weight) var(--ds-type-body-size) / var(--ds-type-body-line-height) var(--ds-type-body-font-family);
+}
+.ds-disclosure__content { padding: 0 var(--ds-space-4) var(--ds-space-20); display: grid; gap: var(--ds-space-12); & > p { margin: 0; } }

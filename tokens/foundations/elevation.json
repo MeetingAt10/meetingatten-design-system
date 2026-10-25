@@ -1,9 +1,89 @@
 {
-  "$description": "Figma 03.2: elevation/0 none, elevation/1 '0 2 8 #1720330D', elevation/2 '0 12 32 #1720331F'. Dark surfaces use a tone step and border instead.",
+  "$description": "Ink-tinted shadows with an offset and a soft blur. Sheets rest flat (rule border, no shadow); blocks lift on hover or drag; overlays float. Dark variants are deeper and pair with a 1px top highlight (treatments).",
   "shadow": {
     "$type": "shadow",
-    "elevation-0": { "$value": [{ "color": "#17203300", "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "0px" }] },
-    "elevation-1": { "$value": [{ "color": "#1720330D", "offsetX": "0px", "offsetY": "2px", "blur": "8px", "spread": "0px" }] },
-    "elevation-2": { "$value": [{ "color": "#1720331F", "offsetX": "0px", "offsetY": "12px", "blur": "32px", "spread": "0px" }] }
+    "none": {
+      "$value": [
+        {
+          "color": "#17203300",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "lift": {
+      "$value": [
+        {
+          "color": "#17203314",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        },
+        {
+          "color": "#1720331A",
+          "offsetX": "0px",
+          "offsetY": "6px",
+          "blur": "16px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "overlay": {
+      "$value": [
+        {
+          "color": "#17203314",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "0px"
+        },
+        {
+          "color": "#17203329",
+          "offsetX": "0px",
+          "offsetY": "18px",
+          "blur": "40px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "lift-dark": {
+      "$value": [
+        {
+          "color": "#00000066",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        },
+        {
+          "color": "#00000059",
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "20px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "overlay-dark": {
+      "$value": [
+        {
+          "color": "#00000080",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "8px",
+          "spread": "0px"
+        },
+        {
+          "color": "#00000080",
+          "offsetX": "0px",
+          "offsetY": "24px",
+          "blur": "48px",
+          "spread": "0px"
+        }
+      ]
+    }
   }
 }

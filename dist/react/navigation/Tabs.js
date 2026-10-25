@@ -1,20 +1,21 @@
 "use client";
-import { jsx as _jsx } from "react/jsx-runtime";
-import { Tabs as AriaTabs, TabList as AriaTabList, Tab as AriaTab, TabPanel as AriaTabPanel, } from 'react-aria-components';
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Tabs as AriaTabs, TabList as AriaTabList, Tab as AriaTab, TabPanel as AriaTabPanel, SelectionIndicator, } from 'react-aria-components';
+import { Icon } from '../icon/Icon.js';
 import { cx } from '../lib/cx.js';
-/** Navigation / Tabs: switch between views of one page. Arrow keys move between tabs; Tab enters the panel. */
+/** Tabs: views of one page. Arrow keys move between tabs; Tab moves into the panel. */
 export function Tabs({ className, ...rest }) {
-    return _jsx(AriaTabs, { ...rest, className: cx('ds-tabs-root', className) });
+    return _jsx(AriaTabs, { ...rest, className: cx('ds-tabs', className) });
 }
-/** The row of tabs. Give it an `aria-label`. */
+/** The ruled row of tabs. Give it an `aria-label`. */
 export function TabList({ className, ...rest }) {
-    return _jsx(AriaTabList, { ...rest, className: cx('ds-tabs', className) });
+    return _jsx(AriaTabList, { ...rest, className: cx('ds-tabs__list', className) });
 }
-/** One tab (128x48); selected shows an underline and stronger weight, not color alone. */
-export function Tab({ className, ...rest }) {
-    return _jsx(AriaTab, { ...rest, className: cx('ds-tab', className) });
+/** One tab; the selected one carries the navy rule, which slides between tabs. */
+export function Tab({ children, icon, count, className, ...rest }) {
+    return (_jsxs(AriaTab, { ...rest, className: cx('ds-tab', className), children: [icon && _jsx(Icon, { name: icon, size: 16 }), children, count !== undefined && _jsx("span", { className: "ds-tab__count", children: count }), _jsx(SelectionIndicator, { className: "ds-tab__indicator" })] }));
 }
-/** The content for one tab. Route loading and errors belong here, not in the tab. */
+/** The content for one tab. Loading and errors for the view belong here. */
 export function TabPanel({ className, ...rest }) {
-    return _jsx(AriaTabPanel, { ...rest, className: cx('ds-tab-panel', className) });
+    return _jsx(AriaTabPanel, { ...rest, className: cx('ds-tabs__panel', className) });
 }

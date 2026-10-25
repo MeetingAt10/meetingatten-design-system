@@ -2,10 +2,12 @@ import { type LinkProps as AriaLinkProps } from 'react-aria-components';
 import { type IconName } from '../icon/Icon.js';
 export interface NavItemProps extends Omit<AriaLinkProps, 'className' | 'children'> {
     icon?: IconName;
-    /** The page this item points to is open (`aria-current="page"`, left bar and tint). */
+    /** This item's page is open: a solid navy block, the icon in its fill weight, `aria-current="page"`. */
     isCurrent?: boolean;
+    /** Count shown on the right (unread posts, open drafts). Repeat it in words where it matters. */
+    count?: number;
     children: React.ReactNode;
     className?: string;
 }
-/** Navigation / Item: one sidebar destination, 48px high. */
-export declare function NavItem({ icon, isCurrent, children, className, ...rest }: NavItemProps): import("react").JSX.Element;
+/** Navigation item: one sidebar or mobile-menu destination. */
+export declare function NavItem({ icon, isCurrent, count, children, className, ...rest }: NavItemProps): import("react").JSX.Element;

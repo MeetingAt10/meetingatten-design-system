@@ -3,5 +3,5 @@ export interface CardLinkProps extends Omit<AriaLinkProps, 'className' | 'childr
     className?: string;
     children?: React.ReactNode;
 }
-/** Interactive card: the whole card is one link. Lifts 2px on hover (shadow only under reduced motion). Keep links out of its content. */
+/** Card link: a card that is one link element (short cards with no other controls). Prefer `<Card link>` + `CardTitle href` when the card has a heading. */
 export declare function CardLink({ className, children, ...rest }: CardLinkProps): import("react").JSX.Element;

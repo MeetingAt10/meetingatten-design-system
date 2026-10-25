@@ -1,10 +1,13 @@
-import { type BadgeTone } from '../badge/Badge.js';
+import { type BadgeTone, type BadgeForm } from '../badge/Badge.js';
 export interface ReportRecordProps {
     reference: string;
-    /** In words, for example "Draft · policy gate". */
+    /** Short neutral title ("General concern"). Never sensitive preview text. */
+    title?: string;
+    /** In words, for example "Review pending". */
     status: string;
     statusTone?: BadgeTone;
-    /** Label and value pairs, for example Category: General concern. Never sensitive preview text. */
+    statusForm?: BadgeForm;
+    /** Label and value pairs, for example Updated: 21 Oct. */
     facts: Array<{
         label: string;
         value: string;
@@ -15,5 +18,5 @@ export interface ReportRecordProps {
     actionLabel?: string;
     className?: string;
 }
-/** Data / Report Record: one report as a labeled record (the mobile form of the Reports Table). */
-export declare function ReportRecord({ reference, status, statusTone, facts, level, href, actionLabel, className }: ReportRecordProps): import("react").JSX.Element;
+/** Report record: one restricted record as a ruled row (the phone form of the Reports Table). */
+export declare function ReportRecord({ reference, title, status, statusTone, statusForm, facts, level, href, actionLabel, className }: ReportRecordProps): import("react").JSX.Element;

@@ -1,0 +1,54 @@
+/* Segmented control: one choice among 2-5 views (Week / Day / List). The paper chip under the chosen
+   segment slides between options (React Aria SelectionIndicator).
+   <div class="ds-segmented" role="radiogroup"><button class="ds-segment" aria-checked="true" role="radio">Week
+   <span class="ds-segment__indicator"></span></button>...</div> */
+.ds-segmented {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 2px;
+  padding: 3px;
+  border-radius: calc(var(--ds-radius-control) + 2px);
+  background: var(--ds-highlight-neutral);
+  box-shadow: inset 0 0 0 1px var(--ds-border-subtle);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ds-segmented--block { display: flex; & > .ds-segment { flex: 1; } }
+.ds-segment {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-8);
+  flex: none;
+  min-height: 34px;
+  margin: 0;
+  padding: 0 var(--ds-space-12);
+  border: 0;
+  border-radius: var(--ds-radius-control);
+  background: transparent;
+  color: var(--ds-text-secondary);
+  font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  @media (pointer: coarse) { min-height: 40px; }
+  &:is(:hover, [data-hovered]) { color: var(--ds-text-primary); }
+  &:is([aria-checked="true"], [aria-pressed="true"], [data-selected]) { color: var(--ds-text-primary); }
+  &:is(:disabled, [data-disabled]) { color: var(--ds-disabled-fg); cursor: not-allowed; }
+}
+.ds-segment__indicator {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  border-radius: var(--ds-radius-control);
+  background: var(--ds-surface);
+  box-shadow: var(--ds-block-shadow);
+  transition-property: translate, width;
+  transition-duration: var(--ds-motion-spring-smooth-duration);
+  transition-timing-function: var(--ds-motion-spring-smooth);
+}
+.ds-segment:not([aria-checked="true"], [aria-pressed="true"], [data-selected]) > .ds-segment__indicator { display: none; }

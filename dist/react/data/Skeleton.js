@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { cx } from '../lib/cx.js';
-/** Skeleton line for loading views. Decorative: mark the loading region itself with `aria-busy` and a text status. */
-export function Skeleton({ short, className }) {
-    return _jsx("span", { className: cx('ds-skeleton', short && 'ds-skeleton--short', className), "aria-hidden": "true" });
+/** Skeleton: a placeholder in the shape of what is loading. Decorative: mark the region `aria-busy` and announce loading in text. */
+export function Skeleton({ shape = 'text', width, height, className }) {
+    return (_jsx("span", { className: cx('ds-skeleton', shape !== 'text' && `ds-skeleton--${shape}`, className), style: { ...(width ? { '--w': width } : {}), ...(height ? { '--h': height } : {}) }, "aria-hidden": "true" }));
 }

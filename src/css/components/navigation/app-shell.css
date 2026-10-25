@@ -1,21 +1,39 @@
-/* App shell: sidebar + main column (admin). */
-.ds-app {
-  display: flex;
-  min-height: 100vh;
-}
-.ds-app__main {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-.ds-app__content {
-  padding: var(--ds-space-32) var(--ds-grid-margin-desktop) var(--ds-space-64);
+/* App shell: sidebar + content on desktop; mobile header + drawer navigation below 1024px.
+   <div class="ds-shell"><aside class="ds-sidebar">..</aside><div class="ds-shell__main"><header class="ds-topbar">..</header>
+   <main class="ds-shell__content">..</main></div></div> */
+.ds-shell {
   display: grid;
-  gap: var(--ds-space-32);
-  align-content: start;
-  width: 100%;
-  max-width: calc(var(--ds-grid-content-max) + 2 * var(--ds-grid-margin-desktop));
-  @media (max-width: 1023px) { padding: var(--ds-space-24) var(--ds-grid-margin-tablet) var(--ds-space-48); }
-  @media (max-width: 599px) { padding: var(--ds-space-24) var(--ds-grid-margin-mobile) var(--ds-space-48); }
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 100dvh;
+  background: var(--ds-canvas);
+  @media (min-width: 1024px) { grid-template-columns: var(--ds-size-sidebar-w) minmax(0, 1fr); }
+  & > .ds-sidebar { display: none; @media (min-width: 1024px) { display: flex; position: sticky; z-index: 1; } }
+  /* The rail's paper runs the full height of the page, while the sidebar itself stays sticky. */
+  @media (min-width: 1024px) {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: 0;
+      width: var(--ds-size-sidebar-w);
+      background: var(--ds-surface);
+      border-inline-end: var(--ds-size-rule) solid var(--ds-border-subtle);
+    }
+  }
+  & .ds-mobile-header { @media (min-width: 1024px) { display: none; } }
+  & .ds-topbar { display: none; @media (min-width: 1024px) { display: flex; } }
 }
+.ds-shell__main { display: flex; flex-direction: column; min-width: 0; }
+.ds-shell__content {
+  flex: 1;
+  width: 100%;
+  max-width: calc(var(--ds-grid-content-max) + 2 * var(--ds-space-32));
+  margin-inline: auto;
+  padding: var(--ds-space-24) var(--ds-grid-margin-mobile) var(--ds-space-48);
+  outline: none;
+  @media (min-width: 600px) { padding-inline: var(--ds-grid-margin-tablet); }
+  @media (min-width: 1024px) { padding: var(--ds-space-32) var(--ds-space-32) var(--ds-space-64); }
+}
+/* Drawer navigation (mobile): the sidebar inside a drawer sheet. */
+.ds-shell__drawer-nav { display: grid; gap: 2px; padding: var(--ds-space-8) 0; }

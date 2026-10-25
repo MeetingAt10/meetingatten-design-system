@@ -1,19 +1,23 @@
 import { cx } from '../lib/cx.js';
 
 export interface TopBarProps {
-  /** Workspace title (hidden under 600px). Not the page heading: keep the h1 in the content. */
+  /** Page title shown in the strip. */
   title?: React.ReactNode;
+  /** Element for the title: `p` (default, the page keeps its own h1) or `h1` when the strip is the page heading. */
+  titleAs?: 'p' | 'h1';
   /** Search, notifications and other tools, right-aligned. */
   tools?: React.ReactNode;
   className?: string;
 }
 
-/** Navigation / Top Bar: 72px admin header above the content. */
-export function TopBar({ title, tools, className }: TopBarProps) {
+/** Top bar: the workspace title strip with tools on the right. */
+export function TopBar({ title, titleAs: Title = 'p', tools, className }: TopBarProps) {
   return (
     <header className={cx('ds-topbar', className)}>
-      {title && <p className="ds-topbar__title">{title}</p>}
-      {tools && <div className="ds-topbar__tools">{tools}</div>}
+      <div className="ds-topbar__title">
+        {title && <Title className="ds-topbar__heading">{title}</Title>}
+      </div>
+      {tools && <div className="ds-topbar__actions">{tools}</div>}
     </header>
   );
 }

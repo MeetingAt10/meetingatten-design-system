@@ -1,5 +1,5 @@
 export interface ForumCardProps {
-    /** Topic chip (accent). A topic, never a permission or confidentiality signal. */
+    /** Topic chip. A topic, never a permission or confidentiality signal. */
     topic: string;
     title: React.ReactNode;
     /** Heading level; default 3. */
@@ -16,5 +16,5 @@ export interface ForumCardProps {
     demo?: boolean;
     className?: string;
 }
-/** Content / Forum Card: a community discussion. The title is the link and its hit area covers the card, which lifts on hover. */
+/** Forum card: a community discussion. The title is the link and its hit area covers the card, which lifts on hover. */
 export declare function ForumCard({ topic, title, level, excerpt, author, replies, status, href, actionLabel, demo, className }: ForumCardProps): import("react").JSX.Element;

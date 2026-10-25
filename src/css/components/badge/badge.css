@@ -1,36 +1,96 @@
-/* Badge / Role, Status, Severity (radius 4, padding 5/10, gap 6) + chips. */
+/* Badges. Three separate families, never mixed:
+   - Status: a word plus a marker whose LINE FORM carries the state: solid square = open/active,
+     dashed = pending/draft, hatched = taken/restricted, struck = closed/withdrawn. Tone reinforces only.
+     <span class="ds-badge ds-badge--pending ds-badge--warning"><span class="ds-badge__mark"></span>Review pending</span>
+   - Role: an outlined plate ("Student", "Faculty"); a role is not a privacy signal.
+   - Severity: 1-3 filled segments plus a word; independent of status. */
 .ds-badge {
+  --badge-ink: var(--ds-text-primary);
+  --badge-bg: var(--ds-highlight-neutral);
+  --badge-mark: var(--ds-text-secondary);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 10px;
+  gap: var(--ds-space-8);
+  min-height: 24px;
+  padding: 0 var(--ds-space-8);
   border-radius: var(--ds-radius-chip);
-  background: var(--ds-disabled-bg);
+  background: var(--badge-bg);
+  color: var(--badge-ink);
+  font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.ds-badge__mark {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+  background: var(--badge-mark);
+}
+/* Line forms */
+.ds-badge--pending .ds-badge__mark { background: transparent; border: 1.5px dashed var(--badge-mark); }
+.ds-badge--restricted .ds-badge__mark,
+.ds-badge--taken .ds-badge__mark {
+  background: transparent;
+  border: 1px solid var(--badge-mark);
+  background-image: repeating-linear-gradient(135deg, var(--badge-mark) 0 1px, transparent 1px 3px);
+}
+.ds-badge--closed .ds-badge__mark {
+  position: relative;
+  background: transparent;
+  border: 1px solid var(--badge-mark);
+  &::after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: calc(50% - 0.5px);
+    width: 10px;
+    height: 1px;
+    background: var(--badge-mark);
+    rotate: -45deg;
+  }
+}
+/* Tones (reinforce, never carry) */
+.ds-badge--info { --badge-ink: var(--ds-info-fg); --badge-bg: var(--ds-info-bg); --badge-mark: var(--ds-info-fg); }
+.ds-badge--success { --badge-ink: var(--ds-success-fg); --badge-bg: var(--ds-success-bg); --badge-mark: var(--ds-success-fg); }
+.ds-badge--warning { --badge-ink: var(--ds-warning-fg); --badge-bg: var(--ds-warning-bg); --badge-mark: var(--ds-warning-fg); }
+.ds-badge--danger { --badge-ink: var(--ds-danger-fg); --badge-bg: var(--ds-danger-bg); --badge-mark: var(--ds-danger-fg); }
+.ds-badge--community { --badge-ink: var(--ds-accent-fg); --badge-bg: var(--ds-accent-bg); --badge-mark: var(--ds-accent-default); }
+.ds-badge--consult { --badge-ink: var(--ds-secondary-fg); --badge-bg: var(--ds-secondary-bg); --badge-mark: var(--ds-secondary-default); }
+.ds-badge--outline { background: transparent; box-shadow: inset 0 0 0 1px var(--ds-border-subtle); }
+
+/* Role: outlined plate. */
+.ds-badge--role {
+  --badge-bg: transparent;
+  box-shadow: inset 0 0 0 1px var(--ds-plate-bg);
+  color: var(--ds-action-default);
+  font-weight: 600;
+}
+
+/* Severity: segments + word, its own family. */
+.ds-severity {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-8);
   color: var(--ds-text-primary);
   font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
   white-space: nowrap;
 }
-.ds-badge--info {
-  background: var(--ds-info-bg);
-  color: var(--ds-info-fg);
+.ds-severity__bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  & > i {
+    width: 4px;
+    border-radius: 1px;
+    background: var(--ds-border-subtle);
+    &:nth-child(1) { height: 6px; }
+    &:nth-child(2) { height: 9px; }
+    &:nth-child(3) { height: 12px; }
+  }
 }
-.ds-badge--success {
-  background: var(--ds-success-bg);
-  color: var(--ds-success-fg);
-}
-.ds-badge--warning {
-  background: var(--ds-warning-bg);
-  color: var(--ds-warning-fg);
-}
-.ds-badge--danger {
-  background: var(--ds-danger-bg);
-  color: var(--ds-danger-fg);
-}
-.ds-badge--secondary {
-  background: var(--ds-secondary-bg);
-  color: var(--ds-secondary-fg);
-}
-.ds-badge--accent {
-  background: var(--ds-accent-bg);
-  color: var(--ds-accent-fg);
-}
+.ds-severity--low .ds-severity__bars > i:nth-child(-n + 1),
+.ds-severity--medium .ds-severity__bars > i:nth-child(-n + 2),
+.ds-severity--high .ds-severity__bars > i { background: var(--ds-text-primary); }
+.ds-severity--high .ds-severity__bars > i { background: var(--ds-danger-fg); }

@@ -1,8 +1,7 @@
 {
-  "$description": "Figma \"ACCS 2026 / Semantic\" mode LIGHT. data-theme=\"light\" (the :root default).",
+  "$description": "Light theme: data-theme=\"light\" (the :root default). Semantic mapping pinned; Office Hours additions: now, hatch-ink, inverse bg/fg/muted, plate bg/fg.",
   "$extensions": {
-    "dark": false,
-    "figmaMode": "LIGHT"
+    "dark": false
   },
   "color": {
     "$type": "color",
@@ -157,6 +156,31 @@
       },
       "focus": {
         "$value": "{color.brand.dark-default}"
+      },
+      "bg": {
+        "$value": "{color.brand.source-ink}"
+      },
+      "fg": {
+        "$value": "{color.neutral.50}"
+      },
+      "muted": {
+        "$value": "{color.neutral.dark-secondary}"
+      }
+    },
+    "now": {
+      "$value": "{color.danger.700}",
+      "$description": "now-line (current time)"
+    },
+    "hatch-ink": {
+      "$value": "{color.neutral.500}",
+      "$description": "hatching on taken or restricted areas"
+    },
+    "plate": {
+      "bg": {
+        "$value": "{color.brand.source-blue}"
+      },
+      "fg": {
+        "$value": "{color.brand.source-white}"
       }
     }
   }

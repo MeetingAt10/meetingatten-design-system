@@ -1,5 +1,6 @@
-/* Layout (grid: 4/8/12 columns, 16/24 gutter, 16/24/32/48 margin, 1200 content max, 680 reading max).
-   Media queries use the literal Figma breakpoints: 600px, 1024px, 1440px. */
+/* Layout: page grid (4/8/12 columns, 16/24 gutter, 16/24/32/48 margin, 1200 content, 680 reading),
+   stacks and rows on the 8px rhythm, sections that follow density, and the flat paper sheet.
+   Breakpoints: 600px, 1024px, 1440px. */
 .ds-container {
   width: 100%;
   max-width: calc(var(--ds-grid-content-max) + 2 * var(--ds-grid-margin-mobile));
@@ -18,23 +19,39 @@
     max-width: calc(var(--ds-grid-content-max) + 2 * var(--ds-grid-margin-wide));
   }
 }
+.ds-container--reading { max-width: calc(var(--ds-grid-reading-max) + 2 * var(--ds-grid-margin-desktop)); }
+.ds-container--wide { max-width: calc(1440px + 2 * var(--ds-grid-margin-wide)); }
+
 .ds-stack {
   display: grid;
   gap: var(--ds-space-16);
   align-content: start;
+  min-width: 0;
 }
+.ds-stack--4 { gap: var(--ds-space-4); }
+.ds-stack--8 { gap: var(--ds-space-8); }
+.ds-stack--12 { gap: var(--ds-space-12); }
+.ds-stack--20 { gap: var(--ds-space-20); }
 .ds-stack--24 { gap: var(--ds-space-24); }
 .ds-stack--32 { gap: var(--ds-space-32); }
+.ds-stack--48 { gap: var(--ds-space-48); }
+
 .ds-row {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ds-space-16);
+  gap: var(--ds-space-12);
   align-items: center;
+  min-width: 0;
 }
+.ds-row--8 { gap: var(--ds-space-8); }
+.ds-row--16 { gap: var(--ds-space-16); }
+.ds-row--between { justify-content: space-between; }
+.ds-row--end { justify-content: flex-end; }
+
 .ds-cols {
   display: grid;
   gap: var(--ds-grid-gutter-mobile);
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   @media (min-width: 600px) {
     gap: var(--ds-grid-gutter);
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -42,14 +59,28 @@
 }
 @media (min-width: 1024px) {
   .ds-cols--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ds-cols--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .ds-cols--main { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+  .ds-cols--split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
 }
+
 .ds-section {
   padding-block: var(--ds-density-section-space);
   @media (min-width: 1024px) { padding-block: var(--ds-density-section-space-desktop); }
 }
+
+/* Sheet: flat paper on the canvas. Elevation is declared once: a hairline rule, never a shadow. */
+.ds-sheet {
+  background: var(--ds-sheet-bg);
+  border: var(--ds-size-rule) solid var(--ds-sheet-rule);
+  border-radius: var(--ds-radius-sheet);
+  min-width: 0;
+}
+.ds-sheet--pad { padding: var(--ds-space-24); }
+.ds-sheet--flush { border-radius: 0; border-inline: 0; }
+
 .ds-rule {
   border: 0;
-  border-top: 3px solid var(--ds-action-default);
+  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
   margin: 0;
 }

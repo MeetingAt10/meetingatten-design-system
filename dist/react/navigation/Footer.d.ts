@@ -6,13 +6,16 @@ export interface FooterColumn {
     }>;
 }
 export interface FooterProps {
-    /** Logo or wordmark. */
+    /** Wordmark: a DoorPlate on ACCS surfaces, the Logo on Meeting At 10. */
     brand?: React.ReactNode;
     description?: React.ReactNode;
+    /** Link columns; each becomes a navigation landmark named by its title. */
     columns?: FooterColumn[];
-    /** Status note, for example "Proposed, not approved". */
+    /** Status note on the bottom line, for example "Proposed, not approved". */
     note?: React.ReactNode;
+    /** Text on the right of the bottom line. */
+    meta?: React.ReactNode;
     className?: string;
 }
-/** Footer: brand, link columns and the status note. */
-export declare function Footer({ brand, description, columns, note, className }: FooterProps): import("react").JSX.Element;
+/** Footer: the wordmark and description, link columns, and the bottom line for status notes. */
+export declare function Footer({ brand, description, columns, note, meta, className }: FooterProps): import("react").JSX.Element;

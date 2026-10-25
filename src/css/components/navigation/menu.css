@@ -1,0 +1,9 @@
+/* Menu: actions on a floating sheet (uses .ds-listbox + .ds-option rows). The trigger is a Button or
+   IconButton with aria-haspopup="menu"; destructive actions use .ds-option--danger and sit last. */
+.ds-menu {
+  min-width: max(var(--trigger-width, 0px), 13rem);
+}
+.ds-menu-trigger__caret {
+  transition: rotate var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy);
+  [aria-expanded="true"] > & { rotate: 180deg; }
+}
