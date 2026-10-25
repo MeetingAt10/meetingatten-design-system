@@ -49,8 +49,8 @@ jobs:
         env:
           BUCKET: ${{ vars.DESIGN_SITE_BUCKET }}
         run: |
-          # Open Graph images are extensionless files (opengraph-image, or opengraph-image-<hash>); upload them with an explicit content type.
-          aws s3 sync site/out "s3://$BUCKET" --delete --exclude "*opengraph-image*" --exclude "*twitter-image*"
-          aws s3 cp site/out "s3://$BUCKET" --recursive --exclude "*" --include "*opengraph-image*" --include "*twitter-image*" --content-type image/png
+          # Open Graph images and the apple touch icon are extensionless files (opengraph-image, opengraph-image-<hash>, apple-icon); upload them with an explicit content type.
+          aws s3 sync site/out "s3://$BUCKET" --delete --exclude "*opengraph-image*" --exclude "*twitter-image*" --exclude "apple-icon*"
+          aws s3 cp site/out "s3://$BUCKET" --recursive --exclude "*" --include "*opengraph-image*" --include "*twitter-image*" --include "apple-icon*" --content-type image/png
       - name: Invalidate CDN
         run: aws cloudfront create-invalidation --distribution-id "${{ vars.DESIGN_SITE_DISTRIBUTION_ID }}" --paths '/*' >/dev/null
