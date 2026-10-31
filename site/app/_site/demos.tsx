@@ -9,8 +9,10 @@ import {
   NowLine, Pagination, Popover, PrivacyNotice, Progress, Radio, RadioGroup, ReportRecord, ReportsTable, RoleBadge, Search, Section, SectionHeader, Segment,
   SegmentedControl, Select, SelectOption, Severity, Sidebar, SidebarNote, SidebarSection, Skeleton, Spinner, Stack, Stepper, Switch, Tab, Table, TableBody,
   TableHeader, TableRow, TabList, TabPanel, Tabs, Tag, TagGroup, TextArea, TextField, Tile, TimeBlock, Timetable, toast, Tooltip, TooltipTrigger, TopBar,
-  ViewState, type IconName, type Key,
+  ViewState, Aurora, CountUp, FloatingArt, GridBackdrop, Marquee, Orbit, Parallax, ParallaxScene, Reveal, ScrollProgress, SpotlightCard, WordReveal,
+  type IconName, type Key,
 } from "@meetingat10/design-system/react";
+import { art } from "@/lib/art";
 import { REPORT_ROWS, SLOT_DAYS, SLOTS, WEEK, WEEK_EVENTS } from "./examples/data";
 
 type Theme = "light" | "dark";
@@ -512,6 +514,51 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
     </Stack>
   ),
   Icon: () => <IconGallery />,
+
+  // ---- Expressive (marketing surfaces) ----
+  Reveal: () => (
+    <Stack gap={12}>
+      <Reveal variant="scale" className="site-outline ds-type-body-small">Grows in as it scrolls into view</Reveal>
+      <Reveal variant="start" index={1} className="site-outline ds-type-body-small">Slides in from the start edge, one step later</Reveal>
+      <Caption>Static where scroll-driven animation is unsupported or motion is reduced.</Caption>
+    </Stack>
+  ),
+  WordReveal: () => <WordReveal as="h2" className="ds-type-h1" text="Blocks placed in time, word by word." />,
+  FloatingArt: () => <div className="site-art-demo"><FloatingArt {...art("neural-sphere")} depth={0} /></div>,
+  ParallaxScene: () => (
+    <ParallaxScene className="site-scene-demo">
+      <FloatingArt {...art("glass-discs")} depth={36} style={{ position: "absolute", left: "2%", top: "18%", width: "34%" }} />
+      <FloatingArt {...art("swirl-sphere")} depth={18} delay={-3} style={{ position: "absolute", left: "30%", top: "0", width: "40%" }} />
+      <FloatingArt {...art("wire-octahedron")} depth={28} delay={-6} style={{ position: "absolute", right: "2%", top: "26%", width: "30%" }} />
+    </ParallaxScene>
+  ),
+  Parallax: () => <div className="site-art-demo"><Parallax depth={16}><FloatingArt {...art("mobius-loop")} float={false} /></Parallax></div>,
+  Aurora: () => <div className="site-backdrop-demo"><Aurora /><p className="ds-type-h3">Three lane-colored glows</p></div>,
+  GridBackdrop: () => <div className="site-backdrop-demo"><GridBackdrop /><p className="ds-type-h3">The ruled sheet as a ground</p></div>,
+  Marquee: () => (
+    <Marquee duration={40} label="Sample marquee">
+      {["Button", "Card", "Timetable", "TimeBlock", "NowLine", "Hero", "Agenda"].map((n) => <Badge key={n}>{n}</Badge>)}
+    </Marquee>
+  ),
+  SpotlightCard: () => (
+    <SpotlightCard href="#" lane="community" tilt>
+      <CardHeader><CardLane lane="community">Community</CardLane></CardHeader>
+      <CardTitle>Move over the card</CardTitle>
+      <CardBody>The glow follows the pointer and the card tilts toward it.</CardBody>
+    </SpotlightCard>
+  ),
+  Orbit: () => (
+    <Orbit radius={80} items={[<Tile key="a" icon="chats" tone="community" size="sm" />, <Tile key="b" icon="chalkboard" tone="consult" size="sm" />, <Tile key="c" icon="calendar" size="sm" />]}>
+      <Logo markOnly size="md" label="Meeting At 10" />
+    </Orbit>
+  ),
+  CountUp: () => <p className="ds-type-display" style={{ margin: 0 }}><CountUp value={72} suffix="+" /></p>,
+  ScrollProgress: () => (
+    <Stack gap={8}>
+      <div className="site-progress-demo"><ScrollProgress /></div>
+      <Caption>The real bar sits at the top edge of the window and fills as you scroll this page; here it is held in this frame.</Caption>
+    </Stack>
+  ),
 };
 
 /** One demo by name; unknown names render a short note instead of failing the page. */

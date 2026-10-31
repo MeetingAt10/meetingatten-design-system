@@ -4,3 +4,4 @@ out/
 .generated/
 next-env.d.ts
 public/logo/
+public/imagery/

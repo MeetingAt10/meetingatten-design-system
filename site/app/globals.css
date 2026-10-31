@@ -372,6 +372,83 @@
   font: var(--ds-type-body-small-font-weight) var(--ds-type-body-small-size) / var(--ds-type-body-small-line-height) var(--ds-type-body-small-font-family);
 }
 
+/* Expressive demos */
+.site-art-demo { width: min(100%, 11rem); margin-inline: auto; }
+.site-scene-demo { position: relative; aspect-ratio: 1.6; width: 100%; }
+.site-backdrop-demo { position: relative; isolation: isolate; display: grid; place-items: center; min-height: 10rem; overflow: clip; border: var(--ds-size-rule) solid var(--ds-border-subtle); border-radius: var(--ds-radius-sheet); background: var(--ds-canvas); & p { margin: 0; } }
+/* A transform makes the demo's fixed bar position against this frame instead of the window. */
+.site-progress-demo { position: relative; height: var(--ds-space-24); overflow: clip; transform: translateZ(0); border: 1px dashed var(--ds-border-default); border-radius: var(--ds-radius-block); }
+
+/* Home: the expressive layer on the showcase. The stage is the positioned, isolated parent of the aurora and the grid. */
+.site-stage { position: relative; isolation: isolate; overflow: clip; border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle); }
+.site-constellation { position: relative; width: 100%; max-width: 44rem; margin-inline: auto; aspect-ratio: 1 / 0.92; }
+/* The one red line: it is 10:00. It runs behind the renders, which are later siblings. */
+.site-constellation__now { top: 50%; z-index: 0; translate: none; }
+.site-ribbon { display: grid; gap: var(--ds-space-16); padding-block: var(--ds-space-24); border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle); }
+.site-ribbon .ds-marquee__group { gap: var(--ds-space-12); padding-inline-end: var(--ds-space-12); }
+.site-ribbon .ds-card__lane { min-height: 36px; padding-inline: var(--ds-space-16); border-radius: var(--ds-radius-block); font-size: var(--ds-type-label-size); }
+.site-ribbon__type .ds-marquee__group { gap: 0; padding-inline-end: 0; }
+.site-ribbon__type span {
+  padding-inline: var(--ds-space-32);
+  border-inline-end: var(--ds-size-rule) solid var(--ds-border-subtle);
+  color: var(--ds-text-secondary);
+  font: 800 clamp(1.75rem, 1.2rem + 2vw, 2.75rem) / 1.1 var(--ds-font-family-display);
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+/* The names repeat the navigation: under reduced motion the second row would only wrap into a wall of display type. */
+@media (prefers-reduced-motion: reduce) { .site-ribbon__type { display: none; } }
+.site-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--ds-space-24);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
+  @media (min-width: 1024px) { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 0; }
+}
+.site-stat {
+  display: grid;
+  gap: var(--ds-space-4);
+  align-content: start;
+  padding-block: var(--ds-space-24);
+  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+  @media (min-width: 1024px) {
+    padding-inline: var(--ds-space-24);
+    border-bottom: 0;
+    border-inline-start: var(--ds-size-rule) solid var(--ds-border-subtle);
+    &:first-child { padding-inline-start: 0; border-inline-start: 0; }
+  }
+}
+.site-stat__n {
+  font: 800 var(--ds-type-display-size) / 1 var(--ds-type-display-font-family);
+  letter-spacing: var(--ds-type-display-letter-spacing);
+  font-variant-numeric: tabular-nums;
+}
+.site-stat__label { font: 700 var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family); letter-spacing: var(--ds-type-h4-letter-spacing); }
+.site-stat__hint { color: var(--ds-text-secondary); font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family); }
+.site-tiles {
+  display: grid;
+  gap: var(--ds-grid-gutter-mobile);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  @media (min-width: 600px) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ds-grid-gutter); }
+  @media (min-width: 1200px) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  & > li > .ds-card { height: 100%; grid-template-rows: auto auto 1fr auto; }
+  & .ds-card__action { justify-self: start; }
+}
+.site-week { position: relative; }
+.site-week__art {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  @media (max-width: 1023.98px) { display: none; }
+}
+.site-week__art--a { inset-block-start: -9.5rem; inset-inline-end: 0; width: 10rem; }
+.site-week__art--b { inset-block-end: -3rem; inset-inline-end: 4rem; width: 6.5rem; }
+
 /* Home */
 .site-rules { display: grid; margin: 0; padding: 0; list-style: none; border-top: var(--ds-size-rule) solid var(--ds-border-subtle); }
 .site-rule {
