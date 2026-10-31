@@ -2,6 +2,21 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](https://semver.org); while `0.x`, breaking changes bump the minor and are marked **BREAKING**.
 
+## [1.1.0] - 2026-11-01
+
+Additive minor release: the "Office Hours, after hours" expressive layer for the marketing surfaces (the ACCS landing, the Meeting At 10 site and the showcase). No breaking changes; no existing component, token or class changed. The portal look is untouched.
+
+### Added
+- Motion tokens: durations `cinematic` (720ms), `stagger` (70ms), `ambient` (9000ms), `drift` (24000ms) and `marquee` (48000ms); ease `emphasized`; distances `reveal` (24px) and `float` (10px). Emitted as `--ds-motion-*` variables, in `tokens.json` and in `src/react/lib/motion.ts` (`duration`, `ease`, `distance`). Treatment `art-shadow` (`--ds-art-shadow`), the ink shadow under a render.
+- CSS (`src/css/components/expressive/`, in `ds.components`): `.ds-reveal` (`--fade`, `--scale`, `--start`, `--end`, `--ds-reveal-index`), `.ds-word-rise` and `.ds-word-rise__word`, `.ds-art` and `.ds-art--float`, `.ds-parallax`, `.ds-aurora` and `.ds-aurora__blob`, `.ds-grid-backdrop`, `.ds-marquee` (`__track`, `__group`, `--reverse`), `.ds-spotlight` (`--community`, `--consult`, `--tilt`), `.ds-orbit` (`__core`, `__ring`, `__item`, `__upright`), `.ds-scroll-progress`. Scroll-driven effects sit in `@supports (animation-timeline: ...)`; every animation sits in `@media (prefers-reduced-motion: no-preference)`; content is visible by default.
+- React: `Reveal`, `WordReveal`, `FloatingArt`, `ParallaxScene`, `Parallax`, `Marquee`, `SpotlightCard`, `Aurora`, `GridBackdrop`, `Orbit`, `CountUp` and `ScrollProgress`, plus the `imagery` record and `ImageryName` type (generated from `assets/imagery/imagery.json`).
+- Imagery: twenty transparent 3D WebP renders in `assets/imagery/` (exported as `@meetingat10/design-system/assets/imagery/<name>.webp`), the manifest `imagery.json` and the keying script `scripts/key-imagery.py`.
+- Docs: `foundations/imagery.md`; an "Expressive layer" section, new tokens and amended rules in `foundations/motion.md`; twelve component specs under `components/expressive/`; the Hero `art` guidance; an Expressive paragraph in `DESIGN.md`; this release in the README.
+- Site: a redesigned home page that uses the layer (word-rise headline, aurora and grid backdrop, a constellation of floating renders, a marquee of component names, spotlight cards, count-up stats computed from the repo, scroll reveals and a progress bar), and a demo for each new component in the components gallery.
+
+### Changed
+- `foundations/motion.md` rules: decorative loops (float, aurora drift, orbit, marquee) are allowed only in the expressive layer, only on marketing surfaces, never inside portal workflows; all stop under reduced motion.
+
 ## [1.0.1] - 2026-10-25
 
 Site only; the package is unchanged from 1.0.0.

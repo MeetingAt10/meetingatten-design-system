@@ -316,6 +316,8 @@ The voice is structured and calm, and it reads at a glance. Plus Jakarta Sans at
 
 Sheets rest flat on a 1px rule. Only blocks being handled and overlays floating above the page cast shadows, ink-tinted in light and black with a 1px top highlight in dark. Motion is quick and physical: 120ms color changes, critically damped springs for anything that slides along a rule, overlays that rise 8px on an exponential ease-out, and under reduced motion every state lands at once. The system must never feel playful or gamified, like a generic SaaS template, cold or bureaucratic, or slowed down by motion.
 
+**The expressive layer.** The marketing surfaces (the ACCS landing, the Meeting At 10 site and the showcase) may add a slower, richer layer on top of the same world: headlines that rise word by word, sections that ease in on scroll, a faint aurora of the three lane colors over the ruled time grid, and 3D glass renders floating beside the product in a constellation that follows the pointer. It is built from the same tokens (new durations, an emphasized ease, a reveal and a float distance, and an art shadow), lives in its own CSS and React files, is never used inside portal workflows, keeps content visible by default, and stops entirely under reduced motion. The renders are decoration, never a logo, a seal or a lane signal.
+
 **Key Characteristics:**
 - Paper-white sheets (12px corners, 1px hairline) on a cool canvas, flat at rest.
 - Blocks placed in time: solid lane fills, 6px corners, a tabular mono time code on top.
@@ -568,9 +570,9 @@ The name plate from a faculty door: the ACCS wordmark until an ACCS logo is appr
 - **Don't** let hue alone carry status, severity, availability or permission, and never give the restricted lane a hue.
 - **Don't** set labels, headings, navigation or buttons in JetBrains Mono.
 - **Don't** nest cards, or build page structure from rows of same-size icon cards; use Agenda rows, sections, rules and headings.
-- **Don't** use gradient text, glass, glow or colored shadows; the hatch and the ruled grid are the only drawn patterns.
+- **Don't** use gradient text, glass, glow or colored shadows in the interface; the hatch and the ruled grid are the only drawn patterns. The one exception is the expressive layer on marketing surfaces: the brand renders, the aurora and the spotlight glow, which are decoration and never carry state.
 - **Don't** use emoji or Unicode glyphs as icons; use the Phosphor set and its weights.
-- **Don't** hold content back until it animates in; entrances start from a visible state, and only overlays fade.
+- **Don't** hold content back until it animates in; entrances start from a visible state, and only overlays fade. Scroll reveals in the expressive layer are the same promise: without scroll-driven animation, or under reduced motion, everything renders in its final state.
 - **Don't** recolor the door plate with a lane color, style it as a seal or crest, or redraw the proposed ACCS logo files.
 - **Don't** put the light Meeting At 10 artwork on a dark ground, recolor the mark beyond its light, dark and auto versions, or use its identity colors in the interface.
 - **Don't** use more than one door-plate band on a page.

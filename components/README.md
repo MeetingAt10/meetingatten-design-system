@@ -108,6 +108,23 @@ Styles live in `src/css/components/<category>/<name>.css` (built into `dist/comp
 
 - [Icon](icon/icon.md) (`Icon`): Phosphor icons in currentColor, named from a curated vocabulary, with weights that carry meaning.
 
+## Expressive
+
+Marketing surfaces only (the ACCS landing, the Meeting At 10 site, the showcase); never inside portal workflows. See [motion](../foundations/motion.md) and [imagery](../foundations/imagery.md).
+
+- [Reveal](expressive/reveal.md) (`Reveal`): Content that eases in as it scrolls into view, visible by default and static where scroll-driven animation is unsupported or motion is reduced.
+- [WordReveal](expressive/word-reveal.md) (`WordReveal`): A headline whose words rise out of a clipped line on page load, one after another, read once by screen readers.
+- [FloatingArt](expressive/floating-art.md) (`FloatingArt`): A transparent 3D brand render with a soft ink shadow, a slow bob and optional pointer parallax.
+- [ParallaxScene](expressive/parallax-scene.md) (`ParallaxScene`): A container that tracks the pointer over itself and gives the floating art inside it depth.
+- [Parallax](expressive/parallax.md) (`Parallax`): An element that drifts against the scroll while it crosses the viewport, static where scroll-driven animation is unsupported or motion is reduced.
+- [Aurora](expressive/aurora.md) (`Aurora`): Three slow, blurred lane-colored glows behind a hero or band, decorative and still under reduced motion.
+- [GridBackdrop](expressive/grid-backdrop.md) (`GridBackdrop`): The Office Hours ruled sheet as a ground: hour and half-hour hairlines that fade out toward the edges.
+- [Marquee](expressive/marquee.md) (`Marquee`): An endless slow line of short labels, paused on hover and focus, wrapped into a plain list under reduced motion.
+- [SpotlightCard](expressive/spotlight-card.md) (`SpotlightCard`): A card whose lane-colored glow follows the pointer, optionally tilting toward it, as one link or a plain sheet.
+- [Orbit](expressive/orbit.md) (`Orbit`): Items on a dashed hairline ring that turns slowly while every item stays upright.
+- [CountUp](expressive/count-up.md) (`CountUp`): A number that rolls up from 0 when it scrolls into view, with the final value always in the text.
+- [ScrollProgress](expressive/scroll-progress.md) (`ScrollProgress`): A 2px bar across the top edge that fills as the page scrolls, shown only where scroll-driven animation is supported.
+
 ## Shared rules
 
 - Lanes: schedule (navy, default), community (violet), consult (teal), restricted (hatched ink, no hue). Color never signals permission or confidentiality.

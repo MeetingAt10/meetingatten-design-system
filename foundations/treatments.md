@@ -1,6 +1,6 @@
 # Treatments and materials
 
-The Office Hours materials (sheet, rules, blocks, hatch, highlighter, plate, scrim, dim) as repo-owned treatment tokens built only from palette and theme tokens.
+The Office Hours materials (sheet, rules, blocks, hatch, highlighter, plate, scrim, art shadow, dim) as repo-owned treatment tokens built only from palette and theme tokens.
 
 Treatments live in `tokens/treatments.json`. The build emits each one as `--ds-<name>` inside every theme block of `dist/tokens.css`, so a dark subtree resolves the dark value. Components read treatments; they never blend colors themselves.
 
@@ -16,6 +16,7 @@ Treatments live in `tokens/treatments.json`. The build emits each one as `--ds-<
 | Plate | `--ds-plate-bg`, `--ds-plate-fg`, `--ds-radius-plate`, `--ds-plate-shadow` | `.ds-plate`, `.ds-section--plate`, `.ds-btn--plate` | The door plate: navy with white display type (pale blue with dark type in dark) |
 | Today | `--ds-today-bg` | `.ds-timetable__day.is-today` | Today's column tint on the week sheet |
 | Scrim | `--ds-scrim` (source ink at 48% light, neutral 950 at 72% dark) | `.ds-modal-overlay`, `.ds-drawer-overlay` | Dims the page behind dialogs and drawers |
+| Art shadow | `--ds-art-shadow` (source ink at 30% light, neutral 950 at 70% dark) | `.ds-art` | The ink shadow under a floating brand render, which follows its alpha edge |
 | Dim | `--ds-dim` (surface at 45%) | none yet | A paper veil over content; available, not used by a component yet |
 
 Elevation and radius treatments are covered in [elevation.md](elevation.md) and [radius.md](radius.md).
@@ -41,6 +42,7 @@ Elevation and radius treatments are covered in [elevation.md](elevation.md) and 
 | `hatch` | hatch ink, 45% | hatch ink, 55% | Taken and restricted fills |
 | `hatch-strong` | hatch ink, 80% | hatch ink, 90% | Small hatched markers (restricted lane chips, legend swatches, timeline markers) |
 | `scrim` | source ink, 48% | neutral 950, 72% | Dialog backdrop |
+| `art-shadow` | source ink, 30% | neutral 950, 70% | Soft shadow under the [brand renders](imagery.md) (`.ds-art`, drawn with `drop-shadow`) |
 | `dim` | surface, 45% | same | Paper veil |
 | `lift` | -2px | same | Hover translate |
 | `drop` | -6px | same | Block drop start |

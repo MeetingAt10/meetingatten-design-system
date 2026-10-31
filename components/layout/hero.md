@@ -13,6 +13,7 @@ The hero is the first viewport of the ACCS landing and the Meeting At 10 site. C
 - Use `art` for the product doing its job (a week sheet, a slot picker), with synthetic content labeled as a sample.
 - Use `note` for honest small print ("Sample schedule; not live availability").
 - Don't put an eyebrow or kicker above the headline, and don't add a row of metrics, gradient text or a stack of cards under it.
+- On marketing surfaces (the ACCS landing, the Meeting At 10 site, the showcase), `art` may be a composition of [FloatingArt](../expressive/floating-art.md) renders in a [ParallaxScene](../expressive/parallax-scene.md), over an [Aurora](../expressive/aurora.md) and a [GridBackdrop](../expressive/grid-backdrop.md), with the headline as a [WordReveal](../expressive/word-reveal.md) (`as="span"`, inside the hero's h1). Don't replace the product with it: the Timetable or slot picker stays the main artifact, and renders sit around it. Never in the portal.
 - Don't use it on app pages; use [SectionHeader](section-header.md) with `level={1}`.
 
 ## Anatomy
@@ -41,7 +42,7 @@ The hero is the first viewport of the ACCS landing and the Meeting At 10 site. C
 - The title is the page's only h1. The plate, lead, actions and note follow it in DOM order, then the art.
 - Name actions by what they do ("Sign in", "Browse the community"); keep one primary.
 - Label synthetic content in the art and the note (`DEMO`, "sample"); never imply live availability, approval or endorsement.
-- The hero has no motion of its own. Art such as the Timetable follows reduced motion on its own terms.
+- The hero has no motion of its own. Art such as the Timetable follows reduced motion on its own terms, and the [expressive layer](../../foundations/motion.md) pieces stop under reduced motion.
 - Forced colors: the plate and blocks keep their edges; the headline and lead take system text colors.
 
 ## React
