@@ -31,6 +31,6 @@
 @media (prefers-reduced-motion: reduce) {
   .ds-marquee { mask-image: none; }
   .ds-marquee__track { inline-size: auto; }
-  .ds-marquee__group { flex-wrap: wrap; padding-inline-end: 0; }
+  .ds-marquee__group { flex: 0 1 auto; flex-wrap: wrap; padding-inline-end: 0; }
   .ds-marquee__group[aria-hidden="true"] { display: none; }
 }
