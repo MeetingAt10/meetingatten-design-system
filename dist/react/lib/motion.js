@@ -6,12 +6,18 @@ export const duration = {
     base: 0.2,
     slow: 0.32,
     deliberate: 0.48,
+    cinematic: 0.72,
+    stagger: 0.07,
+    ambient: 9,
+    drift: 24,
+    marquee: 48,
 };
 export const ease = {
     out: [0.16, 1, 0.3, 1],
     inOut: [0.65, 0, 0.35, 1],
     exit: [0.4, 0, 1, 1],
     standard: [0.2, 0, 0, 1],
+    emphasized: [0.05, 0.7, 0.1, 1],
 };
 export const spring = {
     snappy: { type: 'spring', stiffness: 600, damping: 49, mass: 1 },
@@ -22,4 +28,6 @@ export const distance = {
     lift: 2,
     drop: 6,
     rise: 8,
+    reveal: 24,
+    float: 10,
 };

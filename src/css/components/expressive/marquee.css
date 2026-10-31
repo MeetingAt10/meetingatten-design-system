@@ -1,0 +1,36 @@
+/* Marquee (expressive layer): a slow, endless line of short labels. The React component renders the items twice (the
+   second group is aria-hidden and inert) and the track slides one group's width, so the loop is seamless. Pauses on
+   hover and focus; under reduced motion it stops and wraps into a plain list.
+   <div class="ds-marquee"><div class="ds-marquee__track"><div class="ds-marquee__group">..</div>
+   <div class="ds-marquee__group" aria-hidden="true" inert>..</div></div></div> */
+@keyframes ds-marquee { to { translate: -50% 0; } }
+
+.ds-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, var(--ds-text-primary) 8%, var(--ds-text-primary) 92%, transparent);
+}
+.ds-marquee__track {
+  display: flex;
+  inline-size: max-content;
+}
+/* The trailing padding is the gap between groups, so the -50% loop lands exactly on the second group. */
+.ds-marquee__group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--ds-space-16);
+  padding-inline-end: var(--ds-space-16);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ds-marquee__track {
+    animation: ds-marquee var(--ds-marquee-duration, var(--ds-motion-duration-marquee)) linear infinite;
+  }
+  .ds-marquee--reverse .ds-marquee__track { animation-direction: reverse; }
+  .ds-marquee:is(:hover, :focus-within) .ds-marquee__track { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-marquee { mask-image: none; }
+  .ds-marquee__track { inline-size: auto; }
+  .ds-marquee__group { flex-wrap: wrap; padding-inline-end: 0; }
+  .ds-marquee__group[aria-hidden="true"] { display: none; }
+}

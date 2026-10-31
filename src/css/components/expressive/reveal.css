@@ -1,0 +1,24 @@
+/* Reveal (expressive layer, marketing surfaces only): content is visible by default. Where scroll-driven animation is
+   supported and motion is allowed, a block eases in as it enters the viewport; elsewhere it simply sits in its final state.
+   <section class="ds-reveal ds-reveal--fade" style="--ds-reveal-index: 2">..</section>  (index staggers siblings) */
+@keyframes ds-reveal-up { from { opacity: 0; translate: 0 var(--ds-motion-distance-reveal); scale: 0.985; } }
+@keyframes ds-reveal-fade { from { opacity: 0; } }
+@keyframes ds-reveal-scale { from { opacity: 0; scale: 0.92; } }
+@keyframes ds-reveal-start { from { opacity: 0; translate: calc(var(--ds-motion-distance-reveal) * -1) 0; } }
+@keyframes ds-reveal-end { from { opacity: 0; translate: var(--ds-motion-distance-reveal) 0; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .ds-reveal {
+      animation: ds-reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--ds-reveal-index, 0) * 4%) cover calc(28% + var(--ds-reveal-index, 0) * 4%);
+    }
+    .ds-reveal--fade { animation-name: ds-reveal-fade; }
+    .ds-reveal--scale { animation-name: ds-reveal-scale; }
+    .ds-reveal--start { animation-name: ds-reveal-start; }
+    .ds-reveal--end { animation-name: ds-reveal-end; }
+    .ds-reveal--start:dir(rtl) { animation-name: ds-reveal-end; }
+    .ds-reveal--end:dir(rtl) { animation-name: ds-reveal-start; }
+  }
+}

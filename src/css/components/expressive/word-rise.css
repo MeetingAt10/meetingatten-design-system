@@ -1,0 +1,20 @@
+/* Word rise (expressive layer): a headline whose words rise out of a clipped line on page load, one after another.
+   CSS only; the words are in the DOM from the first paint and rest in place under reduced motion.
+   <h1 class="ds-word-rise" aria-label="Your words"><span class="ds-word-rise__word" aria-hidden="true" style="--i: 0"><span>Your</span></span> ..</h1> */
+@keyframes ds-word-rise { from { translate: 0 105%; } }
+
+.ds-word-rise__word {
+  display: inline-block;
+  vertical-align: top;
+  /* The clip box is a little taller than the line so ascenders and descenders survive. */
+  overflow: clip;
+  padding-block: 0.1em;
+  margin-block: -0.1em;
+  & > span { display: inline-block; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ds-word-rise__word > span {
+    animation: ds-word-rise var(--ds-motion-duration-cinematic) var(--ds-motion-ease-emphasized) both;
+    animation-delay: calc(var(--i, 0) * var(--ds-motion-duration-stagger));
+  }
+}

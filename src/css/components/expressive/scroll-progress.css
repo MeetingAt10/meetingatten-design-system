@@ -1,0 +1,22 @@
+/* Scroll progress (expressive layer): a 2px bar across the top edge that fills as the page scrolls. Needs
+   scroll-driven animation and allowed motion; otherwise it is not shown.
+   <div class="ds-scroll-progress" aria-hidden="true"></div> */
+@keyframes ds-scroll-progress { from { scale: 0 1; } }
+
+.ds-scroll-progress { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .ds-scroll-progress {
+      display: block;
+      position: fixed;
+      inset: 0 0 auto;
+      block-size: 2px;
+      z-index: calc(var(--ds-z-sticky) + 1);
+      background: var(--ds-action-default);
+      transform-origin: 0 50%;
+      pointer-events: none;
+      animation: ds-scroll-progress linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}

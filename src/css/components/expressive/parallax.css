@@ -1,0 +1,17 @@
+/* Parallax (expressive layer): an element drifts against the scroll while it crosses the viewport. --ds-depth is
+   the travel in px each way. Static where scroll-driven animation is unsupported or motion is reduced.
+   <div class="ds-parallax" style="--ds-depth: 60">..</div> */
+@keyframes ds-parallax {
+  from { translate: 0 calc(var(--ds-depth, 40) * 1px); }
+  to { translate: 0 calc(var(--ds-depth, 40) * -1px); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .ds-parallax {
+      animation: ds-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+  }
+}

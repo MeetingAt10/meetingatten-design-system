@@ -6,6 +6,11 @@ export const duration = {
   base: 0.2,
   slow: 0.32,
   deliberate: 0.48,
+  cinematic: 0.72,
+  stagger: 0.07,
+  ambient: 9,
+  drift: 24,
+  marquee: 48,
 } as const;
 
 export const ease = {
@@ -13,6 +18,7 @@ export const ease = {
   inOut: [0.65, 0, 0.35, 1] as [number, number, number, number],
   exit: [0.4, 0, 1, 1] as [number, number, number, number],
   standard: [0.2, 0, 0, 1] as [number, number, number, number],
+  emphasized: [0.05, 0.7, 0.1, 1] as [number, number, number, number],
 } as const;
 
 export const spring = {
@@ -25,4 +31,6 @@ export const distance = {
   lift: 2,
   drop: 6,
   rise: 8,
+  reveal: 24,
+  float: 10,
 } as const;

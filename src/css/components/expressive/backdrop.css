@@ -1,0 +1,46 @@
+/* Backdrops (expressive layer): decorative grounds behind a hero or a band. Put them in a positioned parent
+   (position: relative; isolation: isolate); they sit behind its content and never take pointer events.
+   .ds-aurora: three slow lane-colored glows. .ds-grid-backdrop: the Office Hours ruled sheet, hour and half-hour
+   hairlines fading out at the edges.
+   <div class="ds-aurora" aria-hidden="true"><span class="ds-aurora__blob"></span>..</div> */
+@keyframes ds-drift { to { translate: var(--dx, 6%) var(--dy, -6%); scale: 1.12; } }
+
+.ds-aurora, .ds-grid-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.ds-aurora__blob {
+  --ds-blob: var(--ds-highlight-schedule);
+  position: absolute;
+  inline-size: 52%;
+  aspect-ratio: 1;
+  border-radius: var(--ds-radius-full);
+  background: radial-gradient(closest-side, var(--ds-blob), transparent);
+  filter: blur(48px);
+  &:nth-child(1) { inset: -18% auto auto -8%; --dx: 10%; --dy: 8%; }
+  &:nth-child(2) { --ds-blob: var(--ds-highlight-community); inset: 8% -10% auto auto; --dx: -8%; --dy: 10%; }
+  &:nth-child(3) { --ds-blob: var(--ds-highlight-consult); inset: auto auto -26% 26%; --dx: 6%; --dy: -10%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ds-aurora__blob {
+    animation: ds-drift var(--ds-motion-duration-drift) ease-in-out infinite alternate;
+    &:nth-child(2) { animation-delay: -8s; }
+    &:nth-child(3) { animation-delay: -16s; }
+  }
+}
+
+.ds-grid-backdrop {
+  /* Hour rules every 96px both ways, half-hour rules every 48px down the sheet. */
+  background-image:
+    repeating-linear-gradient(to bottom, var(--ds-border-subtle) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(to right, var(--ds-border-subtle) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(to bottom, var(--ds-rule-minor) 0 1px, transparent 1px 48px);
+  mask-image: radial-gradient(ellipse at 50% 40%, var(--ds-text-primary) 20%, transparent 72%);
+}
+
+@media (forced-colors: active) {
+  .ds-aurora, .ds-grid-backdrop { display: none; }
+}

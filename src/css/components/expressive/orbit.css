@@ -1,0 +1,42 @@
+/* Orbit (expressive layer): items placed on a dashed hairline ring that turns slowly while every item stays upright
+   (state as line form: a dashed edge is a path, not a promise). Set --ds-orbit-radius (px, unitless) on .ds-orbit
+   and --angle on each item. Static under reduced motion.
+   <div class="ds-orbit" style="--ds-orbit-radius: 150"><div class="ds-orbit__core">..</div><div class="ds-orbit__ring">
+   <div class="ds-orbit__item" style="--angle: 90deg"><div class="ds-orbit__upright">..</div></div></div></div> */
+@keyframes ds-orbit-turn { to { rotate: 1turn; } }
+@keyframes ds-orbit-upright { to { rotate: -1turn; } }
+
+.ds-orbit {
+  --ds-orbit-radius: 140;
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: calc(var(--ds-orbit-radius) * 2px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+.ds-orbit__core { position: relative; z-index: 1; }
+.ds-orbit__ring {
+  position: absolute;
+  inset: 0;
+  border: var(--ds-size-rule) dashed var(--ds-border-subtle);
+  border-radius: var(--ds-radius-full);
+}
+/* A zero-size anchor on the ring; the upright child is centered on it. */
+.ds-orbit__item {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: 0;
+  block-size: 0;
+  transform: rotate(var(--angle, 0deg)) translateX(calc(var(--ds-orbit-radius) * 1px)) rotate(calc(var(--angle, 0deg) * -1));
+}
+.ds-orbit__upright {
+  position: absolute;
+  inset: 0 auto auto 0;
+  translate: -50% -50%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ds-orbit__ring { animation: ds-orbit-turn var(--ds-motion-duration-drift) linear infinite; }
+  .ds-orbit__upright { animation: ds-orbit-upright var(--ds-motion-duration-drift) linear infinite; }
+}

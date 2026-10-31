@@ -1,6 +1,6 @@
 // Generates, from tokens/ and src/css/:
 //   dist/tokens.css, dist/tailwind.css, dist/tokens.json, dist/tokens.js, dist/fonts.css, dist/components.css,
-//   assets/icons/sprite.svg, src/react/icon/icons.ts and src/react/lib/motion.ts.
+//   assets/icons/sprite.svg, src/react/icon/icons.ts, src/react/lib/motion.ts and src/react/expressive/imagery.ts.
 import { writeFileSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, loadTokens, loadTreatments, treatmentCss, cssName, cssValue, springCurve } from './lib.mjs';
@@ -107,6 +107,8 @@ const LAYERS = {
     'feedback/progress', 'feedback/meter', 'feedback/privacy-notice', 'feedback/disclosure',
     'layout/divider', 'layout/section', 'layout/section-header', 'layout/hero', 'layout/agenda', 'layout/highlight',
     'identity/door-plate', 'identity/logo',
+    'expressive/reveal', 'expressive/word-rise', 'expressive/art', 'expressive/parallax', 'expressive/backdrop', 'expressive/marquee',
+    'expressive/spotlight', 'expressive/orbit', 'expressive/scroll-progress',
   ].map((f) => 'components/' + f),
   'ds.utilities': ['base/utilities', 'base/forced-colors'],
 };
@@ -161,4 +163,14 @@ export const spring = {\n${springs.join('\n')}\n} as const;
 export const distance = {\n${motion('distance').map(([k, d]) => `  ${camel(k)}: ${parseFloat(d)},`).join('\n')}\n} as const;
 `);
 
-console.log(`built dist/ - ${foundations.size} foundation tokens; themes: ${Object.keys(themes).join(', ')} (${light.size} semantic tokens each); ${Object.keys(icons).length} icons x 3 weights`);
+// ---- imagery: the brand renders in assets/imagery/imagery.json as a typed record (the files ship under ./assets/*) ----
+const { imagery } = JSON.parse(readFileSync(join(ROOT, 'assets/imagery/imagery.json'), 'utf8'));
+mkdirSync(join(ROOT, 'src/react/expressive'), { recursive: true });
+writeFileSync(join(ROOT, 'src/react/expressive/imagery.ts'), tsBanner + `// Brand renders from assets/imagery/imagery.json: transparent 3D WebP, decorative (alt=""). Import the file itself:
+// import src from '@meetingat10/design-system/assets/imagery/<name>.webp'.
+export const imagery = {\n${imagery.map((i) => `  ${JSON.stringify(i.name)}: { file: ${JSON.stringify(i.file)}, width: ${i.width}, height: ${i.height}, subject: ${JSON.stringify(i.subject)} },`).join('\n')}\n} as const;
+
+export type ImageryName = keyof typeof imagery;
+`);
+
+console.log(`built dist/ - ${foundations.size} foundation tokens; themes: ${Object.keys(themes).join(', ')} (${light.size} semantic tokens each); ${Object.keys(icons).length} icons x 3 weights; ${imagery.length} renders`);

@@ -1,0 +1,40 @@
+/* Spotlight card (expressive layer): a Card whose lane-colored glow follows the pointer (--ds-sx, --ds-sy), and that
+   can tilt toward it (--ds-tx, --ds-ty, -1..1). Built on .ds-card, so it keeps the paper sheet, rule and radius.
+   <a class="ds-card ds-card--link ds-spotlight ds-spotlight--community ds-spotlight--tilt" href="..">..</a> */
+.ds-spotlight {
+  --ds-spot: var(--ds-highlight-schedule);
+  --ds-spot-edge: var(--ds-focus);
+  isolation: isolate;
+  color: inherit;
+  text-decoration: none;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(24rem circle at var(--ds-sx, 50%) var(--ds-sy, 50%), var(--ds-spot), transparent 70%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  }
+  &:is(:hover, :focus-within, .is-hover) {
+    border-color: var(--ds-spot-edge);
+    &::before { opacity: 1; }
+  }
+}
+.ds-spotlight--community { --ds-spot: var(--ds-highlight-community); --ds-spot-edge: var(--ds-accent-border); }
+.ds-spotlight--consult { --ds-spot: var(--ds-highlight-consult); --ds-spot-edge: var(--ds-secondary-border); }
+
+.ds-spotlight--tilt {
+  transform: perspective(900px) rotateX(calc(var(--ds-ty, 0) * -6deg)) rotateY(calc(var(--ds-tx, 0) * 6deg));
+  &:is(:hover, :focus-within) { translate: 0 var(--ds-lift); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ds-spotlight--tilt {
+    transition:
+      transform var(--ds-motion-spring-smooth-duration) var(--ds-motion-spring-smooth),
+      translate var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy),
+      border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  }
+}
