@@ -1,5 +1,5 @@
-/* Text inputs (text field, text area, search): a paper slot with a solid rule. Focus draws the focus color
-   on the rule plus a 2px ring; invalid turns the rule danger; disabled goes dashed on the disabled ground;
+/* Text inputs (text field, text area, search): a paper slot with a 3:1 rule. Focus draws the cobalt rule plus a soft
+   halo and a 2px ring; invalid turns the rule danger; disabled goes dashed on the disabled ground;
    read-only keeps only a hairline. 16px text on touch screens so phones never zoom.
    <input class="ds-input"> · <textarea class="ds-input ds-textarea"></textarea>
    With an icon: <div class="ds-input-group"><svg class="ds-icon ds-input-group__icon">..</svg><input class="ds-input"></div> */
@@ -18,26 +18,32 @@
   transition:
     border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
     background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    box-shadow var(--ds-motion-duration-base) var(--ds-motion-ease-out),
     outline-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
   appearance: none;
+  box-shadow: inset 0 1px 0 var(--ds-hairline);
+  caret-color: var(--ds-focus);
   &::placeholder { color: var(--ds-text-secondary); opacity: 1; }
   &:is(:hover, [data-hovered], .is-hover):not(:disabled, [data-disabled], :read-only) { border-color: var(--ds-border-strong); }
   &:is(:focus, [data-focused], .is-focus) {
     border-color: var(--ds-focus);
     outline: var(--ds-size-focus-ring) solid var(--ds-focus);
     outline-offset: 1px;
+    box-shadow: 0 0 0 5px var(--ds-atmos-cobalt);
   }
   &:is([aria-invalid="true"], [data-invalid], .is-error) {
     border-color: var(--ds-danger-fg);
-    &:is(:focus, [data-focused], .is-focus) { outline-color: var(--ds-danger-fg); }
+    background: var(--ds-danger-bg);
+    &:is(:focus, [data-focused], .is-focus) { outline-color: var(--ds-danger-fg); box-shadow: none; }
   }
   &:is(:disabled, [data-disabled]) {
     border-style: dashed;
     background: var(--ds-disabled-bg);
     color: var(--ds-disabled-fg);
+    box-shadow: none;
     cursor: not-allowed;
   }
-  &:read-only:not(:disabled) { border-color: var(--ds-border-subtle); background: transparent; }
+  &:read-only:not(:disabled) { border-color: var(--ds-hairline-strong); box-shadow: none; background: transparent; }
   /* Search fields: hide the platform clear glyph; the component draws its own. */
   &::-webkit-search-cancel-button, &::-webkit-search-decoration { appearance: none; }
   @media (pointer: fine) { [data-density="compact"] &:not(.ds-textarea) { min-height: var(--ds-size-control-sm); font-size: var(--ds-type-body-small-size); } }

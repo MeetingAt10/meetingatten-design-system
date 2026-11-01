@@ -5,7 +5,7 @@ react: Breadcrumbs
 ---
 # Breadcrumbs
 
-Breadcrumbs show where a page sits in the hierarchy: My reports / Drafts / DEMO-024. Earlier items are links; the last item is the current page in plain text.
+Breadcrumbs show where a page sits in the hierarchy: My reports / Drafts / CCS-2026-0142. Earlier items are links; the last item is the current page in plain text.
 
 ## When to use
 
@@ -44,7 +44,7 @@ import { Breadcrumbs } from '@meetingat10/design-system/react';
 <Breadcrumbs items={[
   { label: 'My reports', href: '/reports' },
   { label: 'Drafts', href: '/reports/drafts' },
-  { label: 'DEMO-024' },
+  { label: 'CCS-2026-0142' },
 ]} />
 ```
 
@@ -55,7 +55,7 @@ import { Breadcrumbs } from '@meetingat10/design-system/react';
   <ol class="ds-breadcrumbs">
     <li class="ds-breadcrumbs__item"><a class="ds-breadcrumbs__link" href="/reports">My reports</a></li>
     <li class="ds-breadcrumbs__item"><a class="ds-breadcrumbs__link" href="/reports/drafts">Drafts</a></li>
-    <li class="ds-breadcrumbs__item"><span aria-current="page">DEMO-024</span></li>
+    <li class="ds-breadcrumbs__item"><span aria-current="page">CCS-2026-0142</span></li>
   </ol>
 </nav>
 ```

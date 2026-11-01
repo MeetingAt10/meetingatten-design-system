@@ -13,3 +13,6 @@ export function stats() {
     renders: Object.keys(imagery).length,
   };
 }
+
+/** The package version, read at build time. */
+export const VERSION: string = JSON.parse(readFileSync(join(REPO, "package.json"), "utf8")).version;

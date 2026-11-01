@@ -41,7 +41,7 @@ A report record shows one restricted record as a ruled row: the reference in tab
 
 - Each record is an `<article>` labeled by its title, so it reads as one unit.
 - Facts keep their labels in the reading order; nothing relies on column position.
-- The action link is named with the reference ("View record DEMO-024").
+- The action link is named with the reference ("View record CCS-2026-0142").
 - The status word and the marker form carry the state; tone only reinforces. Set `statusForm` and `statusTone` explicitly: the defaults draw a pending look.
 - Forced colors: rules stay visible; badge markers are redrawn in `CanvasText`.
 
@@ -53,14 +53,14 @@ import { ReportRecord } from '@meetingat10/design-system/react';
 <ul className="ds-record-list">
   <li>
     <ReportRecord
-      reference="DEMO-024" title="General concern" status="Draft"
+      reference="CCS-2026-0142" title="General concern" status="Draft"
       facts={[{ label: 'Updated', value: '21 Oct' }, { label: 'Visibility', value: 'You only' }]}
       href="/reports/demo-024"
     />
   </li>
   <li>
     <ReportRecord
-      reference="DEMO-009" title="General question" status="Resolved" statusTone="success" statusForm="solid"
+      reference="CCS-2026-0091" title="General question" status="Resolved" statusTone="success" statusForm="solid"
       facts={[{ label: 'Updated', value: '2 Oct' }]} href="/reports/demo-009"
     />
   </li>
@@ -76,7 +76,7 @@ import { ReportRecord } from '@meetingat10/design-system/react';
   <li>
     <article class="ds-record" aria-labelledby="rec-24">
       <header class="ds-record__head">
-        <span class="ds-record__ref">DEMO-024</span>
+        <span class="ds-record__ref">CCS-2026-0142</span>
         <span class="ds-badge ds-badge--warning ds-badge--pending"><span class="ds-badge__mark" aria-hidden="true"></span>Draft</span>
       </header>
       <h3 class="ds-record__title" id="rec-24">General concern</h3>
@@ -84,7 +84,7 @@ import { ReportRecord } from '@meetingat10/design-system/react';
         <div><dt>Updated</dt><dd>21 Oct</dd></div>
         <div><dt>Visibility</dt><dd>You only</dd></div>
       </dl>
-      <a class="ds-link ds-link--standalone ds-record__action" href="/reports/demo-024" aria-label="View record DEMO-024">View record<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-arrow-right"/></svg></a>
+      <a class="ds-link ds-link--standalone ds-record__action" href="/reports/demo-024" aria-label="View record CCS-2026-0142">View record<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-arrow-right"/></svg></a>
     </article>
   </li>
 </ul>

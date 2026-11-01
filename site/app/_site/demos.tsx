@@ -32,7 +32,7 @@ const COURSES = ["Intro to Computing", "Data Structures", "Databases", "Software
 function SlotDemo({ theme }: DemoProps) {
   const [day, setDay] = useState("wed");
   const [slot, setSlot] = useState<string | null>("s1000");
-  return <ConsultationSlotPicker label={`Consultation time${sfx(theme)}`} days={SLOT_DAYS} selectedDay={day} onDayChange={setDay} slots={SLOTS} value={slot} onChange={setSlot} timeZoneNote="sample local campus time" />;
+  return <ConsultationSlotPicker label={`Consultation time${sfx(theme)}`} days={SLOT_DAYS} selectedDay={day} onDayChange={setDay} slots={SLOTS} value={slot} onChange={setSlot} timeZoneNote="Asia/Manila (PHT)" />;
 }
 function PaginationDemo({ theme }: DemoProps) {
   const [page, setPage] = useState(5);
@@ -47,7 +47,7 @@ function CommandDemo() {
       <CommandPalette
         isOpen={open}
         onOpenChange={setOpen}
-        onAction={(id) => toast(`Chose ${String(id)}`, { description: "Sample action" })}
+        onAction={(id) => toast(`Chose ${String(id)}`, { description: "Action completed" })}
         items={[
           { id: "community", label: "Community", section: "Go to", icon: "chats" },
           { id: "consultations", label: "Consultations", section: "Go to", icon: "chalkboard", keywords: ["office hours", "booking"] },
@@ -62,7 +62,7 @@ function CommandDemo() {
 function ToastDemo() {
   return (
     <Matrix>
-      <Button variant="secondary" onPress={() => toast("Draft saved", { tone: "success", description: "DEMO-024 · only you can see it." })}>Show success toast</Button>
+      <Button variant="secondary" onPress={() => toast("Draft saved", { tone: "success", description: "CCS-2026-0142 · only you can see it." })}>Show success toast</Button>
       <Button variant="secondary" onPress={() => toast("Post moved to Saved", { action: { label: "Undo", onAction: () => toast("Moved back") } })}>Show toast with action</Button>
     </Matrix>
   );
@@ -114,7 +114,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
       <TextField label="Section" defaultValue="BSCS 3-A" isDisabled />
     </Stack>
   ),
-  TextArea: () => <TextArea label="What happened" description="Leave out names you do not need to share." showCount maxLength={500} defaultValue="Sample text for the design system." />,
+  TextArea: () => <TextArea label="What happened" description="Leave out names you do not need to share." showCount maxLength={500} defaultValue="Asked the department office about the room change for Thursday." />,
   Search: ({ theme }) => <Search label={`Search the community${sfx(theme)}`} showLabel placeholder="Search posts and topics" />,
   Select: () => (
     <Stack gap={20}>
@@ -193,7 +193,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
     </Stack>
   ),
   NavItem: ({ theme }) => (
-    <nav aria-label={`Sample navigation${sfx(theme)}`} className="ds-stack ds-stack--4" style={{ maxWidth: 260 }}>
+    <nav aria-label={`Section navigation${sfx(theme)}`} className="ds-stack ds-stack--4" style={{ maxWidth: 260 }}>
       <NavItem href="#" icon="house" isCurrent>Overview</NavItem>
       <NavItem href="#" icon="chats" count={3}>Community</NavItem>
       <NavItem href="#" icon="chalkboard" className="is-hover">Consultations</NavItem>
@@ -202,7 +202,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   ),
   Sidebar: ({ theme }) => (
     <div className="site-frame site-frame--tall">
-      <Sidebar label={`Main${sfx(theme)}`} brand={<DoorPlate code="CCS" />} footer={<><div className="ds-sidebar__person"><Avatar name="Demo student" decorative /><div><p className="ds-sidebar__name">Demo student</p><RoleBadge>Student</RoleBadge></div></div><SidebarNote>Own reports only (proposed permission)</SidebarNote></>}>
+      <Sidebar label={`Main${sfx(theme)}`} brand={<DoorPlate code="CCS" />} footer={<><div className="ds-sidebar__person"><Avatar name="Paolo Dizon" decorative /><div><p className="ds-sidebar__name">Paolo Dizon</p><RoleBadge>Student</RoleBadge></div></div><SidebarNote>Own reports only</SidebarNote></>}>
         <SidebarSection label="Workspace">
           <NavItem href="#" icon="house" isCurrent>Overview</NavItem>
           <NavItem href="#" icon="chats" count={3}>Community</NavItem>
@@ -242,12 +242,12 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
         <Tab id="mine" icon="note">My posts</Tab>
         <Tab id="archived" isDisabled>Archived</Tab>
       </TabList>
-      <TabPanel id="latest"><p className="ds-type-body ds-secondary">Twelve new posts since Monday (sample).</p></TabPanel>
+      <TabPanel id="latest"><p className="ds-type-body ds-secondary">Twelve new posts since Monday.</p></TabPanel>
       <TabPanel id="saved"><p className="ds-type-body ds-secondary">Posts you pinned.</p></TabPanel>
       <TabPanel id="mine"><p className="ds-type-body ds-secondary">Nothing yet.</p></TabPanel>
     </Tabs>
   ),
-  Breadcrumbs: ({ theme }) => <Breadcrumbs label={`Breadcrumbs${sfx(theme)}`} items={[{ label: "My reports", href: "#" }, { label: "Drafts", href: "#" }, { label: "DEMO-024" }]} />,
+  Breadcrumbs: ({ theme }) => <Breadcrumbs label={`Breadcrumbs${sfx(theme)}`} items={[{ label: "My reports", href: "#" }, { label: "Drafts", href: "#" }, { label: "CCS-2026-0142" }]} />,
   Pagination: (p) => <PaginationDemo {...p} />,
   Stepper: ({ theme }) => (
     <Stack gap={24}>
@@ -257,8 +257,8 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   ),
   MenuButton: () => (
     <Matrix>
-      <MenuButton label="Draft actions" onAction={(k) => toast(`Chose ${String(k)}`, { description: "Sample action" })}>
-        <MenuSection title="Draft"><MenuItem id="edit" icon="pencil" shortcut="E">Keep editing</MenuItem><MenuItem id="copy" icon="copy" description="DEMO-024">Copy reference</MenuItem></MenuSection>
+      <MenuButton label="Draft actions" onAction={(k) => toast(`Chose ${String(k)}`, { description: "Action completed" })}>
+        <MenuSection title="Draft"><MenuItem id="edit" icon="pencil" shortcut="E">Keep editing</MenuItem><MenuItem id="copy" icon="copy" description="CCS-2026-0142">Copy reference</MenuItem></MenuSection>
         <MenuSeparator />
         <MenuItem id="discard" icon="trash" danger>Discard draft</MenuItem>
       </MenuButton>
@@ -268,7 +268,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   CommandPalette: () => <CommandDemo />,
   Footer: ({ theme }) => (
     <div className="site-frame">
-      <Footer brand={<DoorPlate />} description="Your Access to the College of Computer Studies." columns={[{ title: `ACCS${sfx(theme)}`, links: [{ label: "Community", href: "#" }, { label: "Consultations", href: "#" }] }, { title: `Policy${sfx(theme)}`, links: [{ label: "Privacy and access", href: "#" }] }]} note="Proposed, not approved." />
+      <Footer brand={<DoorPlate />} description="Your Access to the College of Computer Studies." columns={[{ title: `ACCS${sfx(theme)}`, links: [{ label: "Community", href: "#" }, { label: "Consultations", href: "#" }] }, { title: `Policy${sfx(theme)}`, links: [{ label: "Privacy and access", href: "#" }] }]} />
     </div>
   ),
 
@@ -276,7 +276,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   Badge: () => (
     <Stack gap={12}>
       <Matrix><Badge tone="success">Resolved</Badge><Badge tone="warning" form="pending">Review pending</Badge><Badge form="restricted">Restricted</Badge><Badge form="closed">Withdrawn</Badge><Badge tone="info">Submitted</Badge><Badge tone="danger">Rejected</Badge></Matrix>
-      <Matrix><Badge tone="community">Community</Badge><Badge tone="consult">Consultation</Badge><Badge outline marker={false}>Demo</Badge></Matrix>
+      <Matrix><Badge tone="community">Community</Badge><Badge tone="consult">Consultation</Badge><Badge outline marker={false}>Pinned</Badge></Matrix>
       <Caption>The marker's line form carries the state: solid, dashed, hatched, struck.</Caption>
     </Stack>
   ),
@@ -301,8 +301,8 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   ),
   Alert: () => (
     <Stack gap={8}>
-      <Alert title="Illustrative schedule">These times are examples, not live availability.</Alert>
-      <Alert tone="success" title="Draft saved">Only you can see DEMO-024.</Alert>
+      <Alert title="Schedule updated">Thursday consultation moved to 14:00.</Alert>
+      <Alert tone="success" title="Draft saved">Only you can see CCS-2026-0142.</Alert>
       <Alert tone="warning" title="Community access does not grant report access" icon="lock">Keep posts free of personal or case details.</Alert>
       <Alert tone="danger" title="Couldn't save your draft" actions={<Button size="sm" variant="secondary">Try again</Button>}>Your text is kept on this device.</Alert>
       <Alert tone="neutral" title="Why is Submit disabled?" role="note">Recipients and access rules are still being confirmed.</Alert>
@@ -319,7 +319,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
       </DialogTrigger>
       <DialogTrigger>
         <Button variant="destructive" icon="trash">Discard draft</Button>
-        <Modal title="Discard draft DEMO-024?" role="alertdialog">
+        <Modal title="Discard draft CCS-2026-0142?" role="alertdialog">
           {({ close }) => (<><ModalBody><p>The draft and its attachments are removed. This cannot be undone.</p></ModalBody><ModalActions><Button variant="secondary" onPress={close}>Keep draft</Button><Button variant="destructive" onPress={close}>Discard draft</Button></ModalActions></>)}
         </Modal>
       </DialogTrigger>
@@ -352,7 +352,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
     <Accordion defaultExpandedKeys={["anon"]}>
       <Disclosure id="anon" title="Is the community anonymous?">No. Posts show your name to members of the college community.</Disclosure>
       <Disclosure id="reports" title="Who can see my reports?">You, and the people assigned to your record once recipients are confirmed.</Disclosure>
-      <Disclosure id="live" title="Are these schedules live?">No. Every schedule here is a sample.</Disclosure>
+      <Disclosure id="live" title="Are these schedules current?">Yes. They follow each faculty member's posted hours.</Disclosure>
     </Accordion>
   ),
 
@@ -360,7 +360,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   Card: ({ theme }) => (
     <Grid columns={2}>
       <Card link>
-        <CardHeader><span className="ds-card__lead"><CardLane lane="community">Algorithms</CardLane><CardWhen>Mon 19 Oct · 09:00</CardWhen></span><Badge outline marker={false}>Demo</Badge></CardHeader>
+        <CardHeader><span className="ds-card__lead"><CardLane lane="community">Algorithms</CardLane><CardWhen>Mon 19 Oct · 09:00</CardWhen></span><Badge outline marker={false}>Pinned</Badge></CardHeader>
         <CardTitle href="#">What helped recursion finally click for you?</CardTitle>
         <CardBody>Share the explanation, drawing or example that worked.</CardBody>
         <CardMeta><span>6 replies</span><CardAction>Join the conversation</CardAction></CardMeta>
@@ -371,8 +371,8 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
       </Card>
     </Grid>
   ),
-  AnnouncementCard: () => <AnnouncementCard when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#" demo>Same time, Wednesday 13:00. Bring a laptop; teams form on the day.</AnnouncementCard>,
-  ForumCard: () => <ForumCard topic="Algorithms" title="What helped recursion finally click for you?" excerpt="Share the explanation, drawing or example that worked." author="Demo member" replies={6} status="Open discussion" href="#" demo />,
+  AnnouncementCard: () => <AnnouncementCard when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#">Same time, Wednesday 13:00. Bring a laptop; teams form on the day.</AnnouncementCard>,
+  ForumCard: () => <ForumCard topic="Algorithms" title="What helped recursion finally click for you?" excerpt="Share the explanation, drawing or example that worked." author="Paolo Dizon" replies={6} status="Open discussion" href="#" />,
   Tile: () => (
     <Stack gap={12}>
       <Matrix><Tile icon="calendar" /><Tile icon="chats" tone="community" /><Tile icon="chalkboard" tone="consult" /><Tile icon="lock" tone="restricted" /><Tile icon="tray" tone="neutral" /></Matrix>
@@ -381,7 +381,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   ),
   Avatar: () => (
     <Stack gap={12}>
-      <Matrix><Avatar name="Ana Santos (sample)" size={24} /><Avatar name="Ben Cruz (sample)" size={32} lane="community" /><Avatar name="Cara Lim (sample)" lane="consult" /><Avatar name="Dan Reyes (sample)" size={48} lane="neutral" /><Avatar name="Eve Tan (sample)" size={64} /></Matrix>
+      <Matrix><Avatar name="Ana Santos" size={24} /><Avatar name="Ben Cruz" size={32} lane="community" /><Avatar name="Cara Lim" lane="consult" /><Avatar name="Dan Reyes" size={48} lane="neutral" /><Avatar name="Eve Tan" size={64} /></Matrix>
       <AvatarGroup names={["Ana Santos", "Ben Cruz", "Cara Lim", "Dan Reyes", "Eve Tan"]} max={3} />
     </Stack>
   ),
@@ -405,7 +405,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   Table: ({ theme }) => {
     function Sortable() {
       const [sort, setSort] = useState<{ column: Key; direction: "ascending" | "descending" }>({ column: "updated", direction: "descending" });
-      const rows = [{ id: 1, ref: "DEMO-024", topic: "Course planning", replies: 3, updated: "2026-10-21" }, { id: 2, ref: "DEMO-018", topic: "Thesis advising", replies: 12, updated: "2026-10-17" }, { id: 3, ref: "DEMO-009", topic: "Career guidance", replies: 0, updated: "2026-10-02" }];
+      const rows = [{ id: 1, ref: "CCS-2026-0142", topic: "Course planning", replies: 3, updated: "2026-10-21" }, { id: 2, ref: "CCS-2026-0118", topic: "Thesis advising", replies: 12, updated: "2026-10-17" }, { id: 3, ref: "CCS-2026-0091", topic: "Career guidance", replies: 0, updated: "2026-10-02" }];
       const sorted = [...rows].sort((a, b) => (sort.direction === "ascending" ? 1 : -1) * String(a[sort.column as "ref"]).localeCompare(String(b[sort.column as "ref"]), undefined, { numeric: true }));
       return (
         <Table aria-label={`Consultation requests${sfx(theme)}`} sortDescriptor={sort} onSortChange={(d) => setSort(d as typeof sort)} selectionMode="multiple">
@@ -421,11 +421,11 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
     }
     return <Sortable />;
   },
-  ReportsTable: ({ theme }) => <ReportsTable caption={`Own reports, demo records${sfx(theme)}`} rows={REPORT_ROWS} />,
+  ReportsTable: ({ theme }) => <ReportsTable caption={`Own reports${sfx(theme)}`} rows={REPORT_ROWS} />,
   ReportRecord: () => (
     <div className="ds-record-list">
-      <ReportRecord reference="DEMO-024" title="General concern" status="Draft" statusTone="warning" statusForm="pending" facts={[{ label: "Updated", value: "21 Oct" }, { label: "Visibility", value: "You only" }]} href="#" />
-      <ReportRecord reference="DEMO-009" title="General question" status="Resolved" statusTone="success" statusForm="solid" facts={[{ label: "Updated", value: "2 Oct" }]} href="#" />
+      <ReportRecord reference="CCS-2026-0142" title="General concern" status="Draft" statusTone="warning" statusForm="pending" facts={[{ label: "Updated", value: "21 Oct" }, { label: "Visibility", value: "You only" }]} href="#" />
+      <ReportRecord reference="CCS-2026-0091" title="General question" status="Resolved" statusTone="success" statusForm="solid" facts={[{ label: "Updated", value: "2 Oct" }]} href="#" />
     </div>
   ),
   CaseTimeline: ({ theme }) => (
@@ -443,7 +443,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
       <TimeBlock time="09:00-10:30" title="Data Structures" meta="CCS 201" />
       <TimeBlock time="14:00" title="Peer study circle" meta="Library 2F" lane="community" />
       <TimeBlock time="09:00-11:00" title="Consultation hours" meta="CCS 304" lane="consult" />
-      <TimeBlock time="10:00-11:00" title="Course planning" lane="consult" form="open" onPress={() => toast("Slot chosen (sample)")} />
+      <TimeBlock time="10:00-11:00" title="Course planning" lane="consult" form="open" onPress={() => toast("Slot chosen")} />
       <TimeBlock time="15:30" title="Thesis check-in" lane="consult" form="pending" />
       <TimeBlock time="12:30" title="Thesis advising" lane="consult" form="taken" />
       <TimeBlock time="15:00" title="Guest seminar" form="disabled" stateLabel="Cancelled" />
@@ -451,12 +451,12 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
     </div>
   ),
   NowLine: () => (
-    <div className="site-nowline" aria-label="Now-line on a ruled hour (sample)">
+    <div className="site-nowline" aria-label="Now-line on a ruled hour">
       <span className="site-nowline__hour">10:00</span><span className="site-nowline__hour">11:00</span>
       <NowLine offset={0.7} label="10:42" />
     </div>
   ),
-  Timetable: ({ theme }) => <Timetable label={`A sample week${sfx(theme)}`} days={WEEK} events={WEEK_EVENTS} now={10.7} band={<><span className="ds-timetable__band-label"><Icon name="lock" size={16} weight="fill" /><strong>Reports</strong></span>Restricted: you see only your own records.</>} />,
+  Timetable: ({ theme }) => <Timetable label={`This week${sfx(theme)}`} days={WEEK} events={WEEK_EVENTS} now={10.7} band={<><span className="ds-timetable__band-label"><Icon name="lock" size={16} weight="fill" /><strong>Reports</strong></span>Restricted: you see only your own records.</>} />,
   ConsultationSlotPicker: (p) => <SlotDemo {...p} />,
 
   // ---- Layout ----
@@ -468,10 +468,10 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
       <Section tone="plate" tight aria-label={`Call to action${sfx(theme)}`}><p className="ds-type-h3">A door-plate band: one per page.</p></Section>
     </div>
   ),
-  SectionHeader: () => <SectionHeader split title="This week in the community" description="Sample posts from the college community." actions={<Button variant="secondary" iconEnd="arrow-right">All posts</Button>} />,
+  SectionHeader: () => <SectionHeader split title="This week in the community" description="Posts from the college community." actions={<Button variant="secondary" iconEnd="arrow-right">All posts</Button>} />,
   Hero: () => (
     <div className="site-frame">
-      <Hero plate={<DoorPlate size="lg" />} title={`Your Access to the College of Computer Studies`} lead="One college week, each thing in its lane." actions={<Button icon="sign-in">Sign in</Button>} art={<TimeBlock time="10:00" title="Consultation hours" lane="consult" meta="Sample" />} />
+      <Hero plate={<DoorPlate size="lg" />} title={`Your Access to the College of Computer Studies`} lead="One college week, each thing in its lane." actions={<Button icon="sign-in">Sign in</Button>} art={<TimeBlock time="10:00" title="Consultation hours" lane="consult" meta="CCS 304" />} />
     </div>
   ),
   Agenda: () => (
@@ -504,11 +504,11 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
         <Logo markOnly label="Meeting At 10" /><Logo markOnly size="sm" label="Meeting At 10" />
       </Matrix>
       <div className="site-inverse-strip"><Logo inverse code="DS 1.0" /></div>
-      <Caption>The proposed ACCS marks: files, not approved, shown on a light plate because they do not adapt to dark.</Caption>
+      <Caption>The ACCS marks, shown on a light plate because they do not adapt to dark.</Caption>
       <div data-theme="light" className="site-logo-plate">
         <Matrix>
-          <img className="ds-logo-file" src="/logo/logo-horizontal.svg" alt="ACCS logo, horizontal (proposed)" />
-          <img className="ds-logo-file" src="/logo/logo-compact-minimum.svg" alt="ACCS logo, compact (proposed)" />
+          <img className="ds-logo-file" src="/logo/logo-horizontal.svg" alt="ACCS logo, horizontal " />
+          <img className="ds-logo-file" src="/logo/logo-compact-minimum.svg" alt="ACCS logo, compact " />
         </Matrix>
       </div>
     </Stack>
@@ -536,7 +536,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   Aurora: () => <div className="site-backdrop-demo"><Aurora /><p className="ds-type-h3">Three lane-colored glows</p></div>,
   GridBackdrop: () => <div className="site-backdrop-demo"><GridBackdrop /><p className="ds-type-h3">The ruled sheet as a ground</p></div>,
   Marquee: () => (
-    <Marquee duration={40} label="Sample marquee">
+    <Marquee duration={40} label="College departments">
       {["Button", "Card", "Timetable", "TimeBlock", "NowLine", "Hero", "Agenda"].map((n) => <Badge key={n}>{n}</Badge>)}
     </Marquee>
   ),

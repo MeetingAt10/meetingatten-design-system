@@ -20,7 +20,7 @@ A time block is one thing placed in time: a class, a consultation, a community e
 | Part | Class | Notes |
 |---|---|---|
 | Block | `.ds-block` | Radius 6 (`--ds-radius-block`), 8px 12px padding, body-small text; the schedule lane (navy) is the default |
-| Lane | `.ds-block--community`, `--consult`, `--restricted` | Violet, teal, or hatched paper with an ink rule (no hue) |
+| Lane | `.ds-block--community`, `--consult`, `--restricted` | Amber, emerald, or hatched paper with an ink rule (no hue) |
 | Time | `.ds-block__time` | `time` style: JetBrains Mono 500 12/16, tabular, slashed zero |
 | Title | `.ds-block__title` | Inter 600 14/20, clamped to 3 lines (1 line in short timetable cells) |
 | Meta | `.ds-block__meta` | Caption; the state word first, then room, host or lane |
@@ -61,7 +61,7 @@ import { TimeBlock } from '@meetingat10/design-system/react';
 <TimeBlock time="09:00-10:30" title="Data Structures" meta="CCS 201" />
 <TimeBlock time="09:00-11:00" title="Consultation hours" meta="CCS 304" lane="consult" />
 <TimeBlock
-  time="10:00-11:00" title="Course planning" meta="Prof. Reyes (sample)" lane="consult" form="open"
+  time="10:00-11:00" title="Course planning" meta="Prof. Reyes" lane="consult" form="open"
   onPress={() => setChosen(!chosen)} isSelected={chosen}
   aria-label="10:00 to 11:00, Course planning, open"
 />
@@ -86,7 +86,7 @@ import { TimeBlock } from '@meetingat10/design-system/react';
   aria-label="10:00 to 11:00, Course planning, open">
   <time class="ds-block__time">10:00-11:00</time>
   <span class="ds-block__title">Course planning</span>
-  <span class="ds-block__meta"><span>Open</span><span>Prof. Reyes (sample)</span></span>
+  <span class="ds-block__meta"><span>Open</span><span>Prof. Reyes</span></span>
 </button>
 
 <article class="ds-block ds-block--consult ds-block--taken">

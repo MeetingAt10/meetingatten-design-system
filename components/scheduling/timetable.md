@@ -11,7 +11,7 @@ A timetable is the weekly consultation sheet on a faculty door, rebuilt as an in
 
 - Use it when time is the point: a week of office hours, a day sheet, the schedule preview on a landing page.
 - Use `band` to draw the restricted lane into the sheet ("Reports: you see only your own records"), never to hide it.
-- Use synthetic, labeled events in demos ("Prof. Reyes (sample)").
+- Use synthetic, labeled events in demos ("Prof. Reyes").
 - Don't use it for an undated list of things; use [Agenda](../layout/agenda.md) rows.
 - Don't present sample schedules as live availability; say "sample" near the sheet.
 
@@ -70,7 +70,7 @@ import { Icon, Timetable } from '@meetingat10/design-system/react';
     { id: 'wed', label: 'Wed', date: '21', fullLabel: 'Wednesday 21 October', isToday: true },
   ]}
   events={[
-    { id: 'tue-open', day: 'tue', start: 10, end: 11, title: 'Course planning', meta: 'Prof. Reyes (sample)', lane: 'consult', form: 'open' },
+    { id: 'tue-open', day: 'tue', start: 10, end: 11, title: 'Course planning', meta: 'Prof. Reyes', lane: 'consult', form: 'open' },
     { id: 'tue-booked', day: 'tue', start: 12.5, end: 13.5, title: 'Thesis advising', lane: 'consult', form: 'taken' },
     { id: 'wed-hours', day: 'wed', start: 9, end: 11, title: 'Consultation hours', meta: 'CCS 304', lane: 'consult' },
     { id: 'wed-hack', day: 'wed', start: 13, end: 14.5, title: 'Hackathon briefing', meta: 'AVR', lane: 'community' },

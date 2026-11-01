@@ -6,7 +6,7 @@ export interface HeroProps {
     lead?: React.ReactNode;
     /** One primary and at most one secondary action. */
     actions?: React.ReactNode;
-    /** Small print under the actions ("Sample schedule; not live availability"). */
+    /** Small print under the actions ("Schedules follow the Asia/Manila timezone"). */
     note?: React.ReactNode;
     /** The artifact column from 1024px: the product at work (usually a Timetable), at the scale it has in use. */
     art?: React.ReactNode;

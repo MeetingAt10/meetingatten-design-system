@@ -20,7 +20,8 @@
   margin-top: calc((1lh - var(--ds-size-switch-h)) / 2);
   border-radius: var(--ds-radius-full);
   background: var(--ds-border-default);
-  transition: background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  box-shadow: inset 0 1px 2px var(--ds-hairline-strong);
+  transition: background-color var(--ds-motion-duration-base) var(--ds-motion-ease-out), box-shadow var(--ds-motion-duration-base) var(--ds-motion-ease-out);
   &::after {
     content: "";
     position: absolute;
@@ -38,6 +39,7 @@
 .ds-switch:is(:active, [data-pressed]) .ds-switch__track::after { scale: 1.2 1; }
 .ds-switch:is([data-selected], :has(.ds-check__input:checked)) .ds-switch__track {
   background: var(--ds-action-default);
+  box-shadow: var(--ds-btn-highlight);
   &::after { translate: calc(var(--ds-size-switch-w) - var(--ds-size-switch-h)) 0; }
 }
 .ds-switch:is([data-selected], :has(.ds-check__input:checked)) .ds-switch__track::after { transform-origin: 100% 50%; }
@@ -48,7 +50,7 @@
 .ds-switch:is([data-disabled], :has(.ds-check__input:disabled)) {
   color: var(--ds-disabled-fg);
   cursor: not-allowed;
-  & .ds-switch__track { background: var(--ds-disabled-bg); box-shadow: inset 0 0 0 1px var(--ds-border-default); &::after { box-shadow: none; background: var(--ds-border-subtle); } }
+  & .ds-switch__track { background: var(--ds-disabled-bg); box-shadow: inset 0 0 0 1px var(--ds-border-default); &::after { box-shadow: none; background: var(--ds-hairline); } }
 }
 .ds-switch__state {
   color: var(--ds-text-secondary);

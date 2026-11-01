@@ -2,13 +2,13 @@
 import { Icon, NowLine, TimeBlock, Timetable, useNow } from "@meetingat10/design-system/react";
 import { WEEK, WEEK_EVENTS } from "./examples/data";
 
-/** The home page artifact: the sample week, with the now-line live while it falls inside the sheet. */
+/** The home page artifact: a college week, with the now-line live while it falls inside the sheet. */
 export function HomeSheet() {
   const live = useNow();
   const now = live !== undefined && live >= 8 && live <= 17 ? live : 10.7;
   return (
     <Timetable
-      label="A sample college week, built from the design system"
+      label="A college week, built from the design system"
       days={WEEK}
       events={WEEK_EVENTS}
       now={now}
@@ -20,7 +20,7 @@ export function HomeSheet() {
 /** The five rules, each beside a live specimen. */
 export function RuleSpecimens({ current, forms }: { current: React.ReactNode; forms: React.ReactNode }) {
   const rules: Array<[string, string, React.ReactNode]> = [
-    ["The lane owns the block", "Schedule is navy, community violet, consultations teal. The color fills the whole block at full strength, never a stripe or a dot.", (
+    ["The lane owns the block", "Schedule is navy, community amber, consultations emerald. The color fills the whole block at full strength, never a stripe or a dot.", (
       <div className="site-blocks site-blocks--tight">
         <TimeBlock time="09:00" title="Data Structures" />
         <TimeBlock time="14:00" title="Study circle" lane="community" />

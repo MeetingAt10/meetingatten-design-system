@@ -12,8 +12,8 @@
   height: 92px;
   margin-bottom: var(--ds-space-12);
   color: var(--ds-border-default);
-  & .ds-empty__sheet { fill: var(--ds-surface); stroke: var(--ds-border-subtle); }
-  & .ds-empty__rule { stroke: var(--ds-border-subtle); }
+  & .ds-empty__sheet { fill: var(--ds-surface); stroke: var(--ds-hairline); }
+  & .ds-empty__rule { stroke: var(--ds-hairline); }
   & .ds-empty__slot { fill: none; stroke: var(--ds-border-default); stroke-dasharray: 3 3; }
   & .ds-empty__block { fill: var(--ds-highlight-schedule); stroke: var(--ds-action-default); }
 }

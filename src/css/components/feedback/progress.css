@@ -27,6 +27,10 @@
   background: var(--ds-action-default);
   clip-path: inset(0 calc(100% - var(--value, 0) * 1%) 0 0 round var(--ds-radius-full));
   transition: clip-path var(--ds-motion-spring-smooth-duration) var(--ds-motion-spring-smooth);
+  box-shadow: var(--ds-btn-highlight);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ds-progress[aria-valuenow] .ds-progress__fill { animation: ds-fill-in var(--ds-motion-duration-cinematic) var(--ds-motion-ease-out) both; }
 }
 .ds-progress:not([aria-valuenow]) .ds-progress__fill {
   width: 35%;

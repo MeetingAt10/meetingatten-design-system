@@ -1,5 +1,5 @@
-/* Art (expressive layer): a 3D brand render floating on the page. Decorative by default (alt=""); the soft ink
-   shadow follows the render's alpha edge. --float adds a slow bob; --ds-depth moves the render with the pointer
+/* Art (expressive layer): a 3D brand render. Use sparingly (one per page at most): subtle and quiet, decorative by default
+   (alt=""); a soft navy shadow follows the render's alpha edge. --float adds a slow bob; --ds-depth moves the render with the pointer
    (the ParallaxScene writes --ds-px and --ds-py, in -1..1, on its element).
    <img class="ds-art ds-art--float" src=".." alt="" width="720" height="710" style="--ds-depth: 24; --ds-art-delay: -3s"> */
 @keyframes ds-float {
@@ -11,7 +11,8 @@
   display: block;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 24px 32px var(--ds-art-shadow));
+  filter: drop-shadow(0 16px 24px var(--ds-art-shadow));
+  opacity: 0.94;
   pointer-events: none;
   user-select: none;
   translate: calc(var(--ds-px, 0) * var(--ds-depth, 0) * 1px) calc(var(--ds-py, 0) * var(--ds-depth, 0) * 1px);

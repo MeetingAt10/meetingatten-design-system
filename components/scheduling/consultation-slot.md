@@ -5,7 +5,7 @@ react: ConsultationSlotPicker
 ---
 # Consultation Slot Picker
 
-The consultation slot picker books office hours in two steps: a day strip where the chosen day becomes a solid navy block that slides between days, and one radio group of slot blocks below it. Slots use the line forms with a word and an icon: open is a solid teal outline, chosen fills with teal swiped in from the left, booked is hatched, unavailable is struck. The date and time zone note always show above the slots.
+The consultation slot picker books office hours in two steps: a day strip where the chosen day becomes a solid navy block that slides between days, and one radio group of slot blocks below it. Slots use the line forms with a word and an icon: open is a solid emerald outline, chosen fills with emerald swiped in from the left, booked is hatched, unavailable is struck. The date and time zone note always show above the slots.
 
 ## When to use
 
@@ -26,7 +26,7 @@ The consultation slot picker books office hours in two steps: a day strip where 
 | Today | `.ds-day.is-today` | A now-color dot under the date |
 | Summary | `.ds-slots__message` | The group's label: the chosen date and the time zone note |
 | Slot list | `.ds-slot-list` | Grid of slot blocks, at least 9.5rem each |
-| Slot | `.ds-slot` | Block with a teal outline (radius 6); time (`.ds-slot__time`, mono 600 13/20) and state (`.ds-slot__state`, icon and word) |
+| Slot | `.ds-slot` | Block with a emerald outline (radius 6); time (`.ds-slot__time`, mono 600 13/20) and state (`.ds-slot__state`, icon and word) |
 | Legend | `.ds-slots__legend` | Names each line form in words, with swatches (`.ds-slots__swatch`) |
 | Error | `.ds-field__error` | Message with a filled `warning-circle` icon |
 
@@ -38,9 +38,9 @@ The consultation slot picker books office hours in two steps: a day strip where 
 | Day: hover | Stronger rule | `:hover`, `[data-hovered]` |
 | Day: chosen | The navy block slides under it; on-action text | `selectedDay`, `[aria-checked="true"]`, `[data-selected]` |
 | Day: disabled | Secondary text, date struck | `isDisabled` on a day, `:disabled`, `[data-disabled]` |
-| Slot: open | Paper, solid teal outline, teal text; "Open" with a plus icon | `state="open"` (default) |
+| Slot: open | Paper, solid emerald outline, emerald text; "Open" with a plus icon | `state="open"` (default) |
 | Slot: hover | Lifts 2px with the lift shadow (open slots only) | `:hover`, `[data-hovered]` |
-| Slot: chosen | Teal fill swipes in from the left; white text; "Chosen" with a check | `value`, `[data-selected]`, `[aria-checked="true"]`, `:has(input:checked)` |
+| Slot: chosen | Emerald fill swipes in from the left; white text; "Chosen" with a check | `value`, `[data-selected]`, `[aria-checked="true"]`, `:has(input:checked)` |
 | Slot: booked | Hatched paper, subtle rule, secondary text on small paper labels; "Booked" with a lock; cannot be chosen | `state="booked"`, `.ds-slot--booked` |
 | Slot: unavailable | Subtle rule, time struck through; "Unavailable" with a prohibit icon; cannot be chosen | `state="unavailable"`, `.ds-slot--unavailable` |
 | Slot: focus | 2px focus ring with a 2px gap | `[data-focus-visible]`, `:has(input:focus-visible)` |

@@ -19,7 +19,7 @@
 .ds-orbit__ring {
   position: absolute;
   inset: 0;
-  border: var(--ds-size-rule) dashed var(--ds-border-subtle);
+  border: var(--ds-size-rule) dashed var(--ds-hairline-strong);
   border-radius: var(--ds-radius-full);
 }
 /* A zero-size anchor on the ring; the upright child is centered on it. */

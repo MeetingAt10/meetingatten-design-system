@@ -69,18 +69,19 @@
   @media (min-width: 1024px) { padding-block: var(--ds-density-section-space-desktop); }
 }
 
-/* Sheet: flat paper on the canvas. Elevation is declared once: a hairline rule, never a shadow. */
+/* Sheet: flat paper on the canvas. Elevation is declared once: a hairline ring, never a shadow. */
 .ds-sheet {
   background: var(--ds-sheet-bg);
-  border: var(--ds-size-rule) solid var(--ds-sheet-rule);
+  border: 0;
+  box-shadow: var(--ds-ring-shadow);
   border-radius: var(--ds-radius-sheet);
   min-width: 0;
 }
 .ds-sheet--pad { padding: var(--ds-space-24); }
-.ds-sheet--flush { border-radius: 0; border-inline: 0; }
+.ds-sheet--flush { border-radius: 0; box-shadow: none; }
 
 .ds-rule {
   border: 0;
-  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-top: var(--ds-size-rule) solid var(--ds-hairline);
   margin: 0;
 }

@@ -93,7 +93,7 @@
 .ds-block--taken {
   background: var(--ds-surface);
   background-image: var(--ds-hatch);
-  border-color: var(--ds-border-subtle);
+  border-color: var(--ds-hairline);
   color: var(--ds-text-secondary);
 }
 /* On hatching, text sits on small paper labels so the lines never cross it. */
@@ -107,7 +107,7 @@
 }
 .ds-block--disabled {
   background: var(--ds-surface);
-  border-color: var(--ds-border-subtle);
+  border-color: var(--ds-hairline);
   color: var(--ds-text-secondary);
   & .ds-block__title { text-decoration: line-through; text-decoration-thickness: 1px; }
 }

@@ -8,7 +8,17 @@
   top: 0;
   z-index: var(--ds-z-sticky);
   background: var(--ds-canvas);
-  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-bottom: var(--ds-size-rule) solid var(--ds-hairline);
+}
+/* Glass: translucent canvas with a blur, only where the browser allows and the reader has not asked for less transparency.
+   The solid canvas above is the fallback (reduced transparency, forced colors, no backdrop-filter). */
+@media (prefers-reduced-transparency: no-preference) {
+  @supports (backdrop-filter: blur(1px)) {
+    .ds-navbar:not(.ds-navbar--transparent) {
+      background: var(--ds-glass-bg);
+      backdrop-filter: blur(var(--ds-glass-blur)) saturate(1.6);
+    }
+  }
 }
 .ds-navbar--transparent { background: transparent; border-bottom-color: transparent; position: relative; }
 .ds-navbar__inner {
@@ -36,17 +46,17 @@
   font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
   text-decoration: none;
   transition: color var(--ds-motion-duration-quick) var(--ds-motion-ease-out), background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
-  &:is(:hover, [data-hovered]) { color: var(--ds-text-primary); background: var(--ds-highlight-neutral); }
+  &:is(:hover, [data-hovered]) { color: var(--ds-text-primary); background: var(--ds-hairline); }
   &:is([aria-current="page"], [aria-current="true"]) {
     color: var(--ds-text-primary);
     &::after {
       content: "";
       position: absolute;
       inset-inline: var(--ds-space-12);
-      bottom: -14px;
+      bottom: -15px;
       height: 2px;
       border-radius: 2px 2px 0 0;
-      background: var(--ds-action-default);
+      background: var(--ds-focus);
     }
   }
 }

@@ -72,7 +72,7 @@ import { Button, Checkbox, CheckboxGroup, DialogTrigger, Drawer } from '@meeting
 
 <DialogTrigger>
   <Button variant="secondary" icon="calendar">Wed 21 Oct</Button>
-  <Drawer title="Wed 21 Oct" side="bottom">Three open slots (sample).</Drawer>
+  <Drawer title="Wed 21 Oct" side="bottom">Three open slots.</Drawer>
 </DialogTrigger>
 ```
 

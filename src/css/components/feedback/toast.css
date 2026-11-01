@@ -29,9 +29,9 @@
   box-shadow: var(--ds-overlay-shadow);
   overflow: hidden;
   outline: none;
-  animation: ds-rise-in var(--ds-motion-duration-slow) var(--ds-motion-ease-out);
+  animation: ds-toast-in var(--ds-motion-duration-slow) var(--ds-motion-ease-out);
   &:focus-visible { outline: var(--ds-size-focus-ring) solid var(--ds-inverse-focus); outline-offset: var(--ds-size-focus-offset); }
-  &[data-exiting] { animation: ds-sink-out var(--ds-motion-duration-base) var(--ds-motion-ease-exit) forwards; }
+  &[data-exiting] { animation: ds-toast-out var(--ds-motion-duration-base) var(--ds-motion-ease-exit) forwards; }
 }
 .ds-toast--success { --toast-tone: var(--ds-success-on-inverse); }
 .ds-toast__icon { padding-top: 2px; color: var(--toast-tone); }

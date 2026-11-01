@@ -31,7 +31,7 @@ export interface TimetableEvent {
     isSelected?: boolean;
 }
 export interface TimetableProps {
-    /** Accessible name of the timetable ("This week, sample schedule"). */
+    /** Accessible name of the timetable ("This week, Prof. Liza Manalastas"). */
     label: string;
     days: TimetableDay[];
     events: TimetableEvent[];

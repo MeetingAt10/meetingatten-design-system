@@ -25,13 +25,13 @@ export function Portal({ current, title, children }: { current: PortalPage; titl
           footer={
             <>
               <div className="ds-sidebar__person">
-                <Avatar name="Demo student" decorative />
+                <Avatar name="Paolo Dizon" decorative />
                 <div>
-                  <p className="ds-sidebar__name">Demo student</p>
+                  <p className="ds-sidebar__name">Paolo Dizon</p>
                   <RoleBadge>Student</RoleBadge>
                 </div>
               </div>
-              <SidebarNote>Own reports only (proposed permission). A role is not a privacy guarantee.</SidebarNote>
+              <SidebarNote>Own reports only. A role is not a privacy guarantee.</SidebarNote>
             </>
           }
         >
@@ -44,7 +44,7 @@ export function Portal({ current, title, children }: { current: PortalPage; titl
       }
       topBar={
         <TopBar
-          title={<>{title} <Badge outline marker={false}>Sample data</Badge></>}
+          title={<>{title} </>}
           tools={
             <>
               <Search label="Search ACCS" placeholder="Search posts and slots" size="sm" className="ds-topbar__search" />

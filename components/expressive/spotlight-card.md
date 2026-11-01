@@ -10,7 +10,7 @@ SpotlightCard is a [Card](../content/card.md) with a highlighter-colored glow th
 ## When to use
 
 - Use it for a short row of entry points on a marketing page: a title and a sentence each, three or four cards.
-- Use `lane` to match the destination's lane: schedule (default, navy), `community` (violet) or `consult` (teal). The color marks a topic, never a permission.
+- Use `lane` to match the destination's lane: schedule (default, navy), `community` (amber) or `consult` (emerald). The color marks a topic, never a permission.
 - Don't put controls inside a card with `href`: the whole card is one link.
 - Don't use it for items in a collection (use [Card](../content/card.md)) or in the portal.
 

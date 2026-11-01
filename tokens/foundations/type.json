@@ -12,7 +12,7 @@
       },
       "size": {
         "$type": "dimension",
-        "$value": "clamp(2.75rem, 1.4rem + 3.2vw, 4.5rem)"
+        "$value": "clamp(2.75rem, 1.3rem + 3.6vw, 5rem)"
       },
       "line-height": {
         "$type": "number",
@@ -20,7 +20,7 @@
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "-0.035em"
+        "$value": "-0.032em"
       }
     },
     "h1": {

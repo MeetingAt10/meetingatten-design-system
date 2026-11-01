@@ -55,7 +55,7 @@ An inline alert is a persistent message placed next to the content it is about: 
 import { Alert, Button } from '@meetingat10/design-system/react';
 
 <Alert title="Illustrative schedule">These times are examples, not live availability.</Alert>
-<Alert tone="success" title="Draft saved">DEMO-024 is saved as a draft.</Alert>
+<Alert tone="success" title="Draft saved">CCS-2026-0142 is saved as a draft.</Alert>
 <Alert tone="warning" icon="lock" title="Community access does not grant report access">
   Keep posts free of personal or case details.
 </Alert>

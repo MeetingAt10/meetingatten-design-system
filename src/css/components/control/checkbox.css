@@ -29,12 +29,15 @@
   height: var(--ds-size-check);
   margin-top: calc((1lh - var(--ds-size-check)) / 2);
   border: 1.5px solid var(--ds-border-default);
-  border-radius: var(--ds-radius-chip);
+  border-radius: var(--ds-radius-tick);
   background: var(--ds-surface);
   color: var(--ds-on-action);
   transition:
     background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
-    border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+    border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+    box-shadow var(--ds-motion-duration-base) var(--ds-motion-ease-out),
+    scale var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy);
+  box-shadow: inset 0 1px 0 var(--ds-hairline);
   & > svg {
     width: 16px;
     height: 16px;
@@ -55,6 +58,11 @@
   border-color: var(--ds-action-default);
 }
 .ds-check:is([data-selected], :has(.ds-check__input:checked)) .ds-check__box > svg { stroke-dashoffset: 0; }
+.ds-check:is(:active, [data-pressed]) .ds-check__box { scale: 0.92; }
+.ds-check:is([data-selected], :has(.ds-check__input:checked)) .ds-check__box { box-shadow: var(--ds-btn-highlight); }
+@media (prefers-reduced-motion: no-preference) {
+  .ds-check:is([data-selected], :has(.ds-check__input:checked)) .ds-check__box { animation: ds-check-pop var(--ds-motion-duration-slow) var(--ds-motion-ease-out); }
+}
 .ds-check:is([data-indeterminate], :has(.ds-check__input:indeterminate)) .ds-check__box {
   & > svg { display: none; }
   & > .ds-check__dash { display: block; }

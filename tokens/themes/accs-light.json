@@ -12,7 +12,7 @@
       "$value": "{color.brand.source-white}"
     },
     "raised": {
-      "$value": "{color.brand.source-white}"
+      "$value": "{color.neutral.raised}"
     },
     "text-primary": {
       "$value": "{color.brand.source-ink}"

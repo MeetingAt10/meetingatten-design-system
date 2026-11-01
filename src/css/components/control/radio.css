@@ -58,7 +58,7 @@
   border: var(--ds-size-rule) solid var(--ds-border-default);
   border-radius: var(--ds-radius-control);
   background: var(--ds-surface);
-  transition: border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out), background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  transition: box-shadow var(--ds-motion-duration-base) var(--ds-motion-ease-out), border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out), background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
   &:is(:hover, [data-hovered]) { background: var(--ds-highlight-schedule); }
   &:is([data-selected], :has(.ds-check__input:checked)) {
     border-color: var(--ds-action-default);

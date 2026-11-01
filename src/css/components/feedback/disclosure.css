@@ -3,8 +3,8 @@
    <div class="ds-disclosure-group"><div class="ds-disclosure" data-expanded><h3 class="ds-disclosure__heading">
    <button class="ds-disclosure__trigger" aria-expanded="true">..<svg class="ds-icon ds-disclosure__caret">..</svg></button></h3>
    <div class="ds-disclosure__panel" role="group">..</div></div></div> */
-.ds-disclosure-group { border-top: var(--ds-size-rule) solid var(--ds-border-subtle); }
-.ds-disclosure { border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle); }
+.ds-disclosure-group { border-top: var(--ds-size-rule) solid var(--ds-hairline); }
+.ds-disclosure { border-bottom: var(--ds-size-rule) solid var(--ds-hairline); }
 .ds-disclosure__heading { margin: 0; }
 .ds-disclosure__trigger {
   display: flex;

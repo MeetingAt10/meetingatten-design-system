@@ -1,7 +1,6 @@
 {
-  "$description": "Radius scale; components use the treatments mapping (sheet 12, block 6, control 8, chip 4, overlay 16, plate 6).",
+  "$description": "Radius scale; components use the treatments mapping (control 10, sheet 16, overlay 20, frame 24, chip pill, block 8, plate 10).",
   "radius": {
-    "$type": "dimension",
     "0": {
       "$value": "0px"
     },
@@ -17,12 +16,22 @@
     "8": {
       "$value": "8px"
     },
+    "10": {
+      "$value": "10px"
+    },
     "12": {
       "$value": "12px"
     },
     "16": {
       "$value": "16px"
     },
+    "20": {
+      "$value": "20px"
+    },
+    "24": {
+      "$value": "24px"
+    },
+    "$type": "dimension",
     "full": {
       "$value": "9999px"
     }

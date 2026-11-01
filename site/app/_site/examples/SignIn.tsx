@@ -24,7 +24,7 @@ export function SignInBody() {
         >
           <h2 id="signin-h" className="ds-type-h3">Your CCS account</h2>
           {failed && (
-            <Alert tone="danger" title="That email and password don't match">Check both and try again. After five attempts, sign-in pauses for 15 minutes. (Sample message.)</Alert>
+            <Alert tone="danger" title="That email and password don't match">Check both and try again. After five attempts, sign-in pauses for 15 minutes.</Alert>
           )}
           <TextField label="CCS email" type="email" name="email" autoComplete="username" isRequired icon="envelope" placeholder="name@ccs.example.edu" />
           <TextField label="Password" type="password" name="password" autoComplete="current-password" isRequired icon="lock" />
@@ -33,7 +33,7 @@ export function SignInBody() {
             <Link href="#" variant="quiet">Forgot password?</Link>
           </div>
           <Button type="submit" block size="lg" loading={loading} icon="sign-in">Sign in</Button>
-          <p className="ds-type-caption ds-secondary">Demo form: nothing is sent. Signing in never makes community posts anonymous.</p>
+          <p className="ds-type-caption ds-secondary">Signing in never makes community posts anonymous.</p>
         </Form>
       </Card>
     </main>

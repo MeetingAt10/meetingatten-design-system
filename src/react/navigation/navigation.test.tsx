@@ -105,10 +105,10 @@ describe('Tabs', () => {
 
 describe('Breadcrumbs, Pagination and Stepper', () => {
   it('Breadcrumbs: the last item is the current page, not a link', () => {
-    render(<Breadcrumbs items={[{ label: 'Reports', href: '/r' }, { label: 'DEMO-024' }]} />);
+    render(<Breadcrumbs items={[{ label: 'Reports', href: '/r' }, { label: 'CCS-2026-0142' }]} />);
     expect(screen.getByRole('link', { name: 'Reports' })).toBeTruthy();
-    expect(screen.queryByRole('link', { name: 'DEMO-024' })).toBeNull();
-    expect(screen.getByText('DEMO-024').closest('[aria-current]')).not.toBeNull();
+    expect(screen.queryByRole('link', { name: 'CCS-2026-0142' })).toBeNull();
+    expect(screen.getByText('CCS-2026-0142').closest('[aria-current]')).not.toBeNull();
   });
   it('pageList keeps first, last and neighbours with gaps', () => {
     expect(pageList(5, 10)).toEqual([1, 'gap', 4, 5, 6, 'gap', 10]);

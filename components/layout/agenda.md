@@ -22,7 +22,7 @@ An agenda lists features, steps or lanes as ruled rows, like the entries on a ti
 | Agenda | `.ds-agenda` | Ordered list with a hairline rule on top |
 | Row | `.ds-agenda__item` | 24px padding, hairline rule below; from 768px three columns (9rem chip, text, link) and 32px padding |
 | Chip | `.ds-agenda__chip` | Small solid block, radius 6, Inter 600 12/16 with tabular figures; navy (schedule) by default |
-| Chip lanes | `.ds-agenda__chip--community`, `--consult`, `--restricted` | Violet or teal fill; restricted is paper with an ink rule and a small hatched square marker, no hue |
+| Chip lanes | `.ds-agenda__chip--community`, `--consult`, `--restricted` | Amber or emerald fill; restricted is paper with an ink rule and a small hatched square marker, no hue |
 | Text | `.ds-agenda__text` | Title and body, 8px apart, max width 40rem |
 | Title | `.ds-agenda__title` | h3 style: Plus Jakarta Sans 700 20/26 |
 | Body | `.ds-agenda__body` | Body 16/26 in secondary text |
@@ -35,8 +35,8 @@ An agenda lists features, steps or lanes as ruled rows, like the entries on a ti
 | Phone | Chip, text and link stacked in one column | viewport below 768px |
 | Desktop | Chip column, text column, link on the right | viewport from 768px |
 | Schedule lane | Navy chip with white text | `lane="schedule"` (default) |
-| Community lane | Violet chip | `lane="community"`, `.ds-agenda__chip--community` |
-| Consult lane | Teal chip | `lane="consult"`, `.ds-agenda__chip--consult` |
+| Community lane | Amber chip | `lane="community"`, `.ds-agenda__chip--community` |
+| Consult lane | Emerald chip | `lane="consult"`, `.ds-agenda__chip--consult` |
 | Restricted lane | Paper chip, ink rule, hatched marker beside the word | `lane="restricted"`, `.ds-agenda__chip--restricted` |
 | No link | The link column stays empty | omit `href` |
 

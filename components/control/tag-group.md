@@ -23,7 +23,7 @@ A tag group shows topics or active filters as small ruled chips under one label.
 | Label | `.ds-field__label` | Always visible ("Active filters", "Topics") |
 | List | `.ds-tag-list` | Wrapping row, 8px gap |
 | Tag | `.ds-tag` | 30px tall, 12px side padding, radius 6, `border-default` rule on paper, Inter 500 14/20 |
-| Lane tint | `.ds-tag--community`, `.ds-tag--consult` | Violet or teal rule and ink |
+| Lane tint | `.ds-tag--community`, `.ds-tag--consult` | Amber or emerald rule and ink |
 | Remove | `.ds-tag__remove` | 22px button with a 16px `x` icon, secondary ink, neutral wash on hover |
 | Empty | `.ds-field__description` | `emptyMessage` shown when there are no tags |
 

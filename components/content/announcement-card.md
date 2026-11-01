@@ -11,7 +11,7 @@ An announcement card is one update in a feed of updates: a room change, a briefi
 
 - Use it for dated notices in a list of notices.
 - Use the default `schedule` lane (navy) for department notices and `community` for community updates.
-- Use `demo` to label synthetic content.
+- The `demo` prop is deprecated and renders nothing.
 - Don't use it for discussions people reply to; use [Forum Card](forum-card.md).
 - Don't use it for report activity or anything restricted; report content never appears in announcements.
 

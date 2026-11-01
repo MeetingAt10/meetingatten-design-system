@@ -7,7 +7,7 @@ export default function ExamplesLayout({ children }: { children: React.ReactNode
   return (
     <>
       <nav aria-label="Patterns" className="site-example-bar">
-        <Link className="site-example-bar__home" href="/"><Logo size="sm" code="DS 1.0" inverse /><span>Back to the design system</span></Link>
+        <Link className="site-example-bar__home" href="/"><Logo size="sm"  inverse /><span>Back to the design system</span></Link>
         <ExampleLinks />
       </nav>
       {children}

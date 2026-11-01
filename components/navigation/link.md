@@ -51,7 +51,7 @@ import { Link } from '@meetingat10/design-system/react';
 <p>Read the <Link href="/privacy">privacy and access notes</Link> before posting.</p>
 <Link href="/announcements/12" variant="standalone">Read update</Link>
 <Link href="/reset" variant="quiet">Forgot password?</Link>
-<Link href="https://example.org/handbook" external>CCS handbook (sample)</Link>
+<Link href="https://example.org/handbook" external>CCS handbook</Link>
 ```
 
 `icon` swaps the trailing icon for standalone or external links. Other React Aria `Link` props pass through.

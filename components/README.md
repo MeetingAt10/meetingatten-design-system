@@ -127,6 +127,6 @@ Marketing surfaces only (the ACCS landing, the Meeting At 10 site, the showcase)
 
 ## Shared rules
 
-- Lanes: schedule (navy, default), community (violet), consult (teal), restricted (hatched ink, no hue). Color never signals permission or confidentiality.
+- Lanes: schedule (navy, default), community (amber), consult (emerald), restricted (hatched ink, no hue). Color never signals permission or confidentiality.
 - Line forms carry state and always come with a word: solid = open or active, dashed = pending or draft, hatched = taken or restricted, struck = disabled or closed.
 - Craft rules: no eyebrows above headings, no colored side stripes over 1px, Agenda rows instead of same-size icon-card columns, mono only for times, codes, references, keys and code, a rule or a shadow but never both, cards only for collection items and floating panels, no emoji or Unicode glyph icons, honest claims only ([principles](../docs/principles.md)).

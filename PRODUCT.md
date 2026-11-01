@@ -34,23 +34,23 @@ ACCS (Access for College of Computer Studies, spoken "Access"; tagline "Your Acc
 
 - React 19 layer on React Aria Components (keyboard, focus and screen reader behavior); plain-CSS layer usable without React; themes `data-theme=light|dark` with OS fallback and `data-density=comfortable|compact`.
 - The user allows rewriting every component and style, and adding icon and motion libraries (2026-10-25).
-- Content in demos is synthetic and labeled (`DEMO`, "sample", "illustrative"); no real student data or names.
+- User decision 2026-11-01: ACCS and Meeting@10 are presented as live production platforms for QCU CCS, without prototype, sample or demo disclaimers. Still no fabricated metrics, testimonials or endorsements, and no real student data in examples.
 - From the repo's product docs (not re-confirmed as fixed for the redesign; claims stay uninventable regardless): no promises of anonymity, security, response time or finality; "permission is not confidentiality"; reports copy is serious and neutral, community copy casual and encouraging, support copy empathetic and clear; no emoji in UI.
 - Undecided: the final ACCS logo (the `logo-*.svg` files in `assets/logo/` are proposed, not approved); custom domain for the showcase site.
 
 ## Brand Commitments
 
-- Keep the ACCS palette: the 54 color primitives (deep navy brand `#032E87`, ink `#172033`, teal secondary, violet accent, neutral, status ramps) and the light/dark semantic mapping (confirmed 2026-10-25).
+- Keep the ACCS palette: the 54 color primitives (deep navy brand `#032E87`, navy-black ink `#0C1730`, ivory canvas `#F7F6F1`, cobalt focus `#2F5BEA`, emerald secondary, amber accent, neutral, status ramps; remapped for v1.2.0 on 2026-11-01) and the light/dark semantic mapping (confirmed 2026-10-25).
 - Keep the fonts: Plus Jakarta Sans (display), Inter (body), JetBrains Mono (code) (confirmed 2026-10-25).
 - Must not feel playful or gamified, like a generic SaaS template, cold or bureaucratic, or slowed down by motion (confirmed 2026-10-25).
-- Name: ACCS, expanded on first mention; never imply an official seal or institutional endorsement. Meeting At 10 voice: direct, dry, short sentences.
+- Name: ACCS, expanded on first mention; no invented seals, awards or endorsements. Meeting At 10 voice: direct, dry, short sentences.
 - The system is the Meeting At 10 Design System (package `@meetingat10/design-system`), and its main logo is the Meeting At 10 calendar mark in `assets/logo/meeting-at-10*.svg` (user decision 2026-10-25). ACCS surfaces keep the door plate as the ACCS wordmark.
 
 ## Evidence on Hand
 
 - Meeting At 10 logo: `assets/logo/meeting-at-10.svg` (the user's artwork), `meeting-at-10-dark.svg`, `meeting-at-10-auto.svg`.
 - Proposed ACCS logo SVGs: `assets/logo/logo-horizontal.svg`, `logo-stacked.svg`, `logo-compact-minimum.svg`.
-- Synthetic demo content in `site/app/_site/` (announcements, forum questions, consultation slots, `DEMO-0xx` report records).
+- Realistic example content in `site/app/_site/` (announcements, forum questions, consultation slots, `CCS-2026-0xxx` report references).
 - No real users, testimonials, metrics, approvals or institutional endorsements exist; do not fabricate them.
 
 ## Product Principles

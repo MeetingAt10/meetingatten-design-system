@@ -12,7 +12,7 @@
   align-items: center;
   gap: var(--ds-space-12);
   padding: 0 var(--ds-space-20);
-  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-bottom: var(--ds-size-rule) solid var(--ds-hairline);
   & > .ds-icon { color: var(--ds-text-secondary); }
 }
 .ds-command__input {
@@ -33,7 +33,7 @@
   flex-wrap: wrap;
   gap: var(--ds-space-8) var(--ds-space-16);
   padding: var(--ds-space-12) var(--ds-space-20);
-  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-top: var(--ds-size-rule) solid var(--ds-hairline);
   color: var(--ds-text-secondary);
   font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
   & > span { display: inline-flex; align-items: center; gap: var(--ds-space-4); }

@@ -1,7 +1,7 @@
 /* Footer: the wordmark and a short description, link columns (each a named navigation), and a quiet
    bottom line for status notes ("Proposed, not approved"). */
 .ds-footer {
-  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-top: var(--ds-size-rule) solid var(--ds-hairline);
   background: var(--ds-surface);
   padding-block: var(--ds-space-48) var(--ds-space-32);
 }
@@ -38,7 +38,7 @@
   gap: var(--ds-space-8) var(--ds-space-24);
   margin-top: var(--ds-space-40);
   padding-top: var(--ds-space-20);
-  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-top: var(--ds-size-rule) solid var(--ds-hairline);
   color: var(--ds-text-secondary);
   font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
 }

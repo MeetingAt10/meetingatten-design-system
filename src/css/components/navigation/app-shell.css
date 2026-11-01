@@ -18,7 +18,7 @@
       inset-inline-start: 0;
       width: var(--ds-size-sidebar-w);
       background: var(--ds-surface);
-      border-inline-end: var(--ds-size-rule) solid var(--ds-border-subtle);
+      border-inline-end: var(--ds-size-rule) solid var(--ds-hairline);
     }
   }
   & .ds-mobile-header { @media (min-width: 1024px) { display: none; } }

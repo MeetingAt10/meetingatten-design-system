@@ -1,6 +1,6 @@
 # Imagery
 
-Twenty transparent 3D renders for the marketing surfaces: the ACCS landing, the Meeting At 10 site and this showcase. They are decoration, not documentation: glass, wireframe and ribbon forms in the system's navy, violet and teal that float over the cool canvas next to the real product. Everything is proposed, not approved.
+Twenty transparent 3D renders for the marketing surfaces: the ACCS landing, the Meeting At 10 site and this showcase. They are decoration, not documentation: glass, wireframe and ribbon forms in the system's navy, amber and emerald that float over the cool canvas next to the real product. Everything is proposed, not approved.
 
 The files live in `assets/imagery/` (WebP with alpha, 720px on the long side, 55 to 245 KB each) and are listed in `assets/imagery/imagery.json`. They ship in the package under `@meetingat10/design-system/assets/imagery/<name>.webp`.
 

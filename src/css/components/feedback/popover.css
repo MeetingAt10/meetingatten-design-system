@@ -10,12 +10,15 @@
   color: var(--ds-text-primary);
   outline: none;
   overflow: auto;
+  @media (prefers-reduced-transparency: no-preference) { @supports (backdrop-filter: blur(1px)) { background: var(--ds-glass-overlay-bg); backdrop-filter: blur(var(--ds-glass-blur)) saturate(1.5); } }
   &[data-placement="top"] { --pop-from: 0 6px; }
   &[data-placement="left"] { --pop-from: 6px 0; }
   &[data-placement="right"] { --pop-from: -6px 0; }
-  &[data-entering] { animation: ds-pop-in var(--ds-motion-duration-base) var(--ds-motion-ease-out); }
-  &[data-exiting] { animation: ds-fade-out var(--ds-motion-duration-quick) var(--ds-motion-ease-exit); }
+  transform-origin: var(--trigger-anchor-point, 50% 0);
+  &[data-entering] { animation: ds-pop-scale-in var(--ds-motion-duration-base) var(--ds-motion-ease-out); }
+  &[data-exiting] { animation: ds-pop-scale-out var(--ds-motion-duration-quick) var(--ds-motion-ease-exit) forwards; }
 }
+@keyframes ds-pop-scale-out { to { opacity: 0; scale: 0.97; } }
 @keyframes ds-pop-in { from { opacity: 0; translate: var(--pop-from); } }
 .ds-popover__dialog { padding: var(--ds-space-16); outline: none; display: grid; gap: var(--ds-space-12); }
 .ds-popover__title {

@@ -13,15 +13,15 @@ import { ViewState } from './ViewState.js';
 
 describe('ReportsTable', () => {
   const rows = [
-    { id: '24', reference: 'DEMO-024', category: 'General concern', status: 'Draft', statusForm: 'pending' as const, updated: '21 Oct', href: '/r/24', actionLabel: 'View draft' },
-    { id: '18', reference: 'DEMO-018', category: 'Process question', status: 'Resolved', statusTone: 'success' as const },
+    { id: '24', reference: 'CCS-2026-0142', category: 'General concern', status: 'Draft', statusForm: 'pending' as const, updated: '21 Oct', href: '/r/24', actionLabel: 'View draft' },
+    { id: '18', reference: 'CCS-2026-0118', category: 'Process question', status: 'Resolved', statusTone: 'success' as const },
   ];
   it('is a focusable region named by its caption; the reference is the row header; actions are named', async () => {
-    const { container } = render(<ReportsTable caption="Own reports (demo records)" rows={rows} />);
-    const region = screen.getByRole('region', { name: 'Own reports (demo records)' });
+    const { container } = render(<ReportsTable caption="Own reports" rows={rows} />);
+    const region = screen.getByRole('region', { name: 'Own reports' });
     expect(region.getAttribute('tabindex')).toBe('0');
-    expect(screen.getByRole('rowheader', { name: 'DEMO-024' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'View draft DEMO-024' })).toBeTruthy();
+    expect(screen.getByRole('rowheader', { name: 'CCS-2026-0142' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'View draft CCS-2026-0142' })).toBeTruthy();
     expect(screen.getByText('Draft').closest('.ds-badge')?.className).toContain('ds-badge--pending');
     expect(await axeViolations(container)).toEqual([]);
   });
@@ -33,9 +33,9 @@ describe('ReportsTable', () => {
 
 describe('ReportRecord and CaseTimeline', () => {
   it('ReportRecord is an article named by its title, with facts and a named action', () => {
-    render(<ReportRecord reference="DEMO-024" title="General concern" status="Review pending" facts={[{ label: 'Updated', value: '21 Oct' }]} href="/r/24" />);
+    render(<ReportRecord reference="CCS-2026-0142" title="General concern" status="Review pending" facts={[{ label: 'Updated', value: '21 Oct' }]} href="/r/24" />);
     expect(screen.getByRole('article', { name: 'General concern' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'View record DEMO-024' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'View record CCS-2026-0142' })).toBeTruthy();
   });
   it('CaseTimeline marks the current event and states every state in words', () => {
     render(
@@ -55,7 +55,7 @@ describe('ReportRecord and CaseTimeline', () => {
 describe('Table', () => {
   function Sortable() {
     const [sort, setSort] = useState<SortDescriptor>({ column: 'ref', direction: 'ascending' });
-    const data = [{ id: 1, ref: 'DEMO-024', n: 3 }, { id: 2, ref: 'DEMO-009', n: 12 }];
+    const data = [{ id: 1, ref: 'CCS-2026-0142', n: 3 }, { id: 2, ref: 'CCS-2026-0091', n: 12 }];
     const sorted = [...data].sort((a, b) => (sort.direction === 'ascending' ? 1 : -1) * String(a[sort.column as 'ref']).localeCompare(String(b[sort.column as 'ref'])));
     return (
       <Table aria-label="Records" sortDescriptor={sort} onSortChange={setSort}>
@@ -71,13 +71,13 @@ describe('Table', () => {
     render(<Sortable />);
     const header = screen.getByRole('columnheader', { name: /Reference/ });
     expect(header.getAttribute('aria-sort')).toBe('ascending');
-    expect(screen.getAllByRole('rowheader').map((c) => c.textContent)).toEqual(['DEMO-009', 'DEMO-024']);
+    expect(screen.getAllByRole('rowheader').map((c) => c.textContent)).toEqual(['CCS-2026-0091', 'CCS-2026-0142']);
     await userEvent.click(header);
     expect(header.getAttribute('aria-sort')).toBe('descending');
-    expect(screen.getAllByRole('rowheader').map((c) => c.textContent)).toEqual(['DEMO-024', 'DEMO-009']);
+    expect(screen.getAllByRole('rowheader').map((c) => c.textContent)).toEqual(['CCS-2026-0142', 'CCS-2026-0091']);
   });
   it('selection adds a check column, so a selected row shows a checked box, not only a tint', async () => {
-    const data = [{ id: 1, ref: 'DEMO-024' }, { id: 2, ref: 'DEMO-009' }];
+    const data = [{ id: 1, ref: 'CCS-2026-0142' }, { id: 2, ref: 'CCS-2026-0091' }];
     const { container } = render(
       <Table aria-label="Records" selectionMode="multiple">
         <TableHeader><Column id="ref" isRowHeader>Reference</Column></TableHeader>
@@ -85,7 +85,7 @@ describe('Table', () => {
       </Table>,
     );
     expect(screen.getByRole('checkbox', { name: /select all/i })).toBeTruthy();
-    const first = screen.getByRole('checkbox', { name: 'Select DEMO-024' });
+    const first = screen.getByRole('checkbox', { name: 'Select CCS-2026-0142' });
     await userEvent.click(first);
     expect((first as HTMLInputElement).checked).toBe(true);
     expect(screen.getAllByRole('row')[1].getAttribute('aria-selected')).toBe('true');
@@ -95,7 +95,7 @@ describe('Table', () => {
     render(
       <Table aria-label="Records">
         <TableHeader><Column id="ref" isRowHeader>Reference</Column></TableHeader>
-        <TableBody><Row id={1}><Cell>DEMO-024</Cell></Row></TableBody>
+        <TableBody><Row id={1}><Cell>CCS-2026-0142</Cell></Row></TableBody>
       </Table>,
     );
     expect(screen.queryByRole('checkbox')).toBeNull();

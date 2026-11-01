@@ -7,8 +7,8 @@ Charts use the lane colors and the line forms, always with direct labels; there 
 | Series | Token | Notes |
 |---|---|---|
 | Schedule | `action-default` (navy) | Classes, the department, the default series |
-| Community | `accent-default` (violet) | Forum and events |
-| Consult | `secondary-default` (teal) | Consultations and support |
+| Community | `accent-default` (amber) | Forum and events |
+| Consult | `secondary-default` (emerald) | Consultations and support |
 | Comparison | `text-secondary` | A neutral reference series |
 | Restricted | `hatch-ink` with hatching | Never a hue: restricted data is hatched and labeled |
 
@@ -35,6 +35,6 @@ Label each form in words on the chart or in a legend, as the [consultation slot 
 | Now | Mark the present with the `now` token and a time label, like the [now-line](../components/scheduling/now-line.md) |
 | Single quantities | Use [Meter](../components/feedback/meter.md) or [Progress](../components/feedback/progress.md), with the reading in words ("5 of 8 slots taken") |
 | Alternatives | Always provide a [Table](../components/data/table.md) or a text summary |
-| Lanes are not permissions | Violet, teal and navy never mean access or confidentiality |
+| Lanes are not permissions | Amber, emerald and navy never mean access or confidentiality |
 | Motion | No animated chart transitions beyond rolling digits; respect reduced motion |
 | New scales | Sequential and diverging palettes are not defined; propose one in a delta under `context/deltas/` first |

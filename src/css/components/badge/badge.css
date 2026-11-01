@@ -12,8 +12,10 @@
   align-items: center;
   gap: var(--ds-space-8);
   min-height: 24px;
-  padding: 0 var(--ds-space-8);
+  padding: 0 var(--ds-space-12) 0 var(--ds-space-8);
   border-radius: var(--ds-radius-chip);
+  box-shadow: inset 0 0 0 1px var(--badge-ring, var(--ds-hairline));
+  letter-spacing: 0.005em;
   background: var(--badge-bg);
   color: var(--badge-ink);
   font: var(--ds-type-caption-font-weight) var(--ds-type-caption-size) / var(--ds-type-caption-line-height) var(--ds-type-caption-font-family);
@@ -57,12 +59,12 @@
 .ds-badge--danger { --badge-ink: var(--ds-danger-fg); --badge-bg: var(--ds-danger-bg); --badge-mark: var(--ds-danger-fg); }
 .ds-badge--community { --badge-ink: var(--ds-accent-fg); --badge-bg: var(--ds-accent-bg); --badge-mark: var(--ds-accent-default); }
 .ds-badge--consult { --badge-ink: var(--ds-secondary-fg); --badge-bg: var(--ds-secondary-bg); --badge-mark: var(--ds-secondary-default); }
-.ds-badge--outline { background: transparent; box-shadow: inset 0 0 0 1px var(--ds-border-subtle); }
+.ds-badge--outline { background: transparent; --badge-ring: var(--ds-hairline-strong); }
 
 /* Role: outlined plate. */
 .ds-badge--role {
   --badge-bg: transparent;
-  box-shadow: inset 0 0 0 1px var(--ds-plate-bg);
+  --badge-ring: var(--ds-action-default);
   color: var(--ds-action-default);
   font-weight: 600;
 }
@@ -84,7 +86,7 @@
   & > i {
     width: 4px;
     border-radius: 1px;
-    background: var(--ds-border-subtle);
+    background: var(--ds-hairline);
     &:nth-child(1) { height: 6px; }
     &:nth-child(2) { height: 9px; }
     &:nth-child(3) { height: 12px; }

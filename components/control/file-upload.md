@@ -64,9 +64,9 @@ import { FileUpload } from '@meetingat10/design-system/react';
   allowsMultiple
   onChange={setFiles}
   status={{
-    'timetable-sample.pdf': { progress: 40 },
-    'whiteboard-sample.png': { done: true },
-    'scan-sample.jpg': { error: 'Too large. Choose a file under 10 MB.' },
+    'timetable-week.pdf': { progress: 40 },
+    'whiteboard-notes.png': { done: true },
+    'scan-form.jpg': { error: 'Too large. Choose a file under 10 MB.' },
   }}
 />
 ```
@@ -85,8 +85,8 @@ import { FileUpload } from '@meetingat10/design-system/react';
   <ul class="ds-file-list" aria-label="Selected files">
     <li class="ds-file">
       <svg class="ds-icon ds-file__icon" aria-hidden="true"><use href="sprite.svg#ds-file"/></svg>
-      <div><p class="ds-file__name">timetable-sample.pdf</p><p class="ds-file__meta">40% of 1.2 MB</p></div>
-      <button class="ds-icon-btn" type="button" aria-label="Remove timetable-sample.pdf">
+      <div><p class="ds-file__name">timetable-week.pdf</p><p class="ds-file__meta">40% of 1.2 MB</p></div>
+      <button class="ds-icon-btn" type="button" aria-label="Remove timetable-week.pdf">
         <svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-x"/></svg>
       </button>
       <span class="ds-file__progress" aria-hidden="true"><span style="--value: 40"></span></span>

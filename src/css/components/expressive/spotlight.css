@@ -2,7 +2,7 @@
    can tilt toward it (--ds-tx, --ds-ty, -1..1). Built on .ds-card, so it keeps the paper sheet, rule and radius.
    <a class="ds-card ds-card--link ds-spotlight ds-spotlight--community ds-spotlight--tilt" href="..">..</a> */
 .ds-spotlight {
-  --ds-spot: var(--ds-highlight-schedule);
+  --ds-spot: var(--ds-atmos-cobalt);
   --ds-spot-edge: var(--ds-focus);
   isolation: isolate;
   color: inherit;
@@ -19,12 +19,12 @@
     transition: opacity var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
   }
   &:is(:hover, :focus-within, .is-hover) {
-    border-color: var(--ds-spot-edge);
+    box-shadow: var(--ds-block-shadow), 0 0 0 1px var(--ds-spot-edge);
     &::before { opacity: 1; }
   }
 }
-.ds-spotlight--community { --ds-spot: var(--ds-highlight-community); --ds-spot-edge: var(--ds-accent-border); }
-.ds-spotlight--consult { --ds-spot: var(--ds-highlight-consult); --ds-spot-edge: var(--ds-secondary-border); }
+.ds-spotlight--community { --ds-spot: var(--ds-atmos-amber); --ds-spot-edge: var(--ds-accent-border); }
+.ds-spotlight--consult { --ds-spot: var(--ds-atmos-emerald); --ds-spot-edge: var(--ds-secondary-border); }
 
 .ds-spotlight--tilt {
   transform: perspective(900px) rotateX(calc(var(--ds-ty, 0) * -6deg)) rotateY(calc(var(--ds-tx, 0) * 6deg));
@@ -35,6 +35,6 @@
     transition:
       transform var(--ds-motion-spring-smooth-duration) var(--ds-motion-spring-smooth),
       translate var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy),
-      border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+      box-shadow var(--ds-motion-duration-base) var(--ds-motion-ease-out);
   }
 }

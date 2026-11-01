@@ -13,10 +13,10 @@
 .ds-meter__track {
   position: relative;
   height: 10px;
-  border-radius: var(--ds-radius-chip);
+  border-radius: var(--ds-radius-tick);
   background-color: var(--ds-highlight-neutral);
   /* Ticks every 10%: a ruled scale. */
-  background-image: linear-gradient(to right, var(--ds-border-subtle) 1px, transparent 1px);
+  background-image: linear-gradient(to right, var(--ds-hairline) 1px, transparent 1px);
   background-size: 10% 100%;
   overflow: hidden;
 }
@@ -25,6 +25,9 @@
   background: var(--ds-secondary-default);
   clip-path: inset(0 calc(100% - var(--value, 0) * 1%) 0 0);
   transition: clip-path var(--ds-motion-spring-smooth-duration) var(--ds-motion-spring-smooth);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ds-meter__fill { animation: ds-fill-in var(--ds-motion-duration-cinematic) var(--ds-motion-ease-out) both; }
 }
 .ds-meter--high .ds-meter__fill { background: var(--ds-warning-fg); }
 .ds-meter--full .ds-meter__fill { background: var(--ds-danger-fg); }

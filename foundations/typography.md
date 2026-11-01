@@ -25,7 +25,7 @@ Each style is a set of tokens: `--ds-type-<style>-font-family`, `-font-weight`, 
 
 ## The time style
 
-`time` is the tabular mono style for time codes (`09:00-10:30`), room codes (`CCS 304`) and references (`DEMO-024`). `.ds-time` adds tabular numerals and a slashed zero, so columns of times line up and `0` never reads as `O`. Blocks, the timetable hour labels, the now-line label, case timeline dates and file sizes use it.
+`time` is the tabular mono style for time codes (`09:00-10:30`), room codes (`CCS 304`) and references (`CCS-2026-0142`). `.ds-time` adds tabular numerals and a slashed zero, so columns of times line up and `0` never reads as `O`. Blocks, the timetable hour labels, the now-line label, case timeline dates and file sizes use it.
 
 ## Families and loading
 

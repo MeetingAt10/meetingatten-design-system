@@ -5,7 +5,7 @@ react: Footer
 ---
 # Footer
 
-The footer closes landing and public pages: the brand (the door plate on ACCS surfaces, the [Logo](../identity/logo.md) on Meeting At 10 surfaces) with a short description, link columns that are each a named navigation, and a ruled bottom line for status notes ("Proposed, not approved").
+The footer closes landing and public pages: the brand (the door plate on ACCS surfaces, the [Logo](../identity/logo.md) on Meeting At 10 surfaces) with a short description, link columns that are each a named navigation, and a ruled bottom line for a short note and the version.
 
 ## When to use
 
@@ -49,7 +49,7 @@ import { Footer, DoorPlate } from '@meetingat10/design-system/react';
     { title: 'ACCS', links: [{ label: 'Community', href: '/community' }, { label: 'Consultations', href: '/consultations' }] },
     { title: 'Policy', links: [{ label: 'Privacy and access', href: '/privacy' }] },
   ]}
-  note="Proposed, not approved."
+ 
 />
 ```
 
@@ -64,7 +64,7 @@ On Meeting At 10 surfaces pass `brand={<Logo />}`.
       <div class="ds-footer__brand"><span class="ds-plate"><span class="ds-plate__name">ACCS</span></span><p class="ds-footer__description">Your Access to the College of Computer Studies.</p></div>
       <nav class="ds-footer__col" aria-label="Policy"><p class="ds-footer__title">Policy</p><ul class="ds-footer__links"><li><a class="ds-footer__link" href="/privacy">Privacy and access</a></li></ul></nav>
     </div>
-    <div class="ds-footer__bottom"><p>Proposed, not approved.</p></div>
+    <div class="ds-footer__bottom"></div>
   </div>
 </footer>
 ```

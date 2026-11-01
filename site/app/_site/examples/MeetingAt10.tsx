@@ -6,7 +6,7 @@ const DAY: TimetableEvent[] = [
   { id: "standup", day: "today", start: 10, end: 10.5, title: "Standup", meta: "Everyone, 15 minutes" },
   { id: "build", day: "today", start: 10.5, end: 12.5, title: "Build", meta: "Pairs, one task each", lane: "consult" },
   { id: "lunch", day: "today", start: 12.5, end: 13.5, title: "Lunch", form: "taken", stateLabel: "Away" },
-  { id: "review", day: "today", start: 13.5, end: 15, title: "Review", meta: "Demo what changed", lane: "community" },
+  { id: "review", day: "today", start: 13.5, end: 15, title: "Review", meta: "Walk through what changed", lane: "community" },
   { id: "ship", day: "today", start: 16, end: 17, title: "Ship", meta: "Tag, deploy, write it down" },
 ];
 
@@ -36,7 +36,7 @@ export function MeetingAt10Body() {
           </Agenda>
         </Section>
         <Section aria-labelledby="team-h" id="team">
-          <SectionHeader id="team-h" title="The team" description="Four roles, one standup. Names are left out of this sample page." />
+          <SectionHeader id="team-h" title="The team" description="Four roles, one standup. Each role owns one part of the week." />
           <Agenda>
             <AgendaItem chip="10:00" title="Project lead">Keeps the standup to fifteen minutes and the scope honest.</AgendaItem>
             <AgendaItem chip="10:00" lane="consult" title="Frontend">Builds the screens from this system, and nothing else.</AgendaItem>
@@ -51,7 +51,7 @@ export function MeetingAt10Body() {
           </div>
         </Section>
       </main>
-      <Footer brand={<Logo />} description="We meet at 10. Then we ship." note="Sample team page built with the Meeting At 10 design system." />
+      <Footer brand={<Logo />} description="We meet at 10. Then we ship." note="Built with the Meeting At 10 design system." />
     </>
   );
 }

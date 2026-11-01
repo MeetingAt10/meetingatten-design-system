@@ -17,7 +17,7 @@ import { Button } from '../control/Button.js';
 
 describe('Alert', () => {
   it('danger is announced at once; other tones are a status; the icon sits on a tone block', () => {
-    render(<><Alert tone="danger" title="Couldn't save">Try again.</Alert><Alert title="Illustrative schedule">Not live availability.</Alert></>);
+    render(<><Alert tone="danger" title="Couldn't save">Try again.</Alert><Alert title="Schedule updated">Check the timetable for the latest slots.</Alert></>);
     expect(screen.getByRole('alert').className).toBe('ds-alert ds-alert--danger');
     expect(screen.getByRole('status').querySelector('.ds-alert__icon svg')).not.toBeNull();
   });
@@ -34,7 +34,7 @@ describe('Toast', () => {
     const queue = new ToastQueue<ToastData>();
     const onUndo = vi.fn();
     render(<ToastRegion queue={queue} />);
-    act(() => { toast('Draft saved', { queue, tone: 'success', description: 'DEMO-024', action: { label: 'Undo', onAction: onUndo }, timeout: 0 }); });
+    act(() => { toast('Draft saved', { queue, tone: 'success', description: 'CCS-2026-0142', action: { label: 'Undo', onAction: onUndo }, timeout: 0 }); });
     const region = await screen.findByRole('region', { name: /Notifications/ });
     expect(within(region).getByText('Draft saved')).toBeTruthy();
     await userEvent.click(within(region).getByRole('button', { name: 'Undo' }));

@@ -33,7 +33,7 @@ export function CardLane({ lane, children }: { lane?: Lane; children: React.Reac
   return <span className={cx('ds-card__lane', laneClass('ds-card__lane', lane))}>{children}</span>;
 }
 
-/** Time or reference in tabular mono ("Mon 19 Oct · 09:00", "DEMO-024"). */
+/** Time or reference in tabular mono ("Mon 19 Oct · 09:00", "CCS-2026-0142"). */
 export function CardWhen({ children, dateTime }: { children: React.ReactNode; dateTime?: string }) {
   return <time className="ds-card__when" dateTime={dateTime}>{children}</time>;
 }

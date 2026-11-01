@@ -23,7 +23,7 @@ A card is a paper sheet that holds one item of a collection (an announcement, a 
 | Floating | `.ds-card--overlay` | No rule; `--ds-overlay-bg` with the overlay shadow, radius 16, 32px padding |
 | Flush | `.ds-card--flush` | No padding, content clipped (media, tables) |
 | Head | `.ds-card__head` | Lane chip and time on the left (`.ds-card__lead` groups them), badges on the right |
-| Lane chip | `.ds-card__lane` | Small solid block naming the lane or topic; schedule navy by default, `--community` violet, `--consult` teal |
+| Lane chip | `.ds-card__lane` | Small solid block naming the lane or topic; schedule navy by default, `--community` amber, `--consult` emerald |
 | Restricted chip | `.ds-card__lane--restricted` | Paper chip with an ink rule and a small hatched square, no hue |
 | Time or reference | `.ds-card__when`, `.ds-card__ref` | `time` style, tabular mono, secondary text |
 | Title | `.ds-card__title` | H3 style; with a link inside (`.ds-card__link`) it names and opens the card |

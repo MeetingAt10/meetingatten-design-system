@@ -26,7 +26,7 @@ A table is a ruled sheet of comparable rows: column headers stay pinned while th
 | Reference | `.ds-table__ref` | Tabular mono 500 13/20 with slashed zero |
 | Numeric | `.ds-table__num` | End-aligned |
 | Date | `time` in a cell | Never breaks inside the value |
-| Check column | `.ds-table__check` | 52px; added by `TableHeader` and `TableRow` when `selectionMode` is set: "Select all" heads it when multiple, each row gets a checkbox named by its row header ("Select DEMO-024") |
+| Check column | `.ds-table__check` | 52px; added by `TableHeader` and `TableRow` when `selectionMode` is set: "Select all" heads it when multiple, each row gets a checkbox named by its row header ("Select CCS-2026-0142") |
 | Actions | `.ds-table__actions` | End-aligned, no wrapping |
 | Sort control | `.ds-table__sort` | Header label plus a 16px sort icon |
 | Empty | `.ds-table__empty` | Centered message in secondary text |
@@ -57,7 +57,7 @@ A table is a ruled sheet of comparable rows: column headers stay pinned while th
 import { Cell, Column, Table, TableBody, TableHeader, TableRow } from '@meetingat10/design-system/react';
 
 <Table
-  aria-label="Consultation requests (sample)"
+  aria-label="Consultation requests"
   sortDescriptor={sort}
   onSortChange={setSort}
   selectionMode="multiple"
@@ -88,7 +88,7 @@ import { Cell, Column, Table, TableBody, TableHeader, TableRow } from '@meetinga
 ```html
 <div class="ds-table-wrap" role="region" aria-labelledby="req-cap" tabindex="0">
   <table class="ds-table">
-    <caption id="req-cap">Consultation requests (sample)</caption>
+    <caption id="req-cap">Consultation requests</caption>
     <thead>
       <tr>
         <th scope="col" aria-sort="ascending">
@@ -99,8 +99,8 @@ import { Cell, Column, Table, TableBody, TableHeader, TableRow } from '@meetinga
       </tr>
     </thead>
     <tbody>
-      <tr><th scope="row"><span class="ds-table__ref">DEMO-009</span></th><td>Career guidance</td><td class="ds-table__num">0</td></tr>
-      <tr><th scope="row"><span class="ds-table__ref">DEMO-024</span></th><td>Course planning</td><td class="ds-table__num">3</td></tr>
+      <tr><th scope="row"><span class="ds-table__ref">CCS-2026-0091</span></th><td>Career guidance</td><td class="ds-table__num">0</td></tr>
+      <tr><th scope="row"><span class="ds-table__ref">CCS-2026-0142</span></th><td>Course planning</td><td class="ds-table__num">3</td></tr>
     </tbody>
   </table>
 </div>

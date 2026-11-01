@@ -9,13 +9,13 @@
       "$value": "{color.neutral.950}"
     },
     "surface": {
-      "$value": "{color.brand.source-ink}"
+      "$value": "{color.neutral.dark-surface}"
     },
     "raised": {
       "$value": "{color.neutral.dark-raised}"
     },
     "text-primary": {
-      "$value": "{color.neutral.50}"
+      "$value": "{color.neutral.dark-ink}"
     },
     "text-secondary": {
       "$value": "{color.neutral.dark-secondary}"
@@ -145,7 +145,7 @@
       }
     },
     "border-subtle": {
-      "$value": "{color.neutral.dark-raised}"
+      "$value": "{color.neutral.dark-line}"
     },
     "inverse": {
       "hover": {

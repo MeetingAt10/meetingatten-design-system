@@ -18,15 +18,15 @@ Every surface (ACCS landing, ACCS portal and admin, Meeting At 10) uses the same
 
 | Token | Light | Dark |
 |---|---|---|
-| Canvas / surface / raised | `#F5F7FB` / `#FFFFFF` / `#FFFFFF` | `#0B1220` / `#172033` / `#22304A` |
-| Text primary / secondary | `#172033` / `#46516A` | `#F5F7FB` / `#B8C4D9` |
-| Border default / strong / subtle | `#65718A` / `#46516A` / `#DCE2EC` | `#7D8DA6` / `#B8C4D9` / `#22304A` |
-| Action default / hover / pressed | `#032E87` / `#022568` / `#011B4F` | `#97B5FF` / `#B8CDFF` / `#729AFF` |
-| On-action / focus | `#FFFFFF` / `#3157D5` | `#0B1220` / `#97B5FF` |
-| Plate bg / fg | `#032E87` / `#FFFFFF` (navy plate) | `#97B5FF` / `#0B1220` (pale blue plate) |
+| Canvas / surface / raised | `#F7F6F1` / `#FFFFFF` / `#FFFFFF` | `#070D1C` / `#0C1730` / `#121C35` |
+| Text primary / secondary | `#0C1730` / `#4A5570` | `#F7F6F1` / `#A3ADC4` |
+| Border default / strong / subtle | `#6B7590` / `#4A5570` / `#E4E1D6` | `#7D8AA8` / `#A3ADC4` / `#121C35` |
+| Action default / hover / pressed | `#032E87` / `#022568` / `#011B4F` | `#7C9BFF` / `#A3B8FF` / `#5F82F5` |
+| On-action / focus | `#FFFFFF` / `#2F5BEA` | `#070D1C` / `#7C9BFF` |
+| Plate bg / fg | `#032E87` / `#FFFFFF` (navy plate) | `#7C9BFF` / `#070D1C` (pale blue plate) |
 | Now | `#B42318` | `#FDA29B` |
-| Inverse bg / fg / muted | `#172033` / `#F5F7FB` / `#B8C4D9` | `#F5F7FB` / `#172033` / `#46516A` |
-| Hatch ink | `#65718A` | `#7D8DA6` |
+| Inverse bg / fg / muted | `#0C1730` / `#F7F6F1` / `#A3ADC4` | `#F7F6F1` / `#0C1730` / `#4A5570` |
+| Hatch ink | `#6B7590` | `#7D8AA8` |
 
 The full mapping is in [color.md](../foundations/color.md).
 
@@ -41,7 +41,7 @@ The full mapping is in [color.md](../foundations/color.md).
 | Today's column | Dark raised instead of info 50 |
 | Scrim | Neutral 950 at 72% instead of source ink at 48% |
 
-Lane fills switch to their pale steps (teal 300, violet 300, blue `#97B5FF`) with dark text on top. Raised surfaces are told apart by tone and edge before shadow; avoid luminous or colored shadows.
+Lane fills switch to their pale steps (emerald 300, amber 300, blue `#7C9BFF`) with dark text on top. Raised surfaces are told apart by tone and edge before shadow; avoid luminous or colored shadows.
 
 ## Remembering a choice
 

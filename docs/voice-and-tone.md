@@ -5,7 +5,7 @@ Three contexts, one honest voice: direct language, meaningful actions, no unveri
 | Context | Voice | Try | Avoid | Principle |
 |---|---|---|---|---|
 | Community (forum, announcements) | Casual, encouraging | "What helped it click for you? Share an explanation or ask a follow-up." | "Only experts should answer." | Invite participation; protect people from personal disclosure |
-| Support (consultations, student help) | Empathetic, clear | "Choose a sample time that works for you. You can review it before continuing." | "We will reply within 24 hours." | Offer a clear next step without a service-level promise |
+| Support (consultations, student help) | Empathetic, clear | "Choose a time that works for you. You can review it before continuing." | "We will reply within 24 hours." | Offer a clear next step without a service-level promise |
 | Reports (grievance, restricted) | Serious, structured, neutral | "Submission is unavailable while recipients and access rules are confirmed." | "Your report is completely anonymous and secure." | State what is known, what is pending and what is disabled |
 
 ## Per surface
@@ -21,7 +21,7 @@ Three contexts, one honest voice: direct language, meaningful actions, no unveri
 | Rule | Detail |
 |---|---|
 | Honest | No promises of anonymity, security, response time or finality; "restricted access does not mean anonymous" |
-| Demo content | Label synthetic content `DEMO`, "illustrative" or "sample"; never real student data or names |
+| Demo content | Use realistic names and references (CCS-2026-0142); never real student data |
 | Errors | Say what went wrong and how to fix it next to the field; keep entered values: "Couldn't validate this subject. Try again; your text is kept." |
 | Buttons | Verb and object ("Continue", "Discard draft", "Book a time") |
 | Destructive confirmation | Name the object; say whether it can be undone ("This cannot be undone.") |
@@ -49,8 +49,8 @@ A chosen slot is "Chosen", not "Booked": choosing a time is not a confirmed book
 |---|---|
 | Time | 24-hour, tabular: `09:00`; ranges with a hyphen: `09:00-09:30` |
 | Date | `Wed 21 Oct`; in full for assistive tech: "Wednesday 21 October" |
-| Time zone | Always shown near a time choice ("sample local campus time") |
-| References | `DEMO-024`, in the time (mono) style |
+| Time zone | Always shown near a time choice ("Asia/Manila (PHT)") |
+| References | `CCS-2026-0142`, in the time (mono) style |
 
 ## Notifications and privacy
 

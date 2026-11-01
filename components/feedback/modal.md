@@ -9,7 +9,7 @@ A modal is a sheet that rises over a scrim and blocks the page until a decision 
 
 ## When to use
 
-- Use it for a decision that needs protected focus: "Discard draft DEMO-024?", "Edit consultation details".
+- Use it for a decision that needs protected focus: "Discard draft CCS-2026-0142?", "Edit consultation details".
 - Use `role="alertdialog"` for destructive or irreversible confirmations; the actions decide and there is no close button.
 - Name the object and the consequence in the title, and say in the body whether it can be undone.
 - Don't use it for reading or long forms; use the page, or a [Drawer](drawer.md) for secondary work that keeps the page in view.
@@ -72,7 +72,7 @@ import { Button, DialogTrigger, Modal, ModalActions, ModalBody, TextField } from
 
 <DialogTrigger>
   <Button variant="destructive" icon="trash">Discard draft</Button>
-  <Modal title="Discard draft DEMO-024?" role="alertdialog">
+  <Modal title="Discard draft CCS-2026-0142?" role="alertdialog">
     {({ close }) => (
       <>
         <ModalBody><p>The draft and its attachments are removed. This cannot be undone.</p></ModalBody>
@@ -93,7 +93,7 @@ import { Button, DialogTrigger, Modal, ModalActions, ModalBody, TextField } from
 ```html
 <div class="ds-modal-overlay">
   <section class="ds-modal" role="alertdialog" aria-modal="true" aria-labelledby="discard-title" aria-describedby="discard-body">
-    <header class="ds-modal__head"><h2 class="ds-modal__title" id="discard-title">Discard draft DEMO-024?</h2></header>
+    <header class="ds-modal__head"><h2 class="ds-modal__title" id="discard-title">Discard draft CCS-2026-0142?</h2></header>
     <div class="ds-modal__body"><p id="discard-body">The draft and its attachments are removed. This cannot be undone.</p></div>
     <footer class="ds-modal__actions">
       <button class="ds-btn ds-btn--secondary" type="button">Keep draft</button>

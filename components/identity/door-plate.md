@@ -32,7 +32,7 @@ The door plate is the name plate on a faculty door: a navy plate with white Plus
 | State | Looks | Set by |
 |---|---|---|
 | Light theme | Navy plate (`#032E87`), white text, no shadow | `data-theme="light"` or the OS |
-| Dark theme | Pale blue plate (`#97B5FF`), near-black text, a 1px top highlight | `data-theme="dark"` or the OS |
+| Dark theme | Pale blue plate (`#7C9BFF`), near-black text, a 1px top highlight | `data-theme="dark"` or the OS |
 | Sizes | 26px, 32px or 48px tall | `size="sm"`, `"md"` (default), `"lg"` |
 | Outline | Plate-colored rule, no fill | `outline`, `.ds-plate--outline` |
 | As a link | The surrounding link draws the focus ring | wrap it in a link |

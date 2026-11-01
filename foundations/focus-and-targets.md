@@ -7,7 +7,7 @@ Keyboard focus is a 2px ring with a 2px gap on every interactive element; target
 | Item | Rule |
 |---|---|
 | Ring | A 2px `--ds-focus` outline (`--ds-size-focus-ring`) with a 2px offset (`--ds-size-focus-offset`), on `:focus-visible` inside `.ds-body` |
-| Colors | `#3157D5` in light (6.08:1 on surface), `#97B5FF` in dark (8.03:1) |
+| Colors | `#2F5BEA` in light (6.08:1 on surface), `#7C9BFF` in dark (8.03:1) |
 | Drawn as an outline | It never fights a component's own shadow. `--ds-ring` is the box-shadow form for the rare element whose outline would be clipped; its gap color comes from `--ring-gap` (default `surface`) |
 | Mouse and touch | No ring for pointer focus (`:focus:not(:focus-visible)`) |
 | Inputs | Focus turns the rule to the focus color and adds the ring at a 1px offset |

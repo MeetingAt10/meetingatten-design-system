@@ -340,6 +340,36 @@
    "info-bg",
    4.5,
    "alert secondary"
+  ],
+  [
+   "secondary-default",
+   "secondary-bg",
+   4.5,
+   "emerald text on lane tint"
+  ],
+  [
+   "accent-default",
+   "accent-bg",
+   4.5,
+   "amber text on lane tint"
+  ],
+  [
+   "text-secondary",
+   "secondary-bg",
+   4.5,
+   "secondary text on emerald tint"
+  ],
+  [
+   "text-secondary",
+   "accent-bg",
+   4.5,
+   "secondary text on amber tint"
+  ],
+  [
+   "text-primary",
+   "warning-bg",
+   4.5,
+   "text on amber wash"
   ]
  ]
 }

@@ -71,7 +71,7 @@ L.push(`--font-display: var(--ds-font-family-display);`, `--font-sans: var(--ds-
 L.push(`--font-weight-regular: 400;`, `--font-weight-medium: 500;`, `--font-weight-semibold: 600;`, `--font-weight-bold: 700;`, `--font-weight-extrabold: 800;`);
 const types = [...new Set(entries(foundations).filter(([n]) => n.startsWith('type.')).map(([n]) => n.split('.')[1]))];
 for (const k of types) L.push(`--text-${k}: var(--ds-type-${k}-size);`, `--text-${k}--line-height: var(--ds-type-${k}-line-height);`);
-for (const k of ['sheet', 'block', 'control', 'chip', 'overlay', 'plate']) L.push(`--radius-${k}: var(--ds-radius-${k});`);
+for (const k of ['sheet', 'block', 'control', 'chip', 'overlay', 'plate', 'frame']) L.push(`--radius-${k}: var(--ds-radius-${k});`);
 L.push(`--shadow-block: var(--ds-block-shadow);`, `--shadow-overlay: var(--ds-overlay-shadow);`);
 L.push(`--ease-out: var(--ds-motion-ease-out);`, `--ease-in-out: var(--ds-motion-ease-in-out);`, `--ease-spring: var(--ds-motion-spring-smooth);`);
 L.push(`--default-transition-duration: var(--ds-motion-duration-quick);`, `--default-transition-timing-function: var(--ds-motion-ease-out);`);

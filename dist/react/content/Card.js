@@ -19,7 +19,7 @@ export function CardHeader({ className, ...rest }) {
 export function CardLane({ lane, children }) {
     return _jsx("span", { className: cx('ds-card__lane', laneClass('ds-card__lane', lane)), children: children });
 }
-/** Time or reference in tabular mono ("Mon 19 Oct · 09:00", "DEMO-024"). */
+/** Time or reference in tabular mono ("Mon 19 Oct · 09:00", "CCS-2026-0142"). */
 export function CardWhen({ children, dateTime }) {
     return _jsx("time", { className: "ds-card__when", dateTime: dateTime, children: children });
 }

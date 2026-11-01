@@ -1,5 +1,5 @@
 {
-  "$description": "ACCS palette: 54 primitives, pinned (user decision 2026-10-25). Product code uses the semantic theme tokens, never these.",
+  "$description": "ACCS palette v1.2: ivory canvas, navy-black ink, academic navy action, cobalt focus, emerald secondary, amber accent. Product code uses the semantic theme tokens, never these.",
   "color": {
     "$type": "color",
     "brand": {
@@ -7,7 +7,7 @@
         "$value": "#032E87"
       },
       "source-ink": {
-        "$value": "#172033"
+        "$value": "#0C1730"
       },
       "source-white": {
         "$value": "#FFFFFF"
@@ -19,16 +19,16 @@
         "$value": "#011B4F"
       },
       "dark-default": {
-        "$value": "#97B5FF"
+        "$value": "#7C9BFF"
       },
       "dark-hover": {
-        "$value": "#B8CDFF"
+        "$value": "#A3B8FF"
       },
       "dark-pressed": {
-        "$value": "#729AFF"
+        "$value": "#5F82F5"
       },
       "focus-light": {
-        "$value": "#3157D5"
+        "$value": "#2F5BEA"
       }
     },
     "neutral": {
@@ -36,62 +36,74 @@
         "$value": "#FFFFFF"
       },
       "50": {
-        "$value": "#F5F7FB"
+        "$value": "#F7F6F1"
       },
       "100": {
-        "$value": "#EDF1F7"
+        "$value": "#EFEDE5"
       },
       "200": {
-        "$value": "#DCE2EC"
+        "$value": "#E4E1D6"
       },
       "500": {
-        "$value": "#65718A"
+        "$value": "#6B7590"
       },
       "700": {
-        "$value": "#46516A"
+        "$value": "#4A5570"
       },
       "900": {
-        "$value": "#172033"
+        "$value": "#0C1730"
       },
       "950": {
-        "$value": "#0B1220"
+        "$value": "#070D1C"
       },
       "dark-raised": {
-        "$value": "#22304A"
+        "$value": "#121C35"
       },
       "dark-secondary": {
-        "$value": "#B8C4D9"
+        "$value": "#A3ADC4"
       },
       "dark-border": {
-        "$value": "#7D8DA6"
+        "$value": "#7D8AA8"
+      },
+      "dark-surface": {
+        "$value": "#0D1529"
+      },
+      "dark-ink": {
+        "$value": "#EAEEF7"
+      },
+      "dark-line": {
+        "$value": "#222F4F"
+      },
+      "raised": {
+        "$value": "#FDFCF9"
       }
     },
     "success": {
       "50": {
-        "$value": "#F0FDF4"
+        "$value": "#E6F5EE"
       },
       "300": {
-        "$value": "#86EFAC"
+        "$value": "#3CCB98"
       },
       "700": {
-        "$value": "#166534"
+        "$value": "#0A6B49"
       },
       "950": {
-        "$value": "#052E16"
+        "$value": "#062B1E"
       }
     },
     "warning": {
       "50": {
-        "$value": "#FFFBEB"
+        "$value": "#FFF6E0"
       },
       "300": {
-        "$value": "#FCD34D"
+        "$value": "#F5C451"
       },
       "700": {
-        "$value": "#854D0E"
+        "$value": "#8A4B06"
       },
       "950": {
-        "$value": "#451A03"
+        "$value": "#3A2003"
       }
     },
     "danger": {
@@ -122,10 +134,10 @@
     },
     "info": {
       "50": {
-        "$value": "#EFF4FF"
+        "$value": "#EAF0FF"
       },
       "300": {
-        "$value": "#97B5FF"
+        "$value": "#7C9BFF"
       },
       "700": {
         "$value": "#032E87"
@@ -136,48 +148,48 @@
     },
     "secondary": {
       "50": {
-        "$value": "#E8FAF7"
+        "$value": "#E6F5EE"
       },
       "100": {
-        "$value": "#C8F2E9"
+        "$value": "#CDEBDD"
       },
       "300": {
-        "$value": "#5EEAD4"
+        "$value": "#3CCB98"
       },
       "600": {
-        "$value": "#0D9488"
+        "$value": "#0E9467"
       },
       "700": {
-        "$value": "#08746E"
+        "$value": "#0A7A55"
       },
       "800": {
-        "$value": "#075D59"
+        "$value": "#075C41"
       },
       "950": {
-        "$value": "#042F2E"
+        "$value": "#04271C"
       }
     },
     "accent": {
       "50": {
-        "$value": "#F4EEFF"
+        "$value": "#FCF1DF"
       },
       "100": {
-        "$value": "#E9DDFF"
+        "$value": "#F8E3BC"
       },
       "300": {
-        "$value": "#C4B5FD"
+        "$value": "#F2B154"
       },
       "600": {
-        "$value": "#7040C7"
+        "$value": "#B25E09"
       },
       "700": {
-        "$value": "#55309B"
+        "$value": "#9A5008"
       },
       "800": {
-        "$value": "#45257D"
+        "$value": "#7C3F06"
       },
       "950": {
-        "$value": "#2E1065"
+        "$value": "#3A1D03"
       }
     }
   }

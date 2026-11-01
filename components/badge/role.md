@@ -33,7 +33,7 @@ There is no hover, focus or selected state: a role badge is not interactive.
 
 - Plain text in a `span`: no role and no focus. Screen readers read the word.
 - Put it next to the person's name; it describes the person, not what they can open.
-- Write permission in words elsewhere, for example a sidebar note: "Own reports only (proposed permission)".
+- Write permission in words elsewhere, for example a sidebar note: "Own reports only".
 - No motion.
 - Forced colors: the plate keeps a `CanvasText` edge.
 

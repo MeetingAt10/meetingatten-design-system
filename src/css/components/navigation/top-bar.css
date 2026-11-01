@@ -10,8 +10,13 @@
   gap: var(--ds-space-16);
   min-height: var(--ds-size-topbar-h);
   padding: var(--ds-space-8) var(--ds-space-24);
-  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-bottom: var(--ds-size-rule) solid var(--ds-hairline);
   background: var(--ds-canvas);
+}
+@media (prefers-reduced-transparency: no-preference) {
+  @supports (backdrop-filter: blur(1px)) {
+    .ds-topbar { background: var(--ds-glass-bg); backdrop-filter: blur(var(--ds-glass-blur)) saturate(1.6); }
+  }
 }
 .ds-topbar__title { display: grid; min-width: 0; flex: 1; }
 .ds-topbar__heading {

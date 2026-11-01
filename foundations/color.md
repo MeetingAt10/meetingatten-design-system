@@ -8,14 +8,14 @@ The palette and the semantic mapping are pinned by the user (decision 2026-10-25
 
 | Family | Steps |
 |---|---|
-| `brand` | `source-blue` `#032E87`, `source-ink` `#172033`, `source-white` `#FFFFFF`, `hover` `#022568`, `pressed` `#011B4F`, `dark-default` `#97B5FF`, `dark-hover` `#B8CDFF`, `dark-pressed` `#729AFF`, `focus-light` `#3157D5` |
-| `neutral` | `0` `#FFFFFF`, `50` `#F5F7FB`, `100` `#EDF1F7`, `200` `#DCE2EC`, `500` `#65718A`, `700` `#46516A`, `900` `#172033`, `950` `#0B1220`, `dark-raised` `#22304A`, `dark-secondary` `#B8C4D9`, `dark-border` `#7D8DA6` |
-| `success` | `50` `#F0FDF4`, `300` `#86EFAC`, `700` `#166534`, `950` `#052E16` |
-| `warning` | `50` `#FFFBEB`, `300` `#FCD34D`, `700` `#854D0E`, `950` `#451A03` |
+| `brand` | `source-blue` `#032E87`, `source-ink` `#0C1730`, `source-white` `#FFFFFF`, `hover` `#022568`, `pressed` `#011B4F`, `dark-default` `#7C9BFF`, `dark-hover` `#A3B8FF`, `dark-pressed` `#5F82F5`, `focus-light` `#2F5BEA` |
+| `neutral` | `0` `#FFFFFF`, `50` `#F7F6F1`, `100` `#EFEDE5`, `200` `#E4E1D6`, `500` `#6B7590`, `700` `#4A5570`, `900` `#0C1730`, `950` `#070D1C`, `dark-raised` `#121C35`, `dark-secondary` `#A3ADC4`, `dark-border` `#7D8AA8` |
+| `success` | `50` `#E6F5EE`, `300` `#3CCB98`, `700` `#0A6B49`, `950` `#062B1E` |
+| `warning` | `50` `#FFF6E0`, `300` `#F5C451`, `700` `#8A4B06`, `950` `#3A2003` |
 | `danger` | `50` `#FEF3F2`, `100` `#FEE4E2`, `300` `#FDA29B`, `400` `#F97066`, `700` `#B42318`, `800` `#9C1F16`, `900` `#801A13`, `950` `#55160C` |
-| `info` | `50` `#EFF4FF`, `300` `#97B5FF`, `700` `#032E87`, `950` `#011B4F` |
-| `secondary` (teal) | `50` `#E8FAF7`, `100` `#C8F2E9`, `300` `#5EEAD4`, `600` `#0D9488`, `700` `#08746E`, `800` `#075D59`, `950` `#042F2E` |
-| `accent` (violet) | `50` `#F4EEFF`, `100` `#E9DDFF`, `300` `#C4B5FD`, `600` `#7040C7`, `700` `#55309B`, `800` `#45257D`, `950` `#2E1065` |
+| `info` | `50` `#EAF0FF`, `300` `#7C9BFF`, `700` `#032E87`, `950` `#011B4F` |
+| `secondary` (emerald) | `50` `#E6F5EE`, `100` `#CDEBDD`, `300` `#3CCB98`, `600` `#0E9467`, `700` `#0A7A55`, `800` `#075C41`, `950` `#04271C` |
+| `accent` (amber) | `50` `#FCF1DF`, `100` `#F8E3BC`, `300` `#F2B154`, `600` `#B25E09`, `700` `#9A5008`, `800` `#7C3F06`, `950` `#3A1D03` |
 
 Source: `tokens/foundations/color.json`. Primitives are emitted as `--ds-<family>-<step>` for the design system's own treatments only.
 
@@ -38,28 +38,28 @@ The numeral is `brand.source-white`. Like the primitives, the identity colors ar
 
 | Token | Light | Dark | Use |
 |---|---|---|---|
-| `canvas` | `#F5F7FB` neutral 50 | `#0B1220` neutral 950 | The cool canvas under every sheet |
-| `surface` | `#FFFFFF` | `#172033` source ink | Sheets, cards, inputs |
-| `raised` | `#FFFFFF` | `#22304A` dark raised | Overlays in dark (modal, drawer, popover) |
-| `text-primary` | `#172033` | `#F5F7FB` | Body and headings |
-| `text-secondary` | `#46516A` | `#B8C4D9` | Meta, help text, hour labels |
-| `border-default` | `#65718A` | `#7D8DA6` | Control boundaries (3:1) |
-| `border-strong` | `#46516A` | `#B8C4D9` | Hovered controls |
-| `border-subtle` | `#DCE2EC` | `#22304A` | Hairline rules only, never a control boundary |
-| `action-default` / `-hover` / `-pressed` | `#032E87` / `#022568` / `#011B4F` | `#97B5FF` / `#B8CDFF` / `#729AFF` | Primary actions, links, the schedule lane, current items |
-| `on-action` | `#FFFFFF` | `#0B1220` | Text on action fills |
-| `focus` | `#3157D5` | `#97B5FF` | Focus ring |
-| `disabled-bg` / `disabled-fg` | `#EDF1F7` / `#46516A` | `#22304A` / `#B8C4D9` | Disabled ground; labels stay readable |
-| `success-fg` / `-bg` / `-on-inverse` | `#166534` / `#F0FDF4` / `#86EFAC` | `#86EFAC` / `#052E16` / `#166534` | Done, saved |
-| `warning-fg` / `-bg` | `#854D0E` / `#FFFBEB` | `#FCD34D` / `#451A03` | Needs attention |
+| `canvas` | `#F7F6F1` neutral 50 | `#070D1C` neutral 950 | The cool canvas under every sheet |
+| `surface` | `#FFFFFF` | `#0C1730` source ink | Sheets, cards, inputs |
+| `raised` | `#FFFFFF` | `#121C35` dark raised | Overlays in dark (modal, drawer, popover) |
+| `text-primary` | `#0C1730` | `#F7F6F1` | Body and headings |
+| `text-secondary` | `#4A5570` | `#A3ADC4` | Meta, help text, hour labels |
+| `border-default` | `#6B7590` | `#7D8AA8` | Control boundaries (3:1) |
+| `border-strong` | `#4A5570` | `#A3ADC4` | Hovered controls |
+| `border-subtle` | `#E4E1D6` | `#121C35` | Hairline rules only, never a control boundary |
+| `action-default` / `-hover` / `-pressed` | `#032E87` / `#022568` / `#011B4F` | `#7C9BFF` / `#A3B8FF` / `#5F82F5` | Primary actions, links, the schedule lane, current items |
+| `on-action` | `#FFFFFF` | `#070D1C` | Text on action fills |
+| `focus` | `#2F5BEA` | `#7C9BFF` | Focus ring |
+| `disabled-bg` / `disabled-fg` | `#EFEDE5` / `#4A5570` | `#121C35` / `#A3ADC4` | Disabled ground; labels stay readable |
+| `success-fg` / `-bg` / `-on-inverse` | `#0A6B49` / `#E6F5EE` / `#3CCB98` | `#3CCB98` / `#062B1E` / `#0A6B49` | Done, saved |
+| `warning-fg` / `-bg` | `#8A4B06` / `#FFF6E0` | `#F5C451` / `#3A2003` | Needs attention |
 | `danger-fg` / `-bg` | `#B42318` / `#FEF3F2` | `#FDA29B` / `#55160C` | Errors |
-| `danger-action` / `-hover` / `-pressed` / `danger-on-action` | `#B42318` / `#9C1F16` / `#801A13` / `#FFFFFF` | `#FDA29B` / `#FEE4E2` / `#F97066` / `#0B1220` | Destructive buttons |
-| `info-fg` / `-bg` | `#032E87` / `#EFF4FF` | `#97B5FF` / `#011B4F` | Neutral information |
-| `secondary-default` / `-hover` / `-pressed` | `#08746E` / `#075D59` / `#042F2E` | `#5EEAD4` / `#C8F2E9` / `#E8FAF7` | The consult lane |
-| `secondary-on-solid` / `-bg` / `-fg` / `-border` | `#FFFFFF` / `#E8FAF7` / `#075D59` / `#08746E` | `#0B1220` / `#042F2E` / `#5EEAD4` / `#5EEAD4` | Text on teal, tints, outlines |
-| `accent-default` / `-hover` / `-pressed` | `#55309B` / `#45257D` / `#2E1065` | `#C4B5FD` / `#E9DDFF` / `#F4EEFF` | The community lane |
-| `accent-on-solid` / `-bg` / `-fg` / `-border` | `#FFFFFF` / `#F4EEFF` / `#45257D` / `#55309B` | `#0B1220` / `#2E1065` / `#C4B5FD` / `#C4B5FD` | Text on violet, tints, outlines |
-| `inverse-hover` / `-pressed` / `-focus` | `#46516A` / `#032E87` / `#97B5FF` | `#EDF1F7` / `#DCE2EC` / `#032E87` | Controls on the inverse sheet |
+| `danger-action` / `-hover` / `-pressed` / `danger-on-action` | `#B42318` / `#9C1F16` / `#801A13` / `#FFFFFF` | `#FDA29B` / `#FEE4E2` / `#F97066` / `#070D1C` | Destructive buttons |
+| `info-fg` / `-bg` | `#032E87` / `#EAF0FF` | `#7C9BFF` / `#011B4F` | Neutral information |
+| `secondary-default` / `-hover` / `-pressed` | `#0A7A55` / `#075C41` / `#04271C` | `#3CCB98` / `#CDEBDD` / `#E6F5EE` | The consult lane |
+| `secondary-on-solid` / `-bg` / `-fg` / `-border` | `#FFFFFF` / `#E6F5EE` / `#075C41` / `#0A7A55` | `#070D1C` / `#04271C` / `#3CCB98` / `#3CCB98` | Text on emerald, tints, outlines |
+| `accent-default` / `-hover` / `-pressed` | `#9A5008` / `#7C3F06` / `#3A1D03` | `#F2B154` / `#F8E3BC` / `#FCF1DF` | The community lane |
+| `accent-on-solid` / `-bg` / `-fg` / `-border` | `#FFFFFF` / `#FCF1DF` / `#7C3F06` / `#9A5008` | `#070D1C` / `#3A1D03` / `#F2B154` / `#F2B154` | Text on amber, tints, outlines |
+| `inverse-hover` / `-pressed` / `-focus` | `#4A5570` / `#032E87` / `#7C9BFF` | `#EFEDE5` / `#E4E1D6` / `#032E87` | Controls on the inverse sheet |
 
 ## Office Hours additions
 
@@ -68,12 +68,12 @@ The redesign added theme tokens only. No primitive changed.
 | Token | Light | Dark | Use |
 |---|---|---|---|
 | `now` | `#B42318` danger 700 | `#FDA29B` danger 300 | The now-line, its dot and time label, today dots, unread dots |
-| `hatch-ink` | `#65718A` neutral 500 | `#7D8DA6` dark border | Ink for hatching on taken or restricted areas |
-| `inverse-bg` | `#172033` | `#F5F7FB` | Toast and tooltip sheet, code blocks |
-| `inverse-fg` | `#F5F7FB` | `#172033` | Text on the inverse sheet |
-| `inverse-muted` | `#B8C4D9` | `#46516A` | Secondary text on the inverse sheet |
-| `plate-bg` | `#032E87` | `#97B5FF` | Door plate, today's date plate, plate bands |
-| `plate-fg` | `#FFFFFF` | `#0B1220` | Text on the plate |
+| `hatch-ink` | `#6B7590` neutral 500 | `#7D8AA8` dark border | Ink for hatching on taken or restricted areas |
+| `inverse-bg` | `#0C1730` | `#F7F6F1` | Toast and tooltip sheet, code blocks |
+| `inverse-fg` | `#F7F6F1` | `#0C1730` | Text on the inverse sheet |
+| `inverse-muted` | `#A3ADC4` | `#4A5570` | Secondary text on the inverse sheet |
+| `plate-bg` | `#032E87` | `#7C9BFF` | Door plate, today's date plate, plate bands |
+| `plate-fg` | `#FFFFFF` | `#070D1C` | Text on the plate |
 
 `now` shares the danger hue. The now-line always carries its time label, and error messages always carry words, so the two never rely on color to be told apart.
 
@@ -84,8 +84,8 @@ A lane is a kind of time in the college week. Its color owns the whole block at 
 | Lane | Solid block | Text on block | Outline (open, pending) | Highlighter | Holds |
 |---|---|---|---|---|---|
 | `schedule` (default) | `action-default` (navy) | `on-action` | `action-default` | `highlight-schedule` | Classes, department schedule, the brand |
-| `community` | `accent-default` (violet) | `accent-on-solid` | `accent-border` | `highlight-community` | Forum, announcements, events |
-| `consult` | `secondary-default` (teal) | `secondary-on-solid` | `secondary-border` | `highlight-consult` | Consultations and support |
+| `community` | `accent-default` (amber) | `accent-on-solid` | `accent-border` | `highlight-community` | Forum, announcements, events |
+| `consult` | `secondary-default` (emerald) | `secondary-on-solid` | `secondary-border` | `highlight-consult` | Consultations and support |
 | `restricted` | `surface` with `--ds-hatch` | `text-primary` | `border-default` | `highlight-neutral` | Reports and restricted records |
 
 The restricted lane has no hue on purpose: color never signals confidentiality or permission. It is drawn with hatching and always labeled in words ("Reports: your own records only").
@@ -111,7 +111,7 @@ Tailwind exposes them as `bg-highlight-schedule` and so on. `::selection` uses t
 | Purpose, not hex | Pick the semantic token for the job; never a primitive in product code |
 | Color reinforces, never carries | Status, severity and availability always have words, and line forms where they apply |
 | Boundaries | Controls use `border-default` (3:1); `border-subtle` is for hairline rules only |
-| Lanes are not permissions | Violet, teal and navy never mean access level or confidentiality |
+| Lanes are not permissions | Amber, emerald and navy never mean access level or confidentiality |
 | Dark is a mapping, not an inversion | Actions turn pale blue with dark `on-action` text; overlays sit on `raised` |
 | Status families stay apart | `success`, `warning`, `danger`, `info` keep their meaning; do not reuse them as lane or chart colors |
 

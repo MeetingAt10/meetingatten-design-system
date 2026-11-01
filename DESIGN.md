@@ -6,51 +6,51 @@ colors:
   action-hover: "#022568"
   action-pressed: "#011B4F"
   on-action: "#FFFFFF"
-  focus: "#3157D5"
+  focus: "#2F5BEA"
   plate-bg: "#032E87"
   plate-fg: "#FFFFFF"
-  highlight-schedule: "#EFF4FF"
-  info-bg: "#EFF4FF"
-  secondary-default: "#08746E"
-  secondary-hover: "#075D59"
-  secondary-fg: "#075D59"
-  secondary-bg: "#E8FAF7"
-  highlight-consult: "#C8F2E9"
-  accent-default: "#55309B"
-  accent-hover: "#45257D"
-  accent-fg: "#45257D"
-  accent-bg: "#F4EEFF"
-  highlight-community: "#E9DDFF"
-  canvas: "#F5F7FB"
+  highlight-schedule: "#EAF0FF"
+  info-bg: "#EAF0FF"
+  secondary-default: "#0A7A55"
+  secondary-hover: "#075C41"
+  secondary-fg: "#075C41"
+  secondary-bg: "#E6F5EE"
+  highlight-consult: "#CDEBDD"
+  accent-default: "#9A5008"
+  accent-hover: "#7C3F06"
+  accent-fg: "#7C3F06"
+  accent-bg: "#FCF1DF"
+  highlight-community: "#F8E3BC"
+  canvas: "#F7F6F1"
   surface: "#FFFFFF"
-  text-primary: "#172033"
-  text-secondary: "#46516A"
-  border-subtle: "#DCE2EC"
-  border-default: "#65718A"
-  border-strong: "#46516A"
-  hatch-ink: "#65718A"
-  highlight-neutral: "#EDF1F7"
-  disabled-bg: "#EDF1F7"
-  disabled-fg: "#46516A"
-  inverse-bg: "#172033"
-  inverse-fg: "#F5F7FB"
+  text-primary: "#0C1730"
+  text-secondary: "#4A5570"
+  border-subtle: "#E4E1D6"
+  border-default: "#6B7590"
+  border-strong: "#4A5570"
+  hatch-ink: "#6B7590"
+  highlight-neutral: "#EFEDE5"
+  disabled-bg: "#EFEDE5"
+  disabled-fg: "#4A5570"
+  inverse-bg: "#0C1730"
+  inverse-fg: "#F7F6F1"
   now: "#B42318"
   danger-fg: "#B42318"
   danger-bg: "#FEF3F2"
   danger-action: "#B42318"
   danger-action-hover: "#9C1F16"
-  success-fg: "#166534"
-  success-bg: "#F0FDF4"
-  warning-fg: "#854D0E"
-  warning-bg: "#FFFBEB"
-  highlight-mark: "#FCD34D"
+  success-fg: "#0A6B49"
+  success-bg: "#E6F5EE"
+  warning-fg: "#8A4B06"
+  warning-bg: "#FFF6E0"
+  highlight-mark: "#F5C451"
 typography:
   display:
     fontFamily: "Plus Jakarta Sans Variable, Plus Jakarta Sans, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2.75rem, 1.4rem + 3.2vw, 4.5rem)"
+    fontSize: "clamp(2.75rem, 1.3rem + 3.6vw, 5rem)"
     fontWeight: 800
     lineHeight: 1.02
-    letterSpacing: "-0.035em"
+    letterSpacing: "-0.032em"
   h1:
     fontFamily: "Plus Jakarta Sans Variable, Plus Jakarta Sans, ui-sans-serif, system-ui, sans-serif"
     fontSize: "clamp(2rem, 1.45rem + 1.5vw, 2.75rem)"
@@ -119,12 +119,14 @@ typography:
     letterSpacing: "0.01em"
     fontFeature: "'tnum' 1, 'zero' 1"
 rounded:
-  chip: "4px"
-  block: "6px"
-  plate: "6px"
-  control: "8px"
-  sheet: "12px"
-  overlay: "16px"
+  tick: "4px"
+  block: "8px"
+  control: "10px"
+  plate: "10px"
+  sheet: "16px"
+  overlay: "20px"
+  frame: "24px"
+  chip: "9999px"
   full: "9999px"
 spacing:
   "2": "2px"
@@ -310,18 +312,18 @@ components:
 
 **Creative North Star: "Office Hours"**
 
-The system is the weekly consultation timetable taped to a faculty door in the College of Computer Studies, rebuilt as an interface. Every surface it serves (the ACCS landing, the ACCS portal and admin, the Meeting At 10 site and the showcase docs) is a paper-white sheet on a cool canvas, ruled with hairlines that form real time grids, and its content arrives as blocks placed in time. A block's lane color owns its whole fill: navy for the schedule and for action, violet for community, teal for consultations. The fourth lane, restricted reports, has no hue. It is hatched ink with words, drawn into the grid where everyone can see where the boundary runs.
+The system is the weekly consultation timetable taped to a faculty door in the College of Computer Studies, rebuilt as an interface. Every surface it serves (the ACCS landing, the ACCS portal and admin, the Meeting At 10 site and the showcase docs) is a paper-white sheet on a warm ivory canvas, ruled with hairlines that form real time grids, and its content arrives as blocks placed in time. A block's lane color owns its whole fill: navy for the schedule and for action, amber for community, emerald for consultations. The fourth lane, restricted reports, has no hue. It is hatched ink with words, drawn into the grid where everyone can see where the boundary runs.
 
 The voice is structured and calm, and it reads at a glance. Plus Jakarta Sans at 800 with tight tracking gives headings the weight of a painted name plate, Inter carries reading and interface text, and JetBrains Mono appears only where a clock or a filing system would print. State is drawn as line form: a solid edge is open, a dashed edge is pending, hatching is taken or restricted, a strike is closed, and a word always comes with the line. The page you are on becomes a solid navy block. The present moment is a red line with the time on a small plate.
 
-Sheets rest flat on a 1px rule. Only blocks being handled and overlays floating above the page cast shadows, ink-tinted in light and black with a 1px top highlight in dark. Motion is quick and physical: 120ms color changes, critically damped springs for anything that slides along a rule, overlays that rise 8px on an exponential ease-out, and under reduced motion every state lands at once. The system must never feel playful or gamified, like a generic SaaS template, cold or bureaucratic, or slowed down by motion.
+Cards and sheets rest on a hairline ring with soft navy-tinted layers; blocks being handled and overlays floating above the page deepen them, and translucent glass is used only where content floats over content (the sticky navbar and top bar, overlays and popovers), with a solid fallback. Motion is quick and physical: 120ms color changes, critically damped springs for anything that slides along a rule, overlays that fade, scale and rise on an exponential ease-out, and under reduced motion every state lands at once. The system must never feel playful or gamified, like a generic SaaS template, cold or bureaucratic, or slowed down by motion.
 
-**The expressive layer.** The marketing surfaces (the ACCS landing, the Meeting At 10 site and the showcase) may add a slower, richer layer on top of the same world: headlines that rise word by word, sections that ease in on scroll, a faint aurora of the three lane colors over the ruled time grid, and 3D glass renders floating beside the product in a constellation that follows the pointer. It is built from the same tokens (new durations, an emphasized ease, a reveal and a float distance, and an art shadow), lives in its own CSS and React files, is never used inside portal workflows, keeps content visible by default, and stops entirely under reduced motion. The renders are decoration, never a logo, a seal or a lane signal.
+**The expressive layer.** The marketing surfaces (the ACCS landing, the Meeting At 10 site and the showcase) may add a slower, richer layer on top of the same world: headlines that rise word by word, sections that ease in on scroll, a faint aurora of cobalt, amber and emerald over the ruled time grid, and 3D glass renders floating beside the product in a constellation that follows the pointer. It is built from the same tokens (new durations, an emphasized ease, a reveal and a float distance, and an art shadow), lives in its own CSS and React files, is never used inside portal workflows, keeps content visible by default, and stops entirely under reduced motion. The renders are decoration, never a logo, a seal or a lane signal.
 
 **Key Characteristics:**
 - Paper-white sheets (12px corners, 1px hairline) on a cool canvas, flat at rest.
 - Blocks placed in time: solid lane fills, 6px corners, a tabular mono time code on top.
-- Three hued lanes and one unhued lane: navy schedule, violet community, teal consultations, hatched restricted reports.
+- Three hued lanes and one unhued lane: navy schedule, amber community, emerald consultations, hatched restricted reports.
 - State drawn in line form (solid, dashed, hatched, struck), always with a word.
 - The Meeting At 10 calendar as the system's logo: a navy calendar whose paper page holds a blue appointment block with a white 10; in dark, a light frame around a navy page.
 - The door plate as the ACCS wordmark: a navy name plate lettered in white Plus Jakarta Sans 800.
@@ -333,35 +335,35 @@ Sheets rest flat on a 1px rule. Only blocks being handled and overlays floating 
 The pinned ACCS palette (54 primitives) drives two semantic themes in which hue marks a lane, never a permission. Product code reads only the semantic and treatment tokens: each frontmatter key is a token name, written in code as `var(--ds-<key>)`, and the token check rejects raw hex in `src/` and `site/`. The values below are the light theme, the `:root` default.
 
 ### Primary
-- **Door Plate Navy** (#032E87): the schedule lane and the color of action: primary buttons, the current navigation item, the chosen day, the current page number, checked boxes and switches, selected-tab rules, the door plate and the door-plate band (`plate-bg` shares the value). Text on it is white (#FFFFFF).
+- **Door Plate Navy** (#032E87): the schedule lane and the color of action: primary buttons, the current navigation item, the chosen day, the current page number, checked boxes and switches, the door plate and the door-plate band (`plate-bg` shares the value). Text on it is white (#FFFFFF).
 - **Pressed Navy** (#022568) and **Midnight Navy** (#011B4F): the hover and pressed steps of every solid navy control.
-- **Focus Blue** (#3157D5): the 2px focus ring and the edge of a focused input.
-- **Schedule Highlighter** (#EFF4FF): the navy wash for hovering secondary and tertiary buttons, options, rows and radio cards, for selected tags and for today's column; the info tint behind info alerts and badges (`info-bg`) shares the value.
+- **Cobalt Focus** (#2F5BEA): the 2px focus ring, the edge and halo of a focused input, the caret, and the sliding tab indicator.
+- **Schedule Highlighter** (#EAF0FF): the navy wash for hovering options, rows and radio cards, for selected tags and for today's column; the info tint behind info alerts and badges (`info-bg`) shares the value.
 
 ### Secondary
-- **Consultation Teal** (#08746E): consultation and support blocks, open-slot edges, the chosen slot's fill, consult lane chips and tiles, and the meter's default fill. Text on it is white.
-- **Deep Teal** (#075D59): hover on teal fills, and teal text on paper such as an open slot's words.
-- **Teal Highlighter** (#C8F2E9) and **Teal Tint** (#E8FAF7): the consult wash and the ground of consult badges.
+- **Consultation Emerald** (#0A7A55): consultation and support blocks, open-slot edges, the chosen slot's fill, consult lane chips and tiles, and the meter's default fill. Text on it is white.
+- **Deep Emerald** (#075C41): hover on emerald fills, and emerald text on paper such as an open slot's words.
+- **Emerald Highlighter** (#CDEBDD) and **Emerald Tint** (#E6F5EE): the consult wash and the ground of consult badges.
 
 ### Tertiary
-- **Community Violet** (#55309B): community blocks, lane chips and tiles. Text on it is white.
-- **Deep Violet** (#45257D): hover on violet fills, and violet text on paper.
-- **Violet Highlighter** (#E9DDFF) and **Violet Tint** (#F4EEFF): the community wash and the ground of community badges.
+- **Community Amber** (#9A5008): community blocks, lane chips and tiles. Text on it is white. (#B25E09 is the brand amber, used for large display accents.)
+- **Deep Amber** (#7C3F06): hover on amber fills, and amber text on paper.
+- **Amber Highlighter** (#F8E3BC) and **Amber Tint** (#FCF1DF): the community wash and the ground of community badges.
 
 ### Neutral
-- **Cool Canvas** (#F5F7FB): the page ground behind every sheet, and the ground of the top bar and navbar.
-- **Sheet White** (#FFFFFF): sheets, cards, inputs, open and taken blocks, and overlays in light.
-- **Timetable Ink** (#172033): primary text, and the ink sheet behind toasts and tooltips, which carries Cool Canvas text (#F5F7FB).
-- **Slate** (#46516A): secondary text, strong edges and disabled text.
-- **Hairline** (#DCE2EC): sheet rules, dividers and grid rules; half-hour rules use it at 60%.
-- **Rule Slate** (#65718A): input, secondary-button and tag edges, the restricted outline, and the hatch ink.
-- **Neutral Highlighter** (#EDF1F7): hover on navigation items and icon buttons, count chips, the segmented track and the status-badge ground; the disabled ground (`disabled-bg`) shares the value.
+- **Ivory Canvas** (#F7F6F1): the page ground behind every sheet, and the ground of the top bar and navbar (which turn translucent glass when sticky). The alternate band is #EFEDE5.
+- **Paper** (#FFFFFF) and **Raised Paper** (#FDFCF9): sheets, cards, inputs, open and taken blocks, and overlays in light.
+- **Navy Ink** (#0C1730): primary text, and the ink sheet behind toasts and tooltips, which carries Ivory text (#F7F6F1).
+- **Slate** (#4A5570): secondary text, strong edges and disabled text.
+- **Hairline** (`--ds-hairline`, ink at 8%; `--ds-hairline-strong`, ink at 14%): sheet rules, dividers, rings and grid rules. The solid warm rule (#E4E1D6) remains as `border-subtle`.
+- **Rule Slate** (#6B7590): input edges, the restricted outline, and the hatch ink; at least 3:1 on every surface.
+- **Neutral Highlighter** (#EFEDE5): count chips, the segmented track and the status-badge ground; the disabled ground (`disabled-bg`) shares the value.
 
 ### Status
 - **Now-Line Red** (#B42318): the now-line, today dots and unread dots, plus error text, error edges and destructive fills. Destructive hover deepens to Deep Red (#9C1F16); danger alerts sit on Danger Tint (#FEF3F2).
-- **Resolved Green** (#166534) on **Green Tint** (#F0FDF4): success text, badges and alerts.
-- **Caution Amber** (#854D0E) on **Amber Tint** (#FFFBEB): warning text, badges and alerts, and a meter near its limit.
-- **Highlighter Yellow** (#FCD34D): text selection, search hits and the default highlight mark.
+- **Resolved Emerald** (#0A6B49) on **Emerald Tint** (#E6F5EE): success text, badges and alerts.
+- **Caution Umber** (#8A4B06) on **Cream** (#FFF6E0): warning text, badges and alerts, and a meter near its limit.
+- **Highlighter Yellow** (#F5C451): text selection, search hits and the default highlight mark.
 
 ### Identity
 The Meeting At 10 logo keeps four colors of its own, outside the 54 primitives. They paint only the logo artwork, through the `logo-*` treatments, and never become interface color.
@@ -371,10 +373,10 @@ The Meeting At 10 logo keeps four colors of its own, outside the 54 primitives. 
 - **M10 Frost** (#E8EEF7): the frame and tabs on dark grounds.
 
 ### Dark Theme
-Dark (`data-theme="dark"`, or the OS preference when no theme is set) changes values, never names. The canvas drops to near-black navy (#0B1220), sheets take Timetable Ink (#172033), overlays sit on a raised slate (#22304A), text turns to #F5F7FB and #B8C4D9, and hairlines to #22304A. Solid fills turn pale with near-black ink (#0B1220): navy becomes pale blue (#97B5FF), violet #C4B5FD, teal #5EEAD4, so a block keeps its lane at full strength without glowing. The now-line becomes #FDA29B, the door plate pale blue with dark type, the logo's frame M10 Frost around an M10 Navy page, focus #97B5FF, and each highlighter drops to the deepest step of its hue.
+Dark (`data-theme="dark"`, or the OS preference when no theme is set) changes values, never names. The canvas drops to near-black navy (#070D1C), sheets take #0D1529, overlays and raised paper sit on #121C35, text turns to #EAEEF7 and #A3ADC4, and hairlines to #222F4F. Solid fills turn pale with near-black ink (#070D1C): navy action becomes cobalt (#7C9BFF), amber #F2B154, emerald #3CCB98, so a block keeps its lane at full strength without glowing. The now-line becomes #FDA29B, the door plate pale blue with dark type, the logo's frame M10 Frost around an M10 Navy page, focus #7C9BFF, and each highlighter drops to the deepest step of its hue.
 
 ### Named Rules
-**The Lane Owns the Block Rule.** Schedule is navy, community violet, consultations teal. The lane color fills the whole block, chip or tile at full strength; it is never thinned to a stripe, a dot or a tinted edge.
+**The Lane Owns the Block Rule.** Schedule is navy, community amber, consultations emerald. The lane color fills the whole block, chip or tile at full strength; it is never thinned to a stripe, a dot or a tinted edge.
 
 **The No-Hue Boundary Rule.** The restricted reports lane has no hue: neutral ink, hatching and a word. Color never signals confidentiality, privacy or permission, and a lane color never implies access.
 
@@ -424,27 +426,28 @@ Density is a theme axis: comfortable sets Body text and roomy sections; compact 
 
 ## Elevation & Depth
 
-Depth is mostly tonal. Paper sheets rest flat on the Cool Canvas with a single 1px Hairline; shadows appear only on blocks that are being handled and on overlays that float above the page. Shadows are ink-tinted (Timetable Ink at 8 to 16 percent) in light, with an offset and a soft blur. In dark they are deeper black, and overlays, plates and solid buttons add a 1px top highlight because a shadow alone barely reads on a dark canvas. There is no glow, no colored shadow and no glass.
+Depth is layered and navy-tinted, never pure black. A card or sheet declares one elevation: a hairline ring (`0 0 0 1px`) that is part of a soft layered shadow, or the ring alone for flat sheets. It never has a 1px border plus a big soft shadow. Linked cards, blocks being handled and primary buttons deepen the layers on hover; overlays float on the deepest layers. In dark the shadows are deeper black-navy with a lighter ring. Glass (backdrop blur and saturation over a translucent surface) appears only on the sticky navbar and top bar, modals, drawers and popovers, with a solid surface under `prefers-reduced-transparency` and forced colors.
 
 ### Shadow Vocabulary
-- **Lift** (`box-shadow: 0px 1px 2px 0px #17203314, 0px 6px 16px 0px #1720331A`): hovered or dragged blocks and slots, hovered linked cards, hovered primary and destructive buttons, the chosen segment, the switch thumb and tooltips.
-- **Overlay** (`box-shadow: 0px 2px 6px 0px #17203314, 0px 18px 40px 0px #17203329`): menus, listboxes, popovers, dialogs, drawers, toasts and overlay cards.
-- **Lift, dark** (`box-shadow: 0px 1px 2px 0px #00000066, 0px 8px 20px 0px #00000059`): the lift in the dark theme.
-- **Overlay, dark** (`box-shadow: 0px 2px 8px 0px #00000080, 0px 24px 48px 0px #00000080`, plus a 1px inset top highlight in #7D8DA6 at 35%): the overlay in the dark theme, on the raised slate.
-- **Top highlight** (`box-shadow: inset 0 1px 0`, white at 14% in light and 35% in dark): the top edge of solid buttons, current navigation items, the chosen day and the current page number. In dark the door plate carries the same line in pale blue (#B8CDFF at 60%).
-- **Scrim** (Timetable Ink at 48% in light, #0B1220 at 72% in dark): the veil behind dialogs and drawers.
+- **Ring** (`box-shadow: 0 0 0 1px #0C173014`): flat sheets and the secondary button.
+- **Sheet** (`0 0 0 1px #0C173010, 0 1px 2px #0C17300D, 0 12px 32px -16px #0C173030`): cards at rest, tables, gallery tiles, showcase windows.
+- **Lift** (`0 0 0 1px #0C173014, 0 2px 4px #0C173010, 0 20px 40px -16px #0C173047`): hovered linked cards, hovered blocks and slots, the chosen segment, the switch thumb and tooltips.
+- **Overlay** (`0 0 0 1px #0C173014, 0 4px 8px #0C173010, 0 8px 16px -8px #0C173014, 0 28px 64px -24px #0C173047`): menus, listboxes, popovers, dialogs, drawers, toasts and overlay cards.
+- **Button** (`0 1px 2px #032E8740, 0 8px 16px -8px #032E8759`): the navy shadow under primary buttons, together with the 1px top highlight.
+- **Dark variants** (`sheet-dark`, `lift-dark`, `overlay-dark`, `ring-dark`, `btn-dark`): deeper black layers with a light ink ring.
+- **Top highlight** (`box-shadow: inset 0 1px 0`, white at 22% in light and 30% in dark): the top edge of solid buttons, current navigation items, the chosen day and the current page number.
 
 ### Named Rules
-**The Declared Once Rule.** At rest, every surface declares its elevation once: a 1px rule or a shadow, never both. Sheets and cards rest flat on their rule, overlays float on a shadow with no rule, and a linked card trades its rule for the lift on hover. A line-form edge is a state mark, not a rule, and stays when its block lifts.
+**The Declared Once Rule.** At rest, every surface declares its elevation once: a hairline ring or a layered shadow, never a border plus a big soft shadow. Sheets rest on the ring, cards on the sheet shadow, overlays float on the overlay shadow, and a linked card deepens to the lift on hover. A line-form edge is a state mark, not a rule, and stays when its block lifts.
 
-**The Earned Lift Rule.** Content never rests lifted: blocks, slots, buttons and linked cards cast the lift shadow only while hovered, dragged or chosen. The only parts resting on it are small pieces riding a track (the switch thumb, the chosen segment) and the tooltip plate. Elevation shows interaction and layering, never importance, security or privacy.
+**The Earned Lift Rule.** Content never rests lifted: blocks, slots, buttons and linked cards cast the deeper lift only while hovered, dragged or chosen. The only parts resting on it are small pieces riding a track (the switch thumb, the chosen segment) and the tooltip plate. Elevation shows interaction and layering, never importance, security or privacy.
 
 ## Shapes
 
-The form language is the rectangle of a printed timetable. Corners are small and set by material, edges are 1px hairlines, and lines change form to carry state: solid, dashed, hatched or struck. Hatching is 1px diagonal hairlines at 135 degrees every 7px in the hatch ink (45% in light, 55% in dark, with a strong 80% and 90% variant for small markers), and words never sit directly on it: they ride on small paper labels with 2px corners. Two-pixel lines are reserved for position and time: the now-line, the selected-tab and current-link rules, the pending line under a button, the toast timer, and the stepper and case-timeline rails. Checkbox, radio and step-marker rings are 1.5px, and the highlighter mark rounds its ends by 2px.
+The form language is the rectangle of a printed timetable, softened to a precise, modern radius. Corners are set by material, edges are hairlines, and lines change form to carry state: solid, dashed, hatched or struck. Hatching is 1px diagonal hairlines at 135 degrees every 7px in the hatch ink (45% in light, 55% in dark, with a strong 80% and 90% variant for small markers), and words never sit directly on it: they ride on small paper labels with 2px corners. Two-pixel lines are reserved for position and time: the now-line, the selected-tab and current-link rules, the pending line under a button, the toast timer, and the stepper and case-timeline rails. Checkbox, radio and step-marker rings are 1.5px, and the highlighter mark rounds its ends by 2px.
 
 ### Named Rules
-**The Material Radius Rule.** Radius follows the material, not the component: chip 4px, block and plate 6px, control 8px, sheet 12px, overlay 16px. Full rounding is kept for dots and toggles: the now-dot, today and unread dots, avatars, radios, switches, step markers and progress tracks.
+**The Material Radius Rule.** Radius follows the material, not the component: controls (buttons, inputs, tabs) 10px, blocks 8px, cards and sheets 16px, overlays 20px, large showcase frames 24px, chips and badges a full pill; tiny parts such as the checkbox and key caps use 4px. Full rounding is kept for dots and toggles: the now-dot, today and unread dots, avatars, radios, switches, step markers and progress tracks.
 
 ## Components
 
@@ -452,35 +455,35 @@ Every component is built from the same few materials (sheet, rule, block, hatch,
 
 ### Buttons
 A button is a block you press.
-- **Shape:** gently squared corners (8px control radius); 48px tall by default, 40px small (44px on touch) and 56px large, with 20px side padding (16px small, 24px large); the label is Inter 600 at 15px with an optional 20px icon.
-- **Primary:** a solid Door Plate Navy block with white text and the 1px top highlight. One per task region.
-- **Hover / Focus:** hover deepens to Pressed Navy and lifts 2px onto the lift shadow on the snappy spring; pressing drops to Midnight Navy and 1px below rest; focus draws the ring. Color changes take 120ms.
+- **Shape:** 10px control radius; 48px tall by default, 40px small (44px on touch) and 56px large, with 20px side padding (16px small, 24px large); the label is Inter 600 at 15px with an optional 20px icon.
+- **Primary:** a crisp Door Plate Navy block with white text, the top highlight and a navy shadow. One per task region.
+- **Hover / Focus:** hover deepens to Pressed Navy and lifts 2px on the snappy spring; pressing drops to Midnight Navy and scales to 98%; focus draws the cobalt ring. Color changes take 120ms.
 - **Pending:** the fill stays, a clock-hand spinner replaces the leading icon, and a 2px line sweeps along the bottom edge; the button refuses repeat presses.
-- **Secondary:** a paper block with a 1px Rule Slate edge and ink text; hover takes the Schedule Highlighter and a stronger edge; disabled turns the edge dashed on a clear ground.
-- **Tertiary:** navy text on no ground with 12px padding; hover takes the Schedule Highlighter.
+- **Secondary:** a paper block with a hairline ring and ink text; hover lifts it onto raised paper with a stronger ring; disabled keeps only a faint ring on a clear ground.
+- **Tertiary (ghost):** navy text on no ground with 12px padding; hover takes the Schedule Highlighter.
 - **Destructive:** a solid Now-Line Red block, only for real removal; hover deepens to Deep Red and lifts like primary.
 - **Plate:** inverted, navy text on a white block, for use inside the door-plate band.
 - **Disabled (solid variants):** the disabled ground with Slate text and no lift.
 - **Icon button:** a 40px square (44px on touch, 48px medium) holding one Slate icon; hover takes the Neutral Highlighter, and pressed or expanded takes the info tint with a navy icon. It always has an accessible name and a tooltip with the same words; an unread marker is an 8px Now-Line Red dot ringed in paper.
 
 ### Chips
-- **Status badge:** 24px tall with 4px corners, caption text on the Neutral Highlighter, led by an 8px marker whose line form carries the state (solid, dashed, hatched or struck square) next to the word. Tone tints (success, warning, danger, info, community, consult) reinforce the word and never replace it.
+- **Status badge:** 24px tall, a full pill, caption text on the Neutral Highlighter, led by an 8px marker whose line form carries the state (solid, dashed, hatched or struck square) next to the word. Tone tints (success, warning, danger, info, community, consult) reinforce the word and never replace it.
 - **Role badge:** an outlined plate (1px navy inset edge, navy 600 text) for "Student" or "Faculty"; a role is never presented as a privacy signal.
 - **Severity:** one to three rising bars plus a word, a family separate from status.
-- **Lane chip:** a small solid block (22px, 4px corners, white caption at 600) naming the lane on a card; the restricted chip is paper with a hatched swatch and a 1px Rule Slate edge.
-- **Tags:** 30px with 6px corners and a 1px Rule Slate edge on paper; a selected tag takes a navy edge, the Schedule Highlighter and navy text; a disabled tag goes dashed.
+- **Lane chip:** a small solid pill (22px, white caption at 600) naming the lane on a card; the restricted chip is paper with a hatched swatch and a 1px Rule Slate edge.
+- **Tags:** 30px pills with a hairline ring on paper; a selected tag takes a navy ring, the Schedule Highlighter and navy text.
 
 ### Cards / Containers
-- **Corner Style:** 12px (sheet); overlay cards 16px.
-- **Background:** Sheet White on the Cool Canvas.
-- **Shadow Strategy:** flat at rest. A linked card trades its rule for the lift shadow on hover, rises 2px, underlines its title and steps its arrow 3px forward (see Elevation & Depth).
-- **Border:** 1px Hairline at rest; overlay cards have none.
+- **Corner Style:** 16px (sheet); overlay cards 20px; showcase frames 24px.
+- **Background:** Paper on the Ivory Canvas.
+- **Shadow Strategy:** the sheet shadow at rest (a hairline ring inside soft layers). A linked card deepens to the lift shadow on hover, rises 2px, underlines its title and steps its arrow 3px forward (see Elevation & Depth).
+- **Border:** none; the ring is part of the shadow.
 - **Internal Padding:** 20px (32px on overlay cards); a meta row closes the card above a Hairline.
 - **Use:** one card per item in a collection (announcement, post, record) or a floating panel, never nested, and the whole card is one link named by its title. The plain sheet is the general paper container (24px padding), and full-width paper bands carry a Hairline top and bottom.
 
 ### Inputs / Fields
-- **Style:** 48px tall (40px small or compact on fine pointers, at least 44px on touch), Sheet White, a 1px Rule Slate edge, 8px corners, 16px body text and a Slate placeholder. Text areas start at 128px and grow with their content up to 24rem.
-- **Focus:** the edge turns Focus Blue and a 2px ring sits 1px outside it; hover strengthens the edge.
+- **Style:** 48px tall (40px small or compact on fine pointers, at least 44px on touch), Paper, a 1px Rule Slate edge (3:1), 10px corners, 16px body text and a Slate placeholder. Text areas start at 128px and grow with their content up to 24rem.
+- **Focus:** the edge turns Cobalt, a 2px ring sits 1px outside it and a soft cobalt halo fades in; hover strengthens the edge.
 - **Error / Disabled:** an error turns the edge and ring Now-Line Red, and the message (icon plus words naming the problem and the fix) sits below while the typed text stays. Disabled controls show a dashed edge on the disabled ground with readable Slate text; read-only keeps only a Hairline on a clear ground.
 - **Field anatomy:** a persistent label in the Label style above, an optional description in Body Small Slate, the control, then the error. Required fields say "(required)" in words; a placeholder never replaces a label.
 - **Choices:** checkboxes are 20px with a 1.5px edge and 4px corners and fill navy as the check strokes in on the snappy spring; radios are rings whose dot springs in; radio cards are block choices with a description, selected with a navy edge and the Schedule Highlighter; switches are 44 by 24px pills that fill navy while the thumb springs across and stretches while pressed.
@@ -489,8 +492,8 @@ A button is a block you press.
 ### Navigation
 - **Sidebar (portal):** a 16rem paper rail with a Hairline end rule, the door plate on top, navigation groups under sentence-case group labels in Slate, and the signed-in person with a role badge at the foot. It becomes a drawer below 1024px.
 - **Navigation item:** 40px (44px on touch), 8px corners, Label-weight text in Slate. Hover takes the Neutral Highlighter; the current page becomes the solid navy block with white text, the icon in its fill weight and the top highlight.
-- **Top bar (portal):** 64px on the Cool Canvas with a Hairline under it, the page title in Plus Jakarta Sans 700 at 18px, and tools (search, notifications, account) on the right.
-- **Navbar (public sites):** 68px and sticky, on the Cool Canvas with a Hairline under it: the brand left (the logo, or the door plate on ACCS sites), a few links in the middle, one primary action. Links take the Neutral Highlighter on hover, and the current link carries a 2px navy rule on the navbar's bottom edge. Below 768px the links move into a menu sheet.
+- **Top bar (portal):** 64px on the Ivory Canvas (translucent glass when sticky) with a Hairline under it, the page title in Plus Jakarta Sans 700 at 18px, and tools (search, notifications, account) on the right.
+- **Navbar (public sites):** 68px and sticky, on the Ivory Canvas (translucent glass when sticky) with a Hairline under it: the brand left (the logo, or the door plate on ACCS sites), a few links in the middle, one primary action. Links take the Neutral Highlighter on hover, and the current link carries a 2px navy rule on the navbar's bottom edge. Below 768px the links move into a menu sheet.
 - **Tabs:** labels on a ruled header; the selected tab's 2px navy rule slides between tabs on the smooth spring.
 - **Segmented control:** a Neutral Highlighter track with a 1px Hairline inset edge; the chosen segment is a paper chip on the lift shadow that slides between options.
 - **Pagination:** page blocks, with the current page as the solid navy block; Previous and Next keep their words.
@@ -501,7 +504,7 @@ A button is a block you press.
 ### Time Block
 The unit of the world.
 - **Anatomy:** a 6px-cornered block with 8px by 12px padding: the time code on top in the Time style, the title in Inter 600 at 14px (up to three lines), and meta in Caption. Short blocks shed meta first, then title lines, then set time and title on one line.
-- **Lanes:** schedule (Door Plate Navy, the default), community (Community Violet), consultations (Consultation Teal) and restricted (paper with hatching and a 1px Rule Slate edge, no hue). Text on solid lanes is white, near-black in dark.
+- **Lanes:** schedule (Door Plate Navy, the default), community (Community Amber), consultations (Consultation Emerald) and restricted (paper with hatching and a 1px Rule Slate edge, no hue). Text on solid lanes is white, near-black in dark.
 - **Line forms:** open is paper with a solid edge and text in the lane color; pending is the same with a dashed edge; taken is hatched paper with Slate text; disabled strikes the title. Words on hatching sit on small paper labels.
 - **Interaction:** an interactive block lifts 2px onto the lift shadow on hover and fills with its lane color when chosen. Inside a group, hovering, focusing or choosing a block dims its neighbors to 55% over 200ms.
 - **Entrance:** blocks drop 6px into their cells once on the snappy spring, staggered 25ms, starting from a visible state.
@@ -530,7 +533,7 @@ The name plate from a faculty door: the ACCS wordmark until an ACCS logo is appr
 - **Drawer:** a sheet sliding in from the end edge (the bottom on phones) over the scrim, for filters, record details and mobile navigation.
 - **Popover and tooltip:** popovers are floating sheets (12px corners) that emerge 6px from their trigger's side; tooltips are small ink plates (6px corners, Inter 500 at 13px) that name icon-only controls.
 - **Privacy notice:** a sheet with a 1px Rule Slate edge and a hatched top band holding a 32px ink lock block and the title on a paper label, then plain words on what is known and what is not promised. Neutral ink, no hue.
-- **Progress and meter:** progress is a 6px track on the disabled ground whose navy fill springs to its value; a meter is a 10px ruled scale with a tick every 10%, filled teal, Caution Amber when high and Now-Line Red when full. Words carry the reading.
+- **Progress and meter:** progress is a 6px track on the disabled ground whose navy fill springs to its value; a meter is a 10px ruled scale with a tick every 10%, filled emerald, Caution Umber when high and Now-Line Red when full. Words carry the reading.
 - **Loading and empty:** the spinner is a clock hand sweeping in the current color; skeleton text lines pulse on the Neutral Highlighter and block placeholders are dashed outlines; empty states draw an empty ruled sheet (geometry, not illustration) with a title, one line on why, and the next step.
 
 ### Agenda, Highlight and Plate Band
@@ -558,7 +561,7 @@ The name plate from a faculty door: the ACCS wordmark until an ACCS logo is appr
 - **Do** hatch taken and restricted areas (1px diagonal hairlines every 7px) and set their words on small paper labels so the lines never cross text.
 - **Do** keep one solid navy primary button per task region, and use the ruled secondary and the tertiary wash for everything else.
 - **Do** make the current page, the chosen day and the current page number the solid navy block with a fill-weight icon, and let a chosen block or slot fill with its own lane color.
-- **Do** keep the 2px focus ring with its 2px gap (Focus Blue #3157D5, #97B5FF in dark) visible on every interactive element.
+- **Do** keep the 2px focus ring with its 2px gap (Cobalt #2F5BEA, #7C9BFF in dark) visible on every interactive element.
 - **Do** keep controls on the 8px module (40, 48 or 56px), at least 44px on coarse pointers, with 16px text in inputs.
 - **Do** let color and hover changes take 120ms, slide indicators on the smooth spring, raise overlays 8px on the exponential ease-out, and land every state instantly under reduced motion.
 - **Do** use the Meeting At 10 calendar logo as the system's own mark (the theme-aware `Logo`, or the light, dark and auto files as exported), and the door plate (navy plate, white Plus Jakarta Sans 800) as the ACCS wordmark until an ACCS logo is approved.

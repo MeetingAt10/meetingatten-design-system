@@ -33,7 +33,7 @@ Components read the treatments, which pick the right shadow per theme:
 | `--ds-plate-shadow` | none | 1px top highlight (dark hover blue at 60%) |
 | `--ds-btn-highlight` | 1px top highlight, white at 14% | white at 35% |
 
-Shadows are ink-tinted (`#172033`) in light and plain black in dark, with an offset and a soft blur. No glow, no colored shadow, no glass.
+Shadows are ink-tinted (`#0C1730`) in light and plain black in dark, with an offset and a soft blur. No glow, no colored shadow, no glass.
 
 ## Dark theme
 

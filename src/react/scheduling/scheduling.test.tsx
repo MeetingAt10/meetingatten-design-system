@@ -56,8 +56,8 @@ describe('Timetable', () => {
     { id: 'c', day: 'wed', start: 10, end: 11, title: 'Overlapping review', lane: 'community' as const },
   ];
   it('each day is a section named by its heading, holding its blocks in time order', async () => {
-    const { container } = render(<Timetable label="This week (sample)" days={days} events={events} now={10.7} band={<span>Reports: you see only your own records.</span>} />);
-    const group = screen.getByRole('group', { name: 'This week (sample)' });
+    const { container } = render(<Timetable label="This week" days={days} events={events} now={10.7} band={<span>Reports: you see only your own records.</span>} />);
+    const group = screen.getByRole('group', { name: 'This week' });
     const wed = within(group).getByRole('group', { name: 'Wednesday 21 October, today' });
     expect(within(wed).getAllByRole('listitem').map((li) => li.textContent?.includes('Consultation hours'))).toEqual([true, false]);
     expect(container.querySelector('.ds-timetable__band')?.textContent).toContain('only your own records');
@@ -88,7 +88,7 @@ describe('ConsultationSlotPicker', () => {
         slots={[{ id: 's1', time: '09:00-09:30' }, { id: 's2', time: '10:00-10:30', state: 'booked' }, { id: 's3', time: '11:00-11:30', state: 'unavailable' }]}
         value={value}
         onChange={(id) => { setValue(id); onChange(id); }}
-        timeZoneNote="sample local campus time"
+        timeZoneNote="Asia/Manila (PHT)"
       />
     );
   }

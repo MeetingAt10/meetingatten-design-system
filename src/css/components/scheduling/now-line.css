@@ -29,7 +29,7 @@
   top: 0;
   translate: 0 calc(-50% - var(--ds-size-now-line) / 2);
   padding: 1px var(--ds-space-4);
-  border-radius: var(--ds-radius-chip);
+  border-radius: var(--ds-radius-tick);
   background: var(--ds-now);
   color: var(--ds-danger-on-action);
   font: 600 var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-type-time-font-family);

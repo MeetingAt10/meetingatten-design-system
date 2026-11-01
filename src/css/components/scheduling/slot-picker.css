@@ -22,7 +22,7 @@
   min-width: 4rem;
   margin: 0;
   padding: var(--ds-space-8) var(--ds-space-12) var(--ds-space-12);
-  border: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border: var(--ds-size-rule) solid var(--ds-hairline);
   border-radius: var(--ds-radius-control);
   background: var(--ds-surface);
   color: var(--ds-text-primary);
@@ -124,14 +124,14 @@
 }
 .ds-slot__state-icon--check { display: none; }
 .ds-slot--booked {
-  border-color: var(--ds-border-subtle);
+  border-color: var(--ds-hairline);
   background-image: var(--ds-hatch);
   color: var(--ds-text-secondary);
   cursor: not-allowed;
   & :is(.ds-slot__time, .ds-slot__state) { justify-self: start; padding: 0 3px; margin-inline-start: -3px; border-radius: 2px; background: var(--ds-surface); }
 }
 .ds-slot--unavailable {
-  border-color: var(--ds-border-subtle);
+  border-color: var(--ds-hairline);
   color: var(--ds-text-secondary);
   cursor: not-allowed;
   & .ds-slot__time { text-decoration: line-through; }

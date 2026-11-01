@@ -22,7 +22,7 @@ A tile is a small solid block that holds one icon: the lane color owns the whole
 | Block | `.ds-tile` | 40px, radius 8; schedule lane (navy) with an on-action icon by default |
 | Small | `.ds-tile--sm` | 32px, radius 6, 16px icon |
 | Large | `.ds-tile--lg` | 56px, radius 12, 32px icon |
-| Lane tones | `.ds-tile--community`, `--consult` | Violet and teal fills |
+| Lane tones | `.ds-tile--community`, `--consult` | Amber and emerald fills |
 | Restricted | `.ds-tile--restricted` | Hatched paper with an ink rule and an ink icon, no hue |
 | Neutral | `.ds-tile--neutral` | Neutral highlighter wash with an ink icon |
 | Status tones | `.ds-tile--success`, `--warning`, `--danger` | Status ink fill with the status ground as the icon color |

@@ -57,7 +57,7 @@ import { Select, SelectOption } from '@meetingat10/design-system/react';
 <Select label="Topic" placeholder="Choose a topic">
   <SelectOption id="planning" icon="graduation-cap">Course planning</SelectOption>
   <SelectOption id="thesis" icon="notepad" description="Proposal, chapters or defense">Thesis advising</SelectOption>
-  <SelectOption id="career" icon="rocket" isDisabled>Career guidance (no hours this week, sample)</SelectOption>
+  <SelectOption id="career" icon="rocket" isDisabled>Career guidance (no hours this week)</SelectOption>
 </Select>
 ```
 

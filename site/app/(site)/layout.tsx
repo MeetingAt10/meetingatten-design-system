@@ -4,6 +4,7 @@ import { allDocs, routeOf, SECTIONS } from "@/lib/content";
 import { EXAMPLES } from "@/app/_site/examples/list";
 import { ThemeToggle } from "@/app/_site/ThemeToggle";
 import { SiteSearch } from "@/app/_site/SiteSearch";
+import { VERSION } from "@/lib/stats";
 import { SiteNav } from "@/app/_site/SiteNav";
 
 /** Site chrome for the documentation pages (examples render whole pages of their own). */
@@ -37,8 +38,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
           { title: "Guides", links: [{ label: "Getting started", href: "/guides/getting-started/" }, { label: "Migrating apps", href: "/guides/migrating-apps/" }, { label: "Changelog", href: "/guides/changelog/" }] },
           { title: "Patterns", links: EXAMPLES.slice(0, 4).map((e) => ({ label: e.title, href: `/examples/${e.slug}/` })) },
         ]}
-        note="Proposed, not approved. All names, records and schedules on this site are synthetic."
-        meta="v1.1.0 · Office Hours"
+        meta={`v${VERSION}`}
       />
     </>
   );

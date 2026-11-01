@@ -13,8 +13,9 @@
   padding: var(--ds-space-16);
   background: var(--ds-scrim);
   overflow-y: auto;
-  &[data-entering] { animation: ds-fade-in var(--ds-motion-duration-base) var(--ds-motion-ease-out); }
-  &[data-exiting] { animation: ds-fade-out var(--ds-motion-duration-quick) var(--ds-motion-ease-exit); }
+  @media (prefers-reduced-transparency: no-preference) { @supports (backdrop-filter: blur(1px)) { backdrop-filter: blur(6px) saturate(1.2); } }
+  &[data-entering] { animation: ds-fade-in var(--ds-motion-duration-slow) var(--ds-motion-ease-out); }
+  &[data-exiting] { animation: ds-fade-out var(--ds-motion-duration-base) var(--ds-motion-ease-exit) forwards; }
 }
 .ds-modal {
   position: relative;
@@ -28,8 +29,10 @@
   color: var(--ds-text-primary);
   outline: none;
   overflow: hidden;
-  &[data-entering] { animation: ds-rise-in var(--ds-motion-duration-slow) var(--ds-motion-ease-out); }
-  &[data-exiting] { animation: ds-sink-out var(--ds-motion-duration-quick) var(--ds-motion-ease-exit); }
+  /* Glass: a translucent paper with a blur, where allowed. The solid overlay-bg above is the fallback. */
+  @media (prefers-reduced-transparency: no-preference) { @supports (backdrop-filter: blur(1px)) { background: var(--ds-glass-overlay-bg); backdrop-filter: blur(var(--ds-glass-blur)) saturate(1.5); } }
+  &[data-entering] { animation: ds-modal-in var(--ds-motion-duration-deliberate) var(--ds-motion-ease-out); }
+  &[data-exiting] { animation: ds-modal-out var(--ds-motion-duration-base) var(--ds-motion-ease-exit) forwards; }
 }
 .ds-modal--lg { width: min(100%, 44rem); }
 .ds-modal__dialog { display: contents; outline: none; }
@@ -61,7 +64,7 @@
   justify-content: flex-end;
   gap: var(--ds-space-12);
   padding: var(--ds-space-16) var(--ds-space-24);
-  border-top: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-top: var(--ds-size-rule) solid var(--ds-hairline);
 }
 @media (max-width: 599.98px) {
   .ds-modal-overlay { place-items: end stretch; padding: 0; }

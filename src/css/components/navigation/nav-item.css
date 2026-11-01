@@ -15,7 +15,7 @@
   cursor: pointer;
   transition: background-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out), color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
   @media (pointer: coarse) { min-height: var(--ds-size-touch-min); }
-  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-highlight-neutral); color: var(--ds-text-primary); }
+  &:is(:hover, [data-hovered], .is-hover) { background: var(--ds-hairline); color: var(--ds-text-primary); }
   &:is([aria-current="page"], [aria-current="true"], .is-current) {
     background: var(--ds-action-default);
     color: var(--ds-on-action);

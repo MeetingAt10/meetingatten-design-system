@@ -5,7 +5,7 @@ import { DemoPanel } from "./demos";
 export function Demo({ name }: { name: string }) {
   return (
     <section aria-labelledby="demo-h" className="site-demo-wrap">
-      <h2 id="demo-h" className="ds-type-h3">Live demo</h2>
+      <h2 id="demo-h" className="ds-type-h3">Live preview</h2>
       <div className="site-demo">
         {(["light", "dark"] as const).map((t) => (
           <div key={t} className="ds-body site-demo__panel" data-theme={t}>

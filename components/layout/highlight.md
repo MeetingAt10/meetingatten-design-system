@@ -30,7 +30,7 @@ A highlight is a flat highlighter stroke behind a few words: a search hit, the p
 |---|---|---|
 | Entering | The stroke grows from the left over 480ms (deliberate, ease-out), once | first render (`@starting-style`) |
 | Shown | Full stroke behind the words | default |
-| Lane tone | Violet, teal or navy wash instead of yellow | `tone`, tone class |
+| Lane tone | Amber, emerald or navy wash instead of yellow | `tone`, tone class |
 | Under | Stroke under the lower part of the letters | `under`, `.ds-highlight--under` |
 
 ## Behavior and accessibility
@@ -48,7 +48,7 @@ import { Highlight } from '@meetingat10/design-system/react';
 
 <h2 className="ds-type-h2">Community access does <Highlight under>not</Highlight> grant report access.</h2>
 
-<p>2 results for <Highlight>recursion</Highlight> in the community (sample).</p>
+<p>2 results for <Highlight>recursion</Highlight> in the community.</p>
 
 <p>Book a <Highlight tone="consult">consultation</Highlight> during office hours.</p>
 ```
@@ -59,6 +59,6 @@ import { Highlight } from '@meetingat10/design-system/react';
 
 ```html
 <h2 class="ds-type-h2">Community access does <mark class="ds-highlight ds-highlight--under">not</mark> grant report access.</h2>
-<p>2 results for <mark class="ds-highlight">recursion</mark> in the community (sample).</p>
+<p>2 results for <mark class="ds-highlight">recursion</mark> in the community.</p>
 <p>Book a <mark class="ds-highlight ds-highlight--consult">consultation</mark> during office hours.</p>
 ```

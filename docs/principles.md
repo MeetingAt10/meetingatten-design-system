@@ -20,7 +20,7 @@ The weekly consultation timetable taped to a CCS faculty door, rebuilt as an int
 | Sheet | Paper-white surface on a cool canvas, one 1px hairline rule, no shadow at rest |
 | Rules | Hairlines; where a grid is drawn it is a real, labeled time grid (hours, days), never decoration |
 | Block | The unit of content: a radius-6 rectangle whose lane color owns the whole fill; time code in tabular JetBrains Mono on top, title in Inter 600, meta below |
-| Lanes | schedule = navy (action), community = violet (accent), consult = teal (secondary), restricted = hatched ink with no hue |
+| Lanes | schedule = navy (action), community = amber (accent), consult = emerald (secondary), restricted = hatched ink with no hue |
 | Highlighter | Flat washes behind text and rows for selection, search hits and emphasis, swiped in from the left |
 | Hatch | Diagonal hairlines on taken, restricted or unavailable areas, always with a word |
 | Door plate | Navy plate with white Plus Jakarta Sans 800 (pale blue plate in dark): the ACCS wordmark until a logo is approved |
@@ -38,7 +38,7 @@ Signature interaction: the now-line glides across today; choosing a block lifts 
 | 2 | State is part of the contract | Default, hover, pressed, focus, disabled, error and pending are all designed; pending blocks repeat actions; line forms always come with words |
 | 3 | Persistent labels, useful errors | A placeholder never replaces a label; required fields say so in words; errors say what happened and keep the user's text |
 | 4 | Permission is not confidentiality | A role badge is not a privacy signal; restricted access does not mean anonymous; backend enforcement is required |
-| 5 | Honest claims | No promises of anonymity, security, response time or finality; synthetic content is labeled `DEMO` or "sample" |
+| 5 | Honest claims | No promises of anonymity, security, response time or finality; content is realistic and never invents metrics, testimonials or endorsements |
 | 6 | One primary action per task region | Destructive intent only for real removal; name the object and whether it can be undone |
 | 7 | Color reinforces, never carries | Status, severity and availability use words, symbols or line forms; lanes never mean permission |
 | 8 | Follow the task, not the viewport | Task order and safety copy survive reflow; safety copy never truncates |
@@ -52,7 +52,7 @@ Signature interaction: the now-line glides across today; choosing a block lifts 
 | No eyebrow or kicker labels above headings | Let the heading carry its own weight; put context in the description |
 | No colored side stripes over 1px on cards or alerts | A tinted sheet with a solid icon block ([Alert](../components/feedback/inline-alert.md)) |
 | No same-size icon-card columns as page structure | [Agenda](../components/layout/agenda.md) rows |
-| No hero-metric template, gradient text or decorative glass | The product at work: a timetable with synthetic, labeled content |
+| No hero-metric template, gradient text or decorative glass | The product at work: a timetable with realistic content |
 | Monospace only for times, codes, references, keys and code | Inter for everything else |
 | Elevation declared once | A rule border or a shadow, never both |
 | Cards only for collection items and floating panels, never nested | Sections, rules and headings on detail pages |

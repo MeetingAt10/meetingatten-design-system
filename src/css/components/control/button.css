@@ -1,5 +1,5 @@
-/* Button: a block you press. Primary = solid navy block (one per task region), secondary = paper block with
-   a solid rule, tertiary = text that takes a highlighter wash, destructive = solid danger block for real removal.
+/* Button: a block you press. Primary = crisp navy block (top highlight + navy shadow, one per task region), secondary = paper
+   with a hairline ring, tertiary (alias ghost) = text that takes a quiet wash, destructive = solid danger block for real removal.
    Pending keeps the fill, shows the clock spinner and sweeps a line along the bottom edge.
    <button class="ds-btn ds-btn--primary"><svg class="ds-icon">...</svg>Continue</button>
    Sizes: default 48px, --sm 40px (44px on touch), --lg 56px. --block = full width. */
@@ -27,9 +27,10 @@
     border-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
     color var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
     box-shadow var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
-    translate var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy);
+    translate var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy),
+    scale var(--ds-motion-spring-snappy-duration) var(--ds-motion-spring-snappy);
   & > .ds-icon { width: var(--ds-size-icon-20); height: var(--ds-size-icon-20); vertical-align: 0; }
-  &:is(:active, [data-pressed], .is-pressed) { translate: 0 1px; }
+  &:is(:active, [data-pressed], .is-pressed):not(:disabled, [data-disabled]) { scale: 0.98; }
   &:is(:disabled, [data-disabled], [aria-disabled="true"]):not([data-pending], [aria-busy="true"]) {
     background: var(--ds-disabled-bg);
     border-color: var(--ds-disabled-bg);
@@ -56,35 +57,36 @@
 .ds-btn--primary {
   background: var(--ds-action-default);
   color: var(--ds-on-action);
-  box-shadow: var(--ds-btn-highlight);
+  box-shadow: var(--ds-btn-highlight), var(--ds-btn-shadow);
   &:is(:hover, [data-hovered], .is-hover):not(:disabled, [data-disabled], [data-pending]) {
     background: var(--ds-action-hover);
-    box-shadow: var(--ds-btn-highlight), var(--ds-block-shadow);
     translate: 0 var(--ds-lift);
   }
   &:is(:active, [data-pressed], .is-pressed):not(:disabled, [data-disabled]) {
     background: var(--ds-action-pressed);
     box-shadow: var(--ds-btn-highlight);
-    translate: 0 1px;
+    translate: none;
   }
 }
 
 .ds-btn--secondary {
   background: var(--ds-surface);
-  border-color: var(--ds-border-default);
   color: var(--ds-text-primary);
+  box-shadow: 0 0 0 1px var(--ds-hairline-strong);
   &:is(:hover, [data-hovered], .is-hover):not(:disabled, [data-disabled], [data-pending]) {
-    background: var(--ds-highlight-schedule);
-    border-color: var(--ds-border-strong);
+    background: var(--ds-raised);
+    box-shadow: 0 0 0 1px var(--ds-border-default);
+    translate: 0 var(--ds-lift);
   }
   &:is(:active, [data-pressed], .is-pressed):not(:disabled, [data-disabled]) {
     background: var(--ds-info-bg);
-    border-color: var(--ds-action-default);
+    box-shadow: 0 0 0 1px var(--ds-action-default);
+    translate: none;
   }
-  &:is(:disabled, [data-disabled]) { border-style: dashed; border-color: var(--ds-border-default); background: transparent; }
+  &:is(:disabled, [data-disabled]) { box-shadow: 0 0 0 1px var(--ds-hairline); background: transparent; }
 }
 
-.ds-btn--tertiary {
+.ds-btn--tertiary, .ds-btn--ghost {
   background: transparent;
   color: var(--ds-action-default);
   padding-inline: var(--ds-space-12);
@@ -96,16 +98,14 @@
 .ds-btn--destructive {
   background: var(--ds-danger-action);
   color: var(--ds-danger-on-action);
-  box-shadow: var(--ds-btn-highlight);
+  box-shadow: var(--ds-btn-highlight), var(--ds-ring-shadow);
   &:is(:hover, [data-hovered], .is-hover):not(:disabled, [data-disabled], [data-pending]) {
     background: var(--ds-danger-action-hover);
-    box-shadow: var(--ds-btn-highlight), var(--ds-block-shadow);
     translate: 0 var(--ds-lift);
   }
   &:is(:active, [data-pressed], .is-pressed):not(:disabled, [data-disabled]) {
     background: var(--ds-danger-action-pressed);
-    box-shadow: var(--ds-btn-highlight);
-    translate: 0 1px;
+    translate: none;
   }
 }
 

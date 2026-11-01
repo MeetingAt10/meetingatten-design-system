@@ -75,3 +75,12 @@
   :is(.ds-logo__frame, .ds-logo__block) { fill: CanvasText; }
   :is(.ds-logo__page, .ds-logo__numeral) { fill: Canvas; }
 }
+
+/* Glass falls back to solid system colors: no blur, no translucency. */
+@media (forced-colors: active) {
+  :is(.ds-navbar, .ds-topbar, .ds-modal, .ds-drawer, .ds-popover, .ds-modal-overlay, .ds-drawer-overlay) { backdrop-filter: none; }
+  :is(.ds-navbar, .ds-topbar, .ds-modal, .ds-drawer, .ds-popover) { background: Canvas; }
+  :is(.ds-navbar, .ds-topbar) { border-bottom: 1px solid CanvasText; }
+  .ds-hero::before, .ds-section--wash { background: none; }
+  .ds-input, .ds-select-trigger { border: 1px solid CanvasText; }
+}

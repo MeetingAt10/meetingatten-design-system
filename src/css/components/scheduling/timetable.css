@@ -44,7 +44,7 @@
   z-index: 4;
   background: var(--ds-sheet-bg);
 }
-.ds-timetable__corner { border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle); }
+.ds-timetable__corner { border-bottom: var(--ds-size-rule) solid var(--ds-hairline); }
 
 .ds-timetable__day-head {
   display: flex;
@@ -52,8 +52,8 @@
   gap: var(--ds-space-8);
   margin: 0;
   padding: var(--ds-space-12) var(--ds-space-12) var(--ds-space-8);
-  border-bottom: var(--ds-size-rule) solid var(--ds-border-subtle);
-  border-inline-start: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-bottom: var(--ds-size-rule) solid var(--ds-hairline);
+  border-inline-start: var(--ds-size-rule) solid var(--ds-hairline);
   scroll-snap-align: start;
   color: var(--ds-text-secondary);
   font: var(--ds-type-label-font-weight) var(--ds-type-label-size) / var(--ds-type-label-line-height) var(--ds-type-label-font-family);
@@ -97,9 +97,9 @@
 .ds-timetable__day {
   position: relative;
   min-width: 0;
-  border-inline-start: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-inline-start: var(--ds-size-rule) solid var(--ds-hairline);
   background-image:
-    linear-gradient(to bottom, var(--ds-border-subtle) var(--ds-size-rule), transparent var(--ds-size-rule)),
+    linear-gradient(to bottom, var(--ds-hairline) var(--ds-size-rule), transparent var(--ds-size-rule)),
     linear-gradient(to bottom, var(--ds-rule-minor) var(--ds-size-rule), transparent var(--ds-size-rule));
   background-size: 100% var(--tt-row), 100% var(--tt-row);
   background-position: 0 var(--tt-pad), 0 calc(var(--tt-pad) + var(--tt-row) / 2);
@@ -149,7 +149,7 @@
   top: calc(var(--tt-pad) + var(--now) * var(--tt-row));
   translate: 0 -50%;
   padding: 1px var(--ds-space-4);
-  border-radius: var(--ds-radius-chip);
+  border-radius: var(--ds-radius-tick);
   background: var(--ds-now);
   color: var(--ds-danger-on-action);
   font: 600 var(--ds-type-time-size) / var(--ds-type-time-line-height) var(--ds-type-time-font-family);
@@ -189,7 +189,7 @@
   align-items: center;
   gap: var(--ds-space-8);
   padding: 2px var(--ds-space-8);
-  border-radius: var(--ds-radius-chip);
+  border-radius: var(--ds-radius-tick);
   background: var(--ds-text-primary);
   color: var(--ds-surface);
 }

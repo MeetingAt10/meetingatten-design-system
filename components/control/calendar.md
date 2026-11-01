@@ -61,7 +61,7 @@ import { CalendarDate, isWeekend } from '@internationalized/date';
   isDateUnavailable={(date) => isWeekend(date, 'en-PH')}
   onChange={setDate}
 />
-<p className="ds-type-body-small ds-secondary">Struck dates have no consultation hours (sample).</p>
+<p className="ds-type-body-small ds-secondary">Struck dates have no consultation hours.</p>
 ```
 
 Values are `@internationalized/date` objects; add that package to the app to build them. Other React Aria `Calendar` props (`value`, `focusedValue`, `isReadOnly`) pass through.

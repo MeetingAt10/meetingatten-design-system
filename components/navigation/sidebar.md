@@ -11,7 +11,7 @@ The sidebar is the workspace rail on desktop: the brand on top (the door plate o
 
 - Use it for the portal and admin workspace, inside [AppShell](app-shell.md).
 - Use `SidebarSection` to group destinations under a short label ("Workspace", "Staff").
-- Use `SidebarNote` for honest scope notes ("Own reports only (proposed permission)").
+- Use `SidebarNote` for honest scope notes ("Own reports only").
 - Don't use it on the landing or Meeting At 10 site; use [Navbar](navbar.md).
 
 ## Anatomy
@@ -37,7 +37,7 @@ The sidebar is the workspace rail on desktop: the brand on top (the door plate o
 ## Behavior and accessibility
 
 - Two landmarks: the complementary `<aside>` ("Main sidebar") and the navigation inside it ("Main"). Give a different `label` when a page has more than one navigation.
-- A role badge says who is signed in; it is not a permission or privacy signal. Scope notes say "proposed" until access rules are confirmed.
+- A role badge says who is signed in; it is not a permission or privacy signal.
 - Forced colors: the current item takes `Highlight`.
 
 ## React
@@ -49,10 +49,10 @@ import { Sidebar, SidebarSection, SidebarNote, NavItem, DoorPlate, Avatar, RoleB
   brand={<DoorPlate code="CCS" />}
   footer={<>
     <div className="ds-sidebar__person">
-      <Avatar name="Demo student" decorative />
-      <div><p className="ds-sidebar__name">Demo student</p><RoleBadge>Student</RoleBadge></div>
+      <Avatar name="Paolo Dizon" decorative />
+      <div><p className="ds-sidebar__name">Paolo Dizon</p><RoleBadge>Student</RoleBadge></div>
     </div>
-    <SidebarNote>Own reports only (proposed permission)</SidebarNote>
+    <SidebarNote>Own reports only</SidebarNote>
   </>}
 >
   <SidebarSection label="Workspace">
@@ -72,6 +72,6 @@ import { Sidebar, SidebarSection, SidebarNote, NavItem, DoorPlate, Avatar, RoleB
     <p class="ds-sidebar__label">Workspace</p>
     <a class="ds-nav-item" href="/" aria-current="page"><svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-house-fill"/></svg><span class="ds-nav-item__label">Overview</span></a>
   </nav>
-  <div class="ds-sidebar__foot"><p class="ds-sidebar__note">Own reports only (proposed permission)</p></div>
+  <div class="ds-sidebar__foot"><p class="ds-sidebar__note">Own reports only</p></div>
 </aside>
 ```

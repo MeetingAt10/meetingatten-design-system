@@ -5,7 +5,7 @@ react: Meter
 ---
 # Meter
 
-A meter shows a known amount within a range: slots taken this week, room capacity, storage used. The scale is ruled with a hairline tick every 10%, the teal fill springs to the value, and the reading prints on the right in words ("5 of 8"). The fill turns warning and then danger as it fills, but the words always carry the reading.
+A meter shows a known amount within a range: slots taken this week, room capacity, storage used. The scale is ruled with a hairline tick every 10%, the emerald fill springs to the value, and the reading prints on the right in words ("5 of 8"). The fill turns warning and then danger as it fills, but the words always carry the reading.
 
 ## When to use
 
@@ -24,14 +24,14 @@ A meter shows a known amount within a range: slots taken this week, room capacit
 | Label | `.ds-meter__label` | Label style (Inter 600 14/20); the accessible name |
 | Reading | `.ds-meter__value` | Inter 500 13px with tabular figures, secondary text; your `valueLabel`, or the percentage in rolling digits |
 | Track | `.ds-meter__track` | 10px, radius 4, neutral highlighter wash with a hairline tick every 10% |
-| Fill | `.ds-meter__fill` | Teal (`secondary-default`), revealed with `clip-path` up to `--value` percent; moves on the smooth spring |
+| Fill | `.ds-meter__fill` | Emerald (`secondary-default`), revealed with `clip-path` up to `--value` percent; moves on the smooth spring |
 | Tone | `.ds-meter--high`, `--full` | Warning or danger fill |
 
 ## States
 
 | State | Looks | Set by |
 |---|---|---|
-| Default | Teal fill | `tone="default"`, or `auto` below 75% |
+| Default | Emerald fill | `tone="default"`, or `auto` below 75% |
 | High | Warning fill | `tone="high"`, or `auto` from 75%; `.ds-meter--high` |
 | Full | Danger fill | `tone="full"`, or `auto` at 100%; `.ds-meter--full` |
 | Reading in words | Your text replaces the percentage and is announced | `valueLabel`, `aria-valuetext` |

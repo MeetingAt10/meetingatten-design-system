@@ -19,13 +19,13 @@ export interface AnnouncementCardProps {
   meta?: React.ReactNode;
   href?: string;
   linkLabel?: string;
-  /** Labels synthetic content. */
+  /** @deprecated Accepted for compatibility; renders nothing. */
   demo?: boolean;
   className?: string;
 }
 
 /** Announcement card: a department or community update in a collection. */
-export function AnnouncementCard({ tag = 'Announcement', lane = 'schedule', when, dateTime, title, level = 3, children, meta, href, linkLabel = 'Read update', demo, className }: AnnouncementCardProps) {
+export function AnnouncementCard({ tag = 'Announcement', lane = 'schedule', when, dateTime, title, level = 3, children, meta, href, linkLabel = 'Read update', className }: AnnouncementCardProps) {
   return (
     <Card className={className}>
       <CardHeader>
@@ -33,7 +33,6 @@ export function AnnouncementCard({ tag = 'Announcement', lane = 'schedule', when
           <CardLane lane={lane}>{tag}</CardLane>
           {when && <CardWhen dateTime={dateTime}>{when}</CardWhen>}
         </span>
-        {demo && <span className="ds-badge ds-badge--outline">Demo</span>}
       </CardHeader>
       <CardTitle level={level}>{title}</CardTitle>
       {children && <CardBody>{children}</CardBody>}

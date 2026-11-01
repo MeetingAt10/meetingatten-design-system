@@ -50,7 +50,7 @@ A case timeline shows the history of a record on a vertical time rule. Time code
 import { CaseTimeline } from '@meetingat10/design-system/react';
 
 <CaseTimeline
-  label="Case activity, DEMO-024"
+  label="Case activity, CCS-2026-0142"
   events={[
     { title: 'Draft created', date: '21 Oct 09:12', dateTime: '2026-10-21T09:12', actor: 'You' },
     { title: 'Recipients being confirmed', state: 'current', body: 'The department office is confirming who receives this category.', actor: 'Department office' },
@@ -65,7 +65,7 @@ import { CaseTimeline } from '@meetingat10/design-system/react';
 ## Plain CSS
 
 ```html
-<ol class="ds-timeline" aria-label="Case activity, DEMO-024">
+<ol class="ds-timeline" aria-label="Case activity, CCS-2026-0142">
   <li class="ds-timeline__event ds-timeline__event--done">
     <span class="ds-timeline__time"><time datetime="2026-10-21T09:12">21 Oct 09:12</time></span>
     <span class="ds-timeline__marker" aria-hidden="true"></span>

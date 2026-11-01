@@ -5,9 +5,9 @@
   min-width: 1.5rem;
   height: 1.5rem;
   padding: 0 var(--ds-space-4);
-  border-radius: var(--ds-radius-chip);
+  border-radius: var(--ds-radius-tick);
   background: var(--ds-surface);
-  box-shadow: inset 0 0 0 1px var(--ds-border-subtle), inset 0 -2px 0 var(--ds-border-subtle);
+  box-shadow: inset 0 0 0 1px var(--ds-hairline), inset 0 -2px 0 var(--ds-hairline);
   color: var(--ds-text-secondary);
   font: 500 0.75rem / 1 var(--ds-font-family-mono);
   white-space: nowrap;

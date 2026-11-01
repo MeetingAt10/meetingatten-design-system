@@ -42,7 +42,7 @@ The reports table lists a person's own or assigned reports on a ruled sheet: the
 
 - A native table: caption, column headers and the reference as row header, so screen readers read each cell with its headers.
 - The wrapper is a focusable region named by the caption, so keyboard users can scroll it when it overflows.
-- Each action link is named with the reference ("View DEMO-018"), so links differ out of context.
+- Each action link is named with the reference ("View CCS-2026-0118"), so links differ out of context.
 - Status tone only reinforces; the word and the marker form carry the state.
 - Never put report subjects or identities in page titles, notifications or search previews.
 - Forced colors: the sheet keeps a `CanvasText` edge; badge markers are redrawn in `CanvasText`.
@@ -55,9 +55,9 @@ import { ReportsTable } from '@meetingat10/design-system/react';
 <ReportsTable
   caption="Own reports, demo records"
   rows={[
-    { id: '24', reference: 'DEMO-024', category: 'General concern', status: 'Draft', statusTone: 'warning', statusForm: 'pending', updated: '21 Oct', href: '/reports/demo-024', actionLabel: 'Open draft' },
-    { id: '18', reference: 'DEMO-018', category: 'Process question', status: 'Restricted review', statusForm: 'restricted', updated: '17 Oct', href: '/reports/demo-018' },
-    { id: '9', reference: 'DEMO-009', category: 'General question', status: 'Resolved', statusTone: 'success', updated: '2 Oct', href: '/reports/demo-009' },
+    { id: '24', reference: 'CCS-2026-0142', category: 'General concern', status: 'Draft', statusTone: 'warning', statusForm: 'pending', updated: '21 Oct', href: '/reports/demo-024', actionLabel: 'Open draft' },
+    { id: '18', reference: 'CCS-2026-0118', category: 'Process question', status: 'Restricted review', statusForm: 'restricted', updated: '17 Oct', href: '/reports/demo-018' },
+    { id: '9', reference: 'CCS-2026-0091', category: 'General question', status: 'Resolved', statusTone: 'success', updated: '2 Oct', href: '/reports/demo-009' },
     { id: '4', reference: 'DEMO-004', category: 'General concern', status: 'Withdrawn', statusForm: 'closed', updated: '28 Sep', href: '/reports/demo-004' },
   ]}
 />
@@ -76,11 +76,11 @@ import { ReportsTable } from '@meetingat10/design-system/react';
     </thead>
     <tbody>
       <tr>
-        <th scope="row"><span class="ds-table__ref">DEMO-024</span></th>
+        <th scope="row"><span class="ds-table__ref">CCS-2026-0142</span></th>
         <td>General concern</td>
         <td><span class="ds-badge ds-badge--warning ds-badge--pending"><span class="ds-badge__mark" aria-hidden="true"></span>Draft</span></td>
         <td>21 Oct</td>
-        <td class="ds-table__actions"><a class="ds-link ds-link--standalone" href="/reports/demo-024" aria-label="Open draft DEMO-024">Open draft<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-arrow-right"/></svg></a></td>
+        <td class="ds-table__actions"><a class="ds-link ds-link--standalone" href="/reports/demo-024" aria-label="Open draft CCS-2026-0142">Open draft<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-arrow-right"/></svg></a></td>
       </tr>
     </tbody>
   </table>

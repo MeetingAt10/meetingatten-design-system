@@ -51,7 +51,7 @@ import { MenuButton, MenuItem, MenuSection, MenuSeparator } from '@meetingat10/d
 <MenuButton label="Draft actions" onAction={(id) => handle(id)}>
   <MenuSection title="Draft">
     <MenuItem id="edit" icon="pencil" shortcut="E">Keep editing</MenuItem>
-    <MenuItem id="copy" icon="copy" description="DEMO-024">Copy reference</MenuItem>
+    <MenuItem id="copy" icon="copy" description="CCS-2026-0142">Copy reference</MenuItem>
   </MenuSection>
   <MenuSeparator />
   <MenuItem id="discard" icon="trash" danger>Discard draft</MenuItem>

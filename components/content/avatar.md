@@ -48,14 +48,14 @@ An avatar shows a person's photo, or their initials on a highlighter wash, in a 
 ```tsx
 import { Avatar, AvatarGroup, initials } from '@meetingat10/design-system/react';
 
-<Avatar name="Ana Santos (sample)" size={24} />
-<Avatar name="Ben Cruz (sample)" size={32} lane="community" />
-<Avatar name="Cara Lim (sample)" lane="consult" />
+<Avatar name="Ana Santos" size={24} />
+<Avatar name="Ben Cruz" size={32} lane="community" />
+<Avatar name="Cara Lim" lane="consult" />
 <Avatar name="Demo student" decorative />
 {/* Sample names */}
 <AvatarGroup names={['Ana Santos', 'Ben Cruz', 'Cara Lim', 'Dan Reyes', 'Eve Tan']} max={3} />
 
-initials('Ana Santos (sample)'); // "AS"
+initials('Ana Santos'); // "AS"
 ```
 
 `size` defaults to 36 and `lane` to `schedule`. `AvatarGroup` takes `names`, `max` (default 3), `size` (default 32) and `lane`.
@@ -63,8 +63,8 @@ initials('Ana Santos (sample)'); // "AS"
 ## Plain CSS
 
 ```html
-<span class="ds-avatar" role="img" aria-label="Ana Santos (sample)">AS</span>
-<span class="ds-avatar ds-avatar--48 ds-avatar--consult" role="img" aria-label="Cara Lim (sample)">CL</span>
+<span class="ds-avatar" role="img" aria-label="Ana Santos">AS</span>
+<span class="ds-avatar ds-avatar--48 ds-avatar--consult" role="img" aria-label="Cara Lim">CL</span>
 
 <span class="ds-avatar-group" role="img" aria-label="Ana Santos, Ben Cruz, Cara Lim and 2 others">
   <span class="ds-avatar ds-avatar--32" aria-hidden="true">AS</span>

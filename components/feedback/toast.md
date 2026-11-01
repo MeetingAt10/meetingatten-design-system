@@ -67,7 +67,7 @@ import { DesignSystemProvider, ToastRegion, toast } from '@meetingat10/design-sy
 </DesignSystemProvider>
 
 // Anywhere.
-toast('Draft saved', { tone: 'success', description: 'DEMO-024 is saved as a draft.' });
+toast('Draft saved', { tone: 'success', description: 'CCS-2026-0142 is saved as a draft.' });
 toast('Post moved to Saved', { action: { label: 'Undo', onAction: undoMove } });
 toast('Sample export ready', { timeout: 0 });
 ```
@@ -82,7 +82,7 @@ toast('Sample export ready', { timeout: 0 });
     <span class="ds-toast__icon" aria-hidden="true"><svg class="ds-icon"><use href="sprite.svg#ds-check-circle-fill"/></svg></span>
     <div class="ds-toast__content">
       <p class="ds-toast__title" id="toast-1-title">Draft saved</p>
-      <p class="ds-toast__body">DEMO-024 is saved as a draft.</p>
+      <p class="ds-toast__body">CCS-2026-0142 is saved as a draft.</p>
     </div>
     <button class="ds-toast__close" type="button" aria-label="Dismiss">
       <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-x"/></svg>

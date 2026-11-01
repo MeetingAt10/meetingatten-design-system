@@ -62,7 +62,7 @@ export function TypeScale() {
       {STYLES.map((s) => (
         <div key={s} className="site-type__row">
           <p className="site-type__meta"><span className="ds-time">{s}</span><span>{v(s, "size")} · {v(s, "line-height")} · {v(s, "font-weight")}</span></p>
-          <p className={s === "time" ? "ds-time" : `ds-type-${s}`} style={{ margin: 0 }}>{s === "time" || s === "code" ? "09:00-10:30 · CCS 304 · DEMO-024" : "Your Access to the College of Computer Studies"}</p>
+          <p className={s === "time" ? "ds-time" : `ds-type-${s}`} style={{ margin: 0 }}>{s === "time" || s === "code" ? "09:00-10:30 · CCS 304 · CCS-2026-0142" : "Your Access to the College of Computer Studies"}</p>
         </div>
       ))}
     </div>

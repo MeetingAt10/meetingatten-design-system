@@ -27,6 +27,18 @@
 @keyframes ds-tick { to { rotate: 1turn; } }
 @keyframes ds-pulse { 50% { opacity: 0.55; } }
 
+/* Overlays: opacity + scale + translate; the glass blur on the scrim fades with the scrim itself. */
+@keyframes ds-modal-in { from { opacity: 0; scale: 0.96; translate: 0 12px; filter: blur(4px); } }
+@keyframes ds-modal-out { to { opacity: 0; scale: 0.98; translate: 0 6px; filter: blur(2px); } }
+@keyframes ds-pop-scale-in { from { opacity: 0; scale: 0.96; translate: var(--pop-from, 0 -6px); } }
+@keyframes ds-toast-in { from { opacity: 0; translate: 24px 0; scale: 0.96; } }
+@keyframes ds-toast-out { to { opacity: 0; translate: 24px 0; scale: 0.98; } }
+/* A soft light travelling across a placeholder. */
+@keyframes ds-shimmer { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+/* Fill growth: a bar draws in from the left on first paint. */
+@keyframes ds-fill-in { from { clip-path: inset(0 100% 0 0); } }
+@keyframes ds-check-pop { 50% { scale: 1.12; } }
+
 /* Reduced motion: no travel, no loops; state changes land at once. */
 @media (prefers-reduced-motion: reduce) {
   .ds-body *, .ds-body *::before, .ds-body *::after {

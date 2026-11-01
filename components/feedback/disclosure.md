@@ -60,7 +60,7 @@ import { Accordion, Disclosure } from '@meetingat10/design-system/react';
 </Accordion>
 
 <Disclosure title="Record details" level={2} defaultExpanded>
-  <p>Updated 21 Oct (sample).</p>
+  <p>Updated 21 Oct.</p>
 </Disclosure>
 ```
 

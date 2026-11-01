@@ -61,7 +61,7 @@
   align-items: center;
   gap: var(--ds-space-12);
   padding: var(--ds-space-12) var(--ds-space-12) var(--ds-space-12) var(--ds-space-16);
-  border: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border: var(--ds-size-rule) solid var(--ds-hairline);
   border-radius: var(--ds-radius-control);
   background: var(--ds-surface);
   overflow: hidden;
@@ -84,7 +84,7 @@
   position: absolute;
   inset: auto 0 0;
   height: 2px;
-  background: var(--ds-border-subtle);
+  background: var(--ds-hairline);
   & > span {
     display: block;
     height: 100%;

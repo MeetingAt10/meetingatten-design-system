@@ -13,7 +13,7 @@ describe('Card family', () => {
       <Card link>
         <CardHeader><CardLane lane="community">Algorithms</CardLane></CardHeader>
         <CardTitle href="/t/1">What helped you understand recursion?</CardTitle>
-        <CardBody>A sample community question.</CardBody>
+        <CardBody>A community question about study groups.</CardBody>
         <CardMeta><span>6 replies</span></CardMeta>
       </Card>,
     );
@@ -22,14 +22,14 @@ describe('Card family', () => {
     expect(container.querySelector('.ds-card__lane')?.className).toBe('ds-card__lane ds-card__lane--community');
     expect(await axeViolations(container)).toEqual([]);
   });
-  it('AnnouncementCard shows its lane chip, time, demo label and link', () => {
+  it('AnnouncementCard shows its lane chip, time and link; the deprecated demo prop renders nothing', () => {
     render(<AnnouncementCard title="Make room for your next idea" when="Mon 19 Oct · 09:00" href="/u" demo meta="Community desk">Explore the proposed peer study circle.</AnnouncementCard>);
     expect(screen.getByText('Announcement').className).toBe('ds-card__lane');
-    expect(screen.getByText('Demo')).toBeTruthy();
+    expect(screen.queryByText('Demo')).toBeNull();
     expect(screen.getByRole('link', { name: 'Read update: Make room for your next idea' })).toBeTruthy();
   });
   it('ForumCard: one link, reply count in words, author avatar', async () => {
-    const { container } = render(<ForumCard topic="Algorithms" title="What helped you understand recursion?" href="/t/1" author="Demo member" replies={6} status="Open discussion" demo />);
+    const { container } = render(<ForumCard topic="Algorithms" title="What helped you understand recursion?" href="/t/1" author="Paolo Dizon" replies={6} status="Open discussion" demo />);
     expect(screen.getAllByRole('link')).toHaveLength(1);
     expect(screen.getByText(/6 replies/)).toBeTruthy();
     expect(container.querySelector('.ds-avatar')?.getAttribute('aria-hidden')).toBe('true');
@@ -44,7 +44,7 @@ describe('Tile and Avatar', () => {
     expect(screen.getByRole('img', { name: 'Restricted' }).className).toBe('ds-tile ds-tile--restricted');
   });
   it('initials skip parenthesised notes; AvatarGroup names the whole group once', () => {
-    expect(initials('Ana Santos (sample)')).toBe('AS');
+    expect(initials('Ana Santos')).toBe('AS');
     render(<AvatarGroup names={['Ana Santos', 'Ben Cruz', 'Cara Lim', 'Dan Reyes', 'Eve Tan']} max={3} />);
     expect(screen.getByRole('img', { name: 'Ana Santos, Ben Cruz, Cara Lim and 2 others' })).toBeTruthy();
     expect(screen.getByText('+2')).toBeTruthy();

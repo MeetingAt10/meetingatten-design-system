@@ -54,7 +54,7 @@ import { Tabs, TabList, Tab, TabPanel } from '@meetingat10/design-system/react';
     <Tab id="saved" icon="push-pin">Saved</Tab>
     <Tab id="archived" isDisabled>Archived</Tab>
   </TabList>
-  <TabPanel id="latest">Twelve new posts since Monday (sample).</TabPanel>
+  <TabPanel id="latest">Twelve new posts since Monday.</TabPanel>
   <TabPanel id="saved">Posts you pinned.</TabPanel>
 </Tabs>
 ```

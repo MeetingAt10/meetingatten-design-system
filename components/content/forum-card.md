@@ -10,7 +10,7 @@ A forum card is one community discussion in a list: the topic chip, the question
 ## When to use
 
 - Use it for community questions and discussions in a feed or search results.
-- Use `demo` to label synthetic posts.
+- The `demo` prop is deprecated and renders nothing.
 - Don't use it for announcements; use [Announcement Card](announcement-card.md).
 - Don't put names, student identifiers or report content in the excerpt.
 
@@ -19,7 +19,7 @@ A forum card is one community discussion in a list: the topic chip, the question
 | Part | Class | Notes |
 |---|---|---|
 | Sheet | `.ds-card.ds-card--link` | Flat paper with a hairline rule; lifts on hover |
-| Topic chip | `.ds-card__lane.ds-card__lane--community` | Violet block naming the topic (`topic`) |
+| Topic chip | `.ds-card__lane.ds-card__lane--community` | Amber block naming the topic (`topic`) |
 | Demo badge | `.ds-badge.ds-badge--outline` | "Demo", only with `demo` |
 | Title link | `.ds-card__title` > `.ds-card__link` | H3 by default (`level`); the link stretches over the whole card |
 | Excerpt | `.ds-card__body` | Body small, secondary text |

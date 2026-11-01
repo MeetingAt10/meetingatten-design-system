@@ -18,7 +18,7 @@ export function AdminOverviewBody() {
           level={1}
           split
           title="Your week"
-          description="Wednesday 21 October. Sample data: every name, room and record is synthetic."
+          description="Wednesday 21 October. Your week, community and records in one place."
           actions={
             <>
               <SegmentedControl aria-label="Schedule view" selectedKey={view} onSelectionChange={setView}>
@@ -29,7 +29,7 @@ export function AdminOverviewBody() {
             </>
           }
         />
-        <Timetable label={view === "day" ? "Today, sample schedule" : "This week, sample schedule"} days={days} events={WEEK_EVENTS} now={10.7} startHour={8} endHour={17} />
+        <Timetable label={view === "day" ? "Today" : "This week"} days={days} events={WEEK_EVENTS} now={10.7} startHour={8} endHour={17} />
 
         <Grid columns="main">
           <Tabs>
@@ -40,12 +40,12 @@ export function AdminOverviewBody() {
             </TabList>
             <TabPanel id="latest">
               <Stack gap={12}>
-                <AnnouncementCard level={3} tag="Announcement" when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#" demo>Same time, Wednesday 13:00. Bring a laptop.</AnnouncementCard>
-                <ForumCard level={3} topic="Algorithms" title="What helped recursion finally click for you?" author="Demo member" replies={6} status="Open discussion" href="#" demo />
+                <AnnouncementCard level={3} tag="Announcement" when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#">Same time, Wednesday 13:00. Bring a laptop.</AnnouncementCard>
+                <ForumCard level={3} topic="Algorithms" title="What helped recursion finally click for you?" author="Paolo Dizon" replies={6} status="Open discussion" href="#" />
               </Stack>
             </TabPanel>
             <TabPanel id="saved">
-              <ForumCard level={3} topic="Web development" title="Which CSS layout finally made sense to you?" author="Demo member" replies={11} href="#" demo />
+              <ForumCard level={3} topic="Web development" title="Which CSS layout finally made sense to you?" author="Paolo Dizon" replies={11} href="#" />
             </TabPanel>
             <TabPanel id="mine">
               <EmptyState level={3} title="You have not posted yet" description="Questions are welcome. Keep personal and case details out of community posts." action={<Button variant="secondary" icon="pencil">Write a post</Button>} />
@@ -55,7 +55,7 @@ export function AdminOverviewBody() {
           <Stack gap={24}>
             <section aria-labelledby="next-h" className="ds-stack ds-stack--12">
               <h2 id="next-h" className="ds-type-h4">Next consultation</h2>
-              <TimeBlock time="Wed 21 Oct · 15:30-16:30" title="Thesis check-in" meta="CCS 304 · Prof. Reyes (sample)" lane="consult" form="pending" icon="hourglass" />
+              <TimeBlock time="Wed 21 Oct · 15:30-16:30" title="Thesis check-in" meta="CCS 304 · Prof. Reyes" lane="consult" form="pending" icon="hourglass" />
               <p className="ds-type-body-small ds-secondary">Awaiting the faculty member's confirmation. Nothing is booked until they confirm.</p>
             </section>
             <Divider />
@@ -65,8 +65,8 @@ export function AdminOverviewBody() {
         </Grid>
 
         <Stack gap={12}>
-          <ReportsTable caption="Own reports (demo records)" rows={REPORT_ROWS} />
-          <Pagination page={page} pageCount={3} onPageChange={setPage} summary="Showing 1-4 of 9 demo records" />
+          <ReportsTable caption="Own reports" rows={REPORT_ROWS} />
+          <Pagination page={page} pageCount={3} onPageChange={setPage} summary="Showing 1-4 of 9 reports" />
         </Stack>
       </Stack>
     </Portal>

@@ -1,5 +1,5 @@
 {
-  "$description": "Ink-tinted shadows with an offset and a soft blur. Sheets rest flat (rule border, no shadow); blocks lift on hover or drag; overlays float. Dark variants are deeper and pair with a 1px top highlight (treatments).",
+  "$description": "Navy-tinted layered elevation. ring = hairline only; sheet = ring + soft layers (cards at rest); lift = deeper layers (hover, drag); overlay = floating panels; btn = navy shadow under primary actions. Dark variants are deeper black-navy.",
   "shadow": {
     "$type": "shadow",
     "none": {
@@ -16,41 +16,166 @@
     "lift": {
       "$value": [
         {
-          "color": "#17203314",
+          "color": "#0C173014",
           "offsetX": "0px",
-          "offsetY": "1px",
-          "blur": "2px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px"
+        },
+        {
+          "color": "#0C173010",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
           "spread": "0px"
         },
         {
-          "color": "#1720331A",
+          "color": "#0C173047",
           "offsetX": "0px",
-          "offsetY": "6px",
-          "blur": "16px",
-          "spread": "0px"
+          "offsetY": "20px",
+          "blur": "40px",
+          "spread": "-16px"
         }
       ]
     },
     "overlay": {
       "$value": [
         {
-          "color": "#17203314",
+          "color": "#0C173014",
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "6px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px"
+        },
+        {
+          "color": "#0C173010",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "8px",
           "spread": "0px"
         },
         {
-          "color": "#17203329",
+          "color": "#0C173014",
           "offsetX": "0px",
-          "offsetY": "18px",
-          "blur": "40px",
-          "spread": "0px"
+          "offsetY": "8px",
+          "blur": "16px",
+          "spread": "-8px"
+        },
+        {
+          "color": "#0C173047",
+          "offsetX": "0px",
+          "offsetY": "28px",
+          "blur": "64px",
+          "spread": "-24px"
         }
       ]
     },
     "lift-dark": {
       "$value": [
+        {
+          "color": "#EAEEF71F",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px"
+        },
+        {
+          "color": "#00000080",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0px"
+        },
+        {
+          "color": "#000000A6",
+          "offsetX": "0px",
+          "offsetY": "20px",
+          "blur": "40px",
+          "spread": "-16px"
+        }
+      ]
+    },
+    "overlay-dark": {
+      "$value": [
+        {
+          "color": "#EAEEF729",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px"
+        },
+        {
+          "color": "#00000080",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "0px"
+        },
+        {
+          "color": "#000000B3",
+          "offsetX": "0px",
+          "offsetY": "28px",
+          "blur": "64px",
+          "spread": "-20px"
+        }
+      ]
+    },
+    "ring": {
+      "$value": [
+        {
+          "color": "#0C173014",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px"
+        }
+      ]
+    },
+    "ring-dark": {
+      "$value": [
+        {
+          "color": "#EAEEF71F",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px"
+        }
+      ]
+    },
+    "sheet": {
+      "$value": [
+        {
+          "color": "#0C173010",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px"
+        },
+        {
+          "color": "#0C17300D",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        },
+        {
+          "color": "#0C173030",
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "32px",
+          "spread": "-16px"
+        }
+      ]
+    },
+    "sheet-dark": {
+      "$value": [
+        {
+          "color": "#EAEEF714",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px"
+        },
         {
           "color": "#00000066",
           "offsetX": "0px",
@@ -59,29 +184,47 @@
           "spread": "0px"
         },
         {
-          "color": "#00000059",
+          "color": "#00000080",
           "offsetX": "0px",
-          "offsetY": "8px",
-          "blur": "20px",
-          "spread": "0px"
+          "offsetY": "14px",
+          "blur": "32px",
+          "spread": "-16px"
         }
       ]
     },
-    "overlay-dark": {
+    "btn": {
+      "$value": [
+        {
+          "color": "#032E8740",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        },
+        {
+          "color": "#032E8759",
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "16px",
+          "spread": "-8px"
+        }
+      ]
+    },
+    "btn-dark": {
       "$value": [
         {
           "color": "#00000080",
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
+          "offsetY": "1px",
+          "blur": "2px",
           "spread": "0px"
         },
         {
-          "color": "#00000080",
+          "color": "#7C9BFF33",
           "offsetX": "0px",
-          "offsetY": "24px",
-          "blur": "48px",
-          "spread": "0px"
+          "offsetY": "8px",
+          "blur": "20px",
+          "spread": "-10px"
         }
       ]
     }

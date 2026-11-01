@@ -4,6 +4,7 @@
   margin: 0;
   text-wrap: balance;
   font-kerning: normal;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 .ds-type-display {
   font: var(--ds-type-display-font-weight) var(--ds-type-display-size) / var(--ds-type-display-line-height) var(--ds-type-display-font-family);
@@ -25,7 +26,8 @@
   font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
   letter-spacing: var(--ds-type-h4-letter-spacing);
 }
-.ds-type-body-large, .ds-type-body, .ds-type-body-small { margin: 0; text-wrap: pretty; }
+.ds-type-body-large, .ds-type-body, .ds-type-body-small { margin: 0; text-wrap: pretty; hyphens: manual; }
+.ds-type-caption, .ds-type-label { font-variant-numeric: tabular-nums; }
 .ds-type-body-large {
   font: var(--ds-type-body-large-font-weight) var(--ds-type-body-large-size) / var(--ds-type-body-large-line-height) var(--ds-type-body-large-font-family);
 }
@@ -60,6 +62,8 @@
   margin: 0;
   text-wrap: pretty;
 }
+/* Emphasis in the same family: weight and a quiet ink step, never a second face. */
+.ds-type-display :where(em), .ds-type-h1 :where(em), .ds-hero__title :where(em) { font-style: italic; font-weight: 700; color: var(--ds-action-default); }
 
 /* Long-form text (docs, policy pages). */
 .ds-prose {
@@ -72,7 +76,7 @@
   & :where(li)::marker { color: var(--ds-text-secondary); }
   & :where(:not(pre) > code) {
     padding: 0.1em 0.35em;
-    border-radius: var(--ds-radius-chip);
+    border-radius: var(--ds-radius-tick);
     background: var(--ds-highlight-neutral);
     font-size: 0.85em;
   }

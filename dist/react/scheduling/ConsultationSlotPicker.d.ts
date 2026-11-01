@@ -24,7 +24,7 @@ export interface ConsultationSlotPickerProps {
     slots: ConsultationSlot[];
     value?: string | null;
     onChange?: (slotId: string) => void;
-    /** Always shown with the date, for example "sample local campus time". */
+    /** Always shown with the date, for example "Asia/Manila (PHT)". */
     timeZoneNote: string;
     /** Group name, default "Consultation time". */
     label?: string;

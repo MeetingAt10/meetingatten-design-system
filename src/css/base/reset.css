@@ -1,20 +1,27 @@
 /* Base: page, box model, density text, and the browser surfaces every page ships
-   (selection, caret, scrollbars, focus ring, link underline, numerals). Scope: .ds-body. */
+   (selection, caret, scrollbars, focus ring, link underline, numerals). Scope: .ds-body.
+   Ground is warm ivory; paper surfaces sit on it. Shape rule: controls 10px, cards 16px, frames 20-24px, chips pill.
+   Elevation rule: one of a hairline ring OR layered shadow, never a border plus a big soft shadow. */
 :where(html):has(> .ds-body) {
   background: var(--ds-canvas);
-  scrollbar-color: var(--ds-border-default) var(--ds-canvas);
+  scrollbar-color: var(--ds-hairline-strong) var(--ds-canvas);
   scrollbar-gutter: stable;
+  scroll-padding-top: var(--ds-space-80, 5rem);
+  text-size-adjust: 100%;
 }
 .ds-body {
   margin: 0;
   min-height: 100dvh;
+  overflow-x: clip;
   background: var(--ds-canvas);
   color: var(--ds-text-primary);
   accent-color: var(--ds-action-default);
-  caret-color: var(--ds-action-default);
+  caret-color: var(--ds-focus);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+  font-variant-numeric: proportional-nums;
   font-synthesis-weight: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -29,10 +36,21 @@
 .ds-body ::selection {
   background: var(--ds-highlight-mark);
   color: var(--ds-text-primary);
+  text-shadow: none;
 }
+/* Scrollbars: a hairline-strong thumb on a transparent track; WebKit gets a rounded thumb that widens on hover. */
 .ds-body * {
   scrollbar-width: thin;
-  scrollbar-color: var(--ds-border-default) transparent;
+  scrollbar-color: var(--ds-hairline-strong) transparent;
+}
+.ds-body ::-webkit-scrollbar { width: 10px; height: 10px; }
+.ds-body ::-webkit-scrollbar-track { background: transparent; }
+.ds-body ::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-hairline-strong);
+  background-clip: content-box;
+  &:hover { background-color: var(--ds-border-default); }
 }
 
 /* Focus: a 2px ring with a 2px gap, drawn as an outline so it never fights a component's own shadow.
@@ -50,8 +68,11 @@
   color: var(--ds-action-default);
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
-  &:hover { text-decoration-thickness: 2px; }
+  text-decoration-color: var(--ds-hairline-strong);
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 0.24em;
+  transition: text-decoration-color var(--ds-motion-duration-quick) var(--ds-motion-ease-out);
+  &:hover { text-decoration-color: currentColor; text-decoration-thickness: 2px; }
 }
 .ds-body :where(button, input, select, textarea) { font: inherit; color: inherit; letter-spacing: inherit; }
 .ds-body :where(code, kbd, samp, pre) { font-family: var(--ds-font-family-mono); font-size: 0.875em; }

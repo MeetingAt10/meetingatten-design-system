@@ -2,7 +2,14 @@
    band where color owns the whole region (one per page, usually the closing call to action). */
 .ds-section--sheet {
   background: var(--ds-surface);
-  border-block: var(--ds-size-rule) solid var(--ds-border-subtle);
+  border-block: var(--ds-size-rule) solid var(--ds-hairline);
+}
+/* Wash: an ivory band with a quiet cobalt corner glow, to separate regions without a border. */
+.ds-section--wash {
+  background:
+    radial-gradient(50% 80% at 0% 0%, var(--ds-atmos-cobalt), transparent 70%),
+    radial-gradient(40% 70% at 100% 100%, var(--ds-atmos-emerald), transparent 70%),
+    var(--ds-highlight-neutral);
 }
 .ds-section--plate {
   background: var(--ds-plate-bg);

@@ -11,7 +11,7 @@ export interface BadgeProps {
   form?: BadgeForm;
   /** Show the status marker (default true). */
   marker?: boolean;
-  /** Outline instead of a tint (for example "Demo"). */
+  /** Outline instead of a tint (for example "Archived"). */
   outline?: boolean;
   className?: string;
   children: React.ReactNode;

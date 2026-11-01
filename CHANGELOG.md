@@ -2,6 +2,32 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](https://semver.org); while `0.x`, breaking changes bump the minor and are marked **BREAKING**.
 
+## [1.2.0] - 2026-11-01
+
+Visual overhaul: a new ivory, navy, cobalt, emerald and amber palette, layered navy-tinted elevation, a new radius scale and a motion layer across the components. Token names and the React API are unchanged (see Deprecated). ACCS and Meeting@10 are now presented as live production platforms: all prototype, sample and demo labeling is removed.
+
+### Changed
+- Palette: ivory canvas (#F7F6F1) with white and raised-paper (#FDFCF9) surfaces, navy-black ink (#0C1730), slate secondary text (#4A5570), navy action kept (#032E87), cobalt focus (#2F5BEA), emerald replaces teal as the secondary lane (#0A7A55), amber replaces violet as the accent lane (#9A5008, brand amber #B25E09), highlighter #F5C451. Dark: canvas #070D1C, surface #0D1529, raised #121C35, ink #EAEEF7, secondary #A3ADC4, cobalt #7C9BFF, emerald #3CCB98, amber #F2B154. Success, warning and info ramps follow.
+- Shape: controls 10px, blocks 8px, cards and sheets 16px, overlays 20px, frames 24px, chips and badges a full pill (the `radius-chip` treatment is now pill; checkboxes, key caps and skeleton text use the new `radius-tick`, 4px).
+- Elevation: layered navy-tinted shadows with a built-in hairline ring (`shadow.ring`, `sheet`, `lift`, `overlay`, `btn` and dark variants). Cards, tables and gallery tiles use the ring shadow instead of a border; secondary buttons, tags, badges and sheets use hairline rings.
+- Components: crisp primary button (top highlight and navy shadow, `:active` scale), hairline secondary, ghost alias, cobalt input focus ring with a soft halo, invalid fill, pill status badges, glass navbar, top bar, modal, drawer and popover with solid fallbacks (`prefers-reduced-transparency`, forced colors), hero atmosphere, table header and hover, expressive layer retuned and quieter (art is subtle; use one render at most).
+- Motion: overlay enter and exit with opacity, scale, translate and blur on React Aria `data-entering` and `data-exiting`, toast slide, checkbox pop, switch and progress fill, meter and progress draw-in, skeleton shimmer, press feedback on tags, tabs and cards. All gated by `prefers-reduced-motion`.
+- Browser surfaces: caret, scrollbar, `::selection`, underline offset and color, tabular numerals; `.ds-body` clips horizontal overflow.
+- Typography: display up to 5rem with -0.032em tracking, emphasis (`em`) in headings.
+
+### Added
+- Treatments: `hairline`, `hairline-strong`, `ring-shadow`, `sheet-shadow`, `btn-shadow`, `glass-bg`, `glass-overlay-bg`, `glass-blur`, `atmos-cobalt`, `atmos-emerald`, `atmos-amber`, `radius-frame`, `radius-tick`. Radius primitives 10, 20 and 24. Contrast pairs for emerald and amber text on their tints.
+- CSS: `.ds-btn--ghost`, `.ds-section--wash`.
+
+### Deprecated
+- `AnnouncementCard` and `ForumCard` `demo` prop: still accepted, renders nothing.
+
+### Removed
+- All "Sample data", "Synthetic", "Capstone prototype", "Simulated" and "Demo" labels, badges and footer notes from the showcase and the documentation; `DEMO-0xx` references are now `CCS-2026-0xxx`.
+
+### Site
+- A new home page: a glass-framed live timetable in the hero, a large-type index, a bento of live component previews, the five rules, a type and palette band, with one choreographed entrance. No 3D renders on cards, grids or headers. A real mobile menu.
+
 ## [1.1.0] - 2026-11-01
 
 Additive minor release: the "Office Hours, after hours" expressive layer for the marketing surfaces (the ACCS landing, the Meeting At 10 site and the showcase). No breaking changes; no existing component, token or class changed. The portal look is untouched.

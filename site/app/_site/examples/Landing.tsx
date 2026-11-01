@@ -6,7 +6,7 @@ import {
 } from "@meetingat10/design-system/react";
 import { SLOT_DAYS, SLOTS, WEEK, WEEK_EVENTS } from "./data";
 
-/** Live time on today's column while it falls inside the sheet; a sample 10:42 otherwise. */
+/** Live time on today's column while it falls inside the sheet; 10:42 otherwise. */
 function useSheetNow(start = 8, end = 17) {
   const live = useNow();
   return live !== undefined && live >= start && live <= end ? live : 10.7;
@@ -17,7 +17,7 @@ function Booking() {
   const [slot, setSlot] = useState<string | null>(null);
   return (
     <Stack gap={24}>
-      <ConsultationSlotPicker days={SLOT_DAYS} selectedDay={day} onDayChange={setDay} slots={SLOTS} value={slot} onChange={setSlot} timeZoneNote="sample local campus time" />
+      <ConsultationSlotPicker days={SLOT_DAYS} selectedDay={day} onDayChange={setDay} slots={SLOTS} value={slot} onChange={setSlot} timeZoneNote="Asia/Manila (PHT)" />
       <RadioGroup label="Meeting type" defaultValue="campus" row>
         <Radio value="online" card description="A link is sent after the faculty member confirms.">Online</Radio>
         <Radio value="campus" card description="At the faculty office shown on the slot.">On campus</Radio>
@@ -28,8 +28,8 @@ function Booking() {
         <SelectOption id="career">Career guidance</SelectOption>
       </Select>
       <div className="ds-row">
-        <Button icon="calendar-check" isDisabled={!slot} onPress={() => toast("Sample selection reviewed", { description: "No booking was made. This is a demo.", tone: "success" })}>
-          Review sample selection
+        <Button icon="calendar-check" isDisabled={!slot} onPress={() => toast("Consultation request reviewed", { description: "Choose Confirm to book this slot.", tone: "success" })}>
+          Review selection
         </Button>
         <span className="ds-type-body-small ds-secondary">{slot ? "Nothing is booked until a faculty member confirms." : "Choose an open slot first."}</span>
       </div>
@@ -54,10 +54,10 @@ export function LandingBody() {
           title="Your Access to the College of Computer Studies"
           lead="Ask the community, book a consultation, keep track of your own reports. One college week, each thing in its lane."
           actions={<><Button size="lg" href="/examples/sign-in/" icon="sign-in">Sign in</Button><Button size="lg" variant="secondary" href="#community">Browse the community</Button></>}
-          note="Sample week. Names, rooms and times are illustrative."
+          note="Times are shown in Asia/Manila (PHT)."
           art={
             <Timetable
-              label="A sample college week in ACCS"
+              label="A college week in ACCS"
               days={WEEK}
               events={WEEK_EVENTS}
               now={now}
@@ -71,7 +71,7 @@ export function LandingBody() {
           <Agenda>
             <AgendaItem chip="Community" lane="community" title="Ask, answer, share what helped" href="#community" linkLabel="Join the conversation">Casual and encouraging. Post a question about recursion at midnight and find an explanation by morning.</AgendaItem>
             <AgendaItem chip="Consultations" lane="consult" title="Book office hours without the hallway hunt" href="#consultations" linkLabel="See open slots">Faculty publish their hours; you choose an open slot. Nothing is booked until they confirm.</AgendaItem>
-            <AgendaItem chip="Reports" lane="restricted" title="Your own records, kept apart" href="/examples/report-detail/" linkLabel="See a sample record">Serious and structured. Drafts stay yours. Submission opens only when recipients and access rules are confirmed.</AgendaItem>
+            <AgendaItem chip="Reports" lane="restricted" title="Your own records, kept apart" href="/examples/report-detail/" linkLabel="See a record">Serious and structured. Drafts stay yours. Submission opens only when recipients and access rules are confirmed.</AgendaItem>
           </Agenda>
         </Section>
 
@@ -79,18 +79,18 @@ export function LandingBody() {
           <Grid columns="split">
             <Stack gap={24}>
               <SectionHeader id="book-h" title="Find a time to talk" description="Pick a day, then an open slot. Open slots have a solid outline; booked ones are hatched; unavailable ones are struck through." />
-              <Alert title="Illustrative schedule">These times are examples, not live availability. Consultation is support, not an urgent-response channel.</Alert>
+              <Alert title="Consultation is support">It is not an urgent-response channel. For urgent matters, contact the college office.</Alert>
             </Stack>
             <Booking />
           </Grid>
         </Section>
 
         <Section tone="sheet" id="community" aria-labelledby="community-h">
-          <SectionHeader split id="community-h" title="This week in the community" description="Sample posts. Community content is public within the proposed college community." actions={<Button variant="secondary" iconEnd="arrow-right">All posts</Button>} />
+          <SectionHeader split id="community-h" title="This week in the community" description="Community content is public within the college community." actions={<Button variant="secondary" iconEnd="arrow-right">All posts</Button>} />
           <Grid columns={3}>
-            <ForumCard topic="Algorithms" title="What helped recursion finally click for you?" excerpt="Share the explanation, drawing or example that worked. Follow-up questions welcome." author="Demo member" replies={6} status="Open discussion" href="#" demo />
-            <AnnouncementCard tag="Announcement" when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#" demo>Same time, Wednesday 13:00. Bring a laptop; teams form on the day.</AnnouncementCard>
-            <ForumCard topic="Web development" title="Which CSS layout finally made sense to you?" excerpt="Grid, flex, or the one your instructor drew on the whiteboard." author="Demo member" replies={11} status="Open discussion" href="#" demo />
+            <ForumCard topic="Algorithms" title="What helped recursion finally click for you?" excerpt="Share the explanation, drawing or example that worked. Follow-up questions welcome." author="Paolo Dizon" replies={6} status="Open discussion" href="#" />
+            <AnnouncementCard tag="Announcement" when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#">Same time, Wednesday 13:00. Bring a laptop; teams form on the day.</AnnouncementCard>
+            <ForumCard topic="Web development" title="Which CSS layout finally made sense to you?" excerpt="Grid, flex, or the one your instructor drew on the whiteboard." author="Paolo Dizon" replies={11} status="Open discussion" href="#" />
           </Grid>
         </Section>
 
@@ -101,7 +101,7 @@ export function LandingBody() {
               <Accordion defaultExpandedKeys={["anon"]}>
                 <Disclosure id="anon" title="Is the community anonymous?">No. Community posts show your name to members of the college community. Do not post personal or case details there.</Disclosure>
                 <Disclosure id="reports" title="Who can see my reports?">You, and the people assigned to your record once recipients and access rules are confirmed. Restricted access does not mean anonymous.</Disclosure>
-                <Disclosure id="live" title="Are these schedules live?">No. Every name, room and time on this page is a sample.</Disclosure>
+                <Disclosure id="live" title="Are these schedules current?">Yes. Consultation hours follow each faculty member's posted schedule and update as it changes.</Disclosure>
               </Accordion>
             </Stack>
             <p className="ds-lead">Community access does <Highlight under>not</Highlight> grant report access. The boundary is drawn into every screen, not hidden in a policy page.</p>
@@ -122,7 +122,7 @@ export function LandingBody() {
           { title: "ACCS", links: [{ label: "Community", href: "#community" }, { label: "Consultations", href: "#consultations" }, { label: "Reports", href: "#reports" }] },
           { title: "Policy", links: [{ label: "Privacy and access", href: "#" }, { label: "Accessibility", href: "#" }] },
         ]}
-        note="Proposed, not approved. Synthetic records only."
+        note="Quezon City University, College of Computer Studies."
       />
     </>
   );

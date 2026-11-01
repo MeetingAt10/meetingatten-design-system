@@ -1,6 +1,6 @@
 /* Avatar: a photo or initials on the lane wash. Names always appear in text nearby (the avatar repeats
    them for recognition). Group: overlapping avatars with a cutout ring and a "+3" count.
-   <span class="ds-avatar" role="img" aria-label="Ana Santos (sample)">AS</span> */
+   <span class="ds-avatar" role="img" aria-label="Ana Santos">AS</span> */
 .ds-avatar {
   position: relative;
   display: inline-grid;

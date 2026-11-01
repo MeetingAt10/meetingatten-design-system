@@ -11,7 +11,7 @@ A status badge is a word plus a small square marker: "Review pending", "Resolved
 
 - Use it for the state of a record, a request or a post, always with a word.
 - Pick the `form` from the state first, then a `tone` if it helps: `pending` for drafts and reviews, `restricted` for restricted records, `closed` for withdrawn or closed items.
-- Use `outline` with `marker={false}` for a plain label such as "Demo".
+- Use `outline` with `marker={false}` for a plain label such as "Archived".
 - Don't let the tone or the marker stand alone; the word is required.
 - Don't use it for a role, a severity or a lane; use [Role Badge](role.md), [Severity](severity.md) or a lane chip ([Card](../content/card.md)).
 
