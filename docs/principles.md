@@ -53,7 +53,7 @@ Signature interaction: the now-line glides across today; choosing a block lifts 
 | Monospace only for times, codes, references, keys and code | Inter for everything else |
 | Elevation declared once | A ring or a shadow, never a border plus a shadow |
 | One card chrome per page is too few | Mix sheet, tint and open treatments; a page of identical boxes reads as a template |
-| One gradient wash and one render per page, at most | Flat tints for the other bands |
+| One gradient wash per page, at most | Flat tints for the other bands |
 | Cards only for collection items and floating panels, never nested | Sections, rules and headings on detail pages |
 | No emoji; no Unicode glyphs as icons | The curated [icon vocabulary](iconography.md) |
 

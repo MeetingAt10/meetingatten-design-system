@@ -2,6 +2,19 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](https://semver.org); while `0.x`, breaking changes bump the minor and are marked **BREAKING**.
 
+## [2.0.0] - 2026-11-01
+
+The generated 3D renders are gone. They looked out of place next to the real interface, so every page that used one is back to type, real components, icons and the SVG logo.
+
+### Removed
+- **BREAKING:** `FloatingArt`, `ParallaxScene`, the `imagery` record and the `ImageryName` type are removed from `@meetingat10/design-system/react`. `ParallaxScene` only existed to move the renders, so it goes with them.
+- **BREAKING:** the twenty WebP files and `imagery.json` under `assets/imagery/` no longer ship, so `@meetingat10/design-system/assets/imagery/*` no longer resolves. The logo and icon files under `assets/` stay.
+- **BREAKING:** the `.ds-art` classes, the `art-shadow` treatment (`--ds-art-shadow`), the `motion.distance.float` token (`--ds-motion-distance-float`) and the `ds-float` keyframes.
+- The foundations page on imagery, the `FloatingArt` and `ParallaxScene` component specs and the `key-imagery.py` script.
+
+### Changed
+- The documentation site no longer serves renders; the Parallax demo moves a heading instead.
+
 ## [1.3.0] - 2026-11-01
 
 A cleanup of the visual and written layers. Components that looked alike now look different where it helps, and the prose across the docs, the components and the documentation site is rewritten in plainer language. Token names and the React API are unchanged.

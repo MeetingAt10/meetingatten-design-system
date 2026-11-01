@@ -89,8 +89,6 @@ export { Divider } from './layout/Divider.js';
 // Expressive layer (marketing surfaces: the ACCS landing, Meeting At 10 and the documentation site)
 export { Reveal } from './expressive/Reveal.js';
 export { WordReveal } from './expressive/WordReveal.js';
-export { FloatingArt } from './expressive/FloatingArt.js';
-export { ParallaxScene } from './expressive/ParallaxScene.js';
 export { Parallax } from './expressive/Parallax.js';
 export { Marquee } from './expressive/Marquee.js';
 export { SpotlightCard } from './expressive/SpotlightCard.js';
@@ -98,4 +96,3 @@ export { Aurora, GridBackdrop } from './expressive/Backdrop.js';
 export { Orbit } from './expressive/Orbit.js';
 export { CountUp } from './expressive/CountUp.js';
 export { ScrollProgress } from './expressive/ScrollProgress.js';
-export { imagery } from './expressive/imagery.js';

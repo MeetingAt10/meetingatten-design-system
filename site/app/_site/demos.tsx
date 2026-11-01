@@ -9,10 +9,9 @@ import {
   NowLine, Pagination, Popover, PrivacyNotice, Progress, Radio, RadioGroup, ReportRecord, ReportsTable, RoleBadge, Search, Section, SectionHeader, Segment,
   SegmentedControl, Select, SelectOption, Severity, Sidebar, SidebarNote, SidebarSection, Skeleton, Spinner, Stack, Stepper, Switch, Tab, Table, TableBody,
   TableHeader, TableRow, TabList, TabPanel, Tabs, Tag, TagGroup, TextArea, TextField, Tile, TimeBlock, Timetable, toast, Tooltip, TooltipTrigger, TopBar,
-  ViewState, Aurora, CountUp, FloatingArt, GridBackdrop, Marquee, Orbit, Parallax, ParallaxScene, Reveal, ScrollProgress, SpotlightCard, WordReveal,
+  ViewState, Aurora, CountUp, GridBackdrop, Marquee, Orbit, Parallax, Reveal, ScrollProgress, SpotlightCard, WordReveal,
   type IconName, type Key,
 } from "@meetingat10/design-system/react";
-import { art } from "@/lib/art";
 import { REPORT_ROWS, SLOT_DAYS, SLOTS, WEEK, WEEK_EVENTS } from "./examples/data";
 
 type Theme = "light" | "dark";
@@ -532,15 +531,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
     </Stack>
   ),
   WordReveal: () => <WordReveal as="h2" className="ds-type-h1" text="Blocks placed in time, word by word." />,
-  FloatingArt: () => <div className="site-art-demo"><FloatingArt {...art("neural-sphere")} depth={0} /></div>,
-  ParallaxScene: () => (
-    <ParallaxScene className="site-scene-demo">
-      <FloatingArt {...art("glass-discs")} depth={36} style={{ position: "absolute", left: "2%", top: "18%", width: "34%" }} />
-      <FloatingArt {...art("swirl-sphere")} depth={18} delay={-3} style={{ position: "absolute", left: "30%", top: "0", width: "40%" }} />
-      <FloatingArt {...art("wire-octahedron")} depth={28} delay={-6} style={{ position: "absolute", right: "2%", top: "26%", width: "30%" }} />
-    </ParallaxScene>
-  ),
-  Parallax: () => <div className="site-art-demo"><Parallax depth={16}><FloatingArt {...art("mobius-loop")} float={false} /></Parallax></div>,
+  Parallax: () => <Parallax depth={16}><h2 className="ds-type-h1">Moves a little against the scroll</h2></Parallax>,
   Aurora: () => <div className="site-backdrop-demo"><Aurora /><p className="ds-type-h3">Three lane-colored glows</p></div>,
   GridBackdrop: () => <div className="site-backdrop-demo"><GridBackdrop /><p className="ds-type-h3">The ruled sheet as a ground</p></div>,
   Marquee: () => (

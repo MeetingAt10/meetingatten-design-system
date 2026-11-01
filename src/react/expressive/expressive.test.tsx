@@ -3,8 +3,6 @@ import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import { axeViolations } from '../test/a11y.js';
 import { Reveal } from './Reveal.js';
 import { WordReveal } from './WordReveal.js';
-import { FloatingArt } from './FloatingArt.js';
-import { ParallaxScene } from './ParallaxScene.js';
 import { Parallax } from './Parallax.js';
 import { Marquee } from './Marquee.js';
 import { SpotlightCard } from './SpotlightCard.js';
@@ -12,7 +10,6 @@ import { Aurora, GridBackdrop } from './Backdrop.js';
 import { Orbit } from './Orbit.js';
 import { CountUp } from './CountUp.js';
 import { ScrollProgress } from './ScrollProgress.js';
-import { imagery } from './imagery.js';
 
 // NumberFlow's custom element is not defined under jsdom (esm-env resolves to its server build), so it cannot update here.
 vi.mock('@number-flow/react', () => ({ default: ({ value, prefix, suffix }: { value: number; prefix?: string; suffix?: string }) => <span data-testid="flow">{prefix}{value}{suffix}</span> }));
@@ -41,39 +38,6 @@ describe('Reveal, WordReveal, Parallax', () => {
     const el = container.firstElementChild as HTMLElement;
     expect(el.className).toBe('ds-parallax');
     expect(el.style.getPropertyValue('--ds-depth')).toBe('60');
-  });
-});
-
-describe('FloatingArt and ParallaxScene', () => {
-  it('FloatingArt is decorative, sized and lazy by default; priority loads now', () => {
-    const { container } = render(<><FloatingArt src="/a.webp" width={720} height={710} depth={24} delay={-3} /><FloatingArt src="/b.webp" width={10} height={10} float={false} priority alt="A glass sphere" /></>);
-    const [a, b] = [...container.querySelectorAll('img')];
-    expect(a.className).toBe('ds-art ds-art--float');
-    expect([a.getAttribute('alt'), a.getAttribute('width'), a.getAttribute('height'), a.getAttribute('loading')]).toEqual(['', '720', '710', 'lazy']);
-    expect(a.style.getPropertyValue('--ds-depth')).toBe('24');
-    expect(a.style.getPropertyValue('--ds-art-delay')).toBe('-3s');
-    expect(b.className).toBe('ds-art');
-    expect([b.getAttribute('alt'), b.getAttribute('loading'), b.getAttribute('fetchpriority')]).toEqual(['A glass sphere', 'eager', 'high']);
-  });
-  it('ParallaxScene writes the pointer position as -1..1 and resets on leave', async () => {
-    const { container } = render(<ParallaxScene strength={2} className="scene"><FloatingArt src="/a.webp" width={1} height={1} depth={10} /></ParallaxScene>);
-    const scene = container.firstElementChild as HTMLElement;
-    scene.getBoundingClientRect = () => box as DOMRect;
-    fireEvent.pointerMove(scene, { clientX: 150, clientY: 25 });
-    await waitFor(() => expect(scene.style.getPropertyValue('--ds-px')).toBe('1'));
-    expect(scene.style.getPropertyValue('--ds-py')).toBe('-1');
-    fireEvent.pointerLeave(scene);
-    await waitFor(() => expect(scene.style.getPropertyValue('--ds-px')).toBe('0'));
-    expect(scene.className).toBe('scene');
-  });
-  it('ParallaxScene does nothing under reduced motion', async () => {
-    vi.stubGlobal('matchMedia', (q: string) => ({ matches: true, media: q, addEventListener() {}, removeEventListener() {} }));
-    const { container } = render(<ParallaxScene>x</ParallaxScene>);
-    const scene = container.firstElementChild as HTMLElement;
-    scene.getBoundingClientRect = () => box as DOMRect;
-    fireEvent.pointerMove(scene, { clientX: 150, clientY: 25 });
-    await act(() => new Promise((r) => requestAnimationFrame(() => r(null))));
-    expect(scene.style.getPropertyValue('--ds-px')).toBe('');
   });
 });
 
@@ -164,13 +128,5 @@ describe('CountUp', () => {
     vi.stubGlobal('matchMedia', (q: string) => ({ matches: true, media: q, addEventListener() {}, removeEventListener() {} }));
     render(<CountUp value={72} />);
     expect(screen.getByTestId('flow').textContent).toBe('72');
-  });
-});
-
-describe('imagery', () => {
-  it('lists the renders with their sizes', () => {
-    const names = Object.keys(imagery);
-    expect(names).toHaveLength(20);
-    expect(imagery['neural-cluster']).toMatchObject({ file: 'assets/imagery/neural-cluster.webp', width: 720, height: 710 });
   });
 });

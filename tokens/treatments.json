@@ -98,16 +98,6 @@
       "alpha": 72
     }
   },
-  "art-shadow": {
-    "light": {
-      "tint": "{color.brand.source-ink}",
-      "alpha": 30
-    },
-    "dark": {
-      "tint": "{color.neutral.950}",
-      "alpha": 70
-    }
-  },
   "dim": {
     "all": {
       "tint": "{color.surface}",

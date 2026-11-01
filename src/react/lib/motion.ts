@@ -32,5 +32,4 @@ export const distance = {
   drop: 6,
   rise: 8,
   reveal: 24,
-  float: 10,
 } as const;

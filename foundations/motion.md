@@ -13,7 +13,7 @@ Motion shows where things went and never slows the work: 120ms color changes, ov
 | `--ds-motion-duration-deliberate` | 480ms | The highlighter swipe |
 | `--ds-motion-duration-cinematic` | 720ms | Expressive layer: section reveals and the word rise |
 | `--ds-motion-duration-stagger` | 70ms | Expressive layer: the per-item offset between words and siblings |
-| `--ds-motion-duration-ambient` | 9000ms | Expressive layer: one period of the floating-art bob |
+| `--ds-motion-duration-ambient` | 9000ms | Expressive layer: one period of an ambient loop |
 | `--ds-motion-duration-drift` | 24000ms | Expressive layer: one period of the aurora drift and the orbit turn |
 | `--ds-motion-duration-marquee` | 48000ms | Expressive layer: one marquee lap |
 
@@ -55,7 +55,6 @@ The same springs ship for the Motion library as `spring.snappy`, `spring.smooth`
 | `--ds-motion-distance-drop` | `--ds-drop` | 6px (`-6px`) | Blocks dropping into their cells |
 | `--ds-motion-distance-rise` | `--ds-rise` | 8px | Overlays rising into place |
 | `--ds-motion-distance-reveal` | none | 24px | Expressive layer: where a scroll reveal starts |
-| `--ds-motion-distance-float` | none | 10px | Expressive layer: the travel of the floating-art bob, each way |
 
 ## Signature motions
 
@@ -96,14 +95,12 @@ import { spring, distance, duration, ease } from '@meetingat10/design-system/rea
 
 ## Expressive layer (marketing surfaces)
 
-The portal's motion is quick and practical. The marketing surfaces (the ACCS landing, the Meeting At 10 site and the documentation site) may add a slower layer on top: content that arrives as you scroll, headlines that rise word by word, 3D brand renders ([imagery](imagery.md)) that bob and follow the pointer. It lives in `src/css/components/expressive/` and `src/react/expressive/`, uses only the tokens above and obeys the same rules: content is visible by default, and everything stops under reduced motion.
+The portal's motion is quick and practical. The marketing surfaces (the ACCS landing, the Meeting At 10 site and the documentation site) may add a slower layer on top: content that arrives as you scroll, headlines that rise word by word, a backdrop that drifts. It lives in `src/css/components/expressive/` and `src/react/expressive/`, uses only the tokens above and obeys the same rules: content is visible by default, and everything stops under reduced motion.
 
 | Class | React | What it does |
 |---|---|---|
 | `.ds-reveal` (`--fade`, `--scale`, `--start`, `--end`) | [Reveal](../components/expressive/reveal.md) | Eases in as it scrolls into view (CSS `animation-timeline: view()`); `--ds-reveal-index` staggers siblings |
 | `.ds-word-rise`, `.ds-word-rise__word` | [WordReveal](../components/expressive/word-reveal.md) | A headline whose words rise out of a clipped line on page load, 70ms apart |
-| `.ds-art`, `.ds-art--float` | [FloatingArt](../components/expressive/floating-art.md) | A transparent render with a soft ink shadow (`--ds-art-shadow`), a slow bob and pointer parallax from `--ds-depth` |
-| none | [ParallaxScene](../components/expressive/parallax-scene.md) | Writes the pointer position as `--ds-px` and `--ds-py` (-1 to 1) for FloatingArt `depth` |
 | `.ds-parallax` | [Parallax](../components/expressive/parallax.md) | Drifts against the scroll while crossing the viewport; `--ds-depth` is the travel in px |
 | `.ds-aurora`, `.ds-aurora__blob` | [Aurora](../components/expressive/aurora.md) | Three blurred lane-colored glows drifting behind a hero |
 | `.ds-grid-backdrop` | [GridBackdrop](../components/expressive/grid-backdrop.md) | The ruled time sheet as a ground: hour and half-hour hairlines fading out at the edges |
@@ -113,7 +110,7 @@ The portal's motion is quick and practical. The marketing surfaces (the ACCS lan
 | `.ds-scroll-progress` | [ScrollProgress](../components/expressive/scroll-progress.md) | A 2px bar across the top edge that fills with the page scroll |
 | none | [CountUp](../components/expressive/count-up.md) | A number that rolls up from 0 when it scrolls into view (`@number-flow/react`) |
 
-Scroll-driven effects (`ds-reveal`, `ds-parallax`, `ds-scroll-progress`) sit inside `@supports (animation-timeline: ...)`: a browser without it shows everything in its final state. Pointer effects (ParallaxScene, SpotlightCard) do nothing on touch screens (`pointer: coarse`) or under reduced motion. The keyframes are `ds-reveal-up`, `ds-reveal-fade`, `ds-reveal-scale`, `ds-reveal-start`, `ds-reveal-end`, `ds-word-rise`, `ds-float`, `ds-parallax`, `ds-drift`, `ds-marquee`, `ds-orbit-turn`, `ds-orbit-upright` and `ds-scroll-progress`.
+Scroll-driven effects (`ds-reveal`, `ds-parallax`, `ds-scroll-progress`) sit inside `@supports (animation-timeline: ...)`: a browser without it shows everything in its final state. The pointer effect (SpotlightCard) does nothing on touch screens (`pointer: coarse`) or under reduced motion. The keyframes are `ds-reveal-up`, `ds-reveal-fade`, `ds-reveal-scale`, `ds-reveal-start`, `ds-reveal-end`, `ds-word-rise`, `ds-parallax`, `ds-drift`, `ds-marquee`, `ds-orbit-turn`, `ds-orbit-upright` and `ds-scroll-progress`.
 
 ## Reduced motion
 

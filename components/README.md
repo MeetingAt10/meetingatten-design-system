@@ -110,12 +110,10 @@ Styles live in `src/css/components/<category>/<name>.css` (built into `dist/comp
 
 ## Expressive
 
-Marketing surfaces only (the ACCS landing, the Meeting At 10 site, the documentation site); never inside portal workflows. See [motion](../foundations/motion.md) and [imagery](../foundations/imagery.md).
+Marketing surfaces only (the ACCS landing, the Meeting At 10 site, the documentation site); never inside portal workflows. See [motion](../foundations/motion.md).
 
 - [Reveal](expressive/reveal.md) (`Reveal`): Content that eases in as it scrolls into view, visible by default and static where scroll-driven animation is unsupported or motion is reduced.
 - [WordReveal](expressive/word-reveal.md) (`WordReveal`): A headline whose words rise out of a clipped line on page load, one after another, read once by screen readers.
-- [FloatingArt](expressive/floating-art.md) (`FloatingArt`): A transparent 3D brand render with a soft ink shadow, a slow bob and optional pointer parallax.
-- [ParallaxScene](expressive/parallax-scene.md) (`ParallaxScene`): A container that tracks the pointer over itself and gives the floating art inside it depth.
 - [Parallax](expressive/parallax.md) (`Parallax`): An element that drifts against the scroll while it crosses the viewport, static where scroll-driven animation is unsupported or motion is reduced.
 - [Aurora](expressive/aurora.md) (`Aurora`): Three slow, blurred lane-colored glows behind a hero or band, decorative and still under reduced motion.
 - [GridBackdrop](expressive/grid-backdrop.md) (`GridBackdrop`): The Office Hours ruled sheet as a ground: hour and half-hour hairlines that fade out toward the edges.

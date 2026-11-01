@@ -38,7 +38,7 @@ npm i @meetingat10/design-system@github:MeetingAt10/meetingatten-design-system#v
 | `@meetingat10/design-system/react` | React components, the provider and motion tokens |
 | `@meetingat10/design-system/icons` | The full Phosphor icon set |
 | `@meetingat10/design-system/tokens.json` | Tokens as data |
-| `@meetingat10/design-system/assets/*` | `icons/sprite.svg`, `icons/icons.json`, the Meeting At 10 logo `logo/meeting-at-10*.svg`, the proposed ACCS `logo/logo-*.svg`, the 3D renders `imagery/*.webp` |
+| `@meetingat10/design-system/assets/*` | `icons/sprite.svg`, `icons/icons.json`, the Meeting At 10 logo `logo/meeting-at-10*.svg`, the proposed ACCS `logo/logo-*.svg` |
 
 Put `class="ds-body"` on `<body>`. The canvas, text, density text, focus ring and reduced-motion rules are scoped to it.
 
@@ -89,24 +89,18 @@ Interactive components start with `"use client"`. Behavior, keyboard support and
 
 ## Expressive layer
 
-Marketing surfaces (the ACCS landing, the Meeting At 10 site and the documentation site) can add slower motion on the same tokens. It includes scroll reveals, a word-by-word headline, floating 3D renders with pointer parallax, an aurora and ruled-grid backdrop, a marquee, spotlight cards, an orbit, count-up numbers and a scroll-progress bar. The layer stays out of portal workflows, shows content by default and stops under reduced motion ([motion](foundations/motion.md)). Use one render per page at most. Twenty transparent renders ship as WebP ([imagery](foundations/imagery.md)).
+Marketing surfaces (the ACCS landing, the Meeting At 10 site and the documentation site) can add slower motion on the same tokens. It includes scroll reveals, a word-by-word headline, a scroll parallax, an aurora and ruled-grid backdrop, a marquee, spotlight cards, an orbit, count-up numbers and a scroll-progress bar. The layer stays out of portal workflows, shows content by default and stops under reduced motion ([motion](foundations/motion.md)).
 
 ```tsx
-import { WordReveal, ParallaxScene, FloatingArt, Aurora, GridBackdrop, imagery } from '@meetingat10/design-system/react';
-import sphere from '@meetingat10/design-system/assets/imagery/neural-sphere.webp';
-
-const { width, height } = imagery['neural-sphere'];
+import { WordReveal, Aurora, GridBackdrop } from '@meetingat10/design-system/react';
 
 <section style={{ position: 'relative', isolation: 'isolate' }}>
   <Aurora /><GridBackdrop />
   <WordReveal as="h1" text="The faculty door, rebuilt as an interface." />
-  <ParallaxScene>
-    <FloatingArt src={sphere.src} width={width} height={height} depth={24} priority />
-  </ParallaxScene>
 </section>
 ```
 
-Components: `Reveal`, `WordReveal`, `FloatingArt`, `ParallaxScene`, `Parallax`, `Marquee`, `SpotlightCard`, `Aurora`, `GridBackdrop`, `Orbit`, `CountUp`, `ScrollProgress` ([specs](components/README.md)).
+Components: `Reveal`, `WordReveal`, `Parallax`, `Marquee`, `SpotlightCard`, `Aurora`, `GridBackdrop`, `Orbit`, `CountUp`, `ScrollProgress` ([specs](components/README.md)).
 
 ## Icons
 
@@ -124,7 +118,7 @@ Plain CSS: `<svg class="ds-icon" aria-hidden="true"><use href="sprite.svg#ds-cal
 ## Commands
 
 ```bash
-npm run build      # tokens + src/css -> dist/, the icon sprite and React icon map, motion tokens, the imagery manifest, dist/react (tsc)
+npm run build      # tokens + src/css -> dist/, the icon sprite and React icon map, motion tokens, dist/react (tsc)
 npm run check      # build, then contrast (check-contrast.mjs) and token rules (check-tokens.mjs)
 npm run typecheck  # tsc over src/react, tests included
 npm test           # Vitest + Testing Library + axe on every component
@@ -139,9 +133,9 @@ npm test           # Vitest + Testing Library + axe on every component
 | `tokens/` | The source: `foundations/` (color, identity, type, spacing, radius, size, grid, elevation, motion, z-index), `themes/` (light and dark mapping), `treatments.json` (materials), `contrast-pairs.json` |
 | `src/css/` | Token-only CSS: `base/` (reset, type, layout, motion, utilities, forced colors) and `components/<category>/<name>.css` |
 | `src/react/` | React components (`<category>/<Name>.tsx`), tests per category, the provider, motion tokens and icon map |
-| `scripts/` | `build.mjs`, `check-contrast.mjs`, `check-tokens.mjs`, `lib.mjs` (plain Node, no dependencies), `key-imagery.py` (keys a render from white to alpha) |
+| `scripts/` | `build.mjs`, `check-contrast.mjs`, `check-tokens.mjs`, `lib.mjs` (plain Node, no dependencies) |
 | `dist/` | Committed output: `tokens.css`, `tailwind.css`, `components.css`, `fonts.css`, `tokens.json`, `tokens.js`, `react/` |
-| `assets/` | `icons/icons.json` (curated vocabulary), `icons/sprite.svg` (generated), `logo/meeting-at-10*.svg` (the Meeting At 10 logo), `logo/logo-*.svg` (proposed ACCS marks), `imagery/*.webp` and `imagery.json` (3D renders) |
+| `assets/` | `icons/icons.json` (curated vocabulary), `icons/sprite.svg` (generated), `logo/meeting-at-10*.svg` (the Meeting At 10 logo), `logo/logo-*.svg` (proposed ACCS marks) |
 | `components/`, `foundations/`, `themes/`, `docs/` | Component specs and guides; the site renders them |
 | `context/deltas/` | Change specs (deltas); `archive/` holds past ones |
 | `site/` | The public documentation site (Next.js 16 static export) with live light and dark demos. It is not part of the package |

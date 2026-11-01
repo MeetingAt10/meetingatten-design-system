@@ -13,7 +13,7 @@ The hero is the first viewport of the ACCS landing and the Meeting At 10 site. C
 - Use `art` for the product doing its job (a week sheet, a slot picker), using realistic course and room names.
 - Use `note` for small print such as the time zone ("Times are shown in Asia/Manila (PHT).").
 - Don't put an eyebrow or kicker above the headline, and don't add a row of metrics, gradient text or a stack of cards under it.
-- On marketing surfaces (the ACCS landing, the Meeting At 10 site, the documentation site), `art` may be a composition of [FloatingArt](../expressive/floating-art.md) renders in a [ParallaxScene](../expressive/parallax-scene.md), over an [Aurora](../expressive/aurora.md) and a [GridBackdrop](../expressive/grid-backdrop.md), with the headline as a [WordReveal](../expressive/word-reveal.md) (`as="span"`, inside the hero's h1). Don't replace the product with it: the Timetable or slot picker stays the main artifact, and renders sit around it. Never in the portal.
+- On marketing surfaces (the ACCS landing, the Meeting At 10 site, the documentation site), the page around the hero may use an [Aurora](../expressive/aurora.md) and a [GridBackdrop](../expressive/grid-backdrop.md), with the headline as a [WordReveal](../expressive/word-reveal.md) (`as="span"`, inside the hero's h1). The Timetable or slot picker stays the main artifact. Never in the portal.
 - Don't use it on app pages; use [SectionHeader](section-header.md) with `level={1}`.
 
 ## Anatomy

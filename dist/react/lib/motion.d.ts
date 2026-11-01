@@ -42,5 +42,4 @@ export declare const distance: {
     readonly drop: 6;
     readonly rise: 8;
     readonly reveal: 24;
-    readonly float: 10;
 };

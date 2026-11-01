@@ -20,7 +20,7 @@ export default function Home() {
   const components = docsIn("components").length;
   const guides = docsIn("guides").length;
   const parts = [
-    ["Foundations", "/foundations/", `${foundations} pages`, "Palette, type, spacing, motion, imagery and the materials every screen uses."],
+    ["Foundations", "/foundations/", `${foundations} pages`, "Palette, type, spacing, motion and the materials every screen uses."],
     ["Components", "/components/", `${components} pages`, "Each component live in light and dark, with props, states and keyboard notes."],
     ["Patterns", "/examples/landing/", `${EXAMPLES.length} pages`, "Full pages built from the package: the landing page, portal, a restricted record, sign-in and the team site."],
     ["Guides", "/guides/", `${guides} pages`, "Install steps, app migration, voice and tone, accessibility and the changelog."],

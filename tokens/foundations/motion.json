@@ -1,5 +1,5 @@
 {
-  "$description": "Motion grammar: color and hover changes are quick; overlays rise with an exponential ease-out; spatial moves use springs. Springs are emitted as CSS linear() curves with their settle duration (scripts/lib.mjs springCurve) and as Motion configs (src/react/lib/motion.ts). prefers-reduced-motion removes transforms. The expressive layer (cinematic, stagger, ambient, drift, marquee, emphasized, reveal, float) is for marketing surfaces only.",
+  "$description": "Motion grammar: color and hover changes are quick; overlays rise with an exponential ease-out; spatial moves use springs. Springs are emitted as CSS linear() curves with their settle duration (scripts/lib.mjs springCurve) and as Motion configs (src/react/lib/motion.ts). prefers-reduced-motion removes transforms. The expressive layer (cinematic, stagger, ambient, drift, marquee, emphasized, reveal) is for marketing surfaces only.",
   "motion": {
     "duration": {
       "$type": "duration",
@@ -117,9 +117,6 @@
       },
       "reveal": {
         "$value": "24px"
-      },
-      "float": {
-        "$value": "10px"
       }
     }
   }

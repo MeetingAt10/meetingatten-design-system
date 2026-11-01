@@ -102,8 +102,6 @@ export { Divider, type DividerProps } from './layout/Divider.js';
 // Expressive layer (marketing surfaces: the ACCS landing, Meeting At 10 and the documentation site)
 export { Reveal, type RevealProps } from './expressive/Reveal.js';
 export { WordReveal, type WordRevealProps } from './expressive/WordReveal.js';
-export { FloatingArt, type FloatingArtProps } from './expressive/FloatingArt.js';
-export { ParallaxScene, type ParallaxSceneProps } from './expressive/ParallaxScene.js';
 export { Parallax, type ParallaxProps } from './expressive/Parallax.js';
 export { Marquee, type MarqueeProps } from './expressive/Marquee.js';
 export { SpotlightCard, type SpotlightCardProps } from './expressive/SpotlightCard.js';
@@ -111,4 +109,3 @@ export { Aurora, GridBackdrop, type AuroraProps, type GridBackdropProps } from '
 export { Orbit, type OrbitProps } from './expressive/Orbit.js';
 export { CountUp, type CountUpProps } from './expressive/CountUp.js';
 export { ScrollProgress, type ScrollProgressProps } from './expressive/ScrollProgress.js';
-export { imagery, type ImageryName } from './expressive/imagery.js';

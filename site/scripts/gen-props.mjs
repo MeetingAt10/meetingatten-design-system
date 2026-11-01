@@ -33,6 +33,3 @@ console.log(`gen-props: ${Object.keys(out.components).length} components, ${Obje
 mkdirSync('public/logo', { recursive: true });
 for (const f of readdirSync(join(process.cwd(), '..', 'assets', 'logo'))) copyFileSync(join(process.cwd(), '..', 'assets', 'logo', f), join('public/logo', f));
 
-// The brand renders, served at /imagery/<name>.webp for the home page and the expressive demos.
-mkdirSync('public/imagery', { recursive: true });
-for (const f of readdirSync(join(process.cwd(), '..', 'assets', 'imagery')).filter((f) => f.endsWith('.webp'))) copyFileSync(join(process.cwd(), '..', 'assets', 'imagery', f), join('public/imagery', f));

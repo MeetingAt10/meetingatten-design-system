@@ -97,7 +97,7 @@ Use the files as exported, as images with `.ds-logo-file` (32px tall by default;
 | Full color | `#032E87` on white or the light canvas; the only version in the repo |
 | Dark surfaces | The files do not adapt to the dark theme or forced colors; place the mark on a light `surface` plate, or use the door plate |
 | Recoloring | Never recolor or redraw the mark |
-| Clear space | 2x on all sides, where x is the mark's stem thickness; no content, rules or imagery inside it |
+| Clear space | 2x on all sides, where x is the mark's stem thickness; no content or rules inside it |
 | Misuse | Don't stretch, use low-contrast pairs, add decorative accents, or add shadow, glow, outline or bevel |
 
 ## Other assets
