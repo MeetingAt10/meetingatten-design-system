@@ -2,6 +2,14 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](https://semver.org); while `0.x`, breaking changes bump the minor and are marked **BREAKING**.
 
+## [1.2.1] - 2026-11-01
+
+### Fixed
+- `html` clips horizontal overflow, so no page scrolls sideways on phones (the showcase home was 8px wider than a 390px viewport).
+- Display tracking eased to -0.03em and headings get a little word spacing, so the wide Plus Jakarta Sans period and comma no longer read as a gap.
+- `ReportsTable` caption word spacing.
+- Showcase: display headings drop trailing periods; the components index no longer calls its previews demos.
+
 ## [1.2.0] - 2026-11-01
 
 Visual overhaul: a new ivory, navy, cobalt, emerald and amber palette, layered navy-tinted elevation, a new radius scale and a motion layer across the components. Token names and the React API are unchanged (see Deprecated). ACCS and Meeting@10 are now presented as live production platforms: all prototype, sample and demo labeling is removed.

@@ -8,6 +8,7 @@
   scrollbar-gutter: stable;
   scroll-padding-top: var(--ds-space-80, 5rem);
   text-size-adjust: 100%;
+  overflow-x: clip; /* contain full-bleed atmosphere; body clip alone leaves mobile layout width wider than the screen */
 }
 .ds-body {
   margin: 0;

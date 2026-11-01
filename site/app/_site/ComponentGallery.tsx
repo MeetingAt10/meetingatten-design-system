@@ -19,7 +19,7 @@ export function ComponentGallery() {
       <SectionHeader
         level={1}
         title={SECTIONS.components.title}
-        description="Every component's default demo, in the current theme. Open one for its light and dark sheets, states, props, and keyboard and screen reader notes."
+        description="Every component's default example, in the current theme. Open one for its light and dark sheets, states, props, and keyboard and screen reader notes."
       />
       <nav aria-label="Component categories" className="site-gallery__jump">
         {[...groups].map(([cat, docs]) => (

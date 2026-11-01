@@ -24,6 +24,7 @@
     text-align: start;
     font: var(--ds-type-h4-font-weight) var(--ds-type-h4-size) / var(--ds-type-h4-line-height) var(--ds-type-h4-font-family);
     letter-spacing: var(--ds-type-h4-letter-spacing);
+    word-spacing: 0.08em;
   }
   & :is(thead th, [role="columnheader"]) {
     position: sticky;

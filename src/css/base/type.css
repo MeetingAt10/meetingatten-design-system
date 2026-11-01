@@ -3,6 +3,7 @@
 .ds-type-display, .ds-type-h1, .ds-type-h2, .ds-type-h3, .ds-type-h4 {
   margin: 0;
   text-wrap: balance;
+  word-spacing: 0.06em; /* Jakarta's tight word space reads cramped at display tracking */
   font-kerning: normal;
   font-variant-numeric: lining-nums tabular-nums;
 }

@@ -30,7 +30,7 @@ export default function Home() {
       <ScrollProgress />
       <Hero
         className="site-hero"
-        title={<WordReveal as="span" text="Precise interfaces for the college week." />}
+        title={<WordReveal as="span" text="Precise interfaces for the college week" />}
         lead="Tokens, React components and patterns for the ACCS portal, the landing page and the Meeting At 10 site."
         actions={<><Button size="lg" href="/guides/getting-started/" icon="rocket">Get started</Button><Button size="lg" variant="secondary" href="/components/" iconEnd="arrow-right">Browse components</Button></>}
         art={<div className="site-enter site-hero__window" style={{ "--i": 3 } as React.CSSProperties}><div className="site-win__bar"><span className="site-win__title">This week</span><Badge tone="consult">Consultations open</Badge></div><div className="site-hero__sheet"><HomeSheet /></div></div>}
@@ -67,7 +67,7 @@ export default function Home() {
       <Section className="ds-section--wash" aria-labelledby="look-h">
         <div className="site-look">
           <Reveal className="site-look__type">
-            <h2 id="look-h" className="site-look__display">Type with <em>weight</em>, colour with intent.</h2>
+            <h2 id="look-h" className="site-look__display">Type with <em>weight</em>, colour with intent</h2>
             <p className="ds-lead">Plus Jakarta Sans for headings, Inter for reading, JetBrains Mono only for codes like <span className="ds-time">CCS-2026-0142</span>. Ivory ground, navy action, cobalt focus, emerald and amber for the two lanes.</p>
           </Reveal>
           <Reveal variant="end" className="site-look__palette">
@@ -83,7 +83,7 @@ export default function Home() {
       <Section tone="plate" aria-labelledby="install-h">
         <div className="site-cta">
           <Logo size="lg" code={`v${VERSION}`} />
-          <h2 id="install-h" className="ds-type-h1">Install by tag.</h2>
+          <h2 id="install-h" className="ds-type-h1">Install by tag</h2>
           <pre className="site-install"><code>npm install github:MeetingAt10/meetingatten-design-system#v{VERSION}</code></pre>
           <div className="ds-row"><Button size="lg" variant="plate" href="/guides/getting-started/" iconEnd="arrow-right">Read the getting started guide</Button></div>
         </div>

@@ -20,7 +20,7 @@
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "-0.032em"
+        "$value": "-0.03em"
       }
     },
     "h1": {
