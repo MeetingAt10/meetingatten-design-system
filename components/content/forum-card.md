@@ -5,12 +5,11 @@ react: ForumCard
 ---
 # Forum Card
 
-A forum card is one community discussion in a list: the topic chip, the question, a short excerpt, and a ruled meta row with the author, the reply count and the status. The whole card opens the thread. It is a linked [Card](card.md) in the community lane.
+A forum card is one community discussion in a list. It shows the topic chip, the question, a short excerpt and a ruled meta row with the author, the reply count and the status. The whole card opens the thread. It is a linked [Card](card.md) in the community lane, and it keeps the raised `sheet` treatment so it reads as the item to open.
 
 ## When to use
 
 - Use it for community questions and discussions in a feed or search results.
-- The `demo` prop is deprecated and renders nothing.
 - Don't use it for announcements; use [Announcement Card](announcement-card.md).
 - Don't put names, student identifiers or report content in the excerpt.
 
@@ -18,9 +17,8 @@ A forum card is one community discussion in a list: the topic chip, the question
 
 | Part | Class | Notes |
 |---|---|---|
-| Sheet | `.ds-card.ds-card--link` | Flat paper with a hairline rule; lifts on hover |
+| Sheet | `.ds-card.ds-card--link` | Raised paper with a hairline ring; lifts on hover. Pass `variant="tint"` or `"open"` in dense lists |
 | Topic chip | `.ds-card__lane.ds-card__lane--community` | Amber block naming the topic (`topic`) |
-| Demo badge | `.ds-badge.ds-badge--outline` | "Demo", only with `demo` |
 | Title link | `.ds-card__title` > `.ds-card__link` | H3 by default (`level`); the link stretches over the whole card |
 | Excerpt | `.ds-card__body` | Body small, secondary text |
 | Author | `.ds-card__stat` | 24px community [Avatar](avatar.md) and the name |
@@ -32,16 +30,15 @@ A forum card is one community discussion in a list: the topic chip, the question
 
 | State | Looks | Set by |
 |---|---|---|
-| Rest | Flat paper, hairline rule | none |
-| Hover | The rule gives way to the lift shadow, the card rises 2px, the title underlines, the arrow steps forward | `:hover`, `.is-hover` |
+| Rest | Raised paper, hairline ring | none |
+| Hover | The shadow deepens to the lift, the card rises 2px, the title underlines and the arrow steps forward | `:hover`, `.is-hover` |
 | Focus | 2px focus ring around the card while the title link has keyboard focus | `:focus-visible` on `.ds-card__link` |
-| Demo | Outlined "Demo" badge in the head | `demo` |
 
 ## Behavior and accessibility
 
 - The title is the card's only link, so the card is named by its title alone; the action text is hidden from assistive tech.
 - The topic chip is a topic, never a permission or confidentiality signal.
-- Community copy is casual and encouraging; invite participation without promising answers.
+- Community copy is casual and encouraging. Invite participation and do not promise answers.
 - The author avatar is announced as an image with the author's name, and the name is printed beside it.
 - Reduced motion: no lift and no arrow step.
 - Forced colors: the card keeps a `CanvasText` edge; focus shows a 2px `Highlight` outline around the card.
@@ -55,11 +52,10 @@ import { ForumCard } from '@meetingat10/design-system/react';
   topic="Algorithms"
   title="What helped recursion finally click for you?"
   excerpt="Share the explanation, drawing or example that worked."
-  author="Demo member"
+  author="Paolo Dizon"
   replies={6}
   status="Open discussion"
   href="/community/recursion"
-  demo
 />
 ```
 
@@ -71,12 +67,11 @@ import { ForumCard } from '@meetingat10/design-system/react';
 <article class="ds-card ds-card--link">
   <div class="ds-card__head">
     <span class="ds-card__lane ds-card__lane--community">Algorithms</span>
-    <span class="ds-badge ds-badge--outline">Demo</span>
   </div>
   <h3 class="ds-card__title"><a class="ds-card__link" href="/community/recursion">What helped recursion finally click for you?</a></h3>
   <p class="ds-card__body">Share the explanation, drawing or example that worked.</p>
   <div class="ds-card__meta">
-    <span class="ds-card__stat"><span class="ds-avatar ds-avatar--24 ds-avatar--community" aria-hidden="true">DM</span>Demo member</span>
+    <span class="ds-card__stat"><span class="ds-avatar ds-avatar--24 ds-avatar--community" aria-hidden="true">PD</span>Paolo Dizon</span>
     <span class="ds-card__stat"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-chat"/></svg>6 replies</span>
     <span>Open discussion</span>
     <span class="ds-card__action" aria-hidden="true">Join the conversation<svg class="ds-icon ds-icon--16"><use href="sprite.svg#ds-arrow-right"/></svg></span>

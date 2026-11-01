@@ -2,13 +2,13 @@
 
 Every component spec, grouped by category. Each spec covers when to use it, anatomy, states, behavior and accessibility, React usage and plain-CSS markup.
 
-Styles live in `src/css/components/<category>/<name>.css` (built into `dist/components.css`); React components in `src/react/<category>/<Name>.tsx`, imported from `@meetingat10/design-system/react`. The design system site renders each spec with a live light and dark demo and a props table generated from the TypeScript types. Everything is proposed, not approved.
+Styles live in `src/css/components/<category>/<name>.css` (built into `dist/components.css`); React components in `src/react/<category>/<Name>.tsx`, imported from `@meetingat10/design-system/react`. The design system site renders each spec with a live light and dark demo and a props table generated from the TypeScript types.
 
 ## Scheduling
 
 - [Consultation Slot Picker](scheduling/consultation-slot.md) (`ConsultationSlotPicker`): Pick a consultation day from a sliding day strip, then one slot from blocks in line-form states that always say their state in words.
 - [Now-line](scheduling/now-line.md) (`NowLine`): The present moment across a time grid, a 2px line and dot in the now color with the time on a small plate.
-- [Time Block](scheduling/time-block.md) (`TimeBlock`): The unit of the Office Hours world, a block whose lane color owns the whole fill, with its time code, title and state in words.
+- [Time Block](scheduling/time-block.md) (`TimeBlock`): The basic unit of the Office Hours timetable, a block filled with its lane color, with its time code, title and state in words.
 - [Timetable](scheduling/timetable.md) (`Timetable`): A ruled week or day sheet of time blocks on a real, labeled hour grid, with the now-line on today and a hatched restricted band.
 
 ## Controls
@@ -37,7 +37,7 @@ Styles live in `src/css/components/<category>/<name>.css` (built into `dist/comp
 - [App Shell](navigation/app-shell.md) (`AppShell`): The workspace layout, a sidebar beside the top bar and content on desktop and a mobile header with a navigation drawer below 1024px.
 - [Breadcrumbs](navigation/breadcrumbs.md) (`Breadcrumbs`): Where the page sits, as a slash-separated trail whose last item is the current page in plain text.
 - [Command Palette](navigation/command-palette.md) (`CommandPalette`): One search over destinations and actions in a modal sheet, opened with Ctrl+K or Cmd+K.
-- [Footer](navigation/footer.md) (`Footer`): The site footer with the wordmark and a short description, named link columns, and a quiet bottom line for status notes.
+- [Footer](navigation/footer.md) (`Footer`): The site footer with the wordmark and a short description, named link columns, and a bottom line for status notes.
 - [Nav Item](navigation/item.md) (`NavItem`): One sidebar or mobile-menu destination; the current page becomes a solid navy block with its icon in the fill weight.
 - [Link](navigation/link.md) (`Link`): Navigation in text or on its own, with an underline that thickens on hover and an arrow that steps forward on standalone links.
 - [Menu](navigation/menu.md) (`MenuButton`): A button that opens a short list of actions on a floating sheet; destructive actions use danger ink and sit last.
@@ -68,7 +68,7 @@ Styles live in `src/css/components/<category>/<name>.css` (built into `dist/comp
 
 - [Announcement Card](content/announcement-card.md) (`AnnouncementCard`): A department or community update in a collection, with a lane chip, time, title, short body, source line and one link.
 - [Avatar](content/avatar.md) (`Avatar`): A person's photo or initials in a circle on a lane wash, alone or as an overlapping group with a count.
-- [Card](content/card.md) (`Card`): A paper sheet for one item in a collection or for a floating panel, never nested, with a rule at rest or a shadow when it floats.
+- [Card](content/card.md) (`Card`): A container for one item in a collection or for a floating panel, in a raised sheet, flat tint or open treatment, never nested.
 - [Forum Card](content/forum-card.md) (`ForumCard`): A community discussion in a collection; the title is the link, its hit area covers the card, and the card lifts on hover.
 - [Tile](content/tile.md) (`Tile`): A small solid block in a lane or status color holding one icon, duotone by default.
 
@@ -79,7 +79,7 @@ Styles live in `src/css/components/<category>/<name>.css` (built into `dist/comp
 - [Reports Table](data/reports-table.md) (`ReportsTable`): Own or assigned reports in a captioned, ruled table with the reference as row header, the status in line form and words, and a named action per row.
 - [Skeleton](data/skeleton.md) (`Skeleton`): Decorative placeholders in the shape of the content that is loading; the region announces the loading state in words.
 - [Table](data/table.md) (`Table`): A ruled sheet of rows and columns with keyboard navigation, sortable columns and row selection.
-- [View State](data/view-state.md) (`ViewState`): What a data region shows while it is loading, empty, failed or restricted, with the state in words and an honest next step.
+- [View State](data/view-state.md) (`ViewState`): What a data region shows while it is loading, empty, failed or restricted, with the state in words and a next step.
 
 ## Badges
 
@@ -110,7 +110,7 @@ Styles live in `src/css/components/<category>/<name>.css` (built into `dist/comp
 
 ## Expressive
 
-Marketing surfaces only (the ACCS landing, the Meeting At 10 site, the showcase); never inside portal workflows. See [motion](../foundations/motion.md) and [imagery](../foundations/imagery.md).
+Marketing surfaces only (the ACCS landing, the Meeting At 10 site, the documentation site); never inside portal workflows. See [motion](../foundations/motion.md) and [imagery](../foundations/imagery.md).
 
 - [Reveal](expressive/reveal.md) (`Reveal`): Content that eases in as it scrolls into view, visible by default and static where scroll-driven animation is unsupported or motion is reduced.
 - [WordReveal](expressive/word-reveal.md) (`WordReveal`): A headline whose words rise out of a clipped line on page load, one after another, read once by screen readers.
@@ -129,4 +129,4 @@ Marketing surfaces only (the ACCS landing, the Meeting At 10 site, the showcase)
 
 - Lanes: schedule (navy, default), community (amber), consult (emerald), restricted (hatched ink, no hue). Color never signals permission or confidentiality.
 - Line forms carry state and always come with a word: solid = open or active, dashed = pending or draft, hatched = taken or restricted, struck = disabled or closed.
-- Craft rules: no eyebrows above headings, no colored side stripes over 1px, Agenda rows instead of same-size icon-card columns, mono only for times, codes, references, keys and code, a rule or a shadow but never both, cards only for collection items and floating panels, no emoji or Unicode glyph icons, honest claims only ([principles](../docs/principles.md)).
+- Craft rules: no eyebrows above headings, no colored side stripes over 1px, Agenda rows instead of same-size icon-card columns, mono only for times, codes, references, keys and code, a ring or a shadow but never a border plus a shadow, cards only for collection items and floating panels in mixed sheet, tint and open treatments, no emoji or Unicode glyph icons, no claims the product cannot back ([principles](../docs/principles.md)).

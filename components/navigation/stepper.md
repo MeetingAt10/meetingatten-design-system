@@ -10,7 +10,7 @@ A stepper shows progress through a short flow (book a time, add details, review)
 ## When to use
 
 - Use it for flows of three to five steps where people benefit from seeing what is left.
-- Use a step `description` for the honest state of a step ("Pending policy decision").
+- Use a step `description` for the state of a step ("Pending policy decision").
 - Don't use it for views of one page; use [Tabs](tab.md).
 
 ## Anatomy

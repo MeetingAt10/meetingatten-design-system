@@ -55,13 +55,13 @@ import { ReportRecord } from '@meetingat10/design-system/react';
     <ReportRecord
       reference="CCS-2026-0142" title="General concern" status="Draft"
       facts={[{ label: 'Updated', value: '21 Oct' }, { label: 'Visibility', value: 'You only' }]}
-      href="/reports/demo-024"
+      href="/reports/ccs-2026-0142"
     />
   </li>
   <li>
     <ReportRecord
       reference="CCS-2026-0091" title="General question" status="Resolved" statusTone="success" statusForm="solid"
-      facts={[{ label: 'Updated', value: '2 Oct' }]} href="/reports/demo-009"
+      facts={[{ label: 'Updated', value: '2 Oct' }]} href="/reports/ccs-2026-0091"
     />
   </li>
 </ul>
@@ -84,7 +84,7 @@ import { ReportRecord } from '@meetingat10/design-system/react';
         <div><dt>Updated</dt><dd>21 Oct</dd></div>
         <div><dt>Visibility</dt><dd>You only</dd></div>
       </dl>
-      <a class="ds-link ds-link--standalone ds-record__action" href="/reports/demo-024" aria-label="View record CCS-2026-0142">View record<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-arrow-right"/></svg></a>
+      <a class="ds-link ds-link--standalone ds-record__action" href="/reports/ccs-2026-0142" aria-label="View record CCS-2026-0142">View record<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-arrow-right"/></svg></a>
     </article>
   </li>
 </ul>

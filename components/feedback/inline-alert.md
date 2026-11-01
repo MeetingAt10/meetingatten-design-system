@@ -5,11 +5,11 @@ react: Alert
 ---
 # Inline Alert
 
-An inline alert is a persistent message placed next to the content it is about: a failed save, a notice that a schedule is a sample, a boundary to keep in mind. It is a tinted sheet; the icon sits on a small solid block in the tone color, and the title and body stay in ink. There is no colored side stripe.
+An inline alert is a persistent message placed next to the content it is about: a failed save, a closed registration window or a boundary to keep in mind. It is a tinted sheet; the icon sits on a small solid block in the tone color, and the title and body stay in ink. There is no colored side stripe.
 
 ## When to use
 
-- Use it for messages that stay until the situation changes: errors with a fix, warnings, notices about sample content.
+- Use it for messages that stay until the situation changes: errors with a fix, warnings and notices about changed schedules.
 - Use `danger` for errors, with the problem and the fix in words ("Couldn't save your draft. Your text is kept on this device.").
 - Use `neutral` with `role="note"` for static guidance that is always on the page ("Why is Submit disabled?").
 - Don't make a [Toast](toast.md) the only place an error lives; the alert stays beside the content.
@@ -46,7 +46,7 @@ An inline alert is a persistent message placed next to the content it is about: 
 - Render the alert when the situation happens, close to the content it is about. Don't move focus to it unless the fix needs it.
 - The title says what happened; the body says what to do next. Keep the person's input.
 - The icon block is decorative; the words carry the tone. Change the glyph with `icon` (a curated name).
-- Honest copy: no promises of anonymity, security, response time or outcome.
+- Do not promise anonymity, security, response time or outcome.
 - Forced colors: the sheet and the icon block keep `CanvasText` edges.
 
 ## React

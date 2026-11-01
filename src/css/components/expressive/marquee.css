@@ -1,5 +1,5 @@
 /* Marquee (expressive layer): a slow, endless line of short labels. The React component renders the items twice (the
-   second group is aria-hidden and inert) and the track slides one group's width, so the loop is seamless. Pauses on
+   second group is aria-hidden and inert) and the track slides one group's width, so the loop has no seam. Pauses on
    hover and focus; under reduced motion it stops and wraps into a plain list.
    <div class="ds-marquee"><div class="ds-marquee__track"><div class="ds-marquee__group">..</div>
    <div class="ds-marquee__group" aria-hidden="true" inert>..</div></div></div> */

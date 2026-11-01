@@ -9,7 +9,7 @@ Reveal wraps a block of a marketing page so it rises (or fades, grows or slides)
 
 ## When to use
 
-- Use it on the sections, cards and list items of a landing or showcase page, one effect per page region.
+- Use it on the sections, cards and list items of a landing or documentation page, one effect per page region.
 - Use `index` to stagger siblings: each step starts its entrance 4% of the scroll range later.
 - Don't use it in the portal, on forms or on anything a task depends on.
 - Don't reveal the hero's first line; that is the job of [WordReveal](word-reveal.md) on load.

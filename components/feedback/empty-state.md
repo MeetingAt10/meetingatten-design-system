@@ -42,7 +42,7 @@ An empty state fills a region that has nothing to show yet: no consultations boo
 - The art is `aria-hidden`; the title and body carry the message.
 - The title is a real heading (`h2` by default, `h3` with `level={3}`); match it to the surrounding outline.
 - It is not a live region. When it replaces results after a filter or search, say so in text through the region that owns the results ("No posts match. Try another word.").
-- Keep the next step honest: "Book a time" is fine; a promise to find a slot is not.
+- Keep the next step concrete. "Book a time" is fine. A promise to find a slot is not.
 - No motion.
 
 ## React

@@ -21,8 +21,8 @@ export interface Doc {
 
 export const SECTIONS: Record<Section, { title: string; description: string }> = {
   foundations: { title: "Foundations", description: "The pinned ACCS palette, type, spacing, radius, elevation, motion, materials, themes and density." },
-  components: { title: "Components", description: "Every component on a light and a dark sheet, with React props, states and accessibility notes." },
-  guides: { title: "Guides", description: "Getting started, principles, voice, accessibility, icons, logo and assets, migrating apps, and the changelog." },
+  components: { title: "Components", description: "Each component on a light and a dark sheet, with React props, states and accessibility notes." },
+  guides: { title: "Guides", description: "Install steps, principles, voice, accessibility, icons, logo and assets, app migration and the changelog." },
 };
 
 function parse(file: string) {

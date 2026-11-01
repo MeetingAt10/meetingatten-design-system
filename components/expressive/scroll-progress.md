@@ -9,7 +9,7 @@ ScrollProgress is a hairline bar fixed to the top of the window that grows from 
 
 ## When to use
 
-- Use it once, at the top of a long marketing or showcase page.
+- Use it once, at the top of a long marketing or documentation page.
 - Don't use it on short pages, in the portal or on pages that already show progress (a [Stepper](../navigation/stepper.md), a [Progress](../feedback/progress.md)).
 
 ## Anatomy

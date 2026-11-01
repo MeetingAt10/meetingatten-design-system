@@ -1,52 +1,40 @@
 # Elevation
 
-Sheets rest flat with a hairline rule; shadows are only for blocks that lift and overlays that float.
-
-Elevation is declared once: a rule border or a shadow, never both.
+Surfaces declare one elevation: a hairline ring, or a ring inside layered shadows. They never carry a 1px border plus a large soft shadow.
 
 ## Levels
 
 | Level | Look | Used by |
 |---|---|---|
-| Flat | `surface` with a 1px `border-subtle` rule, no shadow | Sheets, cards at rest, timetable, tables, inputs |
-| Lift | Ink-tinted offset shadow, `--ds-block-shadow` | Hovered or dragged blocks, linked cards on hover, hovered primary buttons, the segmented chip, switch thumb |
-| Overlay | Deeper offset shadow, `--ds-overlay-shadow` | Menus, listboxes, popovers, dialogs, drawers, toasts, overlay cards |
+| Ring | `--ds-ring-shadow`, a 1px ink hairline at 8% to 14% | Tint cards, tables, the secondary button, inputs on hover |
+| Sheet | `--ds-sheet-shadow`, a ring plus a 1px and a 12px soft layer | Sheet cards at rest, the timetable, framed previews |
+| Lift | `--ds-block-shadow`, a deeper ring and layers | Hovered blocks and slots, hovered linked cards, the chosen segment, the switch thumb, tooltips |
+| Overlay | `--ds-overlay-shadow`, the deepest layers | Menus, listboxes, popovers, dialogs, drawers, toasts, overlay cards |
+| Button | `--ds-btn-shadow`, a navy-tinted layer | Primary buttons, with a 1px top highlight |
 
-A linked card trades its rule for the lift shadow on hover (`border-color: transparent`), so it never shows both. Overlays have no rule at all.
+A page should not show one of these everywhere. A feed of announcements rests on the ring (tint cards), one featured post can rest on the sheet, and items inside a section need only a rule (open cards).
 
-## Shadows
+## Tokens
 
 | Token | Light | Dark |
 |---|---|---|
-| `--ds-shadow-lift` | `0 1px 2px` ink at 8% + `0 6px 16px` ink at 10% | (light only) |
-| `--ds-shadow-overlay` | `0 2px 6px` ink at 8% + `0 18px 40px` ink at 16% | (light only) |
-| `--ds-shadow-lift-dark` | (dark only) | `0 1px 2px` black at 40% + `0 8px 20px` black at 35% |
-| `--ds-shadow-overlay-dark` | (dark only) | `0 2px 8px` black at 50% + `0 24px 48px` black at 50% |
+| `--ds-shadow-ring` | `0 0 0 1px` ink at 8% | `ring-dark`, light ink at 12% |
+| `--ds-shadow-sheet` | ring, `0 1px 2px`, `0 12px 32px -16px` | `sheet-dark`, deeper black layers |
+| `--ds-shadow-lift` | ring, `0 2px 4px`, `0 20px 40px -16px` | `lift-dark` |
+| `--ds-shadow-overlay` | ring, `0 4px 8px`, `0 8px 16px -8px`, `0 28px 64px -24px` | `overlay-dark` |
+| `--ds-shadow-btn` | `0 1px 2px` and `0 8px 16px -8px` in navy | `btn-dark` |
 
-Components read the treatments, which pick the right shadow per theme:
-
-| Treatment | Light | Dark |
-|---|---|---|
-| `--ds-block-shadow` | `shadow.lift` | `shadow.lift-dark` |
-| `--ds-overlay-shadow` | `shadow.overlay` | `shadow.overlay-dark` plus a 1px top highlight (dark border at 35%) |
-| `--ds-overlay-bg` | `surface` | `raised` |
-| `--ds-plate-shadow` | none | 1px top highlight (dark hover blue at 60%) |
-| `--ds-btn-highlight` | 1px top highlight, white at 14% | white at 35% |
-
-Shadows are ink-tinted (`#0C1730`) in light and plain black in dark, with an offset and a soft blur. No glow, no colored shadow, no glass.
-
-## Dark theme
-
-In dark, overlays sit on `raised` and carry a 1px top highlight, because a shadow alone barely reads on a dark canvas. Solid blocks and plates get the same thin highlight along their top edge.
+Components read the treatments (`--ds-ring-shadow`, `--ds-sheet-shadow`, `--ds-block-shadow`, `--ds-overlay-shadow`, `--ds-btn-shadow`), which pick the right value per theme. Light shadows are tinted with the ink color `#0C1730`. Dark shadows are black with a light ink ring, because a shadow alone barely reads on a dark canvas.
 
 ## Rules
 
 | Rule | Detail |
 |---|---|
-| Declared once | Rule border or shadow, never both on the same element |
-| Earned by motion | A block gets the lift shadow only while it is hovered, dragged or picked up |
-| Never a trust signal | Elevation shows hierarchy and interaction, not importance, security or privacy |
-| No nesting | A card never sits inside a card; detail pages use sections, rules and headings |
+| Declared once | Each element has one elevation: a ring or layered shadows |
+| Earned by motion | A block gets the lift only while hovered, dragged or chosen |
+| Not a trust signal | Elevation shows hierarchy and interaction, not importance, security or privacy |
+| No nesting | A card never sits inside a card. Detail pages use sections, rules and headings |
+| No glow | No colored shadows. The spotlight glow in the expressive layer is the only exception and appears on hover |
 
 ## Tailwind
 

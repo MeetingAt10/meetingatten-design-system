@@ -65,7 +65,7 @@ import { Badge } from '@meetingat10/design-system/react';
 <Badge tone="consult" form="taken">Booked</Badge>
 <Badge form="closed">Withdrawn</Badge>
 <Badge tone="info">Submitted</Badge>
-<Badge outline marker={false}>Demo</Badge>
+<Badge outline marker={false}>Pinned</Badge>
 ```
 
 `tone` is `neutral` (default), `info`, `success`, `warning`, `danger`, `community` or `consult`. `form` is `solid` (default), `pending`, `restricted`, `taken` or `closed`.
@@ -77,5 +77,5 @@ import { Badge } from '@meetingat10/design-system/react';
 <span class="ds-badge ds-badge--success"><span class="ds-badge__mark" aria-hidden="true"></span>Resolved</span>
 <span class="ds-badge ds-badge--restricted"><span class="ds-badge__mark" aria-hidden="true"></span>Restricted review</span>
 <span class="ds-badge ds-badge--closed"><span class="ds-badge__mark" aria-hidden="true"></span>Withdrawn</span>
-<span class="ds-badge ds-badge--outline">Demo</span>
+<span class="ds-badge ds-badge--outline">Pinned</span>
 ```

@@ -11,7 +11,7 @@ The sidebar is the workspace rail on desktop: the brand on top (the door plate o
 
 - Use it for the portal and admin workspace, inside [AppShell](app-shell.md).
 - Use `SidebarSection` to group destinations under a short label ("Workspace", "Staff").
-- Use `SidebarNote` for honest scope notes ("Own reports only").
+- Use `SidebarNote` for scope notes ("Own reports only").
 - Don't use it on the landing or Meeting At 10 site; use [Navbar](navbar.md).
 
 ## Anatomy

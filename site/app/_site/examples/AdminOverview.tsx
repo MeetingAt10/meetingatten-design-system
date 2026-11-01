@@ -18,7 +18,7 @@ export function AdminOverviewBody() {
           level={1}
           split
           title="Your week"
-          description="Wednesday 21 October. Your week, community and records in one place."
+          description="Wednesday 21 October. Your timetable, the community feed and your reports."
           actions={
             <>
               <SegmentedControl aria-label="Schedule view" selectedKey={view} onSelectionChange={setView}>
@@ -40,7 +40,7 @@ export function AdminOverviewBody() {
             </TabList>
             <TabPanel id="latest">
               <Stack gap={12}>
-                <AnnouncementCard level={3} tag="Announcement" when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#">Same time, Wednesday 13:00. Bring a laptop.</AnnouncementCard>
+                <AnnouncementCard level={3} tag="Announcement" when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#">The briefing is still at Wednesday 13:00. Bring a laptop.</AnnouncementCard>
                 <ForumCard level={3} topic="Algorithms" title="What helped recursion finally click for you?" author="Paolo Dizon" replies={6} status="Open discussion" href="#" />
               </Stack>
             </TabPanel>
@@ -56,7 +56,7 @@ export function AdminOverviewBody() {
             <section aria-labelledby="next-h" className="ds-stack ds-stack--12">
               <h2 id="next-h" className="ds-type-h4">Next consultation</h2>
               <TimeBlock time="Wed 21 Oct · 15:30-16:30" title="Thesis check-in" meta="CCS 304 · Prof. Reyes" lane="consult" form="pending" icon="hourglass" />
-              <p className="ds-type-body-small ds-secondary">Awaiting the faculty member's confirmation. Nothing is booked until they confirm.</p>
+              <p className="ds-type-body-small ds-secondary">Waiting for the faculty member to confirm. Nothing is booked until they do.</p>
             </section>
             <Divider />
             <Meter label="Consultation slots taken this week" value={6} maxValue={8} valueLabel="6 of 8" />

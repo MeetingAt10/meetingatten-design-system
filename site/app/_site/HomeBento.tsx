@@ -68,7 +68,7 @@ export function HomeBento() {
             <Badge tone="community">Community</Badge>
             <Badge tone="consult">Consultation</Badge>
           </div>
-          <p className="ds-type-body-small ds-secondary"><Icon name="lock" size={16} weight="fill" /> Words always travel with the colour.</p>
+          <p className="ds-type-body-small ds-secondary"><Icon name="lock" size={16} weight="fill" /> Every status has a word as well as a color.</p>
         </div>
       </Win>
     </div>

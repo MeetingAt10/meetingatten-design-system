@@ -52,7 +52,7 @@ import { Button, Popover } from '@meetingat10/design-system/react';
   title="Consultation length"
   arrow
 >
-  <p className="ds-type-body-small ds-secondary">Slots in this sample are 30 minutes. Book two in a row for longer topics.</p>
+  <p className="ds-type-body-small ds-secondary">Slots are 30 minutes. Book two in a row for longer topics.</p>
 </Popover>
 ```
 
@@ -65,7 +65,7 @@ import { Button, Popover } from '@meetingat10/design-system/react';
 <div class="ds-popover" id="length-pop" data-placement="bottom">
   <div class="ds-popover__dialog" role="dialog" aria-labelledby="length-title">
     <h3 class="ds-popover__title" id="length-title">Consultation length</h3>
-    <p class="ds-type-body-small ds-secondary">Slots in this sample are 30 minutes. Book two in a row for longer topics.</p>
+    <p class="ds-type-body-small ds-secondary">Slots are 30 minutes. Book two in a row for longer topics.</p>
   </div>
 </div>
 ```

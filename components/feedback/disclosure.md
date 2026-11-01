@@ -52,11 +52,11 @@ A disclosure is a ruled row that opens in place: an FAQ answer, a group of filte
 import { Accordion, Disclosure } from '@meetingat10/design-system/react';
 
 <Accordion defaultExpandedKeys={['live']}>
-  <Disclosure id="live" title="Are these schedules live?">No. Every schedule on this page is a sample.</Disclosure>
+  <Disclosure id="live" title="Are these schedules current?">Yes. They follow each faculty member's posted hours.</Disclosure>
   <Disclosure id="reports" title="Who can see my reports?">
     Recipients and access rules are still being confirmed. Restricted access does not mean anonymous.
   </Disclosure>
-  <Disclosure id="length" title="How long is a consultation?">Slots in this sample are 30 minutes.</Disclosure>
+  <Disclosure id="length" title="How long is a consultation?">Slots are 30 minutes.</Disclosure>
 </Accordion>
 
 <Disclosure title="Record details" level={2} defaultExpanded>
@@ -78,7 +78,7 @@ String `children` are wrapped in a paragraph. Other React Aria props pass throug
       </button>
     </h3>
     <div class="ds-disclosure__panel" id="faq-live" role="group">
-      <div class="ds-disclosure__content"><p>No. Every schedule on this page is a sample.</p></div>
+      <div class="ds-disclosure__content"><p>Yes. They follow each faculty member's posted hours.</p></div>
     </div>
   </div>
   <div class="ds-disclosure">
@@ -89,7 +89,7 @@ String `children` are wrapped in a paragraph. Other React Aria props pass throug
       </button>
     </h3>
     <div class="ds-disclosure__panel" id="faq-length" role="group" hidden>
-      <div class="ds-disclosure__content"><p>Slots in this sample are 30 minutes.</p></div>
+      <div class="ds-disclosure__content"><p>Slots are 30 minutes.</p></div>
     </div>
   </div>
 </div>

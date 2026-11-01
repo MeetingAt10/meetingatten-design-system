@@ -10,7 +10,7 @@ The now-line marks the present moment on a time grid: a 2px line with a dot at i
 ## When to use
 
 - Use it on a real, labeled time grid (a week or day sheet) to show where today is now.
-- Use `useNow` to follow the clock, or pin a fixed time for samples and screenshots.
+- Use `useNow` to follow the clock, or pin a fixed time for screenshots and tests.
 - Don't use it as decoration or on a grid without hour labels.
 - Don't rely on it to tell the time; it is hidden from assistive tech, so state the time in text where it matters.
 

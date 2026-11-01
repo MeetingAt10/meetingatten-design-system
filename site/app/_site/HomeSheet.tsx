@@ -20,21 +20,21 @@ export function HomeSheet() {
 /** The five rules, each beside a live specimen. */
 export function RuleSpecimens({ current, forms }: { current: React.ReactNode; forms: React.ReactNode }) {
   const rules: Array<[string, string, React.ReactNode]> = [
-    ["The lane owns the block", "Schedule is navy, community amber, consultations emerald. The color fills the whole block at full strength, never a stripe or a dot.", (
+    ["Each lane has its own block color", "Schedule is navy, community is amber and consultations are emerald. The color fills the whole block. It is never a stripe or a dot.", (
       <div className="site-blocks site-blocks--tight">
         <TimeBlock time="09:00" title="Data Structures" />
         <TimeBlock time="14:00" title="Study circle" lane="community" />
         <TimeBlock time="10:00" title="Office hours" lane="consult" />
       </div>
     )],
-    ["State is drawn in line form", "Solid is open, dashed is pending, hatched is taken or restricted, struck is closed. A word always comes with it.", forms],
-    ["The boundary stays visible", "Reports are hatched ink with no hue. Color never signals confidentiality; the words and the hatching do.", (
+    ["State shows in the line", "A solid line is open, dashed is pending, hatched is taken or restricted and struck is closed. A word always comes with it.", forms],
+    ["Reports are marked as restricted", "Reports are hatched ink with no hue. Color never signals confidentiality. The words and the hatching do.", (
       <div className="site-band"><span className="ds-timetable__band-inner"><span className="ds-timetable__band-label"><Icon name="lock" size={16} weight="fill" /><strong>Reports</strong></span>Your own records only</span></div>
     )],
-    ["Now is a line", "The present is a red line with the time on a plate. It glides as the minutes pass and rests under reduced motion.", (
+    ["The current time is a line", "A red line carries the time on a plate. It moves as the minutes pass and stays still under reduced motion.", (
       <div className="site-nowline" aria-hidden="true"><span className="site-nowline__hour">10:00</span><span className="site-nowline__hour">11:00</span><NowLine offset={0.7} label="10:42" /></div>
     )],
-    ["Current is a solid block", "The page you are on, the chosen day and the current page number each become the navy block. A current item's icon switches to its fill weight.", current],
+    ["The current item is a solid block", "The page you are on, the chosen day and the current page number each turn into a navy block. A current item's icon switches to its fill weight.", current],
   ];
   return (
     <ol className="site-rules">

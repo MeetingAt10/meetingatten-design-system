@@ -19,16 +19,16 @@ export function ComponentGallery() {
       <SectionHeader
         level={1}
         title={SECTIONS.components.title}
-        description="Every component's default example, in the current theme. Open one for its light and dark sheets, states, props, and keyboard and screen reader notes."
+        description="The default example of each component in the current theme. Open one for its light and dark sheets, states, props, and keyboard and screen reader notes."
       />
       <nav aria-label="Component categories" className="site-gallery__jump">
         {[...groups].map(([cat, docs]) => (
-          <a key={cat} href={`#cat-${cat}`}>{cat}<span className="ds-time">{docs.length}</span></a>
+          <a key={cat} href={`#cat-${cat}`}>{cat}<span>{docs.length}</span></a>
         ))}
       </nav>
       {[...groups].map(([cat, docs]) => (
         <section key={cat} aria-labelledby={`cat-${cat}`} className="site-gallery__group">
-          <h2 id={`cat-${cat}`} className="site-index__title"><span className="ds-agenda__chip">{cat}</span><span className="ds-time">{docs.length}</span></h2>
+          <h2 id={`cat-${cat}`} className="site-index__title">{cat}<span>{docs.length}</span></h2>
           <ul className="site-gallery">
             {docs.map((d) => (
               <li key={d.slug} className={WIDE.has(d.slug) ? "site-gallery__item site-gallery__item--wide" : "site-gallery__item"}>

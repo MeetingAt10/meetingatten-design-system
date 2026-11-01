@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardLane, CardTitle, CardBody, CardMeta, CardAction } from './Card.js';
+import { Card, type CardProps, CardHeader, CardLane, CardTitle, CardBody, CardMeta, CardAction } from './Card.js';
 import { Avatar } from './Avatar.js';
 import { Icon } from '../icon/Icon.js';
 
@@ -17,15 +17,17 @@ export interface ForumCardProps {
   href: string;
   /** Visual call to action at the bottom. */
   actionLabel?: string;
+  /** Card treatment; default `sheet` (raised). */
+  variant?: CardProps['variant'];
   /** @deprecated Accepted for compatibility; renders nothing. */
   demo?: boolean;
   className?: string;
 }
 
 /** Forum card: a community discussion. The title is the link and its hit area covers the card, which lifts on hover. */
-export function ForumCard({ topic, title, level = 3, excerpt, author, replies, status, href, actionLabel = 'Join the conversation', className }: ForumCardProps) {
+export function ForumCard({ topic, title, level = 3, excerpt, author, replies, status, href, actionLabel = 'Join the conversation', variant, className }: ForumCardProps) {
   return (
-    <Card link className={className}>
+    <Card link variant={variant} className={className}>
       <CardHeader>
         <CardLane lane="community">{topic}</CardLane>
       </CardHeader>

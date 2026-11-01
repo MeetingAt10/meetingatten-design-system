@@ -5,15 +5,15 @@ react: Hero
 ---
 # Hero
 
-The hero is the first viewport of the ACCS landing and the Meeting At 10 site. Copy sits on the left: the brand (the [door plate](../identity/door-plate.md) on ACCS surfaces, the [Logo](../identity/logo.md) on Meeting At 10 surfaces), the page's h1 at display size, one supporting line and the actions. The artifact sits on the right at the scale it has in use, usually a [Timetable](../scheduling/timetable.md) with labeled sample blocks.
+The hero is the first viewport of the ACCS landing and the Meeting At 10 site. Copy sits on the left: the brand (the [door plate](../identity/door-plate.md) on ACCS surfaces, the [Logo](../identity/logo.md) on Meeting At 10 surfaces), the page's h1 at display size, one supporting line and the actions. The artifact sits on the right at the scale it has in use, usually a [Timetable](../scheduling/timetable.md) with realistic blocks.
 
 ## When to use
 
 - Use it once, at the top of a landing or marketing page.
-- Use `art` for the product doing its job (a week sheet, a slot picker), with synthetic content labeled as a sample.
-- Use `note` for honest small print ("Sample schedule; not live availability").
+- Use `art` for the product doing its job (a week sheet, a slot picker), using realistic course and room names.
+- Use `note` for small print such as the time zone ("Times are shown in Asia/Manila (PHT).").
 - Don't put an eyebrow or kicker above the headline, and don't add a row of metrics, gradient text or a stack of cards under it.
-- On marketing surfaces (the ACCS landing, the Meeting At 10 site, the showcase), `art` may be a composition of [FloatingArt](../expressive/floating-art.md) renders in a [ParallaxScene](../expressive/parallax-scene.md), over an [Aurora](../expressive/aurora.md) and a [GridBackdrop](../expressive/grid-backdrop.md), with the headline as a [WordReveal](../expressive/word-reveal.md) (`as="span"`, inside the hero's h1). Don't replace the product with it: the Timetable or slot picker stays the main artifact, and renders sit around it. Never in the portal.
+- On marketing surfaces (the ACCS landing, the Meeting At 10 site, the documentation site), `art` may be a composition of [FloatingArt](../expressive/floating-art.md) renders in a [ParallaxScene](../expressive/parallax-scene.md), over an [Aurora](../expressive/aurora.md) and a [GridBackdrop](../expressive/grid-backdrop.md), with the headline as a [WordReveal](../expressive/word-reveal.md) (`as="span"`, inside the hero's h1). Don't replace the product with it: the Timetable or slot picker stays the main artifact, and renders sit around it. Never in the portal.
 - Don't use it on app pages; use [SectionHeader](section-header.md) with `level={1}`.
 
 ## Anatomy
@@ -41,7 +41,7 @@ The hero is the first viewport of the ACCS landing and the Meeting At 10 site. C
 
 - The title is the page's only h1. The plate, lead, actions and note follow it in DOM order, then the art.
 - Name actions by what they do ("Sign in", "Browse the community"); keep one primary.
-- Label synthetic content in the art and the note (`DEMO`, "sample"); never imply live availability, approval or endorsement.
+- Do not imply approval or endorsement in the art or the note.
 - The hero has no motion of its own. Art such as the Timetable follows reduced motion on its own terms, and the [expressive layer](../../foundations/motion.md) pieces stop under reduced motion.
 - Forced colors: the plate and blocks keep their edges; the headline and lead take system text colors.
 
@@ -58,8 +58,8 @@ import { Hero, DoorPlate, Button, Timetable } from '@meetingat10/design-system/r
     <Button icon="sign-in" href="/sign-in">Sign in</Button>
     <Button variant="secondary" href="/community">Browse the community</Button>
   </>}
-  note="Sample schedule; not live availability."
-  art={<Timetable label="This week, sample schedule" days={week} events={events} />}
+  note="Times are shown in Asia/Manila (PHT)."
+  art={<Timetable label="This week" days={week} events={events} />}
 />
 ```
 
@@ -77,7 +77,7 @@ All slots except `title` are optional. The React component renders `<section cla
       <a class="ds-btn ds-btn--primary" href="/sign-in">Sign in</a>
       <a class="ds-btn ds-btn--secondary" href="/community">Browse the community</a>
     </div>
-    <p class="ds-hero__note">Sample schedule; not live availability.</p>
+    <p class="ds-hero__note">Times are shown in Asia/Manila (PHT).</p>
   </div>
   <div class="ds-hero__art">
     <div class="ds-timetable ds-isolate">...</div>

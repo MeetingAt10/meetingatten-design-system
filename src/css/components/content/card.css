@@ -1,6 +1,7 @@
 /* Card: a paper sheet for ONE item in a collection (announcement, post, record) or a floating panel.
-   Never nested; detail pages use open sections, rules and headings instead. Elevation is declared once: a hairline
-   ring with soft navy layers (no border); a linked card deepens the layers and lifts on hover.
+   Never nested; detail pages use open sections, rules and headings instead. Three treatments: the default sheet
+   (hairline ring plus soft navy layers, deepens and lifts on hover), --tint (flat on the neutral tint with a
+   hairline) and --open (a top rule and spacing, no surface).
    <article class="ds-card ds-card--link"><div class="ds-card__head"><span class="ds-card__lane ds-card__lane--community">Community</span>
    <time class="ds-card__when">Mon 19 Oct · 09:00</time></div><h3 class="ds-card__title"><a class="ds-card__link" href="..">..</a></h3>
    <p class="ds-card__body">..</p><div class="ds-card__meta">..</div></article> */
@@ -23,6 +24,22 @@
 }
 .ds-card--overlay { background: var(--ds-overlay-bg); box-shadow: var(--ds-overlay-shadow); border-radius: var(--ds-radius-overlay); padding: var(--ds-space-32); }
 .ds-card--flush { padding: 0; overflow: hidden; }
+/* Tint: flat on the neutral tint with a hairline, for items that sit in a long list. Smaller radius, no shadow. */
+.ds-card--tint {
+  background: var(--ds-highlight-neutral);
+  box-shadow: var(--ds-ring-shadow);
+  border-radius: var(--ds-radius-12);
+  &.ds-card--link:is(:hover, .is-hover) { box-shadow: 0 0 0 1px var(--ds-border-default); }
+}
+/* Open: no surface at all. A rule above and the spacing group the content; for items inside a section. */
+.ds-card--open {
+  padding: var(--ds-space-16) 0 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  border-top: var(--ds-size-rule) solid var(--ds-hairline-strong);
+  &.ds-card--link:is(:hover, .is-hover) { box-shadow: none; border-top-color: var(--ds-action-default); }
+}
 .ds-card__head {
   display: flex;
   flex-wrap: wrap;

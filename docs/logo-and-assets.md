@@ -106,5 +106,5 @@ Use the files as exported, as images with `.ds-logo-file` (32px tall by default;
 |---|---|
 | Favicon, app icons, Open Graph images | Meeting At 10 surfaces, including this site, carry the calendar mark (see above). ACCS surfaces derive theirs from an approved ACCS logo once there is one; until then they use the door-plate wordmark on the plate colors |
 | Illustrations | None. Empty states use drawn geometry (an empty ruled sheet), not illustrations |
-| Photos | Only with consent; demos use initials on synthetic names marked "(sample)" |
+| Photos | Only with consent. Examples use initials on invented names |
 | Icons | [Iconography](iconography.md) |

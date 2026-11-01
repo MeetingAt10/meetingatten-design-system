@@ -38,8 +38,8 @@ Treatment values follow a fixed grammar (token reference, `transparent`, `none`,
 | Cards | Only for collection items and floating panels; never nested |
 | Line forms with words | Solid, dashed, hatched and struck states always carry a word or icon |
 | No emoji, no Unicode glyph icons | Use the curated Phosphor vocabulary |
-| Honest copy | No promises of anonymity, security, response time or finality; label synthetic content `DEMO` or "sample" |
-| Logo | The Meeting At 10 logo is the system's logo: use the `Logo` component or the `meeting-at-10*.svg` files as exported; never redraw or stretch it, or recolor it beyond the light, dark and auto versions. The proposed ACCS files (`logo-*.svg`) are used as exported, never redrawn or recolored; they are proposed, not approved. The door plate is the ACCS wordmark |
+| Claims | No promises of anonymity, security, response time or finality. Examples use invented names and `CCS-2026-0142` style references |
+| Logo | The Meeting At 10 logo is the system's logo: use the `Logo` component or the `meeting-at-10*.svg` files as exported; never redraw or stretch it, or recolor it beyond the light, dark and auto versions. The proposed ACCS files (`logo-*.svg`) are used as exported, never redrawn or recolored; the final ACCS logo is still undecided. The door plate is the ACCS wordmark |
 
 ## CI gate
 
@@ -63,4 +63,4 @@ No raw color: `check:tokens` fails on hex, `rgb()`, `hsl()`, `color-mix()` and o
 | Reviews | At least one approval; token or component changes also need the design owner |
 | Commits | Conventional commits: `feat(tokens):`, `feat(components):`, `fix(css):`, `docs:`, `build:` |
 | Changelog | Every user-facing change gets a line under the next version in `CHANGELOG.md`; breaking changes are marked **BREAKING** |
-| Releases | The maintainer bumps `package.json`, finalizes the changelog and tags `vX.Y.Z`. A `v*` tag deploys the showcase site. Tag, push and deploy only with the owner's approval |
+| Releases | The maintainer bumps `package.json`, finalizes the changelog and tags `vX.Y.Z`. A `v*` tag deploys the documentation site. Tag, push and deploy only with the owner's approval |

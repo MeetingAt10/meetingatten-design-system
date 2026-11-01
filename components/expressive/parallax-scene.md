@@ -11,7 +11,7 @@ ParallaxScene turns pointer position into two numbers, `--ds-px` and `--ds-py`, 
 
 - Use it around the hero's constellation of renders, once per page region.
 - Set a different `depth` on each render: about 12 for far, 24 for middle, 40 for near.
-- Use `strength` below 1 to calm the effect on a large scene.
+- Use `strength` below 1 to reduce the effect on a large scene.
 - Don't wrap content that must stay put (text, forms, actions) in a scene; give the scene to the art alone.
 
 ## Anatomy

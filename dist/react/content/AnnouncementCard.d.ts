@@ -1,3 +1,4 @@
+import { type CardProps } from './Card.js';
 import type { Lane } from '../lib/lanes.js';
 export interface AnnouncementCardProps {
     /** Lane chip text (default "Announcement"). */
@@ -16,9 +17,11 @@ export interface AnnouncementCardProps {
     meta?: React.ReactNode;
     href?: string;
     linkLabel?: string;
+    /** Card treatment; default `tint` (flat, hairline). */
+    variant?: CardProps['variant'];
     /** @deprecated Accepted for compatibility; renders nothing. */
     demo?: boolean;
     className?: string;
 }
 /** Announcement card: a department or community update in a collection. */
-export declare function AnnouncementCard({ tag, lane, when, dateTime, title, level, children, meta, href, linkLabel, className }: AnnouncementCardProps): import("react").JSX.Element;
+export declare function AnnouncementCard({ tag, lane, when, dateTime, title, level, children, meta, href, linkLabel, variant, className }: AnnouncementCardProps): import("react").JSX.Element;

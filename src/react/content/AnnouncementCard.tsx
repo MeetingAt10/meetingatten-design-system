@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardLane, CardWhen, CardTitle, CardBody, CardMeta } from './Card.js';
+import { Card, type CardProps, CardHeader, CardLane, CardWhen, CardTitle, CardBody, CardMeta } from './Card.js';
 import { Link } from '../navigation/Link.js';
 import type { Lane } from '../lib/lanes.js';
 
@@ -19,15 +19,17 @@ export interface AnnouncementCardProps {
   meta?: React.ReactNode;
   href?: string;
   linkLabel?: string;
+  /** Card treatment; default `tint` (flat, hairline). */
+  variant?: CardProps['variant'];
   /** @deprecated Accepted for compatibility; renders nothing. */
   demo?: boolean;
   className?: string;
 }
 
 /** Announcement card: a department or community update in a collection. */
-export function AnnouncementCard({ tag = 'Announcement', lane = 'schedule', when, dateTime, title, level = 3, children, meta, href, linkLabel = 'Read update', className }: AnnouncementCardProps) {
+export function AnnouncementCard({ tag = 'Announcement', lane = 'schedule', when, dateTime, title, level = 3, children, meta, href, linkLabel = 'Read update', variant = 'tint', className }: AnnouncementCardProps) {
   return (
-    <Card className={className}>
+    <Card variant={variant} className={className}>
       <CardHeader>
         <span className="ds-card__lead">
           <CardLane lane={lane}>{tag}</CardLane>

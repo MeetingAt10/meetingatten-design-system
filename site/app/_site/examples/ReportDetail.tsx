@@ -36,7 +36,7 @@ export function ReportDetailBody() {
 
         <PrivacyNotice title="Restricted record" foot="Submission is disabled until recipients and access rules are confirmed.">
           <p>Only you can open this draft today. When recipients are confirmed, the people assigned to it will see it too.</p>
-          <p>Restricted access does not mean anonymous: assigned reviewers will know who submitted it.</p>
+          <p>Restricted access does not mean anonymous. Assigned reviewers will know who submitted it.</p>
         </PrivacyNotice>
 
         <Stepper steps={["Draft", { label: "Recipients confirmed", description: "Pending policy decision" }, "Submitted", "Review"]} current={1} label="Report progress" />
@@ -52,7 +52,7 @@ export function ReportDetailBody() {
         <Divider />
         <section aria-labelledby="details-h" className="ds-stack ds-stack--16">
           <h2 id="details-h" className="ds-type-h3">Details</h2>
-          <TextArea label="What happened" description="Describe what happened, when, and where. Leave out names you do not need to share." showCount maxLength={1000} defaultValue="Asked the department office about the room change for Thursday." />
+          <TextArea label="What happened" description="Describe what happened, when and where. Leave out names you do not need to share." showCount maxLength={1000} defaultValue="Asked the department office about the room change for Thursday." />
           <FileUpload label="Attachments" description="PDF, PNG or JPG, up to 10 MB each. Attachments follow the same access rules as the record." allowsMultiple acceptedFileTypes={["application/pdf", "image/png", "image/jpeg"]} />
           <div className="ds-row">
             <Button variant="secondary" icon="note" onPress={() => toast("Draft saved", { description: "CCS-2026-0142 · only you can see it.", tone: "success" })}>Save draft</Button>
@@ -62,7 +62,7 @@ export function ReportDetailBody() {
               <MenuItem id="discard" icon="trash" danger>Discard draft</MenuItem>
             </MenuButton>
           </div>
-          <Alert tone="neutral" title="Why is Submit disabled?">Recipients and access rules for reports are still being confirmed by the department. Your draft is kept.</Alert>
+          <Alert tone="neutral" title="Why is Submit disabled?">The department is still confirming recipients and access rules for reports. Your draft is saved.</Alert>
         </section>
 
         <Divider />
@@ -74,7 +74,7 @@ export function ReportDetailBody() {
               { title: "Attachment added", date: "21 Oct 09:20", dateTime: "2026-10-21T09:20", actor: "You" },
               { title: "Recipients being confirmed", state: "current", body: "The department office is confirming who receives reports in this category.", actor: "Department office" },
               { title: "Submitted to assigned reviewers", state: "pending" },
-              { title: "Review", state: "restricted", body: "Visible only to assigned reviewers and you." },
+              { title: "Review", state: "restricted", body: "Only assigned reviewers and you can see this." },
             ]}
           />
         </section>

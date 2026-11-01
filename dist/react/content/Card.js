@@ -5,11 +5,11 @@ import { Icon } from '../icon/Icon.js';
 import { laneClass } from '../lib/lanes.js';
 import { cx } from '../lib/cx.js';
 /**
- * Card: a paper sheet for ONE item in a collection (announcement, post, record) or a floating panel.
- * Never put a card inside a card; detail pages use open sections, rules and headings.
+ * Card: one item in a collection (announcement, post, record) or a floating panel. Raised paper by default;
+ * `variant` swaps in a flat tint or an open, rule-only treatment. Never put a card inside a card.
  */
-export function Card({ as: Tag = 'article', overlay, link, flush, className, ...rest }) {
-    return _jsx(Tag, { ...rest, className: cx('ds-card', overlay && 'ds-card--overlay', link && 'ds-card--link', flush && 'ds-card--flush', className) });
+export function Card({ as: Tag = 'article', overlay, link, flush, variant = 'sheet', className, ...rest }) {
+    return _jsx(Tag, { ...rest, className: cx('ds-card', variant !== 'sheet' && `ds-card--${variant}`, overlay && 'ds-card--overlay', link && 'ds-card--link', flush && 'ds-card--flush', className) });
 }
 /** Card header row: the lane chip and time on the left, meta on the right. */
 export function CardHeader({ className, ...rest }) {

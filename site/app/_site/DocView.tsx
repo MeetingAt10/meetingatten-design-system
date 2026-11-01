@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { docBody, routeOf, SECTIONS, type Doc } from "@/lib/content";
+import { docBody, routeOf, type Doc } from "@/lib/content";
 import { Markdown } from "@/lib/markdown";
 import { Sidebar } from "./Sidebar";
 import { PropsTable } from "./PropsTable";
@@ -20,9 +20,6 @@ export function DocView({ doc, demo }: { doc: Doc; demo?: React.ReactNode }) {
       <Sidebar current={doc} />
       <main className="site-docs__main">
         <article>
-          <p className="site-docs__trail">
-            <span className="ds-plate ds-plate--sm site-docs__section"><span className="ds-plate__name">{SECTIONS[doc.section].title}</span>{doc.category && <span className="ds-plate__code">{doc.category}</span>}</span>
-          </p>
           <Markdown source={intro} file={doc.file} />
           {demo}
           {doc.react && <PropsTable component={doc.react} />}

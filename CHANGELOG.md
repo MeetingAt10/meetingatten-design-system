@@ -2,17 +2,32 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](https://semver.org); while `0.x`, breaking changes bump the minor and are marked **BREAKING**.
 
+## [1.3.0] - 2026-11-01
+
+A cleanup of the visual and written layers. Components that looked alike now look different where it helps, and the prose across the docs, the components and the documentation site is rewritten in plainer language. Token names and the React API are unchanged.
+
+### Changed
+- `Card` takes a `variant` prop: `sheet` (raised paper, the default), `tint` (flat on the neutral tint with a hairline ring and 12px corners) and `open` (no surface, only a top rule). `AnnouncementCard` defaults to `tint` so a feed of updates no longer stacks identical raised boxes. `ForumCard` takes the same `variant` prop and keeps `sheet`.
+- `.ds-table-wrap` rests on the ring shadow with 12px corners instead of the sheet shadow.
+- `.ds-hero` has one cobalt wash instead of three. `.ds-section--wash` is a flat tinted band with no gradient.
+- Documentation site: the component gallery mixes tile widths and tints, the section indexes put the category beside its list, and the home page previews use four different surfaces. The pill above each docs title and the category chips above index headings are gone.
+- Examples: the landing community section lays out one sheet, one tint card and one open card instead of three equal cards.
+- Docs and copy: rewritten to remove filler wording, contrast phrasing, dashes and stock phrases. Stale values in `foundations/radius.md` and `foundations/elevation.md` now match the tokens (16px sheets, 10px controls, 20px overlays, 24px frames). Sample and demo wording is removed from the component examples.
+
+### Fixed
+- Count and category labels in the gallery and indexes no longer use the monospace face.
+
 ## [1.2.1] - 2026-11-01
 
 ### Fixed
-- `html` clips horizontal overflow, so no page scrolls sideways on phones (the showcase home was 8px wider than a 390px viewport).
+- `html` clips horizontal overflow, so no page scrolls sideways on phones (the documentation home page was 8px wider than a 390px viewport).
 - Display tracking eased to -0.03em and headings get a little word spacing, so the wide Plus Jakarta Sans period and comma no longer read as a gap.
 - `ReportsTable` caption word spacing.
-- Showcase: display headings drop trailing periods; the components index no longer calls its previews demos.
+- Documentation site: display headings drop trailing periods; the components index no longer calls its previews demos.
 
 ## [1.2.0] - 2026-11-01
 
-Visual overhaul: a new ivory, navy, cobalt, emerald and amber palette, layered navy-tinted elevation, a new radius scale and a motion layer across the components. Token names and the React API are unchanged (see Deprecated). ACCS and Meeting@10 are now presented as live production platforms: all prototype, sample and demo labeling is removed.
+Visual overhaul: a new ivory, navy, cobalt, emerald and amber palette, layered navy-tinted elevation, a new radius scale and a motion layer across the components. Token names and the React API are unchanged (see Deprecated). ACCS and Meeting@10 are now presented as live production platforms: the labels that marked them as fake are removed.
 
 ### Changed
 - Palette: ivory canvas (#F7F6F1) with white and raised-paper (#FDFCF9) surfaces, navy-black ink (#0C1730), slate secondary text (#4A5570), navy action kept (#032E87), cobalt focus (#2F5BEA), emerald replaces teal as the secondary lane (#0A7A55), amber replaces violet as the accent lane (#9A5008, brand amber #B25E09), highlighter #F5C451. Dark: canvas #070D1C, surface #0D1529, raised #121C35, ink #EAEEF7, secondary #A3ADC4, cobalt #7C9BFF, emerald #3CCB98, amber #F2B154. Success, warning and info ramps follow.
@@ -31,14 +46,14 @@ Visual overhaul: a new ivory, navy, cobalt, emerald and amber palette, layered n
 - `AnnouncementCard` and `ForumCard` `demo` prop: still accepted, renders nothing.
 
 ### Removed
-- All "Sample data", "Synthetic", "Capstone prototype", "Simulated" and "Demo" labels, badges and footer notes from the showcase and the documentation; `DEMO-0xx` references are now `CCS-2026-0xxx`.
+- All labels, badges and footer notes that marked ACCS or Meeting At 10 content as fake, from the documentation site and the docs; `DEMO-0xx` references are now `CCS-2026-0xxx`.
 
 ### Site
 - A new home page: a glass-framed live timetable in the hero, a large-type index, a bento of live component previews, the five rules, a type and palette band, with one choreographed entrance. No 3D renders on cards, grids or headers. A real mobile menu.
 
 ## [1.1.0] - 2026-11-01
 
-Additive minor release: the "Office Hours, after hours" expressive layer for the marketing surfaces (the ACCS landing, the Meeting At 10 site and the showcase). No breaking changes; no existing component, token or class changed. The portal look is untouched.
+Additive minor release: the "Office Hours, after hours" expressive layer for the marketing surfaces (the ACCS landing, the Meeting At 10 site and the documentation site). No breaking changes; no existing component, token or class changed. The portal look is untouched.
 
 ### Added
 - Motion tokens: durations `cinematic` (720ms), `stagger` (70ms), `ambient` (9000ms), `drift` (24000ms) and `marquee` (48000ms); ease `emphasized`; distances `reveal` (24px) and `float` (10px). Emitted as `--ds-motion-*` variables, in `tokens.json` and in `src/react/lib/motion.ts` (`duration`, `ease`, `distance`). Treatment `art-shadow` (`--ds-art-shadow`), the ink shadow under a render.
@@ -94,7 +109,7 @@ Site only; the package is unchanged from 1.0.0.
 ### Changed
 - Every component restyled: Button (block shapes, pending sweep line), Checkbox (drawn check), Switch (spring thumb), Calendar (today dot, selected block, struck unavailable days), FileUpload (dashed drop sheet, progress lines), NavItem (current item is a solid navy block with a fill icon), Tabs (sliding rule), Pagination (current block), Stepper (timeline), Alert (tinted sheet with a solid icon block, no stripe), Toast (inverse sheet, timer line, swipe, stack of three), Drawer (side and bottom sheet), Tooltip (ink plate), EmptyState (empty ruled sheet), Progress (rolling value), Spinner (clock hand), PrivacyNotice (hatched band with a lock), Skeleton (dashed blocks), Card (flat sheet, lifts only when linked), Tile (solid lane block, duotone icon), CaseTimeline (vertical time rule), ConsultationSlotPicker (day strip, slot blocks in line forms).
 - Focus ring is 2px with a 2px gap (was 3px). Sidebar is an `<aside>` named "{label} sidebar" around its navigation. Content max width is 1280px.
-- `Table` with `selectionMode` adds a check column: "Select all" heads it when multiple, and each row's checkbox is named by its row header ("Select DEMO-024"), so selection never rests on the row tint. `Checkbox` children are optional for that slot. Dates in a `<time>` never break inside a table cell.
+- `Table` with `selectionMode` adds a check column: "Select all" heads it when multiple, and each row's checkbox is named by its row header ("Select CCS-2026-0142"), so selection never rests on the row tint. `Checkbox` children are optional for that slot. Dates in a `<time>` never break inside a table cell.
 - A labeled `Divider` is plain text between drawn rules; it was `role="separator"`, whose text screen readers skip.
 - `AnnouncementCard` links carry the card title as hidden text ("Read update: …"), so several cards on a page have distinct link names. `Footer` links use the router-aware Link. `RoleBadgeProps` is exported.
 - Counts and readings (navigation, tab, day and field counts, progress and meter values, stepper numbers) are Inter with tabular figures; mono stays for times, codes and references. Unavailable consultation slots are drawn solid and struck (dashed means pending). In forced colors, severity bars keep their level (unlit bars are outlines).
@@ -139,7 +154,7 @@ Phase 2: navigation and overlays. Spec: `context/deltas/archive/2026-10-25-v0.4.
 
 ## [0.3.0] - 2026-10-24
 
-Soft layers on the locked ACCS palette, a repo-owned treatments tier, strict Tailwind, split component CSS in cascade layers, the React layer with 31 Phase 1 components, and the public showcase site. Spec: `context/deltas/archive/2026-10-24-v0.3.0-rebuild.md`.
+Soft layers on the locked ACCS palette, a repo-owned treatments tier, strict Tailwind, split component CSS in cascade layers, the React layer with 31 Phase 1 components, and the public documentation site. Spec: `context/deltas/archive/2026-10-24-v0.3.0-rebuild.md`.
 
 ### BREAKING
 - Removed the Meeting At 10 themes (`meetingatten`, `meetingatten-dark`), the `sun` and `paper` primitives, `themes/meetingatten/` and `templates/meetingatten-home.html`. The team site uses the ACCS themes.
@@ -157,7 +172,7 @@ Soft layers on the locked ACCS palette, a repo-owned treatments tier, strict Tai
 
 ### Added
 - GitHub Actions: `ci.yml` (checks, types, tests, committed-build diff, site build on every PR) and `deploy-site.yml` (tag push deploys the site to S3 + CloudFront through AWS OIDC; inert until the infra variables exist).
-- `site/`: public showcase (Next.js 16 static export). Renders the markdown specs with live light/dark demos (component demos plus color swatches and the type scale), props tables generated from the TypeScript types, four example pages (landing, admin overview, sign-in, report detail), per-page title, description, canonical URL and Open Graph image, `sitemap.xml` and `robots.txt`.
+- `site/`: public documentation site (Next.js 16 static export). Renders the markdown specs with live light/dark demos (component demos plus color swatches and the type scale), props tables generated from the TypeScript types, four example pages (landing, admin overview, sign-in, report detail), per-page title, description, canonical URL and Open Graph image, `sitemap.xml` and `robots.txt`.
 - React layer: `@meetingat10/design-system/react` (React Aria Components 1.22.1, compiled with `tsc` to `dist/react/`, `"use client"` kept), starting with `Button` (variants, `size`, `block`, `loading`). `npm test` (Vitest + Testing Library + axe), `npm run typecheck`.
 - Interactive cards (`a.ds-card`, `button.ds-card`, `.ds-card[data-interactive]`) lift 2px on hover; reduced motion keeps only the shadow change.
 - `.ds-wash`, `.ds-tile` (+ `--secondary`, `--accent`, `--neutral`), `.ds-features` / `.ds-feature`, `.ds-divider`.

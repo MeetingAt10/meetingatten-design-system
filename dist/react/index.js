@@ -86,7 +86,7 @@ export { Hero } from './layout/Hero.js';
 export { Agenda, AgendaItem } from './layout/Agenda.js';
 export { Highlight } from './layout/Highlight.js';
 export { Divider } from './layout/Divider.js';
-// Expressive layer (marketing surfaces: the ACCS landing, Meeting At 10 and the showcase)
+// Expressive layer (marketing surfaces: the ACCS landing, Meeting At 10 and the documentation site)
 export { Reveal } from './expressive/Reveal.js';
 export { WordReveal } from './expressive/WordReveal.js';
 export { FloatingArt } from './expressive/FloatingArt.js';

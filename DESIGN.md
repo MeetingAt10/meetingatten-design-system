@@ -310,18 +310,18 @@ components:
 
 ## Overview
 
-**Creative North Star: "Office Hours"**
+**Concept: Office Hours**
 
-The system is the weekly consultation timetable taped to a faculty door in the College of Computer Studies, rebuilt as an interface. Every surface it serves (the ACCS landing, the ACCS portal and admin, the Meeting At 10 site and the showcase docs) is a paper-white sheet on a warm ivory canvas, ruled with hairlines that form real time grids, and its content arrives as blocks placed in time. A block's lane color owns its whole fill: navy for the schedule and for action, amber for community, emerald for consultations. The fourth lane, restricted reports, has no hue. It is hatched ink with words, drawn into the grid where everyone can see where the boundary runs.
+The system rebuilds the weekly consultation timetable taped to a faculty door in the College of Computer Studies as an interface. Every surface it serves (the ACCS landing, the ACCS portal and admin, the Meeting At 10 site and the documentation site) is a paper-white sheet on a warm ivory canvas. Hairlines form real time grids, and content arrives as blocks placed in time. A block's lane color fills the whole block: navy for the schedule and for action, amber for community, emerald for consultations. The fourth lane, restricted reports, has no hue. It is hatched ink with words, drawn into the grid so everyone can see where the boundary runs.
 
-The voice is structured and calm, and it reads at a glance. Plus Jakarta Sans at 800 with tight tracking gives headings the weight of a painted name plate, Inter carries reading and interface text, and JetBrains Mono appears only where a clock or a filing system would print. State is drawn as line form: a solid edge is open, a dashed edge is pending, hatching is taken or restricted, a strike is closed, and a word always comes with the line. The page you are on becomes a solid navy block. The present moment is a red line with the time on a small plate.
+Plus Jakarta Sans at 800 with tight tracking sets headings like lettering on a name plate. Inter sets reading and interface text. JetBrains Mono appears only where a clock or a filing system would print. State shows in the line: a solid edge is open, a dashed edge is pending, hatching is taken or restricted and a strike is closed. A word always comes with the line. The page you are on becomes a solid navy block. The present moment is a red line with the time on a small plate.
 
-Cards and sheets rest on a hairline ring with soft navy-tinted layers; blocks being handled and overlays floating above the page deepen them, and translucent glass is used only where content floats over content (the sticky navbar and top bar, overlays and popovers), with a solid fallback. Motion is quick and physical: 120ms color changes, critically damped springs for anything that slides along a rule, overlays that fade, scale and rise on an exponential ease-out, and under reduced motion every state lands at once. The system must never feel playful or gamified, like a generic SaaS template, cold or bureaucratic, or slowed down by motion.
+Surfaces use three treatments so no two kinds of container look alike. A sheet is paper with a hairline ring and soft navy-tinted layers, used for single items such as a forum post or a timetable. A tint is flat on the neutral ground with a hairline and a 12px corner, used for items in a long list such as announcements. An open surface has no fill, only a top rule and spacing. Blocks being handled and overlays above the page deepen the layers. Translucent glass appears only where content floats over content (the sticky navbar and top bar, overlays and popovers), with a solid fallback. Motion is quick: 120ms color changes, critically damped springs for anything that slides along a rule, overlays that fade, scale and rise on an exponential ease-out. Under reduced motion every state lands at once. The system must not feel playful, gamified, templated, cold, bureaucratic or slowed by motion.
 
-**The expressive layer.** The marketing surfaces (the ACCS landing, the Meeting At 10 site and the showcase) may add a slower, richer layer on top of the same world: headlines that rise word by word, sections that ease in on scroll, a faint aurora of cobalt, amber and emerald over the ruled time grid, and 3D glass renders floating beside the product in a constellation that follows the pointer. It is built from the same tokens (new durations, an emphasized ease, a reveal and a float distance, and an art shadow), lives in its own CSS and React files, is never used inside portal workflows, keeps content visible by default, and stops entirely under reduced motion. The renders are decoration, never a logo, a seal or a lane signal.
+**The expressive layer.** The marketing surfaces (the ACCS landing, the Meeting At 10 site and the documentation site) can add slower motion on the same tokens: headlines that rise word by word, sections that ease in on scroll, an aurora of cobalt, amber and emerald over the ruled time grid, and 3D glass renders that follow the pointer. A page uses at most one gradient wash and at most one render. The layer uses new durations, an emphasized ease, a reveal and float distance and an art shadow. It lives in its own CSS and React files, never appears in portal workflows, shows content by default and stops under reduced motion. The renders are decoration. They are never a logo, a seal or a lane signal.
 
 **Key Characteristics:**
-- Paper-white sheets (12px corners, 1px hairline) on a cool canvas, flat at rest.
+- Paper-white sheets (16px corners, hairline ring) on an ivory canvas, with tint and open treatments for long lists.
 - Blocks placed in time: solid lane fills, 6px corners, a tabular mono time code on top.
 - Three hued lanes and one unhued lane: navy schedule, amber community, emerald consultations, hatched restricted reports.
 - State drawn in line form (solid, dashed, hatched, struck), always with a word.
@@ -372,10 +372,10 @@ The Meeting At 10 logo keeps four colors of its own, outside the 54 primitives. 
 - **M10 Blue** (#0075FF): the appointment block on every ground, with a white (#FFFFFF) 10.
 - **M10 Frost** (#E8EEF7): the frame and tabs on dark grounds.
 
-### Dark Theme
+### Dark theme
 Dark (`data-theme="dark"`, or the OS preference when no theme is set) changes values, never names. The canvas drops to near-black navy (#070D1C), sheets take #0D1529, overlays and raised paper sit on #121C35, text turns to #EAEEF7 and #A3ADC4, and hairlines to #222F4F. Solid fills turn pale with near-black ink (#070D1C): navy action becomes cobalt (#7C9BFF), amber #F2B154, emerald #3CCB98, so a block keeps its lane at full strength without glowing. The now-line becomes #FDA29B, the door plate pale blue with dark type, the logo's frame M10 Frost around an M10 Navy page, focus #7C9BFF, and each highlighter drops to the deepest step of its hue.
 
-### Named Rules
+### Named rules
 **The Lane Owns the Block Rule.** Schedule is navy, community amber, consultations emerald. The lane color fills the whole block, chip or tile at full strength; it is never thinned to a stripe, a dot or a tinted edge.
 
 **The No-Hue Boundary Rule.** The restricted reports lane has no hue: neutral ink, hatching and a word. Color never signals confidentiality, privacy or permission, and a lane color never implies access.
@@ -400,11 +400,11 @@ Dark (`data-theme="dark"`, or the OS preference when no theme is set) changes va
 - **Label** (600, 0.875rem, 1.4286, -0.005em): field labels, tabs, navbar links, and alert and toast titles.
 - **Caption** (500, 0.75rem, 1.3333): badges, meta rows and notes; navigation group labels use it at 600.
 - **Code** (JetBrains Mono 400, 0.8125rem, 1.5385): code samples and inline code.
-- **Time** (JetBrains Mono 500, 0.75rem, 1.3333, 0.01em, tabular, slashed zero): time codes (09:00-10:30), room codes (CCS 304) and references (DEMO-024).
+- **Time** (JetBrains Mono 500, 0.75rem, 1.3333, 0.01em, tabular, slashed zero): time codes (09:00-10:30), room codes (CCS 304) and references (CCS-2026-0142).
 
 Headings balance their lines and paragraphs avoid orphans. Faux bold is turned off, so load the weights in use: 800 and 700 for Plus Jakarta Sans, 400 to 600 for Inter and JetBrains Mono. Button labels use Inter 600 at 15px; inputs keep 16px text on every screen so phones never zoom. Tables, times and data use tabular numerals.
 
-### Named Rules
+### Named rules
 **The Mono Is a Clock Rule.** JetBrains Mono appears only where a clock or a filing system would print: times, room codes, references, keys and code, always with tabular, slashed-zero numerals. Everything else is Inter or Plus Jakarta Sans.
 
 **The Heading Carries Itself Rule.** Page and section headings stand alone, with no kicker or eyebrow above them: size, Plus Jakarta Sans weight (800 or 700) and space carry the hierarchy, and context goes in the description below. Two things that sit above titles are not kickers: the brand mark (the Meeting At 10 logo, or the door plate on ACCS surfaces), and the head line of a block or card (time code, lane chip), which is item metadata.
@@ -421,40 +421,40 @@ Reflow keeps the task order intact. The app shell shows the sidebar and top bar 
 
 Density is a theme axis: comfortable sets Body text and roomy sections; compact sets Body Small text, tight sections, 40px hour rows and 40px inputs on fine pointers.
 
-### Named Rules
+### Named rules
 **The Real Grid Rule.** Where a grid is drawn, it is a real, labeled time grid: hours down the side, days across the top. Hairlines are never decoration, and the hour row (48px, 40px compact) shares the 8px module with the controls.
 
-## Elevation & Depth
+## Elevation and depth
 
 Depth is layered and navy-tinted, never pure black. A card or sheet declares one elevation: a hairline ring (`0 0 0 1px`) that is part of a soft layered shadow, or the ring alone for flat sheets. It never has a 1px border plus a big soft shadow. Linked cards, blocks being handled and primary buttons deepen the layers on hover; overlays float on the deepest layers. In dark the shadows are deeper black-navy with a lighter ring. Glass (backdrop blur and saturation over a translucent surface) appears only on the sticky navbar and top bar, modals, drawers and popovers, with a solid surface under `prefers-reduced-transparency` and forced colors.
 
-### Shadow Vocabulary
+### Shadow vocabulary
 - **Ring** (`box-shadow: 0 0 0 1px #0C173014`): flat sheets and the secondary button.
-- **Sheet** (`0 0 0 1px #0C173010, 0 1px 2px #0C17300D, 0 12px 32px -16px #0C173030`): cards at rest, tables, gallery tiles, showcase windows.
+- **Sheet** (`0 0 0 1px #0C173010, 0 1px 2px #0C17300D, 0 12px 32px -16px #0C173030`): cards at rest, tables, gallery tiles, documentation windows.
 - **Lift** (`0 0 0 1px #0C173014, 0 2px 4px #0C173010, 0 20px 40px -16px #0C173047`): hovered linked cards, hovered blocks and slots, the chosen segment, the switch thumb and tooltips.
 - **Overlay** (`0 0 0 1px #0C173014, 0 4px 8px #0C173010, 0 8px 16px -8px #0C173014, 0 28px 64px -24px #0C173047`): menus, listboxes, popovers, dialogs, drawers, toasts and overlay cards.
 - **Button** (`0 1px 2px #032E8740, 0 8px 16px -8px #032E8759`): the navy shadow under primary buttons, together with the 1px top highlight.
 - **Dark variants** (`sheet-dark`, `lift-dark`, `overlay-dark`, `ring-dark`, `btn-dark`): deeper black layers with a light ink ring.
 - **Top highlight** (`box-shadow: inset 0 1px 0`, white at 22% in light and 30% in dark): the top edge of solid buttons, current navigation items, the chosen day and the current page number.
 
-### Named Rules
-**The Declared Once Rule.** At rest, every surface declares its elevation once: a hairline ring or a layered shadow, never a border plus a big soft shadow. Sheets rest on the ring, cards on the sheet shadow, overlays float on the overlay shadow, and a linked card deepens to the lift on hover. A line-form edge is a state mark, not a rule, and stays when its block lifts.
+### Named rules
+**The Declared Once Rule.** At rest, every surface declares its elevation once: a hairline ring or a layered shadow, never a border plus a big soft shadow. Tint cards and tables rest on the ring, sheet cards on the sheet shadow and overlays on the overlay shadow. A linked card deepens to the lift on hover. A line-form edge is a state mark, not a rule, and stays when its block lifts.
 
 **The Earned Lift Rule.** Content never rests lifted: blocks, slots, buttons and linked cards cast the deeper lift only while hovered, dragged or chosen. The only parts resting on it are small pieces riding a track (the switch thumb, the chosen segment) and the tooltip plate. Elevation shows interaction and layering, never importance, security or privacy.
 
 ## Shapes
 
-The form language is the rectangle of a printed timetable, softened to a precise, modern radius. Corners are set by material, edges are hairlines, and lines change form to carry state: solid, dashed, hatched or struck. Hatching is 1px diagonal hairlines at 135 degrees every 7px in the hatch ink (45% in light, 55% in dark, with a strong 80% and 90% variant for small markers), and words never sit directly on it: they ride on small paper labels with 2px corners. Two-pixel lines are reserved for position and time: the now-line, the selected-tab and current-link rules, the pending line under a button, the toast timer, and the stepper and case-timeline rails. Checkbox, radio and step-marker rings are 1.5px, and the highlighter mark rounds its ends by 2px.
+The form language is the rectangle of a printed timetable with rounded corners. Corners follow the material, edges are hairlines, and the line form carries state: solid, dashed, hatched or struck. Hatching is 1px diagonal hairlines at 135 degrees every 7px in the hatch ink (45% in light, 55% in dark, with a strong 80% and 90% variant for small markers), and words never sit directly on it: they ride on small paper labels with 2px corners. Two-pixel lines are reserved for position and time: the now-line, the selected-tab and current-link rules, the pending line under a button, the toast timer, and the stepper and case-timeline rails. Checkbox, radio and step-marker rings are 1.5px, and the highlighter mark rounds its ends by 2px.
 
-### Named Rules
-**The Material Radius Rule.** Radius follows the material, not the component: controls (buttons, inputs, tabs) 10px, blocks 8px, cards and sheets 16px, overlays 20px, large showcase frames 24px, chips and badges a full pill; tiny parts such as the checkbox and key caps use 4px. Full rounding is kept for dots and toggles: the now-dot, today and unread dots, avatars, radios, switches, step markers and progress tracks.
+### Named rules
+**The Material Radius Rule.** Radius follows the material, not the component: controls (buttons, inputs, tabs) 10px, blocks 8px, cards and sheets 16px, overlays 20px, large frames 24px, chips and badges a full pill; tiny parts such as the checkbox and key caps use 4px. Full rounding is kept for dots and toggles: the now-dot, today and unread dots, avatars, radios, switches, step markers and progress tracks.
 
 ## Components
 
 Every component is built from the same few materials (sheet, rule, block, hatch, highlighter, plate), and every interactive state is designed: default, hover, pressed, focus, disabled, error and pending. Focus is always a 2px Focus Blue ring with a 2px gap.
 
 ### Buttons
-A button is a block you press.
+A button is a block you press, and it has these parts.
 - **Shape:** 10px control radius; 48px tall by default, 40px small (44px on touch) and 56px large, with 20px side padding (16px small, 24px large); the label is Inter 600 at 15px with an optional 20px icon.
 - **Primary:** a crisp Door Plate Navy block with white text, the top highlight and a navy shadow. One per task region.
 - **Hover / Focus:** hover deepens to Pressed Navy and lifts 2px on the snappy spring; pressing drops to Midnight Navy and scales to 98%; focus draws the cobalt ring. Color changes take 120ms.
@@ -474,9 +474,9 @@ A button is a block you press.
 - **Tags:** 30px pills with a hairline ring on paper; a selected tag takes a navy ring, the Schedule Highlighter and navy text.
 
 ### Cards / Containers
-- **Corner Style:** 16px (sheet); overlay cards 20px; showcase frames 24px.
-- **Background:** Paper on the Ivory Canvas.
-- **Shadow Strategy:** the sheet shadow at rest (a hairline ring inside soft layers). A linked card deepens to the lift shadow on hover, rises 2px, underlines its title and steps its arrow 3px forward (see Elevation & Depth).
+- **Treatments:** the default sheet is Paper with the sheet shadow, 16px corners. The `tint` variant is flat on the Neutral Highlighter with a hairline ring and 12px corners, for announcements and other items in long lists. The `open` variant has no fill, only a Hairline top rule and spacing, for items inside a section. Overlay cards are 20px, large frames 24px.
+- **Background:** Paper on the Ivory Canvas for sheets.
+- **Shadow Strategy:** the sheet shadow at rest (a hairline ring inside soft layers); tint and open cards have none. A linked card deepens to the lift shadow on hover, rises 2px, underlines its title and steps its arrow 3px forward (see Elevation & Depth).
 - **Border:** none; the ring is part of the shadow.
 - **Internal Padding:** 20px (32px on overlay cards); a meta row closes the card above a Hairline.
 - **Use:** one card per item in a collection (announcement, post, record) or a floating panel, never nested, and the whole card is one link named by its title. The plain sheet is the general paper container (24px padding), and full-width paper bands carry a Hairline top and bottom.
@@ -501,15 +501,15 @@ A button is a block you press.
 - **Breadcrumbs:** the current page is plain text, never a link.
 - **Mobile:** a 56px sticky header (menu, door plate, one or two actions) with drawer navigation below 1024px.
 
-### Time Block
-The unit of the world.
+### Time block
+The basic unit of the timetable.
 - **Anatomy:** a 6px-cornered block with 8px by 12px padding: the time code on top in the Time style, the title in Inter 600 at 14px (up to three lines), and meta in Caption. Short blocks shed meta first, then title lines, then set time and title on one line.
 - **Lanes:** schedule (Door Plate Navy, the default), community (Community Amber), consultations (Consultation Emerald) and restricted (paper with hatching and a 1px Rule Slate edge, no hue). Text on solid lanes is white, near-black in dark.
 - **Line forms:** open is paper with a solid edge and text in the lane color; pending is the same with a dashed edge; taken is hatched paper with Slate text; disabled strikes the title. Words on hatching sit on small paper labels.
 - **Interaction:** an interactive block lifts 2px onto the lift shadow on hover and fills with its lane color when chosen. Inside a group, hovering, focusing or choosing a block dims its neighbors to 55% over 200ms.
 - **Entrance:** blocks drop 6px into their cells once on the snappy spring, staggered 25ms, starting from a visible state.
 
-### Week Sheet and Now-Line
+### Week sheet and now-line
 - **Grid:** a 12px-cornered sheet with a 3.5rem pinned hour column labeled in the Time style, day heads (weekday in Label, date in Plus Jakarta Sans 700 at 20px), Hairline hour rules with lighter half-hour rules, and 48px hour rows (40px compact). Blocks sit at their start and length, and concurrent blocks share the column width.
 - **Today:** the column takes the today tint, and its date sits on a small door plate.
 - **Now-line:** a 2px Now-Line Red line with an 8px dot across today's column, its time on a small red plate (JetBrains Mono 600, white) in the hour gutter, where the hour label it would cover is hidden. It glides for 1s, linear, each time the clock updates (every 30 seconds); under reduced motion it steps without the glide.
@@ -521,7 +521,7 @@ The Meeting At 10 calendar mark is the system's main logo: a calendar with two b
 - **Style:** the mark at 24, 32, 48 or 64px beside the name in Plus Jakarta Sans 800 at 15, 17, 24 or 32px, with an optional code in JetBrains Mono after a half-opacity hairline divider ("DS 1.0"). Light grounds get an M10 Navy frame around an M10 Paper page; dark grounds an M10 Frost frame around an M10 Navy page, so the calendar keeps its outline. On an inverse bar or a door-plate band the frame and page swap. The block and numeral never change, and forced colors redraw the mark in system colors.
 - **Use:** the docs header, footer and home hero, the favicon, the home-screen icon and Open Graph images, and the Meeting At 10 site. The component, or the light, dark and auto files as exported: never redrawn, recolored, stretched or given effects. At least 24px in interface (16px as a favicon), with clear space of a quarter of the mark's height. ACCS surfaces keep the door plate.
 
-### Door Plate
+### Door plate
 The name plate from a faculty door: the ACCS wordmark until an ACCS logo is approved, and the form of page-title plates and room labels.
 - **Style:** a Door Plate Navy plate (pale blue with near-black type and a 1px top highlight in dark) with 6px corners, the name in white Plus Jakarta Sans 800 at 17px, an optional room or version code in JetBrains Mono after a half-opacity hairline divider ("CCS 304", "DS 1.0"), and an optional caption tagline. It is 32px tall, 26px small, and 48px large with a 24px name.
 - **Use:** one color only, never a lane color, and never styled as a seal or crest. Role badges borrow its outlined form. The proposed ACCS logo files are used as exported, never redrawn or recolored.
@@ -545,7 +545,7 @@ The name plate from a faculty door: the ACCS wordmark until an ACCS logo is appr
 - Phosphor icons in the current color at 16, 20, 24 and 32px. Weight carries meaning: regular for interface icons, fill for the selected or current item, duotone for lane and category tiles, where the 20% layer reads as highlighter. The plain-CSS layer ships a curated sprite of 80 icons in all three weights.
 - **Tile:** a 40px solid block with 8px corners holding one lane icon (32px with 6px corners small, 56px with 12px corners large); restricted tiles are hatched paper.
 
-### Named Rules
+### Named rules
 **The Line Form Rule.** Status and availability are drawn as lines: solid for open, active or done; dashed for pending, draft or upcoming; hatched for taken or restricted; struck for disabled, closed, unavailable or withdrawn. A word always comes with the line.
 
 **The Current Is Solid Rule.** The page you are on, the chosen day and the current page number become the solid navy block, with the icon in its fill weight; a chosen time block or slot fills solid in its own lane color. Hovering a navigation item, option or row takes a highlighter wash instead.
@@ -572,8 +572,8 @@ The name plate from a faculty door: the ACCS wordmark until an ACCS logo is appr
 - **Don't** give a resting surface both a rule and a shadow.
 - **Don't** let hue alone carry status, severity, availability or permission, and never give the restricted lane a hue.
 - **Don't** set labels, headings, navigation or buttons in JetBrains Mono.
-- **Don't** nest cards, or build page structure from rows of same-size icon cards; use Agenda rows, sections, rules and headings.
-- **Don't** use gradient text, glass, glow or colored shadows in the interface; the hatch and the ruled grid are the only drawn patterns. The one exception is the expressive layer on marketing surfaces: the brand renders, the aurora and the spotlight glow, which are decoration and never carry state.
+- **Don't** nest cards, give every container on a page the same card chrome, or build page structure from rows of same-size icon cards. Mix sheet, tint and open treatments, and use Agenda rows, sections, rules and headings.
+- **Don't** use gradient text, glass, glow or colored shadows in the interface; the hatch and the ruled grid are the only drawn patterns. The one exception is the expressive layer on marketing surfaces: the brand renders, the aurora and the spotlight glow, which are decoration and never carry state. Use at most one gradient wash per page.
 - **Don't** use emoji or Unicode glyphs as icons; use the Phosphor set and its weights.
 - **Don't** hold content back until it animates in; entrances start from a visible state, and only overlays fade. Scroll reveals in the expressive layer are the same promise: without scroll-driven animation, or under reduced motion, everything renders in its final state.
 - **Don't** recolor the door plate with a lane color, style it as a seal or crest, or redraw the proposed ACCS logo files.

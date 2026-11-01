@@ -369,9 +369,17 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
         <CardTitle level={3}>Floating panel</CardTitle>
         <CardBody>Overlay cards float on a shadow instead of a rule.</CardBody>
       </Card>
+      <Card variant="tint" as="section" aria-label={`Tint card${sfx(theme)}`}>
+        <CardTitle level={3}>Tint card</CardTitle>
+        <CardBody>Flat on the neutral tint with a hairline, for long lists.</CardBody>
+      </Card>
+      <Card variant="open" as="section" aria-label={`Open card${sfx(theme)}`}>
+        <CardTitle level={3}>Open card</CardTitle>
+        <CardBody>No surface. A top rule and spacing group the content.</CardBody>
+      </Card>
     </Grid>
   ),
-  AnnouncementCard: () => <AnnouncementCard when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#">Same time, Wednesday 13:00. Bring a laptop; teams form on the day.</AnnouncementCard>,
+  AnnouncementCard: () => <AnnouncementCard when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#">The briefing is still at Wednesday 13:00. Bring a laptop. Teams form on the day.</AnnouncementCard>,
   ForumCard: () => <ForumCard topic="Algorithms" title="What helped recursion finally click for you?" excerpt="Share the explanation, drawing or example that worked." author="Paolo Dizon" replies={6} status="Open discussion" href="#" />,
   Tile: () => (
     <Stack gap={12}>
@@ -476,9 +484,9 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   ),
   Agenda: () => (
     <Agenda>
-      <AgendaItem chip="Community" lane="community" title="Ask, answer, share what helped" href="#" linkLabel="Join the conversation">Casual and encouraging.</AgendaItem>
+      <AgendaItem chip="Community" lane="community" title="Ask a question, share an answer" href="#" linkLabel="Join the conversation">Post a question and read the answers.</AgendaItem>
       <AgendaItem chip="10:00" lane="consult" title="Book office hours" href="#" linkLabel="See open slots">Nothing is booked until faculty confirm.</AgendaItem>
-      <AgendaItem chip="Reports" lane="restricted" title="Your own records, kept apart">Serious and structured.</AgendaItem>
+      <AgendaItem chip="Reports" lane="restricted" title="Your own records">Drafts stay yours.</AgendaItem>
     </Agenda>
   ),
   Highlight: () => (
@@ -536,7 +544,7 @@ export const DEMOS: Record<string, (p: DemoProps) => React.ReactNode> = {
   Aurora: () => <div className="site-backdrop-demo"><Aurora /><p className="ds-type-h3">Three lane-colored glows</p></div>,
   GridBackdrop: () => <div className="site-backdrop-demo"><GridBackdrop /><p className="ds-type-h3">The ruled sheet as a ground</p></div>,
   Marquee: () => (
-    <Marquee duration={40} label="College departments">
+    <Marquee duration={40} label="Components">
       {["Button", "Card", "Timetable", "TimeBlock", "NowLine", "Hero", "Agenda"].map((n) => <Badge key={n}>{n}</Badge>)}
     </Marquee>
   ),

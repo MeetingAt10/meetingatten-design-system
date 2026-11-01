@@ -18,7 +18,7 @@ export function SectionIndex({ section }: { section: Section }) {
       <div className="site-index">
         {[...groups].map(([cat, docs]) => (
           <section key={cat} aria-labelledby={`cat-${cat}`} className="site-index__group">
-            <h2 id={`cat-${cat}`} className="site-index__title"><span className="ds-agenda__chip">{cat}</span><span className="ds-time">{docs.length}</span></h2>
+            <h2 id={`cat-${cat}`} className="site-index__title">{cat}<span>{docs.length}</span></h2>
             <ul className="site-index__list">
               {docs.map((d) => (
                 <li key={d.slug}>

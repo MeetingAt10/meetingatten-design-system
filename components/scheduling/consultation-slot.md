@@ -10,7 +10,7 @@ The consultation slot picker books office hours in two steps: a day strip where 
 ## When to use
 
 - Use it to choose one consultation time from published slots.
-- Use `timeZoneNote` every time, for example "sample local campus time".
+- Use `timeZoneNote` every time, for example "Asia/Manila (PHT)".
 - Say near the picker that a chosen time is a request, not a confirmed booking ("Nothing is booked until faculty confirm.").
 - Don't use it for free-form dates; use [Date Picker](../control/date-picker.md) or [Calendar](../control/calendar.md).
 - Don't promise a reply time or a confirmation deadline.
@@ -50,7 +50,7 @@ The consultation slot picker books office hours in two steps: a day strip where 
 ## Behavior and accessibility
 
 - The day strip is a single-choice group (`role="radiogroup"`) named "Consultation time: day". Arrow keys move between days; Space or Enter chooses one. Each day is named in full: "Wed 21 Oct, today, 3 open".
-- The slots are one radio group labeled by the summary ("Wed 21 Oct · sample local campus time"). Arrow keys move and choose; booked and unavailable slots are disabled and say so in words.
+- The slots are one radio group labeled by the summary ("Wed 21 Oct · Asia/Manila (PHT)"). Arrow keys move and choose; booked and unavailable slots are disabled and say so in words.
 - Loading is announced as a status; an error is announced at once and the chosen slot stays chosen.
 - Every state has a word and an icon, and the legend names the line forms, so color is never the only signal.
 - Reduced motion: no slide, no swipe and no lift; the chosen state lands at once.
@@ -80,7 +80,7 @@ const [slot, setSlot] = useState<string | null>(null);
   ]}
   value={slot}
   onChange={setSlot}
-  timeZoneNote="sample local campus time"
+  timeZoneNote="Asia/Manila (PHT)"
 />
 ```
 
@@ -100,7 +100,7 @@ const [slot, setSlot] = useState<string | null>(null);
     </button>
   </div>
   <div class="ds-stack ds-stack--12" role="radiogroup" aria-labelledby="slots-summary">
-    <p class="ds-slots__message" id="slots-summary">Wed 21 Oct · sample local campus time</p>
+    <p class="ds-slots__message" id="slots-summary">Wed 21 Oct · Asia/Manila (PHT)</p>
     <div class="ds-slot-list">
       <label class="ds-slot">
         <input class="ds-check__input" type="radio" name="slot" value="s0900">

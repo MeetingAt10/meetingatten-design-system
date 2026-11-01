@@ -11,9 +11,9 @@ A timetable is the weekly consultation sheet on a faculty door, rebuilt as an in
 
 - Use it when time is the point: a week of office hours, a day sheet, the schedule preview on a landing page.
 - Use `band` to draw the restricted lane into the sheet ("Reports: you see only your own records"), never to hide it.
-- Use synthetic, labeled events in demos ("Prof. Reyes").
+- Use realistic course, room and faculty names in examples ("Prof. Reyes", "CCS 304").
 - Don't use it for an undated list of things; use [Agenda](../layout/agenda.md) rows.
-- Don't present sample schedules as live availability; say "sample" near the sheet.
+- Don't show a pinned `now` on a live page. Without `now` the line follows the clock.
 
 ## Anatomy
 
@@ -41,7 +41,7 @@ Hour rows follow density: 48px comfortable, 40px compact (`--ds-density-hour-row
 |---|---|---|
 | Today | Tinted column, date on a plate, now-line and now time | `isToday` on a day |
 | Live now | The now-line follows the clock | `now="live"` (default) |
-| Pinned now | The now-line stays at a fixed time (samples) | `now={10.7}` |
+| Pinned now | The now-line stays at a fixed time (screenshots, tests) | `now={10.7}` |
 | No now | No now-line or now time | `now={false}`, or the time is outside the grid |
 | Isolated | Hovering, focusing or choosing a block dims the others to 55% | `isolate` (default true), `.ds-isolate` |
 | Entering | Blocks drop 6px into their cells on the snappy spring, one after another; they glide when the schedule changes | `animate` (default true) |
@@ -64,7 +64,7 @@ Block states (open, pending, taken, disabled, selected) come from [Time Block](t
 import { Icon, Timetable } from '@meetingat10/design-system/react';
 
 <Timetable
-  label="This week, sample schedule"
+  label="This week"
   days={[
     { id: 'tue', label: 'Tue', date: '20', fullLabel: 'Tuesday 20 October' },
     { id: 'wed', label: 'Wed', date: '21', fullLabel: 'Wednesday 21 October', isToday: true },
@@ -90,7 +90,7 @@ import { Icon, Timetable } from '@meetingat10/design-system/react';
 ## Plain CSS
 
 ```html
-<div class="ds-timetable ds-isolate" role="group" aria-label="This week, sample schedule" style="--tt-hours: 9">
+<div class="ds-timetable ds-isolate" role="group" aria-label="This week" style="--tt-hours: 9">
   <div class="ds-timetable__scroller">
     <div class="ds-timetable__grid" style="--tt-days: 2">
       <div class="ds-timetable__corner" aria-hidden="true"></div>

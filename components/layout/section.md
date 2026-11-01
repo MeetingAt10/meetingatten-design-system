@@ -49,7 +49,7 @@ A section is a full-width region of a page. Its vertical padding follows the den
 import { Section, SectionHeader, Button } from '@meetingat10/design-system/react';
 
 <Section aria-labelledby="community-h">
-  <SectionHeader id="community-h" title="This week in the community" description="Sample posts from the college community." />
+  <SectionHeader id="community-h" title="This week in the community" description="Posts from the college community." />
   ...
 </Section>
 

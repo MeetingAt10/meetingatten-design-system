@@ -5,7 +5,7 @@ react: Aurora
 ---
 # Aurora
 
-Aurora is a quiet colored ground for a marketing hero: three soft glows in the schedule, community and consultation highlighter colors that drift slowly (24 seconds a lap) behind the content. It belongs to the [expressive layer](../../foundations/motion.md) and pairs with [GridBackdrop](grid-backdrop.md).
+Aurora is a colored ground for a marketing hero: three soft glows in the schedule, community and consultation highlighter colors that drift slowly (24 seconds a lap) behind the content. It belongs to the [expressive layer](../../foundations/motion.md) and pairs with [GridBackdrop](grid-backdrop.md).
 
 ## When to use
 

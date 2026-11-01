@@ -1,11 +1,11 @@
 ---
 title: View State
-description: What a data region shows while it is loading, empty, failed or restricted, with the state in words and an honest next step.
+description: What a data region shows while it is loading, empty, failed or restricted, with the state in words and a next step.
 react: ViewState
 ---
 # View State
 
-A view state fills a data region (a table, a feed, a list of records) when there is nothing ready to show: it is loading, it is empty, it failed, or it is restricted. A tile or spinner and the words carry the state together, and there is always a next step or an honest "nothing to do".
+A view state fills a data region (a table, a feed, a list of records) when there is nothing ready to show: it is loading, it is empty, it failed, or it is restricted. A tile or spinner and the words carry the state together, and there is always a next step or a plain "nothing to do".
 
 ## When to use
 

@@ -11,7 +11,7 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mo
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: "Meeting At 10 Design System", template: "%s · Meeting At 10 Design System" },
-  description: "Tokens, components and patterns for ACCS (Access for College of Computer Studies) and the Meeting At 10 site: the faculty-door timetable rebuilt as an interface, with live demos in light and dark.",
+  description: "Tokens, components and patterns for ACCS (Access for College of Computer Studies) and the Meeting At 10 site. The system rebuilds the faculty-door timetable as an interface, with live demos in light and dark.",
   openGraph: { siteName: "Meeting At 10 Design System", type: "website" },
   // The calendar mark; its frame follows the OS color scheme in the tab strip. The home-screen PNG is app/apple-icon.png/route.tsx.
   icons: { icon: [{ url: "/logo/meeting-at-10-auto.svg", type: "image/svg+xml" }], apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }] },

@@ -53,12 +53,12 @@ The reports table lists a person's own or assigned reports on a ruled sheet: the
 import { ReportsTable } from '@meetingat10/design-system/react';
 
 <ReportsTable
-  caption="Own reports, demo records"
+  caption="Own reports"
   rows={[
-    { id: '24', reference: 'CCS-2026-0142', category: 'General concern', status: 'Draft', statusTone: 'warning', statusForm: 'pending', updated: '21 Oct', href: '/reports/demo-024', actionLabel: 'Open draft' },
-    { id: '18', reference: 'CCS-2026-0118', category: 'Process question', status: 'Restricted review', statusForm: 'restricted', updated: '17 Oct', href: '/reports/demo-018' },
-    { id: '9', reference: 'CCS-2026-0091', category: 'General question', status: 'Resolved', statusTone: 'success', updated: '2 Oct', href: '/reports/demo-009' },
-    { id: '4', reference: 'DEMO-004', category: 'General concern', status: 'Withdrawn', statusForm: 'closed', updated: '28 Sep', href: '/reports/demo-004' },
+    { id: '24', reference: 'CCS-2026-0142', category: 'General concern', status: 'Draft', statusTone: 'warning', statusForm: 'pending', updated: '21 Oct', href: '/reports/ccs-2026-0142', actionLabel: 'Open draft' },
+    { id: '18', reference: 'CCS-2026-0118', category: 'Process question', status: 'Restricted review', statusForm: 'restricted', updated: '17 Oct', href: '/reports/ccs-2026-0118' },
+    { id: '9', reference: 'CCS-2026-0091', category: 'General question', status: 'Resolved', statusTone: 'success', updated: '2 Oct', href: '/reports/ccs-2026-0091' },
+    { id: '4', reference: 'CCS-2026-0047', category: 'General concern', status: 'Withdrawn', statusForm: 'closed', updated: '28 Sep', href: '/reports/ccs-2026-0047' },
   ]}
 />
 ```
@@ -70,7 +70,7 @@ import { ReportsTable } from '@meetingat10/design-system/react';
 ```html
 <div class="ds-table-wrap" role="region" aria-labelledby="own-cap" tabindex="0">
   <table class="ds-table">
-    <caption id="own-cap">Own reports, demo records</caption>
+    <caption id="own-cap">Own reports</caption>
     <thead>
       <tr><th scope="col">Reference</th><th scope="col">Category</th><th scope="col">Status</th><th scope="col">Updated</th><th scope="col" class="ds-table__actions">Action</th></tr>
     </thead>
@@ -80,7 +80,7 @@ import { ReportsTable } from '@meetingat10/design-system/react';
         <td>General concern</td>
         <td><span class="ds-badge ds-badge--warning ds-badge--pending"><span class="ds-badge__mark" aria-hidden="true"></span>Draft</span></td>
         <td>21 Oct</td>
-        <td class="ds-table__actions"><a class="ds-link ds-link--standalone" href="/reports/demo-024" aria-label="Open draft CCS-2026-0142">Open draft<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-arrow-right"/></svg></a></td>
+        <td class="ds-table__actions"><a class="ds-link ds-link--standalone" href="/reports/ccs-2026-0142" aria-label="Open draft CCS-2026-0142">Open draft<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="sprite.svg#ds-arrow-right"/></svg></a></td>
       </tr>
     </tbody>
   </table>

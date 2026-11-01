@@ -96,7 +96,7 @@ import { spring, distance, duration, ease } from '@meetingat10/design-system/rea
 
 ## Expressive layer (marketing surfaces)
 
-The portal's motion is quick and practical. The marketing surfaces (the ACCS landing, the Meeting At 10 site and this showcase) may add a slower, richer layer on top: content that arrives as you scroll, headlines that rise word by word, 3D brand renders ([imagery](imagery.md)) that bob and follow the pointer. It lives in `src/css/components/expressive/` and `src/react/expressive/`, uses only the tokens above and obeys the same rules: content is visible by default, and everything stops under reduced motion.
+The portal's motion is quick and practical. The marketing surfaces (the ACCS landing, the Meeting At 10 site and the documentation site) may add a slower layer on top: content that arrives as you scroll, headlines that rise word by word, 3D brand renders ([imagery](imagery.md)) that bob and follow the pointer. It lives in `src/css/components/expressive/` and `src/react/expressive/`, uses only the tokens above and obeys the same rules: content is visible by default, and everything stops under reduced motion.
 
 | Class | React | What it does |
 |---|---|---|
@@ -134,7 +134,7 @@ State never depends on motion: every moving thing has a resting state that reads
 | Quick by default | Hover and color changes take 120ms on the ease-out |
 | Transform and opacity | Move with `translate`, `scale` and `opacity`; height animates only in the disclosure panel |
 | No decorative loops in the product | In the portal and in any workflow, the only loops show pending work (spinner, sweep line, skeleton) and they stop under reduced motion |
-| Decorative loops stay in the expressive layer | Float, aurora drift, orbit and marquee are allowed only in the expressive layer, only on marketing surfaces (the ACCS landing, the Meeting At 10 site, this showcase), never inside portal workflows; all stop under reduced motion |
+| Decorative loops stay in the expressive layer | Float, aurora drift, orbit and marquee are allowed only in the expressive layer, only on marketing surfaces (the ACCS landing, the Meeting At 10 site, the documentation site), never inside portal workflows; all stop under reduced motion |
 | Content is visible by default | A scroll-driven reveal, a word rise or a count must degrade to the final, readable state when the feature is unsupported, scripts are off or motion is reduced |
 | Springs for space | Anything that travels uses a spring token, not a hand-tuned curve |
 | Tokens, not numbers | Use `--ds-motion-*` in CSS and `duration`, `ease`, `spring`, `distance` in React |

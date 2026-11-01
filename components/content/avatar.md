@@ -13,7 +13,7 @@ An avatar shows a person's photo, or their initials on a highlighter wash, in a 
 - Use `AvatarGroup` for a short list of participants named once as a group.
 - Use `decorative` when the name is printed right next to the avatar.
 - Don't use it as a role, status or permission signal; use [Role Badge](../badge/role.md) for roles.
-- Don't use photos or names of real students in demos; use names marked "(sample)".
+- Don't use photos or names of real students in examples. Use invented Filipino names.
 
 ## Anatomy
 
@@ -30,7 +30,7 @@ An avatar shows a person's photo, or their initials on a highlighter wash, in a 
 
 | State | Looks | Set by |
 |---|---|---|
-| Initials | Up to two initials on the lane wash; text in parentheses, such as "(sample)", is skipped | no `src` |
+| Initials | Up to two initials on the lane wash; text in parentheses is skipped | no `src` |
 | Photo | The image fills the circle | `src` |
 | Named | Announced as an image with the person's name | default (`role="img"`, `aria-label`) |
 | Decorative | Hidden from assistive tech | `decorative` |
@@ -51,8 +51,7 @@ import { Avatar, AvatarGroup, initials } from '@meetingat10/design-system/react'
 <Avatar name="Ana Santos" size={24} />
 <Avatar name="Ben Cruz" size={32} lane="community" />
 <Avatar name="Cara Lim" lane="consult" />
-<Avatar name="Demo student" decorative />
-{/* Sample names */}
+<Avatar name="Paolo Dizon" decorative />
 <AvatarGroup names={['Ana Santos', 'Ben Cruz', 'Cara Lim', 'Dan Reyes', 'Eve Tan']} max={3} />
 
 initials('Ana Santos'); // "AS"

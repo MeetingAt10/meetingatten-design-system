@@ -13,14 +13,16 @@ export interface CardProps extends React.HTMLAttributes<HTMLElement> {
   link?: boolean;
   /** No padding (media, tables). */
   flush?: boolean;
+  /** Surface treatment: `sheet` is a raised paper card (default), `tint` is flat on the neutral tint with a hairline, `open` has no surface, only a top rule. */
+  variant?: 'sheet' | 'tint' | 'open';
 }
 
 /**
- * Card: a paper sheet for ONE item in a collection (announcement, post, record) or a floating panel.
- * Never put a card inside a card; detail pages use open sections, rules and headings.
+ * Card: one item in a collection (announcement, post, record) or a floating panel. Raised paper by default;
+ * `variant` swaps in a flat tint or an open, rule-only treatment. Never put a card inside a card.
  */
-export function Card({ as: Tag = 'article', overlay, link, flush, className, ...rest }: CardProps) {
-  return <Tag {...rest} className={cx('ds-card', overlay && 'ds-card--overlay', link && 'ds-card--link', flush && 'ds-card--flush', className)} />;
+export function Card({ as: Tag = 'article', overlay, link, flush, variant = 'sheet', className, ...rest }: CardProps) {
+  return <Tag {...rest} className={cx('ds-card', variant !== 'sheet' && `ds-card--${variant}`, overlay && 'ds-card--overlay', link && 'ds-card--link', flush && 'ds-card--flush', className)} />;
 }
 
 /** Card header row: the lane chip and time on the left, meta on the right. */

@@ -1,3 +1,4 @@
+import { type CardProps } from './Card.js';
 export interface ForumCardProps {
     /** Topic chip. A topic, never a permission or confidentiality signal. */
     topic: string;
@@ -13,9 +14,11 @@ export interface ForumCardProps {
     href: string;
     /** Visual call to action at the bottom. */
     actionLabel?: string;
+    /** Card treatment; default `sheet` (raised). */
+    variant?: CardProps['variant'];
     /** @deprecated Accepted for compatibility; renders nothing. */
     demo?: boolean;
     className?: string;
 }
 /** Forum card: a community discussion. The title is the link and its hit area covers the card, which lifts on hover. */
-export declare function ForumCard({ topic, title, level, excerpt, author, replies, status, href, actionLabel, className }: ForumCardProps): import("react").JSX.Element;
+export declare function ForumCard({ topic, title, level, excerpt, author, replies, status, href, actionLabel, variant, className }: ForumCardProps): import("react").JSX.Element;

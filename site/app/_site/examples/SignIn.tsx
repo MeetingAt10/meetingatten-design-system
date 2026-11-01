@@ -11,7 +11,7 @@ export function SignInBody() {
       <div className="site-signin__intro">
         <DoorPlate size="lg" tagline="Access for College of Computer Studies" />
         <h1 className="ds-type-h1">Sign in to ACCS</h1>
-        <p className="ds-lead">Use your CCS account. Community posts show your name; reports stay restricted to you and the people assigned to them.</p>
+        <p className="ds-lead">Use your CCS account. Community posts show your name. Reports stay restricted to you and the people assigned to them.</p>
       </div>
       <Card overlay as="section" aria-labelledby="signin-h" className="site-signin__panel">
         <Form

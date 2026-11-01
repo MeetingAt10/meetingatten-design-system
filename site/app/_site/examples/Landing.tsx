@@ -52,7 +52,7 @@ export function LandingBody() {
         <Hero
           plate={<DoorPlate size="lg" tagline="Access for College of Computer Studies" />}
           title="Your Access to the College of Computer Studies"
-          lead="Ask the community, book a consultation, keep track of your own reports. One college week, each thing in its lane."
+          lead="Ask the community, book a consultation and track your own reports, each in its own lane of the college week."
           actions={<><Button size="lg" href="/examples/sign-in/" icon="sign-in">Sign in</Button><Button size="lg" variant="secondary" href="#community">Browse the community</Button></>}
           note="Times are shown in Asia/Manila (PHT)."
           art={
@@ -67,19 +67,19 @@ export function LandingBody() {
         />
 
         <Section tone="sheet" aria-labelledby="lanes-h">
-          <SectionHeader id="lanes-h" title="Three lanes, and a boundary that stays drawn" description="Everything in ACCS sits in one of three lanes. The reports lane is hatched on purpose: it is part of the week, and it is closed to everyone but you and the people assigned to your record." />
+          <SectionHeader id="lanes-h" title="Community, consultations and reports" description="Everything in ACCS sits in one of these lanes. The reports lane is hatched. Only you and the people assigned to your record can open it." />
           <Agenda>
-            <AgendaItem chip="Community" lane="community" title="Ask, answer, share what helped" href="#community" linkLabel="Join the conversation">Casual and encouraging. Post a question about recursion at midnight and find an explanation by morning.</AgendaItem>
-            <AgendaItem chip="Consultations" lane="consult" title="Book office hours without the hallway hunt" href="#consultations" linkLabel="See open slots">Faculty publish their hours; you choose an open slot. Nothing is booked until they confirm.</AgendaItem>
-            <AgendaItem chip="Reports" lane="restricted" title="Your own records, kept apart" href="/examples/report-detail/" linkLabel="See a record">Serious and structured. Drafts stay yours. Submission opens only when recipients and access rules are confirmed.</AgendaItem>
+            <AgendaItem chip="Community" lane="community" title="Ask a question, share an answer" href="#community" linkLabel="Join the conversation">Post a question about recursion at midnight and read the explanations by morning.</AgendaItem>
+            <AgendaItem chip="Consultations" lane="consult" title="Book office hours" href="#consultations" linkLabel="See open slots">Faculty publish their hours and you choose an open slot. Nothing is booked until they confirm.</AgendaItem>
+            <AgendaItem chip="Reports" lane="restricted" title="Your own records" href="/examples/report-detail/" linkLabel="See a record">Drafts stay yours. Submission opens when recipients and access rules are confirmed.</AgendaItem>
           </Agenda>
         </Section>
 
         <Section id="consultations" aria-labelledby="book-h">
           <Grid columns="split">
             <Stack gap={24}>
-              <SectionHeader id="book-h" title="Find a time to talk" description="Pick a day, then an open slot. Open slots have a solid outline; booked ones are hatched; unavailable ones are struck through." />
-              <Alert title="Consultation is support">It is not an urgent-response channel. For urgent matters, contact the college office.</Alert>
+              <SectionHeader id="book-h" title="Find a time to talk" description="Pick a day, then an open slot. Open slots have a solid outline, booked slots are hatched and unavailable slots are struck through." />
+              <Alert title="Consultations are not for emergencies">For urgent matters, contact the college office.</Alert>
             </Stack>
             <Booking />
           </Grid>
@@ -87,30 +87,32 @@ export function LandingBody() {
 
         <Section tone="sheet" id="community" aria-labelledby="community-h">
           <SectionHeader split id="community-h" title="This week in the community" description="Community content is public within the college community." actions={<Button variant="secondary" iconEnd="arrow-right">All posts</Button>} />
-          <Grid columns={3}>
+          <Grid columns="main">
             <ForumCard topic="Algorithms" title="What helped recursion finally click for you?" excerpt="Share the explanation, drawing or example that worked. Follow-up questions welcome." author="Paolo Dizon" replies={6} status="Open discussion" href="#" />
-            <AnnouncementCard tag="Announcement" when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#">Same time, Wednesday 13:00. Bring a laptop; teams form on the day.</AnnouncementCard>
-            <ForumCard topic="Web development" title="Which CSS layout finally made sense to you?" excerpt="Grid, flex, or the one your instructor drew on the whiteboard." author="Paolo Dizon" replies={11} status="Open discussion" href="#" />
+            <Stack gap={16}>
+              <AnnouncementCard tag="Announcement" when="Mon 19 Oct · 09:00" title="Hackathon briefing moves to the AVR" meta="Community desk" href="#">The briefing is still at Wednesday 13:00. Bring a laptop. Teams form on the day.</AnnouncementCard>
+              <ForumCard variant="open" topic="Web development" title="Which CSS layout finally made sense to you?" excerpt="Grid, flex or the one your instructor drew on the whiteboard." author="Paolo Dizon" replies={11} status="Open discussion" href="#" />
+            </Stack>
           </Grid>
         </Section>
 
         <Section id="reports" aria-labelledby="faq-h">
-          <Grid columns="main">
+          <Grid columns={2}>
             <Stack gap={16}>
-              <h2 id="faq-h" className="ds-type-h2">Plain answers</h2>
+              <h2 id="faq-h" className="ds-type-h2">Questions about access</h2>
               <Accordion defaultExpandedKeys={["anon"]}>
                 <Disclosure id="anon" title="Is the community anonymous?">No. Community posts show your name to members of the college community. Do not post personal or case details there.</Disclosure>
                 <Disclosure id="reports" title="Who can see my reports?">You, and the people assigned to your record once recipients and access rules are confirmed. Restricted access does not mean anonymous.</Disclosure>
-                <Disclosure id="live" title="Are these schedules current?">Yes. Consultation hours follow each faculty member's posted schedule and update as it changes.</Disclosure>
+                <Disclosure id="live" title="Are these schedules current?">Yes. Consultation hours follow each faculty member's posted schedule and change when it changes.</Disclosure>
               </Accordion>
             </Stack>
-            <p className="ds-lead">Community access does <Highlight under>not</Highlight> grant report access. The boundary is drawn into every screen, not hidden in a policy page.</p>
+            <p className="ds-lead">Community access does <Highlight under>not</Highlight> grant report access. Every screen shows where the boundary sits.</p>
           </Grid>
         </Section>
 
         <Section tone="plate" aria-labelledby="cta-h">
           <div className="site-cta">
-            <h2 id="cta-h" className="ds-type-h1">Your college week, in one place.</h2>
+            <h2 id="cta-h" className="ds-type-h1">Sign in to see your college week.</h2>
             <div className="ds-row"><Button size="lg" variant="plate" href="/examples/sign-in/" icon="sign-in">Sign in with your CCS account</Button></div>
           </div>
         </Section>

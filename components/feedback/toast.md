@@ -69,7 +69,7 @@ import { DesignSystemProvider, ToastRegion, toast } from '@meetingat10/design-sy
 // Anywhere.
 toast('Draft saved', { tone: 'success', description: 'CCS-2026-0142 is saved as a draft.' });
 toast('Post moved to Saved', { action: { label: 'Undo', onAction: undoMove } });
-toast('Sample export ready', { timeout: 0 });
+toast('Export ready', { timeout: 0 });
 ```
 
 `ToastData` is `{ title, description?, tone?: 'neutral' | 'success', action?: { label, onAction } }`. The `toast()` options add `timeout` (ms, default 6000; `0` keeps the toast) and `queue`. For a separate stack, create `new ToastQueue<ToastData>({ maxVisibleToasts: 3 })` and pass it to `<ToastRegion queue={...}>` and `toast(..., { queue })`. React Aria's toast API is `UNSTABLE_` in 1.22.1; this package wraps it.

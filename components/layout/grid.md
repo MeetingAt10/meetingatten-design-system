@@ -46,7 +46,7 @@ A grid lays content out in columns on the page gutters: one column on phones, tw
 import { Grid, ForumCard } from '@meetingat10/design-system/react';
 
 <Grid columns={3}>
-  {posts.map((p) => <ForumCard key={p.id} topic={p.topic} title={p.title} href={p.href} demo />)}
+  {posts.map((p) => <ForumCard key={p.id} topic={p.topic} title={p.title} href={p.href} />)}
 </Grid>
 
 <Grid columns="main">

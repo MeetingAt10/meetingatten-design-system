@@ -49,13 +49,13 @@ A section header opens a region: the heading, one optional line of description, 
 ```tsx
 import { SectionHeader, Button } from '@meetingat10/design-system/react';
 
-<SectionHeader level={1} title="Your week" description="Sample schedule for the college week." />
+<SectionHeader level={1} title="Your week" description="Your timetable for the college week." />
 
 <SectionHeader
   id="community-h"
   split
   title="This week in the community"
-  description="Sample posts from the college community."
+  description="Posts from the college community."
   actions={<Button variant="secondary" iconEnd="arrow-right" href="/community">All posts</Button>}
 />
 ```
@@ -67,7 +67,7 @@ import { SectionHeader, Button } from '@meetingat10/design-system/react';
 ```html
 <header class="ds-section-header ds-section-header--split">
   <h2 class="ds-section-header__title" id="community-h">This week in the community</h2>
-  <p class="ds-section-header__description">Sample posts from the college community.</p>
+  <p class="ds-section-header__description">Posts from the college community.</p>
   <div class="ds-section-header__actions">
     <a class="ds-btn ds-btn--secondary" href="/community">All posts</a>
   </div>

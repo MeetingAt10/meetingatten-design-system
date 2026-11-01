@@ -1,6 +1,6 @@
 ---
 title: Time Block
-description: The unit of the Office Hours world, a block whose lane color owns the whole fill, with its time code, title and state in words.
+description: The basic unit of the Office Hours timetable, a block filled with its lane color, with its time code, title and state in words.
 react: TimeBlock
 ---
 # Time Block

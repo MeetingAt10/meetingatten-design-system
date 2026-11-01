@@ -6,9 +6,9 @@
 .ds-table-wrap {
   max-width: 100%;
   overflow: auto;
-  border-radius: var(--ds-radius-sheet);
+  border-radius: var(--ds-radius-12);
   background: var(--ds-sheet-bg);
-  box-shadow: var(--ds-sheet-shadow);
+  box-shadow: var(--ds-ring-shadow);
   &:focus-visible { outline: var(--ds-size-focus-ring) solid var(--ds-focus); outline-offset: var(--ds-size-focus-offset); }
 }
 .ds-table {

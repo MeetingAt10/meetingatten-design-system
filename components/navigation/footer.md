@@ -1,6 +1,6 @@
 ---
 title: Footer
-description: The site footer with the wordmark and a short description, named link columns, and a quiet bottom line for status notes.
+description: The site footer with the wordmark and a short description, named link columns, and a bottom line for status notes.
 react: Footer
 ---
 # Footer
@@ -10,7 +10,7 @@ The footer closes landing and public pages: the brand (the door plate on ACCS su
 ## When to use
 
 - Use it on the landing, Meeting At 10 and public pages.
-- Use `note` for honest status, `meta` for small print on the right.
+- Use `note` for status, `meta` for small print on the right.
 - Don't use it inside the workspace shell.
 
 ## Anatomy

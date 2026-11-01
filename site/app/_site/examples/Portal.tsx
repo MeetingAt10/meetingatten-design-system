@@ -31,7 +31,7 @@ export function Portal({ current, title, children }: { current: PortalPage; titl
                   <RoleBadge>Student</RoleBadge>
                 </div>
               </div>
-              <SidebarNote>Own reports only. A role is not a privacy guarantee.</SidebarNote>
+              <SidebarNote>You see your own reports only. A role is not a privacy guarantee.</SidebarNote>
             </>
           }
         >

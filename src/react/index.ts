@@ -99,7 +99,7 @@ export { Agenda, AgendaItem, type AgendaProps, type AgendaItemProps } from './la
 export { Highlight, type HighlightProps } from './layout/Highlight.js';
 export { Divider, type DividerProps } from './layout/Divider.js';
 
-// Expressive layer (marketing surfaces: the ACCS landing, Meeting At 10 and the showcase)
+// Expressive layer (marketing surfaces: the ACCS landing, Meeting At 10 and the documentation site)
 export { Reveal, type RevealProps } from './expressive/Reveal.js';
 export { WordReveal, type WordRevealProps } from './expressive/WordReveal.js';
 export { FloatingArt, type FloatingArtProps } from './expressive/FloatingArt.js';

@@ -35,7 +35,7 @@ A skeleton holds the place of content while it loads, in the shape of what is co
 
 - Every skeleton is hidden from assistive tech (`aria-hidden="true"`).
 - Put `aria-busy="true"` on the loading region and announce loading once in text; do not announce every update or move focus.
-- Replace skeletons with the content, or with an honest empty or error state, as soon as the data settles.
+- Replace skeletons with the content, or with an empty or error state, as soon as the data settles.
 - Reduced motion: the pulse stops; placeholders stay still.
 - Forced colors: wash-filled lines drop out; dashed block outlines stay visible.
 

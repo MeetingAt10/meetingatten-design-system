@@ -1,6 +1,6 @@
 # Voice and tone
 
-Three contexts, one honest voice: direct language, meaningful actions, no unverified claims.
+The system has three contexts and one voice. Use direct language, name each action and make no claim the product cannot back.
 
 | Context | Voice | Try | Avoid | Principle |
 |---|---|---|---|---|
@@ -20,15 +20,15 @@ Three contexts, one honest voice: direct language, meaningful actions, no unveri
 
 | Rule | Detail |
 |---|---|
-| Honest | No promises of anonymity, security, response time or finality; "restricted access does not mean anonymous" |
-| Demo content | Use realistic names and references (CCS-2026-0142); never real student data |
-| Errors | Say what went wrong and how to fix it next to the field; keep entered values: "Couldn't validate this subject. Try again; your text is kept." |
+| Claims | No promises of anonymity, security, response time or finality. Say "restricted access does not mean anonymous" |
+| Example content | Use invented Filipino names and references like `CCS-2026-0142`. Never use real student data |
+| Errors | Say what went wrong and how to fix it next to the field; keep entered values ("Couldn't validate this subject. Try again. Your text is kept.") |
 | Buttons | Verb and object ("Continue", "Discard draft", "Book a time") |
 | Destructive confirmation | Name the object; say whether it can be undone ("This cannot be undone.") |
 | Required fields | Words, not an asterisk alone |
 | Name | **ACCS**; spoken "Access"; expand on first mention |
 | No emoji | In UI and system messages |
-| No kickers | No small label above a heading; the heading says it |
+| No kickers | No small label above a heading. The heading says it |
 
 ## State words
 
@@ -41,7 +41,7 @@ Line forms always travel with a word. Use the same words everywhere.
 | Hatched (taken, restricted) | "Booked", "Restricted", "Restricted review", "Your own records only" |
 | Struck (disabled, closed) | "Unavailable", "Cancelled", "Withdrawn" |
 
-A chosen slot is "Chosen", not "Booked": choosing a time is not a confirmed booking.
+A chosen slot is "Chosen", not "Booked", because choosing a time does not confirm a booking.
 
 ## Times and dates
 

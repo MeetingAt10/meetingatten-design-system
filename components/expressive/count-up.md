@@ -11,7 +11,7 @@ CountUp shows a real number rolling up from 0 the first time at least 40% of it 
 
 - Use it for counts that are true and computed (components, tokens, icons), in a row of two to four on a marketing page.
 - Pair each number with a plain-language label under it.
-- Don't invent figures. If a number is a sample, say so in the label.
+- Don't invent figures. Count only numbers the product can back.
 - Don't use it for values the user acts on (balances, deadlines, queue positions) or in the portal.
 
 ## Anatomy

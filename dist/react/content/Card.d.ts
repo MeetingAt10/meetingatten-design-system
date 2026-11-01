@@ -8,12 +8,14 @@ export interface CardProps extends React.HTMLAttributes<HTMLElement> {
     link?: boolean;
     /** No padding (media, tables). */
     flush?: boolean;
+    /** Surface treatment: `sheet` is a raised paper card (default), `tint` is flat on the neutral tint with a hairline, `open` has no surface, only a top rule. */
+    variant?: 'sheet' | 'tint' | 'open';
 }
 /**
- * Card: a paper sheet for ONE item in a collection (announcement, post, record) or a floating panel.
- * Never put a card inside a card; detail pages use open sections, rules and headings.
+ * Card: one item in a collection (announcement, post, record) or a floating panel. Raised paper by default;
+ * `variant` swaps in a flat tint or an open, rule-only treatment. Never put a card inside a card.
  */
-export declare function Card({ as: Tag, overlay, link, flush, className, ...rest }: CardProps): import("react").JSX.Element;
+export declare function Card({ as: Tag, overlay, link, flush, variant, className, ...rest }: CardProps): import("react").JSX.Element;
 /** Card header row: the lane chip and time on the left, meta on the right. */
 export declare function CardHeader({ className, ...rest }: React.HTMLAttributes<HTMLDivElement>): import("react").JSX.Element;
 /** Lane chip: a small solid block naming the lane ("Announcement", "Algorithms"). A topic, never a permission or confidentiality signal. */
