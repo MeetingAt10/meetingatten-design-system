@@ -1,13 +1,16 @@
 name: deploy-site
 
-# Inert until the accs-system infra change creates the DesignSite stack and these repository variables:
-#   DESIGN_SITE_ROLE_ARN        IAM role GitHub OIDC may assume (S3 put/delete/list on the bucket, invalidation on the distribution)
-#   DESIGN_SITE_BUCKET          site bucket (stack output DesignBucket)
-#   DESIGN_SITE_DISTRIBUTION_ID CloudFront distribution (stack output DesignDistributionId)
-#   DESIGN_SITE_URL             public origin for canonical URLs, e.g. https://design.<domain> (CloudFront URL until then)
+# Release tags (v*) publish to prod, design.access-ccs.com (stack accs-prod).
+# Pushes to master publish to dev, design-dev.access-ccs.com (stack accs-dev).
+# Repository variables, prod and dev:
+#   DESIGN_SITE_ROLE_ARN / DESIGN_DEV_SITE_ROLE_ARN                IAM role GitHub OIDC may assume (stack output DesignDeployRoleArn)
+#   DESIGN_SITE_BUCKET / DESIGN_DEV_SITE_BUCKET                    site bucket (stack output DesignBucket)
+#   DESIGN_SITE_DISTRIBUTION_ID / DESIGN_DEV_SITE_DISTRIBUTION_ID  CloudFront distribution (stack output DesignDistributionId)
+#   DESIGN_SITE_URL / DESIGN_DEV_SITE_URL                          public origin for canonical URLs (stack output DesignUrl)
 on:
   push:
     tags: ['v*']
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -20,10 +23,13 @@ concurrency:
 
 jobs:
   deploy:
-    if: ${{ vars.DESIGN_SITE_ROLE_ARN != '' }}
     runs-on: ubuntu-latest
     env:
       AWS_REGION: ap-southeast-1
+      ROLE_ARN: ${{ startsWith(github.ref, 'refs/tags/v') && vars.DESIGN_SITE_ROLE_ARN || vars.DESIGN_DEV_SITE_ROLE_ARN }}
+      BUCKET: ${{ startsWith(github.ref, 'refs/tags/v') && vars.DESIGN_SITE_BUCKET || vars.DESIGN_DEV_SITE_BUCKET }}
+      DISTRIBUTION_ID: ${{ startsWith(github.ref, 'refs/tags/v') && vars.DESIGN_SITE_DISTRIBUTION_ID || vars.DESIGN_DEV_SITE_DISTRIBUTION_ID }}
+      SITE_URL: ${{ startsWith(github.ref, 'refs/tags/v') && vars.DESIGN_SITE_URL || vars.DESIGN_DEV_SITE_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,20 +43,18 @@ jobs:
       - run: npm run check
       - name: Build site
         env:
-          NEXT_PUBLIC_SITE_URL: ${{ vars.DESIGN_SITE_URL }}
+          NEXT_PUBLIC_SITE_URL: ${{ env.SITE_URL }}
         run: |
           npm --prefix site ci
           npm --prefix site run build
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ vars.DESIGN_SITE_ROLE_ARN }}
+          role-to-assume: ${{ env.ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
       - name: Upload
-        env:
-          BUCKET: ${{ vars.DESIGN_SITE_BUCKET }}
         run: |
           # Open Graph images are extensionless files (opengraph-image, or opengraph-image-<hash>); upload them with an explicit content type.
           aws s3 sync site/out "s3://$BUCKET" --delete --exclude "*opengraph-image*" --exclude "*twitter-image*"
           aws s3 cp site/out "s3://$BUCKET" --recursive --exclude "*" --include "*opengraph-image*" --include "*twitter-image*" --content-type image/png
       - name: Invalidate CDN
-        run: aws cloudfront create-invalidation --distribution-id "${{ vars.DESIGN_SITE_DISTRIBUTION_ID }}" --paths '/*' >/dev/null
+        run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths '/*' >/dev/null
