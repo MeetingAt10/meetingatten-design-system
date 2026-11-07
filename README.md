@@ -22,10 +22,10 @@ Themes: `data-theme="light"` or `"dark"`; no attribute follows the OS ([light an
 The repo is private and installs from git. Pin a tag, not a branch.
 
 ```bash
-npm i @meetingat10/design-system@github:MeetingAt10/meetingatten-design-system#v1.3.0
+npm i @meetingat10/design-system@github:MeetingAt10/meetingatten-design-system#v2.0.0
 ```
 
-`dist/` is committed, so installing needs no build step. Peer dependencies: `react` and `react-dom` 19. Moving from 0.5.x: [migrating apps](docs/migrating-apps.md).
+`dist/` is committed, so installing needs no build step. Peer dependencies: `react` and `react-dom` 19. Moving from 0.5.x: [migrating apps](docs/migrating-apps.md). Moving to 2.0.0: `FloatingArt`, `ParallaxScene`, the `imagery` record and `assets/imagery/*` are removed (see [CHANGELOG.md](CHANGELOG.md)).
 
 ## What to import
 
@@ -124,13 +124,19 @@ npm run typecheck  # tsc over src/react, tests included
 npm test           # Vitest + Testing Library + axe on every component
 ```
 
-`npm run check:contrast` and `npm run check:tokens` run the two checks alone. Run heavy commands one at a time on a low-power machine.
+`npm run check:contrast` and `npm run check:tokens` run the two checks alone. `npm run build:react` rebuilds only `dist/react`. The site has its own commands in `site/` (`npm run dev`, `npm run build`); CI builds it with `npm --prefix site ci && npm --prefix site run build`. Run heavy commands one at a time on a low-power machine.
+
+## CI and deploy
+
+`.github/workflows/ci.yml` runs on pull requests and on pushes to `master` and `main`. It runs `npm ci`, `npm run check`, `npm run typecheck`, `npm test`, confirms `dist` and `src/react/icon/icons.ts` are up to date, and builds the site (Node 22).
+
+`.github/workflows/deploy-site.yml` publishes the static site to S3 and invalidates CloudFront, using GitHub OIDC. A pushed `v*` tag deploys to production (`design.access-ccs.com`). A push to `master` deploys to dev (`design-dev.access-ccs.com`). It can also be started by hand. The bucket, distribution and role come from repository variables.
 
 ## Repo layout
 
 | Path | Contents |
 |---|---|
-| `tokens/` | The source: `foundations/` (color, identity, type, spacing, radius, size, grid, elevation, motion, z-index), `themes/` (light and dark mapping), `treatments.json` (materials), `contrast-pairs.json` |
+| `tokens/` | The source: `foundations/` (color, identity, font, type, spacing, radius, size, grid, elevation, motion, z-index), `themes/` (`accs-light.json` and `accs-dark.json`), `treatments.json` (materials), `contrast-pairs.json` |
 | `src/css/` | Token-only CSS: `base/` (reset, type, layout, motion, utilities, forced colors) and `components/<category>/<name>.css` |
 | `src/react/` | React components (`<category>/<Name>.tsx`), tests per category, the provider, motion tokens and icon map |
 | `scripts/` | `build.mjs`, `check-contrast.mjs`, `check-tokens.mjs`, `lib.mjs` (plain Node, no dependencies) |
@@ -138,7 +144,7 @@ npm test           # Vitest + Testing Library + axe on every component
 | `assets/` | `icons/icons.json` (curated vocabulary), `icons/sprite.svg` (generated), `logo/meeting-at-10*.svg` (the Meeting At 10 logo), `logo/logo-*.svg` (proposed ACCS marks) |
 | `components/`, `foundations/`, `themes/`, `docs/` | Component specs and guides; the site renders them |
 | `context/deltas/` | Change specs (deltas); `archive/` holds past ones |
-| `site/` | The public documentation site (Next.js 16 static export) with live light and dark demos. It is not part of the package |
+| `site/` | The public documentation site (Next.js 16 static export) with live light and dark demos, deployed by the workflow above. It is not part of the package |
 
 ## Rules
 
