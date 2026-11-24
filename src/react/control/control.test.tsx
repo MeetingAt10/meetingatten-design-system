@@ -25,12 +25,13 @@ describe('Button', () => {
     expect(b.className).toBe('ds-btn ds-btn--secondary ds-btn--lg');
     expect(b.querySelectorAll('svg.ds-icon')).toHaveLength(2);
   });
-  it('loading keeps the label, shows the spinner and blocks repeat presses', async () => {
+  it('loading keeps the label as the name, shows the ring and blocks repeat presses', async () => {
     const onPress = vi.fn();
     render(<Button loading onPress={onPress}>Saving draft</Button>);
     const b = screen.getByRole('button', { name: /Saving draft/ });
     expect(b.hasAttribute('data-pending')).toBe(true);
-    expect(b.querySelector('.ds-spinner')).not.toBeNull();
+    expect(b.querySelector('.ds-btn__busy')).not.toBeNull();
+    expect(b.querySelector('.ds-btn__label')?.textContent).toBe('Saving draft');
     await userEvent.click(b);
     expect(onPress).not.toHaveBeenCalled();
   });
