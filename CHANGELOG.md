@@ -2,6 +2,11 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [SemVer](https://semver.org); while `0.x`, breaking changes bump the minor and are marked **BREAKING**.
 
+## [2.1.0] - 2026-11-25
+
+### Changed
+- `Button` pending state: the label fades out in place (the width holds and the label still names the button) and a ring turns in the middle. The clock spinner and the line sweeping along the bottom edge are gone. Under reduced motion there is no ring and the label stays, dimmed.
+
 ## [2.0.0] - 2026-11-01
 
 The generated 3D renders are gone. They looked out of place next to the real interface, so every page that used one is back to type, real components, icons and the SVG logo.
