@@ -389,7 +389,7 @@
 /* src/css/components/control/button.css */
 /* Button: a block you press. Primary = crisp navy block (top highlight + navy shadow, one per task region), secondary = paper
    with a hairline ring, tertiary (alias ghost) = text that takes a quiet wash, destructive = solid danger block for real removal.
-   Pending keeps the fill, shows the clock spinner and sweeps a line along the bottom edge.
+   Pending keeps the fill and the width: the label fades out in place and a ring turns in the middle.
    <button class="ds-btn ds-btn--primary"><svg class="ds-icon">...</svg>Continue</button>
    Sizes: default 48px, --sm 40px (44px on touch), --lg 56px. --block = full width. */
 .ds-btn {
@@ -428,18 +428,32 @@
     translate: none;
     cursor: not-allowed;
   }
-  /* Pending: a line sweeps along the bottom edge while the work runs. */
-  &:is([data-pending], [aria-busy="true"]) {
-    cursor: progress;
-    &::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 2px;
-      background: currentColor;
-      opacity: 0.55;
-      animation: ds-sweep 1.2s var(--ds-motion-ease-in-out) infinite;
-    }
+  /* Pending: the label fades out in place (it still names the button) and a ring turns where it was. */
+  &:is([data-pending], [aria-busy="true"]) { cursor: progress; }
+  & > .ds-btn__label {
+    display: inline-flex;
+    align-items: center;
+    gap: inherit;
+    animation: ds-fade-out var(--ds-motion-duration-quick) var(--ds-motion-ease-out) forwards;
+  }
+  & > .ds-btn__busy {
+    position: absolute;
+    inset: 0;
+    width: var(--ds-size-icon-20);
+    height: var(--ds-size-icon-20);
+    margin: auto;
+    border: 2px solid currentColor;
+    border-inline-end-color: transparent;
+    border-radius: var(--ds-radius-full);
+    animation:
+      ds-fade-in var(--ds-motion-duration-quick) var(--ds-motion-ease-out),
+      ds-btn-turn 0.7s linear infinite;
+  }
+  &.ds-btn--sm > .ds-btn__busy { width: var(--ds-size-icon-16); height: var(--ds-size-icon-16); }
+  /* Reduced motion: nothing turns; the label stays, dimmed, and the busy state is announced. */
+  @media (prefers-reduced-motion: reduce) {
+    & > .ds-btn__label { animation: none; opacity: 0.6; }
+    & > .ds-btn__busy { display: none; }
   }
 }
 
@@ -518,6 +532,8 @@
   font-size: 1rem;
 }
 .ds-btn--block { display: flex; width: 100%; }
+
+@keyframes ds-btn-turn { to { rotate: 1turn; } }
 
 /* src/css/components/control/icon-button.css */
 /* Icon button: a square block holding one icon; always has an accessible name (aria-label) and,

@@ -7,7 +7,9 @@ import { cx } from '../lib/cx.js';
 export function Button({ variant = 'primary', size = 'md', block, loading, icon, iconEnd, href, target, rel, className, children, ...rest }) {
     const iconSize = size === 'sm' ? 16 : 20;
     const cls = cx('ds-btn', `ds-btn--${variant}`, size !== 'md' && `ds-btn--${size}`, block && 'ds-btn--block', className);
-    const content = (_jsxs(_Fragment, { children: [loading ? _jsx("span", { className: "ds-spinner", "aria-hidden": "true" }) : icon && _jsx(Icon, { name: icon, size: iconSize }), children, iconEnd && _jsx(Icon, { name: iconEnd, size: iconSize })] }));
+    const label = (_jsxs(_Fragment, { children: [icon && _jsx(Icon, { name: icon, size: iconSize }), children, iconEnd && _jsx(Icon, { name: iconEnd, size: iconSize })] }));
+    // Pending: the label stays in the tree (it still names the button) but fades out, so the button keeps its width.
+    const content = loading ? (_jsxs(_Fragment, { children: [_jsx("span", { className: "ds-btn__busy", "aria-hidden": "true" }), _jsx("span", { className: "ds-btn__label", children: label })] })) : label;
     if (href) {
         return (_jsx(AriaLink, { href: href, target: target, rel: rel, isDisabled: rest.isDisabled, onPress: rest.onPress, "aria-label": rest['aria-label'], className: cls, children: content }));
     }

@@ -28,8 +28,8 @@ A button is a block you press to do something: save, book, sign in, discard. Lin
 | Size | `.ds-btn--sm`, `.ds-btn--lg` | 40px (44px on coarse pointers) and 56px |
 | Full width | `.ds-btn--block` | Fills its container |
 | Icons | `.ds-icon` | 20px start or end icon (16px in `--sm`), regular weight |
-| Spinner | `.ds-spinner` | Clock hand in `currentColor`, replaces the start icon while pending |
-| Pending line | `::after` | 2px line sweeping along the bottom edge while pending |
+| Busy ring | `.ds-btn__busy` | 2px ring with an open quarter in `currentColor`, turning in the middle while pending |
+| Pending label | `.ds-btn__label` | Wraps the icons and label while pending; fades out in place so the width holds and the label still names the button |
 
 ## States
 
@@ -39,7 +39,7 @@ A button is a block you press to do something: save, book, sign in, discard. Lin
 | Hover | Primary and destructive darken and lift 2px with the lift shadow; secondary and tertiary take the schedule wash | `:hover`, `[data-hovered]`, `.is-hover` |
 | Pressed | Moves down 1px; primary and destructive take their pressed fill; secondary gets a navy rule on the info ground | `:active`, `[data-pressed]`, `.is-pressed` |
 | Focus | 2px focus ring with a 2px gap | `:focus-visible` |
-| Pending | Fill kept, spinner shown, a line sweeps the bottom edge, cursor `progress`; the label stays | `loading`, `[data-pending]`, `[aria-busy="true"]` |
+| Pending | Fill and width kept, the label fades out and the ring turns in its place, cursor `progress` | `loading`, `[data-pending]`, `[aria-busy="true"]` |
 | Disabled | Disabled ground and readable disabled text, no lift; secondary goes to a dashed rule on no fill | `isDisabled`, `:disabled`, `[data-disabled]`, `[aria-disabled="true"]` |
 
 ## Behavior and accessibility
@@ -49,7 +49,7 @@ A button is a block you press to do something: save, book, sign in, discard. Lin
 - `loading` sets React Aria's pending state: the button stays focusable, repeat presses are blocked and screen readers hear that it is busy.
 - Disabled buttons keep a readable label. Say why the action is unavailable near the button when the reason is not obvious.
 - With `href`, the button renders a link (navigation, not an action) and uses the router from [DesignSystemProvider](../../README.md).
-- Reduced motion: the lift, the press step and the sweeping line stop; state changes land at once.
+- Reduced motion: the lift and the press step stop and state changes land at once. Pending shows no ring; the label stays, dimmed.
 - Forced colors: every button keeps a `CanvasText` edge; disabled text and edges use `GrayText`.
 
 ## React

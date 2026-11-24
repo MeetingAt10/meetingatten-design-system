@@ -8,7 +8,7 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'className' | 'isPend
     size?: 'sm' | 'md' | 'lg';
     /** Full width. */
     block?: boolean;
-    /** Keeps the label, shows the clock spinner and a sweeping line, announces the pending state and blocks repeat presses. */
+    /** Fades the label out in place (the width holds), turns a ring in the middle, announces the pending state and blocks repeat presses. */
     loading?: boolean;
     /** Icon before the label. */
     icon?: IconName;

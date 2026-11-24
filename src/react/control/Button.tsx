@@ -12,7 +12,7 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'className' | 'isPend
   size?: 'sm' | 'md' | 'lg';
   /** Full width. */
   block?: boolean;
-  /** Keeps the label, shows the clock spinner and a sweeping line, announces the pending state and blocks repeat presses. */
+  /** Fades the label out in place (the width holds), turns a ring in the middle, announces the pending state and blocks repeat presses. */
   loading?: boolean;
   /** Icon before the label. */
   icon?: IconName;
@@ -30,13 +30,20 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'className' | 'isPend
 export function Button({ variant = 'primary', size = 'md', block, loading, icon, iconEnd, href, target, rel, className, children, ...rest }: ButtonProps) {
   const iconSize = size === 'sm' ? 16 : 20;
   const cls = cx('ds-btn', `ds-btn--${variant}`, size !== 'md' && `ds-btn--${size}`, block && 'ds-btn--block', className);
-  const content = (
+  const label = (
     <>
-      {loading ? <span className="ds-spinner" aria-hidden="true" /> : icon && <Icon name={icon} size={iconSize} />}
+      {icon && <Icon name={icon} size={iconSize} />}
       {children}
       {iconEnd && <Icon name={iconEnd} size={iconSize} />}
     </>
   );
+  // Pending: the label stays in the tree (it still names the button) but fades out, so the button keeps its width.
+  const content = loading ? (
+    <>
+      <span className="ds-btn__busy" aria-hidden="true" />
+      <span className="ds-btn__label">{label}</span>
+    </>
+  ) : label;
   if (href) {
     return (
       <AriaLink href={href} target={target} rel={rel} isDisabled={rest.isDisabled} onPress={rest.onPress} aria-label={rest['aria-label']} className={cls}>
